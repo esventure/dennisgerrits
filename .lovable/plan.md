@@ -1,51 +1,59 @@
 
 
-# Rewrite All Content: More Personal, Remove Em Dashes
+# Convert to One-Pager with Interests Subpage
 
-## What changes
+## Overview
+Restructure the site from 6+ pages into a single scrolling homepage with anchor-based navigation, plus one standalone page for "Your Interests."
 
-Every page and component with copy will be updated. Two goals:
-1. **Remove all em dashes (—)** throughout, replacing with simpler punctuation (periods, commas, colons, or restructured sentences).
-2. **Rewrite copy to sound less polished/AI and more like a real person talking.** Less symmetrical phrasing, fewer "three things in a row" constructions, more conversational rhythm, occasional short sentences, less formulaic structure.
+## Structure
 
-## Files to edit (8 files)
+### Homepage (single scroll page)
+The homepage will contain these sections in order, each with an `id` for anchor linking:
+
+1. **Hero** (existing) - `#hero`
+2. **About Dennis** (from About.tsx) - `#about`
+3. **A Day Together** (from Approach.tsx, the timeline) - `#approach`
+4. **FAQ** (from FAQ.tsx, accordion) - `#faq`
+5. **Contact / Get in Touch** (from Contact.tsx, video call + form) - `#contact`
+6. **Travel Agents** (from TravelAgents.tsx, compact version) - `#professionals`
+
+The Philosophy and Experience sections currently on the homepage stay between Hero and About.
+
+### Interests page (standalone)
+Stays as `/interests` - no changes needed.
+
+## Files to change
 
 ### 1. `src/pages/Index.tsx`
-- Hero tagline: keep "I translate it" but drop the em dash
-- Philosophy section: break up the overly balanced sentence pairs, make it sound more like Dennis actually talks
-- Experience cards: less perfectly structured, more natural
-- CTA: simpler, warmer
+- Import content/components from About, Approach, FAQ, Contact, and TravelAgents
+- Add all sections inline with `id` attributes for anchor scrolling
+- Keep existing Hero, Philosophy, and Experience sections
+- Replace the current CTA section with the full Contact section
 
-### 2. `src/pages/About.tsx`
-- Rewrite the three body paragraphs to feel less like an AI writing exercise and more like someone actually reflecting on their life
-- Remove em dashes from all paragraphs
-- Blockquote stays but tightened
+### 2. `src/components/Header.tsx`
+- Change nav links from routes to anchor links (`#about`, `#approach`, `#faq`, `#contact`)
+- Keep "Your Interests" as a route link to `/interests`
+- Add smooth scroll behavior for anchor links
+- Handle anchor navigation when on the Interests page (link back to `/#about` etc.)
 
-### 3. `src/pages/Approach.tsx`
-- Rewrite the five timeline moments: less poetic symmetry, more real
-- Remove em dashes from intro and timeline text
+### 3. `src/components/Footer.tsx`
+- Update footer links to use anchors instead of routes
+- Keep `/interests` as a route link
 
-### 4. `src/pages/Interests.tsx`
-- Rewrite theme card descriptions to be shorter, punchier, less "writerly"
-- Remove em dashes from intro and footer text
+### 4. `src/App.tsx`
+- Remove routes for About, Approach, Contact, FAQ, TravelAgents
+- Keep only `/`, `/interests`, and `*` (NotFound)
+- Remove unused imports
 
-### 5. `src/pages/Contact.tsx`
-- Simplify the intro and card descriptions
-- Remove em dashes
+### 5. `index.html`
+- Add `scroll-behavior: smooth` to the `<html>` tag
 
-### 6. `src/pages/FAQ.tsx`
-- Rewrite all 8 answers: less perfectly structured, more honest and direct
-- Remove em dashes from answers
-
-### 7. `src/pages/TravelAgents.tsx`
-- Rewrite the three info blocks and intro
-- Remove em dashes
-
-### 8. `src/components/Footer.tsx`
-- Remove em dash from the tagline
+### 6. Cleanup
+- Delete `src/pages/About.tsx`, `Approach.tsx`, `Contact.tsx`, `FAQ.tsx`, `TravelAgents.tsx` (content moved into Index)
 
 ## Technical details
-- Pure content changes only, no structural/layout/component changes
-- Approximately 50+ instances of em dash removal across all files
-- All copy rewritten in the same pass
+- Anchor links use `<a href="#section">` for same-page, `<Link to="/#section">` when navigating from Interests page
+- Smooth scrolling via CSS `scroll-behavior: smooth` on `html`
+- Header offset accounted for with `scroll-margin-top` on each section
+- Mobile nav closes on anchor click (existing behavior)
 

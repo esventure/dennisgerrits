@@ -24,14 +24,12 @@ const Index = () => (
           </FadeIn>
           <FadeIn delay={0.2}>
             {/* Portrait placeholder */}
-            <div className="flex justify-center lg:justify-end">
-              <div className="w-72 h-96 lg:w-80 lg:h-[28rem] rounded-sm flex items-center justify-center overflow-hidden">
-                <img
-                  src={dennisIllustration}
-                  alt="Hand-drawn portrait illustration of Dennis Gerrits"
-                  className="w-full h-full object-contain"
-                />
-              </div>
+             <div className="flex justify-center lg:justify-end h-full items-center">
+              <img
+                src={dennisIllustration}
+                alt="Hand-drawn portrait illustration of Dennis Gerrits"
+                className="w-full h-full object-contain"
+              />
             </div>
           </FadeIn>
         </div>

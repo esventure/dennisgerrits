@@ -4,17 +4,28 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
-  { to: "/approach", label: "A Day Together" },
+  { to: "/#about", label: "About" },
+  { to: "/#approach", label: "A Day Together" },
   { to: "/interests", label: "Your Interests" },
-  { to: "/contact", label: "Get in Touch" },
-  { to: "/faq", label: "FAQ" },
+  { to: "/#faq", label: "FAQ" },
+  { to: "/#contact", label: "Get in Touch" },
 ];
 
 const Header = () => {
   const [open, setOpen] = useState(false);
   const location = useLocation();
+
+  const handleNavClick = (to: string) => {
+    setOpen(false);
+    // If we're already on the homepage and clicking an anchor link, scroll manually
+    if (location.pathname === "/" && to.startsWith("/#")) {
+      const id = to.slice(2);
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-background/90 backdrop-blur-sm border-b border-border/40">
@@ -29,6 +40,7 @@ const Header = () => {
             <Link
               key={link.to}
               to={link.to}
+              onClick={() => handleNavClick(link.to)}
               className={cn(
                 "font-body text-sm tracking-wide transition-colors hover:text-secondary",
                 location.pathname === link.to ? "text-secondary font-medium" : "text-foreground/70"
@@ -56,7 +68,7 @@ const Header = () => {
             <Link
               key={link.to}
               to={link.to}
-              onClick={() => setOpen(false)}
+              onClick={() => handleNavClick(link.to)}
               className={cn(
                 "block font-body text-lg py-2 transition-colors",
                 location.pathname === link.to ? "text-secondary font-medium" : "text-foreground/70"

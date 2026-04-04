@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
+import dennisIllustration from "@/assets/dennis_illustration.png";
 
 const Index = () => (
   <main>

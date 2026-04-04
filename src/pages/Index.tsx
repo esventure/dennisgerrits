@@ -64,15 +64,15 @@ const Index = () => (
           {[
             {
               title: "Depth Over Highlights",
-              text: "We skip the obvious and find the meaningful. A hidden courtyard, a local bakery with a hundred-year story, the way light falls on a particular street at four in the afternoon.",
+              text: "We skip the obvious stuff. Instead, we find the things that actually matter. A hidden courtyard, a bakery with a hundred-year story, the way light hits a particular street at four in the afternoon.",
             },
             {
               title: "Connection Without Pressure",
-              text: "There is no itinerary to rush through and no schedule to keep. We move at the speed of curiosity — yours.",
+              text: "There's no itinerary to rush through. No schedule. We move at the speed of your curiosity.",
             },
             {
               title: "A Friend, Not a Guide",
-              text: "I share what I love about a place the way you'd share it with a friend. Honestly, personally, and with the occasional detour that turns out to be the best part.",
+              text: "I share what I love about a place the way I'd share it with a friend. Honestly, personally, and with the occasional detour that ends up being the best part of the day.",
             },
           ].map((item, i) => (
             <FadeIn key={item.title} delay={i * 0.15}>

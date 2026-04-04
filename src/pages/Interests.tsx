@@ -56,8 +56,8 @@ const Interests = () => {
               <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl text-primary leading-[0.95] mb-8">
                 Build Your Day
               </h1>
-              <p className="font-body text-lg text-muted-foreground leading-relaxed">
-                I don't offer tour packages. Instead, I share my passions — and together we build a
+               <p className="font-body text-lg text-muted-foreground leading-relaxed">
+                I don't offer tour packages. Instead, I share my passions, and together we build a
                 day around the themes that excite you most. Here are some of the worlds I love to explore.
               </p>
             </FadeIn>

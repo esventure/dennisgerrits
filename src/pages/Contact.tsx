@@ -27,9 +27,9 @@ const Contact = () => {
               <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl text-primary leading-[0.95] mb-8">
                 Let's See if We're a Good Match
               </h1>
-              <p className="font-body text-lg text-muted-foreground leading-relaxed">
-                The best way to start is a short, informal conversation. No obligations, no sales pitch —
-                just a chance to talk about your trip and see if my approach feels right for you.
+               <p className="font-body text-lg text-muted-foreground leading-relaxed">
+                The best way to start is a short, informal conversation. No obligations, no sales pitch.
+                Just a chance to talk about your trip and see if my approach feels right for you.
               </p>
             </FadeIn>
           </div>
@@ -42,9 +42,9 @@ const Contact = () => {
                 <h2 className="font-heading text-3xl text-primary mb-4">
                   Schedule a Video Call
                 </h2>
-                <p className="font-body text-muted-foreground leading-relaxed mb-8">
+                 <p className="font-body text-muted-foreground leading-relaxed mb-8">
                   A 15-minute introductory call where we get to know each other. I'll ask about your
-                  interests, and you can ask me anything. It's the closest thing to meeting in person
+                  interests, you can ask me anything. It's the closest thing to meeting in person
                   before your trip.
                 </p>
                 {/* Calendly placeholder */}

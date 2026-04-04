@@ -6,8 +6,8 @@ const Footer = () => (
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
         <div>
           <h3 className="font-heading text-3xl mb-4">Dennis Gerrits</h3>
-          <p className="font-body text-primary-foreground/70 text-sm leading-relaxed max-w-xs">
-            A personal, trust-based way of experiencing places — guided by someone who feels like a friend.
+           <p className="font-body text-primary-foreground/70 text-sm leading-relaxed max-w-xs">
+            A personal, trust-based way of experiencing places. Guided by someone who feels like a friend.
           </p>
         </div>
         <div>

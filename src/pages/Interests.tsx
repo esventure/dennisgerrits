@@ -6,25 +6,25 @@ const themes = [
   {
     id: "history",
     title: "Hidden History",
-    description: "The stories that never made it into guidebooks. Secret passages, forgotten wars, the people who shaped a city but whose names you'll never find on a monument.",
+    description: "The stories that never made it into guidebooks. Secret passages, forgotten wars, the people who shaped a city but whose names you won't find on any monument.",
     icon: "🏛️",
   },
   {
     id: "food",
     title: "Local Food Culture",
-    description: "Markets where chefs shop at dawn, bakeries that haven't changed their recipe in a century, and the story behind every regional dish you'll ever taste.",
+    description: "Markets where chefs shop at dawn. Bakeries that haven't changed their recipe in a century. The story behind every regional dish you'll taste.",
     icon: "🍷",
   },
   {
     id: "architecture",
     title: "Architecture & Design",
-    description: "From medieval brickwork to brutalist experiments — understanding why a building looks the way it does, and what it says about the people who built it.",
+    description: "From medieval brickwork to brutalist experiments. Why a building looks the way it does, and what it says about the people who built it.",
     icon: "🏗️",
   },
   {
     id: "art",
     title: "Street Art & Subculture",
-    description: "The murals, the studios, the underground galleries. Art that lives on the streets and tells you more about a city than any museum ever could.",
+    description: "Murals, studios, underground galleries. Art that lives on the streets and tells you more about a city than any museum could.",
     icon: "🎨",
   },
   {
@@ -36,7 +36,7 @@ const themes = [
   {
     id: "craft",
     title: "Local Craft & Makers",
-    description: "Workshops, ateliers, and the people who still make things by hand. The stories behind the craft are often as beautiful as the objects themselves.",
+    description: "Workshops, ateliers, and people who still make things by hand. The stories behind the craft are often as beautiful as the objects.",
     icon: "✂️",
   },
 ];
@@ -56,8 +56,8 @@ const Interests = () => {
               <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl text-primary leading-[0.95] mb-8">
                 Build Your Day
               </h1>
-              <p className="font-body text-lg text-muted-foreground leading-relaxed">
-                I don't offer tour packages. Instead, I share my passions — and together we build a
+               <p className="font-body text-lg text-muted-foreground leading-relaxed">
+                I don't offer tour packages. Instead, I share my passions, and together we build a
                 day around the themes that excite you most. Here are some of the worlds I love to explore.
               </p>
             </FadeIn>
@@ -86,8 +86,8 @@ const Interests = () => {
           </div>
 
           <FadeIn>
-            <p className="font-body text-center text-muted-foreground mt-16 text-sm">
-              These are starting points, not limits. Your interests might take us somewhere entirely unexpected — and that's exactly the point.
+             <p className="font-body text-center text-muted-foreground mt-16 text-sm">
+              These are starting points, not limits. Your interests might take us somewhere completely unexpected. That's the whole point.
             </p>
           </FadeIn>
         </div>

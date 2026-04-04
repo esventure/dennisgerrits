@@ -14,12 +14,12 @@ const Index = () => (
             </p>
             <h1 className="font-heading text-6xl md:text-7xl lg:text-8xl text-primary leading-[0.95] mb-8">
               Hello, I'm Dennis.<br />
-              I don't show a city —<br />
+              I don't show a city.<br />
               I translate it.
             </h1>
             <p className="font-body text-lg text-muted-foreground leading-relaxed max-w-lg">
-              I walk alongside you, not in front of you. Together we discover the hidden layers
-              of a place — its stories, its rhythms, and the quiet corners that make it unforgettable.
+              I walk alongside you, not in front of you. We'll find the stories, the quiet corners,
+              the places that make you stop and really look. That's what I do.
             </p>
           </FadeIn>
           <FadeIn delay={0.2}>
@@ -47,13 +47,10 @@ const Index = () => (
               Walking Alongside, Not Guiding From the Front
             </h2>
             <p className="font-body text-lg text-muted-foreground leading-relaxed mb-6">
-              I believe that the best way to experience a place is through genuine connection —
-              not a rehearsed script. There are no microphones, no groups of twenty, no checkboxes.
-              Just two people having a real conversation while a city unfolds around them.
+              I think the best way to experience a place is through a real conversation. No microphones, no groups of twenty, no checkboxes. Just the two of us, walking and talking while a city unfolds around us.
             </p>
             <p className="font-body text-lg text-muted-foreground leading-relaxed">
-              I adapt to your pace, your curiosity, and your energy. Some days we walk for hours;
-              other days we sit with coffee and watch the world go by. That's entirely up to you.
+              Some days we walk for hours. Other days we sit with coffee and watch people go by. It depends on you, and that's the whole point.
             </p>
           </div>
         </FadeIn>
@@ -67,15 +64,15 @@ const Index = () => (
           {[
             {
               title: "Depth Over Highlights",
-              text: "We skip the obvious and find the meaningful. A hidden courtyard, a local bakery with a hundred-year story, the way light falls on a particular street at four in the afternoon.",
+              text: "We skip the obvious stuff. Instead, we find the things that actually matter. A hidden courtyard, a bakery with a hundred-year story, the way light hits a particular street at four in the afternoon.",
             },
             {
               title: "Connection Without Pressure",
-              text: "There is no itinerary to rush through and no schedule to keep. We move at the speed of curiosity — yours.",
+              text: "There's no itinerary to rush through. No schedule. We move at the speed of your curiosity.",
             },
             {
               title: "A Friend, Not a Guide",
-              text: "I share what I love about a place the way you'd share it with a friend. Honestly, personally, and with the occasional detour that turns out to be the best part.",
+              text: "I share what I love about a place the way I'd share it with a friend. Honestly, personally, and with the occasional detour that ends up being the best part of the day.",
             },
           ].map((item, i) => (
             <FadeIn key={item.title} delay={i * 0.15}>
@@ -97,10 +94,9 @@ const Index = () => (
           <h2 className="font-heading text-4xl md:text-5xl text-primary mb-6">
             Curious? Let's Talk.
           </h2>
-          <p className="font-body text-lg text-muted-foreground max-w-lg mx-auto mb-10">
-            A short conversation is the best way to see if we're a good fit for your trip.
-            No obligations, no pressure — just a friendly chat.
-          </p>
+           <p className="font-body text-lg text-muted-foreground max-w-lg mx-auto mb-10">
+             A short conversation is the best way to find out if we're a good fit. No obligations, no pressure. Just a friendly chat.
+           </p>
           <Link
             to="/contact"
             className="inline-block font-body text-sm tracking-widest uppercase px-10 py-4 border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors duration-300"

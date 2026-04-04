@@ -11,7 +11,7 @@ const TravelAgents = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast({ title: "Inquiry sent", description: "Thank you — I'll respond within 24 hours." });
+    toast({ title: "Inquiry sent", description: "Thank you. I'll respond within 24 hours." });
     setForm({ name: "", company: "", email: "", message: "" });
   };
 
@@ -27,10 +27,10 @@ const TravelAgents = () => {
               <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl text-primary leading-[0.95] mb-8">
                 Travel Agents & Concierges
               </h1>
-              <p className="font-body text-lg text-muted-foreground leading-relaxed">
-                I work closely with travel designers, concierges, and boutique agencies who value
+               <p className="font-body text-lg text-muted-foreground leading-relaxed">
+                I work closely with travel designers, concierges, and boutique agencies who care about
                 authentic, personalized experiences for their clients. If that sounds like you,
-                I'd love to explore how we can collaborate.
+                I'd love to explore how we can work together.
               </p>
             </FadeIn>
           </div>
@@ -40,15 +40,15 @@ const TravelAgents = () => {
               {[
                 {
                   title: "What I Offer Partners",
-                  text: "A reliable, premium experience that reflects well on your brand. I handle every detail — from personalized itinerary research to day-of execution — so your clients feel genuinely cared for.",
+                  text: "A reliable, premium experience that reflects well on your brand. I handle every detail, from personalized itinerary research to day-of execution, so your clients feel genuinely cared for.",
                 },
                 {
                   title: "How It Works",
-                  text: "Share your client's interests and travel dates. I'll create a tailored proposal within 48 hours. You remain the primary point of contact for your client; I integrate seamlessly into their trip.",
+                  text: "Share your client's interests and travel dates. I'll create a tailored proposal within 48 hours. You stay the primary point of contact for your client. I integrate seamlessly into their trip.",
                 },
                 {
                   title: "Pricing & Terms",
-                  text: "Transparent flat-rate pricing with no hidden costs. Commission structures available for ongoing partnerships. I'm happy to discuss terms that work for both of us.",
+                  text: "Transparent flat-rate pricing with no hidden costs. Commission structures available for ongoing partnerships. Happy to discuss terms that work for both of us.",
                 },
               ].map((item, i) => (
                 <FadeIn key={item.title} delay={i * 0.1}>

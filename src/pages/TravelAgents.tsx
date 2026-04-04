@@ -11,7 +11,7 @@ const TravelAgents = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast({ title: "Inquiry sent", description: "Thank you — I'll respond within 24 hours." });
+    toast({ title: "Inquiry sent", description: "Thank you. I'll respond within 24 hours." });
     setForm({ name: "", company: "", email: "", message: "" });
   };
 

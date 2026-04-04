@@ -1,59 +1,51 @@
 
 
-# Dennis Gerrits — Personal Travel Companion & Storyteller
+# Rewrite All Content: More Personal, Remove Em Dashes
 
-## Brand Foundation
-- **Midnight Heritage** palette: cream background (#F5F1E8), near-black text (#1A1A1A), deep purple (#2D0036), bordeaux (#7B1828), muted gold (#D4AF37)
-- **Typography**: Bebas Neue (headings, bold & spaced), Outfit (body, clean & readable)
-- **Identity**: "Hello, I am Dennis" personal intro with hand-drawn portrait placeholder (green #59A574)
-- Editorial, magazine-like layout with generous whitespace throughout
+## What changes
 
-## Pages & Sections
+Every page and component with copy will be updated. Two goals:
+1. **Remove all em dashes (—)** throughout, replacing with simpler punctuation (periods, commas, colons, or restructured sentences).
+2. **Rewrite copy to sound less polished/AI and more like a real person talking.** Less symmetrical phrasing, fewer "three things in a row" constructions, more conversational rhythm, occasional short sentences, less formulaic structure.
 
-### 1. Homepage — The Introduction
-- Spacious hero: "Hello, I'm Dennis. I don't show a city — I translate it." with portrait illustration
-- Philosophy section: "walking alongside, not guiding from the front"
-- The Experience teaser: depth over highlights, connection without pressure
-- Gentle scroll transitions (subtle fade-in only)
+## Files to edit (8 files)
 
-### 2. About Dennis — The Storyteller
-- Rich storytelling layout with large photography placeholders
-- Background, passion for history/culture, personal motivation
-- Trust-building, warm editorial tone
+### 1. `src/pages/Index.tsx`
+- Hero tagline: keep "I translate it" but drop the em dash
+- Philosophy section: break up the overly balanced sentence pairs, make it sound more like Dennis actually talks
+- Experience cards: less perfectly structured, more natural
+- CTA: simpler, warmer
 
-### 3. A Day in the Life — The Approach
-- No fixed tours — shared, adaptive experiences
-- Day rhythm description: slow-paced, coffee stops, architecture discussions
-- Timeline-style or flowing editorial layout
+### 2. `src/pages/About.tsx`
+- Rewrite the three body paragraphs to feel less like an AI writing exercise and more like someone actually reflecting on their life
+- Remove em dashes from all paragraphs
+- Blockquote stays but tightened
 
-### 4. Build Your Day — Interests & Passions
-- Interactive cards for themes: Hidden History, Local Food Culture, Architecture, Street Art, etc.
-- Replaces "tour packages" with "shared interests"
-- Calm hover states, no aggressive CTAs
+### 3. `src/pages/Approach.tsx`
+- Rewrite the five timeline moments: less poetic symmetry, more real
+- Remove em dashes from intro and timeline text
 
-### 5. Get in Touch — Video Call or Callback
-- "Let's see if we are a good match for your trip"
-- Calendly embed placeholder for introductory video call
-- Simple callback request form with large inputs and clear labels
-- Low-pressure framing throughout
+### 4. `src/pages/Interests.tsx`
+- Rewrite theme card descriptions to be shorter, punchier, less "writerly"
+- Remove em dashes from intro and footer text
 
-### 6. FAQ & Practicalities
-- Accordion-style Q&A: pacing, private-only groups, pricing philosophy, 55+ accessibility
-- Honest, conversational tone
+### 5. `src/pages/Contact.tsx`
+- Simplify the intro and card descriptions
+- Remove em dashes
 
-### 7. For Travel Agents (B2B)
-- Clean sub-page for concierges/travel designers
-- Collaboration terms, direct contact form
+### 6. `src/pages/FAQ.tsx`
+- Rewrite all 8 answers: less perfectly structured, more honest and direct
+- Remove em dashes from answers
 
-## Navigation & Layout
-- Sticky but unobtrusive header with simple nav links
-- Mobile: clean hamburger menu, large tap targets
-- Fully responsive with iPad/tablet priority — legible font sizes throughout
+### 7. `src/pages/TravelAgents.tsx`
+- Rewrite the three info blocks and intro
+- Remove em dashes
 
-## Technical Details
-- Google Fonts: Bebas Neue + Outfit loaded via index.html
-- CSS custom properties for the full Midnight Heritage palette
-- Minimal animations: gentle fade-on-scroll only
-- React Router for multi-page navigation
-- All content written in the specified calm, personal, first-person tone
+### 8. `src/components/Footer.tsx`
+- Remove em dash from the tagline
+
+## Technical details
+- Pure content changes only, no structural/layout/component changes
+- Approximately 50+ instances of em dash removal across all files
+- All copy rewritten in the same pass
 

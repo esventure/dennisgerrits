@@ -25,15 +25,12 @@ const Index = () => (
           <FadeIn delay={0.2}>
             {/* Portrait placeholder */}
             <div className="flex justify-center lg:justify-end">
-              <div className="w-72 h-96 lg:w-80 lg:h-[28rem] rounded-sm bg-heritage-green/10 border-2 border-heritage-green/30 flex items-end justify-center overflow-hidden">
-                <div className="text-center pb-8 px-6">
-                  <div className="w-32 h-32 mx-auto rounded-full bg-heritage-green/20 border-2 border-heritage-green/40 mb-4 flex items-center justify-center">
-                    <span className="font-heading text-4xl text-heritage-green">DG</span>
-                  </div>
-                  <p className="font-body text-xs text-heritage-green/70 italic">
-                    Hand-drawn portrait illustration
-                  </p>
-                </div>
+              <div className="w-72 h-96 lg:w-80 lg:h-[28rem] rounded-sm flex items-center justify-center overflow-hidden">
+                <img
+                  src={dennisIllustration}
+                  alt="Hand-drawn portrait illustration of Dennis Gerrits"
+                  className="w-full h-full object-contain"
+                />
               </div>
             </div>
           </FadeIn>

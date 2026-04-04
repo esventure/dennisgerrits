@@ -14,12 +14,12 @@ const Index = () => (
             </p>
             <h1 className="font-heading text-6xl md:text-7xl lg:text-8xl text-primary leading-[0.95] mb-8">
               Hello, I'm Dennis.<br />
-              I don't show a city —<br />
+              I don't show a city.<br />
               I translate it.
             </h1>
             <p className="font-body text-lg text-muted-foreground leading-relaxed max-w-lg">
-              I walk alongside you, not in front of you. Together we discover the hidden layers
-              of a place — its stories, its rhythms, and the quiet corners that make it unforgettable.
+              I walk alongside you, not in front of you. We'll find the stories, the quiet corners,
+              the places that make you stop and really look. That's what I do.
             </p>
           </FadeIn>
           <FadeIn delay={0.2}>

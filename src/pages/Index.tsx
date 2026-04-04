@@ -47,13 +47,10 @@ const Index = () => (
               Walking Alongside, Not Guiding From the Front
             </h2>
             <p className="font-body text-lg text-muted-foreground leading-relaxed mb-6">
-              I believe that the best way to experience a place is through genuine connection —
-              not a rehearsed script. There are no microphones, no groups of twenty, no checkboxes.
-              Just two people having a real conversation while a city unfolds around them.
+              I think the best way to experience a place is through a real conversation. No microphones, no groups of twenty, no checkboxes. Just the two of us, walking and talking while a city unfolds around us.
             </p>
             <p className="font-body text-lg text-muted-foreground leading-relaxed">
-              I adapt to your pace, your curiosity, and your energy. Some days we walk for hours;
-              other days we sit with coffee and watch the world go by. That's entirely up to you.
+              Some days we walk for hours. Other days we sit with coffee and watch people go by. It depends on you, and that's the whole point.
             </p>
           </div>
         </FadeIn>

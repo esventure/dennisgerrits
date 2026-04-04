@@ -1,43 +1,38 @@
 import { Link } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
-import heroImage from "@/assets/amsterdam-hero.jpg";
+import dennisIllustration from "@/assets/dennis_illustration.png";
 
 const Index = () => (
   <main>
     {/* Hero */}
-    <section className="relative min-h-[90vh] flex items-end">
-      <img
-        src={heroImage}
-        alt="Atmospheric Amsterdam canal at golden hour"
-        className="absolute inset-0 w-full h-full object-cover"
-        width={1920}
-        height={1080}
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent" />
-      <div className="relative container mx-auto px-6 lg:px-12 pb-16 lg:pb-24">
-        <FadeIn>
-          <p className="font-body text-sm tracking-widest uppercase text-accent mb-6">
-            Personal Travel Companion
-          </p>
-          <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl text-primary-foreground leading-[0.95] mb-6 max-w-4xl">
-            Hello, I'm Dennis.<br />
-            I don't show a city.<br />
-            I translate it.
-          </h1>
-          <p className="font-body text-lg text-primary-foreground/80 leading-relaxed max-w-xl mb-10">
-            I walk alongside you, not in front of you. We'll find the stories, the quiet corners,
-            the places that make you stop and really look.
-          </p>
-          <Link
-            to="/contact"
-            className="inline-block font-body text-sm tracking-widest uppercase px-10 py-4 bg-accent text-primary hover:bg-accent/90 transition-colors duration-300 mb-6"
-          >
-            Let's Talk
-          </Link>
-          <p className="font-body text-xs tracking-wide text-primary-foreground/50">
-            8+ years, hundreds of guests from around the world
-          </p>
-        </FadeIn>
+    <section className="min-h-[85vh] flex items-center">
+      <div className="container mx-auto px-6 lg:px-12 py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <FadeIn>
+            <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
+              Personal Travel Companion
+            </p>
+            <h1 className="font-heading text-6xl md:text-7xl lg:text-8xl text-primary leading-[0.95] mb-8">
+              Hello, I'm Dennis.<br />
+              I don't show a city.<br />
+              I translate it.
+            </h1>
+            <p className="font-body text-lg text-muted-foreground leading-relaxed max-w-lg">
+              I walk alongside you, not in front of you. We'll find the stories, the quiet corners,
+              the places that make you stop and really look. That's what I do.
+            </p>
+          </FadeIn>
+          <FadeIn delay={0.2}>
+            {/* Portrait placeholder */}
+             <div className="flex justify-center lg:justify-end h-full items-center">
+              <img
+                src={dennisIllustration}
+                alt="Hand-drawn portrait illustration of Dennis Gerrits"
+                className="w-full h-full object-contain"
+              />
+            </div>
+          </FadeIn>
+        </div>
       </div>
     </section>
 

@@ -27,10 +27,10 @@ const TravelAgents = () => {
               <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl text-primary leading-[0.95] mb-8">
                 Travel Agents & Concierges
               </h1>
-              <p className="font-body text-lg text-muted-foreground leading-relaxed">
-                I work closely with travel designers, concierges, and boutique agencies who value
+               <p className="font-body text-lg text-muted-foreground leading-relaxed">
+                I work closely with travel designers, concierges, and boutique agencies who care about
                 authentic, personalized experiences for their clients. If that sounds like you,
-                I'd love to explore how we can collaborate.
+                I'd love to explore how we can work together.
               </p>
             </FadeIn>
           </div>

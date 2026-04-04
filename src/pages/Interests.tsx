@@ -86,8 +86,8 @@ const Interests = () => {
           </div>
 
           <FadeIn>
-            <p className="font-body text-center text-muted-foreground mt-16 text-sm">
-              These are starting points, not limits. Your interests might take us somewhere entirely unexpected — and that's exactly the point.
+             <p className="font-body text-center text-muted-foreground mt-16 text-sm">
+              These are starting points, not limits. Your interests might take us somewhere completely unexpected. That's the whole point.
             </p>
           </FadeIn>
         </div>

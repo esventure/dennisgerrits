@@ -40,15 +40,15 @@ const TravelAgents = () => {
               {[
                 {
                   title: "What I Offer Partners",
-                  text: "A reliable, premium experience that reflects well on your brand. I handle every detail — from personalized itinerary research to day-of execution — so your clients feel genuinely cared for.",
+                  text: "A reliable, premium experience that reflects well on your brand. I handle every detail, from personalized itinerary research to day-of execution, so your clients feel genuinely cared for.",
                 },
                 {
                   title: "How It Works",
-                  text: "Share your client's interests and travel dates. I'll create a tailored proposal within 48 hours. You remain the primary point of contact for your client; I integrate seamlessly into their trip.",
+                  text: "Share your client's interests and travel dates. I'll create a tailored proposal within 48 hours. You stay the primary point of contact for your client. I integrate seamlessly into their trip.",
                 },
                 {
                   title: "Pricing & Terms",
-                  text: "Transparent flat-rate pricing with no hidden costs. Commission structures available for ongoing partnerships. I'm happy to discuss terms that work for both of us.",
+                  text: "Transparent flat-rate pricing with no hidden costs. Commission structures available for ongoing partnerships. Happy to discuss terms that work for both of us.",
                 },
               ].map((item, i) => (
                 <FadeIn key={item.title} delay={i * 0.1}>

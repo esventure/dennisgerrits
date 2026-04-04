@@ -9,11 +9,11 @@ import {
 const faqs = [
   {
     q: "What exactly do you offer?",
-    a: "I offer private, one-on-one experiences — walking through a city together, sharing stories, and discovering the places that matter most to you. It's not a tour in the traditional sense. It's a shared day.",
+    a: "Private, one-on-one experiences. We walk through a city together, share stories, and discover the places that matter most to you. It's not a tour in the traditional sense. It's a shared day.",
   },
   {
     q: "How long is a typical day together?",
-    a: "Most experiences last between four and six hours, but there's no strict schedule. We go at your pace. If you'd like a full day, that's possible too — we'll simply discuss it beforehand.",
+    a: "Most experiences last between four and six hours, but there's no strict schedule. We go at your pace. If you'd like a full day, that's possible too. We'll just discuss it beforehand.",
   },
   {
     q: "Is this suitable for someone who can't walk long distances?",
@@ -21,23 +21,23 @@ const faqs = [
   },
   {
     q: "Do you work with groups?",
-    a: "I keep things intimate. I work with individuals, couples, or very small groups of close friends or family — never more than four people. This ensures the experience stays personal.",
+    a: "I keep things intimate. Individuals, couples, or very small groups of close friends or family. Never more than four people. That's what keeps it personal.",
   },
   {
     q: "How does pricing work?",
-    a: "I believe in transparency. My pricing is based on a flat day rate that covers my time, preparation, and local knowledge. There are no hidden fees or upsells. I'll share exact pricing during our introductory conversation.",
+    a: "My pricing is a flat day rate that covers my time, preparation, and local knowledge. No hidden fees, no upsells. I'll share exact pricing during our introductory conversation.",
   },
   {
     q: "Which cities do you cover?",
-    a: "I'm based in the Netherlands and work primarily in Dutch cities, but I regularly collaborate with like-minded companions across Europe. Let's talk about your destination — I may know just the right person.",
+    a: "I'm based in the Netherlands and work primarily in Dutch cities. But I regularly collaborate with like-minded companions across Europe. Tell me your destination and I may know just the right person.",
   },
   {
     q: "How far in advance should I book?",
-    a: "I recommend reaching out at least two to three weeks before your trip, though I'm sometimes available on shorter notice. The earlier we connect, the better I can prepare something meaningful.",
+    a: "Two to three weeks is ideal, though I'm sometimes available on shorter notice. The earlier we connect, the better I can prepare something meaningful for you.",
   },
   {
     q: "What if we're not a good match?",
-    a: "That's perfectly fine, and it's exactly why I offer an introductory conversation first. There's no pressure to commit. If my approach isn't what you're looking for, I'll happily recommend alternatives.",
+    a: "That's perfectly fine. It's exactly why I offer an introductory conversation first. No pressure to commit. If my approach isn't what you're looking for, I'll happily recommend alternatives.",
   },
 ];
 

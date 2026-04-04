@@ -42,9 +42,9 @@ const Contact = () => {
                 <h2 className="font-heading text-3xl text-primary mb-4">
                   Schedule a Video Call
                 </h2>
-                <p className="font-body text-muted-foreground leading-relaxed mb-8">
+                 <p className="font-body text-muted-foreground leading-relaxed mb-8">
                   A 15-minute introductory call where we get to know each other. I'll ask about your
-                  interests, and you can ask me anything. It's the closest thing to meeting in person
+                  interests, you can ask me anything. It's the closest thing to meeting in person
                   before your trip.
                 </p>
                 {/* Calendly placeholder */}

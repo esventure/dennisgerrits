@@ -94,10 +94,9 @@ const Index = () => (
           <h2 className="font-heading text-4xl md:text-5xl text-primary mb-6">
             Curious? Let's Talk.
           </h2>
-          <p className="font-body text-lg text-muted-foreground max-w-lg mx-auto mb-10">
-            A short conversation is the best way to see if we're a good fit for your trip.
-            No obligations, no pressure — just a friendly chat.
-          </p>
+           <p className="font-body text-lg text-muted-foreground max-w-lg mx-auto mb-10">
+             A short conversation is the best way to find out if we're a good fit. No obligations, no pressure. Just a friendly chat.
+           </p>
           <Link
             to="/contact"
             className="inline-block font-body text-sm tracking-widest uppercase px-10 py-4 border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors duration-300"

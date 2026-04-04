@@ -40,8 +40,8 @@ const Approach = () => (
             <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl text-primary leading-[0.95] mb-8">
               A Day in the Life
             </h1>
-            <p className="font-body text-lg text-muted-foreground leading-relaxed">
-              There are no fixed tours. Every day is shaped by you — your pace, your curiosity,
+             <p className="font-body text-lg text-muted-foreground leading-relaxed">
+              There are no fixed tours. Every day is shaped by you: your pace, your curiosity,
               your energy. Here's what a day together might look like.
             </p>
           </FadeIn>

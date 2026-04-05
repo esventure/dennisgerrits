@@ -153,15 +153,6 @@ const Index = () => {
                 I walk alongside you, not in front of you. We'll find the stories, the quiet corners,
                 the places that make you stop and really look. That's what I do.
               </p>
-              <Link
-                to="/#contact"
-                className="inline-block font-body text-sm tracking-widest uppercase px-10 py-4 border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
-              >
-                Let's Talk
-              </Link>
-              <p className="font-body text-xs text-muted-foreground mt-4">
-                8+ years, hundreds of guests from around the world
-              </p>
             </FadeIn>
             <FadeIn delay={0.2}>
               <div className="flex justify-center lg:justify-end h-full items-center">

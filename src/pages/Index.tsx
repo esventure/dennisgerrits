@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
 import AmsterdamSkyline from "@/components/AmsterdamSkyline";
 import dennisIllustration from "@/assets/dennis_illustration.png";
+import dennisPhoto from "@/assets/dennis_photo.png";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -157,9 +158,9 @@ const Index = () => {
             <FadeIn delay={0.2}>
               <div className="flex justify-center lg:justify-end h-full items-center">
                 <img
-                  src={dennisIllustration}
-                  alt="Hand-drawn portrait illustration of Dennis Gerrits"
-                  className="w-full h-full object-contain"
+                  src={dennisPhoto}
+                  alt="Photo of Dennis Gerrits"
+                  className="w-full max-w-md rounded-sm object-cover shadow-lg"
                 />
               </div>
             </FadeIn>

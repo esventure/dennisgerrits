@@ -1,43 +1,47 @@
 
 
-# About Dennis — Full-Screen Split Layout
+# Add Real Photos Throughout the Site
 
-## Concept
-Replace the toggle-based section with two side-by-side panels that each take up roughly half the viewport width and full viewport height. Left panel = "The Person," right panel = "The Guide." Both visible simultaneously — no interaction needed. Magazine-style, impossible to scroll past.
+## Photos available (10 uploaded)
+The user provided 10 photos showing Dennis with guests in various Amsterdam locations — canals, pubs, parks, boats, museums, windmills, streets. These are perfect for replacing the placeholder areas.
 
-## Layout
+## Where photos will go
 
-```text
-┌─────────────────────────┬─────────────────────────┐
-│                         │                         │
-│   THE PERSON            │   THE GUIDE             │
-│                         │                         │
-│   ─── accent line       │   ─── accent line       │
-│                         │                         │
-│   A True Amsterdammer   │   A Different Kind      │
-│                         │   of Guide              │
-│   Personal story...     │                         │
-│                         │   Guide philosophy...   │
-│   Second paragraph...   │                         │
-│                         │   Second paragraph...   │
-│                         │                         │
-│   (cream/light bg)      │   (dark primary bg,     │
-│                         │    light text)           │
-│                         │                         │
-└─────────────────────────┴─────────────────────────┘
-│            Blockquote centered below              │
-```
+### 1. Photo collage in Reviews section (Index.tsx, lines 306-319)
+Replace the 8 grey "Guest photo" placeholder boxes with 8 of the 10 uploaded photos. These show Dennis with happy guests — exactly what belongs next to reviews. Keep the existing grid layout and aspect ratios.
 
-On mobile: stacks vertically, each panel ~80vh.
+### 2. Stories section on Index.tsx (lines 414-432)
+Replace the 3 "Atmospheric image" placeholder boxes in story cards with 3 of the photos that feel most atmospheric (canal bridge shot, park/statue shot, café terrace shot).
 
-## Visual treatment
-- Left panel: cream/light background (matches site), dark text. Warm, personal feel.
-- Right panel: dark primary (`bg-primary`) background with `text-primary-foreground`. Creates strong contrast and visual weight.
-- Each panel has generous internal padding, vertically centered content.
-- Section heading "About Dennis / The Person & The Guide" removed — the split itself communicates the duality.
-- Small label at top of each panel: "THE PERSON" / "THE GUIDE" in tracking-widest uppercase.
-- Blockquote remains below as a full-width centered element.
+### 3. Stories section on GetInspired.tsx (lines 133-151)
+Replace the 4 "Atmospheric image" placeholder boxes with the remaining photos that suit the story topics.
 
 ## File changes
-1. **`src/pages/Index.tsx`** — Replace the About section (lines 171-254): remove toggle state, replace with a `min-h-screen grid grid-cols-1 lg:grid-cols-2` layout containing two contrasting panels. Remove `aboutTab` state.
+
+1. **Copy 10 photos** to `src/assets/guests/` with descriptive filenames
+2. **`src/pages/Index.tsx`** — Import guest photos, replace the placeholder collage grid (lines 306-319) with real images, and replace story card placeholders (lines 414-432) with photos
+3. **`src/pages/GetInspired.tsx`** — Import photos and replace the 4 story card image placeholders with real photos
+
+## Photo assignments
+
+**Collage (8 photos):**
+- Canal bridge couple → aspect-[3/4]
+- Boat with wine glasses → aspect-square
+- Group at canal houses → aspect-square
+- Pub group → aspect-square
+- Colorful wall group → aspect-[3/4]
+- Park with friends → aspect-square
+- Windmill ladies → aspect-square
+- Statue couple → aspect-square
+
+**Index stories (3):**
+- "The Bookshop That Refused to Close" → café terrace photo
+- "Why the Canal Houses Lean Forward" → canal bridge photo (reuse import)
+- "A Bench With the Best View" → park statue photo (reuse import)
+
+**GetInspired stories (4):**
+- "The Bookshop..." → pub group
+- "Canal Houses..." → canal houses group
+- "A Bench..." → park with friends
+- "The Café..." → boat with wine
 

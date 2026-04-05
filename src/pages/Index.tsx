@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { } from "react";
 import { Link } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
 import AmsterdamSkyline from "@/components/AmsterdamSkyline";
@@ -168,83 +168,60 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ── 2. About Me ── */}
-      <section id="about" className="py-24 lg:py-32 scroll-mt-20">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-4xl mb-12">
+      {/* ── 2. About Me — Full-Screen Split ── */}
+      <section id="about" className="scroll-mt-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
+          {/* Left Panel — The Person */}
+          <div className="min-h-[80vh] lg:min-h-screen flex items-center bg-background px-8 md:px-16 lg:px-20 py-20">
             <FadeIn>
-              <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
-                About Dennis
-              </p>
-              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
-                The Person & The Guide
-              </h2>
+              <div className="max-w-lg">
+                <p className="font-body text-xs tracking-[0.25em] uppercase text-secondary mb-8">
+                  The Person
+                </p>
+                <div className="w-12 h-0.5 bg-accent mb-8" />
+                <h3 className="font-heading text-4xl md:text-5xl text-primary leading-[0.95] mb-6">
+                  A True Amsterdammer
+                </h3>
+                <p className="font-body text-muted-foreground leading-relaxed mb-4">
+                  I'm a free spirit with deep roots in this city. I grew up cycling along the canals, getting lost in neighbourhoods,
+                  and collecting stories from the people I met along the way. Amsterdam isn't just where I live. It's how I think.
+                </p>
+                <p className="font-body text-muted-foreground leading-relaxed">
+                  I love good coffee, slow mornings, and conversations that go deeper than small talk.
+                  That's probably why this work suits me so well.
+                </p>
+              </div>
             </FadeIn>
           </div>
 
-          {/* Toggle */}
-          <FadeIn>
-            <div className="flex gap-2 mb-12">
-              <button
-                onClick={() => setAboutTab("person")}
-                className={`font-body text-sm tracking-widest uppercase px-5 py-2.5 rounded-sm transition-all duration-300 ${
-                  aboutTab === "person"
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-muted text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                The Person
-              </button>
-              <button
-                onClick={() => setAboutTab("guide")}
-                className={`font-body text-sm tracking-widest uppercase px-5 py-2.5 rounded-sm transition-all duration-300 ${
-                  aboutTab === "guide"
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-muted text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                The Guide
-              </button>
-            </div>
-          </FadeIn>
-
-          {/* Content */}
-          <div className="max-w-3xl min-h-[280px]">
-            {aboutTab === "person" ? (
-              <FadeIn key="person">
-                <div>
-                  <div className="w-12 h-0.5 bg-accent mb-6" />
-                  <h3 className="font-heading text-3xl text-primary mb-4">A True Amsterdammer</h3>
-                  <p className="font-body text-muted-foreground leading-relaxed mb-4">
-                    I'm a free spirit with deep roots in this city. I grew up cycling along the canals, getting lost in neighbourhoods,
-                    and collecting stories from the people I met along the way. Amsterdam isn't just where I live. It's how I think.
-                  </p>
-                  <p className="font-body text-muted-foreground leading-relaxed">
-                    I love good coffee, slow mornings, and conversations that go deeper than small talk.
-                    That's probably why this work suits me so well.
-                  </p>
-                </div>
-              </FadeIn>
-            ) : (
-              <FadeIn key="guide">
-                <div>
-                  <div className="w-12 h-0.5 bg-secondary mb-6" />
-                  <h3 className="font-heading text-3xl text-primary mb-4">A Different Kind of Guide</h3>
-                  <p className="font-body text-muted-foreground leading-relaxed mb-4">
-                    I don't carry a flag or a microphone. I don't follow a script. Every experience I create starts with you:
-                    your interests, your pace, your curiosity. My job is to make the city feel personal.
-                  </p>
-                  <p className="font-body text-muted-foreground leading-relaxed">
-                    Depth over highlights. Connection over information. A friend who knows the city inside out,
-                    walking beside you instead of in front of you.
-                  </p>
-                </div>
-              </FadeIn>
-            )}
+          {/* Right Panel — The Guide */}
+          <div className="min-h-[80vh] lg:min-h-screen flex items-center bg-primary px-8 md:px-16 lg:px-20 py-20">
+            <FadeIn>
+              <div className="max-w-lg">
+                <p className="font-body text-xs tracking-[0.25em] uppercase text-primary-foreground/60 mb-8">
+                  The Guide
+                </p>
+                <div className="w-12 h-0.5 bg-primary-foreground/30 mb-8" />
+                <h3 className="font-heading text-4xl md:text-5xl text-primary-foreground leading-[0.95] mb-6">
+                  A Different Kind of Guide
+                </h3>
+                <p className="font-body text-primary-foreground/80 leading-relaxed mb-4">
+                  I don't carry a flag or a microphone. I don't follow a script. Every experience I create starts with you:
+                  your interests, your pace, your curiosity. My job is to make the city feel personal.
+                </p>
+                <p className="font-body text-primary-foreground/80 leading-relaxed">
+                  Depth over highlights. Connection over information. A friend who knows the city inside out,
+                  walking beside you instead of in front of you.
+                </p>
+              </div>
+            </FadeIn>
           </div>
+        </div>
 
-          <FadeIn delay={0.3}>
-            <div className="mt-16 max-w-3xl mx-auto text-center">
+        {/* Blockquote */}
+        <div className="py-20 bg-background">
+          <FadeIn>
+            <div className="max-w-3xl mx-auto text-center px-6">
               <blockquote className="font-body text-xl text-secondary italic leading-relaxed">
                 "I don't want you to remember what I told you. I want you to remember how the city made you feel."
               </blockquote>

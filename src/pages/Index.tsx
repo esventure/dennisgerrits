@@ -174,13 +174,13 @@ const Index = () => {
           <div className="min-h-[80vh] lg:min-h-screen flex items-center bg-background px-8 md:px-16 lg:px-20 py-20">
             <FadeIn>
               <div className="max-w-lg">
-                <p className="font-body text-xs tracking-[0.25em] uppercase text-secondary mb-8">
+                <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-4">
                   The Person
-                </p>
-                <div className="w-12 h-0.5 bg-accent mb-8" />
-                <h3 className="font-heading text-4xl md:text-5xl text-primary leading-[0.95] mb-6">
+                </h2>
+                <div className="w-12 h-0.5 bg-accent mb-6" />
+                <p className="font-body text-sm tracking-[0.15em] uppercase text-secondary mb-6">
                   A True Amsterdammer
-                </h3>
+                </p>
                 <p className="font-body text-muted-foreground leading-relaxed mb-4">
                   I'm a free spirit with deep roots in this city. I grew up cycling along the canals, getting lost in neighbourhoods,
                   and collecting stories from the people I met along the way. Amsterdam isn't just where I live. It's how I think.
@@ -197,13 +197,13 @@ const Index = () => {
           <div className="min-h-[80vh] lg:min-h-screen flex items-center bg-primary px-8 md:px-16 lg:px-20 py-20">
             <FadeIn>
               <div className="max-w-lg">
-                <p className="font-body text-xs tracking-[0.25em] uppercase text-primary-foreground/60 mb-8">
+                <h2 className="font-heading text-5xl md:text-6xl text-primary-foreground leading-[0.95] mb-4">
                   The Guide
-                </p>
-                <div className="w-12 h-0.5 bg-primary-foreground/30 mb-8" />
-                <h3 className="font-heading text-4xl md:text-5xl text-primary-foreground leading-[0.95] mb-6">
+                </h2>
+                <div className="w-12 h-0.5 bg-primary-foreground/30 mb-6" />
+                <p className="font-body text-sm tracking-[0.15em] uppercase text-primary-foreground/60 mb-6">
                   A Different Kind of Guide
-                </h3>
+                </p>
                 <p className="font-body text-primary-foreground/80 leading-relaxed mb-4">
                   I don't carry a flag or a microphone. I don't follow a script. Every experience I create starts with you:
                   your interests, your pace, your curiosity. My job is to make the city feel personal.

@@ -42,6 +42,52 @@ const moments = [
   },
 ];
 
+const reviews = [
+  {
+    quote: "Dennis made Amsterdam feel like home. We laughed, we explored, we discovered corners of the city I never would have found on my own.",
+    author: "Sarah & Michael",
+    location: "California, USA",
+  },
+  {
+    quote: "It wasn't a tour. It was a day with a friend who happens to know everything about his city. Truly special.",
+    author: "Margaret",
+    location: "London, UK",
+  },
+  {
+    quote: "We've travelled to over 40 countries. Our day with Dennis in Amsterdam is one of the best travel experiences we've ever had.",
+    author: "Robert & Linda",
+    location: "Texas, USA",
+  },
+  {
+    quote: "I came for the history, but what I got was so much more. Dennis has a gift for making you feel like you belong in a place.",
+    author: "James",
+    location: "Toronto, Canada",
+  },
+  {
+    quote: "My mother is 78 and Dennis adjusted the entire day to her pace without ever making her feel like she was slowing us down. That's rare.",
+    author: "Catherine",
+    location: "Boston, USA",
+  },
+];
+
+const stories = [
+  {
+    title: "The Bookshop That Refused to Close",
+    intro: "On a quiet street in the Jordaan, there's a bookshop that's been open since 1953. The owner still wraps every purchase in brown paper. I asked him once why he never retired.",
+    image: null,
+  },
+  {
+    title: "Why the Canal Houses Lean Forward",
+    intro: "It's not bad engineering. It's actually on purpose. And the reason says a lot about how the Dutch think about commerce, neighbours, and showing off.",
+    image: null,
+  },
+  {
+    title: "A Bench With the Best View in Amsterdam",
+    intro: "It's not where you'd expect. No famous landmarks in sight. Just water, sky, and the kind of quiet that makes you want to sit for a while.",
+    image: null,
+  },
+];
+
 const faqs = [
   {
     q: "What exactly do you offer?",
@@ -80,7 +126,6 @@ const faqs = [
 const Index = () => {
   const { toast } = useToast();
   const [contactForm, setContactForm] = useState({ name: "", email: "", message: "" });
-  const [agentForm, setAgentForm] = useState({ name: "", company: "", email: "", message: "" });
 
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -88,15 +133,9 @@ const Index = () => {
     setContactForm({ name: "", email: "", message: "" });
   };
 
-  const handleAgentSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast({ title: "Inquiry sent", description: "Thank you. I'll respond within 24 hours." });
-    setAgentForm({ name: "", company: "", email: "", message: "" });
-  };
-
   return (
     <main>
-      {/* Hero */}
+      {/* ── 1. Hero ── */}
       <section id="hero" className="min-h-[85vh] flex items-center scroll-mt-20">
         <div className="container mx-auto px-6 lg:px-12 py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -109,9 +148,18 @@ const Index = () => {
                 I don't show a city.<br />
                 I translate it.
               </h1>
-              <p className="font-body text-lg text-muted-foreground leading-relaxed max-w-lg">
+              <p className="font-body text-lg text-muted-foreground leading-relaxed max-w-lg mb-8">
                 I walk alongside you, not in front of you. We'll find the stories, the quiet corners,
                 the places that make you stop and really look. That's what I do.
+              </p>
+              <Link
+                to="/#contact"
+                className="inline-block font-body text-sm tracking-widest uppercase px-10 py-4 border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
+              >
+                Let's Talk
+              </Link>
+              <p className="font-body text-xs text-muted-foreground mt-4">
+                8+ years, hundreds of guests from around the world
               </p>
             </FadeIn>
             <FadeIn delay={0.2}>
@@ -127,20 +175,59 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Philosophy */}
-      <section className="py-24 lg:py-32">
+      {/* ── 2. About Me ── */}
+      <section id="about" className="py-24 lg:py-32 scroll-mt-20">
         <div className="container mx-auto px-6 lg:px-12">
-          <FadeIn>
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="font-heading text-4xl md:text-5xl text-primary mb-8">
-                Walking Alongside, Not Guiding From the Front
+          <div className="max-w-4xl mb-16">
+            <FadeIn>
+              <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
+                About Dennis
+              </p>
+              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
+                The Person & The Guide
               </h2>
-              <p className="font-body text-lg text-muted-foreground leading-relaxed mb-6">
-                I think the best way to experience a place is through a real conversation. No microphones, no groups of twenty, no checkboxes. Just the two of us, walking and talking while a city unfolds around us.
-              </p>
-              <p className="font-body text-lg text-muted-foreground leading-relaxed">
-                Some days we walk for hours. Other days we sit with coffee and watch people go by. It depends on you, and that's the whole point.
-              </p>
+            </FadeIn>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+            {/* Dennis as person */}
+            <FadeIn>
+              <div>
+                <div className="w-12 h-0.5 bg-accent mb-6" />
+                <h3 className="font-heading text-3xl text-primary mb-4">A True Amsterdammer</h3>
+                <p className="font-body text-muted-foreground leading-relaxed mb-4">
+                  I'm a free spirit with deep roots in this city. I grew up cycling along the canals, getting lost in neighbourhoods,
+                  and collecting stories from the people I met along the way. Amsterdam isn't just where I live. It's how I think.
+                </p>
+                <p className="font-body text-muted-foreground leading-relaxed">
+                  I love good coffee, slow mornings, and conversations that go deeper than small talk.
+                  That's probably why this work suits me so well.
+                </p>
+              </div>
+            </FadeIn>
+
+            {/* Dennis as guide */}
+            <FadeIn delay={0.15}>
+              <div>
+                <div className="w-12 h-0.5 bg-secondary mb-6" />
+                <h3 className="font-heading text-3xl text-primary mb-4">A Different Kind of Guide</h3>
+                <p className="font-body text-muted-foreground leading-relaxed mb-4">
+                  I don't carry a flag or a microphone. I don't follow a script. Every experience I create starts with you:
+                  your interests, your pace, your curiosity. My job is to make the city feel personal.
+                </p>
+                <p className="font-body text-muted-foreground leading-relaxed">
+                  Depth over highlights. Connection over information. A friend who knows the city inside out,
+                  walking beside you instead of in front of you.
+                </p>
+              </div>
+            </FadeIn>
+          </div>
+
+          <FadeIn delay={0.3}>
+            <div className="mt-16 max-w-3xl mx-auto text-center">
+              <blockquote className="font-body text-xl text-secondary italic leading-relaxed">
+                "I don't want you to remember what I told you. I want you to remember how the city made you feel."
+              </blockquote>
             </div>
           </FadeIn>
         </div>
@@ -153,101 +240,16 @@ const Index = () => {
         </div>
       </section>
 
-      {/* The Experience */}
-      <section className="py-24 lg:py-32 bg-primary">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
-            {[
-              {
-                title: "Depth Over Highlights",
-                text: "We skip the obvious stuff. Instead, we find the things that actually matter. A hidden courtyard, a bakery with a hundred-year story, the way light hits a particular street at four in the afternoon.",
-              },
-              {
-                title: "Connection Without Pressure",
-                text: "There's no itinerary to rush through. No schedule. We move at the speed of your curiosity.",
-              },
-              {
-                title: "A Friend, Not a Guide",
-                text: "I share what I love about a place the way I'd share it with a friend. Honestly, personally, and with the occasional detour that ends up being the best part of the day.",
-              },
-            ].map((item, i) => (
-              <FadeIn key={item.title} delay={i * 0.15}>
-                <div>
-                  <div className="w-12 h-0.5 bg-accent mb-6" />
-                  <h3 className="font-heading text-2xl text-primary-foreground mb-4">{item.title}</h3>
-                  <p className="font-body text-primary-foreground/70 leading-relaxed">{item.text}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* About */}
-      <section id="about" className="py-24 lg:py-32 scroll-mt-20">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-4xl">
-            <FadeIn>
-              <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
-                About Dennis
-              </p>
-              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-12">
-                The Storyteller
-              </h2>
-            </FadeIn>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-            <FadeIn>
-              <div className="aspect-[3/4] bg-muted rounded-sm flex items-center justify-center">
-                <p className="font-body text-sm text-muted-foreground italic">Documentary-style photograph</p>
-              </div>
-            </FadeIn>
-
-            <div className="space-y-8">
-              <FadeIn delay={0.1}>
-                <p className="font-body text-lg text-foreground leading-relaxed">
-                  Most of my life, I've been fascinated by the layers beneath the surface of a city.
-                  Not the monuments everyone photographs. The other stuff. The stories that live in between:
-                  in the architecture of an unremarkable building, in a neighbourhood bakery's recipe, in how a street got its name.
-                </p>
-              </FadeIn>
-              <FadeIn delay={0.2}>
-                <p className="font-body text-lg text-muted-foreground leading-relaxed">
-                  I grew up surrounded by history and culture. Studied it, lived it. And at some point I realised
-                  the thing I enjoyed most was sharing it. Not lecturing about it, but having a conversation about
-                  why a place feels the way it does.
-                </p>
-              </FadeIn>
-              <FadeIn delay={0.3}>
-                <p className="font-body text-lg text-muted-foreground leading-relaxed">
-                  So that's what I do now. I'm not here to impress you with facts. I'm here to help you
-                  feel something real about a place, and to enjoy the day together while we do.
-                </p>
-              </FadeIn>
-              <FadeIn delay={0.4}>
-                <div className="pt-4">
-                  <div className="w-12 h-0.5 bg-accent mb-6" />
-                  <blockquote className="font-body text-xl text-secondary italic leading-relaxed">
-                    "I don't want you to remember what I told you. I want you to remember how the city made you feel."
-                  </blockquote>
-                </div>
-              </FadeIn>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* A Day Together (Approach) */}
-      <section id="approach" className="py-24 lg:py-32 bg-muted/30 scroll-mt-20">
+      {/* ── 3. A Day in the Life ── */}
+      <section id="day" className="py-24 lg:py-32 bg-muted/30 scroll-mt-20">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mb-16">
             <FadeIn>
               <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
-                The Approach
+                A Day Together
               </p>
               <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
-                A Day in the Life
+                A Day in the Life of Dennis
               </h2>
               <p className="font-body text-lg text-muted-foreground leading-relaxed">
                 There are no fixed tours. Every day is shaped by you: your pace, your curiosity,
@@ -278,43 +280,169 @@ const Index = () => {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section id="faq" className="py-24 lg:py-32 scroll-mt-20">
+      {/* ── 4. Proof: Reviews & Guests ── */}
+      <section id="proof" className="py-24 lg:py-32 scroll-mt-20">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mb-16">
             <FadeIn>
               <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
-                Practicalities
+                What Guests Say
               </p>
               <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
-                Questions & Answers
+                Real Words From Real People
               </h2>
-              <p className="font-body text-lg text-muted-foreground leading-relaxed">
-                Honest answers to the things you might be wondering about.
-              </p>
             </FadeIn>
           </div>
 
+          {/* Reviews */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+            {reviews.map((r, i) => (
+              <FadeIn key={i} delay={i * 0.08}>
+                <div className="border border-border rounded-sm p-8 h-full flex flex-col">
+                  <p className="font-body text-foreground leading-relaxed italic flex-1">
+                    "{r.quote}"
+                  </p>
+                  <div className="mt-6 pt-4 border-t border-border">
+                    <p className="font-body text-sm font-medium text-primary">{r.author}</p>
+                    <p className="font-body text-xs text-muted-foreground">{r.location}</p>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+
+          {/* Photo collage placeholder */}
           <FadeIn>
-            <div className="max-w-3xl">
-              <Accordion type="single" collapsible className="space-y-2">
-                {faqs.map((faq, i) => (
-                  <AccordionItem key={i} value={`faq-${i}`} className="border-border px-0">
-                    <AccordionTrigger className="font-body text-base text-foreground hover:no-underline py-5">
-                      {faq.q}
-                    </AccordionTrigger>
-                    <AccordionContent className="font-body text-muted-foreground leading-relaxed pb-5">
-                      {faq.a}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {Array.from({ length: 8 }).map((_, i) => (
+                <div
+                  key={i}
+                  className={`bg-muted rounded-sm flex items-center justify-center ${
+                    i === 0 || i === 5 ? "aspect-[3/4]" : "aspect-square"
+                  }`}
+                >
+                  <p className="font-body text-xs text-muted-foreground italic">Guest photo</p>
+                </div>
+              ))}
             </div>
           </FadeIn>
         </div>
       </section>
 
-      {/* Contact */}
+      {/* ── 5. More: Mission, Media & Podcast ── */}
+      <section id="more" className="py-24 lg:py-32 bg-primary scroll-mt-20">
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="max-w-3xl mb-16">
+            <FadeIn>
+              <p className="font-body text-sm tracking-widest uppercase text-accent mb-6">
+                Beyond the Walk
+              </p>
+              <h2 className="font-heading text-5xl md:text-6xl text-primary-foreground leading-[0.95] mb-8">
+                More Than a Guide
+              </h2>
+            </FadeIn>
+          </div>
+
+          {/* Mission pillars */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 mb-20">
+            {[
+              {
+                title: "Storytelling",
+                text: "Every city has layers of stories waiting to be told. I believe the best way to understand a place is through the people who shaped it, the choices they made, and the traces they left behind.",
+              },
+              {
+                title: "Building Community",
+                text: "Travel should bring people closer, not just to a destination but to each other. I create experiences that leave guests with real connections, not just photographs.",
+              },
+              {
+                title: "Honouring the City",
+                text: "Amsterdam gave me everything. This work is my way of giving something back: showing its beauty with respect, sharing its complexity honestly, and introducing visitors the right way.",
+              },
+            ].map((item, i) => (
+              <FadeIn key={item.title} delay={i * 0.15}>
+                <div>
+                  <div className="w-12 h-0.5 bg-accent mb-6" />
+                  <h3 className="font-heading text-2xl text-primary-foreground mb-4">{item.title}</h3>
+                  <p className="font-body text-primary-foreground/70 leading-relaxed">{item.text}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+
+          {/* Media & Podcast */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+            <FadeIn>
+              <div className="border border-primary-foreground/20 rounded-sm p-8">
+                <h3 className="font-heading text-2xl text-primary-foreground mb-4">In the Media</h3>
+                <ul className="space-y-3">
+                  <li className="font-body text-primary-foreground/70">
+                    <span className="text-accent font-medium">Rick Steves Podcast</span> — Guest appearance on exploring Amsterdam beyond the tourist trail
+                  </li>
+                  <li className="font-body text-primary-foreground/70">
+                    <span className="text-accent font-medium">Amsterdam Radio</span> — Regular contributor on the city's hidden stories
+                  </li>
+                  <li className="font-body text-primary-foreground/70">
+                    <span className="text-accent font-medium">University Collaborations</span> — Guest lectures on urban storytelling and cultural tourism
+                  </li>
+                </ul>
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.15}>
+              <div className="border border-primary-foreground/20 rounded-sm p-8">
+                <h3 className="font-heading text-2xl text-primary-foreground mb-4">Two Stories, One City</h3>
+                <p className="font-body text-primary-foreground/70 leading-relaxed mb-4">
+                  My podcast where I pair two seemingly unrelated Amsterdam stories and show how they connect.
+                  History, architecture, food, people. Everything in this city is linked if you know where to look.
+                </p>
+                <div className="bg-primary-foreground/10 rounded-sm p-6 flex items-center justify-center">
+                  <p className="font-body text-sm text-primary-foreground/50 italic">Podcast player embed</p>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 6. Stories (Blog) ── */}
+      <section id="stories" className="py-24 lg:py-32 scroll-mt-20">
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="max-w-3xl mb-16">
+            <FadeIn>
+              <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
+                Stories
+              </p>
+              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
+                Notes From the City
+              </h2>
+              <p className="font-body text-lg text-muted-foreground leading-relaxed">
+                Short reflections and stories about Amsterdam. The kind of things I'd tell you over a coffee.
+              </p>
+            </FadeIn>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {stories.map((s, i) => (
+              <FadeIn key={s.title} delay={i * 0.1}>
+                <div className="border border-border rounded-sm overflow-hidden group cursor-pointer">
+                  <div className="aspect-[16/10] bg-muted flex items-center justify-center">
+                    <p className="font-body text-xs text-muted-foreground italic">Atmospheric image</p>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="font-heading text-2xl text-primary mb-3 group-hover:text-secondary transition-colors">
+                      {s.title}
+                    </h3>
+                    <p className="font-body text-sm text-muted-foreground leading-relaxed">
+                      {s.intro}
+                    </p>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 7. Contact, FAQ & Footer ── */}
       <section id="contact" className="py-24 lg:py-32 bg-muted/30 scroll-mt-20">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mb-16">
@@ -333,6 +461,7 @@ const Index = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+            {/* Calendly placeholder */}
             <FadeIn>
               <div className="border border-border rounded-sm p-10">
                 <div className="w-12 h-0.5 bg-accent mb-8" />
@@ -353,6 +482,7 @@ const Index = () => {
               </div>
             </FadeIn>
 
+            {/* Contact form */}
             <FadeIn delay={0.15}>
               <div className="border border-border rounded-sm p-10">
                 <div className="w-12 h-0.5 bg-secondary mb-8" />
@@ -404,100 +534,31 @@ const Index = () => {
               </div>
             </FadeIn>
           </div>
-        </div>
-      </section>
 
-      {/* Travel Agents */}
-      <section id="professionals" className="py-24 lg:py-32 scroll-mt-20">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-3xl mb-16">
-            <FadeIn>
-              <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
-                For Professionals
-              </p>
-              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
-                Travel Agents & Concierges
-              </h2>
-              <p className="font-body text-lg text-muted-foreground leading-relaxed">
-                I work closely with travel designers, concierges, and boutique agencies who care about
-                authentic, personalized experiences for their clients. If that sounds like you,
-                I'd love to explore how we can work together.
-              </p>
-            </FadeIn>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-            <div className="space-y-12">
-              {[
-                {
-                  title: "What I Offer Partners",
-                  text: "A reliable, premium experience that reflects well on your brand. I handle every detail, from personalized itinerary research to day-of execution, so your clients feel genuinely cared for.",
-                },
-                {
-                  title: "How It Works",
-                  text: "Share your client's interests and travel dates. I'll create a tailored proposal within 48 hours. You stay the primary point of contact for your client. I integrate seamlessly into their trip.",
-                },
-                {
-                  title: "Pricing & Terms",
-                  text: "Transparent flat-rate pricing with no hidden costs. Commission structures available for ongoing partnerships. Happy to discuss terms that work for both of us.",
-                },
-              ].map((item, i) => (
-                <FadeIn key={item.title} delay={i * 0.1}>
-                  <div>
-                    <div className="w-12 h-0.5 bg-accent mb-6" />
-                    <h3 className="font-heading text-2xl text-primary mb-3">{item.title}</h3>
-                    <p className="font-body text-muted-foreground leading-relaxed">{item.text}</p>
-                  </div>
-                </FadeIn>
-              ))}
+          {/* FAQ */}
+          <div className="mt-24">
+            <div className="max-w-3xl mb-12">
+              <FadeIn>
+                <h3 className="font-heading text-4xl text-primary mb-4">Questions & Answers</h3>
+                <p className="font-body text-muted-foreground">
+                  Honest answers to the things you might be wondering about.
+                </p>
+              </FadeIn>
             </div>
-
-            <FadeIn delay={0.15}>
-              <div className="border border-border rounded-sm p-10">
-                <h3 className="font-heading text-3xl text-primary mb-6">Get in Touch</h3>
-                <form onSubmit={handleAgentSubmit} className="space-y-6">
-                  <div className="space-y-2">
-                    <Label className="font-body text-sm">Your Name</Label>
-                    <Input
-                      required
-                      value={agentForm.name}
-                      onChange={(e) => setAgentForm({ ...agentForm, name: e.target.value })}
-                      className="h-12 text-base font-body"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label className="font-body text-sm">Company / Agency</Label>
-                    <Input
-                      value={agentForm.company}
-                      onChange={(e) => setAgentForm({ ...agentForm, company: e.target.value })}
-                      className="h-12 text-base font-body"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label className="font-body text-sm">Email Address</Label>
-                    <Input
-                      required
-                      type="email"
-                      value={agentForm.email}
-                      onChange={(e) => setAgentForm({ ...agentForm, email: e.target.value })}
-                      className="h-12 text-base font-body"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label className="font-body text-sm">How Can We Collaborate?</Label>
-                    <Textarea
-                      value={agentForm.message}
-                      onChange={(e) => setAgentForm({ ...agentForm, message: e.target.value })}
-                      className="min-h-[120px] text-base font-body"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="w-full font-body text-sm tracking-widest uppercase px-8 py-4 border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
-                  >
-                    Send Inquiry
-                  </button>
-                </form>
+            <FadeIn>
+              <div className="max-w-3xl">
+                <Accordion type="single" collapsible className="space-y-2">
+                  {faqs.map((faq, i) => (
+                    <AccordionItem key={i} value={`faq-${i}`} className="border-border px-0">
+                      <AccordionTrigger className="font-body text-base text-foreground hover:no-underline py-5">
+                        {faq.q}
+                      </AccordionTrigger>
+                      <AccordionContent className="font-body text-muted-foreground leading-relaxed pb-5">
+                        {faq.a}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
               </div>
             </FadeIn>
           </div>

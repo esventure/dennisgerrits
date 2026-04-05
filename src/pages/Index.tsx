@@ -125,6 +125,7 @@ const faqs = [
 
 const Index = () => {
   const { toast } = useToast();
+  const [aboutTab, setAboutTab] = useState<"person" | "guide">("person");
   const [contactForm, setContactForm] = useState({ name: "", email: "", message: "" });
 
   const handleContactSubmit = (e: React.FormEvent) => {

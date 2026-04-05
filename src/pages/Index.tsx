@@ -249,24 +249,30 @@ const Index = () => {
             </FadeIn>
           </div>
 
-          <div className="max-w-3xl mx-auto space-y-16">
-            {moments.map((m, i) => (
-              <FadeIn key={m.time} delay={i * 0.08}>
-                <div className="flex gap-8">
-                  <div className="flex flex-col items-center pt-1">
-                    <div className="w-3 h-3 rounded-full bg-secondary shrink-0" />
-                    {i < moments.length - 1 && <div className="w-px flex-1 bg-border mt-3" />}
+          <div className="max-w-5xl mx-auto space-y-24 lg:space-y-32">
+            {moments.map((m, i) => {
+              const isEven = i % 2 === 0;
+              return (
+                <FadeIn key={m.time} delay={0.1}>
+                  <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center ${!isEven ? 'lg:direction-rtl' : ''}`}>
+                    {/* Text side */}
+                    <div className={`${!isEven ? 'lg:order-2 lg:text-right' : 'lg:order-1'}`}>
+                      <p className="font-body text-xs tracking-[0.25em] uppercase text-accent font-medium mb-3">
+                        {m.time}
+                      </p>
+                      <h3 className="font-heading text-3xl md:text-4xl text-primary mb-4 leading-tight">{m.title}</h3>
+                      <p className="font-body text-muted-foreground leading-relaxed text-lg">{m.text}</p>
+                    </div>
+                    {/* Visual side — placeholder */}
+                    <div className={`${!isEven ? 'lg:order-1' : 'lg:order-2'}`}>
+                      <div className="bg-muted rounded-sm aspect-[4/3] flex items-center justify-center">
+                        <p className="font-body text-sm text-muted-foreground italic">Photo placeholder</p>
+                      </div>
+                    </div>
                   </div>
-                  <div className="pb-4">
-                    <p className="font-body text-xs tracking-widest uppercase text-accent font-medium mb-2">
-                      {m.time}
-                    </p>
-                    <h3 className="font-heading text-2xl text-primary mb-3">{m.title}</h3>
-                    <p className="font-body text-muted-foreground leading-relaxed">{m.text}</p>
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
+                </FadeIn>
+              );
+            })}
           </div>
         </div>
       </section>

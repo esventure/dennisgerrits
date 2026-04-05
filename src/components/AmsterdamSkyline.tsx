@@ -35,7 +35,7 @@ const AmsterdamSkyline = () => {
       <img
         src={skyline}
         alt="Amsterdam skyline illustration"
-        className="w-full h-auto opacity-60"
+        className="w-full h-auto opacity-25"
       />
     </div>
   );

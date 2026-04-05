@@ -4,6 +4,16 @@ import FadeIn from "@/components/FadeIn";
 import AmsterdamSkyline from "@/components/AmsterdamSkyline";
 import dennisIllustration from "@/assets/dennis_illustration.png";
 import dennisPhoto from "@/assets/dennis_photo.png";
+import guestCanalBridge from "@/assets/guests/canal-bridge.png";
+import guestBoatWine from "@/assets/guests/boat-wine.png";
+import guestCanalHouses from "@/assets/guests/canal-houses.png";
+import guestPubGroup from "@/assets/guests/pub-group.png";
+import guestColorfulWall from "@/assets/guests/colorful-wall.png";
+import guestParkFriends from "@/assets/guests/park-friends.png";
+import guestWindmillLadies from "@/assets/guests/windmill-ladies.png";
+import guestStatueCouple from "@/assets/guests/statue-couple.png";
+import guestCafeTerrace from "@/assets/guests/cafe-terrace.png";
+import guestMuseumVisit from "@/assets/guests/museum-visit.png";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -302,17 +312,24 @@ const Index = () => {
             ))}
           </div>
 
-          {/* Photo collage placeholder */}
+          {/* Photo collage */}
           <FadeIn>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {Array.from({ length: 8 }).map((_, i) => (
+              {[
+                { src: guestCanalBridge, alt: "Dennis with guests at a canal bridge", tall: true },
+                { src: guestBoatWine, alt: "Canal boat tour with wine" },
+                { src: guestCanalHouses, alt: "Group photo at canal houses" },
+                { src: guestPubGroup, alt: "Fun evening at a local pub" },
+                { src: guestColorfulWall, alt: "Group at a colorful Amsterdam wall", tall: true },
+                { src: guestParkFriends, alt: "Walking through a park" },
+                { src: guestWindmillLadies, alt: "Visit to the windmills" },
+                { src: guestStatueCouple, alt: "Couple at a statue" },
+              ].map((photo, i) => (
                 <div
                   key={i}
-                  className={`bg-muted rounded-sm flex items-center justify-center ${
-                    i === 0 || i === 5 ? "aspect-[3/4]" : "aspect-square"
-                  }`}
+                  className={`rounded-sm overflow-hidden ${photo.tall ? "aspect-[3/4]" : "aspect-square"}`}
                 >
-                  <p className="font-body text-xs text-muted-foreground italic">Guest photo</p>
+                  <img src={photo.src} alt={photo.alt} className="w-full h-full object-cover" />
                 </div>
               ))}
             </div>
@@ -415,8 +432,12 @@ const Index = () => {
             {stories.map((s, i) => (
               <FadeIn key={s.title} delay={i * 0.1}>
                 <div className="border border-border rounded-sm overflow-hidden group cursor-pointer">
-                  <div className="aspect-[16/10] bg-muted flex items-center justify-center">
-                    <p className="font-body text-xs text-muted-foreground italic">Atmospheric image</p>
+                  <div className="aspect-[16/10] overflow-hidden">
+                    <img
+                      src={[guestCafeTerrace, guestMuseumVisit, guestStatueCouple][i]}
+                      alt={s.title}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div className="p-6">
                     <h3 className="font-heading text-2xl text-primary mb-3 group-hover:text-secondary transition-colors">

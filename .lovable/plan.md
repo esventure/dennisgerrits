@@ -1,40 +1,33 @@
 
-# Homepage & Site Restructure
 
-## Homepage Sections (single scroll page)
+# Amsterdam Skyline — Scroll-Reveal Background Effect
 
-1. **Hero** `#hero` — Full-width Amsterdam atmosphere, headline, subheadline, CTA button, trust line
-2. **About Me** `#about` — Two blocks: Dennis as person/Amsterdammer + Dennis as professional guide with philosophy & USPs
-3. **A Day in the Life** `#day` — Personalised experience concept brought to life through atmosphere, story, imagery (replaces current timeline)
-4. **Proof** `#proof` — Five TripAdvisor quotes + large photo collage of past guests
-5. **More** `#more` — Three mission pillars, media appearances (Rick Steves, radio), podcast "Two Stories One City", university collaborations
-6. **Stories** `#stories` — Blog-style cards with atmospheric image, title, intro text
-7. **Contact, FAQ & Footer** `#contact` — Contact form, Calendly integration, FAQ accordion, footer
+## Concept
+The skyline image becomes a fixed background layer behind the entire homepage. As the user scrolls down, the skyline is progressively revealed from left to right (or top to bottom), as if the act of scrolling "uncovers" the illustration. The skyline stays in place while content scrolls over it.
 
-## Standalone Pages
+## How it works
+- The skyline image is placed as a **fixed-position background** spanning the full viewport width, anchored to the bottom of the screen
+- A **CSS clip-path or mask** is driven by scroll position via a small `useEffect` + `scroll` listener
+- As `scrollY` increases, the visible portion of the skyline grows — e.g., `clip-path: inset(0 Xpx 0 0)` where X shrinks as you scroll, revealing more from left to right
+- At the bottom of the page, the full skyline is visible
 
-- **Get Inspired** `/get-inspired` — Combines the existing Interests building blocks + a stories/blog section
-- **Get in Touch** `/get-in-touch` — Video call scheduling (Calendly) or callback request form
-- **Travel Agents** `/travel-agents` — Professional page, linked only from footer
+## Visual result
+- Top of page: skyline is mostly hidden (only a sliver visible on the left)
+- Mid-scroll: half the skyline revealed
+- Bottom of page: full skyline visible
+- Content sections sit on top with their cream backgrounds, but the skyline peeks through in gaps/margins between sections
 
-## Navigation
-- Header: Hero, About, A Day, Proof, More, Stories, Contact (anchor links) + "Get Inspired" (page link)
-- Footer: All anchor links + Get Inspired + Travel Agents + Get in Touch
+## What I need from you
+Nothing extra — the uploaded skyline image is sufficient. I have everything needed to build this.
 
 ## Files to change
-1. **`src/pages/Index.tsx`** — Rewrite with all 7 sections
-2. **`src/pages/GetInspired.tsx`** — New page combining Interests content + Stories section
-3. **`src/pages/GetInTouch.tsx`** — New page with Calendly embed + callback form
-4. **`src/pages/TravelAgents.tsx`** — New standalone page (recreate)
-5. **`src/components/Header.tsx`** — Update nav links
-6. **`src/components/Footer.tsx`** — Update footer links
-7. **`src/App.tsx`** — Add routes for new pages
-8. **`src/pages/Interests.tsx`** — Content moves to GetInspired, delete or redirect
+1. **`src/components/AmsterdamSkyline.tsx`** — Convert from inline image to a fixed-position scroll-driven reveal layer using `clip-path` animated by scroll progress
+2. **`src/pages/Index.tsx`** — Move the skyline component outside the section flow (render it once at the top level as a background layer, not between sections)
 
-## Content notes
-- Reviews section needs placeholder quotes (user to provide real ones later)
-- Photo collage needs placeholder images
-- Stories/blog cards need placeholder content
-- Calendly integration placeholder (URL to be provided)
-- Amsterdam skyline illustration stays between sections as visual interlude
-- All copy in personal, conversational tone (no em dashes)
+## Technical details
+- `position: fixed; bottom: 0; left: 0; width: 100%; z-index: 0` for the skyline container
+- Scroll listener calculates progress as `scrollY / (documentHeight - viewportHeight)`
+- `clip-path: inset(0 ${(1 - progress) * 100}% 0 0)` reveals left-to-right
+- Content sections get `position: relative; z-index: 1` with semi-transparent or solid cream backgrounds so the skyline peeks through at transitions
+- Lightweight: single scroll listener with `requestAnimationFrame` throttling
+

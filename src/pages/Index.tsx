@@ -1,4 +1,4 @@
-import { } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
 import AmsterdamSkyline from "@/components/AmsterdamSkyline";
@@ -125,7 +125,6 @@ const faqs = [
 
 const Index = () => {
   const { toast } = useToast();
-  const [aboutTab, setAboutTab] = useState<"person" | "guide">("person");
   const [contactForm, setContactForm] = useState({ name: "", email: "", message: "" });
 
   const handleContactSubmit = (e: React.FormEvent) => {

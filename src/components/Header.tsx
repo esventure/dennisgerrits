@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import dennisIllustration from "@/assets/dennis_illustration.png";
 
 const navLinks = [
   { to: "/#about", label: "About" },
@@ -31,8 +32,9 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 bg-background/90 backdrop-blur-sm border-b border-border/40">
       <div className="container mx-auto flex items-center justify-between py-4 px-6 lg:px-12">
-        <Link to="/" className="font-heading text-2xl tracking-wider text-primary">
-          Dennis Gerrits
+        <Link to="/" className="flex items-center gap-3">
+          <img src={dennisIllustration} alt="Dennis Gerrits logo" className="h-8 w-8 object-contain" />
+          <span className="font-heading text-2xl tracking-wider text-primary">Dennis Gerrits</span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
+import AmsterdamSkyline from "@/components/AmsterdamSkyline";
 import dennisIllustration from "@/assets/dennis_illustration.png";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -142,6 +143,13 @@ const Index = () => {
               </p>
             </div>
           </FadeIn>
+        </div>
+      </section>
+
+      {/* Amsterdam Skyline Illustration */}
+      <section className="bg-background">
+        <div className="container mx-auto px-6 lg:px-12">
+          <AmsterdamSkyline />
         </div>
       </section>
 

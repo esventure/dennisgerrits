@@ -5,10 +5,12 @@ import { cn } from "@/lib/utils";
 
 const navLinks = [
   { to: "/#about", label: "About" },
-  { to: "/#approach", label: "A Day Together" },
-  { to: "/interests", label: "Your Interests" },
-  { to: "/#faq", label: "FAQ" },
-  { to: "/#contact", label: "Get in Touch" },
+  { to: "/#day", label: "A Day Together" },
+  { to: "/#proof", label: "Reviews" },
+  { to: "/#more", label: "More" },
+  { to: "/#stories", label: "Stories" },
+  { to: "/#contact", label: "Contact" },
+  { to: "/get-inspired", label: "Get Inspired" },
 ];
 
 const Header = () => {
@@ -17,7 +19,6 @@ const Header = () => {
 
   const handleNavClick = (to: string) => {
     setOpen(false);
-    // If we're already on the homepage and clicking an anchor link, scroll manually
     if (location.pathname === "/" && to.startsWith("/#")) {
       const id = to.slice(2);
       const el = document.getElementById(id);
@@ -34,7 +35,6 @@ const Header = () => {
           Dennis Gerrits
         </Link>
 
-        {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
@@ -51,7 +51,6 @@ const Header = () => {
           ))}
         </nav>
 
-        {/* Mobile toggle */}
         <button
           className="md:hidden p-2 text-foreground"
           onClick={() => setOpen(!open)}
@@ -61,7 +60,6 @@ const Header = () => {
         </button>
       </div>
 
-      {/* Mobile nav */}
       {open && (
         <nav className="md:hidden border-t border-border/40 bg-background px-6 pb-6 pt-4 space-y-4">
           {navLinks.map((link) => (

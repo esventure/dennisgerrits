@@ -134,7 +134,8 @@ const Index = () => {
   };
 
   return (
-    <main>
+    <main className="relative z-10">
+      <AmsterdamSkyline />
       {/* ── 1. Hero ── */}
       <section id="hero" className="min-h-[85vh] flex items-center scroll-mt-20">
         <div className="container mx-auto px-6 lg:px-12 py-24">
@@ -230,13 +231,6 @@ const Index = () => {
               </blockquote>
             </div>
           </FadeIn>
-        </div>
-      </section>
-
-      {/* Amsterdam Skyline Illustration */}
-      <section className="bg-background">
-        <div className="container mx-auto px-6 lg:px-12">
-          <AmsterdamSkyline />
         </div>
       </section>
 

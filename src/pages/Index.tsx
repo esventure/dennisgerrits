@@ -138,7 +138,7 @@ const Index = () => {
       <AmsterdamSkyline />
       {/* ── 1. Hero ── */}
       <section id="hero" className="min-h-[85vh] flex items-center scroll-mt-20">
-        <div className="container mx-auto px-6 lg:px-12 py-24">
+        <div className="container mx-auto px-6 lg:px-12 pt-8 pb-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <FadeIn>
               <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">

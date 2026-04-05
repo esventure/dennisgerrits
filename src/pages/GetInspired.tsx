@@ -1,6 +1,10 @@
 import { useState } from "react";
 import FadeIn from "@/components/FadeIn";
 import { cn } from "@/lib/utils";
+import guestPubGroup from "@/assets/guests/pub-group.png";
+import guestCanalHouses from "@/assets/guests/canal-houses.png";
+import guestParkFriends from "@/assets/guests/park-friends.png";
+import guestBoatWine from "@/assets/guests/boat-wine.png";
 
 const themes = [
   {
@@ -134,8 +138,12 @@ const GetInspired = () => {
             {stories.map((s, i) => (
               <FadeIn key={s.title} delay={i * 0.1}>
                 <div className="border border-border rounded-sm overflow-hidden group cursor-pointer">
-                  <div className="aspect-[16/10] bg-muted flex items-center justify-center">
-                    <p className="font-body text-xs text-muted-foreground italic">Atmospheric image</p>
+                  <div className="aspect-[16/10] overflow-hidden">
+                    <img
+                      src={[guestPubGroup, guestCanalHouses, guestParkFriends, guestBoatWine][i]}
+                      alt={s.title}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div className="p-6">
                     <h3 className="font-heading text-2xl text-primary mb-3 group-hover:text-secondary transition-colors">

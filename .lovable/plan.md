@@ -1,59 +1,30 @@
 
 
-# Convert to One-Pager with Interests Subpage
+# Amsterdam Skyline Illustration — Serpentine Layout
 
-## Overview
-Restructure the site from 6+ pages into a single scrolling homepage with anchor-based navigation, plus one standalone page for "Your Interests."
+## What we're building
+A hand-drawn style SVG illustration of the Amsterdam skyline that flows across the full width of the page in a serpentine (boustrophedon) pattern: left-to-right on the first row, then right-to-left on the second row, then left-to-right again. Each row features recognizable Amsterdam landmarks rendered as continuous line art, similar to the uploaded reference image.
 
-## Structure
+## Landmarks to include (across 3-4 rows)
+- Row 1 (L→R): Centraal Station, Damrak canal houses, Royal Palace, Nieuwe Kerk
+- Row 2 (R→L): Westerkerk, Anne Frank House area, canal bridges, Jordaan houses
+- Row 3 (L→R): Rijksmuseum, Vondelpark gate, Concertgebouw, canal boat
+- Row 4 (R→L): Magere Brug (Skinny Bridge), Muntplein tower, windmill, row of classic gabled houses
 
-### Homepage (single scroll page)
-The homepage will contain these sections in order, each with an `id` for anchor linking:
+## Placement
+A new full-width section on the homepage, positioned between the Philosophy and Experience sections. It acts as a visual interlude — no text overlay, just the illustration filling the width.
 
-1. **Hero** (existing) - `#hero`
-2. **About Dennis** (from About.tsx) - `#about`
-3. **A Day Together** (from Approach.tsx, the timeline) - `#approach`
-4. **FAQ** (from FAQ.tsx, accordion) - `#faq`
-5. **Contact / Get in Touch** (from Contact.tsx, video call + form) - `#contact`
-6. **Travel Agents** (from TravelAgents.tsx, compact version) - `#professionals`
-
-The Philosophy and Experience sections currently on the homepage stay between Hero and About.
-
-### Interests page (standalone)
-Stays as `/interests` - no changes needed.
+## Technical approach
+- Create `src/components/AmsterdamSkyline.tsx` containing an inline SVG with hand-drawn style path data
+- Use `stroke` only (no fill) for the line-art style, matching the uploaded reference aesthetic
+- Stroke color: `currentColor` inheriting the primary dark color
+- Stroke width thin (1.5-2px) for the hand-drawn feel
+- Each row is a separate SVG group, with rows 2 and 4 mirrored/reversed to create the serpentine flow
+- Connecting vertical lines link the end of one row to the start of the next
+- Responsive: `viewBox` based, scales with container width
+- Add the component to `Index.tsx` as a section between Philosophy and Experience
 
 ## Files to change
-
-### 1. `src/pages/Index.tsx`
-- Import content/components from About, Approach, FAQ, Contact, and TravelAgents
-- Add all sections inline with `id` attributes for anchor scrolling
-- Keep existing Hero, Philosophy, and Experience sections
-- Replace the current CTA section with the full Contact section
-
-### 2. `src/components/Header.tsx`
-- Change nav links from routes to anchor links (`#about`, `#approach`, `#faq`, `#contact`)
-- Keep "Your Interests" as a route link to `/interests`
-- Add smooth scroll behavior for anchor links
-- Handle anchor navigation when on the Interests page (link back to `/#about` etc.)
-
-### 3. `src/components/Footer.tsx`
-- Update footer links to use anchors instead of routes
-- Keep `/interests` as a route link
-
-### 4. `src/App.tsx`
-- Remove routes for About, Approach, Contact, FAQ, TravelAgents
-- Keep only `/`, `/interests`, and `*` (NotFound)
-- Remove unused imports
-
-### 5. `index.html`
-- Add `scroll-behavior: smooth` to the `<html>` tag
-
-### 6. Cleanup
-- Delete `src/pages/About.tsx`, `Approach.tsx`, `Contact.tsx`, `FAQ.tsx`, `TravelAgents.tsx` (content moved into Index)
-
-## Technical details
-- Anchor links use `<a href="#section">` for same-page, `<Link to="/#section">` when navigating from Interests page
-- Smooth scrolling via CSS `scroll-behavior: smooth` on `html`
-- Header offset accounted for with `scroll-margin-top` on each section
-- Mobile nav closes on anchor click (existing behavior)
+1. **Create `src/components/AmsterdamSkyline.tsx`** — Full SVG component with 3-4 rows of landmark line art in serpentine layout
+2. **Edit `src/pages/Index.tsx`** — Import and place the skyline section between Philosophy and Experience
 

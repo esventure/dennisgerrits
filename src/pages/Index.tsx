@@ -181,9 +181,16 @@ const Index = () => {
             </FadeIn>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-            {/* Dennis as person */}
+          {/* ── The Person: photo + text ── */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-24">
             <FadeIn>
+              <div className="aspect-[3/4] max-w-md mx-auto lg:mx-0 bg-muted rounded-sm overflow-hidden shadow-lg">
+                <div className="w-full h-full flex items-center justify-center">
+                  <p className="font-body text-sm text-muted-foreground italic">Photo of Dennis</p>
+                </div>
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.15}>
               <div>
                 <div className="w-12 h-0.5 bg-accent mb-6" />
                 <h3 className="font-heading text-3xl text-primary mb-4">A True Amsterdammer</h3>
@@ -197,23 +204,23 @@ const Index = () => {
                 </p>
               </div>
             </FadeIn>
-
-            {/* Dennis as guide */}
-            <FadeIn delay={0.15}>
-              <div>
-                <div className="w-12 h-0.5 bg-secondary mb-6" />
-                <h3 className="font-heading text-3xl text-primary mb-4">A Different Kind of Guide</h3>
-                <p className="font-body text-muted-foreground leading-relaxed mb-4">
-                  I don't carry a flag or a microphone. I don't follow a script. Every experience I create starts with you:
-                  your interests, your pace, your curiosity. My job is to make the city feel personal.
-                </p>
-                <p className="font-body text-muted-foreground leading-relaxed">
-                  Depth over highlights. Connection over information. A friend who knows the city inside out,
-                  walking beside you instead of in front of you.
-                </p>
-              </div>
-            </FadeIn>
           </div>
+
+          {/* ── The Guide: full-width text block ── */}
+          <FadeIn delay={0.2}>
+            <div className="max-w-3xl">
+              <div className="w-16 h-0.5 bg-secondary mb-6" />
+              <h3 className="font-heading text-3xl text-primary mb-4">A Different Kind of Guide</h3>
+              <p className="font-body text-muted-foreground leading-relaxed mb-4">
+                I don't carry a flag or a microphone. I don't follow a script. Every experience I create starts with you:
+                your interests, your pace, your curiosity. My job is to make the city feel personal.
+              </p>
+              <p className="font-body text-muted-foreground leading-relaxed">
+                Depth over highlights. Connection over information. A friend who knows the city inside out,
+                walking beside you instead of in front of you.
+              </p>
+            </div>
+          </FadeIn>
 
           <FadeIn delay={0.3}>
             <div className="mt-16 max-w-3xl mx-auto text-center">

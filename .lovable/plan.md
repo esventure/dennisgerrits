@@ -1,30 +1,40 @@
 
+# Homepage & Site Restructure
 
-# Amsterdam Skyline Illustration — Serpentine Layout
+## Homepage Sections (single scroll page)
 
-## What we're building
-A hand-drawn style SVG illustration of the Amsterdam skyline that flows across the full width of the page in a serpentine (boustrophedon) pattern: left-to-right on the first row, then right-to-left on the second row, then left-to-right again. Each row features recognizable Amsterdam landmarks rendered as continuous line art, similar to the uploaded reference image.
+1. **Hero** `#hero` — Full-width Amsterdam atmosphere, headline, subheadline, CTA button, trust line
+2. **About Me** `#about` — Two blocks: Dennis as person/Amsterdammer + Dennis as professional guide with philosophy & USPs
+3. **A Day in the Life** `#day` — Personalised experience concept brought to life through atmosphere, story, imagery (replaces current timeline)
+4. **Proof** `#proof` — Five TripAdvisor quotes + large photo collage of past guests
+5. **More** `#more` — Three mission pillars, media appearances (Rick Steves, radio), podcast "Two Stories One City", university collaborations
+6. **Stories** `#stories` — Blog-style cards with atmospheric image, title, intro text
+7. **Contact, FAQ & Footer** `#contact` — Contact form, Calendly integration, FAQ accordion, footer
 
-## Landmarks to include (across 3-4 rows)
-- Row 1 (L→R): Centraal Station, Damrak canal houses, Royal Palace, Nieuwe Kerk
-- Row 2 (R→L): Westerkerk, Anne Frank House area, canal bridges, Jordaan houses
-- Row 3 (L→R): Rijksmuseum, Vondelpark gate, Concertgebouw, canal boat
-- Row 4 (R→L): Magere Brug (Skinny Bridge), Muntplein tower, windmill, row of classic gabled houses
+## Standalone Pages
 
-## Placement
-A new full-width section on the homepage, positioned between the Philosophy and Experience sections. It acts as a visual interlude — no text overlay, just the illustration filling the width.
+- **Get Inspired** `/get-inspired` — Combines the existing Interests building blocks + a stories/blog section
+- **Get in Touch** `/get-in-touch` — Video call scheduling (Calendly) or callback request form
+- **Travel Agents** `/travel-agents` — Professional page, linked only from footer
 
-## Technical approach
-- Create `src/components/AmsterdamSkyline.tsx` containing an inline SVG with hand-drawn style path data
-- Use `stroke` only (no fill) for the line-art style, matching the uploaded reference aesthetic
-- Stroke color: `currentColor` inheriting the primary dark color
-- Stroke width thin (1.5-2px) for the hand-drawn feel
-- Each row is a separate SVG group, with rows 2 and 4 mirrored/reversed to create the serpentine flow
-- Connecting vertical lines link the end of one row to the start of the next
-- Responsive: `viewBox` based, scales with container width
-- Add the component to `Index.tsx` as a section between Philosophy and Experience
+## Navigation
+- Header: Hero, About, A Day, Proof, More, Stories, Contact (anchor links) + "Get Inspired" (page link)
+- Footer: All anchor links + Get Inspired + Travel Agents + Get in Touch
 
 ## Files to change
-1. **Create `src/components/AmsterdamSkyline.tsx`** — Full SVG component with 3-4 rows of landmark line art in serpentine layout
-2. **Edit `src/pages/Index.tsx`** — Import and place the skyline section between Philosophy and Experience
+1. **`src/pages/Index.tsx`** — Rewrite with all 7 sections
+2. **`src/pages/GetInspired.tsx`** — New page combining Interests content + Stories section
+3. **`src/pages/GetInTouch.tsx`** — New page with Calendly embed + callback form
+4. **`src/pages/TravelAgents.tsx`** — New standalone page (recreate)
+5. **`src/components/Header.tsx`** — Update nav links
+6. **`src/components/Footer.tsx`** — Update footer links
+7. **`src/App.tsx`** — Add routes for new pages
+8. **`src/pages/Interests.tsx`** — Content moves to GetInspired, delete or redirect
 
+## Content notes
+- Reviews section needs placeholder quotes (user to provide real ones later)
+- Photo collage needs placeholder images
+- Stories/blog cards need placeholder content
+- Calendly integration placeholder (URL to be provided)
+- Amsterdam skyline illustration stays between sections as visual interlude
+- All copy in personal, conversational tone (no em dashes)

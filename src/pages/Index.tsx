@@ -171,22 +171,22 @@ const Index = () => {
       {/* ── 2. About Me — Full-Screen Split ── */}
       <section id="about" className="scroll-mt-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
-          {/* Left Panel — The Person */}
-          <div className="min-h-[80vh] lg:min-h-screen flex items-center bg-background px-8 md:px-16 lg:px-20 py-20">
+          {/* Left Panel — The Person (dark) */}
+          <div className="min-h-[80vh] lg:min-h-screen flex items-center bg-primary px-8 md:px-16 lg:px-20 py-20">
             <FadeIn>
               <div className="max-w-lg">
-                <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-4">
+                <h2 className="font-heading text-5xl md:text-6xl text-primary-foreground leading-[0.95] mb-4">
                   The Person
                 </h2>
-                <div className="w-12 h-0.5 bg-accent mb-6" />
-                <p className="font-body text-sm tracking-[0.15em] uppercase text-secondary mb-6">
+                <div className="w-12 h-0.5 bg-primary-foreground/30 mb-6" />
+                <p className="font-body text-sm tracking-[0.15em] uppercase text-primary-foreground/60 mb-6">
                   A True Amsterdammer
                 </p>
-                <p className="font-body text-muted-foreground leading-relaxed mb-4">
+                <p className="font-body text-primary-foreground/80 leading-relaxed mb-4">
                   I'm a free spirit with deep roots in this city. I grew up cycling along the canals, getting lost in neighbourhoods,
                   and collecting stories from the people I met along the way. Amsterdam isn't just where I live. It's how I think.
                 </p>
-                <p className="font-body text-muted-foreground leading-relaxed">
+                <p className="font-body text-primary-foreground/80 leading-relaxed">
                   I love good coffee, slow mornings, and conversations that go deeper than small talk.
                   That's probably why this work suits me so well.
                 </p>
@@ -194,22 +194,22 @@ const Index = () => {
             </FadeIn>
           </div>
 
-          {/* Right Panel — The Guide */}
-          <div className="min-h-[80vh] lg:min-h-screen flex items-center bg-primary px-8 md:px-16 lg:px-20 py-20">
+          {/* Right Panel — The Guide (light) */}
+          <div className="min-h-[80vh] lg:min-h-screen flex items-center bg-background px-8 md:px-16 lg:px-20 py-20">
             <FadeIn>
               <div className="max-w-lg">
-                <h2 className="font-heading text-5xl md:text-6xl text-primary-foreground leading-[0.95] mb-4">
+                <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-4">
                   The Guide
                 </h2>
-                <div className="w-12 h-0.5 bg-primary-foreground/30 mb-6" />
-                <p className="font-body text-sm tracking-[0.15em] uppercase text-primary-foreground/60 mb-6">
+                <div className="w-12 h-0.5 bg-accent mb-6" />
+                <p className="font-body text-sm tracking-[0.15em] uppercase text-secondary mb-6">
                   A Different Kind of Guide
                 </p>
-                <p className="font-body text-primary-foreground/80 leading-relaxed mb-4">
+                <p className="font-body text-muted-foreground leading-relaxed mb-4">
                   I don't carry a flag or a microphone. I don't follow a script. Every experience I create starts with you:
                   your interests, your pace, your curiosity. My job is to make the city feel personal.
                 </p>
-                <p className="font-body text-primary-foreground/80 leading-relaxed">
+                <p className="font-body text-muted-foreground leading-relaxed">
                   Depth over highlights. Connection over information. A friend who knows the city inside out,
                   walking beside you instead of in front of you.
                 </p>

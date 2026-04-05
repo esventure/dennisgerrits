@@ -41,7 +41,7 @@ const AmsterdamSkyline = () => {
           maskComposite: 'intersect',
           WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 40%, black 80%, transparent 100%), linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)',
           WebkitMaskComposite: 'source-in',
-        }
+        }}
       />
     </div>
   );

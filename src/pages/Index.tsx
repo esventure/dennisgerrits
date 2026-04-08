@@ -451,28 +451,7 @@ const Index = () => {
             </FadeIn>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-            {/* Calendly placeholder */}
-            <FadeIn>
-              <div className="border border-border rounded-sm p-10">
-                <div className="w-12 h-0.5 bg-accent mb-8" />
-                <h3 className="font-heading text-3xl text-primary mb-4">
-                  Schedule a Video Call
-                </h3>
-                <p className="font-body text-muted-foreground leading-relaxed mb-8">
-                  A 15-minute introductory call where we get to know each other. I'll ask about your
-                  interests, you can ask me anything. It's the closest thing to meeting in person
-                  before your trip.
-                </p>
-                <div className="aspect-video bg-muted rounded-sm flex items-center justify-center border border-border">
-                  <div className="text-center">
-                    <p className="font-body text-sm text-muted-foreground">Calendly embed</p>
-                    <p className="font-body text-xs text-muted-foreground/60 mt-1">Integration placeholder</p>
-                  </div>
-                </div>
-              </div>
-            </FadeIn>
-
+          <div className="max-w-2xl">
             {/* Contact form */}
             <FadeIn delay={0.15}>
               <div className="border border-border rounded-sm p-10">

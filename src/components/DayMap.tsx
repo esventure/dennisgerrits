@@ -103,7 +103,7 @@ const DayMap = ({ moments }: DayMapProps) => {
   }, [visited]);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+    <div ref={sectionRef} className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
       {/* ── Left: SVG Map ── */}
       <div className="relative w-full" style={{ aspectRatio: "6 / 5" }}>
         <svg

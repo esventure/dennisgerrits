@@ -155,7 +155,8 @@ const Index = () => {
                 Personal Travel Companion
               </p>
               <h1 className="font-heading text-6xl md:text-7xl lg:text-8xl text-primary leading-[0.95] mb-8">
-                Hello, <span className="text-accent">I'm Dennis.</span><br />
+                Hello,<br />
+                <span className="text-accent">I'm Dennis.</span><br />
                 I don't show a city.<br />
                 I translate it.
               </h1>

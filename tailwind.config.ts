@@ -52,8 +52,9 @@ export default {
           dark: "hsl(var(--heritage-dark))",
           purple: "hsl(var(--heritage-purple))",
           bordeaux: "hsl(var(--heritage-bordeaux))",
-          gold: "hsl(var(--heritage-gold))",
+          orange: "hsl(var(--heritage-orange))",
           green: "hsl(var(--heritage-green))",
+          taupe: "hsl(var(--heritage-taupe))",
         },
       },
       fontFamily: {

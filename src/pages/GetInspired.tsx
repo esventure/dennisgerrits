@@ -1,6 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
 import { cn } from "@/lib/utils";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const themes = [
   {
@@ -43,25 +50,48 @@ const themes = [
 
 const stories = [
   {
+    id: "bookshop",
     title: "The Bookshop That Refused to Close",
     intro: "On a quiet street in the Jordaan, there's a bookshop that's been open since 1953. The owner still wraps every purchase in brown paper.",
+    body: "I asked him once why he never retired. He looked at me like I'd said something absurd. 'Why would I stop doing the thing I love?' He knows every book in the shop by memory. He'll recommend one based on the look in your eyes, not what's trending. It's the kind of place that makes you believe the world still has room for things that are slow, personal, and real.",
   },
   {
+    id: "canal-houses",
     title: "Why the Canal Houses Lean Forward",
     intro: "It's not bad engineering. It's actually on purpose. And the reason says a lot about how the Dutch think about commerce.",
+    body: "In the 17th century, Amsterdam's merchants stored their goods in the attics of their canal houses. To hoist heavy bales up without smashing the façade, the buildings were designed to lean slightly forward. The hooks you still see at the top? Those are original hoisting beams. It's a small detail that tells a big story about a city built on trade, pragmatism, and a refusal to waste space.",
   },
   {
+    id: "bench",
     title: "A Bench With the Best View in Amsterdam",
     intro: "It's not where you'd expect. No famous landmarks in sight. Just water, sky, and the kind of quiet that makes you want to sit for a while.",
+    body: "I won't tell you exactly where it is — that would ruin it. But I will say this: it faces west, and on a clear evening the light turns the water gold. There's usually nobody else there. No tourists, no noise. Just the sound of a boat passing now and then. It's the kind of place that reminds you why you travel in the first place.",
   },
   {
+    id: "cafe",
     title: "The Café That Only Serves What's Left",
     intro: "Every evening, a small café in De Pijp serves whatever the local market couldn't sell that day. No menu. Just trust.",
+    body: "The chef arrives at the Albert Cuyp market around 5pm, just as the vendors are packing up. Whatever's left — a box of peppers, some fish, half a wheel of cheese — becomes dinner. You sit down, you eat what's served, and somehow it's always exactly right. It's food without pretension, made from what the city had to offer that day.",
   },
 ];
 
 const GetInspired = () => {
   const [active, setActive] = useState<string | null>(null);
+  const [searchParams] = useSearchParams();
+  const [openStory, setOpenStory] = useState<string>("");
+
+  useEffect(() => {
+    const storyParam = searchParams.get("story");
+    if (storyParam) {
+      const matched = stories.find((s) => s.title === storyParam);
+      if (matched) {
+        setOpenStory(matched.id);
+        setTimeout(() => {
+          document.getElementById("stories-section")?.scrollIntoView({ behavior: "smooth" });
+        }, 300);
+      }
+    }
+  }, [searchParams]);
 
   return (
     <main>
@@ -113,8 +143,8 @@ const GetInspired = () => {
         </div>
       </section>
 
-      {/* Stories section */}
-      <section className="py-24 lg:py-32 bg-muted/30">
+      {/* Stories section — accordion style */}
+      <section id="stories-section" className="py-24 lg:py-32 bg-muted/30 scroll-mt-20">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mb-16">
             <FadeIn>
@@ -130,25 +160,32 @@ const GetInspired = () => {
             </FadeIn>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {stories.map((s, i) => (
-              <FadeIn key={s.title} delay={i * 0.1}>
-                <div className="border border-border rounded-sm overflow-hidden group cursor-pointer">
-                  <div className="aspect-[16/10] bg-muted flex items-center justify-center">
-                    <p className="font-body text-xs text-muted-foreground italic">Atmospheric image</p>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="font-heading text-2xl text-primary mb-3 group-hover:text-secondary transition-colors">
+          <FadeIn>
+            <div className="max-w-3xl">
+              <Accordion
+                type="single"
+                collapsible
+                value={openStory}
+                onValueChange={setOpenStory}
+              >
+                {stories.map((s) => (
+                  <AccordionItem key={s.id} value={s.id} className="border-border">
+                    <AccordionTrigger className="font-heading text-xl md:text-2xl text-primary hover:text-secondary hover:no-underline py-6">
                       {s.title}
-                    </h3>
-                    <p className="font-body text-sm text-muted-foreground leading-relaxed">
-                      {s.intro}
-                    </p>
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      <p className="font-body text-sm text-muted-foreground italic mb-4">
+                        {s.intro}
+                      </p>
+                      <p className="font-body text-base text-foreground leading-relaxed">
+                        {s.body}
+                      </p>
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+          </FadeIn>
         </div>
       </section>
     </main>

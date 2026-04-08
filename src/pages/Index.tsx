@@ -402,19 +402,21 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {stories.map((s, i) => (
               <FadeIn key={s.title} delay={i * 0.1}>
-                <div className="border border-border rounded-sm overflow-hidden group cursor-pointer">
-                  <div className="aspect-[16/10] bg-muted flex items-center justify-center">
-                    <p className="font-body text-xs text-muted-foreground italic">Atmospheric image</p>
+                <Link to={`/get-inspired?story=${encodeURIComponent(s.title)}`} className="block">
+                  <div className="border border-border rounded-sm overflow-hidden group cursor-pointer">
+                    <div className="aspect-[16/10] bg-muted flex items-center justify-center">
+                      <p className="font-body text-xs text-muted-foreground italic">Atmospheric image</p>
+                    </div>
+                    <div className="p-6">
+                      <h3 className="font-heading text-2xl text-primary mb-3 group-hover:text-secondary transition-colors">
+                        {s.title}
+                      </h3>
+                      <p className="font-body text-sm text-muted-foreground leading-relaxed">
+                        {s.intro}
+                      </p>
+                    </div>
                   </div>
-                  <div className="p-6">
-                    <h3 className="font-heading text-2xl text-primary mb-3 group-hover:text-secondary transition-colors">
-                      {s.title}
-                    </h3>
-                    <p className="font-body text-sm text-muted-foreground leading-relaxed">
-                      {s.intro}
-                    </p>
-                  </div>
-                </div>
+                </Link>
               </FadeIn>
             ))}
           </div>

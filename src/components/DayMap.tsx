@@ -14,11 +14,11 @@ interface DayMapProps {
 
 /* ── Checkpoint positions on the SVG canvas (600×500) ── */
 const stops = [
-  { x: 120, y: 80, label: "Jordaan Café" },
-  { x: 280, y: 140, label: "Canal Walk" },
-  { x: 340, y: 260, label: "Local Lunch" },
-  { x: 480, y: 220, label: "Hidden Garden" },
-  { x: 460, y: 360, label: "Waterfront Bar" },
+  { x: 120, y: 80, label: "Jordaan Café", icon: "☕" },
+  { x: 280, y: 140, label: "Canal Walk", icon: "👣" },
+  { x: 340, y: 260, label: "Local Lunch", icon: "🍴" },
+  { x: 480, y: 220, label: "Hidden Garden", icon: "🌿" },
+  { x: 460, y: 360, label: "Waterfront Bar", icon: "🍷" },
 ];
 
 /* ── SVG path data between consecutive stops (hand-drawn curves) ── */
@@ -47,12 +47,11 @@ const DayMap = ({ moments }: DayMapProps) => {
   const goPrev = () => handleSelect(Math.max(0, active - 1));
   const goNext = () => handleSelect(Math.min(moments.length - 1, active + 1));
 
-  /* ── Scroll-driven checkpoint progression (works with sticky parent) ── */
+  /* ── Scroll-driven checkpoint progression ── */
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
 
-    // Find the tall outer section (parent with height: 300vh)
     const section = el.closest("section");
     if (!section) return;
 
@@ -62,16 +61,13 @@ const DayMap = ({ moments }: DayMapProps) => {
       const rect = section.getBoundingClientRect();
       const viewH = window.innerHeight;
 
-      // Only trigger when section is in view
       if (rect.bottom < 0 || rect.top > viewH) return;
 
-      // Progress through the tall scroll container (0 at top, 1 at bottom)
       const scrollableHeight = rect.height - viewH;
       const sectionProgress = Math.max(0, Math.min(1,
         -rect.top / scrollableHeight
       ));
 
-      // Map progress to stop index
       const targetStop = Math.min(
         moments.length - 1,
         Math.floor(sectionProgress * moments.length)
@@ -94,7 +90,6 @@ const DayMap = ({ moments }: DayMapProps) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [moments.length]);
 
-  /* Which path segments to reveal: all segments up to the highest visited stop */
   const maxVisited = useMemo(() => {
     let max = 0;
     visited.forEach((v) => { if (v > max) max = v; });
@@ -112,7 +107,14 @@ const DayMap = ({ moments }: DayMapProps) => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          {/* ── Canals (decorative curves) ── */}
+          {/* ── Drop shadow filter ── */}
+          <defs>
+            <filter id="marker-shadow" x="-50%" y="-50%" width="200%" height="200%">
+              <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="hsl(24, 100%, 45%)" floodOpacity="0.25" />
+            </filter>
+          </defs>
+
+          {/* ── Canals with wavy water effect ── */}
           <path
             d="M 0 180 Q 150 140, 300 200 T 600 170"
             stroke="hsl(var(--heritage-taupe))"
@@ -120,6 +122,12 @@ const DayMap = ({ moments }: DayMapProps) => {
             opacity="0.25"
             strokeLinecap="round"
           />
+          {/* Water ripples */}
+          <path d="M 80 175 Q 90 170, 100 175" stroke="hsl(var(--heritage-taupe))" strokeWidth="1.5" opacity="0.3" fill="none" />
+          <path d="M 200 185 Q 210 180, 220 185" stroke="hsl(var(--heritage-taupe))" strokeWidth="1.5" opacity="0.25" fill="none" />
+          <path d="M 350 195 Q 360 190, 370 195" stroke="hsl(var(--heritage-taupe))" strokeWidth="1.5" opacity="0.3" fill="none" />
+          <path d="M 500 172 Q 510 167, 520 172" stroke="hsl(var(--heritage-taupe))" strokeWidth="1.5" opacity="0.25" fill="none" />
+
           <path
             d="M 0 320 Q 200 280, 400 340 T 600 310"
             stroke="hsl(var(--heritage-taupe))"
@@ -127,6 +135,10 @@ const DayMap = ({ moments }: DayMapProps) => {
             opacity="0.2"
             strokeLinecap="round"
           />
+          {/* Water ripples on second canal */}
+          <path d="M 150 300 Q 160 295, 170 300" stroke="hsl(var(--heritage-taupe))" strokeWidth="1.5" opacity="0.2" fill="none" />
+          <path d="M 380 330 Q 390 325, 400 330" stroke="hsl(var(--heritage-taupe))" strokeWidth="1.5" opacity="0.2" fill="none" />
+
           <path
             d="M 50 450 Q 250 420, 450 460 T 600 440"
             stroke="hsl(var(--heritage-taupe))"
@@ -135,14 +147,14 @@ const DayMap = ({ moments }: DayMapProps) => {
             strokeLinecap="round"
           />
 
-          {/* ── Landmark silhouettes ── */}
+          {/* ── Landmark silhouettes (more visible) ── */}
           {/* Church spire */}
-          <g opacity="0.12">
+          <g opacity="0.2">
             <rect x="190" y="50" width="12" height="40" fill="hsl(var(--primary))" />
             <polygon points="196,30 184,70 208,70" fill="hsl(var(--primary))" />
           </g>
           {/* Canal houses row */}
-          <g opacity="0.1">
+          <g opacity="0.18">
             <rect x="400" y="140" width="16" height="28" fill="hsl(var(--primary))" />
             <rect x="418" y="146" width="14" height="22" fill="hsl(var(--primary))" />
             <rect x="434" y="138" width="18" height="30" fill="hsl(var(--primary))" />
@@ -151,26 +163,59 @@ const DayMap = ({ moments }: DayMapProps) => {
             <polygon points="434,138 443,124 452,138" fill="hsl(var(--primary))" />
           </g>
           {/* Trees (Vondelpark) */}
-          <g opacity="0.1">
+          <g opacity="0.18">
             <circle cx="100" cy="380" r="18" fill="hsl(var(--heritage-green))" />
             <circle cx="140" cy="390" r="14" fill="hsl(var(--heritage-green))" />
             <circle cx="70" cy="400" r="12" fill="hsl(var(--heritage-green))" />
           </g>
 
-          {/* ── Route paths ── */}
+          {/* ── Whimsical decorations ── */}
+          {/* Bicycle */}
+          <g opacity="0.2" transform="translate(200, 110)">
+            <circle cx="0" cy="0" r="6" stroke="hsl(var(--primary))" strokeWidth="1.5" fill="none" />
+            <circle cx="16" cy="0" r="6" stroke="hsl(var(--primary))" strokeWidth="1.5" fill="none" />
+            <path d="M 0 0 L 8 -8 L 16 0" stroke="hsl(var(--primary))" strokeWidth="1.5" fill="none" />
+            <line x1="8" y1="-8" x2="8" y2="-12" stroke="hsl(var(--primary))" strokeWidth="1.5" />
+            <line x1="6" y1="-12" x2="10" y2="-12" stroke="hsl(var(--primary))" strokeWidth="1.5" />
+          </g>
+
+          {/* Boat on canal */}
+          <g opacity="0.18" transform="translate(260, 310)">
+            <path d="M -12 0 Q -8 6, 0 6 Q 8 6, 12 0 Z" fill="hsl(var(--primary))" />
+            <line x1="0" y1="0" x2="0" y2="-10" stroke="hsl(var(--primary))" strokeWidth="1.5" />
+            <path d="M 0 -10 Q 6 -8, 6 -4" stroke="hsl(var(--primary))" strokeWidth="1" fill="hsl(var(--primary))" opacity="0.5" />
+          </g>
+
+          {/* Birds */}
+          <g opacity="0.15">
+            <path d="M 520 60 Q 525 55, 530 60 Q 535 55, 540 60" stroke="hsl(var(--primary))" strokeWidth="1.5" fill="none" />
+            <path d="M 540 45 Q 544 41, 548 45 Q 552 41, 556 45" stroke="hsl(var(--primary))" strokeWidth="1.5" fill="none" />
+            <path d="M 505 50 Q 508 47, 511 50 Q 514 47, 517 50" stroke="hsl(var(--primary))" strokeWidth="1.2" fill="none" />
+          </g>
+
+          {/* Windmill */}
+          <g opacity="0.15" transform="translate(550, 420)">
+            <rect x="-4" y="-20" width="8" height="20" fill="hsl(var(--primary))" />
+            <line x1="0" y1="-20" x2="-14" y2="-30" stroke="hsl(var(--primary))" strokeWidth="2" />
+            <line x1="0" y1="-20" x2="14" y2="-30" stroke="hsl(var(--primary))" strokeWidth="2" />
+            <line x1="0" y1="-20" x2="-14" y2="-10" stroke="hsl(var(--primary))" strokeWidth="2" />
+            <line x1="0" y1="-20" x2="14" y2="-10" stroke="hsl(var(--primary))" strokeWidth="2" />
+          </g>
+
+          {/* ── Route paths (sketchier) ── */}
           {pathSegments.map((d, i) => (
             <path
               key={i}
               d={d}
               stroke="hsl(var(--accent))"
-              strokeWidth="3"
-              strokeDasharray="8 6"
+              strokeWidth="4"
+              strokeDasharray="12 4 4 4"
               strokeLinecap="round"
               style={{
                 strokeDashoffset: i < maxVisited ? 0 : pathLengths[i],
-                transition: "stroke-dashoffset 0.8s ease-in-out",
+                transition: "stroke-dashoffset 0.8s ease-in-out, opacity 0.5s ease",
               }}
-              opacity={i < maxVisited ? 0.8 : 0.15}
+              opacity={i < maxVisited ? 0.85 : 0.12}
             />
           ))}
 
@@ -186,13 +231,14 @@ const DayMap = ({ moments }: DayMapProps) => {
                 role="button"
                 tabIndex={0}
                 aria-label={`Stop ${i + 1}: ${stop.label}`}
+                filter="url(#marker-shadow)"
               >
                 {/* Pulse ring for active */}
                 {isActive && (
                   <circle
                     cx={stop.x}
                     cy={stop.y}
-                    r="22"
+                    r="26"
                     fill="none"
                     stroke="hsl(var(--accent))"
                     strokeWidth="2"
@@ -200,8 +246,8 @@ const DayMap = ({ moments }: DayMapProps) => {
                   >
                     <animate
                       attributeName="r"
-                      from="16"
-                      to="26"
+                      from="20"
+                      to="32"
                       dur="1.5s"
                       repeatCount="indefinite"
                     />
@@ -214,41 +260,55 @@ const DayMap = ({ moments }: DayMapProps) => {
                     />
                   </circle>
                 )}
-                {/* Main circle */}
+                {/* Main circle - larger */}
                 <circle
                   cx={stop.x}
                   cy={stop.y}
-                  r="16"
+                  r="20"
                   fill={isActive || isVisited ? "hsl(var(--accent))" : "hsl(var(--background))"}
                   stroke="hsl(var(--accent))"
                   strokeWidth={isActive ? 3 : 2}
-                  style={{ transition: "fill 0.3s, stroke-width 0.3s" }}
+                  style={{
+                    transition: "fill 0.3s, stroke-width 0.3s, transform 0.3s",
+                  }}
                 />
-                {/* Number */}
+                {/* Bounce animation wrapper for active */}
+                {isActive ? (
+                  <g>
+                    <animateTransform
+                      attributeName="transform"
+                      type="scale"
+                      values="1;1.15;1"
+                      dur="0.4s"
+                      repeatCount="1"
+                      additive="sum"
+                      calcMode="spline"
+                      keySplines="0.4 0 0.2 1; 0.4 0 0.2 1"
+                    />
+                  </g>
+                ) : null}
+                {/* Icon emoji */}
                 <text
                   x={stop.x}
                   y={stop.y + 1}
                   textAnchor="middle"
                   dominantBaseline="central"
-                  fill={isActive || isVisited ? "hsl(var(--accent-foreground))" : "hsl(var(--accent))"}
-                  fontSize="13"
-                  fontWeight="700"
-                  fontFamily="Outfit, sans-serif"
-                  style={{ transition: "fill 0.3s" }}
+                  fontSize="16"
+                  style={{ transition: "opacity 0.3s" }}
                 >
-                  {i + 1}
+                  {stop.icon}
                 </text>
                 {/* Label below */}
                 {isActive && (
                   <text
                     x={stop.x}
-                    y={stop.y + 34}
+                    y={stop.y + 38}
                     textAnchor="middle"
                     fill="hsl(var(--foreground))"
                     fontSize="11"
                     fontFamily="Outfit, sans-serif"
-                    fontWeight="500"
-                    opacity="0.7"
+                    fontWeight="600"
+                    opacity="0.8"
                   >
                     {stop.label}
                   </text>
@@ -268,16 +328,16 @@ const DayMap = ({ moments }: DayMapProps) => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -12 }}
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className="border border-border rounded-sm p-8 lg:p-10"
-            style={{ backgroundColor: "hsl(var(--background))" }}
+            className="rounded-lg p-8 lg:p-10 border-l-4 border-l-accent border border-border"
+            style={{ backgroundColor: "hsl(var(--accent) / 0.05)" }}
           >
-            <p className="font-body text-xs tracking-widest uppercase text-accent font-medium mb-3">
+            <p className="font-body text-xs tracking-widest uppercase text-accent font-semibold mb-3">
               {moments[active].time}
             </p>
             <h3 className="font-heading text-3xl lg:text-4xl text-primary mb-4">
               {moments[active].title}
             </h3>
-            <p className="font-body text-muted-foreground leading-relaxed">
+            <p className="font-body text-muted-foreground leading-relaxed text-[15px]">
               {moments[active].text}
             </p>
           </motion.div>
@@ -288,7 +348,7 @@ const DayMap = ({ moments }: DayMapProps) => {
           <button
             onClick={goPrev}
             disabled={active === 0}
-            className="p-2 rounded-full border border-border text-muted-foreground hover:text-primary hover:border-primary disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+            className="p-2 rounded-full border border-border text-muted-foreground hover:text-accent hover:border-accent disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
             aria-label="Previous stop"
           >
             <ChevronLeft className="w-4 h-4" />
@@ -299,9 +359,9 @@ const DayMap = ({ moments }: DayMapProps) => {
               <button
                 key={i}
                 onClick={() => handleSelect(i)}
-                className={`w-2.5 h-2.5 rounded-full transition-colors ${
+                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
                   i === active
-                    ? "bg-accent"
+                    ? "bg-accent scale-125"
                     : visited.has(i)
                       ? "bg-accent/40"
                       : "bg-border"
@@ -314,7 +374,7 @@ const DayMap = ({ moments }: DayMapProps) => {
           <button
             onClick={goNext}
             disabled={active === moments.length - 1}
-            className="p-2 rounded-full border border-border text-muted-foreground hover:text-primary hover:border-primary disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+            className="p-2 rounded-full border border-border text-muted-foreground hover:text-accent hover:border-accent disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
             aria-label="Next stop"
           >
             <ChevronRight className="w-4 h-4" />

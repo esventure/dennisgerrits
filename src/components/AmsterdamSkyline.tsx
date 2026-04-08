@@ -32,15 +32,25 @@ const AmsterdamSkyline = () => {
         clipPath: `inset(0 ${(1 - progress) * 100}% 0 0)`,
       }}
     >
-      <img
-        src={skyline}
-        alt="Amsterdam skyline illustration"
-        className="w-full h-auto opacity-[0.06]"
+      {/* Orange div masked by the skyline image — only the lines show */}
+      <div
+        className="w-full opacity-[0.12]"
         style={{
-          maskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)',
-          WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)',
-          filter: 'brightness(0) saturate(100%) invert(28%) sepia(98%) saturate(2000%) hue-rotate(16deg) brightness(97%) contrast(107%)',
+          backgroundColor: 'hsl(var(--accent))',
+          maskImage: `url(${skyline}), linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)`,
+          WebkitMaskImage: `url(${skyline}), linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)`,
+          maskComposite: 'intersect',
+          WebkitMaskComposite: 'source-in',
+          maskSize: '100% auto, 100% 100%',
+          WebkitMaskSize: '100% auto, 100% 100%',
+          maskPosition: 'bottom center',
+          WebkitMaskPosition: 'bottom center',
+          maskRepeat: 'no-repeat',
+          WebkitMaskRepeat: 'no-repeat',
+          aspectRatio: '1920 / 400',
         }}
+        role="img"
+        aria-label="Amsterdam skyline illustration"
       />
     </div>
   );

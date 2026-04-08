@@ -14,19 +14,19 @@ interface DayMapProps {
 
 /* ── Checkpoint positions on the SVG canvas (600×500) ── */
 const stops = [
-  { x: 120, y: 100, label: "Jordaan Café" },
-  { x: 280, y: 160, label: "Canal Walk" },
-  { x: 340, y: 300, label: "Local Lunch" },
-  { x: 480, y: 260, label: "Hidden Garden" },
-  { x: 460, y: 410, label: "Waterfront Bar" },
+  { x: 120, y: 80, label: "Jordaan Café" },
+  { x: 280, y: 140, label: "Canal Walk" },
+  { x: 340, y: 260, label: "Local Lunch" },
+  { x: 480, y: 220, label: "Hidden Garden" },
+  { x: 460, y: 360, label: "Waterfront Bar" },
 ];
 
 /* ── SVG path data between consecutive stops (hand-drawn curves) ── */
 const pathSegments = [
-  "M 120 100 C 160 80, 230 120, 280 160",
-  "M 280 160 C 300 200, 310 250, 340 300",
-  "M 340 300 C 380 290, 430 270, 480 260",
-  "M 480 260 C 500 310, 490 360, 460 410",
+  "M 120 80 C 160 60, 230 100, 280 140",
+  "M 280 140 C 300 180, 310 220, 340 260",
+  "M 340 260 C 380 250, 430 230, 480 220",
+  "M 480 220 C 500 270, 490 320, 460 360",
 ];
 
 /* Approximate path lengths for dash animation */

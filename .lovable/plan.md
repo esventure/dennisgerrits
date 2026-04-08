@@ -1,30 +1,42 @@
 
 
-# Hero: Flip Layout + Bigger Photo
+# Updated Color Palette + Visual Texture Between Sections
 
-## Change
-Reverse the two-column hero grid so Dennis's photo is on the **left** and the text is on the **right**. Make the photo larger and more prominent.
+## 1. New Color Palette
 
-## Layout
+Mapping the uploaded colors to CSS variables:
+
+| Color | Hex | Role | Replaces |
+|-------|-----|------|----------|
+| #2D0036 | Deep purple | `--primary` | Current purple (same family, stays) |
+| #7B1828 | Bordeaux | `--secondary` | Current bordeaux (very close, stays) |
+| #1B4332 | Forest green | `--heritage-green` | Current green (richer, darker) |
+| #E65100 | Burnt orange | `--accent` | Current gold (warmer, bolder) |
+| #BCAAA4 | Warm taupe | `--muted` | Current muted (warmer tone) |
+| #FAFAFA | Off-white | `--background` | Current cream (slightly cooler) |
+
+## 2. Section Texture — Breaking the Cream Monotony
+
+Current problem: Hero, Blockquote, Reviews, Stories, Contact all sit on the same cream. Only the About split and the "More" section break out.
+
+Proposed section backgrounds:
 
 ```text
-┌───────────────────────────┬─────────────────────────┐
-│                           │  Personal Travel        │
-│    [Dennis photo]         │  Companion              │
-│    larger, ~60% width     │                         │
-│    rounded-sm, shadow     │  Hello, I'm Dennis...   │
-│                           │                         │
-│                           │  body text...           │
-└───────────────────────────┴─────────────────────────┘
+Hero            → cream (default)
+Blockquote      → warm taupe bg (#BCAAA4 at ~15% opacity)
+About split     → purple / cream (keep as-is)
+Day in the Life → soft green tint (#1B4332 at ~8% opacity)
+Reviews         → cream (default)
+More            → deep purple (keep as-is)
+Stories         → warm taupe bg (same as blockquote, creates rhythm)
+Contact/FAQ     → cream (default)
 ```
 
-## Details
-- Grid changes from equal `grid-cols-2` to weighted `lg:grid-cols-[1.2fr_1fr]` so the photo column is wider
-- Photo column moves first in DOM (swap the two `<FadeIn>` blocks)
-- Photo gets `max-w-lg` (up from `max-w-md`) and a slight `aspect-[3/4]` for portrait framing
-- Text aligns left as before, sitting in the narrower right column
-- Mobile: stacks with photo on top, text below (natural reading order)
+This creates an alternating warm/neutral rhythm without any drastic changes. The green and taupe tints are very subtle — just enough to signal "new section" as you scroll.
 
-## File changes
-1. **`src/pages/Index.tsx`** — In the hero section (~lines 141-167): swap the order of the two grid children, update grid class to `lg:grid-cols-[1.2fr_1fr]`, increase photo max-width
+## File Changes
+
+1. **`src/index.css`** — Update CSS custom property values to match the new hex palette
+2. **`tailwind.config.ts`** — Add `heritage.orange` color, rename `heritage.gold` to `heritage.orange`
+3. **`src/pages/Index.tsx`** — Update background classes on Blockquote, Day in the Life, and Stories sections to use tinted backgrounds via inline styles or new utility classes
 

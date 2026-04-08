@@ -37,7 +37,7 @@ const AmsterdamSkyline = () => {
         alt="Amsterdam skyline illustration"
         className="w-full h-auto"
         style={{
-          opacity: 0.15,
+          opacity: 0.07,
           maskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)',
           WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)',
           filter: 'invert(1) brightness(1.5) sepia(1) saturate(5) hue-rotate(-15deg)',

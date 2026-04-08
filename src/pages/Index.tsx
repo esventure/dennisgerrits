@@ -234,26 +234,28 @@ const Index = () => {
       </section>
 
       {/* ── 3. A Day in the Life ── */}
-      <section id="day" className="py-24 lg:py-32 scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-green) / 0.08)" }}>
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-3xl mb-16">
+      <section id="day" className="relative scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-green) / 0.08)", height: "300vh" }}>
+        <div className="sticky top-0 min-h-screen flex items-center">
+          <div className="container mx-auto px-6 lg:px-12 py-24 lg:py-32">
+            <div className="max-w-3xl mb-16">
+              <FadeIn>
+                <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
+                  A Day Together
+                </p>
+                <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
+                  A Day in the Life of Dennis
+                </h2>
+                <p className="font-body text-lg text-muted-foreground leading-relaxed">
+                  There are no fixed tours. Every day is shaped by you: your pace, your curiosity,
+                  your energy. Here's what a day together might look like.
+                </p>
+              </FadeIn>
+            </div>
+
             <FadeIn>
-              <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
-                A Day Together
-              </p>
-              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
-                A Day in the Life of Dennis
-              </h2>
-              <p className="font-body text-lg text-muted-foreground leading-relaxed">
-                There are no fixed tours. Every day is shaped by you: your pace, your curiosity,
-                your energy. Here's what a day together might look like.
-              </p>
+              <DayMap moments={moments} />
             </FadeIn>
           </div>
-
-          <FadeIn>
-            <DayMap moments={moments} />
-          </FadeIn>
         </div>
       </section>
 

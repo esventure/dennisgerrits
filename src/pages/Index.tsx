@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
 import AmsterdamSkyline from "@/components/AmsterdamSkyline";
+import DayMap from "@/components/DayMap";
 import dennisIllustration from "@/assets/dennis_illustration.png";
 import dennisPhoto from "@/assets/dennis_photo.png";
 import { Input } from "@/components/ui/input";

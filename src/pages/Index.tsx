@@ -457,11 +457,11 @@ const Index = () => {
               <div className="border border-border rounded-sm p-10">
                 <div className="w-12 h-0.5 bg-secondary mb-8" />
                 <h3 className="font-heading text-3xl text-primary mb-4">
-                  Request a Callback
+                  Book a Call
                 </h3>
                 <p className="font-body text-muted-foreground leading-relaxed mb-8">
-                  Prefer that I reach out to you? Leave your details and a few words about your trip,
-                  and I'll get back to you within 48 hours.
+                  Leave your details and a few words about your trip. I'll reach out personally
+                  to find a time that works for both of us.
                 </p>
                 <form onSubmit={handleContactSubmit} className="space-y-6">
                   <div className="space-y-2">

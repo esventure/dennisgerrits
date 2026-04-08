@@ -169,7 +169,7 @@ const Index = () => {
       </section>
 
       {/* Blockquote */}
-      <div className="py-20 bg-background">
+      <div className="py-20" style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.15)" }}>
         <FadeIn>
           <div className="max-w-3xl mx-auto text-center px-6">
             <blockquote className="font-body text-xl text-secondary italic leading-relaxed">
@@ -232,7 +232,7 @@ const Index = () => {
       </section>
 
       {/* ── 3. A Day in the Life ── */}
-      <section id="day" className="py-24 lg:py-32 bg-muted/30 scroll-mt-20">
+      <section id="day" className="py-24 lg:py-32 scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-green) / 0.08)" }}>
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mb-16">
             <FadeIn>

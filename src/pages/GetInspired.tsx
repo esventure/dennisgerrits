@@ -156,30 +156,7 @@ const GetInspired = () => {
           </div>
 
           <FadeIn>
-            <div className="max-w-3xl">
-              <Accordion
-                type="single"
-                collapsible
-                value={openStory}
-                onValueChange={setOpenStory}
-              >
-                {stories.map((s) => (
-                  <AccordionItem key={s.id} value={s.id} className="border-border">
-                    <AccordionTrigger className="font-heading text-xl md:text-2xl text-primary hover:text-secondary hover:no-underline py-6">
-                      {s.title}
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <p className="font-body text-sm text-muted-foreground italic mb-4">
-                        {s.intro}
-                      </p>
-                      <p className="font-body text-base text-foreground leading-relaxed">
-                        {s.body}
-                      </p>
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </div>
+            <StoryBook stories={stories} initialStoryId={openStory || undefined} />
           </FadeIn>
         </div>
       </section>

@@ -125,8 +125,8 @@ const GetInspired = () => {
                       : "border-accent/10 bg-accent/5 hover:-translate-y-1 hover:shadow-lg hover:border-l-4 hover:border-l-secondary/40"
                   )}
                 >
-                  <div className="w-14 h-14 rounded-full bg-secondary/10 flex items-center justify-center mb-4">
-                    <span className="text-4xl">{theme.icon}</span>
+                  <div className="w-16 h-16 mb-4">
+                    <img src={theme.icon} alt={theme.title} width={64} height={64} loading="lazy" className="w-full h-full object-contain" />
                   </div>
                   <h3 className="font-heading text-2xl text-primary mb-3">{theme.title}</h3>
                   <p className="font-body text-sm text-muted-foreground leading-relaxed">

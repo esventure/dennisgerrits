@@ -234,7 +234,7 @@ const Index = () => {
       </section>
 
       {/* ── 3. A Day in the Life ── */}
-      <section id="day" className="relative scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-green) / 0.08)", height: "300vh" }}>
+      <section id="day" className="relative scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-green) / 0.08)", height: "200vh" }}>
         <div className="sticky top-0 min-h-screen flex items-center">
           <div className="container mx-auto px-6 lg:px-12 py-24 lg:py-32">
             <div className="max-w-3xl mb-16">

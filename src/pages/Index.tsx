@@ -277,7 +277,7 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
             {reviews.map((r, i) => (
               <FadeIn key={i} delay={i * 0.08}>
-                <div className="border border-border rounded-sm p-8 h-full flex flex-col">
+                <div className="bg-background rounded-lg p-8 h-full flex flex-col shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                   <p className="font-body text-foreground leading-relaxed italic flex-1">
                     "{r.quote}"
                   </p>

@@ -3,6 +3,12 @@ import { useSearchParams } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
 import { cn } from "@/lib/utils";
 import StoryBook from "@/components/StoryBook";
+import iconHistory from "@/assets/icon-history.png";
+import iconFood from "@/assets/icon-food.png";
+import iconArchitecture from "@/assets/icon-architecture.png";
+import iconArt from "@/assets/icon-art.png";
+import iconNature from "@/assets/icon-nature.png";
+import iconCraft from "@/assets/icon-craft.png";
 
 const themes = [
   {

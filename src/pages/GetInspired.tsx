@@ -91,19 +91,18 @@ const GetInspired = () => {
   return (
     <main>
       {/* Interests section */}
-      <section className="py-24 lg:py-32">
+      <section className="py-24 lg:py-32 bg-gradient-to-b from-accent/5 to-background">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mb-16">
             <FadeIn>
               <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
-                Get Inspired
+                What excites you?
               </p>
               <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl text-primary leading-[0.95] mb-8">
                 Build Your Day
               </h1>
               <p className="font-body text-lg text-muted-foreground leading-relaxed">
-                I don't offer tour packages. Instead, I share my passions, and together we build a
-                day around the themes that excite you most. Here are some of the worlds I love to explore.
+                Tell me what you love, and I'll show you a side of Amsterdam you won't find in any guidebook.
               </p>
             </FadeIn>
           </div>
@@ -114,13 +113,15 @@ const GetInspired = () => {
                 <button
                   onClick={() => setActive(active === theme.id ? null : theme.id)}
                   className={cn(
-                    "w-full text-left p-8 border rounded-sm transition-all duration-300",
+                    "w-full text-left p-8 rounded-lg transition-all duration-300 shadow-md border",
                     active === theme.id
-                      ? "border-secondary bg-secondary/5"
-                      : "border-border hover:border-secondary/40"
+                      ? "border-secondary bg-secondary/10 shadow-lg border-l-4 border-l-secondary"
+                      : "border-accent/10 bg-accent/5 hover:-translate-y-1 hover:shadow-lg hover:border-l-4 hover:border-l-secondary/40"
                   )}
                 >
-                  <span className="text-3xl mb-4 block">{theme.icon}</span>
+                  <div className="w-14 h-14 rounded-full bg-secondary/10 flex items-center justify-center mb-4">
+                    <span className="text-4xl">{theme.icon}</span>
+                  </div>
                   <h3 className="font-heading text-2xl text-primary mb-3">{theme.title}</h3>
                   <p className="font-body text-sm text-muted-foreground leading-relaxed">
                     {theme.description}
@@ -131,8 +132,13 @@ const GetInspired = () => {
           </div>
 
           <FadeIn>
-            <p className="font-body text-center text-muted-foreground mt-16 text-sm">
-              These are starting points, not limits. Your interests might take us somewhere completely unexpected. That's the whole point.
+            <p className="font-body text-center text-muted-foreground mt-16 text-sm mb-4">
+              Pick a few that speak to you, then let's talk about building your perfect day.
+            </p>
+            <p className="text-center">
+              <a href="/#contact" className="font-body text-secondary hover:text-secondary/80 transition-colors text-sm tracking-wide underline underline-offset-4">
+                Ready to start planning? Let's talk.
+              </a>
             </p>
           </FadeIn>
         </div>

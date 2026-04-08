@@ -15,37 +15,37 @@ const themes = [
     id: "history",
     title: "Hidden History",
     description: "The stories that never made it into guidebooks. Secret passages, forgotten wars, the people who shaped a city but whose names you won't find on any monument.",
-    icon: "🏛️",
+    icon: iconHistory,
   },
   {
     id: "food",
     title: "Local Food Culture",
     description: "Markets where chefs shop at dawn. Bakeries that haven't changed their recipe in a century. The story behind every regional dish you'll taste.",
-    icon: "🍷",
+    icon: iconFood,
   },
   {
     id: "architecture",
     title: "Architecture & Design",
     description: "From medieval brickwork to brutalist experiments. Why a building looks the way it does, and what it says about the people who built it.",
-    icon: "🏗️",
+    icon: iconArchitecture,
   },
   {
     id: "art",
     title: "Street Art & Subculture",
     description: "Murals, studios, underground galleries. Art that lives on the streets and tells you more about a city than any museum could.",
-    icon: "🎨",
+    icon: iconArt,
   },
   {
     id: "nature",
     title: "Parks & Hidden Gardens",
     description: "Green spaces that locals keep to themselves. A bench with the perfect view. A garden that's been tended for three hundred years.",
-    icon: "🌿",
+    icon: iconNature,
   },
   {
     id: "craft",
     title: "Local Craft & Makers",
     description: "Workshops, ateliers, and people who still make things by hand. The stories behind the craft are often as beautiful as the objects.",
-    icon: "✂️",
+    icon: iconCraft,
   },
 ];
 

@@ -140,8 +140,17 @@ const Index = () => {
       {/* ── 1. Hero ── */}
       <section id="hero" className="min-h-[85vh] flex items-center scroll-mt-20">
         <div className="container mx-auto px-6 lg:px-12 pt-2 pb-24">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-16 items-center">
             <FadeIn>
+              <div className="flex justify-center lg:justify-start h-full items-center">
+                <img
+                  src={dennisPhoto}
+                  alt="Photo of Dennis Gerrits"
+                  className="w-full max-w-lg rounded-sm object-cover shadow-lg aspect-[3/4]"
+                />
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.2}>
               <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
                 Personal Travel Companion
               </p>
@@ -154,15 +163,6 @@ const Index = () => {
                 I walk alongside you, not in front of you. We'll find the stories, the quiet corners,
                 the places that make you stop and really look. That's what I do.
               </p>
-            </FadeIn>
-            <FadeIn delay={0.2}>
-              <div className="flex justify-center lg:justify-end h-full items-center">
-                <img
-                  src={dennisPhoto}
-                  alt="Photo of Dennis Gerrits"
-                  className="w-full max-w-md rounded-sm object-cover shadow-lg"
-                />
-              </div>
             </FadeIn>
           </div>
         </div>

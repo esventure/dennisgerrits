@@ -1,43 +1,30 @@
 
 
-# About Dennis — Full-Screen Split Layout
+# Hero: Flip Layout + Bigger Photo
 
-## Concept
-Replace the toggle-based section with two side-by-side panels that each take up roughly half the viewport width and full viewport height. Left panel = "The Person," right panel = "The Guide." Both visible simultaneously — no interaction needed. Magazine-style, impossible to scroll past.
+## Change
+Reverse the two-column hero grid so Dennis's photo is on the **left** and the text is on the **right**. Make the photo larger and more prominent.
 
 ## Layout
 
 ```text
-┌─────────────────────────┬─────────────────────────┐
-│                         │                         │
-│   THE PERSON            │   THE GUIDE             │
-│                         │                         │
-│   ─── accent line       │   ─── accent line       │
-│                         │                         │
-│   A True Amsterdammer   │   A Different Kind      │
-│                         │   of Guide              │
-│   Personal story...     │                         │
-│                         │   Guide philosophy...   │
-│   Second paragraph...   │                         │
-│                         │   Second paragraph...   │
-│                         │                         │
-│   (cream/light bg)      │   (dark primary bg,     │
-│                         │    light text)           │
-│                         │                         │
-└─────────────────────────┴─────────────────────────┘
-│            Blockquote centered below              │
+┌───────────────────────────┬─────────────────────────┐
+│                           │  Personal Travel        │
+│    [Dennis photo]         │  Companion              │
+│    larger, ~60% width     │                         │
+│    rounded-sm, shadow     │  Hello, I'm Dennis...   │
+│                           │                         │
+│                           │  body text...           │
+└───────────────────────────┴─────────────────────────┘
 ```
 
-On mobile: stacks vertically, each panel ~80vh.
-
-## Visual treatment
-- Left panel: cream/light background (matches site), dark text. Warm, personal feel.
-- Right panel: dark primary (`bg-primary`) background with `text-primary-foreground`. Creates strong contrast and visual weight.
-- Each panel has generous internal padding, vertically centered content.
-- Section heading "About Dennis / The Person & The Guide" removed — the split itself communicates the duality.
-- Small label at top of each panel: "THE PERSON" / "THE GUIDE" in tracking-widest uppercase.
-- Blockquote remains below as a full-width centered element.
+## Details
+- Grid changes from equal `grid-cols-2` to weighted `lg:grid-cols-[1.2fr_1fr]` so the photo column is wider
+- Photo column moves first in DOM (swap the two `<FadeIn>` blocks)
+- Photo gets `max-w-lg` (up from `max-w-md`) and a slight `aspect-[3/4]` for portrait framing
+- Text aligns left as before, sitting in the narrower right column
+- Mobile: stacks with photo on top, text below (natural reading order)
 
 ## File changes
-1. **`src/pages/Index.tsx`** — Replace the About section (lines 171-254): remove toggle state, replace with a `min-h-screen grid grid-cols-1 lg:grid-cols-2` layout containing two contrasting panels. Remove `aboutTab` state.
+1. **`src/pages/Index.tsx`** — In the hero section (~lines 141-167): swap the order of the two grid children, update grid class to `lg:grid-cols-[1.2fr_1fr]`, increase photo max-width
 

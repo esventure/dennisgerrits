@@ -36,7 +36,7 @@ const DayMap = ({ moments }: DayMapProps) => {
   const [active, setActive] = useState(0);
   const [visited, setVisited] = useState<Set<number>>(new Set([0]));
   const sectionRef = useRef<HTMLDivElement>(null);
-  const lastScrollY = useRef(0);
+  
   const scrollCooldown = useRef(false);
 
   const handleSelect = useCallback((idx: number) => {
@@ -47,26 +47,28 @@ const DayMap = ({ moments }: DayMapProps) => {
   const goPrev = () => handleSelect(Math.max(0, active - 1));
   const goNext = () => handleSelect(Math.min(moments.length - 1, active + 1));
 
-  /* ── Scroll-driven checkpoint progression ── */
+  /* ── Scroll-driven checkpoint progression (works with sticky parent) ── */
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
 
+    // Find the tall outer section (parent with height: 300vh)
+    const section = el.closest("section");
+    if (!section) return;
+
     const handleScroll = () => {
       if (scrollCooldown.current) return;
 
-      const rect = el.getBoundingClientRect();
+      const rect = section.getBoundingClientRect();
       const viewH = window.innerHeight;
-      const currentY = window.scrollY;
-      const scrollingDown = currentY > lastScrollY.current;
-      lastScrollY.current = currentY;
 
       // Only trigger when section is in view
-      if (rect.top > viewH || rect.bottom < 0) return;
+      if (rect.bottom < 0 || rect.top > viewH) return;
 
-      // Calculate how far through the section we are (0-1)
+      // Progress through the tall scroll container (0 at top, 1 at bottom)
+      const scrollableHeight = rect.height - viewH;
       const sectionProgress = Math.max(0, Math.min(1,
-        (viewH - rect.top) / (rect.height + viewH * 0.3)
+        -rect.top / scrollableHeight
       ));
 
       // Map progress to stop index
@@ -76,15 +78,12 @@ const DayMap = ({ moments }: DayMapProps) => {
       );
 
       setActive((prev) => {
-        if (scrollingDown && targetStop > prev) {
+        if (targetStop !== prev) {
           scrollCooldown.current = true;
-          setTimeout(() => { scrollCooldown.current = false; }, 600);
-          setVisited((v) => new Set(v).add(targetStop));
-          return targetStop;
-        }
-        if (!scrollingDown && targetStop < prev) {
-          scrollCooldown.current = true;
-          setTimeout(() => { scrollCooldown.current = false; }, 600);
+          setTimeout(() => { scrollCooldown.current = false; }, 400);
+          if (targetStop > prev) {
+            setVisited((v) => new Set(v).add(targetStop));
+          }
           return targetStop;
         }
         return prev;

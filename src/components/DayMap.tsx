@@ -108,6 +108,7 @@ const DayMap = ({ moments }: DayMapProps) => {
         <svg
           viewBox="0 0 600 500"
           className="w-full h-full"
+          style={{ overflow: "visible" }}
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >

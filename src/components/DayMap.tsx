@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -35,14 +35,65 @@ const pathLengths = [200, 180, 160, 180];
 const DayMap = ({ moments }: DayMapProps) => {
   const [active, setActive] = useState(0);
   const [visited, setVisited] = useState<Set<number>>(new Set([0]));
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const lastScrollY = useRef(0);
+  const scrollCooldown = useRef(false);
 
-  const handleSelect = (idx: number) => {
+  const handleSelect = useCallback((idx: number) => {
     setActive(idx);
     setVisited((prev) => new Set(prev).add(idx));
-  };
+  }, []);
 
   const goPrev = () => handleSelect(Math.max(0, active - 1));
   const goNext = () => handleSelect(Math.min(moments.length - 1, active + 1));
+
+  /* ── Scroll-driven checkpoint progression ── */
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const handleScroll = () => {
+      if (scrollCooldown.current) return;
+
+      const rect = el.getBoundingClientRect();
+      const viewH = window.innerHeight;
+      const currentY = window.scrollY;
+      const scrollingDown = currentY > lastScrollY.current;
+      lastScrollY.current = currentY;
+
+      // Only trigger when section is in view
+      if (rect.top > viewH || rect.bottom < 0) return;
+
+      // Calculate how far through the section we are (0-1)
+      const sectionProgress = Math.max(0, Math.min(1,
+        (viewH - rect.top) / (rect.height + viewH * 0.3)
+      ));
+
+      // Map progress to stop index
+      const targetStop = Math.min(
+        moments.length - 1,
+        Math.floor(sectionProgress * moments.length)
+      );
+
+      setActive((prev) => {
+        if (scrollingDown && targetStop > prev) {
+          scrollCooldown.current = true;
+          setTimeout(() => { scrollCooldown.current = false; }, 600);
+          setVisited((v) => new Set(v).add(targetStop));
+          return targetStop;
+        }
+        if (!scrollingDown && targetStop < prev) {
+          scrollCooldown.current = true;
+          setTimeout(() => { scrollCooldown.current = false; }, 600);
+          return targetStop;
+        }
+        return prev;
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [moments.length]);
 
   /* Which path segments to reveal: all segments up to the highest visited stop */
   const maxVisited = useMemo(() => {
@@ -52,7 +103,7 @@ const DayMap = ({ moments }: DayMapProps) => {
   }, [visited]);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+    <div ref={sectionRef} className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
       {/* ── Left: SVG Map ── */}
       <div className="relative w-full" style={{ aspectRatio: "6 / 5" }}>
         <svg

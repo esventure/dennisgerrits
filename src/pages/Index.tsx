@@ -143,18 +143,18 @@ const Index = () => {
         <div className="container mx-auto px-6 lg:px-12 pt-2 pb-24">
           <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-16 items-center">
             <FadeIn>
-              <div className="flex justify-center lg:justify-start h-full items-center">
+              <div className="flex flex-col items-center lg:items-start h-full">
                 <img
                   src={dennisPhoto}
                   alt="Photo of Dennis Gerrits"
                   className="w-full max-w-lg rounded-sm object-cover shadow-lg aspect-[3/4]"
                 />
+                <p className="font-body text-sm tracking-widest uppercase text-secondary mt-6">
+                  Personal Travel Companion
+                </p>
               </div>
             </FadeIn>
             <FadeIn delay={0.2}>
-              <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
-                Personal Travel Companion
-              </p>
               <h1 className="font-heading text-6xl md:text-7xl lg:text-8xl text-primary leading-[0.95] mb-8">
                 Hello,<br />
                 <span className="text-accent">I'm Dennis.</span><br />

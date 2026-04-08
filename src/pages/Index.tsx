@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
 import AmsterdamSkyline from "@/components/AmsterdamSkyline";
+import DayMap from "@/components/DayMap";
 import dennisIllustration from "@/assets/dennis_illustration.png";
 import dennisPhoto from "@/assets/dennis_photo.png";
 import { Input } from "@/components/ui/input";
@@ -250,25 +251,9 @@ const Index = () => {
             </FadeIn>
           </div>
 
-          <div className="max-w-3xl mx-auto space-y-16">
-            {moments.map((m, i) => (
-              <FadeIn key={m.time} delay={i * 0.08}>
-                <div className="flex gap-8">
-                  <div className="flex flex-col items-center pt-1">
-                    <div className="w-3 h-3 rounded-full bg-secondary shrink-0" />
-                    {i < moments.length - 1 && <div className="w-px flex-1 bg-border mt-3" />}
-                  </div>
-                  <div className="pb-4">
-                    <p className="font-body text-xs tracking-widest uppercase text-accent font-medium mb-2">
-                      {m.time}
-                    </p>
-                    <h3 className="font-heading text-2xl text-primary mb-3">{m.title}</h3>
-                    <p className="font-body text-muted-foreground leading-relaxed">{m.text}</p>
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
+          <FadeIn>
+            <DayMap moments={moments} />
+          </FadeIn>
         </div>
       </section>
 

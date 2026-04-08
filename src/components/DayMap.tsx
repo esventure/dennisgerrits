@@ -36,7 +36,7 @@ const DayMap = ({ moments }: DayMapProps) => {
   const [active, setActive] = useState(0);
   const [visited, setVisited] = useState<Set<number>>(new Set([0]));
   const sectionRef = useRef<HTMLDivElement>(null);
-  const lastScrollY = useRef(0);
+  
   const scrollCooldown = useRef(false);
 
   const handleSelect = useCallback((idx: number) => {

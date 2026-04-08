@@ -39,6 +39,7 @@ const AmsterdamSkyline = () => {
         style={{
           maskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)',
           WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)',
+          filter: 'brightness(0) saturate(100%) invert(28%) sepia(98%) saturate(2000%) hue-rotate(16deg) brightness(97%) contrast(107%)',
         }}
       />
     </div>

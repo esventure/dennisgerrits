@@ -6,10 +6,10 @@ import dennisIllustration from "@/assets/dennis_illustration.png";
 
 const navLinks = [
   { to: "/#about", label: "About" },
+  { to: "/#how-i-work", label: "How I Work" },
   { to: "/#day", label: "A Day Together" },
   { to: "/#proof", label: "Reviews" },
   { to: "/#more", label: "More" },
-  { to: "/#stories", label: "Stories" },
   { to: "/#contact", label: "Contact" },
   { to: "/get-inspired", label: "Get Inspired" },
 ];

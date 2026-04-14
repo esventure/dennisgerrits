@@ -33,12 +33,20 @@ const Footer = () => (
         </div>
         <div>
           <h4 className="font-heading text-xl mb-4">For Professionals</h4>
-          <Link
-            to="/travel-agents"
-            className="font-body text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors"
-          >
-            Travel Agents & Concierges
-          </Link>
+          <nav className="space-y-2">
+            <Link
+              to="/travel-agents"
+              className="block font-body text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors"
+            >
+              Travel Agents & Concierges
+            </Link>
+            <Link
+              to="/travel-agents"
+              className="block font-body text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors"
+            >
+              Universities & Schools
+            </Link>
+          </nav>
           <p className="font-body text-primary-foreground/40 text-xs mt-8">
             © {new Date().getFullYear()} Dennis Gerrits. All rights reserved.
           </p>

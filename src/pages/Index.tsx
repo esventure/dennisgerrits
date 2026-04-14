@@ -243,20 +243,23 @@ const Index = () => {
                   How I Work
                 </p>
                 <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
-                  It Starts With a Conversation
+                  Like a Trusted Friend, With the Eye of a Concierge
                 </h2>
               </div>
             </FadeIn>
             <FadeIn delay={0.15}>
               <div className="space-y-6">
                 <p className="font-body text-muted-foreground leading-relaxed">
-                  Before we ever set foot in the city together, I want to know who you are. What you love, what you're curious about, what kind of traveller you are. I listen, I ask questions, and I start building a picture of what your perfect day looks like.
+                  Imagine discovering Amsterdam as if with a trusted local friend, but with the expertise and refinement of a private concierge. That's exactly what I offer.
                 </p>
                 <p className="font-body text-muted-foreground leading-relaxed">
-                  Nothing is scripted. Nothing is pre-packaged. Every experience I create is built from scratch, shaped around your interests, your pace, and the things that make you light up. That's the only way it works.
+                  Every experience starts with you. Your interests, your pace, your curiosity. Whether it's exploring vibrant neighbourhoods like the Jordaan and the Jewish Cultural Quarter, diving into art at the Van Gogh Museum or Rijksmuseum, or uncovering hidden gems only locals know about, every detail is designed around what excites you most.
                 </p>
                 <p className="font-body text-muted-foreground leading-relaxed">
-                  I don't do group tours. I don't use a fixed route. I prepare for days so that our time together feels effortless. When we walk through the city, it should feel like spending the day with a friend who just happens to know all the best stories.
+                  My tours are never scripted. Architecture (my field of study), food, nightlife, history, culture. We follow whatever sparks your interest, creating something as dynamic and personal as the city itself.
+                </p>
+                <p className="font-body text-muted-foreground leading-relaxed">
+                  My aim is for you to become part of my city. To feel at home here. To understand what makes Amsterdam special, not just through its sights, but through the rhythm of its streets, its culture, and its people.
                 </p>
               </div>
             </FadeIn>
@@ -274,21 +277,26 @@ const Index = () => {
                   My Service
                 </p>
                 <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
-                  What You Get
+                  Everything Taken Care Of
                 </h2>
               </div>
             </FadeIn>
             <FadeIn delay={0.15}>
               <div className="space-y-6">
                 <p className="font-body text-muted-foreground leading-relaxed">
-                  As part of my service, I take care of everything. Restaurant reservations at places you'd never find on your own. Tickets to museums and experiences, timed so we avoid the crowds. Local transport sorted. All the details handled, so you can simply be present.
+                  Amsterdam is best explored by walking, biking, or my personal recommendation: on a private boat. Cruising the canals with a glass of wine and a picnic offers breathtaking views and an unparalleled perspective of the city.
+                </p>
+                <p className="font-body text-muted-foreground leading-relaxed">
+                  For those wishing to go beyond Amsterdam, I specialise in day trips to historic cities like The Hague, Delft, Leiden, Rotterdam and Haarlem, as well as scenic countryside escapes. Windmills, tulip fields in spring, and charming villages, all in the comfort of a private car.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
                   {[
-                    { title: "Tailored Itinerary", desc: "A day designed entirely around your interests and energy." },
-                    { title: "Reservations & Tickets", desc: "Restaurants, museums, and experiences, all arranged for you." },
-                    { title: "Local Knowledge", desc: "Access to places and stories that aren't in any guidebook." },
-                    { title: "Personal Attention", desc: "Just you (and your group), no strangers, no distractions." },
+                    { title: "Museum Reservations", desc: "Time slots booked so you skip the queues and enjoy art at your pace." },
+                    { title: "Dining Experiences", desc: "Tables at places you'd never find on your own, from hidden bistros to canal-side gems." },
+                    { title: "Full Itinerary", desc: "A curated plan for your entire stay, not just the day we spend together." },
+                    { title: "WhatsApp Support", desc: "I'm available throughout your stay for tips, guidance, and recommendations." },
+                    { title: "Transport & Transfers", desc: "Airport transfers, train tickets, and private car arrangements all handled." },
+                    { title: "Hotel Recommendations", desc: "Trusted suggestions for hotels and apartments that match your style." },
                   ].map((item) => (
                     <div key={item.title} className="border-l-2 border-accent pl-4">
                       <h4 className="font-heading text-lg text-primary mb-1">{item.title}</h4>

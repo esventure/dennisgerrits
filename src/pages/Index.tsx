@@ -233,6 +233,75 @@ const Index = () => {
 
       </section>
 
+      {/* ── How I Work ── */}
+      <section id="how-i-work" className="py-24 lg:py-32 scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.1)" }}>
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <FadeIn>
+              <div className="max-w-lg">
+                <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
+                  How I Work
+                </p>
+                <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
+                  It Starts With a Conversation
+                </h2>
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.15}>
+              <div className="space-y-6">
+                <p className="font-body text-muted-foreground leading-relaxed">
+                  Before we ever set foot in the city together, I want to know who you are. What you love, what you're curious about, what kind of traveller you are. I listen, I ask questions, and I start building a picture of what your perfect day looks like.
+                </p>
+                <p className="font-body text-muted-foreground leading-relaxed">
+                  Nothing is scripted. Nothing is pre-packaged. Every experience I create is built from scratch, shaped around your interests, your pace, and the things that make you light up. That's the only way it works.
+                </p>
+                <p className="font-body text-muted-foreground leading-relaxed">
+                  I don't do group tours. I don't use a fixed route. I prepare for days so that our time together feels effortless. When we walk through the city, it should feel like spending the day with a friend who just happens to know all the best stories.
+                </p>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* ── My Service ── */}
+      <section id="my-service" className="py-24 lg:py-32 scroll-mt-20">
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <FadeIn>
+              <div className="max-w-lg">
+                <p className="font-body text-sm tracking-widest uppercase text-accent mb-6">
+                  My Service
+                </p>
+                <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
+                  What You Get
+                </h2>
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.15}>
+              <div className="space-y-6">
+                <p className="font-body text-muted-foreground leading-relaxed">
+                  As part of my service, I take care of everything. Restaurant reservations at places you'd never find on your own. Tickets to museums and experiences, timed so we avoid the crowds. Local transport sorted. All the details handled, so you can simply be present.
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
+                  {[
+                    { title: "Tailored Itinerary", desc: "A day designed entirely around your interests and energy." },
+                    { title: "Reservations & Tickets", desc: "Restaurants, museums, and experiences, all arranged for you." },
+                    { title: "Local Knowledge", desc: "Access to places and stories that aren't in any guidebook." },
+                    { title: "Personal Attention", desc: "Just you (and your group), no strangers, no distractions." },
+                  ].map((item) => (
+                    <div key={item.title} className="border-l-2 border-accent pl-4">
+                      <h4 className="font-heading text-lg text-primary mb-1">{item.title}</h4>
+                      <p className="font-body text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
       {/* ── 3. A Day in the Life ── */}
       <section id="day" className="relative scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-green) / 0.08)", height: "200vh" }}>
         <div className="sticky top-0 min-h-screen flex items-center">
@@ -308,7 +377,29 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ── 5. More: Mission, Media & Podcast ── */}
+      {/* ── Rick Steves Feature ── */}
+      <FadeIn>
+        <div className="py-20 lg:py-24" style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.15)" }}>
+          <div className="container mx-auto px-6 lg:px-12">
+            <div className="max-w-3xl mx-auto text-center">
+              <p className="font-body text-sm tracking-widest uppercase text-accent mb-6">
+                Featured By
+              </p>
+              <h2 className="font-heading text-4xl md:text-5xl text-primary leading-[0.95] mb-6">
+                Rick Steves
+              </h2>
+              <blockquote className="font-body text-xl text-foreground italic leading-relaxed mb-6">
+                "Dennis is the kind of local guide every traveller dreams of finding. He doesn't just show you Amsterdam. He makes you feel like you belong there."
+              </blockquote>
+              <p className="font-body text-sm text-muted-foreground">
+                Guest on the Rick Steves podcast, exploring Amsterdam beyond the tourist trail
+              </p>
+            </div>
+          </div>
+        </div>
+      </FadeIn>
+
+      {/* ── 5. More: Mission & Invite Dennis ── */}
       <section id="more" className="py-24 lg:py-32 bg-primary scroll-mt-20">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mb-16">
@@ -348,9 +439,23 @@ const Index = () => {
             ))}
           </div>
 
-          {/* Media & Podcast */}
+          {/* Invite Dennis + Media */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             <FadeIn>
+              <div className="border border-primary-foreground/20 rounded-sm p-8">
+                <h3 className="font-heading text-2xl text-primary-foreground mb-4">Invite Dennis</h3>
+                <p className="font-body text-primary-foreground/70 leading-relaxed mb-4">
+                  Looking for a speaker, podcast guest, or radio contributor? I love sharing stories about Amsterdam, urban culture, and what it means to truly experience a place. Available for lectures, panel discussions, podcast appearances, and radio.
+                </p>
+                <a
+                  href="#contact"
+                  className="inline-block font-body text-sm tracking-widest uppercase text-accent hover:text-accent/80 transition-colors border-b border-accent/40 pb-0.5"
+                >
+                  Get in touch →
+                </a>
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.15}>
               <div className="border border-primary-foreground/20 rounded-sm p-8">
                 <h3 className="font-heading text-2xl text-primary-foreground mb-4">In the Media</h3>
                 <ul className="space-y-3">
@@ -360,21 +465,37 @@ const Index = () => {
                   <li className="font-body text-primary-foreground/70">
                     <span className="text-accent font-medium">Amsterdam Radio</span> — Regular contributor on the city's hidden stories
                   </li>
-                  <li className="font-body text-primary-foreground/70">
-                    <span className="text-accent font-medium">University Collaborations</span> — Guest lectures on urban storytelling and cultural tourism
-                  </li>
                 </ul>
               </div>
             </FadeIn>
-            <FadeIn delay={0.15}>
-              <div className="border border-primary-foreground/20 rounded-sm p-8">
-                <h3 className="font-heading text-2xl text-primary-foreground mb-4">Two Stories, One City</h3>
-                <p className="font-body text-primary-foreground/70 leading-relaxed mb-4">
-                  My podcast where I pair two seemingly unrelated Amsterdam stories and show how they connect.
-                  History, architecture, food, people. Everything in this city is linked if you know where to look.
+          </div>
+        </div>
+      </section>
+
+      {/* ── Podcast: Two Stories, One City ── */}
+      <section id="podcast" className="py-24 lg:py-32 scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-green) / 0.06)" }}>
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <FadeIn>
+              <div>
+                <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
+                  The Podcast
                 </p>
-                <div className="bg-primary-foreground/10 rounded-sm p-6 flex items-center justify-center">
-                  <p className="font-body text-sm text-primary-foreground/50 italic">Podcast player embed</p>
+                <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
+                  Two Stories, One City
+                </h2>
+                <p className="font-body text-muted-foreground leading-relaxed mb-4">
+                  This podcast is an extension of who I am. In each episode, I pair two seemingly unrelated Amsterdam stories and show how they connect. History, architecture, food, people. Everything in this city is linked if you know where to look.
+                </p>
+                <p className="font-body text-muted-foreground leading-relaxed">
+                  It's my voice, my curiosity, and the way I experience this city. If you want to know what spending a day with me feels like, start here.
+                </p>
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.15}>
+              <div className="bg-primary/5 border border-border rounded-lg p-8">
+                <div className="bg-muted rounded-sm p-8 flex items-center justify-center min-h-[200px]">
+                  <p className="font-body text-sm text-muted-foreground italic">Podcast player embed</p>
                 </div>
               </div>
             </FadeIn>

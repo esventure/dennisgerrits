@@ -338,6 +338,35 @@ const Index = () => {
               </div>
             </FadeIn>
           </div>
+
+          {/* Invite Dennis — speaking, podcasts, radio */}
+          <FadeIn delay={0.1}>
+            <div
+              className="mt-16 lg:mt-20 rounded-sm border-l-4 p-8 lg:p-10 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 md:gap-10 items-center"
+              style={{
+                borderLeftColor: "hsl(var(--accent))",
+                backgroundColor: "hsl(var(--background))",
+              }}
+            >
+              <div>
+                <p className="font-body text-sm tracking-widest uppercase text-accent mb-3">
+                  Invite Dennis
+                </p>
+                <h3 className="font-heading text-3xl md:text-4xl text-primary leading-tight mb-4">
+                  Book a lecture or invite Dennis as a guest
+                </h3>
+                <p className="font-body text-foreground/80 leading-relaxed max-w-2xl">
+                  Beyond guiding, Dennis is available for lectures and as a guest on podcasts and radio shows. If you're a host, organiser, or producer looking for a story about Amsterdam, the Netherlands, or travel beyond the tourist trail, get in touch.
+                </p>
+              </div>
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-accent text-accent-foreground font-body text-sm tracking-widest uppercase rounded-sm hover:bg-accent/90 transition-colors whitespace-nowrap"
+              >
+                Get in touch →
+              </a>
+            </div>
+          </FadeIn>
         </div>
       </div>
 
@@ -585,79 +614,6 @@ const Index = () => {
           </FadeIn>
         </div>
       </section>
-      {/* ── 5. More: Mission & Invite Dennis ── */}
-      <section id="more" className="py-24 lg:py-32 bg-primary scroll-mt-20">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-3xl mb-16">
-            <FadeIn>
-              <p className="font-body text-sm tracking-widest uppercase text-accent mb-6">
-                Beyond the Walk
-              </p>
-              <h2 className="font-heading text-5xl md:text-6xl text-primary-foreground leading-[0.95] mb-8">
-                More Than a Guide
-              </h2>
-            </FadeIn>
-          </div>
-
-          {/* Mission pillars */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 mb-20">
-            {[
-              {
-                title: "Storytelling",
-                text: "The best way to understand a place is through the people who shaped it.",
-              },
-              {
-                title: "Building Community",
-                text: "Travel should bring people closer, leaving real connections instead of just photographs.",
-              },
-              {
-                title: "Honouring the City",
-                text: "Amsterdam gave me everything. This work is my way of giving something back.",
-              },
-            ].map((item, i) => (
-              <FadeIn key={item.title} delay={i * 0.15}>
-                <div>
-                  <div className="w-12 h-0.5 bg-accent mb-6" />
-                  <h3 className="font-heading text-2xl text-primary-foreground mb-4">{item.title}</h3>
-                  <p className="font-body text-primary-foreground/70 leading-relaxed">{item.text}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-
-          {/* Invite Dennis + Media */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-            <FadeIn>
-              <div className="border border-primary-foreground/20 rounded-sm p-8">
-                <h3 className="font-heading text-2xl text-primary-foreground mb-4">Invite Dennis</h3>
-                <p className="font-body text-primary-foreground/70 leading-relaxed mb-4">
-                  Available for lectures, panel discussions, podcast appearances, and radio. Get in touch to discuss.
-                </p>
-                <a
-                  href="#contact"
-                  className="inline-block font-body text-sm tracking-widest uppercase text-accent hover:text-accent/80 transition-colors border-b border-accent/40 pb-0.5"
-                >
-                  Get in touch →
-                </a>
-              </div>
-            </FadeIn>
-            <FadeIn delay={0.15}>
-              <div className="border border-primary-foreground/20 rounded-sm p-8">
-                <h3 className="font-heading text-2xl text-primary-foreground mb-4">In the Media</h3>
-                <ul className="space-y-3">
-                  <li className="font-body text-primary-foreground/70">
-                    <span className="text-accent font-medium">Rick Steves Podcast</span> — Guest appearance on exploring Amsterdam beyond the tourist trail
-                  </li>
-                  <li className="font-body text-primary-foreground/70">
-                    <span className="text-accent font-medium">Amsterdam Radio</span> — Regular contributor on the city's hidden stories
-                  </li>
-                </ul>
-              </div>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
-
       {/* ── Podcast: Two Stories, One City ── */}
       <section id="podcast" className="py-24 lg:py-32 scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-green) / 0.06)" }}>
         <div className="container mx-auto px-6 lg:px-12">

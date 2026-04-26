@@ -1,63 +1,55 @@
 
 
-# Restructure Homepage: Rick Steves, Podcast, Speaking, How I Work, My Service
+# Trim Text Across the Homepage
 
-## Summary
-The client wants several structural changes: (1) Rick Steves as a prominent trust signal, (2) Dennis's podcast given its own dedicated spot, (3) a "Book me for speaking/podcast/radio" section, (4) University Collaborations moved to the footer alongside Travel Agents, (5) two new distinct sections: "How I Work" and "My Service".
+## Problem
+Nearly every section has 2-4 paragraphs of body copy. On a scroll-heavy page this creates fatigue — visitors skim past instead of reading. The voice is great, but it needs to breathe.
 
-## Current State
-- Section 5 ("More Than a Guide") contains mission pillars + a combined "In the Media" box (Rick Steves, Amsterdam Radio, University Collaborations as bullet points) + a podcast card
-- No "How I Work" or "My Service" sections exist
-- Footer only links to Travel Agents under "For Professionals"
+## Approach
+Keep the warmth and personality, but cut each section to its sharpest lines. Where there are 3-4 paragraphs, reduce to 1-2. Let visuals, whitespace, and structure do the heavy lifting.
 
-## Changes
+## Section-by-Section Changes (all in `src/pages/Index.tsx`)
 
-### 1. Rick Steves: Prominent trust signal (Index.tsx, section 4 area)
-- Create a dedicated **Rick Steves feature block** near the Reviews section (after reviews, before "More")
-- Large quote or endorsement-style card with Rick Steves' name prominently displayed
-- Warm background, larger typography, possibly his name in the accent color
-- This should feel like a standout testimonial, not buried in a list
+### Hero
+- Keep the headline and one short paragraph. Already fairly lean — no change needed.
 
-### 2. Dennis's Podcast: Dedicated section (Index.tsx)
-- Elevate the podcast from a small card inside section 5 to its own **full-width section**
-- Title: "Two Stories, One City" with description about how it's an extension of Dennis's personality
-- Podcast player embed placeholder, prominent and inviting
-- Position it after "More Than a Guide" or as a standalone block
+### About (The Person / The Guide)
+- **The Person**: Merge the two paragraphs into one tight paragraph (3 sentences max).
+- **The Guide**: Same — condense two paragraphs into one.
 
-### 3. Speaking & Appearances: New visibility (Index.tsx)
-- Add a clear block/card within the "More" section: **"Invite Dennis"**
-- Copy: available for lectures, podcast guest appearances, and radio
-- Simple CTA linking to the contact form
-- Replaces the generic "In the Media" list approach
+### How I Work
+- Cut from 4 paragraphs to 2. Lead with the "trusted friend / concierge" line, then one paragraph covering the tailored, unscripted approach. Drop the repeated details about specific museums and neighbourhoods (those are already implied by the interests section).
 
-### 4. University Collaborations: Move to Footer (Index.tsx + Footer.tsx)
-- Remove "University Collaborations" from the media list in section 5
-- Add it to the Footer under "For Professionals" alongside Travel Agents: "Travel Agents & Concierges" and "Universities & Schools"
+### My Service
+- Cut the two introductory paragraphs to one short one (boat + day trips combined into 2-3 sentences). The 6 service cards already do the explaining — let them carry the weight.
 
-### 5. "How I Work" and "My Service": Two new sections (Index.tsx)
-- Place these between the About section and the "Day in the Life" section
-- **How I Work**: Dennis's personal approach. How he gets to know people, how everything is tailored, how personal and bespoke his method is. Warm, conversational tone.
-- **My Service**: What people concretely receive. What Dennis arranges, organises, and makes possible. More tangible and practical.
-- Two-column or stacked layout with clear visual distinction between the two
+### A Day in the Life
+- Trim the intro paragraph. The timeline cards below already tell the story.
 
-### 6. Navigation update (Header.tsx)
-- Update nav labels to reflect new section structure (add "How I Work" anchor)
+### Reviews
+- No change — reviews are user quotes, they should stay.
 
-## Section Order (updated)
-1. Hero
-2. Blockquote
-3. About (The Person / The Guide split)
-4. **How I Work** (new)
-5. **My Service** (new)
-6. A Day in the Life
-7. Reviews + **Rick Steves feature**
-8. More Than a Guide (mission pillars + **Invite Dennis** card + restructured media)
-9. **Podcast** (elevated to own section)
-10. Stories
-11. Contact & FAQ
+### Rick Steves
+- Already concise. No change.
+
+### More Than a Guide (Mission Pillars)
+- Shorten each pillar description from 2 sentences to 1 punchy sentence.
+- "Invite Dennis" card: trim to 2 sentences + CTA.
+
+### Podcast
+- Cut from 2 paragraphs to 1. One strong line about what the podcast is and why it matters.
+
+### Stories
+- Already lean. No change.
+
+### Contact + FAQ
+- Trim the intro from 3 sentences to 2.
+- "Book a Call" card description: cut from 2 sentences to 1.
+- FAQ answers: shorten the longer ones (keep under 2 sentences each).
+
+## Estimated reduction
+Roughly 40% less body text across the page, while keeping every section's intent and Dennis's voice intact.
 
 ## Files Changed
-1. **`src/pages/Index.tsx`** — Add How I Work section, My Service section, Rick Steves feature block, elevated podcast section, Invite Dennis card, remove University Collaborations from media list
-2. **`src/components/Footer.tsx`** — Add "Universities & Schools" link under For Professionals
-3. **`src/components/Header.tsx`** — Update nav links to include new anchors
+1. **`src/pages/Index.tsx`** — Text trimming throughout all sections listed above
 

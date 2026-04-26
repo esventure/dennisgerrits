@@ -338,6 +338,35 @@ const Index = () => {
               </div>
             </FadeIn>
           </div>
+
+          {/* Invite Dennis — speaking, podcasts, radio */}
+          <FadeIn delay={0.1}>
+            <div
+              className="mt-16 lg:mt-20 rounded-sm border-l-4 p-8 lg:p-10 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 md:gap-10 items-center"
+              style={{
+                borderLeftColor: "hsl(var(--accent))",
+                backgroundColor: "hsl(var(--background))",
+              }}
+            >
+              <div>
+                <p className="font-body text-sm tracking-widest uppercase text-accent mb-3">
+                  Invite Dennis
+                </p>
+                <h3 className="font-heading text-3xl md:text-4xl text-primary leading-tight mb-4">
+                  Book a lecture or invite Dennis as a guest
+                </h3>
+                <p className="font-body text-foreground/80 leading-relaxed max-w-2xl">
+                  Beyond guiding, Dennis is available for lectures and as a guest on podcasts and radio shows. If you're a host, organiser, or producer looking for a story about Amsterdam, the Netherlands, or travel beyond the tourist trail, get in touch.
+                </p>
+              </div>
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-accent text-accent-foreground font-body text-sm tracking-widest uppercase rounded-sm hover:bg-accent/90 transition-colors whitespace-nowrap"
+              >
+                Get in touch →
+              </a>
+            </div>
+          </FadeIn>
         </div>
       </div>
 

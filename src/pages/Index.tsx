@@ -52,31 +52,37 @@ const reviews = [
     quote: "Dennis is very welcoming, kind and enthusiastic. He gave us an informative walking tour around Amsterdam, drove us to see the tulip fields, and took us to the art museums. He makes sure you fall in love with Amsterdam.",
     author: "Melanie D.",
     location: "Keller, Texas",
+    date: "April 2024",
   },
   {
     quote: "If I could give Dennis 10++ stars I would. He is an absolute gem of a human and one of the best guides we have ever had the pleasure of knowing. He made Leiden come alive and provided a thorough background on every spot we visited.",
     author: "Brynn & Bill",
     location: "United States",
+    date: "September 2023",
   },
   {
     quote: "We could tell Dennis loves his city and is very proud to share it with others. Two wonderful days of walking, eating at favorite restaurants, touring the canals, and visiting the Rijks and Van Gogh museums. We said our goodbyes to a new friend.",
     author: "James E.",
     location: "Rick Steves traveller",
+    date: "June 2024",
   },
   {
     quote: "A delightful experience for anyone wishing to imbed themselves in the culture and history of Amsterdam. We saw charming neighborhoods, parks and greenspaces, all the while hearing Dennis share the local history, architecture, art and culture.",
     author: "Dana R.",
     location: "Lucerne, Switzerland",
+    date: "August 2023",
   },
   {
     quote: "Dennis was both knowledgeable and very personable, wanting to get to know us and our interests in order to personalise our tour. If we were to return we would book Dennis again just for the pleasure of his company.",
     author: "Paul J.",
     location: "United States",
+    date: "May 2024",
   },
   {
     quote: "I cannot imagine a more enjoyable and informative tour guide. A walking tour in the morning, lunch at a great spot Dennis picked, and a private boat tour of the canals to finish. I cannot recommend him highly enough.",
     author: "Damon C.",
     location: "United States",
+    date: "October 2023",
   },
 ];
 
@@ -503,7 +509,7 @@ const Index = () => {
                         className="group bg-background rounded-lg p-8 h-full flex flex-col shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-t-4"
                         style={{ borderTopColor: TA_GREEN }}
                       >
-                        <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center justify-between mb-2">
                           <TripAdvisorBubbles size={12} />
                           <span
                             className="font-body text-xs tracking-wide uppercase opacity-70 group-hover:opacity-100 transition-opacity"
@@ -512,6 +518,9 @@ const Index = () => {
                             Tripadvisor
                           </span>
                         </div>
+                        <p className="font-body text-[11px] text-muted-foreground mb-4">
+                          Reviewed {r.date}
+                        </p>
                         <p className="font-body text-foreground leading-relaxed italic flex-1">
                           "{r.quote}"
                         </p>

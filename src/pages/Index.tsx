@@ -43,25 +43,25 @@ const moments = [
 
 const reviews = [
   {
-    quote: "We could tell Dennis loves his city and is very proud to share it with others. Two wonderful days of walking, eating at favorite restaurants, touring the canals, and visiting the Rijks and Van Gogh museums…",
+    quote: "Two wonderful days of walking, eating at favorite restaurants, touring the canals, and visiting the Rijks and Van Gogh museums…",
     author: "James E.",
     location: "Rick Steves traveller",
     date: "March 2026",
   },
   {
-    quote: "Dennis was both knowledgeable and very personable, wanting to get to know us and our interests in order to personalise our tour. If we were to return we would book Dennis again just for the pleasure of his company…",
+    quote: "Knowledgeable and very personable. If we were to return we would book Dennis again just for the pleasure of his company…",
     author: "Paul J.",
     location: "United States",
     date: "July 2025",
   },
   {
-    quote: "If I could give Dennis 10++ stars I would. He is an absolute gem of a human and one of the best guides we have ever had the pleasure of knowing. He made Leiden come alive…",
+    quote: "If I could give Dennis 10++ stars I would. One of the best guides we have ever had the pleasure of knowing…",
     author: "Brynn & Bill",
     location: "United States",
     date: "September 2023",
   },
   {
-    quote: "Dennis is very welcoming, kind and enthusiastic. He gave us an informative walking tour around Amsterdam, drove us to see the tulip fields, and took us to the art museums…",
+    quote: "Welcoming, kind and enthusiastic. He gave us a walking tour of Amsterdam, drove us to the tulip fields, and took us to the museums…",
     author: "Melanie D.",
     location: "Keller, Texas",
     date: "April 2024",
@@ -476,14 +476,14 @@ const Index = () => {
                 </FadeIn>
 
                 {/* Reviews */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-5xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8 max-w-4xl mx-auto">
                   {reviews.map((r, i) => (
                     <FadeIn key={i} delay={i * 0.08}>
                       <a
                         href={TA_URL}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group bg-background rounded-lg p-8 h-full flex flex-col shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-t-4"
+                        className="group bg-background rounded-lg p-5 h-full flex flex-col shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 border-t-4"
                         style={{ borderTopColor: TA_GREEN }}
                       >
                         <div className="flex items-center justify-between mb-2">
@@ -495,23 +495,23 @@ const Index = () => {
                             Tripadvisor
                           </span>
                         </div>
-                        <p className="font-body text-[11px] text-muted-foreground mb-4">
+                        <p className="font-body text-[11px] text-muted-foreground mb-2">
                           Reviewed {r.date}
                         </p>
-                        <p className="font-body text-foreground leading-relaxed italic flex-1">
+                        <p className="font-body text-sm text-foreground leading-snug italic flex-1">
                           "{r.quote}"
                         </p>
-                        <div className="mt-6 pt-4 border-t border-border flex items-end justify-between gap-3">
+                        <div className="mt-3 pt-3 border-t border-border flex items-end justify-between gap-3">
                           <div>
-                            <p className="font-body text-sm font-medium text-primary">
+                            <p className="font-body text-xs font-medium text-primary">
                               {r.author}
                             </p>
-                            <p className="font-body text-xs text-muted-foreground">
+                            <p className="font-body text-[11px] text-muted-foreground">
                               {r.location}
                             </p>
                           </div>
                           <span
-                            className="font-body text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity"
+                            className="font-body text-[11px] whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity"
                             style={{ color: TA_GREEN }}
                           >
                             Read on Tripadvisor →
@@ -524,7 +524,7 @@ const Index = () => {
 
                 {/* All reviews CTA */}
                 <FadeIn>
-                  <div className="flex flex-col items-center text-center mb-20">
+                  <div className="flex flex-col items-center text-center mb-12">
                     <a
                       href={TA_URL}
                       target="_blank"

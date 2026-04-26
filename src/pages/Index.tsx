@@ -352,6 +352,26 @@ const Index = () => {
             ))}
           </div>
 
+          {/* TripAdvisor link */}
+          <FadeIn>
+            <div className="flex flex-col items-center text-center mb-20">
+              <p className="font-body text-sm tracking-widest uppercase text-secondary mb-3">
+                ★★★★★ 5.0 on Tripadvisor
+              </p>
+              <p className="font-body text-foreground/80 mb-4">
+                Over 200 five-star reviews from travellers around the world.
+              </p>
+              <a
+                href="https://www.tripadvisor.com/Attraction_Review-g188590-d13431295-Reviews-Love_My_City_Tours-Amsterdam_North_Holland_Province.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-body text-sm tracking-widest uppercase text-accent border-b border-accent/40 hover:border-accent transition-colors pb-1"
+              >
+                Read all reviews on Tripadvisor
+              </a>
+            </div>
+          </FadeIn>
+
           {/* Photo collage placeholder */}
           <FadeIn>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

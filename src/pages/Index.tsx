@@ -93,35 +93,35 @@ const stories = [
 const faqs = [
   {
     q: "What exactly do you offer?",
-    a: "Private, one-on-one experiences. We walk through a city together, share stories, and discover the places that matter most to you. It's not a tour in the traditional sense. It's a shared day.",
+    a: "Private, one-on-one experiences. A shared day, not a tour.",
   },
   {
     q: "How long is a typical day together?",
-    a: "Most experiences last between four and six hours, but there's no strict schedule. We go at your pace. If you'd like a full day, that's possible too. We'll just discuss it beforehand.",
+    a: "Usually four to six hours, but we go at your pace. Full days are possible too.",
   },
   {
     q: "Is this suitable for someone who can't walk long distances?",
-    a: "Absolutely. I adapt everything to your comfort level. We can use public transport, take frequent breaks, or focus on a smaller area with more depth. Accessibility is always part of the plan.",
+    a: "Absolutely. I adapt to your comfort level, with breaks, transport, or a smaller area in more depth.",
   },
   {
     q: "Do you work with groups?",
-    a: "I keep things intimate. Individuals, couples, or very small groups of close friends or family. Never more than four people. That's what keeps it personal.",
+    a: "Individuals, couples, or small groups of close friends or family. Never more than four people.",
   },
   {
     q: "How does pricing work?",
-    a: "My pricing is a flat day rate that covers my time, preparation, and local knowledge. No hidden fees, no upsells. I'll share exact pricing during our introductory conversation.",
+    a: "A flat day rate covering my time, preparation, and local knowledge. No hidden fees. I'll share exact pricing during our intro call.",
   },
   {
     q: "Which cities do you cover?",
-    a: "I'm based in the Netherlands and work primarily in Dutch cities. But I regularly collaborate with like-minded companions across Europe. Tell me your destination and I may know just the right person.",
+    a: "Primarily Dutch cities, though I collaborate with like-minded companions across Europe.",
   },
   {
     q: "How far in advance should I book?",
-    a: "Two to three weeks is ideal, though I'm sometimes available on shorter notice. The earlier we connect, the better I can prepare something meaningful for you.",
+    a: "Two to three weeks is ideal, though shorter notice is sometimes possible.",
   },
   {
     q: "What if we're not a good match?",
-    a: "That's perfectly fine. It's exactly why I offer an introductory conversation first. No pressure to commit. If my approach isn't what you're looking for, I'll happily recommend alternatives.",
+    a: "That's why I offer an intro conversation first. No pressure. If my approach isn't right, I'll recommend alternatives.",
   },
 ];
 
@@ -195,13 +195,8 @@ const Index = () => {
                 <p className="font-body text-sm tracking-[0.15em] uppercase text-primary-foreground/60 mb-6">
                   A True Amsterdammer
                 </p>
-                <p className="font-body text-primary-foreground/80 leading-relaxed mb-4">
-                  I'm a free spirit with deep roots in this city. I grew up cycling along the canals, getting lost in neighbourhoods,
-                  and collecting stories from the people I met along the way. Amsterdam isn't just where I live. It's how I think.
-                </p>
                 <p className="font-body text-primary-foreground/80 leading-relaxed">
-                  I love good coffee, slow mornings, and conversations that go deeper than small talk.
-                  That's probably why this work suits me so well.
+                  I'm a free spirit with deep roots here. I grew up cycling these canals and collecting stories along the way. Amsterdam isn't just where I live, it's how I think.
                 </p>
               </div>
             </FadeIn>
@@ -218,13 +213,8 @@ const Index = () => {
                 <p className="font-body text-sm tracking-[0.15em] uppercase text-secondary mb-6">
                   A Different Kind of Guide
                 </p>
-                <p className="font-body text-muted-foreground leading-relaxed mb-4">
-                  I don't carry a flag or a microphone. I don't follow a script. Every experience I create starts with you:
-                  your interests, your pace, your curiosity. My job is to make the city feel personal.
-                </p>
                 <p className="font-body text-muted-foreground leading-relaxed">
-                  Depth over highlights. Connection over information. A friend who knows the city inside out,
-                  walking beside you instead of in front of you.
+                  No flag, no script. Depth over highlights, connection over information. A friend who knows the city inside out, walking beside you instead of in front of you.
                 </p>
               </div>
             </FadeIn>
@@ -250,16 +240,10 @@ const Index = () => {
             <FadeIn delay={0.15}>
               <div className="space-y-6">
                 <p className="font-body text-muted-foreground leading-relaxed">
-                  Imagine discovering Amsterdam as if with a trusted local friend, but with the expertise and refinement of a private concierge. That's exactly what I offer.
+                  Imagine discovering Amsterdam as if with a trusted local friend, but with the expertise of a private concierge. That's exactly what I offer.
                 </p>
                 <p className="font-body text-muted-foreground leading-relaxed">
-                  Every experience starts with you. Your interests, your pace, your curiosity. Whether it's exploring vibrant neighbourhoods like the Jordaan and the Jewish Cultural Quarter, diving into art at the Van Gogh Museum or Rijksmuseum, or uncovering hidden gems only locals know about, every detail is designed around what excites you most.
-                </p>
-                <p className="font-body text-muted-foreground leading-relaxed">
-                  My tours are never scripted. Architecture (my field of study), food, nightlife, history, culture. We follow whatever sparks your interest, creating something as dynamic and personal as the city itself.
-                </p>
-                <p className="font-body text-muted-foreground leading-relaxed">
-                  My aim is for you to become part of my city. To feel at home here. To understand what makes Amsterdam special, not just through its sights, but through the rhythm of its streets, its culture, and its people.
+                  Every experience starts with you. Nothing is scripted. We follow your curiosity, whether that's architecture, food, history, or the hidden corners only locals know. My aim is for you to feel at home here, to become part of my city.
                 </p>
               </div>
             </FadeIn>
@@ -284,10 +268,7 @@ const Index = () => {
             <FadeIn delay={0.15}>
               <div className="space-y-6">
                 <p className="font-body text-muted-foreground leading-relaxed">
-                  Amsterdam is best explored by walking, biking, or my personal recommendation: on a private boat. Cruising the canals with a glass of wine and a picnic offers breathtaking views and an unparalleled perspective of the city.
-                </p>
-                <p className="font-body text-muted-foreground leading-relaxed">
-                  For those wishing to go beyond Amsterdam, I specialise in day trips to historic cities like The Hague, Delft, Leiden, Rotterdam and Haarlem, as well as scenic countryside escapes. Windmills, tulip fields in spring, and charming villages, all in the comfort of a private car.
+                  Explore by foot, bike, or private boat with wine and a picnic. Beyond Amsterdam, I arrange private day trips to The Hague, Delft, Rotterdam, tulip fields, and the countryside.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
                   {[
@@ -323,8 +304,7 @@ const Index = () => {
                   A Day in the Life of Dennis
                 </h2>
                 <p className="font-body text-lg text-muted-foreground leading-relaxed">
-                  There are no fixed tours. Every day is shaped by you: your pace, your curiosity,
-                  your energy. Here's what a day together might look like.
+                  No fixed tours. Every day is shaped by you. Here's what one might look like.
                 </p>
               </FadeIn>
             </div>
@@ -426,15 +406,15 @@ const Index = () => {
             {[
               {
                 title: "Storytelling",
-                text: "Every city has layers of stories waiting to be told. I believe the best way to understand a place is through the people who shaped it, the choices they made, and the traces they left behind.",
+                text: "The best way to understand a place is through the people who shaped it.",
               },
               {
                 title: "Building Community",
-                text: "Travel should bring people closer, not just to a destination but to each other. I create experiences that leave guests with real connections, not just photographs.",
+                text: "Travel should bring people closer, leaving real connections instead of just photographs.",
               },
               {
                 title: "Honouring the City",
-                text: "Amsterdam gave me everything. This work is my way of giving something back: showing its beauty with respect, sharing its complexity honestly, and introducing visitors the right way.",
+                text: "Amsterdam gave me everything. This work is my way of giving something back.",
               },
             ].map((item, i) => (
               <FadeIn key={item.title} delay={i * 0.15}>
@@ -453,7 +433,7 @@ const Index = () => {
               <div className="border border-primary-foreground/20 rounded-sm p-8">
                 <h3 className="font-heading text-2xl text-primary-foreground mb-4">Invite Dennis</h3>
                 <p className="font-body text-primary-foreground/70 leading-relaxed mb-4">
-                  Looking for a speaker, podcast guest, or radio contributor? I love sharing stories about Amsterdam, urban culture, and what it means to truly experience a place. Available for lectures, panel discussions, podcast appearances, and radio.
+                  Available for lectures, panel discussions, podcast appearances, and radio. Get in touch to discuss.
                 </p>
                 <a
                   href="#contact"
@@ -492,11 +472,8 @@ const Index = () => {
                 <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
                   Two Stories, One City
                 </h2>
-                <p className="font-body text-muted-foreground leading-relaxed mb-4">
-                  This podcast is an extension of who I am. In each episode, I pair two seemingly unrelated Amsterdam stories and show how they connect. History, architecture, food, people. Everything in this city is linked if you know where to look.
-                </p>
                 <p className="font-body text-muted-foreground leading-relaxed">
-                  It's my voice, my curiosity, and the way I experience this city. If you want to know what spending a day with me feels like, start here.
+                  Each episode pairs two seemingly unrelated Amsterdam stories and shows how they connect. If you want to know what spending a day with me feels like, start here.
                 </p>
               </div>
             </FadeIn>
@@ -564,8 +541,7 @@ const Index = () => {
                 Let's See if We're a Good Match
               </h2>
               <p className="font-body text-lg text-muted-foreground leading-relaxed">
-                The best way to start is a short, informal conversation. No obligations, no sales pitch.
-                Just a chance to talk about your trip and see if my approach feels right for you.
+                The best way to start is a short, informal conversation. No obligations, just a chance to see if my approach feels right.
               </p>
             </FadeIn>
           </div>
@@ -579,8 +555,7 @@ const Index = () => {
                   Book a Call
                 </h3>
                 <p className="font-body text-muted-foreground leading-relaxed mb-8">
-                  Leave your details and a few words about your trip. I'll reach out personally
-                  to find a time that works for both of us.
+                  Leave your details and a few words about your trip. I'll reach out personally.
                 </p>
                 <form onSubmit={handleContactSubmit} className="space-y-6">
                   <div className="space-y-2">

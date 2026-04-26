@@ -557,19 +557,21 @@ const Index = () => {
             );
           })()}
 
-          {/* Photo collage placeholder */}
+          {/* ── Mosaic Wall: faces of the road ── */}
           <FadeIn>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {Array.from({ length: 8 }).map((_, i) => (
-                <div
-                  key={i}
-                  className={`bg-muted rounded-sm flex items-center justify-center ${
-                    i === 0 || i === 5 ? "aspect-[3/4]" : "aspect-square"
-                  }`}
-                >
-                  <p className="font-body text-xs text-muted-foreground italic">Guest photo</p>
-                </div>
-              ))}
+            <div className="mt-20 lg:mt-28">
+              <div className="max-w-3xl mb-8">
+                <p className="font-body text-sm tracking-widest uppercase text-accent mb-4">
+                  Faces of the Road
+                </p>
+                <h3 className="font-heading text-4xl lg:text-5xl text-primary mb-4">
+                  Five years. Hundreds of mornings.
+                </h3>
+                <p className="font-body text-muted-foreground text-lg leading-relaxed">
+                  Real people, real moments. A glimpse of what a day with me actually feels like.
+                </p>
+              </div>
+              <MosaicWall photos={guestPhotos} />
             </div>
           </FadeIn>
         </div>

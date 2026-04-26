@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
 import AmsterdamSkyline from "@/components/AmsterdamSkyline";
 import DayMap from "@/components/DayMap";
+import MosaicWall from "@/components/MosaicWall";
+import { guestPhotos } from "@/assets/guests";
 import dennisIllustration from "@/assets/dennis_illustration.png";
 import dennisPhoto from "@/assets/dennis_photo.png";
 import dennisRickSteves from "@/assets/dennis_rick_steves.jpg";

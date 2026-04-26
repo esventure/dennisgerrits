@@ -46,29 +46,34 @@ const moments = [
 
 const reviews = [
   {
-    quote: "Dennis made Amsterdam feel like home. We laughed, we explored, we discovered corners of the city I never would have found on my own.",
-    author: "Sarah & Michael",
-    location: "California, USA",
+    quote: "Dennis is very welcoming, kind and enthusiastic. He gave us an informative walking tour around Amsterdam, drove us to see the tulip fields, and took us to the art museums. He makes sure you fall in love with Amsterdam.",
+    author: "Melanie D.",
+    location: "Keller, Texas",
   },
   {
-    quote: "It wasn't a tour. It was a day with a friend who happens to know everything about his city. Truly special.",
-    author: "Margaret",
-    location: "London, UK",
+    quote: "If I could give Dennis 10++ stars I would. He is an absolute gem of a human and one of the best guides we have ever had the pleasure of knowing. He made Leiden come alive and provided a thorough background on every spot we visited.",
+    author: "Brynn & Bill",
+    location: "United States",
   },
   {
-    quote: "We've travelled to over 40 countries. Our day with Dennis in Amsterdam is one of the best travel experiences we've ever had.",
-    author: "Robert & Linda",
-    location: "Texas, USA",
+    quote: "We could tell Dennis loves his city and is very proud to share it with others. Two wonderful days of walking, eating at favorite restaurants, touring the canals, and visiting the Rijks and Van Gogh museums. We said our goodbyes to a new friend.",
+    author: "James E.",
+    location: "Rick Steves traveller",
   },
   {
-    quote: "I came for the history, but what I got was so much more. Dennis has a gift for making you feel like you belong in a place.",
-    author: "James",
-    location: "Toronto, Canada",
+    quote: "A delightful experience for anyone wishing to imbed themselves in the culture and history of Amsterdam. We saw charming neighborhoods, parks and greenspaces, all the while hearing Dennis share the local history, architecture, art and culture.",
+    author: "Dana R.",
+    location: "Lucerne, Switzerland",
   },
   {
-    quote: "My mother is 78 and Dennis adjusted the entire day to her pace without ever making her feel like she was slowing us down. That's rare.",
-    author: "Catherine",
-    location: "Boston, USA",
+    quote: "Dennis was both knowledgeable and very personable, wanting to get to know us and our interests in order to personalise our tour. If we were to return we would book Dennis again just for the pleasure of his company.",
+    author: "Paul J.",
+    location: "United States",
+  },
+  {
+    quote: "I cannot imagine a more enjoyable and informative tour guide. A walking tour in the morning, lunch at a great spot Dennis picked, and a private boat tour of the canals to finish. I cannot recommend him highly enough.",
+    author: "Damon C.",
+    location: "United States",
   },
 ];
 
@@ -346,6 +351,26 @@ const Index = () => {
               </FadeIn>
             ))}
           </div>
+
+          {/* TripAdvisor link */}
+          <FadeIn>
+            <div className="flex flex-col items-center text-center mb-20">
+              <p className="font-body text-sm tracking-widest uppercase text-secondary mb-3">
+                ★★★★★ 5.0 on Tripadvisor
+              </p>
+              <p className="font-body text-foreground/80 mb-4">
+                Over 200 five-star reviews from travellers around the world.
+              </p>
+              <a
+                href="https://www.tripadvisor.com/Attraction_Review-g188590-d13431295-Reviews-Love_My_City_Tours-Amsterdam_North_Holland_Province.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-body text-sm tracking-widest uppercase text-accent border-b border-accent/40 hover:border-accent transition-colors pb-1"
+              >
+                Read all reviews on Tripadvisor
+              </a>
+            </div>
+          </FadeIn>
 
           {/* Photo collage placeholder */}
           <FadeIn>

@@ -33,7 +33,15 @@ const Header = () => {
     <header className="sticky top-0 z-50 bg-background/90 backdrop-blur-sm border-b border-border/40">
       <div className="container mx-auto flex items-center justify-between py-4 px-6 lg:px-12">
         <Link to="/" className="flex items-center gap-3">
-          <img src={dennisIllustration} alt="Dennis Gerrits logo" className="h-16 w-16 object-contain -my-4" />
+          <img
+            src={dennisIllustration}
+            alt="Dennis Gerrits logo"
+            className="h-16 w-16 object-contain -my-4"
+            style={{
+              filter:
+                "brightness(0) saturate(100%) invert(36%) sepia(89%) saturate(2876%) hue-rotate(7deg) brightness(95%) contrast(105%)",
+            }}
+          />
           <span className="font-heading text-2xl tracking-wider text-primary">Dennis Gerrits</span>
         </Link>
 

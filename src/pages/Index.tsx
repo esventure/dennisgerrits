@@ -256,6 +256,28 @@ const Index = () => {
         </div>
       </section>
 
+      {/* ── Rick Steves Feature ── */}
+      <FadeIn>
+        <div className="py-20 lg:py-24" style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.15)" }}>
+          <div className="container mx-auto px-6 lg:px-12">
+            <div className="max-w-3xl mx-auto text-center">
+              <p className="font-body text-sm tracking-widest uppercase text-accent mb-6">
+                Featured By
+              </p>
+              <h2 className="font-heading text-4xl md:text-5xl text-primary leading-[0.95] mb-6">
+                Rick Steves
+              </h2>
+              <blockquote className="font-body text-xl text-foreground italic leading-relaxed mb-6">
+                "Dennis is the kind of local guide every traveller dreams of finding. He doesn't just show you Amsterdam. He makes you feel like you belong there."
+              </blockquote>
+              <p className="font-body text-sm text-muted-foreground">
+                Guest on the Rick Steves podcast, exploring Amsterdam beyond the tourist trail
+              </p>
+            </div>
+          </div>
+        </div>
+      </FadeIn>
+
       {/* ── My Service ── */}
       <section id="my-service" className="py-24 lg:py-32 scroll-mt-20">
         <div className="container mx-auto px-6 lg:px-12">
@@ -389,29 +411,6 @@ const Index = () => {
           </FadeIn>
         </div>
       </section>
-
-      {/* ── Rick Steves Feature ── */}
-      <FadeIn>
-        <div className="py-20 lg:py-24" style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.15)" }}>
-          <div className="container mx-auto px-6 lg:px-12">
-            <div className="max-w-3xl mx-auto text-center">
-              <p className="font-body text-sm tracking-widest uppercase text-accent mb-6">
-                Featured By
-              </p>
-              <h2 className="font-heading text-4xl md:text-5xl text-primary leading-[0.95] mb-6">
-                Rick Steves
-              </h2>
-              <blockquote className="font-body text-xl text-foreground italic leading-relaxed mb-6">
-                "Dennis is the kind of local guide every traveller dreams of finding. He doesn't just show you Amsterdam. He makes you feel like you belong there."
-              </blockquote>
-              <p className="font-body text-sm text-muted-foreground">
-                Guest on the Rick Steves podcast, exploring Amsterdam beyond the tourist trail
-              </p>
-            </div>
-          </div>
-        </div>
-      </FadeIn>
-
       {/* ── 5. More: Mission & Invite Dennis ── */}
       <section id="more" className="py-24 lg:py-32 bg-primary scroll-mt-20">
         <div className="container mx-auto px-6 lg:px-12">

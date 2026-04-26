@@ -495,23 +495,23 @@ const Index = () => {
                             Tripadvisor
                           </span>
                         </div>
-                        <p className="font-body text-[11px] text-muted-foreground mb-4">
+                        <p className="font-body text-[11px] text-muted-foreground mb-2">
                           Reviewed {r.date}
                         </p>
-                        <p className="font-body text-foreground leading-relaxed italic flex-1">
+                        <p className="font-body text-sm text-foreground leading-snug italic flex-1">
                           "{r.quote}"
                         </p>
-                        <div className="mt-6 pt-4 border-t border-border flex items-end justify-between gap-3">
+                        <div className="mt-3 pt-3 border-t border-border flex items-end justify-between gap-3">
                           <div>
-                            <p className="font-body text-sm font-medium text-primary">
+                            <p className="font-body text-xs font-medium text-primary">
                               {r.author}
                             </p>
-                            <p className="font-body text-xs text-muted-foreground">
+                            <p className="font-body text-[11px] text-muted-foreground">
                               {r.location}
                             </p>
                           </div>
                           <span
-                            className="font-body text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity"
+                            className="font-body text-[11px] whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity"
                             style={{ color: TA_GREEN }}
                           >
                             Read on Tripadvisor →
@@ -524,7 +524,7 @@ const Index = () => {
 
                 {/* All reviews CTA */}
                 <FadeIn>
-                  <div className="flex flex-col items-center text-center mb-20">
+                  <div className="flex flex-col items-center text-center mb-12">
                     <a
                       href={TA_URL}
                       target="_blank"

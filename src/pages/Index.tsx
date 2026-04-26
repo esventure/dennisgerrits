@@ -12,12 +12,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 
 const moments = [
   {
@@ -104,40 +98,6 @@ const stories = [
   },
 ];
 
-const faqs = [
-  {
-    q: "What exactly do you offer?",
-    a: "Private, one-on-one experiences. A shared day, not a tour.",
-  },
-  {
-    q: "How long is a typical day together?",
-    a: "Usually four to six hours, but we go at your pace. Full days are possible too.",
-  },
-  {
-    q: "Is this suitable for someone who can't walk long distances?",
-    a: "Absolutely. I adapt to your comfort level, with breaks, transport, or a smaller area in more depth.",
-  },
-  {
-    q: "Do you work with groups?",
-    a: "Individuals, couples, or small groups of close friends or family. Never more than four people.",
-  },
-  {
-    q: "How does pricing work?",
-    a: "A flat day rate covering my time, preparation, and local knowledge. No hidden fees. I'll share exact pricing during our intro call.",
-  },
-  {
-    q: "Which cities do you cover?",
-    a: "Primarily Dutch cities, though I collaborate with like-minded companions across Europe.",
-  },
-  {
-    q: "How far in advance should I book?",
-    a: "Two to three weeks is ideal, though shorter notice is sometimes possible.",
-  },
-  {
-    q: "What if we're not a good match?",
-    a: "That's why I offer an intro conversation first. No pressure. If my approach isn't right, I'll recommend alternatives.",
-  },
-];
 
 const Index = () => {
   const { toast } = useToast();
@@ -753,33 +713,6 @@ const Index = () => {
             </FadeIn>
           </div>
 
-          {/* FAQ */}
-          <div className="mt-24">
-            <div className="max-w-3xl mb-12">
-              <FadeIn>
-                <h3 className="font-heading text-4xl text-primary mb-4">Questions & Answers</h3>
-                <p className="font-body text-muted-foreground">
-                  Honest answers to the things you might be wondering about.
-                </p>
-              </FadeIn>
-            </div>
-            <FadeIn>
-              <div className="max-w-3xl">
-                <Accordion type="single" collapsible className="space-y-2">
-                  {faqs.map((faq, i) => (
-                    <AccordionItem key={i} value={`faq-${i}`} className="border-border px-0">
-                      <AccordionTrigger className="font-body text-base text-foreground hover:no-underline py-5">
-                        {faq.q}
-                      </AccordionTrigger>
-                      <AccordionContent className="font-body text-muted-foreground leading-relaxed pb-5">
-                        {faq.a}
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-              </div>
-            </FadeIn>
-          </div>
         </div>
       </section>
     </main>

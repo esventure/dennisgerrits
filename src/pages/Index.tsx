@@ -401,53 +401,159 @@ const Index = () => {
       {/* ── 4. Proof: Reviews & Guests ── */}
       <section id="proof" className="py-24 lg:py-32 scroll-mt-20">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-3xl mb-16">
-            <FadeIn>
-              <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
-                What Guests Say
-              </p>
-              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
-                Real Words From Real People
-              </h2>
-            </FadeIn>
-          </div>
+          {(() => {
+            const TA_URL =
+              "https://www.tripadvisor.com/Attraction_Review-g188590-d13431295-Reviews-Love_My_City_Tours-Amsterdam_North_Holland_Province.html";
+            const TA_GREEN = "#00AA6C";
 
-          {/* Reviews */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-            {reviews.map((r, i) => (
-              <FadeIn key={i} delay={i * 0.08}>
-                <div className="bg-background rounded-lg p-8 h-full flex flex-col shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                  <p className="font-body text-foreground leading-relaxed italic flex-1">
-                    "{r.quote}"
-                  </p>
-                  <div className="mt-6 pt-4 border-t border-border">
-                    <p className="font-body text-sm font-medium text-primary">{r.author}</p>
-                    <p className="font-body text-xs text-muted-foreground">{r.location}</p>
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-
-          {/* TripAdvisor link */}
-          <FadeIn>
-            <div className="flex flex-col items-center text-center mb-20">
-              <p className="font-body text-sm tracking-widest uppercase text-secondary mb-3">
-                ★★★★★ 5.0 on Tripadvisor
-              </p>
-              <p className="font-body text-foreground/80 mb-4">
-                Over 200 five-star reviews from travellers around the world.
-              </p>
-              <a
-                href="https://www.tripadvisor.com/Attraction_Review-g188590-d13431295-Reviews-Love_My_City_Tours-Amsterdam_North_Holland_Province.html"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-body text-sm tracking-widest uppercase text-accent border-b border-accent/40 hover:border-accent transition-colors pb-1"
+            const TripAdvisorBubbles = ({ size = 14 }: { size?: number }) => (
+              <span
+                className="inline-flex items-center gap-1"
+                aria-label="5 of 5 bubbles"
               >
-                Read all reviews on Tripadvisor
-              </a>
-            </div>
-          </FadeIn>
+                {[0, 1, 2, 3, 4].map((i) => (
+                  <span
+                    key={i}
+                    className="block rounded-full"
+                    style={{
+                      width: size,
+                      height: size,
+                      backgroundColor: TA_GREEN,
+                    }}
+                  />
+                ))}
+              </span>
+            );
+
+            const TripAdvisorWordmark = ({
+              className = "",
+            }: {
+              className?: string;
+            }) => (
+              <span
+                className={`font-heading tracking-wide ${className}`}
+                style={{ color: TA_GREEN }}
+              >
+                Tripadvisor
+              </span>
+            );
+
+            return (
+              <>
+                <div className="max-w-3xl mb-12">
+                  <FadeIn>
+                    <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
+                      What Guests Say
+                    </p>
+                    <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
+                      Real Words From Real People
+                    </h2>
+                    <p className="font-body text-lg text-muted-foreground leading-relaxed">
+                      Every review below is from <TripAdvisorWordmark className="text-lg" />. Click any card to read the full review on Tripadvisor.
+                    </p>
+                  </FadeIn>
+                </div>
+
+                {/* Tripadvisor summary badge */}
+                <FadeIn>
+                  <a
+                    href={TA_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-4 bg-background rounded-lg shadow-md hover:shadow-lg transition-all px-6 py-4 mb-10 border border-border"
+                  >
+                    <div
+                      className="flex items-center justify-center rounded-full text-white font-heading text-xl"
+                      style={{
+                        backgroundColor: TA_GREEN,
+                        width: 44,
+                        height: 44,
+                      }}
+                      aria-hidden="true"
+                    >
+                      ◉
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <TripAdvisorWordmark className="text-xl" />
+                        <span className="font-body text-sm text-muted-foreground">
+                          Rating
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-3 mt-1">
+                        <TripAdvisorBubbles />
+                        <span className="font-body text-sm text-foreground">
+                          <strong>5.0</strong> · 218 reviews
+                        </span>
+                      </div>
+                    </div>
+                  </a>
+                </FadeIn>
+
+                {/* Reviews */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                  {reviews.map((r, i) => (
+                    <FadeIn key={i} delay={i * 0.08}>
+                      <a
+                        href={TA_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group bg-background rounded-lg p-8 h-full flex flex-col shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-t-4"
+                        style={{ borderTopColor: TA_GREEN }}
+                      >
+                        <div className="flex items-center justify-between mb-4">
+                          <TripAdvisorBubbles size={12} />
+                          <span
+                            className="font-body text-xs tracking-wide uppercase opacity-70 group-hover:opacity-100 transition-opacity"
+                            style={{ color: TA_GREEN }}
+                          >
+                            Tripadvisor
+                          </span>
+                        </div>
+                        <p className="font-body text-foreground leading-relaxed italic flex-1">
+                          "{r.quote}"
+                        </p>
+                        <div className="mt-6 pt-4 border-t border-border flex items-end justify-between gap-3">
+                          <div>
+                            <p className="font-body text-sm font-medium text-primary">
+                              {r.author}
+                            </p>
+                            <p className="font-body text-xs text-muted-foreground">
+                              {r.location}
+                            </p>
+                          </div>
+                          <span
+                            className="font-body text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity"
+                            style={{ color: TA_GREEN }}
+                          >
+                            Read on Tripadvisor →
+                          </span>
+                        </div>
+                      </a>
+                    </FadeIn>
+                  ))}
+                </div>
+
+                {/* All reviews CTA */}
+                <FadeIn>
+                  <div className="flex flex-col items-center text-center mb-20">
+                    <a
+                      href={TA_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-body text-sm tracking-widest uppercase border-b pb-1 transition-colors"
+                      style={{
+                        color: TA_GREEN,
+                        borderColor: `${TA_GREEN}66`,
+                      }}
+                    >
+                      Read all 218 reviews on Tripadvisor →
+                    </a>
+                  </div>
+                </FadeIn>
+              </>
+            );
+          })()}
 
           {/* Photo collage placeholder */}
           <FadeIn>

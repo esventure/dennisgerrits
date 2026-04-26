@@ -509,7 +509,7 @@ const Index = () => {
                         className="group bg-background rounded-lg p-8 h-full flex flex-col shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-t-4"
                         style={{ borderTopColor: TA_GREEN }}
                       >
-                        <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center justify-between mb-2">
                           <TripAdvisorBubbles size={12} />
                           <span
                             className="font-body text-xs tracking-wide uppercase opacity-70 group-hover:opacity-100 transition-opacity"
@@ -518,6 +518,9 @@ const Index = () => {
                             Tripadvisor
                           </span>
                         </div>
+                        <p className="font-body text-[11px] text-muted-foreground mb-4">
+                          Reviewed {r.date}
+                        </p>
                         <p className="font-body text-foreground leading-relaxed italic flex-1">
                           "{r.quote}"
                         </p>

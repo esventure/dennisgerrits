@@ -58,7 +58,7 @@ const reviews = [
     quote: "We could tell Dennis loves his city and is very proud to share it with others. Two wonderful days of walking, eating at favorite restaurants, touring the canals, and visiting the Rijks and Van Gogh museums. We said our goodbyes to a new friend.",
     author: "James E.",
     location: "Rick Steves traveller",
-    date: "June 2024",
+    date: "March 2026",
   },
   {
     quote: "A delightful experience for anyone wishing to imbed themselves in the culture and history of Amsterdam. We saw charming neighborhoods, parks and greenspaces, all the while hearing Dennis share the local history, architecture, art and culture.",
@@ -70,7 +70,7 @@ const reviews = [
     quote: "Dennis was both knowledgeable and very personable, wanting to get to know us and our interests in order to personalise our tour. If we were to return we would book Dennis again just for the pleasure of his company.",
     author: "Paul J.",
     location: "United States",
-    date: "May 2024",
+    date: "July 2025",
   },
   {
     quote: "I cannot imagine a more enjoyable and informative tour guide. A walking tour in the morning, lunch at a great spot Dennis picked, and a private boat tour of the canals to finish. I cannot recommend him highly enough.",

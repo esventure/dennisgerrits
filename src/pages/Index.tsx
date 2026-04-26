@@ -258,26 +258,80 @@ const Index = () => {
       </section>
 
       {/* ── Rick Steves Feature ── */}
-      <FadeIn>
-        <div className="py-20 lg:py-24" style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.15)" }}>
-          <div className="container mx-auto px-6 lg:px-12">
-            <div className="max-w-3xl mx-auto text-center">
-              <p className="font-body text-sm tracking-widest uppercase text-accent mb-6">
-                Featured By
-              </p>
-              <h2 className="font-heading text-4xl md:text-5xl text-primary leading-[0.95] mb-6">
-                Rick Steves
-              </h2>
-              <blockquote className="font-body text-xl text-foreground italic leading-relaxed mb-6">
-                "Dennis is the kind of local guide every traveller dreams of finding. He doesn't just show you Amsterdam. He makes you feel like you belong there."
-              </blockquote>
-              <p className="font-body text-sm text-muted-foreground">
-                Guest on the Rick Steves podcast, exploring Amsterdam beyond the tourist trail
-              </p>
-            </div>
+      <div className="py-20 lg:py-28" style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.15)" }}>
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <FadeIn>
+              <div className="relative">
+                <img
+                  src={dennisRickSteves}
+                  alt="Dennis Gerrits with travel writer Rick Steves on an Amsterdam canal, holding the Rick Steves Amsterdam & The Netherlands guidebook"
+                  className="w-full h-auto rounded-sm shadow-xl object-cover"
+                />
+                <p className="font-body text-xs italic text-muted-foreground mt-3">
+                  With Rick Steves on an Amsterdam canal.
+                </p>
+              </div>
+            </FadeIn>
+
+            <FadeIn delay={0.15}>
+              <div>
+                <p className="font-body text-sm tracking-widest uppercase text-accent mb-6">
+                  Featured By
+                </p>
+                <h2 className="font-heading text-4xl md:text-5xl text-primary leading-[0.95] mb-6">
+                  Rick Steves
+                </h2>
+                <blockquote className="font-body text-xl text-foreground italic leading-relaxed mb-6">
+                  "Dennis is the kind of local guide every traveller dreams of finding. He doesn't just show you Amsterdam. He makes you feel like you belong there."
+                </blockquote>
+                <p className="font-body text-foreground/80 leading-relaxed mb-8">
+                  Guest on the Rick Steves Travel with Rick Steves podcast across three episodes, exploring Amsterdam and the Netherlands beyond the tourist trail.
+                </p>
+
+                <p className="font-body text-sm tracking-widest uppercase text-secondary mb-4">
+                  Listen on Rick Steves
+                </p>
+                <ul className="space-y-3">
+                  {[
+                    {
+                      date: "April 27, 2024",
+                      title: "Program 752",
+                      url: "https://www.ricksteves.com/watch-read-listen/audio/radio/programs/program-752",
+                    },
+                    {
+                      date: "August 26, 2023",
+                      title: "Program 725",
+                      url: "https://www.ricksteves.com/watch-read-listen/audio/radio/programs/program-725",
+                    },
+                    {
+                      date: "May 13, 2023",
+                      title: "Program 714",
+                      url: "https://www.ricksteves.com/watch-read-listen/audio/radio/programs/program-714",
+                    },
+                  ].map((ep) => (
+                    <li key={ep.url}>
+                      <a
+                        href={ep.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group flex items-baseline justify-between gap-4 border-b border-border/60 pb-3 hover:border-accent transition-colors"
+                      >
+                        <span className="font-heading text-lg text-primary group-hover:text-accent transition-colors">
+                          {ep.title}
+                        </span>
+                        <span className="font-body text-sm text-muted-foreground">
+                          {ep.date}
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </FadeIn>
           </div>
         </div>
-      </FadeIn>
+      </div>
 
       {/* ── My Service ── */}
       <section id="my-service" className="py-24 lg:py-32 scroll-mt-20">

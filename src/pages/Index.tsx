@@ -136,36 +136,36 @@ const Index = () => {
       {/* ── 2. About Me — Full-Screen Split ── */}
       <section id="about" className="scroll-mt-20">
         <div className="grid grid-cols-1 lg:grid-cols-2">
-          {/* Left Panel — The Person (dark) */}
-          <div className="flex items-center bg-primary px-8 md:px-16 lg:px-20 py-16 lg:py-20">
+          {/* Left Panel — The Person (light) */}
+          <div className="flex items-center bg-background px-8 md:px-16 lg:px-20 py-16 lg:py-20">
             <FadeIn>
               <div className="max-w-lg">
-                <h2 className="font-heading text-4xl md:text-5xl text-primary-foreground leading-[0.95] mb-3">
+                <h2 className="font-heading text-4xl md:text-5xl text-primary leading-[0.95] mb-3">
                   The Person
                 </h2>
-                <div className="w-12 h-0.5 bg-primary-foreground/30 mb-4" />
-                <p className="font-body text-sm tracking-[0.15em] uppercase text-primary-foreground/60 mb-4">
+                <div className="w-12 h-0.5 bg-accent mb-4" />
+                <p className="font-body text-sm tracking-[0.15em] uppercase text-secondary mb-4">
                   A True Amsterdammer
                 </p>
-                <p className="font-body text-primary-foreground/80 leading-relaxed">
+                <p className="font-body text-muted-foreground leading-relaxed">
                   I'm a free spirit with deep roots here. I grew up cycling these canals and collecting stories along the way. Amsterdam isn't just where I live, it's how I think.
                 </p>
               </div>
             </FadeIn>
           </div>
 
-          {/* Right Panel — The Guide (light) */}
-          <div className="flex items-center bg-background px-8 md:px-16 lg:px-20 py-16 lg:py-20">
+          {/* Right Panel — The Guide (dark) */}
+          <div className="flex items-center bg-primary px-8 md:px-16 lg:px-20 py-16 lg:py-20">
             <FadeIn>
               <div className="max-w-lg">
-                <h2 className="font-heading text-4xl md:text-5xl text-primary leading-[0.95] mb-3">
+                <h2 className="font-heading text-4xl md:text-5xl text-primary-foreground leading-[0.95] mb-3">
                   The Guide
                 </h2>
-                <div className="w-12 h-0.5 bg-accent mb-4" />
-                <p className="font-body text-sm tracking-[0.15em] uppercase text-secondary mb-4">
+                <div className="w-12 h-0.5 bg-primary-foreground/30 mb-4" />
+                <p className="font-body text-sm tracking-[0.15em] uppercase text-primary-foreground/60 mb-4">
                   A Different Kind of Guide
                 </p>
-                <p className="font-body text-muted-foreground leading-relaxed">
+                <p className="font-body text-primary-foreground/80 leading-relaxed">
                   No flag, no script. Depth over highlights, connection over information. A friend who knows the city inside out, walking beside you instead of in front of you.
                 </p>
               </div>

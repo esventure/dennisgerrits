@@ -58,6 +58,9 @@ import p49 from "./p49.jpg";
 import p50 from "./p50.jpg";
 import p51 from "./p51.jpg";
 import p52 from "./p52.jpg";
+import p53 from "./p53.jpg";
+import p54 from "./p54.jpg";
+import p55 from "./p55.jpg";
 
 const sourcePhotos = [
   p01, p02, p03, p04, p05, p06, p07, p08,
@@ -65,7 +68,7 @@ const sourcePhotos = [
   p17, p18, p19, p20, p21, p22, p23, p24, p25,
   p26, p27, p28, p29, p30, p31, p32, p33, p34, p35,
   p36, p37, p38, p39, p40, p41, p42, p43, p44, p45,
-  p46, p47, p48, p49, p50, p51, p52,
+  p46, p47, p48, p49, p50, p51, p52, p53, p54, p55,
 ];
 
 const TARGET = 50;

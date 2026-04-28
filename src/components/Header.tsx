@@ -35,8 +35,12 @@ const Header = () => {
         <Link to="/" className="flex items-center gap-3">
           <img
             src={dennisIllustration}
-            alt="Dennis Gerrits"
-            className="h-20 w-20 object-contain -my-6 shrink-0"
+            alt="Dennis Gerrits logo"
+            className="h-16 w-16 object-contain -my-4"
+            style={{
+              filter:
+                "brightness(0) saturate(100%) invert(36%) sepia(89%) saturate(2876%) hue-rotate(7deg) brightness(95%) contrast(105%)",
+            }}
           />
           <span className="font-heading text-2xl tracking-wider text-primary">Dennis Gerrits</span>
         </Link>

@@ -31,11 +31,15 @@ import p22 from "./p22.jpg";
 import p23 from "./p23.jpg";
 import p24 from "./p24.jpg";
 import p25 from "./p25.jpg";
+import p26 from "./p26.jpg";
+import p27 from "./p27.jpg";
+import p28 from "./p28.jpg";
 
 const sourcePhotos = [
   p01, p02, p03, p04, p05, p06, p07, p08,
   p09, p10, p11, p12, p13, p14, p15, p16,
   p17, p18, p19, p20, p21, p22, p23, p24, p25,
+  p26, p27, p28,
 ];
 
 const TARGET = 50;

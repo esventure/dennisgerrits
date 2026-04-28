@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { Footprints, Bike, Sailboat } from "lucide-react";
+import { Footprints, Bike, Sailboat, Ticket, UtensilsCrossed, CalendarDays, MessageCircle, Car, Hotel } from "lucide-react";
 
 const moments = [
   {

@@ -50,10 +50,13 @@ export default {
         heritage: {
           cream: "hsl(var(--heritage-cream))",
           dark: "hsl(var(--heritage-dark))",
+          ink: "hsl(var(--heritage-ink))",
           purple: "hsl(var(--heritage-purple))",
           bordeaux: "hsl(var(--heritage-bordeaux))",
+          aubergine: "hsl(var(--heritage-aubergine))",
           orange: "hsl(var(--heritage-orange))",
           green: "hsl(var(--heritage-green))",
+          forest: "hsl(var(--heritage-forest))",
           taupe: "hsl(var(--heritage-taupe))",
         },
       },

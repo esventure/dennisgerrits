@@ -1,11 +1,13 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 
 interface MosaicWallProps {
   photos: string[];
-  /** Tile size in px (used for CSS grid). Defaults to 120. */
+  /** Tile size in px. Defaults to 120. */
   tileSize?: number;
-  /** Drift cycle in seconds. Defaults to 75. */
+  /** Drift cycle in seconds. Defaults to 18. */
   duration?: number;
+  /** Number of visible rows. Defaults to 5. */
+  rows?: number;
 }
 
 /**
@@ -15,12 +17,18 @@ interface MosaicWallProps {
  * is ever the focus: tiles stay small, motion is constant but slow, and
  * a soft vignette fades the edges. No hover-zoom, no lightbox.
  *
+ * Tiles whose source fails to load are silently hidden so a single
+ * broken image never leaves a grey square in the wall.
+ *
  * Honors prefers-reduced-motion (renders a static grid).
  */
-const MosaicWall = ({ photos, tileSize = 120, duration = 18 }: MosaicWallProps) => {
-  // Shuffle once per mount so visual rhythm changes between visits without
-  // changing during scroll. Use a stable hash of the array length as seed
-  // proxy — purely cosmetic.
+const MosaicWall = ({
+  photos,
+  tileSize = 120,
+  duration = 18,
+  rows = 5,
+}: MosaicWallProps) => {
+  // Stable shuffle per mount.
   const tiles = useMemo(() => {
     const arr = [...photos];
     for (let i = arr.length - 1; i > 0; i--) {
@@ -30,11 +38,19 @@ const MosaicWall = ({ photos, tileSize = 120, duration = 18 }: MosaicWallProps) 
     return arr;
   }, [photos]);
 
+  // Track failed image sources so they drop out of the layout entirely.
+  const [broken, setBroken] = useState<Set<string>>(new Set());
+  const visibleTiles = tiles.filter((src) => !broken.has(src));
+
+  const gap = 5;
+  // Frame height = exactly N rows of tiles + gaps between them.
+  const frameHeight = rows * tileSize + (rows - 1) * gap;
+
   return (
     <div
       className="relative w-full overflow-hidden rounded-sm"
       style={{
-        height: "min(70vh, 620px)",
+        height: `${frameHeight}px`,
         backgroundColor: "hsl(var(--background))",
       }}
     >
@@ -49,15 +65,16 @@ const MosaicWall = ({ photos, tileSize = 120, duration = 18 }: MosaicWallProps) 
         }}
       >
         <div
-          className="grid gap-[5px] w-full h-full"
+          className="grid w-full h-full"
           style={{
+            gap: `${gap}px`,
             gridTemplateColumns: `repeat(auto-fill, minmax(${tileSize}px, 1fr))`,
             gridAutoRows: `${tileSize}px`,
           }}
         >
-          {tiles.map((src, i) => (
+          {visibleTiles.map((src, i) => (
             <div
-              key={i}
+              key={`${src}-${i}`}
               className="overflow-hidden rounded-[3px] bg-muted"
             >
               <img
@@ -66,6 +83,14 @@ const MosaicWall = ({ photos, tileSize = 120, duration = 18 }: MosaicWallProps) 
                 aria-hidden="true"
                 loading="lazy"
                 decoding="async"
+                onError={() =>
+                  setBroken((prev) => {
+                    if (prev.has(src)) return prev;
+                    const next = new Set(prev);
+                    next.add(src);
+                    return next;
+                  })
+                }
                 className="w-full h-full object-cover block select-none pointer-events-none"
                 draggable={false}
               />
@@ -83,7 +108,6 @@ const MosaicWall = ({ photos, tileSize = 120, duration = 18 }: MosaicWallProps) 
         }}
       />
 
-      {/* Inline keyframes — kept local to the component */}
       <style>{`
         @keyframes mosaicDrift {
           0%   { transform: translate3d(0, 0, 0); }

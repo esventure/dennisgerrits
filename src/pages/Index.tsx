@@ -135,16 +135,16 @@ const Index = () => {
 
       {/* ── 2. About Me — Full-Screen Split ── */}
       <section id="about" className="scroll-mt-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
+        <div className="grid grid-cols-1 lg:grid-cols-2">
           {/* Left Panel — The Person (dark) */}
-          <div className="min-h-[80vh] lg:min-h-screen flex items-center bg-primary px-8 md:px-16 lg:px-20 py-20">
+          <div className="flex items-center bg-primary px-8 md:px-16 lg:px-20 py-16 lg:py-20">
             <FadeIn>
               <div className="max-w-lg">
-                <h2 className="font-heading text-5xl md:text-6xl text-primary-foreground leading-[0.95] mb-4">
+                <h2 className="font-heading text-4xl md:text-5xl text-primary-foreground leading-[0.95] mb-3">
                   The Person
                 </h2>
-                <div className="w-12 h-0.5 bg-primary-foreground/30 mb-6" />
-                <p className="font-body text-sm tracking-[0.15em] uppercase text-primary-foreground/60 mb-6">
+                <div className="w-12 h-0.5 bg-primary-foreground/30 mb-4" />
+                <p className="font-body text-sm tracking-[0.15em] uppercase text-primary-foreground/60 mb-4">
                   A True Amsterdammer
                 </p>
                 <p className="font-body text-primary-foreground/80 leading-relaxed">
@@ -155,14 +155,14 @@ const Index = () => {
           </div>
 
           {/* Right Panel — The Guide (light) */}
-          <div className="min-h-[80vh] lg:min-h-screen flex items-center bg-background px-8 md:px-16 lg:px-20 py-20">
+          <div className="flex items-center bg-background px-8 md:px-16 lg:px-20 py-16 lg:py-20">
             <FadeIn>
               <div className="max-w-lg">
-                <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-4">
+                <h2 className="font-heading text-4xl md:text-5xl text-primary leading-[0.95] mb-3">
                   The Guide
                 </h2>
-                <div className="w-12 h-0.5 bg-accent mb-6" />
-                <p className="font-body text-sm tracking-[0.15em] uppercase text-secondary mb-6">
+                <div className="w-12 h-0.5 bg-accent mb-4" />
+                <p className="font-body text-sm tracking-[0.15em] uppercase text-secondary mb-4">
                   A Different Kind of Guide
                 </p>
                 <p className="font-body text-muted-foreground leading-relaxed">

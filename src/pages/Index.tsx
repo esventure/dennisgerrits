@@ -189,6 +189,7 @@ const Index = () => {
       {/* ── How I Work ── */}
       <section id="how-i-work" className="py-24 lg:py-32 scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.1)" }}>
         <div className="container mx-auto px-6 lg:px-12">
+          {/* Movement 1: Heading + intro */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <FadeIn>
               <div className="max-w-lg">
@@ -196,21 +197,120 @@ const Index = () => {
                   How I Work
                 </p>
                 <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
-                  Like a Trusted Friend, With the Eye of a Concierge
+                  Like a trusted local friend, with the eye of a private concierge.
                 </h2>
               </div>
             </FadeIn>
             <FadeIn delay={0.15}>
               <div className="space-y-6">
                 <p className="font-body text-muted-foreground leading-relaxed">
-                  Imagine discovering Amsterdam as if with a trusted local friend, but with the expertise of a private concierge. That's exactly what I offer.
+                  Every day I guide is built around you. Nothing is scripted. We follow your curiosity, whether that is the hush of the Jordaan at breakfast, the brushwork of a Vermeer, the food halls locals actually use, or the quiet streets of the Jewish Cultural Quarter.
                 </p>
                 <p className="font-body text-muted-foreground leading-relaxed">
-                  Every experience starts with you. Nothing is scripted. We follow your curiosity, whether that's architecture, food, history, or the hidden corners only locals know. My aim is for you to feel at home here, to become part of my city.
+                  I studied architecture, so the city's bones are something I love to share. But we move at your pace. If you would rather slow down for coffee on a bridge or chase a memory from a story your grandmother once told, that is the day we will have.
                 </p>
               </div>
             </FadeIn>
           </div>
+
+          {/* Movement 2: Pull-quote */}
+          <FadeIn delay={0.1}>
+            <figure
+              className="my-20 lg:my-28 max-w-4xl mx-auto border-l-4 pl-8 lg:pl-12 py-2"
+              style={{ borderColor: "hsl(var(--heritage-bordeaux))" }}
+            >
+              <blockquote
+                className="font-heading text-3xl md:text-4xl lg:text-5xl leading-[1.1] italic"
+                style={{ color: "hsl(var(--heritage-bordeaux))" }}
+              >
+                "My aim is for you to feel at home in my city. To understand Amsterdam not just through its sights, but through the rhythm of its streets, its culture, and its people."
+              </blockquote>
+            </figure>
+          </FadeIn>
+
+          {/* Movement 3: Three ways to explore */}
+          <FadeIn delay={0.05}>
+            <div className="mb-10 text-center">
+              <p className="font-body text-sm tracking-widest uppercase text-secondary mb-4">
+                Three Ways to Explore
+              </p>
+              <h3 className="font-heading text-3xl md:text-4xl text-primary leading-tight">
+                The city moves at the pace you choose
+              </h3>
+            </div>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            {[
+              {
+                icon: Footprints,
+                title: "On Foot",
+                text: "The oldest way to read a city. Ideal for the canal belt, the Jordaan, and the museum quarter.",
+                featured: false,
+              },
+              {
+                icon: Bike,
+                title: "By Bike",
+                text: "How locals actually live here. We ride at a calm pace, on quieter routes, with a bike chosen for you.",
+                featured: false,
+              },
+              {
+                icon: Sailboat,
+                title: "Private Boat",
+                text: "A slow cruise along the canals with a glass of wine and a picnic. The view of Amsterdam from the water is the one most travellers never forget.",
+                featured: true,
+              },
+            ].map((mode, i) => {
+              const Icon = mode.icon;
+              return (
+                <FadeIn key={mode.title} delay={0.1 + i * 0.08}>
+                  <article
+                    className={`relative h-full bg-background rounded-sm p-8 shadow-sm hover:shadow-md transition-shadow ${
+                      mode.featured ? "border-2" : "border border-border/60"
+                    }`}
+                    style={mode.featured ? { borderColor: "hsl(var(--heritage-orange))" } : undefined}
+                  >
+                    {mode.featured && (
+                      <span
+                        className="absolute -top-3 left-6 px-3 py-1 text-xs font-body tracking-widest uppercase rounded-sm"
+                        style={{
+                          backgroundColor: "hsl(var(--heritage-orange))",
+                          color: "hsl(var(--background))",
+                        }}
+                      >
+                        My Recommendation
+                      </span>
+                    )}
+                    <Icon
+                      className="mb-6"
+                      size={40}
+                      strokeWidth={1.5}
+                      style={{ color: "hsl(var(--heritage-green))" }}
+                    />
+                    <h4 className="font-heading text-2xl md:text-3xl text-primary mb-3 leading-tight">
+                      {mode.title}
+                    </h4>
+                    <p className="font-body text-muted-foreground leading-relaxed">
+                      {mode.text}
+                    </p>
+                  </article>
+                </FadeIn>
+              );
+            })}
+          </div>
+
+          {/* Beyond Amsterdam closing line */}
+          <FadeIn delay={0.2}>
+            <div className="mt-16 max-w-3xl mx-auto text-center">
+              <div
+                className="w-16 h-px mx-auto mb-8"
+                style={{ backgroundColor: "hsl(var(--heritage-bordeaux) / 0.4)" }}
+              />
+              <p className="font-body text-base md:text-lg text-foreground/80 italic leading-relaxed">
+                Beyond the city, I arrange private day trips by car to The Hague, Delft, Leiden, Rotterdam, and Haarlem, plus the windmills, tulip fields, and countryside villages that make the Netherlands itself worth the journey.
+              </p>
+            </div>
+          </FadeIn>
         </div>
       </section>
 

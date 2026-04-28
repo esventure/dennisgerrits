@@ -443,61 +443,79 @@ const Index = () => {
             </FadeIn>
           </div>
 
-          {/* 6-tile service grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {[
-              {
-                icon: iconTickets,
-                title: "Museum Reservations",
-                desc: "Time slots booked in advance for the Van Gogh Museum, the Rijksmuseum, the Anne Frank House, and more. No queues.",
-              },
-              {
-                icon: iconDining,
-                title: "Dining Bookings",
-                desc: "Tables at the kind of places locals actually go, from neighbourhood bistros to canal-side gems.",
-              },
-              {
-                icon: iconItinerary,
-                title: "Full Itinerary",
-                desc: "A curated plan for your entire stay, not just the day we spend together.",
-              },
-              {
-                icon: iconMessage,
-                title: "WhatsApp Lifeline",
-                desc: "I am one message away for the whole trip. Restaurant tip, last-minute change, anything you need.",
-              },
-              {
-                icon: iconTransport,
-                title: "Transport & Transfers",
-                desc: "Airport pickups, train tickets, and private cars to day-trip destinations, all arranged before you arrive.",
-              },
-              {
-                icon: iconHotel,
-                title: "Where to Stay",
-                desc: "Honest recommendations for hotels and apartments that match how you like to travel.",
-              },
-            ].map((item, i) => (
-              <FadeIn key={item.title} delay={0.05 + i * 0.06}>
-                <article className="h-full bg-background rounded-sm p-8 border border-border/60 shadow-sm hover:shadow-md transition-shadow">
-                  <div className="w-16 h-16 mb-6">
-                    <img
-                      src={item.icon}
-                      alt={item.title}
-                      width={64}
-                      height={64}
-                      loading="lazy"
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-                  <h4 className="font-heading text-xl md:text-2xl text-primary mb-3 leading-tight">
-                    {item.title}
-                  </h4>
-                  <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed">
-                    {item.desc}
-                  </p>
-                </article>
-              </FadeIn>
-            ))}
+          {/* Two-column: what you'd handle alone vs what I take care of */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-border/60 border border-border/60 rounded-sm overflow-hidden max-w-6xl mx-auto">
+            {/* Left: without me */}
+            <FadeIn>
+              <div
+                className="h-full p-10 lg:p-12"
+                style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.18)" }}
+              >
+                <p className="font-body text-xs tracking-widest uppercase text-muted-foreground mb-6">
+                  Planning it yourself
+                </p>
+                <h3 className="font-heading text-3xl md:text-4xl text-primary leading-tight mb-8">
+                  What usually eats up a holiday.
+                </h3>
+                <ul className="space-y-5 font-body text-base md:text-lg text-foreground/75 leading-relaxed">
+                  {[
+                    "Refreshing the Anne Frank House page hoping a slot opens up.",
+                    "Reading 200 reviews to find a restaurant that isn't a tourist trap.",
+                    "Stitching together trains, trams and a transfer from Schiphol.",
+                    "Wondering, at 9pm, where to eat tonight.",
+                    "Hoping the hotel you booked is actually in the right neighbourhood.",
+                    "Carrying every small question alone.",
+                  ].map((line) => (
+                    <li key={line} className="flex gap-4">
+                      <span aria-hidden className="text-muted-foreground/60 mt-1">✕</span>
+                      <span>{line}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </FadeIn>
+
+            {/* Right: with me */}
+            <FadeIn delay={0.15}>
+              <div
+                className="h-full p-10 lg:p-12"
+                style={{ backgroundColor: "hsl(var(--heritage-green) / 0.10)" }}
+              >
+                <p className="font-body text-xs tracking-widest uppercase text-secondary mb-6">
+                  With me alongside you
+                </p>
+                <h3 className="font-heading text-3xl md:text-4xl text-primary leading-tight mb-8">
+                  What I quietly take care of.
+                </h3>
+                <ul className="space-y-6 font-body text-base md:text-lg text-foreground/90 leading-relaxed">
+                  {[
+                    { icon: iconTickets, title: "Museum reservations", desc: "Time slots booked in advance. No queues." },
+                    { icon: iconDining, title: "Dining bookings", desc: "Tables at the kind of places locals actually go." },
+                    { icon: iconItinerary, title: "A full itinerary", desc: "A curated plan for your whole stay, not just our day." },
+                    { icon: iconTransport, title: "Transport and transfers", desc: "Airport pickups, trains, private cars to day trips." },
+                    { icon: iconHotel, title: "Where to stay", desc: "Honest hotel and apartment recommendations." },
+                    { icon: iconMessage, title: "WhatsApp lifeline", desc: "One message away for the whole trip." },
+                  ].map((item) => (
+                    <li key={item.title} className="flex gap-4 items-start">
+                      <img
+                        src={item.icon}
+                        alt=""
+                        width={40}
+                        height={40}
+                        loading="lazy"
+                        className="w-10 h-10 object-contain shrink-0 mt-0.5"
+                      />
+                      <span>
+                        <span className="font-heading text-xl text-primary block leading-tight mb-1">
+                          {item.title}
+                        </span>
+                        <span className="text-foreground/75 text-base">{item.desc}</span>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </FadeIn>
           </div>
 
         </div>

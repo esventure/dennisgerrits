@@ -171,16 +171,16 @@ const TravelAgents = () => {
       >
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
-            <FadeIn>
-              <div className="lg:col-span-5">
+            <FadeIn className="lg:col-span-5">
+              <div>
                 <Phone className="w-10 h-10 text-secondary mb-8" strokeWidth={1.5} />
                 <h2 className="font-heading text-4xl md:text-5xl text-primary leading-[1] mb-6">
                   Your clients have a local they can rely on.
                 </h2>
               </div>
             </FadeIn>
-            <FadeIn delay={0.1}>
-              <div className="lg:col-span-7 space-y-6 font-body text-lg text-foreground/90 leading-relaxed">
+            <FadeIn delay={0.1} className="lg:col-span-7">
+              <div className="space-y-6 font-body text-lg text-foreground/90 leading-relaxed">
                 <p>
                   From the moment your clients are preparing for their trip, I am there. Once
                   they arrive, I become their direct point of contact. I share my phone number

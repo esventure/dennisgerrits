@@ -1,35 +1,35 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState, useEffect } from "react";
 
 interface MosaicWallProps {
   photos: string[];
-  /** Tile size in px. Defaults to 120. */
-  tileSize?: number;
   /** Drift cycle in seconds. Defaults to 18. */
   duration?: number;
   /** Number of visible rows. Defaults to 5. */
   rows?: number;
+  /** Number of columns. Defaults to 10. */
+  columns?: number;
 }
 
 /**
- * Infinite Mosaic Wall.
+ * Mosaic Wall — a fixed grid of `rows × columns` photo tiles.
  *
- * A drifting grid of small photo tiles. Designed so no individual face
- * is ever the focus: tiles stay small, motion is constant but slow, and
- * a soft vignette fades the edges. No hover-zoom, no lightbox.
+ * Tile size is derived from the container width so the grid always
+ * fills the frame edge-to-edge. A soft drift animation keeps the wall
+ * alive without ever turning into a feature on any one face.
  *
- * Tiles whose source fails to load are silently hidden so a single
- * broken image never leaves a grey square in the wall.
+ * Tiles whose source fails to load are silently hidden, then back-filled
+ * from the remaining pool so the grid stays complete.
  *
  * Honors prefers-reduced-motion (renders a static grid).
  */
 const MosaicWall = ({
   photos,
-  tileSize = 120,
   duration = 18,
   rows = 5,
+  columns = 10,
 }: MosaicWallProps) => {
   // Stable shuffle per mount.
-  const tiles = useMemo(() => {
+  const shuffled = useMemo(() => {
     const arr = [...photos];
     for (let i = arr.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -40,39 +40,55 @@ const MosaicWall = ({
 
   // Track failed image sources so they drop out of the layout entirely.
   const [broken, setBroken] = useState<Set<string>>(new Set());
-  const visibleTiles = tiles.filter((src) => !broken.has(src));
+  const pool = shuffled.filter((src) => !broken.has(src));
 
+  // Build exactly rows × columns tiles, repeating from the pool if needed.
+  const slots = rows * columns;
+  const tiles: string[] = [];
+  if (pool.length > 0) {
+    for (let i = 0; i < slots; i++) tiles.push(pool[i % pool.length]);
+  }
+
+  // Measure container width to compute square tile size.
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [tileSize, setTileSize] = useState(120);
   const gap = 5;
-  // Frame height = exactly N rows of tiles + gaps between them.
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const update = () => {
+      const w = el.clientWidth;
+      const size = Math.max(40, (w - gap * (columns - 1)) / columns);
+      setTileSize(size);
+    };
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [columns]);
+
   const frameHeight = rows * tileSize + (rows - 1) * gap;
 
   return (
     <div
+      ref={containerRef}
       className="relative w-full overflow-hidden rounded-sm"
       style={{
         height: `${frameHeight}px`,
         backgroundColor: "hsl(var(--background))",
       }}
     >
-      {/* Drifting grid layer — sized larger than the frame so edges never reveal */}
-      <div
-        className="absolute inset-0 mosaic-drift"
-        style={{
-          width: "140%",
-          height: "140%",
-          left: "-20%",
-          top: "-20%",
-        }}
-      >
+      <div className="absolute inset-0 mosaic-drift">
         <div
           className="grid w-full h-full"
           style={{
             gap: `${gap}px`,
-            gridTemplateColumns: `repeat(auto-fill, minmax(${tileSize}px, 1fr))`,
-            gridAutoRows: `${tileSize}px`,
+            gridTemplateColumns: `repeat(${columns}, 1fr)`,
+            gridTemplateRows: `repeat(${rows}, ${tileSize}px)`,
           }}
         >
-          {visibleTiles.map((src, i) => (
+          {tiles.map((src, i) => (
             <div
               key={`${src}-${i}`}
               className="overflow-hidden rounded-[3px] bg-muted"
@@ -104,17 +120,15 @@ const MosaicWall = ({
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse at center, transparent 35%, hsl(var(--background) / 0.55) 70%, hsl(var(--background)) 96%)",
+            "radial-gradient(ellipse at center, transparent 45%, hsl(var(--background) / 0.45) 75%, hsl(var(--background)) 98%)",
         }}
       />
 
       <style>{`
         @keyframes mosaicDrift {
-          0%   { transform: translate3d(0, 0, 0); }
-          25%  { transform: translate3d(-3%, -2%, 0); }
-          50%  { transform: translate3d(-5%, -4%, 0); }
-          75%  { transform: translate3d(-2%, -3%, 0); }
-          100% { transform: translate3d(0, 0, 0); }
+          0%   { transform: translate3d(0, 0, 0) scale(1); }
+          50%  { transform: translate3d(-1.5%, -1%, 0) scale(1.02); }
+          100% { transform: translate3d(0, 0, 0) scale(1); }
         }
         .mosaic-drift {
           animation: mosaicDrift ${duration}s ease-in-out infinite;

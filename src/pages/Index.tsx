@@ -664,7 +664,7 @@ const Index = () => {
                   Faces of the Road
                 </p>
                 <h3 className="font-heading text-4xl lg:text-5xl text-primary mb-4">
-                  Five years. Hundreds of mornings.
+                  Moments spent together.
                 </h3>
                 <p className="font-body text-muted-foreground text-lg leading-relaxed">
                   Real people, real moments. A glimpse of what a day with me actually feels like.

@@ -18,7 +18,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { Footprints, Bike, Sailboat } from "lucide-react";
+import iconFoot from "@/assets/icon-foot.png";
+import iconBike from "@/assets/icon-bike.png";
+import iconBoat from "@/assets/icon-boat.png";
 
 const moments = [
   {
@@ -222,25 +224,24 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {[
               {
-                icon: Footprints,
+                icon: iconFoot,
                 title: "On Foot",
                 text: "The oldest way to read a city. Ideal for the canal belt, the Jordaan, and the museum quarter.",
                 featured: false,
               },
               {
-                icon: Bike,
+                icon: iconBike,
                 title: "By Bike",
                 text: "How locals actually live here. We ride at a calm pace, on quieter routes, with a bike chosen for you.",
                 featured: false,
               },
               {
-                icon: Sailboat,
+                icon: iconBoat,
                 title: "Private Boat",
                 text: "A slow cruise along the canals with a glass of wine and a picnic. The view of Amsterdam from the water is the one most travellers never forget.",
                 featured: true,
               },
             ].map((mode, i) => {
-              const Icon = mode.icon;
               return (
                 <FadeIn key={mode.title} delay={0.1 + i * 0.08}>
                   <article
@@ -260,12 +261,16 @@ const Index = () => {
                         My Recommendation
                       </span>
                     )}
-                    <Icon
-                      className="mb-6"
-                      size={40}
-                      strokeWidth={1.5}
-                      style={{ color: "hsl(var(--heritage-green))" }}
-                    />
+                    <div className="w-16 h-16 mb-6">
+                      <img
+                        src={mode.icon}
+                        alt={mode.title}
+                        width={64}
+                        height={64}
+                        loading="lazy"
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
                     <h4 className="font-heading text-2xl md:text-3xl text-primary mb-3 leading-tight">
                       {mode.title}
                     </h4>

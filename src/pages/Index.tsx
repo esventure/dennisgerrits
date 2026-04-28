@@ -448,76 +448,117 @@ const Index = () => {
 
           {/* Two-column: what you'd handle alone vs what I take care of */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto">
-            {/* Left: without me */}
-            <FadeIn>
-              <div
-                className="h-full p-10 lg:p-12 bg-background rounded-sm border-t-4 shadow-sm"
-                style={{ borderColor: "hsl(var(--heritage-taupe))" }}
-              >
-                <p className="font-body text-xs tracking-widest uppercase text-muted-foreground mb-6 font-semibold">
-                  Planning it yourself
-                </p>
-                <h3 className="font-heading text-3xl md:text-4xl text-primary leading-tight mb-10">
-                  What usually eats up a holiday.
-                </h3>
-                <ul className="space-y-6 font-body text-lg text-foreground leading-relaxed">
-                  {[
-                    "Refreshing the Anne Frank House page hoping a slot opens up.",
-                    "Reading 200 reviews to find a restaurant that isn't a tourist trap.",
-                    "Stitching together trains, trams and a transfer from Schiphol.",
-                    "Wondering, at 9pm, where to eat tonight.",
-                    "Hoping the hotel you booked is actually in the right neighbourhood.",
-                    "Carrying every small question alone.",
-                  ].map((line) => (
-                    <li key={line} className="flex gap-4">
-                      <span
-                        aria-hidden
-                        className="shrink-0 mt-1 text-lg font-bold"
-                        style={{ color: "hsl(var(--heritage-bordeaux))" }}
-                      >
-                        ✕
-                      </span>
-                      <span>{line}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </FadeIn>
+            {(() => {
+              const rows = [
+                {
+                  worry: "Refreshing the Anne Frank House page hoping a slot opens up.",
+                  icon: iconTickets,
+                  title: "Museum reservations",
+                  desc: "Time slots booked in advance. No queues.",
+                },
+                {
+                  worry: "Reading 200 reviews to find a restaurant that isn't a tourist trap.",
+                  icon: iconDining,
+                  title: "Dining bookings",
+                  desc: "Tables at the kind of places locals actually go.",
+                },
+                {
+                  worry: "Wondering, at 9pm, where to eat tonight.",
+                  icon: iconMessage,
+                  title: "WhatsApp lifeline",
+                  desc: "One message away for the whole trip.",
+                },
+                {
+                  worry: "Stitching together trains, trams and a transfer from Schiphol.",
+                  icon: iconTransport,
+                  title: "Transport and transfers",
+                  desc: "Airport pickups, trains, private cars to day trips.",
+                },
+                {
+                  worry: "Hoping the hotel you booked is actually in the right neighbourhood.",
+                  icon: iconHotel,
+                  title: "Where to stay",
+                  desc: "Honest hotel and apartment recommendations.",
+                },
+                {
+                  worry: "Carrying every small question alone.",
+                  icon: iconItinerary,
+                  title: "A full itinerary",
+                  desc: "A curated plan for your whole stay, not just our day.",
+                },
+              ];
 
-            {/* Right: with me */}
-            <FadeIn delay={0.15}>
-              <div
-                className="h-full p-10 lg:p-12 bg-background rounded-sm border-t-4 shadow-sm"
-                style={{ borderColor: "hsl(var(--heritage-orange))" }}
-              >
-                <p className="font-body text-xs tracking-widest uppercase text-secondary mb-6 font-semibold">
-                  With me alongside you
-                </p>
-                <h3 className="font-heading text-3xl md:text-4xl text-primary leading-tight mb-10">
-                  What I quietly take care of.
-                </h3>
-                <ul className="space-y-7 font-body text-lg text-foreground leading-relaxed">
-                  {[
-                    { icon: iconTickets, title: "Museum reservations", desc: "Time slots booked in advance. No queues." },
-                    { icon: iconDining, title: "Dining bookings", desc: "Tables at the kind of places locals actually go." },
-                    { icon: iconItinerary, title: "A full itinerary", desc: "A curated plan for your whole stay, not just our day." },
-                    { icon: iconTransport, title: "Transport and transfers", desc: "Airport pickups, trains, private cars to day trips." },
-                    { icon: iconHotel, title: "Where to stay", desc: "Honest hotel and apartment recommendations." },
-                    { icon: iconMessage, title: "WhatsApp lifeline", desc: "One message away for the whole trip." },
-                  ].map((item) => (
-                    <li key={item.title} className="flex gap-5 items-start">
-                      <ServiceIcon src={item.icon} size={64} padding={10} tinted />
-                      <span className="pt-1">
-                        <span className="font-heading text-xl md:text-2xl text-primary block leading-tight mb-1">
-                          {item.title}
-                        </span>
-                        <span className="text-foreground/85 text-base md:text-lg">{item.desc}</span>
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </FadeIn>
+              const ROW_MIN_H = "min-h-[112px]";
+
+              return (
+                <>
+                  {/* Left: without me */}
+                  <FadeIn>
+                    <div
+                      className="h-full p-10 lg:p-12 bg-background rounded-sm border-t-4 shadow-sm"
+                      style={{ borderColor: "hsl(var(--heritage-taupe))" }}
+                    >
+                      <p className="font-body text-xs tracking-widest uppercase text-muted-foreground mb-6 font-semibold">
+                        Planning it yourself
+                      </p>
+                      <h3 className="font-heading text-3xl md:text-4xl text-primary leading-tight mb-10">
+                        What usually eats up a holiday.
+                      </h3>
+                      <ul className="font-body text-lg text-foreground leading-relaxed">
+                        {rows.map((row) => (
+                          <li
+                            key={row.worry}
+                            className={`flex gap-4 items-center ${ROW_MIN_H}`}
+                          >
+                            <span
+                              aria-hidden
+                              className="shrink-0 text-lg font-bold"
+                              style={{ color: "hsl(var(--heritage-bordeaux))" }}
+                            >
+                              ✕
+                            </span>
+                            <span>{row.worry}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </FadeIn>
+
+                  {/* Right: with me */}
+                  <FadeIn delay={0.15}>
+                    <div
+                      className="h-full p-10 lg:p-12 bg-background rounded-sm border-t-4 shadow-sm"
+                      style={{ borderColor: "hsl(var(--heritage-orange))" }}
+                    >
+                      <p className="font-body text-xs tracking-widest uppercase text-secondary mb-6 font-semibold">
+                        With me alongside you
+                      </p>
+                      <h3 className="font-heading text-3xl md:text-4xl text-primary leading-tight mb-10">
+                        What I quietly take care of.
+                      </h3>
+                      <ul className="font-body text-lg text-foreground leading-relaxed">
+                        {rows.map((row) => (
+                          <li
+                            key={row.title}
+                            className={`flex gap-5 items-center ${ROW_MIN_H}`}
+                          >
+                            <ServiceIcon src={row.icon} size={64} padding={10} tinted />
+                            <span>
+                              <span className="font-heading text-xl md:text-2xl text-primary block leading-tight mb-1">
+                                {row.title}
+                              </span>
+                              <span className="text-foreground/85 text-base md:text-lg">
+                                {row.desc}
+                              </span>
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </FadeIn>
+                </>
+              );
+            })()}
           </div>
 
         </div>

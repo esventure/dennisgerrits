@@ -8,8 +8,9 @@ const navLinks = [
   { to: "/#about", label: "About" },
   { to: "/#how-i-work", label: "How I Work" },
   { to: "/#day", label: "A Day Together" },
+  { to: "/#my-service", label: "My Service" },
   { to: "/#proof", label: "Reviews" },
-  { to: "/#more", label: "More" },
+  { to: "/#stories", label: "Stories" },
   { to: "/#contact", label: "Contact" },
   { to: "/get-inspired", label: "Get Inspired" },
 ];

@@ -8,11 +8,17 @@ import { guestPhotos } from "@/assets/guests";
 import dennisIllustration from "@/assets/dennis_illustration.png";
 import dennisPhoto from "@/assets/dennis_photo.png";
 import dennisRickSteves from "@/assets/dennis_rick_steves.jpg";
+import iconTickets from "@/assets/icon-tickets.png";
+import iconDining from "@/assets/icon-dining.png";
+import iconItinerary from "@/assets/icon-itinerary.png";
+import iconMessage from "@/assets/icon-message.png";
+import iconTransport from "@/assets/icon-transport.png";
+import iconHotel from "@/assets/icon-hotel.png";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { Footprints, Bike, Sailboat, Ticket, UtensilsCrossed, CalendarDays, MessageCircle, Car, Hotel } from "lucide-react";
+import { Footprints, Bike, Sailboat } from "lucide-react";
 
 const moments = [
   {
@@ -441,56 +447,57 @@ const Index = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {[
               {
-                icon: Ticket,
+                icon: iconTickets,
                 title: "Museum Reservations",
                 desc: "Time slots booked in advance for the Van Gogh Museum, the Rijksmuseum, the Anne Frank House, and more. No queues.",
               },
               {
-                icon: UtensilsCrossed,
+                icon: iconDining,
                 title: "Dining Bookings",
                 desc: "Tables at the kind of places locals actually go, from neighbourhood bistros to canal-side gems.",
               },
               {
-                icon: CalendarDays,
+                icon: iconItinerary,
                 title: "Full Itinerary",
                 desc: "A curated plan for your entire stay, not just the day we spend together.",
               },
               {
-                icon: MessageCircle,
+                icon: iconMessage,
                 title: "WhatsApp Lifeline",
                 desc: "I am one message away for the whole trip. Restaurant tip, last-minute change, anything you need.",
               },
               {
-                icon: Car,
+                icon: iconTransport,
                 title: "Transport & Transfers",
                 desc: "Airport pickups, train tickets, and private cars to day-trip destinations, all arranged before you arrive.",
               },
               {
-                icon: Hotel,
+                icon: iconHotel,
                 title: "Where to Stay",
                 desc: "Honest recommendations for hotels and apartments that match how you like to travel.",
               },
-            ].map((item, i) => {
-              const Icon = item.icon;
-              return (
-                <FadeIn key={item.title} delay={0.05 + i * 0.06}>
-                  <article className="h-full bg-background rounded-sm p-8 border border-border/60 shadow-sm hover:shadow-md transition-shadow">
-                    <Icon
-                      className="mb-6"
-                      size={36}
-                      strokeWidth={1.5}
-                      style={{ color: "hsl(var(--heritage-green))" }}
+            ].map((item, i) => (
+              <FadeIn key={item.title} delay={0.05 + i * 0.06}>
+                <article className="h-full bg-background rounded-sm p-8 border border-border/60 shadow-sm hover:shadow-md transition-shadow">
+                  <div className="w-16 h-16 mb-6">
+                    <img
+                      src={item.icon}
+                      alt={item.title}
+                      width={64}
+                      height={64}
+                      loading="lazy"
+                      className="w-full h-full object-contain"
                     />
-                    <h4 className="font-heading text-xl md:text-2xl text-primary mb-3 leading-tight">
-                      {item.title}
-                    </h4>
-                    <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </article>
-                </FadeIn>
-              );
-            })}
+                  </div>
+                  <h4 className="font-heading text-xl md:text-2xl text-primary mb-3 leading-tight">
+                    {item.title}
+                  </h4>
+                  <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed">
+                    {item.desc}
+                  </p>
+                </article>
+              </FadeIn>
+            ))}
           </div>
 
         </div>

@@ -422,40 +422,91 @@ const Index = () => {
       {/* ── My Service ── */}
       <section id="my-service" className="py-24 lg:py-32 scroll-mt-20">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          {/* Heading + intro, centered editorial block */}
+          <div className="max-w-3xl mx-auto text-center mb-16 lg:mb-20">
             <FadeIn>
-              <div className="max-w-lg">
-                <p className="font-body text-sm tracking-widest uppercase text-accent mb-6">
-                  My Service
-                </p>
-                <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
-                  Everything Taken Care Of
-                </h2>
-              </div>
+              <p className="font-body text-sm tracking-widest uppercase text-accent mb-6">
+                My Service
+              </p>
+              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
+                More than a guide. A concierge for your whole stay.
+              </h2>
             </FadeIn>
             <FadeIn delay={0.15}>
-              <div className="space-y-6">
-                <p className="font-body text-muted-foreground leading-relaxed">
-                  Explore by foot, bike, or private boat with wine and a picnic. Beyond Amsterdam, I arrange private day trips to The Hague, Delft, Rotterdam, tulip fields, and the countryside.
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
-                  {[
-                    { title: "Museum Reservations", desc: "Time slots booked so you skip the queues and enjoy art at your pace." },
-                    { title: "Dining Experiences", desc: "Tables at places you'd never find on your own, from hidden bistros to canal-side gems." },
-                    { title: "Full Itinerary", desc: "A curated plan for your entire stay, not just the day we spend together." },
-                    { title: "WhatsApp Support", desc: "I'm available throughout your stay for tips, guidance, and recommendations." },
-                    { title: "Transport & Transfers", desc: "Airport transfers, train tickets, and private car arrangements all handled." },
-                    { title: "Hotel Recommendations", desc: "Trusted suggestions for hotels and apartments that match your style." },
-                  ].map((item) => (
-                    <div key={item.title} className="border-l-2 border-accent pl-4">
-                      <h4 className="font-heading text-lg text-primary mb-1">{item.title}</h4>
-                      <p className="font-body text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <p className="font-body text-lg text-muted-foreground leading-relaxed">
+                The day we spend together is just the centre of it. Around that, I quietly take care of the things that usually eat up a holiday: the bookings, the queues, the questions at 9pm about where to eat. One person, one phone number, every detail looked after.
+              </p>
             </FadeIn>
           </div>
+
+          {/* 6-tile service grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {[
+              {
+                icon: Ticket,
+                title: "Museum Reservations",
+                desc: "Time slots booked in advance for the Van Gogh Museum, the Rijksmuseum, the Anne Frank House, and more. No queues.",
+              },
+              {
+                icon: UtensilsCrossed,
+                title: "Dining Bookings",
+                desc: "Tables at the kind of places locals actually go, from neighbourhood bistros to canal-side gems.",
+              },
+              {
+                icon: CalendarDays,
+                title: "Full Itinerary",
+                desc: "A curated plan for your entire stay, not just the day we spend together.",
+              },
+              {
+                icon: MessageCircle,
+                title: "WhatsApp Lifeline",
+                desc: "I am one message away for the whole trip. Restaurant tip, last-minute change, anything you need.",
+              },
+              {
+                icon: Car,
+                title: "Transport & Transfers",
+                desc: "Airport pickups, train tickets, and private cars to day-trip destinations, all arranged before you arrive.",
+              },
+              {
+                icon: Hotel,
+                title: "Where to Stay",
+                desc: "Honest recommendations for hotels and apartments that match how you like to travel.",
+              },
+            ].map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <FadeIn key={item.title} delay={0.05 + i * 0.06}>
+                  <article className="h-full bg-background rounded-sm p-8 border border-border/60 shadow-sm hover:shadow-md transition-shadow">
+                    <Icon
+                      className="mb-6"
+                      size={36}
+                      strokeWidth={1.5}
+                      style={{ color: "hsl(var(--heritage-green))" }}
+                    />
+                    <h4 className="font-heading text-xl md:text-2xl text-primary mb-3 leading-tight">
+                      {item.title}
+                    </h4>
+                    <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </article>
+                </FadeIn>
+              );
+            })}
+          </div>
+
+          {/* Closing reassurance */}
+          <FadeIn delay={0.2}>
+            <div className="mt-16 max-w-2xl mx-auto text-center">
+              <div
+                className="w-16 h-px mx-auto mb-8"
+                style={{ backgroundColor: "hsl(var(--heritage-bordeaux) / 0.4)" }}
+              />
+              <p className="font-body text-base md:text-lg text-foreground/80 italic leading-relaxed">
+                One contact, every detail handled. Your only job is to enjoy the city.
+              </p>
+            </div>
+          </FadeIn>
         </div>
       </section>
 

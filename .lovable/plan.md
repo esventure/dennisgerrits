@@ -1,56 +1,90 @@
-# Infinite Mosaic Wall — "A Day With Dennis"
-
 ## Goal
-A new homepage section that *feels* like the abundance of happy guests Dennis has hosted, without ever zooming in on a face. Constant gentle motion, ~50 small thumbnails in full color, edge vignette to keep the eye on the whole, not the parts.
 
-## Where it goes
-Insert as a new section **between "Real Words From Real People" (reviews) and the next section** on `src/pages/Index.tsx`. Reviews tell us *what* guests felt; this wall shows us *how many*.
+Make the **How I Work** section feel as distinctive and editorial as the rest of the site. Today it's a flat two-column intro that gets visually outshone by the Rick Steves block right below it. Let's give it real structure, more of the source story, and a few signature visual moves so it earns its place as the philosophy anchor between Hero/About and the Rick Steves feature.
 
-Section heading: **"Faces of the Road"** (kept short, editorial). Subhead: a single line like *"Five years. Hundreds of mornings. Real people, real moments."*
+## What's wrong today
 
-## The mechanic
-- **A grid of ~50 photo tiles** (10 cols × 5 rows on desktop, denser packing on mobile via responsive cols).
-- The entire grid is wrapped in a container that **slowly drifts diagonally** (translateX + translateY) on a continuous loop using a single CSS keyframe animation. Drift is gentle — roughly 60-90 seconds per full cycle — so it reads as ambient motion, not a slideshow.
-- The grid is built **larger than the viewport** (e.g., 140% width, 140% height) so the drift never reveals an edge.
-- **Soft radial vignette** overlay (cream/off-white fading from transparent center to opaque edges) keeps focus on the middle mass of the grid and softly fades photos at the perimeter.
-- **No hover-zoom on individual tiles.** Hover (or no hover) — tiles stay the same size. Optional: hovering the whole section *slows* the drift slightly (animation-play-state or duration shift) for a subtle "lean in" feel without revealing any one photo.
-- **Tile size**: ~110-140px square on desktop, ~80-100px on mobile. Small enough that faces read as silhouettes, large enough to feel real.
-- **Tile treatment**: full color, slight rounded corners (4px), tiny gap between tiles (4-6px) so the grid reads as a mosaic, not a single image.
-- **Reduced motion**: respect `prefers-reduced-motion` — fall back to a static grid with the vignette.
+- Only ~2 short paragraphs survive from your full text. Loses the boat, the day-trips, the architecture background, the "rhythm of the streets" voice.
+- Layout is the same left-title / right-text pattern used in three other sections, so it doesn't stand out.
+- No visual texture, no pull-quote, no rhythm changes — reads like filler.
 
-## Placeholder photos (until Dennis sends his)
-Since he'll provide real photos later, I'll use **50 royalty-free travel/lifestyle stock photos** (Unsplash) covering: walking groups, café scenes, canal views, hands holding coffee, market moments, smiling backs of heads, two friends laughing, etc. Curated to feel like "a day in Amsterdam with a guide" without using identifiable faces. They live in `src/assets/guests/` so swapping is a one-folder replacement later.
+## Proposed redesign
 
-I'll add a brief code comment at the top of the photo array: `// Placeholder stock photos. Replace with Dennis's 50 guest photos in src/assets/guests/`
+A single section with **three movements**, each with its own visual treatment:
 
-## Implementation details
+```text
+┌─────────────────────────────────────────────────────────────┐
+│  HOW I WORK  (small uppercase eyebrow, taupe bg)            │
+│                                                             │
+│  Like a trusted local friend,                               │
+│  with the eye of a private concierge.        (oversized)    │
+│                                                             │
+│  ── Movement 1: The Approach ─────────────────────────────  │
+│  [intro paragraph]      |   [hand-pencilled accent          │
+│                         |    illustration / portrait        │
+│                         |    crop or canal sketch]          │
+│                                                             │
+│  ── Movement 2: Pull-quote (full width, bordeaux accent) ─  │
+│      "My aim is for you to become part of my city,          │
+│       to feel at home here."                                │
+│                                                             │
+│  ── Movement 3: How We Explore (3 cards) ────────────────   │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐                   │
+│  │ On Foot  │  │ By Bike  │  │ Private  │                   │
+│  │          │  │          │  │  Boat ★  │                   │
+│  └──────────┘  └──────────┘  └──────────┘                   │
+│  + one-line note: "Beyond Amsterdam: The Hague,             │
+│    Delft, Leiden, Rotterdam, Haarlem, tulip fields,         │
+│    countryside villages, all by private car."               │
+└─────────────────────────────────────────────────────────────┘
+```
 
-### New file: `src/components/MosaicWall.tsx`
-- Accepts a `photos: string[]` prop (array of imported image paths).
-- Renders a fixed-aspect outer frame (e.g., `aspect-[16/9]` or fixed `h-[520px]` desktop / `h-[420px]` mobile) with `overflow-hidden` and the vignette overlay.
-- Inside: a single drifting `<div>` containing a CSS grid of all 50 tiles, sized to ~140% of the frame.
-- Animation defined inline via Tailwind `style` + a small `<style>` block with `@keyframes drift`. Loop is seamless (start position = end position in a way that's imperceptible — drift returns to origin smoothly over 75s with `ease-in-out`).
-- Vignette is a sibling absolutely-positioned div with `background: radial-gradient(ellipse at center, transparent 40%, hsl(var(--background)) 95%)`.
-- `prefers-reduced-motion` media query disables the keyframe animation.
+**Why this works**
+- Headline + pull-quote give two memorable phrases instead of one wall of grey body copy.
+- The three-mode cards make the "walking / biking / boat" choice feel concrete and bookable — and let us star the boat as the personal recommendation, which is the most distinctive part of the source text.
+- The day-trips line keeps the "beyond Amsterdam" promise without duplicating the existing "My Service" section that already lists logistics.
 
-### `src/pages/Index.tsx`
-- Import `MosaicWall` and the 50 placeholder images.
-- Add new `<section id="guests">` with the heading + subhead + the `MosaicWall` component, wrapped in `FadeIn`.
-- Section background: alternating tint per the existing visual rhythm (probably the cream/off-white so the vignette blends).
+## Rewritten copy (first person, no em dashes, target 55+ readable)
 
-### `src/assets/guests/`
-- 50 small JPGs (~150-200KB each, ~600px wide source so retina-crisp at 140px display). Total payload roughly 7-10 MB — acceptable for a hero-feel section, and lazy-loaded via `loading="lazy"` on each `<img>` since they're below the fold.
+**Eyebrow:** How I Work
+**Heading:** Like a trusted local friend, with the eye of a private concierge.
 
-## Edge cases & polish
-- **Performance**: 50 small images with `loading="lazy"` + `decoding="async"`. The drift uses `transform` only (GPU-accelerated). No layout thrash.
-- **Tablet (iPad, primary audience)**: tested at the 1050px viewport — grid stays ~8 cols, tile size scales down, drift still reads.
-- **Mobile**: 6 cols, smaller tiles, shorter section height. Drift speed unchanged.
-- **Privacy guard**: confirmed — no hover state enlarges any tile, no lightbox, no click target on tiles.
+**Intro (two short paragraphs):**
 
-## Files changed
-1. **`src/components/MosaicWall.tsx`** (new) — the drifting mosaic component
-2. **`src/pages/Index.tsx`** — add the new section
-3. **`src/assets/guests/`** (new folder) — 50 placeholder JPGs + an `index.ts` barrel that exports the array
+> Every day I guide is built around you. Nothing is scripted. We follow your curiosity, whether that is the hush of the Jordaan at breakfast, the brushwork of a Vermeer, the food halls locals actually use, or the quiet streets of the Jewish Cultural Quarter.
+>
+> I studied architecture, so the city's bones are something I love to share. But we move at your pace. If you would rather slow down for coffee on a bridge or chase a memory from a story your grandmother once told, that is the day we will have.
 
-## Future swap
-When Dennis sends his 50 photos, I just drop them into `src/assets/guests/` (same filenames or update the barrel) and the section is real. No code logic changes.
+**Pull-quote (large, accent-coloured, full-width band):**
+
+> "My aim is for you to feel at home in my city. To understand Amsterdam not just through its sights, but through the rhythm of its streets, its culture, and its people."
+
+**Three "ways to explore" cards:**
+
+1. **On Foot** — The oldest way to read a city. Ideal for the canal belt, the Jordaan, and the museum quarter.
+2. **By Bike** — How locals actually live here. We ride at a calm pace, on quieter routes, with a bike chosen for you.
+3. **Private Boat** *(starred as my recommendation)* — A slow cruise along the canals with a glass of wine and a picnic. The view of Amsterdam from the water is the one most travellers never forget.
+
+**Closing line under the cards:**
+
+> Beyond the city, I arrange private day trips by car to The Hague, Delft, Leiden, Rotterdam, and Haarlem, plus the windmills, tulip fields, and countryside villages that make the Netherlands itself worth the journey.
+
+## Visual / styling details
+
+- Keep the existing `heritage-taupe / 0.1` section background.
+- Heading: existing `font-heading text-5xl md:text-6xl text-primary` rhythm.
+- Pull-quote: large `font-heading` italic in `heritage-bordeaux`, with a left accent rule and generous vertical padding, sitting on a slightly lighter inset panel so it visually breaks from the surrounding body copy.
+- Cards: paper-style (off-white panel, hairline border, soft shadow), hand-drawn green icons matching the existing Interests cards style (foot / bike / boat). The boat card gets a subtle accent border and a small "My recommendation" tag in `heritage-orange`.
+- Day-trips closing line: small italic body copy, centered or left-aligned under the cards, separated by a thin divider rule.
+- All new copy strictly avoids em dashes and stays first person.
+
+## Files touched
+
+- `src/pages/Index.tsx` — replace the current `#how-i-work` section block (lines ~188-214) with the new three-movement layout.
+- Reuse existing `FadeIn` for scroll-triggered fade-ins (one per movement) to stay on-brand.
+- No new dependencies; icons via `lucide-react` already in the project.
+
+## Out of scope
+
+- The Rick Steves block, "My Service" block, and "A Day in My Life" block stay unchanged. They remain the next sections after this one.
+- No changes to navigation, anchors, or section IDs.

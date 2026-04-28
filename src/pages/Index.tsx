@@ -449,20 +449,20 @@ const Index = () => {
           </div>
 
           {/* Two-column: what you'd handle alone vs what I take care of */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-border/60 border border-border/60 rounded-sm overflow-hidden max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto">
             {/* Left: without me */}
             <FadeIn>
               <div
-                className="h-full p-10 lg:p-12"
-                style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.18)" }}
+                className="h-full p-10 lg:p-12 bg-background rounded-sm border-t-4 shadow-sm"
+                style={{ borderColor: "hsl(var(--heritage-taupe))" }}
               >
-                <p className="font-body text-xs tracking-widest uppercase text-muted-foreground mb-6">
+                <p className="font-body text-xs tracking-widest uppercase text-muted-foreground mb-6 font-semibold">
                   Planning it yourself
                 </p>
-                <h3 className="font-heading text-3xl md:text-4xl text-primary leading-tight mb-8">
+                <h3 className="font-heading text-3xl md:text-4xl text-primary leading-tight mb-10">
                   What usually eats up a holiday.
                 </h3>
-                <ul className="space-y-5 font-body text-base md:text-lg text-foreground/75 leading-relaxed">
+                <ul className="space-y-6 font-body text-lg text-foreground leading-relaxed">
                   {[
                     "Refreshing the Anne Frank House page hoping a slot opens up.",
                     "Reading 200 reviews to find a restaurant that isn't a tourist trap.",
@@ -472,7 +472,13 @@ const Index = () => {
                     "Carrying every small question alone.",
                   ].map((line) => (
                     <li key={line} className="flex gap-4">
-                      <span aria-hidden className="text-muted-foreground/60 mt-1">✕</span>
+                      <span
+                        aria-hidden
+                        className="shrink-0 mt-1 text-lg font-bold"
+                        style={{ color: "hsl(var(--heritage-bordeaux))" }}
+                      >
+                        ✕
+                      </span>
                       <span>{line}</span>
                     </li>
                   ))}
@@ -483,16 +489,16 @@ const Index = () => {
             {/* Right: with me */}
             <FadeIn delay={0.15}>
               <div
-                className="h-full p-10 lg:p-12"
-                style={{ backgroundColor: "hsl(var(--heritage-green) / 0.10)" }}
+                className="h-full p-10 lg:p-12 bg-background rounded-sm border-t-4 shadow-sm"
+                style={{ borderColor: "hsl(var(--heritage-green))" }}
               >
-                <p className="font-body text-xs tracking-widest uppercase text-secondary mb-6">
+                <p className="font-body text-xs tracking-widest uppercase text-secondary mb-6 font-semibold">
                   With me alongside you
                 </p>
-                <h3 className="font-heading text-3xl md:text-4xl text-primary leading-tight mb-8">
+                <h3 className="font-heading text-3xl md:text-4xl text-primary leading-tight mb-10">
                   What I quietly take care of.
                 </h3>
-                <ul className="space-y-6 font-body text-base md:text-lg text-foreground/90 leading-relaxed">
+                <ul className="space-y-7 font-body text-lg text-foreground leading-relaxed">
                   {[
                     { icon: iconTickets, title: "Museum reservations", desc: "Time slots booked in advance. No queues." },
                     { icon: iconDining, title: "Dining bookings", desc: "Tables at the kind of places locals actually go." },
@@ -501,20 +507,25 @@ const Index = () => {
                     { icon: iconHotel, title: "Where to stay", desc: "Honest hotel and apartment recommendations." },
                     { icon: iconMessage, title: "WhatsApp lifeline", desc: "One message away for the whole trip." },
                   ].map((item) => (
-                    <li key={item.title} className="flex gap-4 items-start">
-                      <img
-                        src={item.icon}
-                        alt=""
-                        width={40}
-                        height={40}
-                        loading="lazy"
-                        className="w-10 h-10 object-contain shrink-0 mt-0.5"
-                      />
-                      <span>
-                        <span className="font-heading text-xl text-primary block leading-tight mb-1">
+                    <li key={item.title} className="flex gap-5 items-start">
+                      <div
+                        className="shrink-0 w-16 h-16 rounded-full flex items-center justify-center"
+                        style={{ backgroundColor: "hsl(var(--heritage-green) / 0.12)" }}
+                      >
+                        <img
+                          src={item.icon}
+                          alt=""
+                          width={56}
+                          height={56}
+                          loading="lazy"
+                          className="w-12 h-12 object-contain"
+                        />
+                      </div>
+                      <span className="pt-1">
+                        <span className="font-heading text-xl md:text-2xl text-primary block leading-tight mb-1">
                           {item.title}
                         </span>
-                        <span className="text-foreground/75 text-base">{item.desc}</span>
+                        <span className="text-foreground/85 text-base md:text-lg">{item.desc}</span>
                       </span>
                     </li>
                   ))}

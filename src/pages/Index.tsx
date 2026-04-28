@@ -19,6 +19,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import iconFoot from "@/assets/icon-foot.png";
+import ServiceIcon from "@/components/ServiceIcon";
 import iconBike from "@/assets/icon-bike.png";
 import iconBoat from "@/assets/icon-boat.png";
 
@@ -261,16 +262,13 @@ const Index = () => {
                         My Recommendation
                       </span>
                     )}
-                    <div className="w-16 h-16 mb-6">
-                      <img
-                        src={mode.icon}
-                        alt={mode.title}
-                        width={64}
-                        height={64}
-                        loading="lazy"
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
+                    <ServiceIcon
+                      src={mode.icon}
+                      alt={mode.title}
+                      size={72}
+                      padding={6}
+                      className="mb-6"
+                    />
                     <h4 className="font-heading text-2xl md:text-3xl text-primary mb-3 leading-tight">
                       {mode.title}
                     </h4>
@@ -508,19 +506,7 @@ const Index = () => {
                     { icon: iconMessage, title: "WhatsApp lifeline", desc: "One message away for the whole trip." },
                   ].map((item) => (
                     <li key={item.title} className="flex gap-5 items-start">
-                      <div
-                        className="shrink-0 w-16 h-16 rounded-full flex items-center justify-center"
-                        style={{ backgroundColor: "hsl(var(--heritage-green) / 0.12)" }}
-                      >
-                        <img
-                          src={item.icon}
-                          alt=""
-                          width={56}
-                          height={56}
-                          loading="lazy"
-                          className="w-12 h-12 object-contain"
-                        />
-                      </div>
+                      <ServiceIcon src={item.icon} size={64} padding={10} tinted />
                       <span className="pt-1">
                         <span className="font-heading text-xl md:text-2xl text-primary block leading-tight mb-1">
                           {item.title}

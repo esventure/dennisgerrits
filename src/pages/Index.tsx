@@ -208,10 +208,7 @@ const Index = () => {
               className="my-20 lg:my-28 max-w-4xl mx-auto border-l-4 pl-8 lg:pl-12 py-2"
               style={{ borderColor: "hsl(var(--heritage-bordeaux))" }}
             >
-              <blockquote
-                className="font-heading text-3xl md:text-4xl lg:text-5xl leading-[1.1] italic"
-                style={{ color: "hsl(var(--heritage-bordeaux))" }}
-              >
+              <blockquote className="font-body text-2xl md:text-3xl leading-relaxed text-foreground/85">
                 "My aim is for you to feel at home in my city. To understand Amsterdam not just through its sights, but through the rhythm of its streets, its culture, and its people."
               </blockquote>
             </figure>
@@ -300,6 +297,31 @@ const Index = () => {
               </p>
             </div>
           </FadeIn>
+        </div>
+      </section>
+
+      {/* ── 3. A Day in the Life ── */}
+      <section id="day" className="relative scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-green) / 0.08)", height: "200vh" }}>
+        <div className="sticky top-0 min-h-screen flex items-center">
+          <div className="container mx-auto px-6 lg:px-12 py-24 lg:py-32">
+            <div className="max-w-3xl mb-16">
+              <FadeIn>
+                <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
+                  Let's Explore Together
+                </p>
+                <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
+                  A Day in My Life
+                </h2>
+                <p className="font-body text-lg text-muted-foreground leading-relaxed">
+                  No fixed tours. Every day is shaped by you. Here's what one might look like.
+                </p>
+              </FadeIn>
+            </div>
+
+            <FadeIn>
+              <DayMap moments={moments} />
+            </FadeIn>
+          </div>
         </div>
       </section>
 
@@ -484,31 +506,6 @@ const Index = () => {
             })}
           </div>
 
-        </div>
-      </section>
-
-      {/* ── 3. A Day in the Life ── */}
-      <section id="day" className="relative scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-green) / 0.08)", height: "200vh" }}>
-        <div className="sticky top-0 min-h-screen flex items-center">
-          <div className="container mx-auto px-6 lg:px-12 py-24 lg:py-32">
-            <div className="max-w-3xl mb-16">
-              <FadeIn>
-                <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
-                  Let's Explore Together
-                </p>
-                <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
-                  A Day in My Life
-                </h2>
-                <p className="font-body text-lg text-muted-foreground leading-relaxed">
-                  No fixed tours. Every day is shaped by you. Here's what one might look like.
-                </p>
-              </FadeIn>
-            </div>
-
-            <FadeIn>
-              <DayMap moments={moments} />
-            </FadeIn>
-          </div>
         </div>
       </section>
 

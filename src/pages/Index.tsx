@@ -178,40 +178,27 @@ const Index = () => {
       {/* ── How I Work ── */}
       <section id="how-i-work" className="py-24 lg:py-32 scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.1)" }}>
         <div className="container mx-auto px-6 lg:px-12">
-          {/* Movement 1: Heading + intro */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          {/* Movement 1: Heading + intro, stacked and centered */}
+          <div className="max-w-3xl mx-auto text-center mb-16 lg:mb-20">
             <FadeIn>
-              <div className="max-w-lg">
-                <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
-                  How I Work
-                </p>
-                <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
-                  Like a trusted local friend, with the eye of a private concierge.
-                </h2>
-              </div>
-            </FadeIn>
-            <FadeIn delay={0.15}>
-              <div className="space-y-6">
-                <p className="font-body text-muted-foreground leading-relaxed">
-                  Every day I guide is built around you. Nothing is scripted. We follow your curiosity, whether that is the hush of the Jordaan at breakfast, the brushwork of a Vermeer, the food halls locals actually use, or the quiet streets of the Jewish Cultural Quarter.
-                </p>
-                <p className="font-body text-muted-foreground leading-relaxed">
-                  I studied architecture, so the city's bones are something I love to share. But we move at your pace. If you would rather slow down for coffee on a bridge or chase a memory from a story your grandmother once told, that is the day we will have.
-                </p>
-              </div>
+              <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
+                How I Work
+              </p>
+              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95]">
+                Like a trusted local friend, with the eye of a private concierge.
+              </h2>
             </FadeIn>
           </div>
 
-          {/* Movement 2: Pull-quote */}
-          <FadeIn delay={0.1}>
-            <figure
-              className="my-20 lg:my-28 max-w-4xl mx-auto border-l-4 pl-8 lg:pl-12 py-2"
-              style={{ borderColor: "hsl(var(--heritage-orange))" }}
-            >
-              <blockquote className="font-body text-2xl md:text-3xl leading-relaxed text-foreground/85">
-                "My aim is for you to feel at home in my city. To understand Amsterdam not just through its sights, but through the rhythm of its streets, its culture, and its people."
-              </blockquote>
-            </figure>
+          <FadeIn delay={0.15}>
+            <div className="max-w-2xl mx-auto space-y-6 mb-20 lg:mb-28">
+              <p className="font-body text-lg text-muted-foreground leading-relaxed">
+                Every day I guide is built around you. Nothing is scripted. We follow your curiosity, whether that is the hush of the Jordaan at breakfast, the brushwork of a Vermeer, the food halls locals actually use, or the quiet streets of the Jewish Cultural Quarter.
+              </p>
+              <p className="font-body text-lg text-muted-foreground leading-relaxed">
+                I studied architecture, so the city's bones are something I love to share. But we move at your pace. If you would rather slow down for coffee on a bridge or chase a memory from a story your grandmother once told, that is the day we will have.
+              </p>
+            </div>
           </FadeIn>
 
           {/* Movement 3: Three ways to explore */}

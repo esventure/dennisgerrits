@@ -206,7 +206,7 @@ const Index = () => {
           <FadeIn delay={0.1}>
             <figure
               className="my-20 lg:my-28 max-w-4xl mx-auto border-l-4 pl-8 lg:pl-12 py-2"
-              style={{ borderColor: "hsl(var(--heritage-bordeaux))" }}
+              style={{ borderColor: "hsl(var(--heritage-orange))" }}
             >
               <blockquote className="font-body text-2xl md:text-3xl leading-relaxed text-foreground/85">
                 "My aim is for you to feel at home in my city. To understand Amsterdam not just through its sights, but through the rhythm of its streets, its culture, and its people."

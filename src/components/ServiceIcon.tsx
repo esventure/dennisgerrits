@@ -33,7 +33,7 @@ const ServiceIcon = ({
         width: size,
         height: size,
         padding,
-        backgroundColor: tinted ? "hsl(var(--heritage-green) / 0.12)" : undefined,
+        backgroundColor: tinted ? "hsl(var(--heritage-orange) / 0.12)" : undefined,
       }}
     >
       <img

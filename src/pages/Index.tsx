@@ -488,7 +488,7 @@ const Index = () => {
             <FadeIn delay={0.15}>
               <div
                 className="h-full p-10 lg:p-12 bg-background rounded-sm border-t-4 shadow-sm"
-                style={{ borderColor: "hsl(var(--heritage-green))" }}
+                style={{ borderColor: "hsl(var(--heritage-orange))" }}
               >
                 <p className="font-body text-xs tracking-widest uppercase text-secondary mb-6 font-semibold">
                   With me alongside you

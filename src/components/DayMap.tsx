@@ -254,20 +254,24 @@ const DayMap = ({ moments }: DayMapProps) => {
           {/* ── Handwritten place labels ── */}
           <text
             x="80" y="50"
-            fontFamily="Caveat, 'Brush Script MT', cursive"
-            fontSize="22"
+            fontFamily="'Outfit', serif"
+            fontStyle="italic"
+            fontSize="30"
+            fontWeight="600"
             fill="hsl(var(--primary))"
-            opacity="0.5"
+            opacity="0.75"
             transform="rotate(-4, 80, 50)"
           >
             Amsterdam
           </text>
           <text
             x="430" y="475"
-            fontFamily="Caveat, 'Brush Script MT', cursive"
-            fontSize="13"
+            fontFamily="'Outfit', serif"
+            fontStyle="italic"
+            fontSize="18"
+            fontWeight="500"
             fill="hsl(var(--primary))"
-            opacity="0.45"
+            opacity="0.7"
             transform="rotate(2, 430, 475)"
           >
             ~ to the harbour ~
@@ -348,13 +352,14 @@ const DayMap = ({ moments }: DayMapProps) => {
                 {isActive && (
                   <text
                     x={stop.x}
-                    y={stop.y + 44}
+                    y={stop.y + 48}
                     textAnchor="middle"
                     fill="hsl(var(--primary))"
-                    fontSize="16"
-                    fontFamily="Caveat, 'Brush Script MT', cursive"
-                    fontWeight="700"
-                    opacity="0.85"
+                    fontSize="22"
+                    fontFamily="'Outfit', serif"
+                    fontStyle="italic"
+                    fontWeight="600"
+                    opacity="0.95"
                   >
                     {stop.label}
                   </text>

@@ -17,7 +17,7 @@ interface MosaicWallProps {
  *
  * Honors prefers-reduced-motion (renders a static grid).
  */
-const MosaicWall = ({ photos, tileSize = 120, duration = 75 }: MosaicWallProps) => {
+const MosaicWall = ({ photos, tileSize = 120, duration = 35 }: MosaicWallProps) => {
   // Shuffle once per mount so visual rhythm changes between visits without
   // changing during scroll. Use a stable hash of the array length as seed
   // proxy — purely cosmetic.

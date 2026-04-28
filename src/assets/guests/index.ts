@@ -1,26 +1,11 @@
-// Real guest photos provided by Dennis. 16 source images, displayed
-// across the Mosaic Wall as 50 tiles. The wall is in constant motion
-// and tiles are small, so light repetition reads as texture, not duplication.
+// Real guest photos provided by Dennis. Displayed across the Mosaic Wall
+// as 50 tiles. The wall is in constant motion and tiles are small, so
+// light repetition reads as texture, not duplication.
 //
-// To add more photos: drop pNN.png files in this folder, add the import
+// To add more photos: drop pNN.jpg files in this folder, add the import
 // below, and push them into `sourcePhotos`. The build50 helper handles
 // distribution and prevents adjacent duplicates.
 
-import p01 from "./p01.jpg";
-import p02 from "./p02.jpg";
-import p03 from "./p03.jpg";
-import p04 from "./p04.jpg";
-import p05 from "./p05.jpg";
-import p06 from "./p06.jpg";
-import p07 from "./p07.jpg";
-import p08 from "./p08.jpg";
-import p09 from "./p09.jpg";
-import p10 from "./p10.jpg";
-import p11 from "./p11.jpg";
-import p12 from "./p12.jpg";
-import p13 from "./p13.jpg";
-import p14 from "./p14.jpg";
-import p15 from "./p15.jpg";
 import p16 from "./p16.jpg";
 import p17 from "./p17.jpg";
 import p18 from "./p18.jpg";
@@ -74,9 +59,8 @@ import p65 from "./p65.jpg";
 import p66 from "./p66.jpg";
 
 const sourcePhotos = [
-  p01, p02, p03, p04, p05, p06, p07, p08,
-  p09, p10, p11, p12, p13, p14, p15, p16,
-  p17, p18, p19, p20, p21, p22, p23, p24, p25,
+  p16, p17, p18, p19, p20,
+  p21, p22, p23, p24, p25,
   p26, p27, p28, p29, p30, p31, p32, p33, p34, p35,
   p36, p37, p38, p39, p40, p41, p42, p43, p44, p45,
   p46, p47, p48, p49, p50, p51, p52, p53, p54, p55,

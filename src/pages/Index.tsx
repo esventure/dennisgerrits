@@ -133,17 +133,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Blockquote */}
-      <div className="py-20" style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.15)" }}>
-        <FadeIn>
-          <div className="max-w-3xl mx-auto text-center px-6">
-            <blockquote className="font-body text-xl text-secondary italic leading-relaxed">
-              "I don't want you to remember what I told you. I want you to remember how the city made you feel."
-            </blockquote>
-          </div>
-        </FadeIn>
-      </div>
-
       {/* ── 2. About Me — Full-Screen Split ── */}
       <section id="about" className="scroll-mt-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
@@ -495,18 +484,6 @@ const Index = () => {
             })}
           </div>
 
-          {/* Closing reassurance */}
-          <FadeIn delay={0.2}>
-            <div className="mt-16 max-w-2xl mx-auto text-center">
-              <div
-                className="w-16 h-px mx-auto mb-8"
-                style={{ backgroundColor: "hsl(var(--heritage-bordeaux) / 0.4)" }}
-              />
-              <p className="font-body text-base md:text-lg text-foreground/80 italic leading-relaxed">
-                One contact, every detail handled. Your only job is to enjoy the city.
-              </p>
-            </div>
-          </FadeIn>
         </div>
       </section>
 

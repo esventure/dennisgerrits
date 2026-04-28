@@ -287,7 +287,7 @@ const Index = () => {
             </FadeIn>
           </div>
 
-          {/* Invite Dennis — speaking, podcasts, radio */}
+          {/* Invite me — speaking, podcasts, radio */}
           <FadeIn delay={0.1}>
             <div
               className="mt-16 lg:mt-20 rounded-sm border-l-4 p-8 lg:p-10 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 md:gap-10 items-center"
@@ -298,13 +298,13 @@ const Index = () => {
             >
               <div>
                 <p className="font-body text-sm tracking-widest uppercase text-accent mb-3">
-                  Invite Dennis
+                  Invite me
                 </p>
                 <h3 className="font-heading text-3xl md:text-4xl text-primary leading-tight mb-4">
-                  Book a lecture or invite Dennis as a guest
+                  Book a lecture or invite me as a guest
                 </h3>
                 <p className="font-body text-foreground/80 leading-relaxed max-w-2xl">
-                  Beyond guiding, Dennis is available for lectures and as a guest on podcasts and radio shows. If you're a host, organiser, or producer looking for a story about Amsterdam, the Netherlands, or travel beyond the tourist trail, get in touch.
+                  Beyond guiding, I'm available for lectures and as a guest on podcasts and radio shows. If you're a host, organiser, or producer looking for a story about Amsterdam, the Netherlands, or travel beyond the tourist trail, get in touch.
                 </p>
               </div>
               <a
@@ -368,7 +368,7 @@ const Index = () => {
                   Let's Explore Together
                 </p>
                 <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
-                  A Day in the Life of Dennis
+                  A Day in My Life
                 </h2>
                 <p className="font-body text-lg text-muted-foreground leading-relaxed">
                   No fixed tours. Every day is shaped by you. Here's what one might look like.

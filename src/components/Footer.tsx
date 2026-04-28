@@ -14,7 +14,7 @@ const Footer = () => (
           <h4 className="font-heading text-xl mb-4">Explore</h4>
           <nav className="space-y-2">
             {[
-              { to: "/#about", label: "About Dennis" },
+              { to: "/#about", label: "About Me" },
               { to: "/#day", label: "A Day Together" },
               { to: "/#proof", label: "Reviews" },
               { to: "/#stories", label: "Stories" },

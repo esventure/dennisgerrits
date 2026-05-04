@@ -1,12 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import { ArrowDown, ArrowUp, KeyRound, LogOut, Save, Upload } from "lucide-react";
+import { ArrowDown, ArrowUp, FileText, KeyRound, LogOut, Save, Upload } from "lucide-react";
 
 type Story = {
   id: string;
@@ -183,6 +183,11 @@ const Admin = () => {
             </p>
           </div>
           <div className="flex items-center gap-2">
+            <Button variant="outline" size="sm" asChild>
+              <Link to="/admin/settings">
+                <FileText className="w-4 h-4 mr-2" /> Site content
+              </Link>
+            </Button>
             <Button variant="outline" size="sm" onClick={() => setPwOpen((v) => !v)}>
               <KeyRound className="w-4 h-4 mr-2" /> Change password
             </Button>

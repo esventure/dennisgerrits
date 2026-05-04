@@ -8,6 +8,7 @@ let overrides: ContentMap | null = null;
 const listeners = new Set<(c: ContentMap) => void>();
 
 async function load() {
+  // Public site only ever sees the published "value" column.
   const { data } = await supabase.from("site_content").select("key,value");
   const map: ContentMap = {};
   (data || []).forEach((r) => (map[r.key] = r.value));
@@ -29,7 +30,6 @@ if (typeof window !== "undefined") {
       notify();
     }
   });
-  // Signal readiness so the parent can push current draft values.
   if (window.parent && window.parent !== window) {
     try {
       window.parent.postMessage({ type: "site-content-preview-ready" }, "*");

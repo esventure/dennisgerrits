@@ -427,7 +427,7 @@ const Index = () => {
       </div>
 
       {/* ── My Service ── */}
-      <section id="my-service" className="py-24 lg:py-32 scroll-mt-20">
+      <section id="my-service" className="py-24 lg:py-32 scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}>
         <div className="container mx-auto px-6 lg:px-12">
           {/* Heading + intro, centered editorial block */}
           <div className="max-w-3xl mx-auto text-center mb-16 lg:mb-20">

@@ -162,7 +162,7 @@ const HeroLetter = () => (
           <img
             src={dennisTalking}
             alt="Dennis Gerrits in Amsterdam"
-            className="w-24 h-24 rounded-full object-cover shadow-md"
+            className="w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full object-cover shadow-lg"
             style={{ objectPosition: "70% 30%" }}
           />
           <p className="font-body text-sm tracking-[0.2em] uppercase text-secondary">

@@ -14,6 +14,33 @@ export type Database = {
   }
   public: {
     Tables: {
+      site_content: {
+        Row: {
+          created_at: string
+          id: string
+          key: string
+          section: string
+          updated_at: string
+          value: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          key: string
+          section?: string
+          updated_at?: string
+          value?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          key?: string
+          section?: string
+          updated_at?: string
+          value?: string
+        }
+        Relationships: []
+      }
       stories: {
         Row: {
           body: string

@@ -5,6 +5,7 @@ import AmsterdamSkyline from "@/components/AmsterdamSkyline";
 import DayMap from "@/components/DayMap";
 import MosaicWall from "@/components/MosaicWall";
 import { guestPhotos } from "@/assets/guests";
+import HeroCarousel from "@/components/HeroCarousel";
 import dennisIllustration from "@/assets/dennis_illustration.png";
 import dennisPhoto from "@/assets/dennis_photo.png";
 import dennisRickSteves from "@/assets/dennis_rick_steves.jpg";
@@ -122,37 +123,8 @@ const Index = () => {
   return (
     <main className="relative z-10">
       <AmsterdamSkyline />
-      {/* ── 1. Hero ── */}
-      <section id="hero" className="min-h-[85vh] flex items-center scroll-mt-20">
-        <div className="container mx-auto px-6 lg:px-12 pt-2 pb-24">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-16 items-center">
-            <FadeIn>
-              <div className="flex flex-col items-center lg:items-start h-full">
-                <img
-                  src={dennisPhoto}
-                  alt="Photo of Dennis Gerrits"
-                  className="w-full max-w-lg rounded-sm object-cover shadow-lg aspect-[3/4]"
-                />
-                <p className="font-body text-sm tracking-widest uppercase text-secondary mt-6">
-                  Personal Travel Companion
-                </p>
-              </div>
-            </FadeIn>
-            <FadeIn delay={0.2}>
-              <h1 className="font-heading text-6xl md:text-7xl lg:text-8xl text-primary leading-[0.95] mb-8">
-                Hello,<br />
-                <span className="text-accent">I'm Dennis.</span><br />
-                I don't show a city.<br />
-                I translate it.
-              </h1>
-              <p className="font-body text-lg text-muted-foreground leading-relaxed max-w-lg mb-8">
-                I walk alongside you, not in front of you. We'll find the stories, the quiet corners,
-                the places that make you stop and really look. That's what I do.
-              </p>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
+      {/* ── 1. Hero (3 swipeable variations for Dennis to choose from) ── */}
+      <HeroCarousel />
 
       {/* ── 2. About Me — Full-Screen Split ── */}
       <section id="about" className="scroll-mt-20">

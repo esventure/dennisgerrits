@@ -813,75 +813,82 @@ const Index = () => {
       </section>
 
       {/* ── 7. Contact, FAQ & Footer ── */}
-      <section id="contact" className="py-24 lg:py-32 bg-muted/30 scroll-mt-20">
+      <section id="contact" className="py-24 lg:py-32 scroll-mt-20">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-3xl mb-16">
-            <FadeIn>
-              <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
-                Get in Touch
-              </p>
-              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
-                Let's See if We're a Good Match
-              </h2>
-              <p className="font-body text-lg text-muted-foreground leading-relaxed">
-                The best way to start is a short, informal conversation. No obligations, just a chance to see if my approach feels right.
-              </p>
-            </FadeIn>
-          </div>
-
-          <div className="max-w-2xl">
-            {/* Contact form */}
-            <FadeIn delay={0.15}>
-              <div className="border border-border rounded-sm p-10">
-                <div className="w-12 h-0.5 bg-secondary mb-8" />
-                <h3 className="font-heading text-3xl text-primary mb-4">
-                  Book a Call
-                </h3>
-                <p className="font-body text-muted-foreground leading-relaxed mb-8">
-                  Leave your details and a few words about your trip. I'll reach out personally.
+          <div
+            className="max-w-4xl mx-auto rounded-sm border px-8 md:px-14 py-16 md:py-20 shadow-lg"
+            style={{
+              backgroundColor: "hsl(var(--heritage-taupe-soft))",
+              borderColor: "hsl(var(--heritage-taupe))",
+            }}
+          >
+            <div className="max-w-3xl mb-12">
+              <FadeIn>
+                <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
+                  Get in Touch
                 </p>
-                <form onSubmit={handleContactSubmit} className="space-y-6">
-                  <div className="space-y-2">
-                    <Label className="font-body text-sm">Your Name</Label>
-                    <Input
-                      required
-                      value={contactForm.name}
-                      onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
-                      className="h-12 text-base font-body"
-                      placeholder="e.g. Jane Smith"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label className="font-body text-sm">Email Address</Label>
-                    <Input
-                      required
-                      type="email"
-                      value={contactForm.email}
-                      onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
-                      className="h-12 text-base font-body"
-                      placeholder="jane@example.com"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label className="font-body text-sm">Tell Me a Little About Your Trip</Label>
-                    <Textarea
-                      value={contactForm.message}
-                      onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
-                      className="min-h-[140px] text-base font-body"
-                      placeholder="When are you visiting? What are you curious about?"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="w-full font-body text-sm tracking-widest uppercase px-8 py-4 border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
-                  >
-                    Send Message
-                  </button>
-                </form>
-              </div>
-            </FadeIn>
-          </div>
+                <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
+                  Let's See if We're a Good Match
+                </h2>
+                <p className="font-body text-lg text-muted-foreground leading-relaxed">
+                  The best way to start is a short, informal conversation. No obligations, just a chance to see if my approach feels right.
+                </p>
+              </FadeIn>
+            </div>
 
+            <div className="max-w-2xl">
+              {/* Contact form */}
+              <FadeIn delay={0.15}>
+                <div className="border border-border rounded-sm p-10 bg-background">
+                  <div className="w-12 h-0.5 bg-secondary mb-8" />
+                  <h3 className="font-heading text-3xl text-primary mb-4">
+                    Book a Call
+                  </h3>
+                  <p className="font-body text-muted-foreground leading-relaxed mb-8">
+                    Leave your details and a few words about your trip. I'll reach out personally.
+                  </p>
+                  <form onSubmit={handleContactSubmit} className="space-y-6">
+                    <div className="space-y-2">
+                      <Label className="font-body text-sm">Your Name</Label>
+                      <Input
+                        required
+                        value={contactForm.name}
+                        onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
+                        className="h-12 text-base font-body"
+                        placeholder="e.g. Jane Smith"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label className="font-body text-sm">Email Address</Label>
+                      <Input
+                        required
+                        type="email"
+                        value={contactForm.email}
+                        onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
+                        className="h-12 text-base font-body"
+                        placeholder="jane@example.com"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label className="font-body text-sm">Tell Me a Little About Your Trip</Label>
+                      <Textarea
+                        value={contactForm.message}
+                        onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
+                        className="min-h-[140px] text-base font-body"
+                        placeholder="When are you visiting? What are you curious about?"
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      className="w-full font-body text-sm tracking-widest uppercase px-8 py-4 border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
+                    >
+                      Send Message
+                    </button>
+                  </form>
+                </div>
+              </FadeIn>
+            </div>
+          </div>
         </div>
       </section>
     </main>

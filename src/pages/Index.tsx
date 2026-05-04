@@ -369,8 +369,11 @@ const Index = () => {
                 <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
                   A Day in My Life
                 </h2>
-                <p className="font-body text-lg text-muted-foreground leading-relaxed">
+                <p className="font-body text-lg text-muted-foreground leading-relaxed mb-3">
                   No fixed tours. Every day is shaped by you. Here's what one might look like.
+                </p>
+                <p className="font-body text-base text-muted-foreground italic">
+                  We move on foot, by private boat, or by car beyond the city.
                 </p>
               </FadeIn>
             </div>

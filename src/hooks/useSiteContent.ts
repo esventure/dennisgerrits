@@ -4,6 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 type ContentMap = Record<string, string>;
 
 let cache: ContentMap | null = null;
+let overrides: ContentMap | null = null;
 const listeners = new Set<(c: ContentMap) => void>();
 
 async function load() {
@@ -11,7 +12,31 @@ async function load() {
   const map: ContentMap = {};
   (data || []).forEach((r) => (map[r.key] = r.value));
   cache = map;
-  listeners.forEach((l) => l(map));
+  notify();
+}
+
+function notify() {
+  listeners.forEach((l) => l(cache || {}));
+}
+
+// Allow an admin preview window to inject draft values without saving.
+if (typeof window !== "undefined") {
+  window.addEventListener("message", (event) => {
+    if (event.source !== window.parent) return;
+    const data = event.data as { type?: string; values?: ContentMap } | null;
+    if (data && data.type === "site-content-preview" && data.values) {
+      overrides = data.values;
+      notify();
+    }
+  });
+  // Signal readiness so the parent can push current draft values.
+  if (window.parent && window.parent !== window) {
+    try {
+      window.parent.postMessage({ type: "site-content-preview-ready" }, "*");
+    } catch {
+      // ignore
+    }
+  }
 }
 
 export function useSiteContent(): (key: string, fallback: string) => string {
@@ -26,8 +51,12 @@ export function useSiteContent(): (key: string, fallback: string) => string {
     };
   }, []);
 
-  return (key: string, fallback: string) =>
-    cache && cache[key] !== undefined && cache[key] !== "" ? cache[key] : fallback;
+  return (key: string, fallback: string) => {
+    if (overrides && overrides[key] !== undefined && overrides[key] !== "") {
+      return overrides[key];
+    }
+    return cache && cache[key] !== undefined && cache[key] !== "" ? cache[key] : fallback;
+  };
 }
 
 export async function refreshSiteContent() {

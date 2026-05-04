@@ -142,6 +142,28 @@ const Admin = () => {
     navigate("/admin/login", { replace: true });
   };
 
+  const changePassword = async () => {
+    if (newPw.length < 8) {
+      toast.error("Password must be at least 8 characters");
+      return;
+    }
+    if (newPw !== confirmPw) {
+      toast.error("Passwords do not match");
+      return;
+    }
+    setPwSaving(true);
+    const { error } = await supabase.auth.updateUser({ password: newPw });
+    setPwSaving(false);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
+    toast.success("Password updated");
+    setNewPw("");
+    setConfirmPw("");
+    setPwOpen(false);
+  };
+
   if (checking) {
     return (
       <main className="min-h-screen flex items-center justify-center">

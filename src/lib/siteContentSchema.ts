@@ -27,7 +27,7 @@ export const CONTENT_SCHEMA: ContentSection[] = [
       {
         key: "about.person.body",
         label: "Person — paragraph",
-        type: "long",
+        type: "rich",
         fallback:
           "I'm a free spirit with deep roots here. I grew up cycling these canals and collecting stories along the way. Amsterdam isn't just where I live, it's how I think.",
       },
@@ -36,7 +36,7 @@ export const CONTENT_SCHEMA: ContentSection[] = [
       {
         key: "about.guide.body",
         label: "Guide — paragraph",
-        type: "long",
+        type: "rich",
         fallback:
           "No flag, no script. Depth over highlights, connection over information. A friend who knows the city inside out, walking beside you instead of in front of you.",
       },

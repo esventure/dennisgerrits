@@ -141,10 +141,17 @@ const HeroLetter = () => (
         <p className="font-body text-xs tracking-[0.3em] uppercase text-secondary mb-10">
           A note from Dennis
         </p>
-        <blockquote className="font-heading text-primary leading-[1.05] text-[clamp(2.5rem,6vw,5.5rem)] mb-10">
-          "I walk alongside you,
+        <blockquote className="relative font-heading text-primary leading-[1.05] text-[clamp(2.5rem,6vw,5.5rem)] mb-10">
+          <span
+            aria-hidden
+            className="absolute -top-10 left-1/2 -translate-x-1/2 font-heading text-[8rem] leading-none select-none"
+            style={{ color: "hsl(var(--heritage-green))" }}
+          >
+            “
+          </span>
+          I walk alongside you,
           <br />
-          <span className="text-accent">not in front of you.</span>"
+          <span className="text-accent">not in front of you.</span>
         </blockquote>
         <svg
           aria-hidden

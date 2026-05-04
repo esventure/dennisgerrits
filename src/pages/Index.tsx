@@ -310,7 +310,7 @@ const Index = () => {
 
               return (
                 <>
-                  <FadeIn>
+                  <FadeIn className="lg:col-span-2 h-full">
                     <div
                       className="lg:col-span-2 h-full p-8 lg:p-10 bg-background rounded-sm border-t-4 shadow-sm"
                       style={{ borderColor: "hsl(var(--heritage-taupe))" }}

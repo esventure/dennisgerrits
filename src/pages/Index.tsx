@@ -90,21 +90,26 @@ const reviews = [
   },
 ];
 
+import storyBookshop from "@/assets/stories/bookshop.jpg";
+import storyCanalHouses from "@/assets/stories/canal-houses.jpg";
+import storyBench from "@/assets/stories/bench.jpg";
+import podcastCover from "@/assets/podcast-cover.jpg";
+
 const stories = [
   {
     title: "The Bookshop That Refused to Close",
     intro: "On a quiet street in the Jordaan, there's a bookshop that's been open since 1953. The owner still wraps every purchase in brown paper. I asked him once why he never retired.",
-    image: null,
+    image: storyBookshop,
   },
   {
     title: "Why the Canal Houses Lean Forward",
     intro: "It's not bad engineering. It's actually on purpose. And the reason says a lot about how the Dutch think about commerce, neighbours, and showing off.",
-    image: null,
+    image: storyCanalHouses,
   },
   {
     title: "A Bench With the Best View in Amsterdam",
     intro: "It's not where you'd expect. No famous landmarks in sight. Just water, sky, and the kind of quiet that makes you want to sit for a while.",
-    image: null,
+    image: storyBench,
   },
 ];
 

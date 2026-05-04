@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 import FadeIn from "@/components/FadeIn";
 import { cn } from "@/lib/utils";
 import StoryBook from "@/components/StoryBook";
+import { supabase } from "@/integrations/supabase/client";
 import iconHistory from "@/assets/icon-history.png";
 import iconFood from "@/assets/icon-food.png";
 import iconArchitecture from "@/assets/icon-architecture.png";

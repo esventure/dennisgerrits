@@ -66,9 +66,9 @@ const HeroEditorial = () => (
 );
 
 const HeroMagazine = () => (
-  <div className="relative w-full min-h-[85vh] grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] items-stretch">
+  <div className="relative w-full min-h-[85vh] grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] items-stretch bg-[hsl(var(--heritage-taupe)/0.25)]">
     {/* Left: huge cover headline */}
-    <div className="relative z-10 flex items-center px-6 lg:px-16 py-20 lg:py-0 bg-background">
+    <div className="relative z-10 flex items-center px-6 lg:px-16 py-20 lg:py-0">
       <FadeIn>
         <p className="font-body text-xs tracking-[0.3em] uppercase text-secondary mb-6">
           Issue 01 · Amsterdam
@@ -101,7 +101,7 @@ const HeroMagazine = () => (
           A friend who happens to know the city.
           <br />
           <span className="text-secondary not-italic font-body text-sm tracking-widest uppercase mt-2 inline-block">
-            — Dennis Gerrits
+            Dennis Gerrits
           </span>
         </p>
         <a
@@ -113,12 +113,12 @@ const HeroMagazine = () => (
       </FadeIn>
     </div>
 
-    {/* Right: full-bleed portrait */}
-    <div className="relative min-h-[500px] lg:min-h-[85vh] bg-muted/30">
+    {/* Right: full-bleed portrait, no side bars */}
+    <div className="relative min-h-[500px] lg:min-h-[85vh] flex items-end justify-center">
       <img
         src={dennisArmsWide}
         alt="Dennis Gerrits with arms wide on an Amsterdam canal bridge"
-        className="absolute inset-0 w-full h-full object-contain object-bottom"
+        className="max-h-[85vh] w-auto h-full object-contain object-bottom"
       />
     </div>
   </div>

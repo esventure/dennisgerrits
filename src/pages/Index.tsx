@@ -22,6 +22,10 @@ import { useToast } from "@/hooks/use-toast";
 import { useSiteContent } from "@/hooks/useSiteContent";
 import ServiceIcon from "@/components/ServiceIcon";
 import RichText from "@/components/RichText";
+import storyBookshop from "@/assets/stories/bookshop.jpg";
+import storyCanalHouses from "@/assets/stories/canal-houses.jpg";
+import storyBench from "@/assets/stories/bench.jpg";
+import podcastCover from "@/assets/podcast-cover.jpg";
 
 const moments = [
   {

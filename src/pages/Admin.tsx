@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import { ArrowDown, ArrowUp, LogOut, Save, Upload } from "lucide-react";
+import { ArrowDown, ArrowUp, KeyRound, LogOut, Save, Upload } from "lucide-react";
 
 type Story = {
   id: string;

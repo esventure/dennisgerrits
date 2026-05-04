@@ -154,7 +154,14 @@ const AdminSettings = () => {
                 {section.fields.map((field) => (
                   <div key={field.key} className="space-y-2">
                     <Label htmlFor={field.key}>{field.label}</Label>
-                    {field.type === "long" ? (
+                    {field.type === "rich" ? (
+                      <RichTextEditor
+                        value={values[field.key] ?? ""}
+                        onChange={(html) =>
+                          setValues((v) => ({ ...v, [field.key]: html }))
+                        }
+                      />
+                    ) : field.type === "long" ? (
                       <Textarea
                         id={field.key}
                         rows={3}

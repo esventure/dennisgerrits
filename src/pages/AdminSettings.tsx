@@ -9,6 +9,7 @@ import { toast } from "sonner";
 import { ArrowLeft, Save, Eye, EyeOff } from "lucide-react";
 import { CONTENT_SCHEMA } from "@/lib/siteContentSchema";
 import { refreshSiteContent } from "@/hooks/useSiteContent";
+import RichTextEditor from "@/components/RichTextEditor";
 
 const PREVIEW_ROUTES = [
   { path: "/#about", label: "About" },

@@ -8,6 +8,8 @@ import FloatingCTA from "@/components/FloatingCTA";
 import Index from "./pages/Index";
 import GetInspired from "./pages/GetInspired";
 import TravelAgents from "./pages/TravelAgents";
+import Admin from "./pages/Admin";
+import AdminLogin from "./pages/AdminLogin";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();

@@ -827,13 +827,13 @@ const Index = () => {
             <div className="max-w-3xl mb-12">
               <FadeIn>
                 <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
-                  Get in Touch
+                  {t("booking.kicker", "Get in Touch")}
                 </p>
                 <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
-                  Let's See if We're a Good Match
+                  {t("booking.title", "Let's See if We're a Good Match")}
                 </h2>
-                <p className="font-body text-lg text-muted-foreground leading-relaxed">
-                  The best way to start is a short, informal conversation. No obligations, just a chance to see if my approach feels right.
+                <p className="font-body text-lg text-muted-foreground leading-relaxed whitespace-pre-line">
+                  {t("booking.intro", "The best way to start is a short, informal conversation. No obligations, just a chance to see if my approach feels right.")}
                 </p>
               </FadeIn>
             </div>
@@ -844,10 +844,10 @@ const Index = () => {
                 <div className="border border-border rounded-sm p-10 bg-background">
                   <div className="w-12 h-0.5 bg-secondary mb-8" />
                   <h3 className="font-heading text-3xl text-primary mb-4">
-                    Book a Call
+                    {t("booking.form.title", "Book a Call")}
                   </h3>
-                  <p className="font-body text-muted-foreground leading-relaxed mb-8">
-                    Leave your details and a few words about your trip. I'll reach out personally.
+                  <p className="font-body text-muted-foreground leading-relaxed mb-8 whitespace-pre-line">
+                    {t("booking.form.intro", "Leave your details and a few words about your trip. I'll reach out personally.")}
                   </p>
                   <form onSubmit={handleContactSubmit} className="space-y-6">
                     <div className="space-y-2">
@@ -884,7 +884,7 @@ const Index = () => {
                       type="submit"
                       className="w-full font-body text-sm tracking-widest uppercase px-8 py-4 border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
                     >
-                      Send Message
+                      {t("booking.form.cta", "Send Message")}
                     </button>
                   </form>
                 </div>

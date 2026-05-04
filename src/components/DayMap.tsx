@@ -12,8 +12,7 @@ interface DayMapProps {
   moments: Moment[];
 }
 
-/* ── Checkpoint positions on the SVG canvas (600×500) ──
-   Re-spaced for a calmer, more editorial composition. */
+/* ── Checkpoint positions on the SVG canvas (600×500) ── */
 const stops = [
   { x: 110, y: 110, label: "Jordaan Café" },
   { x: 250, y: 175, label: "Canal Walk" },
@@ -32,6 +31,22 @@ const pathSegments = [
 
 const PATH_LEN = 280;
 
+/* Hand-drawn helpers — slightly irregular shapes via path data */
+const sketchCircle = (cx: number, cy: number, r: number, jitter = 0.6) => {
+  // Build a wobbly closed path using 8 anchor points around the circle
+  const pts = Array.from({ length: 12 }, (_, i) => {
+    const a = (i / 12) * Math.PI * 2;
+    const rr = r + (Math.sin(i * 1.7) * jitter + Math.cos(i * 2.3) * jitter);
+    return [cx + Math.cos(a) * rr, cy + Math.sin(a) * rr] as const;
+  });
+  let d = `M ${pts[0][0].toFixed(2)} ${pts[0][1].toFixed(2)}`;
+  for (let i = 1; i <= pts.length; i++) {
+    const p = pts[i % pts.length];
+    d += ` L ${p[0].toFixed(2)} ${p[1].toFixed(2)}`;
+  }
+  return d + " Z";
+};
+
 const DayMap = ({ moments }: DayMapProps) => {
   const [active, setActive] = useState(0);
   const [visited, setVisited] = useState<Set<number>>(new Set([0]));
@@ -42,7 +57,6 @@ const DayMap = ({ moments }: DayMapProps) => {
     setActive(idx);
     setVisited((prev) => {
       const next = new Set(prev);
-      // Mark this stop and all earlier ones as visited so the trail fills in.
       for (let i = 0; i <= idx; i++) next.add(i);
       return next;
     });
@@ -51,7 +65,7 @@ const DayMap = ({ moments }: DayMapProps) => {
   const goPrev = () => handleSelect(Math.max(0, active - 1));
   const goNext = () => handleSelect(Math.min(moments.length - 1, active + 1));
 
-  /* ── Smoother scroll-driven progression with rAF + hysteresis ── */
+  /* Scroll-driven progression */
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
@@ -67,9 +81,6 @@ const DayMap = ({ moments }: DayMapProps) => {
       const viewH = window.innerHeight;
       if (rect.bottom < viewH * 0.2 || rect.top > viewH * 0.8) return;
 
-      // Use the section's vertical journey through the viewport as progress.
-      // Start counting once the top hits 30% of the viewport,
-      // finish when the bottom passes 70%.
       const start = viewH * 0.3;
       const end = viewH * 0.7;
       const traveled = start - rect.top;
@@ -77,8 +88,6 @@ const DayMap = ({ moments }: DayMapProps) => {
       const raw = total > 0 ? traveled / total : 0;
       const progress = Math.max(0, Math.min(1, raw));
 
-      // Map progress to discrete stop with a small dead-zone (hysteresis)
-      // so tiny scrolls don't oscillate.
       const exact = progress * (moments.length - 1);
       let next = Math.round(exact);
       if (Math.abs(exact - lastIdx) < 0.35) next = lastIdx;
@@ -122,7 +131,7 @@ const DayMap = ({ moments }: DayMapProps) => {
       ref={sectionRef}
       className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-16 items-center"
     >
-      {/* ── Left: Editorial Map ── */}
+      {/* ── Left: Sketchbook Map ── */}
       <div
         className="relative w-full"
         style={{ aspectRatio: "6 / 5", overflow: "visible" }}
@@ -135,34 +144,93 @@ const DayMap = ({ moments }: DayMapProps) => {
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
-            {/* Subtle paper tone */}
+            {/* Sketch wobble filter — applied to "ink" elements */}
+            <filter id="sketch" x="-5%" y="-5%" width="110%" height="110%">
+              <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.025"
+                numOctaves="2"
+                seed="4"
+                result="noise"
+              />
+              <feDisplacementMap
+                in="SourceGraphic"
+                in2="noise"
+                scale="1.6"
+              />
+            </filter>
+
+            {/* Subtle paper grain */}
+            <filter id="paperGrain" x="0%" y="0%" width="100%" height="100%">
+              <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.9"
+                numOctaves="2"
+                seed="3"
+              />
+              <feColorMatrix
+                values="0 0 0 0 0.42
+                        0 0 0 0 0.36
+                        0 0 0 0 0.28
+                        0 0 0 0.06 0"
+              />
+            </filter>
+
             <linearGradient id="paper" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="hsl(var(--heritage-taupe))" stopOpacity="0.06" />
-              <stop offset="100%" stopColor="hsl(var(--heritage-taupe))" stopOpacity="0.14" />
+              <stop offset="0%" stopColor="hsl(var(--heritage-taupe))" stopOpacity="0.05" />
+              <stop offset="100%" stopColor="hsl(var(--heritage-taupe))" stopOpacity="0.13" />
             </linearGradient>
           </defs>
 
           {/* ── Paper field ── */}
           <rect x="0" y="0" width="600" height="500" rx="2" fill="url(#paper)" />
+          <rect
+            x="0"
+            y="0"
+            width="600"
+            height="500"
+            filter="url(#paperGrain)"
+            opacity="0.4"
+          />
 
-          {/* ── Canals (calm, fewer, thinner) ── */}
+          {/* Hand-drawn border — wobbly inset rectangle */}
+          <path
+            d="M 14 18 L 588 12 L 590 484 L 12 488 Z"
+            stroke="hsl(var(--heritage-taupe))"
+            strokeWidth="0.9"
+            fill="none"
+            opacity="0.55"
+            filter="url(#sketch)"
+          />
+          {/* Folded corner crease (top-right) */}
+          <path
+            d="M 575 12 L 588 28 L 572 26 Z"
+            stroke="hsl(var(--heritage-taupe))"
+            strokeWidth="0.8"
+            fill="hsl(var(--heritage-taupe) / 0.08)"
+            filter="url(#sketch)"
+            opacity="0.6"
+          />
+
+          {/* ── Canals (loose, hand-drawn squiggles) ── */}
           <g
             stroke="hsl(var(--heritage-taupe))"
             fill="none"
             strokeLinecap="round"
-            opacity="0.55"
+            opacity="0.5"
+            filter="url(#sketch)"
           >
-            <path d="M 0 200 C 150 170, 300 220, 600 190" strokeWidth="1.25" />
-            <path d="M 0 320 C 200 290, 400 340, 600 310" strokeWidth="1.25" />
-            <path d="M 60 430 C 260 410, 440 440, 600 420" strokeWidth="1.25" />
+            <path d="M 0 205 C 140 175, 310 225, 600 192" strokeWidth="1.4" />
+            <path d="M 60 425 C 260 405, 440 438, 600 418" strokeWidth="1.4" />
           </g>
 
-          {/* ── Minimal canal-house silhouettes (top band) ── */}
+          {/* ── Canal-house silhouettes (top + bottom clusters) ── */}
           <g
             stroke="hsl(var(--primary))"
-            strokeWidth="0.9"
+            strokeWidth="1.1"
             fill="none"
-            opacity="0.22"
+            opacity="0.28"
+            filter="url(#sketch)"
           >
             {[
               { x: 380, w: 14, h: 30 },
@@ -171,99 +239,161 @@ const DayMap = ({ moments }: DayMapProps) => {
               { x: 428, w: 12, h: 24 },
               { x: 442, w: 14, h: 28 },
             ].map((h, i) => (
-              <g key={i}>
+              <g key={`top-${i}`}>
                 <rect x={h.x} y={155 - h.h} width={h.w} height={h.h} />
                 <polygon
                   points={`${h.x},${155 - h.h} ${h.x + h.w / 2},${155 - h.h - 8} ${h.x + h.w},${155 - h.h}`}
                 />
               </g>
             ))}
+            {[
+              { x: 60, w: 12, h: 22 },
+              { x: 74, w: 14, h: 26 },
+              { x: 90, w: 10, h: 18 },
+            ].map((h, i) => (
+              <g key={`bot-${i}`}>
+                <rect x={h.x} y={385 - h.h} width={h.w} height={h.h} />
+                <polygon
+                  points={`${h.x},${385 - h.h} ${h.x + h.w / 2},${385 - h.h - 7} ${h.x + h.w},${385 - h.h}`}
+                />
+              </g>
+            ))}
           </g>
 
-          {/* ── Compass (refined, single ring + N) ── */}
-          <g transform="translate(545, 70)" opacity="0.55">
-            <circle
-              cx="0"
-              cy="0"
-              r="18"
+          {/* ── Sketchy compass ── */}
+          <g transform="translate(545, 70)" opacity="0.65" filter="url(#sketch)">
+            <path
+              d={sketchCircle(0, 0, 18, 0.8)}
               stroke="hsl(var(--primary))"
-              strokeWidth="0.8"
+              strokeWidth="0.9"
               fill="none"
             />
-            <line
-              x1="0"
-              y1="-18"
-              x2="0"
-              y2="-26"
-              stroke="hsl(var(--heritage-orange))"
-              strokeWidth="1.2"
+            <path
+              d={sketchCircle(0, 0, 11, 0.5)}
+              stroke="hsl(var(--primary))"
+              strokeWidth="0.6"
+              fill="none"
+              opacity="0.5"
             />
-            <polygon
-              points="0,-18 3,-12 0,-14 -3,-12"
-              fill="hsl(var(--heritage-orange))"
-            />
+            <line x1="0" y1="-17" x2="0" y2="-26" stroke="hsl(var(--heritage-orange))" strokeWidth="1.3" strokeLinecap="round" />
+            <line x1="0" y1="17" x2="0" y2="22" stroke="hsl(var(--primary))" strokeWidth="0.8" strokeLinecap="round" opacity="0.6" />
+            <line x1="-17" y1="0" x2="-22" y2="0" stroke="hsl(var(--primary))" strokeWidth="0.8" strokeLinecap="round" opacity="0.6" />
+            <line x1="17" y1="0" x2="22" y2="0" stroke="hsl(var(--primary))" strokeWidth="0.8" strokeLinecap="round" opacity="0.6" />
+            <polygon points="0,-18 3,-12 0,-14 -3,-12" fill="hsl(var(--heritage-orange))" />
             <text
               x="0"
               y="-30"
               textAnchor="middle"
-              fontSize="9"
+              fontSize="10"
               fontFamily="'Bebas Neue', sans-serif"
-              letterSpacing="0.15em"
+              letterSpacing="0.18em"
               fill="hsl(var(--primary))"
             >
               N
             </text>
           </g>
 
-          {/* ── Editorial place labels (Bebas Neue, tracked) ── */}
+          {/* ── Place labels with hand-drawn underlines ── */}
+          <g>
+            <text
+              x="60"
+              y="60"
+              fontFamily="'Bebas Neue', sans-serif"
+              fontSize="22"
+              letterSpacing="0.22em"
+              fill="hsl(var(--primary))"
+              opacity="0.6"
+            >
+              AMSTERDAM
+            </text>
+            <path
+              d="M 60 68 C 110 65, 160 71, 215 66"
+              stroke="hsl(var(--heritage-orange))"
+              strokeWidth="1.2"
+              fill="none"
+              strokeLinecap="round"
+              opacity="0.55"
+              filter="url(#sketch)"
+            />
+          </g>
+
+          <g>
+            <text
+              x="430"
+              y="475"
+              fontFamily="'Bebas Neue', sans-serif"
+              fontSize="11"
+              letterSpacing="0.3em"
+              fill="hsl(var(--primary))"
+              opacity="0.55"
+            >
+              TO THE HARBOUR
+            </text>
+            <path
+              d="M 430 480 C 480 478, 530 481, 568 478"
+              stroke="hsl(var(--heritage-taupe))"
+              strokeWidth="0.9"
+              fill="none"
+              strokeLinecap="round"
+              opacity="0.7"
+              filter="url(#sketch)"
+            />
+          </g>
+
+          {/* Handwritten note near stop 01 */}
           <text
-            x="60"
-            y="60"
-            fontFamily="'Bebas Neue', sans-serif"
-            fontSize="22"
-            letterSpacing="0.22em"
-            fill="hsl(var(--primary))"
-            opacity="0.55"
+            x="135"
+            y="92"
+            fontFamily="'Outfit', sans-serif"
+            fontStyle="italic"
+            fontSize="10"
+            fill="hsl(var(--heritage-orange))"
+            opacity="0.85"
           >
-            AMSTERDAM
-          </text>
-          <text
-            x="430"
-            y="475"
-            fontFamily="'Bebas Neue', sans-serif"
-            fontSize="11"
-            letterSpacing="0.3em"
-            fill="hsl(var(--primary))"
-            opacity="0.5"
-          >
-            TO THE HARBOUR
+            start here ↘
           </text>
 
-          {/* ── Route segments (smooth, dashed-fill on progress) ── */}
+          {/* ── Route: pencil under-drawing + ink wobble on top ── */}
           {pathSegments.map((d, i) => {
             const visible = i < maxVisited;
             return (
-              <path
-                key={i}
-                d={d}
-                stroke="hsl(var(--heritage-orange))"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                strokeDasharray={`${PATH_LEN} ${PATH_LEN}`}
-                style={{
-                  strokeDashoffset: visible ? 0 : PATH_LEN,
-                  opacity: visible ? 0.85 : 0.18,
-                  transition:
-                    "stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease",
-                }}
-              />
+              <g key={i}>
+                {/* pencil shadow */}
+                <path
+                  d={d}
+                  stroke="hsl(var(--heritage-taupe))"
+                  strokeWidth="2.4"
+                  strokeLinecap="round"
+                  fill="none"
+                  opacity={visible ? 0.25 : 0.08}
+                  transform="translate(1.5, 1.5)"
+                  style={{ transition: "opacity 0.6s ease" }}
+                />
+                {/* ink */}
+                <path
+                  d={d}
+                  stroke="hsl(var(--heritage-orange))"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  fill="none"
+                  filter="url(#sketch)"
+                  strokeDasharray={`${PATH_LEN} ${PATH_LEN}`}
+                  style={{
+                    strokeDashoffset: visible ? 0 : PATH_LEN,
+                    opacity: visible ? 0.9 : 0.18,
+                    transition:
+                      "stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease",
+                  }}
+                />
+              </g>
             );
           })}
 
-          {/* ── Numbered checkpoint markers ── */}
+          {/* ── Sketchy checkpoint markers ── */}
           {stops.map((stop, i) => {
             const isActive = i === active;
             const isVisited = visited.has(i);
+            const filled = isActive || isVisited;
             return (
               <g
                 key={i}
@@ -274,42 +404,30 @@ const DayMap = ({ moments }: DayMapProps) => {
                 aria-label={`Stop ${i + 1}: ${stop.label}`}
               >
                 {isActive && (
-                  <circle
-                    cx={stop.x}
-                    cy={stop.y}
-                    r="22"
-                    fill="none"
-                    stroke="hsl(var(--heritage-orange))"
-                    strokeWidth="1"
-                    opacity="0.4"
+                  <g
+                    style={{
+                      transformOrigin: `${stop.x}px ${stop.y}px`,
+                      animation: "daymap-spin 14s linear infinite",
+                    }}
                   >
-                    <animate
-                      attributeName="r"
-                      from="16"
-                      to="28"
-                      dur="1.8s"
-                      repeatCount="indefinite"
+                    <path
+                      d={sketchCircle(stop.x, stop.y, 22, 1.2)}
+                      stroke="hsl(var(--heritage-orange))"
+                      strokeWidth="0.9"
+                      strokeDasharray="3 4"
+                      fill="none"
+                      opacity="0.55"
+                      filter="url(#sketch)"
                     />
-                    <animate
-                      attributeName="opacity"
-                      from="0.5"
-                      to="0"
-                      dur="1.8s"
-                      repeatCount="indefinite"
-                    />
-                  </circle>
+                  </g>
                 )}
-                <circle
-                  cx={stop.x}
-                  cy={stop.y}
-                  r="14"
-                  fill={
-                    isActive || isVisited
-                      ? "hsl(var(--heritage-orange))"
-                      : "hsl(var(--background))"
-                  }
+                {/* outer ring (sketch) */}
+                <path
+                  d={sketchCircle(stop.x, stop.y, 14, 0.7)}
+                  fill={filled ? "hsl(var(--heritage-orange))" : "hsl(var(--background))"}
                   stroke="hsl(var(--heritage-orange))"
-                  strokeWidth={isActive ? 2 : 1.4}
+                  strokeWidth={isActive ? 1.8 : 1.3}
+                  filter="url(#sketch)"
                   style={{ transition: "fill 0.3s, stroke-width 0.3s" }}
                 />
                 <text
@@ -320,57 +438,66 @@ const DayMap = ({ moments }: DayMapProps) => {
                   fontSize="12"
                   fontFamily="'Bebas Neue', sans-serif"
                   letterSpacing="0.05em"
-                  fill={
-                    isActive || isVisited
-                      ? "hsl(var(--background))"
-                      : "hsl(var(--heritage-orange))"
-                  }
+                  fill={filled ? "hsl(var(--background))" : "hsl(var(--heritage-orange))"}
                 >
                   {String(i + 1).padStart(2, "0")}
                 </text>
                 {isActive && (
-                  <text
-                    x={stop.x}
-                    y={stop.y + 36}
-                    textAnchor="middle"
-                    fill="hsl(var(--primary))"
-                    fontSize="11"
-                    fontFamily="'Bebas Neue', sans-serif"
-                    letterSpacing="0.22em"
-                  >
-                    {stop.label.toUpperCase()}
-                  </text>
+                  <>
+                    <text
+                      x={stop.x}
+                      y={stop.y + 36}
+                      textAnchor="middle"
+                      fill="hsl(var(--primary))"
+                      fontSize="11"
+                      fontFamily="'Bebas Neue', sans-serif"
+                      letterSpacing="0.22em"
+                    >
+                      {stop.label.toUpperCase()}
+                    </text>
+                    <path
+                      d={`M ${stop.x - 28} ${stop.y + 42} C ${stop.x - 10} ${stop.y + 45}, ${stop.x + 10} ${stop.y + 39}, ${stop.x + 28} ${stop.y + 42}`}
+                      stroke="hsl(var(--heritage-orange))"
+                      strokeWidth="1.1"
+                      fill="none"
+                      strokeLinecap="round"
+                      opacity="0.7"
+                      filter="url(#sketch)"
+                    />
+                  </>
                 )}
               </g>
             );
           })}
 
-          {/* ── Final destination cross ── */}
+          {/* ── X marks the spot at the final destination ── */}
           {maxVisited >= stops.length - 1 && (
             <g
-              transform={`translate(${stops[stops.length - 1].x + 28}, ${stops[stops.length - 1].y - 24})`}
-              opacity="0.7"
+              transform={`translate(${stops[stops.length - 1].x + 30}, ${stops[stops.length - 1].y - 26})`}
+              opacity="0.8"
+              filter="url(#sketch)"
             >
-              <line
-                x1="-6"
-                y1="-6"
-                x2="6"
-                y2="6"
+              <path
+                d={sketchCircle(0, 0, 11, 0.9)}
                 stroke="hsl(var(--heritage-bordeaux))"
-                strokeWidth="1.8"
-                strokeLinecap="round"
+                strokeWidth="0.9"
+                fill="none"
+                opacity="0.55"
               />
-              <line
-                x1="-6"
-                y1="6"
-                x2="6"
-                y2="-6"
-                stroke="hsl(var(--heritage-bordeaux))"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-              />
+              <line x1="-6" y1="-6" x2="6" y2="6" stroke="hsl(var(--heritage-bordeaux))" strokeWidth="2" strokeLinecap="round" />
+              <line x1="-6" y1="6" x2="6" y2="-6" stroke="hsl(var(--heritage-bordeaux))" strokeWidth="2" strokeLinecap="round" />
             </g>
           )}
+
+          <style>{`
+            @keyframes daymap-spin {
+              from { transform: rotate(0deg); }
+              to   { transform: rotate(360deg); }
+            }
+            @media (prefers-reduced-motion: reduce) {
+              [style*="daymap-spin"] { animation: none !important; }
+            }
+          `}</style>
         </svg>
       </div>
 
@@ -383,8 +510,24 @@ const DayMap = ({ moments }: DayMapProps) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="rounded-sm p-8 lg:p-10 border-l-2 border-l-accent"
+            className="relative rounded-sm p-8 lg:p-10 pl-10 lg:pl-12"
           >
+            {/* Hand-drawn vertical squiggle replacing the solid border */}
+            <svg
+              aria-hidden
+              viewBox="0 0 8 240"
+              preserveAspectRatio="none"
+              className="absolute left-0 top-2 bottom-2 w-2"
+            >
+              <path
+                d="M 4 4 C 6 50, 2 100, 4 150 C 6 190, 2 220, 4 236"
+                stroke="hsl(var(--heritage-orange))"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                fill="none"
+              />
+            </svg>
+
             <p className="font-body text-xs tracking-[0.25em] uppercase text-accent font-semibold mb-4">
               {moments[active].time}
             </p>
@@ -408,21 +551,31 @@ const DayMap = ({ moments }: DayMapProps) => {
             <ChevronLeft className="w-4 h-4" />
           </button>
 
-          <div className="flex gap-2">
-            {moments.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => handleSelect(i)}
-                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                  i === active
-                    ? "bg-accent scale-125"
-                    : visited.has(i)
-                      ? "bg-accent/40"
-                      : "bg-border"
-                }`}
-                aria-label={`Go to stop ${i + 1}`}
-              />
-            ))}
+          <div className="flex gap-2 items-center">
+            {moments.map((_, i) => {
+              const isActive = i === active;
+              const wasVisited = visited.has(i);
+              return (
+                <button
+                  key={i}
+                  onClick={() => handleSelect(i)}
+                  className="w-3 h-3 flex items-center justify-center"
+                  aria-label={`Go to stop ${i + 1}`}
+                >
+                  {isActive ? (
+                    <span
+                      className="block w-3 h-3 rounded-full border-[1.5px] border-accent"
+                    />
+                  ) : (
+                    <span
+                      className={`block w-2 h-2 rounded-full ${
+                        wasVisited ? "bg-accent/40" : "bg-border"
+                      }`}
+                    />
+                  )}
+                </button>
+              );
+            })}
           </div>
 
           <button

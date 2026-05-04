@@ -31,6 +31,10 @@ const Admin = () => {
   const [stories, setStories] = useState<Story[]>([]);
   const [savingId, setSavingId] = useState<string | null>(null);
   const fileInputs = useRef<Record<string, HTMLInputElement | null>>({});
+  const [pwOpen, setPwOpen] = useState(false);
+  const [newPw, setNewPw] = useState("");
+  const [confirmPw, setConfirmPw] = useState("");
+  const [pwSaving, setPwSaving] = useState(false);
 
   useEffect(() => {
     let mounted = true;

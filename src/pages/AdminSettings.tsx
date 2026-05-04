@@ -58,7 +58,7 @@ const AdminSettings = () => {
     toast.success(`${section.title} saved`);
   };
 
-  if (checking) {
+  if (loading) {
     return (
       <main className="min-h-screen flex items-center justify-center">
         <p className="font-body text-muted-foreground">Loading...</p>

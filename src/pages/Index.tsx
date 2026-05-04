@@ -774,8 +774,15 @@ const Index = () => {
               <FadeIn key={s.title} delay={i * 0.1}>
                 <Link to={`/get-inspired?story=${encodeURIComponent(s.title)}`} className="block">
                   <div className="border border-border rounded-sm overflow-hidden group cursor-pointer">
-                    <div className="aspect-[16/10] bg-muted flex items-center justify-center">
-                      <p className="font-body text-xs text-muted-foreground italic">Atmospheric image</p>
+                    <div className="aspect-[16/10] bg-muted overflow-hidden">
+                      <img
+                        src={s.image}
+                        alt={s.title}
+                        loading="lazy"
+                        width={1024}
+                        height={640}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
                     </div>
                     <div className="p-6">
                       <h3 className="font-heading text-2xl text-primary mb-3 group-hover:text-secondary transition-colors">

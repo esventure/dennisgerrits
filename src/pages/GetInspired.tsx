@@ -83,9 +83,26 @@ const GetInspired = () => {
   const [searchParams] = useSearchParams();
   const [openStory, setOpenStory] = useState<string>("");
 
+  const { data: stories = [] } = useQuery({
+    queryKey: ["stories"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("stories")
+        .select("id, slug, title, intro, body, image_path")
+        .order("sort_order", { ascending: true });
+      if (error) throw error;
+      return (data ?? []).map((s) => ({
+        id: s.slug,
+        title: s.title,
+        intro: s.intro,
+        body: s.body,
+      }));
+    },
+  });
+
   useEffect(() => {
     const storyParam = searchParams.get("story");
-    if (storyParam) {
+    if (storyParam && stories.length) {
       const matched = stories.find((s) => s.title === storyParam);
       if (matched) {
         setOpenStory(matched.id);
@@ -94,7 +111,7 @@ const GetInspired = () => {
         }, 300);
       }
     }
-  }, [searchParams]);
+  }, [searchParams, stories]);
 
   return (
     <main>

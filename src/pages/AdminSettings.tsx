@@ -391,7 +391,7 @@ const AdminSettings = () => {
                     <Button
                       variant="outline"
                       onClick={() => saveDraft(section.id)}
-                      disabled={busy || (!dirty && !hasDraft)}
+                      disabled={busy}
                     >
                       <Save className="w-4 h-4 mr-2" />
                       {busy && busyAction === "save" ? "Saving..." : "Save draft"}

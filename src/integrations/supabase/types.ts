@@ -17,24 +17,36 @@ export type Database = {
       site_content: {
         Row: {
           created_at: string
+          draft_updated_at: string | null
+          draft_value: string | null
+          has_draft: boolean
           id: string
           key: string
+          published_at: string | null
           section: string
           updated_at: string
           value: string
         }
         Insert: {
           created_at?: string
+          draft_updated_at?: string | null
+          draft_value?: string | null
+          has_draft?: boolean
           id?: string
           key: string
+          published_at?: string | null
           section?: string
           updated_at?: string
           value?: string
         }
         Update: {
           created_at?: string
+          draft_updated_at?: string | null
+          draft_value?: string | null
+          has_draft?: boolean
           id?: string
           key?: string
+          published_at?: string | null
           section?: string
           updated_at?: string
           value?: string

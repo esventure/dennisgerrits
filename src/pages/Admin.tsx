@@ -183,6 +183,11 @@ const Admin = () => {
             </p>
           </div>
           <div className="flex items-center gap-2">
+            <Button variant="outline" size="sm" asChild>
+              <Link to="/admin/settings">
+                <FileText className="w-4 h-4 mr-2" /> Site content
+              </Link>
+            </Button>
             <Button variant="outline" size="sm" onClick={() => setPwOpen((v) => !v)}>
               <KeyRound className="w-4 h-4 mr-2" /> Change password
             </Button>

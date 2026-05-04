@@ -286,10 +286,17 @@ const TravelAgents = () => {
               <FadeIn key={i} delay={i * 0.1}>
                 <figure
                   className="border-l-4 pl-8 py-2"
-                  style={{ borderColor: "hsl(var(--heritage-orange))" }}
+                  style={{ borderColor: "hsl(var(--heritage-green))" }}
                 >
-                  <blockquote className="font-body text-xl lg:text-2xl text-primary leading-relaxed mb-6">
-                    "{t.quote}"
+                  <blockquote className="relative font-body text-xl lg:text-2xl text-primary leading-relaxed mb-6 pl-8">
+                    <span
+                      aria-hidden
+                      className="absolute -left-2 -top-6 font-heading text-6xl leading-none select-none"
+                      style={{ color: "hsl(var(--heritage-green))" }}
+                    >
+                      “
+                    </span>
+                    {t.quote}
                   </blockquote>
                   <figcaption className="font-body text-sm tracking-wide uppercase text-secondary">
                     {t.author}, {t.location}

@@ -417,8 +417,15 @@ const Index = () => {
                 <h2 className="font-heading text-4xl md:text-5xl text-primary leading-[0.95] mb-6">
                   Rick Steves
                 </h2>
-                <blockquote className="font-body text-xl text-foreground italic leading-relaxed mb-6">
-                  "Dennis is the kind of local guide every traveller dreams of finding. He doesn't just show you Amsterdam. He makes you feel like you belong there."
+                <blockquote className="relative font-body text-xl text-foreground italic leading-relaxed mb-6 pl-10">
+                  <span
+                    aria-hidden
+                    className="absolute -left-2 -top-6 font-heading text-7xl leading-none select-none"
+                    style={{ color: "hsl(var(--heritage-green))" }}
+                  >
+                    “
+                  </span>
+                  Dennis is the kind of local guide every traveller dreams of finding. He doesn't just show you Amsterdam. He makes you feel like you belong there.
                 </blockquote>
                 <p className="font-body text-foreground/80 leading-relaxed mb-8">
                   Guest on the Rick Steves Travel with Rick Steves podcast across three episodes, exploring Amsterdam and the Netherlands beyond the tourist trail.

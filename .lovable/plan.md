@@ -1,82 +1,42 @@
 ## Goal
+Add a confident taupe rhythm (#BCAAA4) to the homepage backgrounds and frame the Booking section in a panel, while keeping the editorial, calm feel.
 
-Give Dennis a simple, password-protected admin page where he can edit the existing **Stories** (title, intro, body) and swap their **images**, without being able to touch the site's structure or design.
+## Color tokens (src/index.css)
+Retune and add:
+- `--heritage-taupe: 15 15% 69%` (≈ #BCAAA4 — already very close, exact match)
+- `--heritage-taupe-tint: 15 15% 88%` (light wash for section backgrounds, ~confident strength)
+- `--heritage-taupe-soft: 15 15% 82%` (slightly stronger, used for the contact panel border/inner fill)
 
-## Approach
+## Section background rhythm (src/pages/Index.tsx)
 
-Enable **Lovable Cloud** (Supabase under the hood) and add:
-
-1. A `stories` database table holding the editable content.
-2. A storage bucket `story-images` for uploaded photos.
-3. Email/password authentication (only Dennis gets an account; sign-up disabled).
-4. A `user_roles` table + `has_role()` security-definer function so only `admin` users can write.
-5. A new `/admin` route in the app with a simple editor UI (list of stories → edit form → image upload).
-6. The public `Get Inspired` page reads stories from the database instead of the hard-coded array.
-
-This keeps Dennis safely scoped to **content only**: he cannot add new sections, change layout, or break the site.
-
-## What Dennis can do
-
-- Log in at `/admin` with email + password.
-- See the list of stories currently shown on *Get Inspired*.
-- Edit a story's **title**, **intro**, **body**.
-- Upload/replace the **image** for a story.
-- Reorder stories (drag handle or up/down buttons).
-- Save → changes appear live on the public page.
-
-## What Dennis cannot do
-
-- Create new pages or sections.
-- Change colors, fonts, layout, or navigation.
-- Edit other content (hero, services, about, etc.) — unless we add it later.
-- Invite other users (sign-up is disabled; you stay the only account creator).
-
-## Technical details
-
-**Database**
 ```text
-stories
- ├─ id (uuid, pk)
- ├─ slug (text, unique)        ← used for deep-link ?story=
- ├─ title (text)
- ├─ intro (text)
- ├─ body (text)
- ├─ image_path (text, nullable) ← key in story-images bucket
- ├─ sort_order (int)
- └─ updated_at (timestamptz)
-
-user_roles
- ├─ user_id (uuid → auth.users)
- └─ role (app_role enum: 'admin')
+hero          → off-white (unchanged)
+about         → off-white (unchanged)
+how-i-work    → taupe-tint  (was 10% taupe → bump to confident tint)
+day map       → off-white (revert green tint — skyline reads better on light)
+my-service    → taupe-tint
+proof         → off-white
+podcast       → taupe-tint  (was green tint)
+stories       → off-white   (was taupe — flip to keep alternation)
+contact       → off-white   (panel inside, see below)
 ```
 
-**RLS policies**
-- `stories`: `SELECT` public; `INSERT/UPDATE/DELETE` only when `has_role(auth.uid(), 'admin')`.
-- `user_roles`: only admins can read/write.
+Result: clear off-white ↔ taupe-tint alternation top to bottom. No two adjacent tinted sections.
 
-**Storage**
-- Bucket `story-images`, public read.
-- Upload/delete restricted to admins via storage policies.
+## Booking / Contact panel
+Wrap the contents of `#contact` in a centered rounded card:
+- Background: `heritage-taupe-soft`
+- Border: 1px solid `heritage-taupe`
+- Subtle shadow (`shadow-lg` with low opacity)
+- Generous padding (px 8/12, py 16/20)
+- Max width ~3xl, centered, with breathing room on all sides
+- Section background stays off-white so the panel reads as a framed moment
 
-**Auth**
-- Email + password, sign-up disabled in Cloud auth settings.
-- I'll create Dennis's account by inserting via the auth admin tools after Cloud is on, then assign him the `admin` role. You'll share the temporary password with him; he can change it after first login.
+## Out of scope
+- No changes to typography, copy, animations, or layout structure.
+- No new framed panels elsewhere (per your choice).
+- Get Inspired and other standalone pages untouched for now (can add same rhythm later if you like).
 
-**Frontend**
-- New routes: `/admin/login`, `/admin` (protected).
-- Admin UI: minimal, functional (table + edit drawer + image dropzone). Not styled to match the editorial site — it's a back-office.
-- Existing `GetInspired.tsx` refactored to fetch stories with React Query; falls back gracefully while loading.
-- Initial migration seeds the table with the current 4 hard-coded stories so nothing changes visually on day one.
-
-## Steps when you approve
-
-1. Enable Lovable Cloud.
-2. Create migration: `stories` table, `app_role` enum, `user_roles` table, `has_role()` function, RLS policies, `story-images` bucket + policies. Seed existing stories.
-3. Build `/admin/login` and `/admin` (list + edit + image upload).
-4. Refactor `GetInspired.tsx` to read from the database.
-5. Create Dennis's admin user and share credentials with you.
-
-## Open questions
-
-- Should the admin also manage the **Interests** cards and the **Day Map** stops, or just the Stories for now? (Easy to add later — I'd suggest starting with Stories only.)
-- Do you want a single shared login for you + Dennis, or separate accounts?
+## Files touched
+- `src/index.css` — taupe token retune + 2 new tint tokens
+- `src/pages/Index.tsx` — section bg classes + contact panel wrapper

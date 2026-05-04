@@ -40,7 +40,9 @@
     --heritage-bordeaux: 350 68% 29%;
     --heritage-orange: 24 100% 45%;
     --heritage-green: 153 38% 18%;
-    --heritage-taupe: 16 16% 70%;
+    --heritage-taupe: 15 15% 69%;
+    --heritage-taupe-tint: 15 15% 88%;
+    --heritage-taupe-soft: 15 15% 82%;
   }
 }
 

@@ -503,6 +503,39 @@ const Index = () => {
               </a>
             </div>
           </FadeIn>
+
+          {/* Travel agents — partner call-out */}
+          <FadeIn delay={0.15}>
+            <div
+              className="mt-8 rounded-sm border-l-4 p-8 lg:p-10 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 md:gap-10 items-center"
+              style={{
+                borderLeftColor: "hsl(var(--heritage-bordeaux))",
+                backgroundColor: "hsl(var(--background))",
+              }}
+            >
+              <div>
+                <p
+                  className="font-body text-sm tracking-widest uppercase mb-3"
+                  style={{ color: "hsl(var(--heritage-bordeaux))" }}
+                >
+                  Travel agents
+                </p>
+                <h3 className="font-heading text-3xl md:text-4xl text-primary leading-tight mb-4">
+                  A trusted partner for your Amsterdam clients
+                </h3>
+                <p className="font-body text-foreground/80 leading-relaxed max-w-2xl">
+                  I work quietly alongside agencies and concierges to craft bespoke days for your clients. Private guiding, thoughtful reservations, transfers, and on-the-ground support, all delivered with discretion and care.
+                </p>
+              </div>
+              <a
+                href="#contact?subject=Travel%20agent"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 font-body text-sm tracking-widest uppercase rounded-sm transition-colors whitespace-nowrap text-background hover:opacity-90"
+                style={{ backgroundColor: "hsl(var(--heritage-bordeaux))" }}
+              >
+                Partner with me →
+              </a>
+            </div>
+          </FadeIn>
         </div>
       </div>
 

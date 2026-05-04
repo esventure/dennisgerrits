@@ -111,9 +111,14 @@ const HeroMagazine = () => (
         </p>
         <a
           href="#contact"
-          className="inline-flex items-center gap-2 font-body text-sm tracking-widest uppercase bg-primary text-primary-foreground px-7 py-4 hover:bg-primary/90 transition-colors"
+          className="inline-flex flex-col items-start gap-2 group"
         >
-          Book a call →
+          <span className="font-body text-sm tracking-widest uppercase bg-primary text-primary-foreground px-7 py-4 group-hover:bg-primary/90 transition-colors">
+            Say hello →
+          </span>
+          <span className="font-body italic text-sm text-foreground/60">
+            Let's get to know each other first
+          </span>
         </a>
       </FadeIn>
     </div>

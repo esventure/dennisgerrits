@@ -119,6 +119,7 @@ const HeroMagazine = () => (
         src={dennisArmsWide}
         alt="Dennis Gerrits with arms wide on an Amsterdam canal bridge"
         className="absolute inset-0 w-full h-full object-cover"
+        style={{ objectPosition: "center 20%" }}
       />
     </div>
   </div>

@@ -20,6 +20,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { useSiteContent } from "@/hooks/useSiteContent";
 import ServiceIcon from "@/components/ServiceIcon";
+import RichText from "@/components/RichText";
 
 const moments = [
   {
@@ -155,9 +156,11 @@ const Index = () => {
                 <p className="font-body text-sm tracking-[0.15em] uppercase text-secondary mb-4">
                   {t("about.person.kicker", "A True Amsterdammer")}
                 </p>
-                <p className="font-body text-muted-foreground leading-relaxed whitespace-pre-line">
-                  {t("about.person.body", "I'm a free spirit with deep roots here. I grew up cycling these canals and collecting stories along the way. Amsterdam isn't just where I live, it's how I think.")}
-                </p>
+                <RichText
+                  className="font-body text-muted-foreground leading-relaxed"
+                  html={t("about.person.body", "")}
+                  fallback="I'm a free spirit with deep roots here. I grew up cycling these canals and collecting stories along the way. Amsterdam isn't just where I live, it's how I think."
+                />
               </div>
             </FadeIn>
           </div>
@@ -173,9 +176,11 @@ const Index = () => {
                 <p className="font-body text-sm tracking-[0.15em] uppercase text-primary-foreground/60 mb-4">
                   {t("about.guide.kicker", "A Different Kind of Guide")}
                 </p>
-                <p className="font-body text-primary-foreground/80 leading-relaxed whitespace-pre-line">
-                  {t("about.guide.body", "No flag, no script. Depth over highlights, connection over information. A friend who knows the city inside out, walking beside you instead of in front of you.")}
-                </p>
+                <RichText
+                  className="font-body text-primary-foreground/80 leading-relaxed"
+                  html={t("about.guide.body", "")}
+                  fallback="No flag, no script. Depth over highlights, connection over information. A friend who knows the city inside out, walking beside you instead of in front of you."
+                />
               </div>
             </FadeIn>
           </div>
@@ -196,9 +201,11 @@ const Index = () => {
               <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-6">
                 {t("process.title", "No standard tours. Every trip is built from scratch.")}
               </h2>
-              <p className="font-body text-lg text-muted-foreground leading-relaxed">
-                {t("process.intro", "From the first message to the last goodbye, one person looks after every detail.")}
-              </p>
+              <RichText
+                className="font-body text-lg text-muted-foreground leading-relaxed"
+                html={t("process.intro", "")}
+                fallback="From the first message to the last goodbye, one person looks after every detail."
+              />
             </FadeIn>
           </div>
 
@@ -755,9 +762,11 @@ const Index = () => {
                 <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
                   {t("booking.title", "Let's See if We're a Good Match")}
                 </h2>
-                <p className="font-body text-lg text-muted-foreground leading-relaxed whitespace-pre-line">
-                  {t("booking.intro", "The best way to start is a short, informal conversation. No obligations, just a chance to see if my approach feels right.")}
-                </p>
+                <RichText
+                  className="font-body text-lg text-muted-foreground leading-relaxed"
+                  html={t("booking.intro", "")}
+                  fallback="The best way to start is a short, informal conversation. No obligations, just a chance to see if my approach feels right."
+                />
               </FadeIn>
             </div>
 
@@ -769,9 +778,11 @@ const Index = () => {
                   <h3 className="font-heading text-3xl text-primary mb-4">
                     {t("booking.form.title", "Book a Call")}
                   </h3>
-                  <p className="font-body text-muted-foreground leading-relaxed mb-8 whitespace-pre-line">
-                    {t("booking.form.intro", "Leave your details and a few words about your trip. I'll reach out personally.")}
-                  </p>
+                  <RichText
+                    className="font-body text-muted-foreground leading-relaxed mb-8"
+                    html={t("booking.form.intro", "")}
+                    fallback="Leave your details and a few words about your trip. I'll reach out personally."
+                  />
                   <form onSubmit={handleContactSubmit} className="space-y-6">
                     <div className="space-y-2">
                       <Label className="font-body text-sm">Your Name</Label>

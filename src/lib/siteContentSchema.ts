@@ -4,7 +4,7 @@
 export type ContentField = {
   key: string;
   label: string;
-  type: "short" | "long";
+  type: "short" | "long" | "rich";
   fallback: string;
   hint?: string;
 };
@@ -27,7 +27,7 @@ export const CONTENT_SCHEMA: ContentSection[] = [
       {
         key: "about.person.body",
         label: "Person — paragraph",
-        type: "long",
+        type: "rich",
         fallback:
           "I'm a free spirit with deep roots here. I grew up cycling these canals and collecting stories along the way. Amsterdam isn't just where I live, it's how I think.",
       },
@@ -36,7 +36,7 @@ export const CONTENT_SCHEMA: ContentSection[] = [
       {
         key: "about.guide.body",
         label: "Guide — paragraph",
-        type: "long",
+        type: "rich",
         fallback:
           "No flag, no script. Depth over highlights, connection over information. A friend who knows the city inside out, walking beside you instead of in front of you.",
       },
@@ -56,8 +56,8 @@ export const CONTENT_SCHEMA: ContentSection[] = [
       },
       {
         key: "process.intro",
-        label: "Intro line",
-        type: "long",
+        label: "Intro paragraph",
+        type: "rich",
         fallback: "From the first message to the last goodbye, one person looks after every detail.",
       },
       { key: "concierge.kicker", label: "Concierge kicker", type: "short", fallback: "What I take care of" },
@@ -84,7 +84,7 @@ export const CONTENT_SCHEMA: ContentSection[] = [
       {
         key: "booking.intro",
         label: "Intro paragraph",
-        type: "long",
+        type: "rich",
         fallback:
           "The best way to start is a short, informal conversation. No obligations, just a chance to see if my approach feels right.",
       },
@@ -92,7 +92,7 @@ export const CONTENT_SCHEMA: ContentSection[] = [
       {
         key: "booking.form.intro",
         label: "Form intro",
-        type: "long",
+        type: "rich",
         fallback: "Leave your details and a few words about your trip. I'll reach out personally.",
       },
       { key: "booking.form.cta", label: "Submit button label", type: "short", fallback: "Send Message" },

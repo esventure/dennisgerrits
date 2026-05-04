@@ -9,6 +9,7 @@ import { toast } from "sonner";
 import { ArrowLeft, Save, Eye, EyeOff } from "lucide-react";
 import { CONTENT_SCHEMA } from "@/lib/siteContentSchema";
 import { refreshSiteContent } from "@/hooks/useSiteContent";
+import RichTextEditor from "@/components/RichTextEditor";
 
 const PREVIEW_ROUTES = [
   { path: "/#about", label: "About" },
@@ -153,7 +154,14 @@ const AdminSettings = () => {
                 {section.fields.map((field) => (
                   <div key={field.key} className="space-y-2">
                     <Label htmlFor={field.key}>{field.label}</Label>
-                    {field.type === "long" ? (
+                    {field.type === "rich" ? (
+                      <RichTextEditor
+                        value={values[field.key] ?? ""}
+                        onChange={(html) =>
+                          setValues((v) => ({ ...v, [field.key]: html }))
+                        }
+                      />
+                    ) : field.type === "long" ? (
                       <Textarea
                         id={field.key}
                         rows={3}

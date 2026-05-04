@@ -4,7 +4,7 @@
 export type ContentField = {
   key: string;
   label: string;
-  type: "short" | "long";
+  type: "short" | "long" | "rich";
   fallback: string;
   hint?: string;
 };

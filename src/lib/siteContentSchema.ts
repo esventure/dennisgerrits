@@ -56,8 +56,8 @@ export const CONTENT_SCHEMA: ContentSection[] = [
       },
       {
         key: "process.intro",
-        label: "Intro line",
-        type: "long",
+        label: "Intro paragraph",
+        type: "rich",
         fallback: "From the first message to the last goodbye, one person looks after every detail.",
       },
       { key: "concierge.kicker", label: "Concierge kicker", type: "short", fallback: "What I take care of" },

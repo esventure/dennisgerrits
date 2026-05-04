@@ -114,12 +114,11 @@ const HeroMagazine = () => (
     </div>
 
     {/* Right: full-bleed portrait */}
-    <div className="relative min-h-[400px] lg:min-h-0">
+    <div className="relative min-h-[500px] lg:min-h-[85vh] bg-muted/30">
       <img
         src={dennisArmsWide}
         alt="Dennis Gerrits with arms wide on an Amsterdam canal bridge"
-        className="absolute inset-0 w-full h-full object-cover"
-        style={{ objectPosition: "center 20%" }}
+        className="absolute inset-0 w-full h-full object-contain object-bottom"
       />
     </div>
   </div>

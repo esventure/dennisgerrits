@@ -409,7 +409,7 @@ const Index = () => {
             <FadeIn delay={0.15}>
               <div>
                 <p className="font-body text-sm tracking-widest uppercase text-accent mb-6">
-                  Featured By
+                  Recommended By
                 </p>
                 <h2 className="font-heading text-4xl md:text-5xl text-primary leading-[0.95] mb-6">
                   Rick Steves

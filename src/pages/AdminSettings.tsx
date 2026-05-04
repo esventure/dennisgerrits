@@ -114,21 +114,6 @@ const AdminSettings = () => {
   }, [previewValues, previewOpen]);
 
   // ── Section status helpers ───────────────────────────────────────
-  const sectionHasUnsavedChanges = (sectionId: string) => {
-    const section = CONTENT_SCHEMA.find((s) => s.id === sectionId);
-    if (!section) return false;
-    return section.fields.some((f) => {
-      const current = values[f.key] ?? "";
-      // Compare against whatever is persisted (draft if exists, else published)
-      const persisted = draftFlags[f.key] ? (values[f.key] ?? "") : (published[f.key] ?? "");
-      // We need actual persisted draft value, not the working buffer. Re-fetch via published vs flags.
-      // Trick: store original on load. Simpler approach: derive "persisted" by re-loading; instead
-      // we treat dirtiness as "current !== published" when no draft, else always potentially dirty
-      // until next save.
-      if (draftFlags[f.key]) return false; // pending draft already exists; explicit save still allowed
-      return current !== (published[f.key] ?? "");
-    });
-  };
 
   const sectionHasPendingDraft = (sectionId: string) => {
     const section = CONTENT_SCHEMA.find((s) => s.id === sectionId);
@@ -320,7 +305,6 @@ const AdminSettings = () => {
           <div className="space-y-8">
             {CONTENT_SCHEMA.map((section) => {
               const hasDraft = sectionHasPendingDraft(section.id);
-              const dirty = sectionHasUnsavedChanges(section.id);
               const busy = busySection === section.id;
               return (
                 <section

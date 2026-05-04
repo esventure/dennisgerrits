@@ -5,6 +5,7 @@ import AmsterdamSkyline from "@/components/AmsterdamSkyline";
 import DayMap from "@/components/DayMap";
 import MosaicWall from "@/components/MosaicWall";
 import { guestPhotos } from "@/assets/guests";
+import HeroCarousel from "@/components/HeroCarousel";
 import dennisIllustration from "@/assets/dennis_illustration.png";
 import dennisPhoto from "@/assets/dennis_photo.png";
 import dennisRickSteves from "@/assets/dennis_rick_steves.jpg";

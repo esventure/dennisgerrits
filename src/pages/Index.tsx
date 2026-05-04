@@ -152,14 +152,14 @@ const Index = () => {
             <FadeIn>
               <div className="max-w-lg">
                 <h2 className="font-heading text-4xl md:text-5xl text-primary leading-[0.95] mb-3">
-                  The Person
+                  {t("about.person.title", "The Person")}
                 </h2>
                 <div className="w-12 h-0.5 bg-accent mb-4" />
                 <p className="font-body text-sm tracking-[0.15em] uppercase text-secondary mb-4">
-                  A True Amsterdammer
+                  {t("about.person.kicker", "A True Amsterdammer")}
                 </p>
-                <p className="font-body text-muted-foreground leading-relaxed">
-                  I'm a free spirit with deep roots here. I grew up cycling these canals and collecting stories along the way. Amsterdam isn't just where I live, it's how I think.
+                <p className="font-body text-muted-foreground leading-relaxed whitespace-pre-line">
+                  {t("about.person.body", "I'm a free spirit with deep roots here. I grew up cycling these canals and collecting stories along the way. Amsterdam isn't just where I live, it's how I think.")}
                 </p>
               </div>
             </FadeIn>
@@ -170,14 +170,14 @@ const Index = () => {
             <FadeIn>
               <div className="max-w-lg">
                 <h2 className="font-heading text-4xl md:text-5xl text-primary-foreground leading-[0.95] mb-3">
-                  The Guide
+                  {t("about.guide.title", "The Guide")}
                 </h2>
                 <div className="w-12 h-0.5 bg-primary-foreground/30 mb-4" />
                 <p className="font-body text-sm tracking-[0.15em] uppercase text-primary-foreground/60 mb-4">
-                  A Different Kind of Guide
+                  {t("about.guide.kicker", "A Different Kind of Guide")}
                 </p>
-                <p className="font-body text-primary-foreground/80 leading-relaxed">
-                  No flag, no script. Depth over highlights, connection over information. A friend who knows the city inside out, walking beside you instead of in front of you.
+                <p className="font-body text-primary-foreground/80 leading-relaxed whitespace-pre-line">
+                  {t("about.guide.body", "No flag, no script. Depth over highlights, connection over information. A friend who knows the city inside out, walking beside you instead of in front of you.")}
                 </p>
               </div>
             </FadeIn>
@@ -435,15 +435,15 @@ const Index = () => {
           <div className="max-w-3xl mx-auto text-center mb-16 lg:mb-20">
             <FadeIn>
               <p className="font-body text-sm tracking-widest uppercase text-accent mb-6">
-                My Service
+                {t("service.kicker", "My Service")}
               </p>
               <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
-                More than a guide. A concierge for your whole stay.
+                {t("service.title", "More than a guide. A concierge for your whole stay.")}
               </h2>
             </FadeIn>
             <FadeIn delay={0.15}>
-              <p className="font-body text-lg text-muted-foreground leading-relaxed">
-                The day we spend together is just the centre of it. Around that, I quietly take care of the things that usually eat up a holiday: the bookings, the queues, the questions at 9pm about where to eat. One person, one phone number, every detail looked after.
+              <p className="font-body text-lg text-muted-foreground leading-relaxed whitespace-pre-line">
+                {t("service.intro", "The day we spend together is just the centre of it. Around that, I quietly take care of the things that usually eat up a holiday: the bookings, the queues, the questions at 9pm about where to eat. One person, one phone number, every detail looked after.")}
               </p>
             </FadeIn>
           </div>

@@ -6,9 +6,14 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 
+// Username maps to a hidden email behind the scenes.
+const USERNAME_TO_EMAIL: Record<string, string> = {
+  admin: "admin@dennis.local",
+};
+
 const AdminLogin = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -18,13 +23,33 @@ const AdminLogin = () => {
     });
   }, [navigate]);
 
+  const signIn = async (email: string, pwd: string) =>
+    supabase.auth.signInWithPassword({ email, password: pwd });
+
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+
+    const email = USERNAME_TO_EMAIL[username.trim().toLowerCase()];
+    if (!email) {
+      setLoading(false);
+      toast.error("Unknown username");
+      return;
+    }
+
+    let { error } = await signIn(email, password);
+
+    // First-time setup: bootstrap the default admin account if it doesn't exist yet.
+    if (error && username.trim().toLowerCase() === "admin") {
+      const { error: fnErr } = await supabase.functions.invoke("bootstrap-admin");
+      if (!fnErr) {
+        ({ error } = await signIn(email, password));
+      }
+    }
+
     setLoading(false);
     if (error) {
-      toast.error(error.message);
+      toast.error("Invalid username or password");
       return;
     }
     navigate("/admin", { replace: true });
@@ -43,14 +68,14 @@ const AdminLogin = () => {
           </p>
         </div>
         <div className="space-y-2">
-          <Label htmlFor="email">Email</Label>
+          <Label htmlFor="username">Username</Label>
           <Input
-            id="email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            id="username"
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             required
-            autoComplete="email"
+            autoComplete="username"
           />
         </div>
         <div className="space-y-2">

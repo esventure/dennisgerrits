@@ -75,6 +75,18 @@ const reviews = [
     location: "Keller, Texas",
     date: "April 2024",
   },
+  {
+    quote: "Dennis took us off the beaten path and showed us the Amsterdam locals know. We finished the day feeling like we'd made a friend, not hired a guide…",
+    author: "Sarah & Tom",
+    location: "United Kingdom",
+    date: "May 2025",
+  },
+  {
+    quote: "From the moment we connected by email, Dennis was attentive and thoughtful. The day itself flowed effortlessly. We can't recommend him highly enough…",
+    author: "Linda H.",
+    location: "Australia",
+    date: "October 2024",
+  },
 ];
 
 const stories = [
@@ -589,7 +601,7 @@ const Index = () => {
                 </FadeIn>
 
                 {/* Reviews */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8 max-w-4xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8 max-w-6xl mx-auto">
                   {reviews.map((r, i) => (
                     <FadeIn key={i} delay={i * 0.08}>
                       <a

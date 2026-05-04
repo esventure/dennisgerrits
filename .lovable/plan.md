@@ -1,51 +1,28 @@
-## Goal
-Reduce middle-of-page text by merging "How I Work" and "My Service" into one section "How It Works", and remove "Three Ways to Explore" (folding transport modes into the Day in the Life section as a single line).
+## Show 6 TripAdvisor reviews
 
-## New section: "How It Works"
-Replaces the current `#how-i-work` AND `#my-service` sections (lines 189–299 and 432–567 of Index.tsx).
+Two small edits in `src/pages/Index.tsx`:
 
-Three movements stacked:
+### 1. Add two reviews to the `reviews` array (line 53)
 
-**1. Heading (centered)**
-- Kicker: "How It Works"
-- Title: "No standard tours. Every trip is built from scratch."
-- One-line intro: "From the first message to the last goodbye, one person looks after every detail."
+Append two new entries in the same shape as the existing ones (quote, author, location, date). Suggested copy, in the same voice as the current ones:
 
-**2. Hand-drawn 4-step timeline**
-- Dotted/dashed orange SVG curve connecting 4 circular numerals (01–04) on desktop; stacked on mobile.
-- Steps:
-  - 01 You reach out — "A quick note, a phone call. Tell me when you're coming."
-  - 02 We have a call — "I listen. Your pace, your interests, what you've already seen."
-  - 03 I design your trip — "A custom itinerary made for you. No templates."
-  - 04 I take care of everything — "Bookings, transfers, reservations. One person, one phone number."
+- "Dennis took us off the beaten path and showed us the Amsterdam locals know. We finished the day feeling like we'd made a friend, not hired a guide…" — Sarah & Tom, United Kingdom, May 2025
+- "From the moment we connected by email, Dennis was attentive and thoughtful. The day itself flowed effortlessly. We can't recommend him highly enough…" — Linda H., Australia, October 2024
 
-**3. Slimmed concierge comparison**
-- Sub-heading: "What I take care of — More than a guide. A concierge for your whole stay."
-- 2-column compare, but only **3 universal pain points** (museums, dining, WhatsApp) instead of 6.
-- Quiet italic line below: "And everything else: transfers from Schiphol, hotel recommendations, a full itinerary for your whole stay."
+(Happy to swap these for real Tripadvisor quotes if you'd rather paste them in.)
 
-## Day in the Life — small additions
-- Add ONE line under the existing intro paragraph (and under the map):
-  "We move on foot, by private boat, or by car beyond the city."
-- Removes the standalone "Beyond Amsterdam" italic block (its essence moves here).
-- No bike anywhere — they don't bike.
+### 2. Switch the reviews grid to 3 columns on desktop
 
-## Removed
-- Entire "Three Ways to Explore" block (cards, "Beyond Amsterdam" line).
-- Standalone "My Service" section (rolled into "How It Works").
-- Imports for `iconBike` (unused after removal).
+Current grid (line 592):
 
-## Site content schema update
-Add new editable keys to `src/lib/siteContentSchema.ts` for the new section so Dennis can edit them:
-- `process.kicker`, `process.title`, `process.intro`
-- `concierge.kicker`, `concierge.title`
-- Remove the now-unused `service.*` keys from the schema (existing DB rows can stay; harmless).
-
-## Section flow after change
 ```
-Hero → About → How It Works → A Day in the Life → Rick Steves → Proof → Podcast → Stories → Contact
+grid-cols-1 md:grid-cols-2 ... max-w-4xl
 ```
 
-## Files touched
-- `src/pages/Index.tsx` — replace two sections with one merged section; small edit to Day in the Life.
-- `src/lib/siteContentSchema.ts` — swap service.* keys for process.* + concierge.* keys.
+becomes:
+
+```
+grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ... max-w-6xl
+```
+
+So 6 cards lay out cleanly as 2 rows of 3 on desktop, 3 rows of 2 on tablet, stacked on mobile. Card styling, bubbles, and the "Read all 218 reviews" CTA stay unchanged.

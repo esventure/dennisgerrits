@@ -271,7 +271,7 @@ const Index = () => {
             </FadeIn>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-8 max-w-6xl mx-auto items-stretch">
             {(() => {
               const rows = [
                 {
@@ -300,7 +300,7 @@ const Index = () => {
                 <>
                   <FadeIn>
                     <div
-                      className="h-full p-8 lg:p-10 bg-background rounded-sm border-t-4 shadow-sm"
+                      className="lg:col-span-2 h-full p-8 lg:p-10 bg-background rounded-sm border-t-4 shadow-sm"
                       style={{ borderColor: "hsl(var(--heritage-taupe))" }}
                     >
                       <p className="font-body text-xs tracking-widest uppercase text-muted-foreground mb-6 font-semibold">
@@ -325,7 +325,7 @@ const Index = () => {
 
                   <FadeIn delay={0.15}>
                     <div
-                      className="h-full p-8 lg:p-10 bg-background rounded-sm border-t-4 shadow-sm"
+                      className="lg:col-span-3 h-full p-8 lg:p-12 bg-background rounded-sm border-t-4 shadow-md"
                       style={{ borderColor: "hsl(var(--heritage-orange))" }}
                     >
                       <p className="font-body text-xs tracking-widest uppercase text-secondary mb-6 font-semibold">

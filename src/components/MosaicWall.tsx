@@ -2,29 +2,26 @@ import { useMemo, useRef, useState, useEffect } from "react";
 
 interface MosaicWallProps {
   photos: string[];
-  /** Drift cycle in seconds. Defaults to 18. */
+  /** Marquee cycle in seconds. Defaults to 60. */
   duration?: number;
   /** Number of visible rows. Defaults to 5. */
   rows?: number;
-  /** Number of columns. Defaults to 10. */
+  /** Number of columns visible in the frame. Defaults to 10. */
   columns?: number;
 }
 
 /**
- * Mosaic Wall — a fixed grid of `rows × columns` photo tiles.
+ * Mosaic Wall — a continuously sliding grid of photo tiles.
  *
- * Tile size is derived from the container width so the grid always
- * fills the frame edge-to-edge. A soft drift animation keeps the wall
- * alive without ever turning into a feature on any one face.
- *
- * Tiles whose source fails to load are silently hidden, then back-filled
- * from the remaining pool so the grid stays complete.
+ * Tiles are arranged in `rows × columns` and the entire strip slides
+ * rightwards in an infinite loop. The track is duplicated so the seam
+ * is invisible.
  *
  * Honors prefers-reduced-motion (renders a static grid).
  */
 const MosaicWall = ({
   photos,
-  duration = 18,
+  duration = 60,
   rows = 5,
   columns = 10,
 }: MosaicWallProps) => {
@@ -70,72 +67,68 @@ const MosaicWall = ({
 
   const frameHeight = rows * tileSize + (rows - 1) * gap;
 
+  // Render the tile strip twice for a seamless marquee loop.
+  const renderStrip = (keyPrefix: string) => (
+    <div
+      className="grid h-full shrink-0"
+      style={{
+        gap: `${gap}px`,
+        marginRight: `${gap}px`,
+        gridTemplateColumns: `repeat(${columns}, ${tileSize}px)`,
+        gridTemplateRows: `repeat(${rows}, ${tileSize}px)`,
+        gridAutoFlow: "column",
+      }}
+    >
+      {tiles.map((src, i) => (
+        <div
+          key={`${keyPrefix}-${src}-${i}`}
+          className="overflow-hidden rounded-[3px] bg-muted"
+        >
+          <img
+            src={src}
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            decoding="async"
+            onError={() =>
+              setBroken((prev) => {
+                if (prev.has(src)) return prev;
+                const next = new Set(prev);
+                next.add(src);
+                return next;
+              })
+            }
+            className="w-full h-full object-cover block select-none pointer-events-none"
+            draggable={false}
+          />
+        </div>
+      ))}
+    </div>
+  );
+
   return (
     <div
       ref={containerRef}
       className="relative w-full overflow-hidden rounded-sm"
-      style={{
-        height: `${frameHeight}px`,
-        backgroundColor: "hsl(var(--background))",
-      }}
+      style={{ height: `${frameHeight}px` }}
     >
-      <div className="absolute inset-0 mosaic-drift">
-        <div
-          className="grid w-full h-full"
-          style={{
-            gap: `${gap}px`,
-            gridTemplateColumns: `repeat(${columns}, 1fr)`,
-            gridTemplateRows: `repeat(${rows}, ${tileSize}px)`,
-          }}
-        >
-          {tiles.map((src, i) => (
-            <div
-              key={`${src}-${i}`}
-              className="overflow-hidden rounded-[3px] bg-muted"
-            >
-              <img
-                src={src}
-                alt=""
-                aria-hidden="true"
-                loading="lazy"
-                decoding="async"
-                onError={() =>
-                  setBroken((prev) => {
-                    if (prev.has(src)) return prev;
-                    const next = new Set(prev);
-                    next.add(src);
-                    return next;
-                  })
-                }
-                className="w-full h-full object-cover block select-none pointer-events-none"
-                draggable={false}
-              />
-            </div>
-          ))}
-        </div>
+      <div className="absolute inset-0 flex items-center mosaic-marquee">
+        {renderStrip("a")}
+        {renderStrip("b")}
       </div>
 
-      {/* Soft radial vignette — fades the edges into the page background */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse at center, transparent 45%, hsl(var(--background) / 0.45) 75%, hsl(var(--background)) 98%)",
-        }}
-      />
-
       <style>{`
-        @keyframes mosaicDrift {
-          0%   { transform: translate3d(0, 0, 0) scale(1); }
-          50%  { transform: translate3d(-1.5%, -1%, 0) scale(1.02); }
-          100% { transform: translate3d(0, 0, 0) scale(1); }
+        @keyframes mosaicMarquee {
+          0%   { transform: translate3d(-50%, 0, 0); }
+          100% { transform: translate3d(0, 0, 0); }
         }
-        .mosaic-drift {
-          animation: mosaicDrift ${duration}s ease-in-out infinite;
+        .mosaic-marquee {
+          width: max-content;
+          animation: mosaicMarquee ${duration}s linear infinite;
           will-change: transform;
         }
         @media (prefers-reduced-motion: reduce) {
-          .mosaic-drift { animation: none !important; }
+          .mosaic-marquee { animation: none !important; }
         }
       `}</style>
     </div>

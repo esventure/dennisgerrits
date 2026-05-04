@@ -182,10 +182,61 @@ const Admin = () => {
               Edit text, swap images, reorder. Changes appear live on Get Inspired.
             </p>
           </div>
-          <Button variant="outline" size="sm" onClick={signOut}>
-            <LogOut className="w-4 h-4 mr-2" /> Sign out
-          </Button>
+          <div className="flex items-center gap-2">
+            <Button variant="outline" size="sm" onClick={() => setPwOpen((v) => !v)}>
+              <KeyRound className="w-4 h-4 mr-2" /> Change password
+            </Button>
+            <Button variant="outline" size="sm" onClick={signOut}>
+              <LogOut className="w-4 h-4 mr-2" /> Sign out
+            </Button>
+          </div>
         </header>
+
+        {pwOpen && (
+          <div className="bg-card border rounded-lg p-6 shadow-sm space-y-4 mb-8">
+            <div>
+              <h2 className="font-heading text-2xl text-primary">Change password</h2>
+              <p className="font-body text-sm text-muted-foreground">
+                Choose a new password for your admin account. Minimum 8 characters.
+              </p>
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="new-pw">New password</Label>
+              <Input
+                id="new-pw"
+                type="password"
+                value={newPw}
+                onChange={(e) => setNewPw(e.target.value)}
+                autoComplete="new-password"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="confirm-pw">Confirm new password</Label>
+              <Input
+                id="confirm-pw"
+                type="password"
+                value={confirmPw}
+                onChange={(e) => setConfirmPw(e.target.value)}
+                autoComplete="new-password"
+              />
+            </div>
+            <div className="flex justify-end gap-2">
+              <Button
+                variant="ghost"
+                onClick={() => {
+                  setPwOpen(false);
+                  setNewPw("");
+                  setConfirmPw("");
+                }}
+              >
+                Cancel
+              </Button>
+              <Button onClick={changePassword} disabled={pwSaving}>
+                {pwSaving ? "Saving..." : "Update password"}
+              </Button>
+            </div>
+          </div>
+        )}
 
         <div className="space-y-6">
           {stories.map((story, i) => (

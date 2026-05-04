@@ -100,6 +100,7 @@ const stories = [
 
 const Index = () => {
   const { toast } = useToast();
+  const t = useSiteContent();
   const [contactForm, setContactForm] = useState({ name: "", email: "", message: "" });
 
   const handleContactSubmit = (e: React.FormEvent) => {

@@ -21,7 +21,6 @@ import { useToast } from "@/hooks/use-toast";
 import { useSiteContent } from "@/hooks/useSiteContent";
 import iconFoot from "@/assets/icon-foot.png";
 import ServiceIcon from "@/components/ServiceIcon";
-import iconBike from "@/assets/icon-bike.png";
 import iconBoat from "@/assets/icon-boat.png";
 
 const moments = [

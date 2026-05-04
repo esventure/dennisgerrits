@@ -19,9 +19,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { useSiteContent } from "@/hooks/useSiteContent";
-import iconFoot from "@/assets/icon-foot.png";
 import ServiceIcon from "@/components/ServiceIcon";
-import iconBoat from "@/assets/icon-boat.png";
 
 const moments = [
   {

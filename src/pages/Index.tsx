@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
 import AmsterdamSkyline from "@/components/AmsterdamSkyline";
 import DayMap from "@/components/DayMap";
+import DayProgress from "@/components/DayProgress";
 import MosaicWall from "@/components/MosaicWall";
 import { guestPhotos } from "@/assets/guests";
 import HeroCarousel from "@/components/HeroCarousel";
@@ -101,16 +102,19 @@ const stories = [
     title: "The Bookshop That Refused to Close",
     intro: "On a quiet street in the Jordaan, there's a bookshop that's been open since 1953. The owner still wraps every purchase in brown paper. I asked him once why he never retired.",
     image: storyBookshop,
+    caption: "Jordaan, autumn",
   },
   {
     title: "Why the Canal Houses Lean Forward",
     intro: "It's not bad engineering. It's actually on purpose. And the reason says a lot about how the Dutch think about commerce, neighbours, and showing off.",
     image: storyCanalHouses,
+    caption: "Herengracht, looking up",
   },
   {
     title: "A Bench With the Best View in Amsterdam",
     intro: "It's not where you'd expect. No famous landmarks in sight. Just water, sky, and the kind of quiet that makes you want to sit for a while.",
     image: storyBench,
+    caption: "A quiet corner, sunset",
   },
 ];
 
@@ -391,6 +395,10 @@ const Index = () => {
               </FadeIn>
             </div>
 
+            <FadeIn delay={0.05}>
+              <DayProgress labels={moments.map((m) => m.time)} />
+            </FadeIn>
+
             <FadeIn>
               <DayMap moments={moments} />
             </FadeIn>
@@ -409,8 +417,14 @@ const Index = () => {
                   alt="Dennis Gerrits with travel writer Rick Steves on an Amsterdam canal, holding the Rick Steves Amsterdam & The Netherlands guidebook"
                   className="w-full h-auto rounded-sm shadow-xl object-cover"
                 />
-                <p className="font-body text-xs italic text-muted-foreground mt-3">
-                  With Rick Steves on an Amsterdam canal.
+                <p
+                  className="mt-3 text-base italic"
+                  style={{
+                    fontFamily: "'Caveat', 'Outfit', cursive",
+                    color: "hsl(var(--heritage-bordeaux))",
+                  }}
+                >
+                  With Rick Steves on an Amsterdam canal, 2023
                 </p>
               </div>
             </FadeIn>
@@ -637,43 +651,48 @@ const Index = () => {
                   </a>
                 </FadeIn>
 
-                {/* Reviews */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8 max-w-6xl mx-auto">
-                  {reviews.map((r, i) => (
-                    <FadeIn key={i} delay={i * 0.08}>
+                {/* Hero pull-quote (first review) */}
+                {(() => {
+                  const hero = reviews[0];
+                  return (
+                    <FadeIn>
                       <a
                         href={TA_URL}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group bg-background rounded-lg p-5 h-full flex flex-col shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 border-t-4"
-                        style={{ borderTopColor: TA_GREEN }}
+                        className="group block max-w-4xl mx-auto mb-10 bg-background rounded-lg shadow-md hover:shadow-lg transition-all border-l-4 px-8 md:px-12 py-10 md:py-12 relative"
+                        style={{ borderLeftColor: "hsl(var(--heritage-green))" }}
                       >
-                        <div className="flex items-center justify-between mb-2">
-                          <TripAdvisorBubbles size={12} />
+                        <span
+                          aria-hidden
+                          className="absolute -left-1 -top-6 font-heading text-7xl md:text-8xl leading-none select-none"
+                          style={{ color: "hsl(var(--heritage-green))" }}
+                        >
+                          “
+                        </span>
+                        <div className="flex items-center justify-between mb-4">
+                          <TripAdvisorBubbles size={16} />
                           <span
-                            className="font-body text-xs tracking-wide uppercase opacity-70 group-hover:opacity-100 transition-opacity"
+                            className="font-body text-xs tracking-wide uppercase opacity-80"
                             style={{ color: TA_GREEN }}
                           >
-                            Tripadvisor
+                            Tripadvisor · {hero.date}
                           </span>
                         </div>
-                        <p className="font-body text-[11px] text-muted-foreground mb-2">
-                          Reviewed {r.date}
+                        <p className="font-heading text-2xl md:text-3xl text-primary leading-snug italic mb-6">
+                          {hero.quote}
                         </p>
-                        <p className="font-body text-sm text-foreground leading-snug italic flex-1">
-                          "{r.quote}"
-                        </p>
-                        <div className="mt-3 pt-3 border-t border-border flex items-end justify-between gap-3">
+                        <div className="flex items-end justify-between gap-3">
                           <div>
-                            <p className="font-body text-xs font-medium text-primary">
-                              {r.author}
+                            <p className="font-body text-sm font-medium text-primary">
+                              {hero.author}
                             </p>
-                            <p className="font-body text-[11px] text-muted-foreground">
-                              {r.location}
+                            <p className="font-body text-xs text-muted-foreground">
+                              {hero.location}
                             </p>
                           </div>
                           <span
-                            className="font-body text-[11px] whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity"
+                            className="font-body text-xs tracking-wide opacity-0 group-hover:opacity-100 transition-opacity"
                             style={{ color: TA_GREEN }}
                           >
                             Read on Tripadvisor →
@@ -681,7 +700,53 @@ const Index = () => {
                         </div>
                       </a>
                     </FadeIn>
-                  ))}
+                  );
+                })()}
+
+                {/* Remaining reviews — smaller grid for rhythm */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5 mb-8 max-w-6xl mx-auto">
+                  {reviews.slice(1).map((r, i) => {
+                    // Vary widths to break the wall: spans 2/2/3/3/2 across 5 cols
+                    const spans = ["lg:col-span-2", "lg:col-span-3", "lg:col-span-3", "lg:col-span-2", "lg:col-span-5"];
+                    const align = i % 2 === 0 ? "text-left" : "text-left md:text-right";
+                    return (
+                      <FadeIn key={i} delay={i * 0.08}>
+                        <a
+                          href={TA_URL}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`group bg-background rounded-lg p-5 h-full flex flex-col shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 border-t-4 ${spans[i] ?? ""} ${align}`}
+                          style={{ borderTopColor: TA_GREEN }}
+                        >
+                          <div className={`flex items-center justify-between mb-2 ${i % 2 === 1 ? "md:flex-row-reverse" : ""}`}>
+                            <TripAdvisorBubbles size={12} />
+                            <span
+                              className="font-body text-xs tracking-wide uppercase opacity-70 group-hover:opacity-100 transition-opacity"
+                              style={{ color: TA_GREEN }}
+                            >
+                              Tripadvisor
+                            </span>
+                          </div>
+                          <p className="font-body text-[11px] text-muted-foreground mb-2">
+                            Reviewed {r.date}
+                          </p>
+                          <p className="font-body text-sm text-foreground leading-snug italic flex-1">
+                            "{r.quote}"
+                          </p>
+                          <div className="mt-3 pt-3 border-t border-border flex items-end justify-between gap-3">
+                            <div>
+                              <p className="font-body text-xs font-medium text-primary">
+                                {r.author}
+                              </p>
+                              <p className="font-body text-[11px] text-muted-foreground">
+                                {r.location}
+                              </p>
+                            </div>
+                          </div>
+                        </a>
+                      </FadeIn>
+                    );
+                  })}
                 </div>
 
                 {/* All reviews CTA */}
@@ -795,6 +860,15 @@ const Index = () => {
                       />
                     </div>
                     <div className="p-6">
+                      <p
+                        className="text-sm mb-2"
+                        style={{
+                          fontFamily: "'Caveat', 'Outfit', cursive",
+                          color: "hsl(var(--heritage-bordeaux))",
+                        }}
+                      >
+                        {s.caption}
+                      </p>
                       <h3 className="font-heading text-2xl text-primary mb-3 group-hover:text-secondary transition-colors">
                         {s.title}
                       </h3>

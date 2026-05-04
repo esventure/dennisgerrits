@@ -12,33 +12,16 @@ import { refreshSiteContent } from "@/hooks/useSiteContent";
 
 const AdminSettings = () => {
   const navigate = useNavigate();
-  const [checking, setChecking] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [values, setValues] = useState<Record<string, string>>({});
   const [savingSection, setSavingSection] = useState<string | null>(null);
 
   useEffect(() => {
     let mounted = true;
-    const init = async () => {
-      const { data: sess } = await supabase.auth.getSession();
-      if (!sess.session) {
-        navigate("/admin/login", { replace: true });
-        return;
-      }
-      const { data: roles } = await supabase
-        .from("user_roles")
-        .select("role")
-        .eq("user_id", sess.session.user.id)
-        .eq("role", "admin");
-      if (!roles || roles.length === 0) {
-        toast.error("Your account does not have admin access.");
-        await supabase.auth.signOut();
-        navigate("/admin/login", { replace: true });
-        return;
-      }
+    (async () => {
       const { data: rows } = await supabase.from("site_content").select("key,value");
       const map: Record<string, string> = {};
       (rows || []).forEach((r) => (map[r.key] = r.value));
-      // Pre-fill with fallbacks for keys that don't exist yet
       CONTENT_SCHEMA.forEach((s) =>
         s.fields.forEach((f) => {
           if (map[f.key] === undefined) map[f.key] = f.fallback;
@@ -46,14 +29,13 @@ const AdminSettings = () => {
       );
       if (mounted) {
         setValues(map);
-        setChecking(false);
+        setLoading(false);
       }
-    };
-    init();
+    })();
     return () => {
       mounted = false;
     };
-  }, [navigate]);
+  }, []);
 
   const saveSection = async (sectionId: string) => {
     setSavingSection(sectionId);
@@ -76,7 +58,7 @@ const AdminSettings = () => {
     toast.success(`${section.title} saved`);
   };
 
-  if (checking) {
+  if (loading) {
     return (
       <main className="min-h-screen flex items-center justify-center">
         <p className="font-body text-muted-foreground">Loading...</p>

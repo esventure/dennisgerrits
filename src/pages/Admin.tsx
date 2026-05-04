@@ -27,7 +27,7 @@ function publicUrl(path: string | null) {
 
 const Admin = () => {
   const navigate = useNavigate();
-  const [checking, setChecking] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [stories, setStories] = useState<Story[]>([]);
   const [savingId, setSavingId] = useState<string | null>(null);
   const fileInputs = useRef<Record<string, HTMLInputElement | null>>({});
@@ -38,46 +38,20 @@ const Admin = () => {
 
   useEffect(() => {
     let mounted = true;
-
-    const init = async () => {
-      const { data } = await supabase.auth.getSession();
-      if (!data.session) {
-        navigate("/admin/login", { replace: true });
-        return;
-      }
-      const { data: roles } = await supabase
-        .from("user_roles")
-        .select("role")
-        .eq("user_id", data.session.user.id)
-        .eq("role", "admin");
-      if (!roles || roles.length === 0) {
-        toast.error("Your account does not have admin access.");
-        await supabase.auth.signOut();
-        navigate("/admin/login", { replace: true });
-        return;
-      }
+    (async () => {
       const { data: rows, error } = await supabase
         .from("stories")
         .select("*")
         .order("sort_order", { ascending: true });
-      if (error) {
-        toast.error(error.message);
-      } else if (mounted) {
-        setStories(rows as Story[]);
-      }
-      if (mounted) setChecking(false);
-    };
-
-    init();
-
-    const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => {
-      if (!session) navigate("/admin/login", { replace: true });
-    });
+      if (!mounted) return;
+      if (error) toast.error(error.message);
+      else setStories(rows as Story[]);
+      setLoading(false);
+    })();
     return () => {
       mounted = false;
-      sub.subscription.unsubscribe();
     };
-  }, [navigate]);
+  }, []);
 
   const update = (id: string, patch: Partial<Story>) =>
     setStories((prev) => prev.map((s) => (s.id === id ? { ...s, ...patch } : s)));
@@ -164,7 +138,7 @@ const Admin = () => {
     setPwOpen(false);
   };
 
-  if (checking) {
+  if (loading) {
     return (
       <main className="min-h-screen flex items-center justify-center">
         <p className="font-body text-muted-foreground">Loading...</p>

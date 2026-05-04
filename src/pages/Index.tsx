@@ -321,13 +321,32 @@ const Index = () => {
                       <ul className="font-body text-base lg:text-lg text-foreground leading-relaxed">
                         {rows.map((row) => (
                           <li key={row.worry} className={`flex gap-4 items-center ${ROW_MIN_H}`}>
-                            <span
+                            <svg
                               aria-hidden
-                              className="shrink-0 text-lg font-bold"
-                              style={{ color: "hsl(var(--heritage-bordeaux))" }}
+                              viewBox="0 0 40 40"
+                              className="shrink-0 w-8 h-8"
+                              fill="none"
+                              stroke="hsl(var(--heritage-bordeaux))"
+                              strokeWidth="1.6"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
                             >
-                              ✕
-                            </span>
+                              <defs>
+                                <filter id="thumbWobble" x="-10%" y="-10%" width="120%" height="120%">
+                                  <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="2" />
+                                  <feDisplacementMap in="SourceGraphic" scale="1.1" />
+                                </filter>
+                              </defs>
+                              <g filter="url(#thumbWobble)">
+                                {/* Thumb (pointing down) */}
+                                <path d="M 18 6 C 18 11, 15 13, 14 16 L 14 22 C 14 24, 15 25, 17 25 L 24 25 C 26 25, 27 26, 27 28 C 27 29, 26 30, 25 30 C 26 30, 27 31, 27 32 C 27 33, 26 34, 25 34 C 26 34, 26 35, 26 36 C 26 37, 25 38, 23 38 L 17 38 C 14 38, 12 36, 11 34" />
+                                {/* Forearm / cuff */}
+                                <path d="M 8 16 L 8 24 C 8 25, 9 26, 10 26 L 14 26" />
+                                <path d="M 8 16 L 14 16" />
+                                {/* Knuckle hint */}
+                                <path d="M 18 28 L 21 28" opacity="0.6" />
+                              </g>
+                            </svg>
                             <span>{row.worry}</span>
                           </li>
                         ))}

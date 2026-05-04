@@ -1,47 +1,82 @@
-## Make the Day Map feel like a hand-drawn treasure map
+## Goal
 
-Right now the map reads as a clean infographic: crisp lines, geometric markers, and small Outfit labels. Let's push it firmly into hand-drawn cartographer territory so it feels personal and storybook-like, matching the rest of the site's editorial vibe.
+Give Dennis a simple, password-protected admin page where he can edit the existing **Stories** (title, intro, body) and swap their **images**, without being able to touch the site's structure or design.
 
-### What changes (visual layer only — no behavior changes)
+## Approach
 
-**1. Parchment background**
-Add a soft taupe radial-gradient panel behind the SVG with a dashed border, so the map sits on "paper" instead of floating on the page background.
+Enable **Lovable Cloud** (Supabase under the hood) and add:
 
-**2. Hand-drawn jitter on every line**
-Apply an SVG `feTurbulence` + `feDisplacementMap` filter (`#rough`) to canals, landmarks, route, and marker rings. This gives every stroke a subtle wobble — the single biggest "drawn by hand" cue.
+1. A `stories` database table holding the editable content.
+2. A storage bucket `story-images` for uploaded photos.
+3. Email/password authentication (only Dennis gets an account; sign-up disabled).
+4. A `user_roles` table + `has_role()` security-definer function so only `admin` users can write.
+5. A new `/admin` route in the app with a simple editor UI (list of stories → edit form → image upload).
+6. The public `Get Inspired` page reads stories from the database instead of the hard-coded array.
 
-**3. Cartographer's grid**
-Faint dashed graticule lines (every 100 units) behind the content, like an old chart.
+This keeps Dennis safely scoped to **content only**: he cannot add new sections, change layout, or break the site.
 
-**4. Compass rose**
-Small compass in the top-right with N/S/E/W in a handwritten font (Caveat) and an orange needle pointing north.
+## What Dennis can do
 
-**5. Wobblier route**
-Replace the smooth Bézier route segments with curvier `q ... t ...` paths and add a soft, wider under-stroke for an ink-bleed effect underneath the dashed line.
+- Log in at `/admin` with email + password.
+- See the list of stories currently shown on *Get Inspired*.
+- Edit a story's **title**, **intro**, **body**.
+- Upload/replace the **image** for a story.
+- Reorder stories (drag handle or up/down buttons).
+- Save → changes appear live on the public page.
 
-**6. Handwritten labels**
-Switch the active stop label from Outfit 11px to Caveat (cursive) 16px. Add an "Amsterdam" label tilted -4° in the upper-left and a "~ to the harbour ~" note in the lower-right.
+## What Dennis cannot do
 
-**7. More sketchy landmarks**
-Convert filled landmark silhouettes to outlined strokes (more drawing-like). Add: a tulip cluster, a small lantern, an anchor near the waterfront, and convert the windmill to outlined sails.
+- Create new pages or sections.
+- Change colors, fonts, layout, or navigation.
+- Edit other content (hero, services, about, etc.) — unless we add it later.
+- Invite other users (sign-up is disabled; you stay the only account creator).
 
-**8. Marker badges feel stamped**
-Add a dashed outer ring around each checkpoint marker so they look like circled spots on a map, not UI buttons.
+## Technical details
 
-**9. "X marks the spot"**
-When the user reaches the final stop, a small bordeaux X fades in next to the last marker.
+**Database**
+```text
+stories
+ ├─ id (uuid, pk)
+ ├─ slug (text, unique)        ← used for deep-link ?story=
+ ├─ title (text)
+ ├─ intro (text)
+ ├─ body (text)
+ ├─ image_path (text, nullable) ← key in story-images bucket
+ ├─ sort_order (int)
+ └─ updated_at (timestamptz)
 
-### What stays exactly the same
-- 5 stops, same positions/icons/labels
-- Scroll-driven progression, dot navigation, prev/next arrows
-- Right-side story card and its animation
-- Layout grid, aspect ratio, responsive behavior
-- Heritage palette colors (just used in more places)
+user_roles
+ ├─ user_id (uuid → auth.users)
+ └─ role (app_role enum: 'admin')
+```
 
-### Files
-- `src/components/DayMap.tsx` — full rewrite of the SVG layer; the React component shell, props, state, and scroll logic are unchanged.
+**RLS policies**
+- `stories`: `SELECT` public; `INSERT/UPDATE/DELETE` only when `has_role(auth.uid(), 'admin')`.
+- `user_roles`: only admins can read/write.
 
-No new dependencies. Caveat font is already loaded site-wide for the signature; if not, I'll fall back to `'Brush Script MT', cursive` automatically via the font stack.
+**Storage**
+- Bucket `story-images`, public read.
+- Upload/delete restricted to admins via storage policies.
 
-### Performance
-The two `feTurbulence` filters are lightweight (one-time bake) and applied to grouped paths, not per-element. No animation hits the filter, so no runtime cost.
+**Auth**
+- Email + password, sign-up disabled in Cloud auth settings.
+- I'll create Dennis's account by inserting via the auth admin tools after Cloud is on, then assign him the `admin` role. You'll share the temporary password with him; he can change it after first login.
+
+**Frontend**
+- New routes: `/admin/login`, `/admin` (protected).
+- Admin UI: minimal, functional (table + edit drawer + image dropzone). Not styled to match the editorial site — it's a back-office.
+- Existing `GetInspired.tsx` refactored to fetch stories with React Query; falls back gracefully while loading.
+- Initial migration seeds the table with the current 4 hard-coded stories so nothing changes visually on day one.
+
+## Steps when you approve
+
+1. Enable Lovable Cloud.
+2. Create migration: `stories` table, `app_role` enum, `user_roles` table, `has_role()` function, RLS policies, `story-images` bucket + policies. Seed existing stories.
+3. Build `/admin/login` and `/admin` (list + edit + image upload).
+4. Refactor `GetInspired.tsx` to read from the database.
+5. Create Dennis's admin user and share credentials with you.
+
+## Open questions
+
+- Should the admin also manage the **Interests** cards and the **Day Map** stops, or just the Stories for now? (Easy to add later — I'd suggest starting with Stories only.)
+- Do you want a single shared login for you + Dennis, or separate accounts?

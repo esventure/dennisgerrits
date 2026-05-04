@@ -414,8 +414,14 @@ const Index = () => {
                   alt="Dennis Gerrits with travel writer Rick Steves on an Amsterdam canal, holding the Rick Steves Amsterdam & The Netherlands guidebook"
                   className="w-full h-auto rounded-sm shadow-xl object-cover"
                 />
-                <p className="font-body text-xs italic text-muted-foreground mt-3">
-                  With Rick Steves on an Amsterdam canal.
+                <p
+                  className="mt-3 text-base italic"
+                  style={{
+                    fontFamily: "'Caveat', 'Outfit', cursive",
+                    color: "hsl(var(--heritage-bordeaux))",
+                  }}
+                >
+                  With Rick Steves on an Amsterdam canal, 2023
                 </p>
               </div>
             </FadeIn>

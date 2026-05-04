@@ -772,7 +772,7 @@ const Index = () => {
       </section>
 
       {/* ── 6. Stories (Blog) ── */}
-      <section id="stories" className="py-24 lg:py-32 scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.15)" }}>
+      <section id="stories" className="py-24 lg:py-32 scroll-mt-20">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mb-16">
             <FadeIn>

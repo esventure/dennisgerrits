@@ -22,6 +22,10 @@ import { useToast } from "@/hooks/use-toast";
 import { useSiteContent } from "@/hooks/useSiteContent";
 import ServiceIcon from "@/components/ServiceIcon";
 import RichText from "@/components/RichText";
+import storyBookshop from "@/assets/stories/bookshop.jpg";
+import storyCanalHouses from "@/assets/stories/canal-houses.jpg";
+import storyBench from "@/assets/stories/bench.jpg";
+import podcastCover from "@/assets/podcast-cover.jpg";
 
 const moments = [
   {
@@ -90,21 +94,23 @@ const reviews = [
   },
 ];
 
+
+
 const stories = [
   {
     title: "The Bookshop That Refused to Close",
     intro: "On a quiet street in the Jordaan, there's a bookshop that's been open since 1953. The owner still wraps every purchase in brown paper. I asked him once why he never retired.",
-    image: null,
+    image: storyBookshop,
   },
   {
     title: "Why the Canal Houses Lean Forward",
     intro: "It's not bad engineering. It's actually on purpose. And the reason says a lot about how the Dutch think about commerce, neighbours, and showing off.",
-    image: null,
+    image: storyCanalHouses,
   },
   {
     title: "A Bench With the Best View in Amsterdam",
     intro: "It's not where you'd expect. No famous landmarks in sight. Just water, sky, and the kind of quiet that makes you want to sit for a while.",
-    image: null,
+    image: storyBench,
   },
 ];
 
@@ -736,10 +742,20 @@ const Index = () => {
               </div>
             </FadeIn>
             <FadeIn delay={0.15}>
-              <div className="bg-primary/5 border border-border rounded-lg p-8">
-                <div className="bg-muted rounded-sm p-8 flex items-center justify-center min-h-[200px]">
-                  <p className="font-body text-sm text-muted-foreground italic">Podcast player embed</p>
+              <div className="relative">
+                <div className="aspect-square overflow-hidden rounded-sm shadow-elegant">
+                  <img
+                    src={podcastCover}
+                    alt="Two Stories, One City — podcast cover art"
+                    loading="lazy"
+                    width={1024}
+                    height={1024}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
+                <p className="font-body text-xs text-muted-foreground italic mt-3 text-center">
+                  Episodes coming soon.
+                </p>
               </div>
             </FadeIn>
           </div>
@@ -768,8 +784,15 @@ const Index = () => {
               <FadeIn key={s.title} delay={i * 0.1}>
                 <Link to={`/get-inspired?story=${encodeURIComponent(s.title)}`} className="block">
                   <div className="border border-border rounded-sm overflow-hidden group cursor-pointer">
-                    <div className="aspect-[16/10] bg-muted flex items-center justify-center">
-                      <p className="font-body text-xs text-muted-foreground italic">Atmospheric image</p>
+                    <div className="aspect-[16/10] bg-muted overflow-hidden">
+                      <img
+                        src={s.image}
+                        alt={s.title}
+                        loading="lazy"
+                        width={1024}
+                        height={640}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
                     </div>
                     <div className="p-6">
                       <h3 className="font-heading text-2xl text-primary mb-3 group-hover:text-secondary transition-colors">

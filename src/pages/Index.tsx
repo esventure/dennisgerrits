@@ -335,7 +335,7 @@ const Index = () => {
                     </div>
                   </FadeIn>
 
-                  <FadeIn delay={0.15}>
+                  <FadeIn delay={0.15} className="lg:col-span-3 h-full">
                     <div
                       className="lg:col-span-3 h-full p-8 lg:p-12 bg-background rounded-sm border-t-4 shadow-md"
                       style={{ borderColor: "hsl(var(--heritage-orange))" }}

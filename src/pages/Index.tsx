@@ -811,83 +811,76 @@ const Index = () => {
       {/* ── 7. Contact, FAQ & Footer ── */}
       <section id="contact" className="py-24 lg:py-32 scroll-mt-20">
         <div className="container mx-auto px-6 lg:px-12">
-          <div
-            className="max-w-4xl mx-auto rounded-sm border px-8 md:px-14 py-16 md:py-20 shadow-lg"
-            style={{
-              backgroundColor: "hsl(var(--heritage-taupe-soft))",
-              borderColor: "hsl(var(--heritage-taupe))",
-            }}
-          >
-            <div className="max-w-3xl mb-12">
-              <FadeIn>
-                <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
-                  {t("booking.kicker", "Get in Touch")}
-                </p>
-                <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
-                  {t("booking.title", "Let's See if We're a Good Match")}
-                </h2>
-                <RichText
-                  className="font-body text-lg text-muted-foreground leading-relaxed"
-                  html={t("booking.intro", "")}
-                  fallback="The best way to start is a short, informal conversation. No obligations, just a chance to see if my approach feels right."
-                />
-              </FadeIn>
-            </div>
+          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-20 items-start">
+            {/* Left: editorial intro, no box */}
+            <FadeIn>
+              <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
+                {t("booking.kicker", "Get in Touch")}
+              </p>
+              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
+                {t("booking.title", "Let's See if We're a Good Match")}
+              </h2>
+              <RichText
+                className="font-body text-lg text-foreground/80 leading-relaxed"
+                html={t("booking.intro", "")}
+                fallback="The best way to start is a short, informal conversation. No obligations, just a chance to see if my approach feels right."
+              />
+            </FadeIn>
 
-            <div className="max-w-2xl">
-              {/* Contact form */}
-              <FadeIn delay={0.15}>
-                <div className="border border-border rounded-sm p-10 bg-background">
-                  <div className="w-12 h-0.5 bg-secondary mb-8" />
-                  <h3 className="font-heading text-3xl text-primary mb-4">
-                    {t("booking.form.title", "Book a Call")}
-                  </h3>
-                  <RichText
-                    className="font-body text-muted-foreground leading-relaxed mb-8"
-                    html={t("booking.form.intro", "")}
-                    fallback="Leave your details and a few words about your trip. I'll reach out personally."
-                  />
-                  <form onSubmit={handleContactSubmit} className="space-y-6">
-                    <div className="space-y-2">
-                      <Label className="font-body text-sm">Your Name</Label>
-                      <Input
-                        required
-                        value={contactForm.name}
-                        onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
-                        className="h-12 text-base font-body"
-                        placeholder="e.g. Jane Smith"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label className="font-body text-sm">Email Address</Label>
-                      <Input
-                        required
-                        type="email"
-                        value={contactForm.email}
-                        onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
-                        className="h-12 text-base font-body"
-                        placeholder="jane@example.com"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label className="font-body text-sm">Tell Me a Little About Your Trip</Label>
-                      <Textarea
-                        value={contactForm.message}
-                        onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
-                        className="min-h-[140px] text-base font-body"
-                        placeholder="When are you visiting? What are you curious about?"
-                      />
-                    </div>
-                    <button
-                      type="submit"
-                      className="w-full font-body text-sm tracking-widest uppercase px-8 py-4 border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
-                    >
-                      {t("booking.form.cta", "Send Message")}
-                    </button>
-                  </form>
-                </div>
-              </FadeIn>
-            </div>
+            {/* Right: form on background, with a single accent rule */}
+            <FadeIn delay={0.15}>
+              <div
+                className="bg-background p-8 lg:p-10 border-l-4 shadow-sm rounded-sm"
+                style={{ borderLeftColor: "hsl(var(--heritage-green))" }}
+              >
+                <h3 className="font-heading text-3xl text-primary mb-3">
+                  {t("booking.form.title", "Book a Call")}
+                </h3>
+                <RichText
+                  className="font-body text-muted-foreground leading-relaxed mb-8"
+                  html={t("booking.form.intro", "")}
+                  fallback="Leave your details and a few words about your trip. I'll reach out personally."
+                />
+                <form onSubmit={handleContactSubmit} className="space-y-6">
+                  <div className="space-y-2">
+                    <Label className="font-body text-sm">Your Name</Label>
+                    <Input
+                      required
+                      value={contactForm.name}
+                      onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
+                      className="h-12 text-base font-body"
+                      placeholder="e.g. Jane Smith"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label className="font-body text-sm">Email Address</Label>
+                    <Input
+                      required
+                      type="email"
+                      value={contactForm.email}
+                      onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
+                      className="h-12 text-base font-body"
+                      placeholder="jane@example.com"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label className="font-body text-sm">Tell Me a Little About Your Trip</Label>
+                    <Textarea
+                      value={contactForm.message}
+                      onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
+                      className="min-h-[140px] text-base font-body"
+                      placeholder="When are you visiting? What are you curious about?"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="w-full font-body text-sm tracking-widest uppercase px-8 py-4 border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
+                  >
+                    {t("booking.form.cta", "Send Message")}
+                  </button>
+                </form>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>

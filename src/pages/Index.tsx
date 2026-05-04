@@ -742,10 +742,20 @@ const Index = () => {
               </div>
             </FadeIn>
             <FadeIn delay={0.15}>
-              <div className="bg-primary/5 border border-border rounded-lg p-8">
-                <div className="bg-muted rounded-sm p-8 flex items-center justify-center min-h-[200px]">
-                  <p className="font-body text-sm text-muted-foreground italic">Podcast player embed</p>
+              <div className="relative">
+                <div className="aspect-square overflow-hidden rounded-sm shadow-elegant">
+                  <img
+                    src={podcastCover}
+                    alt="Two Stories, One City — podcast cover art"
+                    loading="lazy"
+                    width={1024}
+                    height={1024}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
+                <p className="font-body text-xs text-muted-foreground italic mt-3 text-center">
+                  Episodes coming soon.
+                </p>
               </div>
             </FadeIn>
           </div>

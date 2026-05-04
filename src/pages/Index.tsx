@@ -185,7 +185,7 @@ const Index = () => {
       </section>
 
       {/* ── How I Work ── */}
-      <section id="how-i-work" className="py-24 lg:py-32 scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.1)" }}>
+      <section id="how-i-work" className="py-24 lg:py-32 scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}>
         <div className="container mx-auto px-6 lg:px-12">
           {/* Movement 1: Heading + intro, stacked and centered */}
           <div className="max-w-3xl mx-auto text-center mb-16 lg:mb-20">

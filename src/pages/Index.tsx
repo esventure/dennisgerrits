@@ -19,10 +19,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { useSiteContent } from "@/hooks/useSiteContent";
-import iconFoot from "@/assets/icon-foot.png";
 import ServiceIcon from "@/components/ServiceIcon";
-import iconBike from "@/assets/icon-bike.png";
-import iconBoat from "@/assets/icon-boat.png";
 
 const moments = [
   {
@@ -186,114 +183,173 @@ const Index = () => {
 
       </section>
 
-      {/* ── How I Work ── */}
-      <section id="how-i-work" className="py-24 lg:py-32 scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}>
+      {/* ── How It Works (process + concierge) ── */}
+      <section id="how-it-works" className="py-24 lg:py-32 scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}>
         <div className="container mx-auto px-6 lg:px-12">
-          {/* Movement 1: Heading + intro, stacked and centered */}
+
+          {/* Heading */}
           <div className="max-w-3xl mx-auto text-center mb-16 lg:mb-20">
             <FadeIn>
               <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
-                How I Work
+                {t("process.kicker", "How It Works")}
               </p>
-              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95]">
-                Like a trusted local friend, with the eye of a private concierge.
+              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-6">
+                {t("process.title", "No standard tours. Every trip is built from scratch.")}
               </h2>
+              <p className="font-body text-lg text-muted-foreground leading-relaxed">
+                {t("process.intro", "From the first message to the last goodbye, one person looks after every detail.")}
+              </p>
             </FadeIn>
           </div>
 
-          <FadeIn delay={0.15}>
-            <div className="max-w-2xl mx-auto space-y-6 mb-20 lg:mb-28">
-              <p className="font-body text-lg text-muted-foreground leading-relaxed">
-                Every day I guide is built around you. Nothing is scripted. We follow your curiosity, whether that is the hush of the Jordaan at breakfast, the brushwork of a Vermeer, the food halls locals actually use, or the quiet streets of the Jewish Cultural Quarter.
-              </p>
-              <p className="font-body text-lg text-muted-foreground leading-relaxed">
-                I studied architecture, so the city's bones are something I love to share. But we move at your pace. If you would rather slow down for coffee on a bridge or chase a memory from a story your grandmother once told, that is the day we will have.
-              </p>
+          {/* 4-step timeline with hand-drawn line */}
+          <FadeIn delay={0.1}>
+            <div className="relative max-w-5xl mx-auto mb-24 lg:mb-32">
+              <svg
+                className="hidden md:block absolute top-8 left-0 w-full pointer-events-none"
+                height="20"
+                viewBox="0 0 1000 20"
+                preserveAspectRatio="none"
+                aria-hidden
+              >
+                <path
+                  d="M 60 10 Q 200 2, 340 10 T 660 10 T 940 10"
+                  fill="none"
+                  stroke="hsl(var(--heritage-orange))"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeDasharray="1 6"
+                />
+              </svg>
+
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-6 relative">
+                {[
+                  { n: "01", label: "You reach out", text: "A quick note, a phone call. Tell me when you're coming." },
+                  { n: "02", label: "We have a call", text: "I listen. Your pace, your interests, what you've already seen." },
+                  { n: "03", label: "I design your trip", text: "A custom itinerary made for you. No templates." },
+                  { n: "04", label: "I take care of everything", text: "Bookings, transfers, reservations. One person, one phone number." },
+                ].map((step) => (
+                  <div key={step.n} className="text-center md:text-left">
+                    <div
+                      className="mx-auto md:mx-0 w-16 h-16 rounded-full flex items-center justify-center mb-5 font-heading text-2xl"
+                      style={{
+                        backgroundColor: "hsl(var(--background))",
+                        color: "hsl(var(--heritage-orange))",
+                        border: "2px solid hsl(var(--heritage-orange))",
+                      }}
+                    >
+                      {step.n}
+                    </div>
+                    <h3 className="font-heading text-2xl text-primary leading-tight mb-2">
+                      {step.label}
+                    </h3>
+                    <p className="font-body text-muted-foreground leading-relaxed">
+                      {step.text}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           </FadeIn>
 
-          {/* Movement 3: Three ways to explore */}
-          <FadeIn delay={0.05}>
-            <div className="mb-10 text-center">
-              <p className="font-body text-sm tracking-widest uppercase text-secondary mb-4">
-                Three Ways to Explore
+          {/* Concierge: slimmed comparison */}
+          <div className="max-w-3xl mx-auto text-center mb-12">
+            <FadeIn>
+              <p className="font-body text-sm tracking-widest uppercase text-accent mb-4">
+                {t("concierge.kicker", "What I take care of")}
               </p>
               <h3 className="font-heading text-3xl md:text-4xl text-primary leading-tight">
-                The city moves at the pace you choose
+                {t("concierge.title", "More than a guide. A concierge for your whole stay.")}
               </h3>
-            </div>
-          </FadeIn>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            {[
-              {
-                icon: iconFoot,
-                title: "On Foot",
-                text: "The oldest way to read a city. Ideal for the canal belt, the Jordaan, and the museum quarter.",
-                featured: false,
-              },
-              {
-                icon: iconBike,
-                title: "By Bike",
-                text: "How locals actually live here. We ride at a calm pace, on quieter routes, with a bike chosen for you.",
-                featured: false,
-              },
-              {
-                icon: iconBoat,
-                title: "Private Boat",
-                text: "A slow cruise along the canals with a glass of wine and a picnic. The view of Amsterdam from the water is the one most travellers never forget.",
-                featured: true,
-              },
-            ].map((mode, i) => {
-              return (
-                <FadeIn key={mode.title} delay={0.1 + i * 0.08}>
-                  <article
-                    className={`relative h-full bg-background rounded-sm p-8 shadow-sm hover:shadow-md transition-shadow ${
-                      mode.featured ? "border-2" : "border border-border/60"
-                    }`}
-                    style={mode.featured ? { borderColor: "hsl(var(--heritage-orange))" } : undefined}
-                  >
-                    {mode.featured && (
-                      <span
-                        className="absolute -top-3 left-6 px-3 py-1 text-xs font-body tracking-widest uppercase rounded-sm"
-                        style={{
-                          backgroundColor: "hsl(var(--heritage-orange))",
-                          color: "hsl(var(--background))",
-                        }}
-                      >
-                        My Recommendation
-                      </span>
-                    )}
-                    <ServiceIcon
-                      src={mode.icon}
-                      alt={mode.title}
-                      size={72}
-                      padding={6}
-                      className="mb-6"
-                    />
-                    <h4 className="font-heading text-2xl md:text-3xl text-primary mb-3 leading-tight">
-                      {mode.title}
-                    </h4>
-                    <p className="font-body text-muted-foreground leading-relaxed">
-                      {mode.text}
-                    </p>
-                  </article>
-                </FadeIn>
-              );
-            })}
+            </FadeIn>
           </div>
 
-          {/* Beyond Amsterdam closing line */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto">
+            {(() => {
+              const rows = [
+                {
+                  worry: "Refreshing the Anne Frank House page hoping a slot opens up.",
+                  icon: iconTickets,
+                  title: "Museum reservations",
+                  desc: "Time slots booked in advance. No queues.",
+                },
+                {
+                  worry: "Reading 200 reviews to find a restaurant that isn't a tourist trap.",
+                  icon: iconDining,
+                  title: "Dining bookings",
+                  desc: "Tables at the kind of places locals actually go.",
+                },
+                {
+                  worry: "Wondering, at 9pm, where to eat tonight.",
+                  icon: iconMessage,
+                  title: "WhatsApp lifeline",
+                  desc: "One message away for the whole trip.",
+                },
+              ];
+
+              const ROW_MIN_H = "min-h-[96px]";
+
+              return (
+                <>
+                  <FadeIn>
+                    <div
+                      className="h-full p-8 lg:p-10 bg-background rounded-sm border-t-4 shadow-sm"
+                      style={{ borderColor: "hsl(var(--heritage-taupe))" }}
+                    >
+                      <p className="font-body text-xs tracking-widest uppercase text-muted-foreground mb-6 font-semibold">
+                        Planning it yourself
+                      </p>
+                      <ul className="font-body text-base lg:text-lg text-foreground leading-relaxed">
+                        {rows.map((row) => (
+                          <li key={row.worry} className={`flex gap-4 items-center ${ROW_MIN_H}`}>
+                            <span
+                              aria-hidden
+                              className="shrink-0 text-lg font-bold"
+                              style={{ color: "hsl(var(--heritage-bordeaux))" }}
+                            >
+                              ✕
+                            </span>
+                            <span>{row.worry}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </FadeIn>
+
+                  <FadeIn delay={0.15}>
+                    <div
+                      className="h-full p-8 lg:p-10 bg-background rounded-sm border-t-4 shadow-sm"
+                      style={{ borderColor: "hsl(var(--heritage-orange))" }}
+                    >
+                      <p className="font-body text-xs tracking-widest uppercase text-secondary mb-6 font-semibold">
+                        With me alongside you
+                      </p>
+                      <ul className="font-body text-foreground leading-relaxed">
+                        {rows.map((row) => (
+                          <li key={row.title} className={`flex gap-5 items-center ${ROW_MIN_H}`}>
+                            <ServiceIcon src={row.icon} size={56} padding={10} tinted />
+                            <span>
+                              <span className="font-heading text-xl text-primary block leading-tight mb-1">
+                                {row.title}
+                              </span>
+                              <span className="text-foreground/85 text-base">
+                                {row.desc}
+                              </span>
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </FadeIn>
+                </>
+              );
+            })()}
+          </div>
+
           <FadeIn delay={0.2}>
-            <div className="mt-16 max-w-3xl mx-auto text-center">
-              <div
-                className="w-16 h-px mx-auto mb-8"
-                style={{ backgroundColor: "hsl(var(--heritage-bordeaux) / 0.4)" }}
-              />
-              <p className="font-body text-base md:text-lg text-foreground/80 italic leading-relaxed">
-                Beyond the city, I arrange private day trips by car to The Hague, Delft, Leiden, Rotterdam, and Haarlem, plus the windmills, tulip fields, and countryside villages that make the Netherlands itself worth the journey.
-              </p>
-            </div>
+            <p className="mt-10 text-center font-body text-sm text-muted-foreground italic max-w-2xl mx-auto">
+              And everything else: transfers from Schiphol, hotel recommendations, a full itinerary for your whole stay.
+            </p>
           </FadeIn>
         </div>
       </section>
@@ -310,8 +366,11 @@ const Index = () => {
                 <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
                   A Day in My Life
                 </h2>
-                <p className="font-body text-lg text-muted-foreground leading-relaxed">
+                <p className="font-body text-lg text-muted-foreground leading-relaxed mb-3">
                   No fixed tours. Every day is shaped by you. Here's what one might look like.
+                </p>
+                <p className="font-body text-base text-muted-foreground italic">
+                  We move on foot, by private boat, or by car beyond the city.
                 </p>
               </FadeIn>
             </div>
@@ -428,143 +487,7 @@ const Index = () => {
         </div>
       </div>
 
-      {/* ── My Service ── */}
-      <section id="my-service" className="py-24 lg:py-32 scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}>
-        <div className="container mx-auto px-6 lg:px-12">
-          {/* Heading + intro, centered editorial block */}
-          <div className="max-w-3xl mx-auto text-center mb-16 lg:mb-20">
-            <FadeIn>
-              <p className="font-body text-sm tracking-widest uppercase text-accent mb-6">
-                {t("service.kicker", "My Service")}
-              </p>
-              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
-                {t("service.title", "More than a guide. A concierge for your whole stay.")}
-              </h2>
-            </FadeIn>
-            <FadeIn delay={0.15}>
-              <p className="font-body text-lg text-muted-foreground leading-relaxed whitespace-pre-line">
-                {t("service.intro", "The day we spend together is just the centre of it. Around that, I quietly take care of the things that usually eat up a holiday: the bookings, the queues, the questions at 9pm about where to eat. One person, one phone number, every detail looked after.")}
-              </p>
-            </FadeIn>
-          </div>
 
-          {/* Two-column: what you'd handle alone vs what I take care of */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto">
-            {(() => {
-              const rows = [
-                {
-                  worry: "Refreshing the Anne Frank House page hoping a slot opens up.",
-                  icon: iconTickets,
-                  title: "Museum reservations",
-                  desc: "Time slots booked in advance. No queues.",
-                },
-                {
-                  worry: "Reading 200 reviews to find a restaurant that isn't a tourist trap.",
-                  icon: iconDining,
-                  title: "Dining bookings",
-                  desc: "Tables at the kind of places locals actually go.",
-                },
-                {
-                  worry: "Wondering, at 9pm, where to eat tonight.",
-                  icon: iconMessage,
-                  title: "WhatsApp lifeline",
-                  desc: "One message away for the whole trip.",
-                },
-                {
-                  worry: "Stitching together trains, trams and a transfer from Schiphol.",
-                  icon: iconTransport,
-                  title: "Transport and transfers",
-                  desc: "Airport pickups, trains, private cars to day trips.",
-                },
-                {
-                  worry: "Hoping the hotel you booked is actually in the right neighbourhood.",
-                  icon: iconHotel,
-                  title: "Where to stay",
-                  desc: "Honest hotel and apartment recommendations.",
-                },
-                {
-                  worry: "Carrying every small question alone.",
-                  icon: iconItinerary,
-                  title: "A full itinerary",
-                  desc: "A curated plan for your whole stay, not just our day.",
-                },
-              ];
-
-              const ROW_MIN_H = "min-h-[112px]";
-
-              return (
-                <>
-                  {/* Left: without me */}
-                  <FadeIn>
-                    <div
-                      className="h-full p-10 lg:p-12 bg-background rounded-sm border-t-4 shadow-sm"
-                      style={{ borderColor: "hsl(var(--heritage-taupe))" }}
-                    >
-                      <p className="font-body text-xs tracking-widest uppercase text-muted-foreground mb-6 font-semibold">
-                        Planning it yourself
-                      </p>
-                      <h3 className="font-heading text-3xl md:text-4xl text-primary leading-tight mb-10">
-                        What usually eats up a holiday.
-                      </h3>
-                      <ul className="font-body text-lg text-foreground leading-relaxed">
-                        {rows.map((row) => (
-                          <li
-                            key={row.worry}
-                            className={`flex gap-4 items-center ${ROW_MIN_H}`}
-                          >
-                            <span
-                              aria-hidden
-                              className="shrink-0 text-lg font-bold"
-                              style={{ color: "hsl(var(--heritage-bordeaux))" }}
-                            >
-                              ✕
-                            </span>
-                            <span>{row.worry}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </FadeIn>
-
-                  {/* Right: with me */}
-                  <FadeIn delay={0.15}>
-                    <div
-                      className="h-full p-10 lg:p-12 bg-background rounded-sm border-t-4 shadow-sm"
-                      style={{ borderColor: "hsl(var(--heritage-orange))" }}
-                    >
-                      <p className="font-body text-xs tracking-widest uppercase text-secondary mb-6 font-semibold">
-                        With me alongside you
-                      </p>
-                      <h3 className="font-heading text-3xl md:text-4xl text-primary leading-tight mb-10">
-                        What I quietly take care of.
-                      </h3>
-                      <ul className="font-body text-lg text-foreground leading-relaxed">
-                        {rows.map((row) => (
-                          <li
-                            key={row.title}
-                            className={`flex gap-5 items-center ${ROW_MIN_H}`}
-                          >
-                            <ServiceIcon src={row.icon} size={64} padding={10} tinted />
-                            <span>
-                              <span className="font-heading text-xl md:text-2xl text-primary block leading-tight mb-1">
-                                {row.title}
-                              </span>
-                              <span className="text-foreground/85 text-base md:text-lg">
-                                {row.desc}
-                              </span>
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </FadeIn>
-                </>
-              );
-            })()}
-          </div>
-
-        </div>
-      </section>
 
       {/* ── 4. Proof: Reviews & Guests ── */}
       <section id="proof" className="py-24 lg:py-32 scroll-mt-20">

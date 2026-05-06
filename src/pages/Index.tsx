@@ -1084,10 +1084,31 @@ const Index = () => {
       <section
         id="contact"
         className="relative py-20 md:py-28 lg:py-36 scroll-mt-20 overflow-hidden"
-        style={{ backgroundColor: "hsl(var(--heritage-bordeaux) / 0.88)" }}
+        style={{ backgroundColor: "hsl(var(--heritage-bordeaux))" }}
       >
+        {/* Local skyline echo — visible on the dark backdrop via screen blend */}
+        <div
+          className="absolute inset-x-0 bottom-0 pointer-events-none"
+          aria-hidden
+          style={{ zIndex: 0 }}
+        >
+          <img
+            src={amsterdamSkyline}
+            alt=""
+            className="w-full h-auto"
+            style={{
+              opacity: 0.18,
+              mixBlendMode: "screen",
+              maskImage:
+                "linear-gradient(to bottom, transparent 0%, black 30%, black 100%)",
+              WebkitMaskImage:
+                "linear-gradient(to bottom, transparent 0%, black 30%, black 100%)",
+            }}
+          />
+        </div>
+
         {/* Top decorative divider — torn-paper / wavy edge */}
-        <div className="absolute inset-x-0 -top-px pointer-events-none" aria-hidden>
+        <div className="absolute inset-x-0 -top-px pointer-events-none z-10" aria-hidden>
           <svg
             viewBox="0 0 1440 60"
             preserveAspectRatio="none"

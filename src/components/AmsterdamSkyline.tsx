@@ -29,7 +29,7 @@ const AmsterdamSkyline = ({ variant = 'light' }: Props) => {
     return (
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ zIndex: 1 }}
+        style={{ zIndex: 0 }}
         aria-hidden
       >
         <div className="sticky w-full" style={{ bottom: 0, clipPath }}>
@@ -38,10 +38,10 @@ const AmsterdamSkyline = ({ variant = 'light' }: Props) => {
             alt=""
             className="w-full h-auto block"
             style={{
-              opacity: 0.28,
+              opacity: 0.14,
               maskImage: MASK,
               WebkitMaskImage: MASK,
-              filter: 'brightness(1.4) sepia(1) saturate(5) hue-rotate(-15deg)',
+              filter: 'brightness(1.5) sepia(1) saturate(6) hue-rotate(-15deg)',
               mixBlendMode: 'screen',
             }}
           />

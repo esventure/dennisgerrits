@@ -701,9 +701,6 @@ const Index = () => {
             </div>
           </div>
 
-        </div>
-
-
 
       {/* ── 4. Proof: Reviews & Guests ── */}
       <section id="proof" className="py-16 md:py-20 lg:py-32 scroll-mt-20">

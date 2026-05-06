@@ -785,7 +785,7 @@ const Index = () => {
                             </p>
                           </div>
                           <span
-                            className="font-body text-xs tracking-wide opacity-0 group-hover:opacity-100 transition-opacity"
+                            className="font-body text-xs tracking-wide opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity"
                             style={{ color: TA_GREEN }}
                           >
                             Read on Tripadvisor →

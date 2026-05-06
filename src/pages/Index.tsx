@@ -28,6 +28,24 @@ import storyCanalHouses from "@/assets/stories/canal-houses.jpg";
 import storyBench from "@/assets/stories/bench.jpg";
 import podcastCover from "@/assets/podcast-cover.jpg";
 
+/* Hand-drawn ring path for the timeline step circles — matches the
+   sketchbook style used in DayMap. Slightly irregular closed loop. */
+const sketchedRingPath = (cx: number, cy: number, r: number, seed = 0) => {
+  const pts = Array.from({ length: 14 }, (_, i) => {
+    const a = (i / 14) * Math.PI * 2;
+    const wob =
+      Math.sin(i * 1.7 + seed) * 0.8 + Math.cos(i * 2.3 + seed * 1.3) * 0.8;
+    const rr = r + wob;
+    return [cx + Math.cos(a) * rr, cy + Math.sin(a) * rr] as const;
+  });
+  let d = `M ${pts[0][0].toFixed(2)} ${pts[0][1].toFixed(2)}`;
+  for (let i = 1; i <= pts.length; i++) {
+    const p = pts[i % pts.length];
+    d += ` L ${p[0].toFixed(2)} ${p[1].toFixed(2)}`;
+  }
+  return d + " Z";
+};
+
 const moments = [
   {
     time: "Morning",

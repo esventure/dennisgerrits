@@ -1109,16 +1109,16 @@ const Index = () => {
           />
         </div>
 
-        {/* Top decorative divider — wavy edge cut into the bordeaux from above */}
-        <div className="absolute inset-x-0 -top-px pointer-events-none z-10" aria-hidden>
+        {/* Top decorative divider — bordeaux wave eating UP into the section above (no white bar) */}
+        <div className="absolute inset-x-0 pointer-events-none z-10" style={{ bottom: "100%" }} aria-hidden>
           <svg
-            viewBox="0 0 1440 60"
+            viewBox="0 0 1440 80"
             preserveAspectRatio="none"
-            className="block w-full h-10 md:h-14 -mb-px"
+            className="block w-full h-12 md:h-20 -mb-px"
           >
             <path
-              d="M0,30 C180,0 360,45 540,20 C720,-5 900,40 1080,15 C1260,-10 1380,30 1440,10 L1440,0 L0,0 Z"
-              fill="hsl(var(--background))"
+              d="M0,80 L0,50 C180,20 360,65 540,40 C720,15 900,60 1080,35 C1260,10 1380,50 1440,30 L1440,80 Z"
+              fill="hsl(var(--heritage-bordeaux))"
             />
           </svg>
         </div>

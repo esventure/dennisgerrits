@@ -50,7 +50,7 @@ const AmsterdamSkyline = () => {
       {/* Dark-background layer (only visually contributes over dark colors) */}
       <div
         className="fixed bottom-0 left-0 w-full pointer-events-none"
-        style={{ zIndex: 0, clipPath }}
+        style={{ zIndex: 5, clipPath, isolation: 'isolate' }}
         aria-hidden
       >
         <img

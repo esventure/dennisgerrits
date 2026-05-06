@@ -5,49 +5,67 @@ import FadeIn from "@/components/FadeIn";
 import { cn } from "@/lib/utils";
 import StoryBook from "@/components/StoryBook";
 import { supabase } from "@/integrations/supabase/client";
-import iconHistory from "@/assets/icon-history.png";
-import iconFood from "@/assets/icon-food.png";
-import iconArchitecture from "@/assets/icon-architecture.png";
-import iconArt from "@/assets/icon-art.png";
-import iconNature from "@/assets/icon-nature.png";
-import iconCraft from "@/assets/icon-craft.png";
+import imgHistory from "@/assets/interests/history.jpg";
+import imgFood from "@/assets/interests/food.jpg";
+import imgArchitecture from "@/assets/interests/architecture.jpg";
+import imgArt from "@/assets/interests/art.jpg";
+import imgNature from "@/assets/interests/nature.jpg";
+import imgCraft from "@/assets/interests/craft.jpg";
 
 const themes = [
   {
     id: "history",
     title: "Hidden History",
-    description: "The stories that never made it into guidebooks. Secret passages, forgotten wars, the people who shaped a city but whose names you won't find on any monument.",
-    icon: iconHistory,
+    caption: "I'll take you down an alley most locals walk past. There's a stone above a doorway with a story almost no one knows.",
+    note: "ask me about the cat",
+    image: imgHistory,
+    rotate: -2.4,
+    pin: "tape-tl",
   },
   {
     id: "food",
-    title: "Local Food Culture",
-    description: "Markets where chefs shop at dawn. Bakeries that haven't changed their recipe in a century. The story behind every regional dish you'll taste.",
-    icon: iconFood,
+    title: "Local Food",
+    caption: "I know a baker who pulls bread out of the oven at six. We can be there before the queue starts.",
+    note: "bring an empty stomach",
+    image: imgFood,
+    rotate: 1.8,
+    pin: "tape-tr",
   },
   {
     id: "architecture",
-    title: "Architecture & Design",
-    description: "From medieval brickwork to brutalist experiments. Why a building looks the way it does, and what it says about the people who built it.",
-    icon: iconArchitecture,
+    title: "Architecture",
+    caption: "Every gable in this city is a date stamp. Once you know what to look for, the whole street starts talking.",
+    note: "look up, always",
+    image: imgArchitecture,
+    rotate: -1.2,
+    pin: "tape-tl",
   },
   {
     id: "art",
-    title: "Street Art & Subculture",
-    description: "Murals, studios, underground galleries. Art that lives on the streets and tells you more about a city than any museum could.",
-    icon: iconArt,
+    title: "Street Art",
+    caption: "A friend paints walls in the north. We can knock on her studio door and see what she's working on.",
+    note: "she might be home",
+    image: imgArt,
+    rotate: 2.2,
+    pin: "tape-tr",
   },
   {
     id: "nature",
-    title: "Parks & Hidden Gardens",
-    description: "Green spaces that locals keep to themselves. A bench with the perfect view. A garden that's been tended for three hundred years.",
-    icon: iconNature,
+    title: "Hidden Gardens",
+    caption: "There's a courtyard behind a plain wooden door. Three hundred years old, and almost always empty.",
+    note: "my favorite bench",
+    image: imgNature,
+    rotate: -1.6,
+    pin: "tape-tl",
   },
   {
     id: "craft",
-    title: "Local Craft & Makers",
-    description: "Workshops, ateliers, and people who still make things by hand. The stories behind the craft are often as beautiful as the objects.",
-    icon: iconCraft,
+    title: "Makers & Craft",
+    caption: "I'll introduce you to people who still make things by hand. Leather, paper, glass. Their stories stay with you.",
+    note: "watch the hands",
+    image: imgCraft,
+    rotate: 1.4,
+    pin: "tape-tr",
   },
 ];
 

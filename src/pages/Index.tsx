@@ -1134,12 +1134,13 @@ const Index = () => {
           <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-20 items-start">
             {/* Left: editorial intro */}
             <FadeIn>
-              <RichText
-                className="font-body text-lg leading-relaxed"
-                style={{ color: "hsl(var(--background) / 0.9)" }}
-                html={t("booking.intro", "")}
-                fallback="The best way to start is a short, informal conversation. No obligations, just a chance to see if my approach feels right."
-              />
+              <div style={{ color: "hsl(var(--background) / 0.9)" }}>
+                <RichText
+                  className="font-body text-lg leading-relaxed"
+                  html={t("booking.intro", "")}
+                  fallback="The best way to start is a short, informal conversation. No obligations, just a chance to see if my approach feels right."
+                />
+              </div>
             </FadeIn>
 
             {/* Right: form on background card */}

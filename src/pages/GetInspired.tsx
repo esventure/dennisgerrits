@@ -123,28 +123,64 @@ const GetInspired = () => {
             </FadeIn>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {themes.map((theme, i) => (
-              <FadeIn key={theme.id} delay={i * 0.08}>
-                <button
-                  onClick={() => setActive(active === theme.id ? null : theme.id)}
-                  className={cn(
-                    "w-full text-left p-8 rounded-lg transition-all duration-300 shadow-md border",
-                    active === theme.id
-                      ? "border-secondary bg-secondary/10 shadow-lg border-l-4 border-l-secondary"
-                      : "border-accent/10 bg-accent/5 hover:-translate-y-1 hover:shadow-lg hover:border-l-4 hover:border-l-secondary/40"
-                  )}
-                >
-                  <div className="w-16 h-16 mb-4">
-                    <img src={theme.icon} alt={theme.title} width={64} height={64} loading="lazy" className="w-full h-full object-contain" />
-                  </div>
-                  <h3 className="font-heading text-2xl text-primary mb-3">{theme.title}</h3>
-                  <p className="font-body text-sm text-muted-foreground leading-relaxed">
-                    {theme.description}
-                  </p>
-                </button>
-              </FadeIn>
-            ))}
+          {/* Polaroid wall */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-8 md:gap-x-12 pt-8">
+            {themes.map((theme, i) => {
+              const isActive = active === theme.id;
+              return (
+                <FadeIn key={theme.id} delay={i * 0.08}>
+                  <button
+                    onClick={() => setActive(isActive ? null : theme.id)}
+                    className="group relative block w-full text-left transition-transform duration-500 ease-out hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-4"
+                    style={{ transform: `rotate(${isActive ? 0 : theme.rotate}deg)` }}
+                  >
+                    <div className="bg-[#FAFAF7] p-3 pb-20 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.35),0_2px_6px_-2px_rgba(0,0,0,0.15)] transition-shadow duration-500 group-hover:shadow-[0_18px_40px_-14px_rgba(0,0,0,0.4)] relative">
+                      <span
+                        aria-hidden
+                        className={cn(
+                          "absolute -top-3 w-20 h-7 bg-[hsl(var(--heritage-orange))]/25 border border-[hsl(var(--heritage-orange))]/30",
+                          theme.pin === "tape-tl" ? "left-6 -rotate-[8deg]" : "right-6 rotate-[6deg]"
+                        )}
+                      />
+                      <div className="aspect-square overflow-hidden bg-muted">
+                        <img
+                          src={theme.image}
+                          alt={theme.title}
+                          width={768}
+                          height={768}
+                          loading="lazy"
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                        />
+                      </div>
+                      <div className="absolute bottom-4 left-3 right-3 px-2">
+                        <h3 className="font-heading text-2xl text-primary leading-none tracking-wide">
+                          {theme.title}
+                        </h3>
+                        <p
+                          className="text-lg text-foreground/70 mt-1 leading-snug"
+                          style={{ fontFamily: "'Caveat', cursive" }}
+                        >
+                          {theme.note}
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      className={cn(
+                        "overflow-hidden transition-all duration-500 ease-out",
+                        isActive ? "max-h-48 opacity-100 mt-4" : "max-h-0 opacity-0 mt-0"
+                      )}
+                    >
+                      <p
+                        className="text-xl text-foreground/85 leading-snug px-1"
+                        style={{ fontFamily: "'Caveat', cursive" }}
+                      >
+                        {theme.caption}
+                      </p>
+                    </div>
+                  </button>
+                </FadeIn>
+              );
+            })}
           </div>
 
           <FadeIn>

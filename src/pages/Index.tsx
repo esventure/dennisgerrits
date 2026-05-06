@@ -586,67 +586,117 @@ const Index = () => {
             </FadeIn>
           </div>
 
-          {/* Invite me — speaking, podcasts, radio */}
-          <FadeIn delay={0.1}>
-            <div
-              className="mt-16 lg:mt-20 rounded-sm border-l-4 p-8 lg:p-10 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 md:gap-10 items-center"
-              style={{
-                borderLeftColor: "hsl(var(--accent))",
-                backgroundColor: "hsl(var(--background))",
-              }}
-            >
-              <div>
-                <p className="font-body text-sm tracking-widest uppercase text-accent mb-3">
-                  Invite me
-                </p>
-                <h3 className="font-heading text-3xl md:text-4xl text-primary leading-tight mb-4">
-                  Book a lecture or invite me as a guest
-                </h3>
-                <p className="font-body text-foreground/80 leading-relaxed max-w-2xl">
-                  Beyond guiding, I'm available for lectures and as a guest on podcasts and radio shows. If you're a host, organiser, or producer looking for a story about Amsterdam, the Netherlands, or travel beyond the tourist trail, get in touch.
-                </p>
-              </div>
-              <a
-                href="#contact"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-accent text-accent-foreground font-body text-sm tracking-widest uppercase rounded-sm hover:bg-accent/90 transition-colors whitespace-nowrap"
-              >
-                Get in touch →
-              </a>
-            </div>
-          </FadeIn>
+          {/* ── Other ways to work with me — postcard pair ── */}
+          <div className="mt-16 lg:mt-24">
+            <FadeIn>
+              <p className="font-body text-xs tracking-[0.25em] uppercase text-muted-foreground text-center mb-8">
+                Other ways to work with me
+              </p>
+            </FadeIn>
 
-          {/* Travel agents — partner call-out */}
-          <FadeIn delay={0.15}>
-            <div
-              className="mt-8 rounded-sm border-l-4 p-8 lg:p-10 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 md:gap-10 items-center"
-              style={{
-                borderLeftColor: "hsl(var(--heritage-bordeaux))",
-                backgroundColor: "hsl(var(--background))",
-              }}
-            >
-              <div>
-                <p
-                  className="font-body text-sm tracking-widest uppercase mb-3"
-                  style={{ color: "hsl(var(--heritage-bordeaux))" }}
-                >
-                  Travel agents
-                </p>
-                <h3 className="font-heading text-3xl md:text-4xl text-primary leading-tight mb-4">
-                  A trusted partner for your Amsterdam clients
-                </h3>
-                <p className="font-body text-foreground/80 leading-relaxed max-w-2xl">
-                  I work quietly alongside agencies and concierges to craft bespoke days for your clients. Private guiding, thoughtful reservations, transfers, and on-the-ground support, all delivered with discretion and care.
-                </p>
-              </div>
-              <a
-                href="#contact?subject=Travel%20agent"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 font-body text-sm tracking-widest uppercase rounded-sm transition-colors whitespace-nowrap text-background hover:opacity-90"
-                style={{ backgroundColor: "hsl(var(--heritage-bordeaux))" }}
-              >
-                Partner with me →
-              </a>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+              {[
+                {
+                  kicker: "Invite me",
+                  title: "Lectures, podcasts & radio",
+                  body: "If you're a host, producer, or organiser looking for a story about Amsterdam beyond the tourist trail.",
+                  cta: "Get in touch",
+                  href: "#contact",
+                  color: "hsl(var(--accent))",
+                  rotate: "-1.2deg",
+                  stamp: "GUEST",
+                  icon: (
+                    <g>
+                      <rect x="20" y="8" width="12" height="22" rx="6" />
+                      <path d="M 14 24 C 14 32, 20 36, 26 36 C 32 36, 38 32, 38 24" />
+                      <line x1="26" y1="36" x2="26" y2="44" />
+                      <line x1="20" y1="44" x2="32" y2="44" />
+                    </g>
+                  ),
+                },
+                {
+                  kicker: "Travel agents",
+                  title: "A partner for your Amsterdam clients",
+                  body: "I work quietly alongside agencies and concierges. Private guiding, reservations, transfers, on-the-ground support.",
+                  cta: "Partner with me",
+                  href: "#contact",
+                  color: "hsl(var(--heritage-bordeaux))",
+                  rotate: "1deg",
+                  stamp: "TRADE",
+                  icon: (
+                    <g>
+                      <rect x="8" y="16" width="36" height="26" rx="2" />
+                      <path d="M 19 16 L 19 11 C 19 9, 20 8, 22 8 L 30 8 C 32 8, 33 9, 33 11 L 33 16" />
+                      <line x1="8" y1="26" x2="44" y2="26" />
+                      <line x1="24" y1="24" x2="28" y2="24" strokeWidth="2.4" />
+                    </g>
+                  ),
+                },
+              ].map((card, i) => (
+                <FadeIn key={card.kicker} delay={i * 0.08}>
+                  <a
+                    href={card.href}
+                    className="group block relative bg-background rounded-sm border-l-[3px] p-6 md:p-7 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
+                    style={{
+                      borderLeftColor: card.color,
+                      transform: `rotate(${card.rotate})`,
+                    }}
+                  >
+                    <span
+                      aria-hidden
+                      className="absolute top-3 right-3 font-body text-[10px] tracking-[0.3em] uppercase border px-2 py-0.5 rounded-sm opacity-60 group-hover:opacity-90 transition-opacity"
+                      style={{ color: card.color, borderColor: card.color, transform: "rotate(6deg)" }}
+                    >
+                      {card.stamp}
+                    </span>
+
+                    <div className="flex items-start gap-4">
+                      <svg
+                        viewBox="0 0 52 52"
+                        className="shrink-0 w-12 h-12"
+                        fill="none"
+                        stroke={card.color}
+                        strokeWidth="1.6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden
+                      >
+                        <defs>
+                          <filter id={`callcard-${i}`} x="-10%" y="-10%" width="120%" height="120%">
+                            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed={i + 7} />
+                            <feDisplacementMap in="SourceGraphic" scale="1.3" />
+                          </filter>
+                        </defs>
+                        <g filter={`url(#callcard-${i})`}>{card.icon}</g>
+                      </svg>
+
+                      <div className="flex-1 min-w-0">
+                        <p
+                          className="font-body text-[11px] tracking-[0.25em] uppercase mb-1.5"
+                          style={{ color: card.color }}
+                        >
+                          {card.kicker}
+                        </p>
+                        <h3 className="font-heading text-xl md:text-2xl text-primary leading-tight mb-2">
+                          {card.title}
+                        </h3>
+                        <p className="font-body text-sm text-muted-foreground leading-relaxed mb-3">
+                          {card.body}
+                        </p>
+                        <span
+                          className="inline-flex items-center gap-1 font-body text-sm font-medium group-hover:gap-2 transition-all"
+                          style={{ color: card.color }}
+                        >
+                          {card.cta}
+                          <span aria-hidden>→</span>
+                        </span>
+                      </div>
+                    </div>
+                  </a>
+                </FadeIn>
+              ))}
             </div>
-          </FadeIn>
+          </div>
         </div>
       </div>
 

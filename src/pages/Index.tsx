@@ -367,27 +367,30 @@ const Index = () => {
                             <svg
                               aria-hidden
                               viewBox="0 0 40 40"
-                              className="shrink-0 w-8 h-8"
+                              className="shrink-0 w-9 h-9"
                               fill="none"
                               stroke="hsl(var(--heritage-bordeaux))"
-                              strokeWidth="1.6"
+                              strokeWidth="1.4"
                               strokeLinecap="round"
                               strokeLinejoin="round"
                             >
                               <defs>
-                                <filter id="thumbWobble" x="-10%" y="-10%" width="120%" height="120%">
-                                  <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="2" />
-                                  <feDisplacementMap in="SourceGraphic" scale="1.1" />
+                                <filter id="thumbSketch" x="-10%" y="-10%" width="120%" height="120%">
+                                  <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" />
+                                  <feDisplacementMap in="SourceGraphic" scale="1.3" />
                                 </filter>
                               </defs>
-                              <g filter="url(#thumbWobble)">
-                                {/* Thumb (pointing down) */}
-                                <path d="M 18 6 C 18 11, 15 13, 14 16 L 14 22 C 14 24, 15 25, 17 25 L 24 25 C 26 25, 27 26, 27 28 C 27 29, 26 30, 25 30 C 26 30, 27 31, 27 32 C 27 33, 26 34, 25 34 C 26 34, 26 35, 26 36 C 26 37, 25 38, 23 38 L 17 38 C 14 38, 12 36, 11 34" />
-                                {/* Forearm / cuff */}
-                                <path d="M 8 16 L 8 24 C 8 25, 9 26, 10 26 L 14 26" />
-                                <path d="M 8 16 L 14 16" />
-                                {/* Knuckle hint */}
-                                <path d="M 18 28 L 21 28" opacity="0.6" />
+                              <g filter="url(#thumbSketch)">
+                                {/* Cuff at top */}
+                                <path d="M 8 9 L 16 9 L 16 14 L 8 14 Z" />
+                                {/* Palm — rounded rectangle below cuff */}
+                                <path d="M 9 14 L 9 24 C 9 26, 10 27, 12 27 L 21 27 C 23 27, 24 26, 24 24 L 24 14" />
+                                {/* Thumb pointing down on the right */}
+                                <path d="M 24 17 C 27 17, 30 18, 31 21 C 32 24, 31 27, 28 28 L 24 28" />
+                                {/* Knuckle creases */}
+                                <path d="M 12 18 L 15 18" opacity="0.55" />
+                                <path d="M 12 21 L 15 21" opacity="0.55" />
+                                <path d="M 12 24 L 15 24" opacity="0.55" />
                               </g>
                             </svg>
                             <span>{row.worry}</span>

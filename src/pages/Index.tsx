@@ -440,8 +440,10 @@ const Index = () => {
 
       {/* ── 3. A Day in the Life ── */}
       {/* Heading sits ABOVE the sticky section so the map is fully in view
-          the moment the section pins. Scroll then only advances the route. */}
-      <div id="day" className="scroll-mt-20 pt-24 lg:pt-32 pb-8 lg:pb-12">
+          the moment the section pins on desktop. On mobile the sticky
+          behaviour is disabled — the map renders inline with manual
+          prev / next controls. */}
+      <div id="day" className="scroll-mt-20 pt-16 lg:pt-32 pb-6 lg:pb-12">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl">
             <FadeIn>
@@ -462,8 +464,8 @@ const Index = () => {
         </div>
       </div>
 
-      <section className="relative" style={{ height: "200vh" }}>
-        <div className="sticky top-0 h-screen flex items-center">
+      <section className="relative pb-16 lg:pb-0 lg:h-[200vh]">
+        <div className="lg:sticky lg:top-0 lg:h-screen lg:flex lg:items-center">
           <div className="container mx-auto px-6 lg:px-12 w-full">
             <FadeIn>
               <DayMap moments={moments} />

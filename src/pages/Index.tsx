@@ -1084,14 +1084,12 @@ const Index = () => {
       {/* ── 7. Contact, FAQ & Footer ── */}
       <section
         id="contact"
-        className="relative py-20 md:py-28 lg:py-36 scroll-mt-20 overflow-hidden"
+        className="relative py-20 md:py-28 lg:py-36 scroll-mt-20 [overflow-x:clip]"
         style={{ backgroundColor: "hsl(var(--heritage-bordeaux))" }}
       >
-        {/* In-section skyline — same scroll progress as the global one,
-            but rendered above the bordeaux background so the reveal
-            visibly continues here instead of being hidden behind it. */}
-        <AmsterdamSkyline variant="dark" />
-
+        {/* Skyline reveal is handled by the global <AmsterdamSkyline />:
+            its screen-blend layer naturally lights up the bordeaux here
+            while staying invisible on the off-white sections above. */}
 
 
         {/* Top decorative divider — bordeaux wave eating UP into the section above (no white bar) */}
@@ -1120,7 +1118,7 @@ const Index = () => {
           let's talk →
         </p>
 
-        <div className="container mx-auto px-6 lg:px-12 relative">
+        <div className="container mx-auto px-6 lg:px-12 relative" style={{ zIndex: 10 }}>
           {/* Big section marker */}
           <FadeIn>
             <div className="text-center mb-14 lg:mb-20">

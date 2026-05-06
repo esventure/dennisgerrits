@@ -1084,7 +1084,7 @@ const Index = () => {
       <section
         id="contact"
         className="relative py-20 md:py-28 lg:py-36 scroll-mt-20 overflow-hidden"
-        style={{ backgroundColor: "hsl(var(--heritage-bordeaux))" }}
+        style={{ backgroundColor: "hsl(var(--heritage-bordeaux) / 0.88)" }}
       >
         {/* Top decorative divider — torn-paper / wavy edge */}
         <div className="absolute inset-x-0 -top-px pointer-events-none" aria-hidden>

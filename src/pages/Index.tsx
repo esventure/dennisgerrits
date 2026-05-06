@@ -1081,28 +1081,72 @@ const Index = () => {
       </section>
 
       {/* ── 7. Contact, FAQ & Footer ── */}
-      <section id="contact" className="py-16 md:py-20 lg:py-32 scroll-mt-20">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-20 items-start">
-            {/* Left: editorial intro, no box */}
-            <FadeIn>
-              <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
-                {t("booking.kicker", "Get in Touch")}
+      <section
+        id="contact"
+        className="relative py-20 md:py-28 lg:py-36 scroll-mt-20 overflow-hidden"
+        style={{ backgroundColor: "hsl(var(--heritage-bordeaux))" }}
+      >
+        {/* Top decorative divider — torn-paper / wavy edge */}
+        <div className="absolute inset-x-0 -top-px pointer-events-none" aria-hidden>
+          <svg
+            viewBox="0 0 1440 60"
+            preserveAspectRatio="none"
+            className="block w-full h-10 md:h-14"
+          >
+            <path
+              d="M0,40 C180,10 360,55 540,30 C720,5 900,50 1080,25 C1260,0 1380,40 1440,20 L1440,0 L0,0 Z"
+              fill="hsl(var(--background))"
+            />
+          </svg>
+        </div>
+
+        {/* Handwritten margin note */}
+        <p
+          className="absolute top-6 right-6 md:top-10 md:right-12 text-2xl md:text-3xl rotate-[-4deg] hidden md:block"
+          style={{
+            fontFamily: "'Caveat', cursive",
+            color: "hsl(var(--heritage-orange))",
+          }}
+          aria-hidden
+        >
+          let's talk →
+        </p>
+
+        <div className="container mx-auto px-6 lg:px-12 relative">
+          {/* Big section marker */}
+          <FadeIn>
+            <div className="text-center mb-14 lg:mb-20">
+              <p
+                className="font-body text-sm tracking-[0.3em] uppercase mb-6"
+                style={{ color: "hsl(var(--heritage-orange))" }}
+              >
+                — {t("booking.kicker", "Get in Touch")} —
               </p>
-              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
+              <h2
+                className="font-heading text-6xl md:text-7xl lg:text-8xl leading-[0.95]"
+                style={{ color: "hsl(var(--background))" }}
+              >
                 {t("booking.title", "Let's See if We're a Good Match")}
               </h2>
-              <RichText
-                className="font-body text-lg text-foreground/80 leading-relaxed"
-                html={t("booking.intro", "")}
-                fallback="The best way to start is a short, informal conversation. No obligations, just a chance to see if my approach feels right."
-              />
+            </div>
+          </FadeIn>
+
+          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-20 items-start">
+            {/* Left: editorial intro */}
+            <FadeIn>
+              <div style={{ color: "hsl(var(--background) / 0.9)" }}>
+                <RichText
+                  className="font-body text-lg leading-relaxed"
+                  html={t("booking.intro", "")}
+                  fallback="The best way to start is a short, informal conversation. No obligations, just a chance to see if my approach feels right."
+                />
+              </div>
             </FadeIn>
 
-            {/* Right: form on background, with a single accent rule */}
+            {/* Right: form on background card */}
             <FadeIn delay={0.15}>
               <div
-                className="bg-background p-8 lg:p-10 border-l-4 shadow-sm rounded-sm"
+                className="bg-background p-8 lg:p-10 border-l-4 shadow-2xl rounded-sm"
                 style={{ borderLeftColor: "hsl(var(--heritage-green))" }}
               >
                 <h3 className="font-heading text-3xl text-primary mb-3">

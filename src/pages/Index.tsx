@@ -201,7 +201,7 @@ const Index = () => {
       </section>
 
       {/* ── How It Works (process + concierge) ── */}
-      <section id="how-it-works" className="py-24 lg:py-32 scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}>
+      <section id="how-it-works" className="py-16 md:py-20 lg:py-32 scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}>
         <div className="container mx-auto px-6 lg:px-12">
 
           {/* Heading */}
@@ -262,6 +262,31 @@ const Index = () => {
               </svg>
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-6 relative">
+                {/* Mobile-only vertical hand-drawn connector */}
+                <svg
+                  className="md:hidden absolute pointer-events-none"
+                  style={{ top: 64, bottom: 64, left: "50%", width: 20, transform: "translateX(-50%)" }}
+                  viewBox="0 0 20 800"
+                  preserveAspectRatio="none"
+                  aria-hidden
+                >
+                  <defs>
+                    <filter id="timelineSketchV" x="-20%" y="-2%" width="140%" height="104%">
+                      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="6" />
+                      <feDisplacementMap in="SourceGraphic" scale="2.2" />
+                    </filter>
+                  </defs>
+                  <path
+                    d="M 10 0 C 14 200, 6 400, 10 600 S 14 760, 10 800"
+                    fill="none"
+                    stroke="hsl(var(--heritage-orange))"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                    strokeDasharray="2 8"
+                    filter="url(#timelineSketchV)"
+                    opacity="0.85"
+                  />
+                </svg>
                 {[
                   { n: "01", label: "You reach out", text: "A quick note, a phone call. Tell me when you're coming." },
                   { n: "02", label: "We have a call", text: "I listen. Your pace, your interests, what you've already seen." },
@@ -278,7 +303,7 @@ const Index = () => {
                           </filter>
                         </defs>
                         {/* paper fill so the orange dashed line is visually broken */}
-                        <circle cx="32" cy="32" r="28" fill="hsl(var(--heritage-taupe-tint))" />
+                        <circle cx="32" cy="32" r="30" fill="hsl(var(--heritage-taupe-tint))" />
                         {/* hand-drawn ring */}
                         <path
                           d={sketchedRingPath(32, 32, 26, idx)}
@@ -440,8 +465,10 @@ const Index = () => {
 
       {/* ── 3. A Day in the Life ── */}
       {/* Heading sits ABOVE the sticky section so the map is fully in view
-          the moment the section pins. Scroll then only advances the route. */}
-      <div id="day" className="scroll-mt-20 pt-24 lg:pt-32 pb-8 lg:pb-12">
+          the moment the section pins on desktop. On mobile the sticky
+          behaviour is disabled — the map renders inline with manual
+          prev / next controls. */}
+      <div id="day" className="scroll-mt-20 pt-16 lg:pt-32 pb-6 lg:pb-12">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl">
             <FadeIn>
@@ -462,8 +489,8 @@ const Index = () => {
         </div>
       </div>
 
-      <section className="relative" style={{ height: "200vh" }}>
-        <div className="sticky top-0 h-screen flex items-center">
+      <section className="relative pb-16 lg:pb-0 lg:h-[200vh]">
+        <div className="lg:sticky lg:top-0 lg:h-screen lg:flex lg:items-center">
           <div className="container mx-auto px-6 lg:px-12 w-full">
             <FadeIn>
               <DayMap moments={moments} />
@@ -473,7 +500,7 @@ const Index = () => {
       </section>
 
       {/* ── Rick Steves Feature ── */}
-      <div className="py-20 lg:py-28" style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.15)" }}>
+      <div className="py-14 md:py-20 lg:py-28" style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.15)" }}>
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <FadeIn>
@@ -626,7 +653,7 @@ const Index = () => {
 
 
       {/* ── 4. Proof: Reviews & Guests ── */}
-      <section id="proof" className="py-24 lg:py-32 scroll-mt-20">
+      <section id="proof" className="py-16 md:py-20 lg:py-32 scroll-mt-20">
         <div className="container mx-auto px-6 lg:px-12">
           {(() => {
             const TA_URL =
@@ -758,7 +785,7 @@ const Index = () => {
                             </p>
                           </div>
                           <span
-                            className="font-body text-xs tracking-wide opacity-0 group-hover:opacity-100 transition-opacity"
+                            className="font-body text-xs tracking-wide opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity"
                             style={{ color: TA_GREEN }}
                           >
                             Read on Tripadvisor →
@@ -856,7 +883,7 @@ const Index = () => {
         </div>
       </section>
       {/* ── Podcast: Two Stories, One City ── */}
-      <section id="podcast" className="py-24 lg:py-32 scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}>
+      <section id="podcast" className="py-16 md:py-20 lg:py-32 scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}>
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <FadeIn>
@@ -894,7 +921,7 @@ const Index = () => {
       </section>
 
       {/* ── 6. Stories (Blog) ── */}
-      <section id="stories" className="py-24 lg:py-32 scroll-mt-20">
+      <section id="stories" className="py-16 md:py-20 lg:py-32 scroll-mt-20">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mb-16">
             <FadeIn>
@@ -951,7 +978,7 @@ const Index = () => {
       </section>
 
       {/* ── 7. Contact, FAQ & Footer ── */}
-      <section id="contact" className="py-24 lg:py-32 scroll-mt-20">
+      <section id="contact" className="py-16 md:py-20 lg:py-32 scroll-mt-20">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-20 items-start">
             {/* Left: editorial intro, no box */}

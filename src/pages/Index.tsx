@@ -439,30 +439,32 @@ const Index = () => {
       </section>
 
       {/* ── 3. A Day in the Life ── */}
-      <section id="day" className="relative scroll-mt-20" style={{ height: "200vh" }}>
-        <div className="sticky top-0 min-h-screen flex items-center">
-          <div className="container mx-auto px-6 lg:px-12 py-24 lg:py-32">
-            <div className="max-w-3xl mb-16">
-              <FadeIn>
-                <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
-                  Let's Explore Together
-                </p>
-                <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
-                  A Day in My Life
-                </h2>
-                <p className="font-body text-lg text-muted-foreground leading-relaxed mb-3">
-                  No fixed tours. Every day is shaped by you. Here's what one might look like.
-                </p>
-                <p className="font-body text-base text-muted-foreground italic">
-                  We move on foot, by private boat, or by car beyond the city.
-                </p>
-              </FadeIn>
-            </div>
-
-            <FadeIn delay={0.05}>
-              <DayProgress labels={moments.map((m) => m.time)} />
+      {/* Heading sits ABOVE the sticky section so the map is fully in view
+          the moment the section pins. Scroll then only advances the route. */}
+      <div id="day" className="scroll-mt-20 pt-24 lg:pt-32 pb-8 lg:pb-12">
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="max-w-3xl">
+            <FadeIn>
+              <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
+                Let's Explore Together
+              </p>
+              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-6">
+                A Day in My Life
+              </h2>
+              <p className="font-body text-lg text-muted-foreground leading-relaxed mb-2">
+                No fixed tours. Every day is shaped by you. Here's what one might look like.
+              </p>
+              <p className="font-body text-base text-muted-foreground italic">
+                We move on foot, by private boat, or by car beyond the city.
+              </p>
             </FadeIn>
+          </div>
+        </div>
+      </div>
 
+      <section className="relative" style={{ height: "200vh" }}>
+        <div className="sticky top-0 h-screen flex items-center">
+          <div className="container mx-auto px-6 lg:px-12 w-full">
             <FadeIn>
               <DayMap moments={moments} />
             </FadeIn>

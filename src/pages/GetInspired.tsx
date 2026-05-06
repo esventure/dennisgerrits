@@ -11,6 +11,10 @@ import imgArchitecture from "@/assets/interests/architecture.jpg";
 import imgArt from "@/assets/interests/art.jpg";
 import imgNature from "@/assets/interests/nature.jpg";
 import imgCraft from "@/assets/interests/craft.jpg";
+import imgCafes from "@/assets/interests/cafes.jpg";
+import imgCycling from "@/assets/interests/cycling.jpg";
+import imgLiterature from "@/assets/interests/literature.jpg";
+import imgMusic from "@/assets/interests/music.jpg";
 
 const themes = [
   {

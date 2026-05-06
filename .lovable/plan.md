@@ -1,26 +1,43 @@
+## Problem
+
+The "Invite me" and "Travel agents" call-outs currently live as two large stacked banners with `p-8 lg:p-10` padding, full-width CTA buttons, and big `text-3xl md:text-4xl` headings. Together they consume roughly 700px of vertical space, read as corporate banners, and break the editorial / hand-drawn vibe of the rest of the page.
+
 ## Goal
 
-Drop the heavy taupe box around the "Get in Touch" section. It competes with the form-inside-a-box and makes the body copy harder to read. Replace it with an editorial, two-column layout that sits directly on the page background — same treatment as the rest of the homepage.
+Make these two propositions feel like a small, charming aside instead of two prominent CTAs. They should still be discoverable, but visually quieter and more "scrapbook" in spirit.
 
-## Changes (all in `src/pages/Index.tsx`, lines 812–893)
+## Approach: a pair of tilted postcards
 
-**Remove**
-- The outer `max-w-4xl` taupe-soft container with border + shadow-lg.
-- The inner `border border-border` wrapper around the form (double-box effect).
-- The little `w-12 h-0.5 bg-secondary` rule above the form heading.
+Replace the two stacked banners with a single subhead ("Other ways to work with me") followed by a 2-column row of compact postcard cards. Each card:
 
-**Replace with**
-- A single `max-w-6xl` two-column grid: `lg:grid-cols-[1fr_1.1fr]`, `gap-12 lg:gap-20`, `items-start`.
-- **Left column**: kicker + h2 + intro paragraph, no box, sitting on the page background. Body copy bumped to `text-foreground/80` for better contrast than the current muted-foreground on taupe.
-- **Right column**: the form on white background (`bg-background`), `p-8 lg:p-10`, with a single `border-l-4` accent in `heritage-green` (uses the unused green from the palette, signals trust/calm). Subtle `shadow-sm` only.
+- Slightly rotated (one ~-1.2°, the other +1°) so they feel pinned to the page rather than placed in a grid
+- Hand-drawn icon on the left (microphone for "Invite me", suitcase for "Travel agents") rendered with the same `feTurbulence` sketch filter used in the day-map and timeline
+- Small corner "stamp" badge ("GUEST" / "TRADE") rotated 6° for a passport-stamp feel
+- Compact text: small kicker, `text-xl md:text-2xl` heading (down from 3xl/4xl), short body copy, and a discreet inline "Get in touch →" link instead of a full bulky button
+- Heritage Orange for the speaking card, Heritage Bordeaux for the agents card — preserving the existing colour coding
+- Subtle hover: lift 2px, arrow shifts right, stamp opacity increases
 
-**Why this fixes both complaints**
-- No more square taupe slab — the section breathes like the others.
-- Removes the contrast issue (muted text on taupe-soft) by putting copy on the off-white page bg.
-- Keeps the form visually grounded with one clean accent line instead of two nested borders.
-- Sneaks the heritage-green into the homepage (currently unused there).
+```text
+       Other ways to work with me
+
+  ┌─ tilt -1° ──────────┐   ┌─ tilt +1° ──────────┐
+  │ 🎙  INVITE ME       │   │ 🧳  TRAVEL AGENTS   │
+  │ Lectures, podcasts  │   │ A partner for your  │
+  │ & radio             │   │ Amsterdam clients   │
+  │                     │   │                     │
+  │ Get in touch →      │   │ Partner with me →   │
+  └─────────────────────┘   └─────────────────────┘
+```
+
+Result: roughly 1/3 the vertical space, more visual personality, and consistent with the hand-drawn icons already used in the "How It Works" timeline and the "A Day in My Life" map.
+
+## Technical changes
+
+- **`src/pages/Index.tsx`** — replace the two `<FadeIn>` banner blocks (lines ~589–649, just below the Rick Steves grid in the Rick Steves section) with the new postcard pair. No new components or assets needed; both icons are inline SVG using the existing `feTurbulence` sketch filter pattern.
+- Mobile: cards stack to a single column at `<md`. The slight rotation reads fine on phone since each card is full-width.
+- Constraint compliance: no em dashes in copy, uses semantic Heritage tokens via inline `style` (matching existing pattern on this page), Bebas Neue heading + Outfit body.
 
 ## Out of scope
-- No copy changes.
-- No form logic changes.
-- No new components or assets.
+
+- Copy rewrite beyond tightening to fit the smaller card. Happy to do a separate copy pass if wanted.
+- Routing change for the "Travel agents" card (currently `#contact?subject=...` which doesn't actually pre-fill the form). Can wire that up later if useful.

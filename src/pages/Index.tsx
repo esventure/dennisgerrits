@@ -203,23 +203,43 @@ const Index = () => {
             </FadeIn>
           </div>
 
-          {/* 4-step timeline with hand-drawn line */}
+          {/* 4-step timeline — hand-drawn sketchbook style */}
           <FadeIn delay={0.1}>
             <div className="relative max-w-5xl mx-auto mb-24 lg:mb-32">
               <svg
-                className="hidden md:block absolute top-8 left-0 w-full pointer-events-none"
-                height="20"
-                viewBox="0 0 1000 20"
+                className="hidden md:block absolute left-0 w-full pointer-events-none"
+                style={{ top: "32px" }}
+                height="40"
+                viewBox="0 0 1000 40"
                 preserveAspectRatio="none"
                 aria-hidden
               >
+                <defs>
+                  <filter id="timelineSketch" x="-2%" y="-20%" width="104%" height="140%">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="5" />
+                    <feDisplacementMap in="SourceGraphic" scale="2.2" />
+                  </filter>
+                </defs>
+                {/* pencil under-stroke */}
                 <path
-                  d="M 60 10 Q 200 2, 340 10 T 660 10 T 940 10"
+                  d="M 70 22 C 220 12, 380 28, 530 18 S 820 26, 935 16"
+                  fill="none"
+                  stroke="hsl(var(--heritage-taupe))"
+                  strokeWidth="2.4"
+                  strokeLinecap="round"
+                  opacity="0.35"
+                  transform="translate(1.5, 1.5)"
+                />
+                {/* ink wobble */}
+                <path
+                  d="M 70 20 C 220 10, 380 26, 530 16 S 820 24, 935 14"
                   fill="none"
                   stroke="hsl(var(--heritage-orange))"
-                  strokeWidth="2"
+                  strokeWidth="1.6"
                   strokeLinecap="round"
-                  strokeDasharray="1 6"
+                  strokeDasharray="2 7"
+                  filter="url(#timelineSketch)"
+                  opacity="0.85"
                 />
               </svg>
 
@@ -229,17 +249,40 @@ const Index = () => {
                   { n: "02", label: "We have a call", text: "I listen. Your pace, your interests, what you've already seen." },
                   { n: "03", label: "I design your trip", text: "A custom itinerary made for you. No templates." },
                   { n: "04", label: "I take care of everything", text: "Bookings, transfers, reservations. One person, one phone number." },
-                ].map((step) => (
+                ].map((step, idx) => (
                   <div key={step.n} className="text-center md:text-left">
-                    <div
-                      className="mx-auto md:mx-0 w-16 h-16 rounded-full flex items-center justify-center mb-5 font-heading text-2xl"
-                      style={{
-                        backgroundColor: "hsl(var(--background))",
-                        color: "hsl(var(--heritage-orange))",
-                        border: "2px solid hsl(var(--heritage-orange))",
-                      }}
-                    >
-                      {step.n}
+                    <div className="mx-auto md:mx-0 mb-5 relative" style={{ width: 64, height: 64 }}>
+                      <svg viewBox="0 0 64 64" className="w-full h-full" style={{ overflow: "visible" }}>
+                        <defs>
+                          <filter id={`stepWobble-${idx}`} x="-15%" y="-15%" width="130%" height="130%">
+                            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed={idx + 1} />
+                            <feDisplacementMap in="SourceGraphic" scale="1.4" />
+                          </filter>
+                        </defs>
+                        {/* paper fill so the orange dashed line is visually broken */}
+                        <circle cx="32" cy="32" r="28" fill="hsl(var(--heritage-taupe-tint))" />
+                        {/* hand-drawn ring */}
+                        <path
+                          d={sketchedRingPath(32, 32, 26, idx)}
+                          fill="hsl(var(--background))"
+                          stroke="hsl(var(--heritage-orange))"
+                          strokeWidth="1.6"
+                          strokeLinecap="round"
+                          filter={`url(#stepWobble-${idx})`}
+                        />
+                        <text
+                          x="32"
+                          y="34"
+                          textAnchor="middle"
+                          dominantBaseline="central"
+                          fontFamily="'Bebas Neue', sans-serif"
+                          fontSize="22"
+                          letterSpacing="0.05em"
+                          fill="hsl(var(--heritage-orange))"
+                        >
+                          {step.n}
+                        </text>
+                      </svg>
                     </div>
                     <h3 className="font-heading text-2xl text-primary leading-tight mb-2">
                       {step.label}

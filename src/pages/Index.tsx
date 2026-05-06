@@ -700,6 +700,63 @@ const Index = () => {
               ))}
             </div>
           </div>
+
+          {/* ── Polaroid peek: bridges into the next section ── */}
+          <div className="relative mt-8 lg:mt-10 flex justify-end pointer-events-none">
+            <FadeIn delay={0.2}>
+              <Link
+                to="/get-inspired"
+                aria-label="See what excites me on the Wall of Curiosities"
+                className="group pointer-events-auto inline-flex items-end gap-4 md:gap-6 relative lg:-mb-32 lg:translate-y-16"
+              >
+                {/* Stack of overlapping polaroids */}
+                <div className="relative w-[200px] sm:w-[240px] h-[150px] sm:h-[170px] shrink-0">
+                  {[
+                    { img: peekHistory, rot: -9, x: 0, y: 14, z: 1 },
+                    { img: peekFood, rot: 5, x: 50, y: 0, z: 2 },
+                    { img: peekWater, rot: -3, x: 110, y: 22, z: 3 },
+                  ].map((p, i) => (
+                    <div
+                      key={i}
+                      className="absolute bg-[#FAFAF7] p-1.5 pb-5 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.35),0_2px_6px_-2px_rgba(0,0,0,0.15)] transition-transform duration-500 ease-out group-hover:[&:nth-child(1)]:-rotate-[12deg] group-hover:[&:nth-child(3)]:rotate-[0deg]"
+                      style={{
+                        left: `${p.x}px`,
+                        top: `${p.y}px`,
+                        transform: `rotate(${p.rot}deg)`,
+                        zIndex: p.z,
+                      }}
+                    >
+                      <div className="w-[100px] h-[100px] sm:w-[120px] sm:h-[120px] overflow-hidden bg-muted">
+                        <img
+                          src={p.img}
+                          alt=""
+                          loading="lazy"
+                          decoding="async"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Handwritten note */}
+                <div className="pb-2">
+                  <p
+                    className="text-2xl md:text-3xl text-primary leading-tight"
+                    style={{ fontFamily: "'Caveat', cursive" }}
+                  >
+                    ...and 9 more
+                  </p>
+                  <p
+                    className="text-lg md:text-xl text-secondary mt-1 inline-block group-hover:translate-x-1 transition-transform"
+                    style={{ fontFamily: "'Caveat', cursive" }}
+                  >
+                    in my notebook →
+                  </p>
+                </div>
+              </Link>
+            </FadeIn>
+          </div>
         </div>
       </div>
 

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
 import AmsterdamSkyline from "@/components/AmsterdamSkyline";
-import amsterdamSkyline from "@/assets/amsterdam-skyline.png";
+
 import DayMap from "@/components/DayMap";
 
 import MosaicWall from "@/components/MosaicWall";

@@ -1087,10 +1087,11 @@ const Index = () => {
         className="relative py-20 md:py-28 lg:py-36 scroll-mt-20 overflow-hidden"
         style={{ backgroundColor: "hsl(var(--heritage-bordeaux))" }}
       >
-        {/* Skyline continuation is handled by the shared <AmsterdamSkyline />
-            component (rendered globally). Its dark-blend layer activates over
-            this bordeaux background so the reveal stays in sync with the rest
-            of the page. */}
+        {/* In-section skyline — same scroll progress as the global one,
+            but rendered above the bordeaux background so the reveal
+            visibly continues here instead of being hidden behind it. */}
+        <AmsterdamSkyline variant="dark" />
+
 
 
         {/* Top decorative divider — bordeaux wave eating UP into the section above (no white bar) */}

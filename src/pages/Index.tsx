@@ -526,7 +526,7 @@ const Index = () => {
             </FadeIn>
 
             <FadeIn delay={0.15}>
-              <div>
+              <div className="lg:pt-16">
                 <p className="font-body text-sm tracking-widest uppercase text-accent mb-6">
                   Recommended By
                 </p>

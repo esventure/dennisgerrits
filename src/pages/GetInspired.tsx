@@ -134,6 +134,10 @@ const GetInspired = () => {
   const [searchParams] = useSearchParams();
   const [openStory, setOpenStory] = useState<string>("");
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { data: stories = [] } = useQuery({
     queryKey: ["stories"],
     queryFn: async () => {

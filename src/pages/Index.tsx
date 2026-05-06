@@ -703,12 +703,12 @@ const Index = () => {
 
         </div>
 
-        {/* ── Polaroid peek: floats over the section boundary ── */}
-        <div className="absolute right-6 lg:right-12 bottom-0 translate-y-1/2 z-20 pointer-events-none hidden md:block">
+        {/* ── Polaroid peek: floats over the boundary with A Day in My Life ── */}
+        <div className="absolute right-6 lg:right-12 top-0 -translate-y-1/2 z-20 pointer-events-none hidden md:block">
           <FadeIn delay={0.2}>
             <Link
               to="/get-inspired"
-              aria-label="See what excites me on the Wall of Curiosities"
+              aria-label="Get inspired by what excites Dennis"
               className="group pointer-events-auto inline-flex items-end gap-4 md:gap-6"
             >
               {/* Stack of overlapping polaroids */}
@@ -747,13 +747,13 @@ const Index = () => {
                   className="text-2xl lg:text-3xl text-primary leading-tight"
                   style={{ fontFamily: "'Caveat', cursive" }}
                 >
-                  ...and 9 more
+                  Curious what inspires me?
                 </p>
                 <p
                   className="text-lg lg:text-xl text-secondary mt-1 inline-block group-hover:translate-x-1 transition-transform"
                   style={{ fontFamily: "'Caveat', cursive" }}
                 >
-                  in my notebook →
+                  peek inside my notebook →
                 </p>
               </div>
             </Link>

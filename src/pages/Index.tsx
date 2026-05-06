@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
 import AmsterdamSkyline from "@/components/AmsterdamSkyline";
 import DayMap from "@/components/DayMap";
-import DayProgress from "@/components/DayProgress";
+
 import MosaicWall from "@/components/MosaicWall";
 import { guestPhotos } from "@/assets/guests";
 import HeroCarousel from "@/components/HeroCarousel";

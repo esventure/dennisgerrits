@@ -65,13 +65,17 @@ const DayMap = ({ moments }: DayMapProps) => {
   const goPrev = () => handleSelect(Math.max(0, active - 1));
   const goNext = () => handleSelect(Math.min(moments.length - 1, active + 1));
 
-  /* Scroll-driven progression */
+  /* Scroll-driven progression — desktop only.
+     On mobile / tablet the section is not sticky, so manual prev / next
+     and dot controls drive the experience instead. */
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
     const section = el.closest("section");
     if (!section) return;
 
+    const mq = window.matchMedia("(min-width: 1024px)");
+    let attached = false;
     let ticking = false;
     let lastIdx = 0;
 
@@ -110,10 +114,25 @@ const DayMap = ({ moments }: DayMapProps) => {
       rafRef.current = requestAnimationFrame(update);
     };
 
-    window.addEventListener("scroll", onScroll, { passive: true });
-    update();
-    return () => {
+    const attach = () => {
+      if (attached) return;
+      attached = true;
+      window.addEventListener("scroll", onScroll, { passive: true });
+      update();
+    };
+    const detach = () => {
+      if (!attached) return;
+      attached = false;
       window.removeEventListener("scroll", onScroll);
+    };
+
+    const sync = () => (mq.matches ? attach() : detach());
+    sync();
+    mq.addEventListener("change", sync);
+
+    return () => {
+      detach();
+      mq.removeEventListener("change", sync);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
   }, [moments.length]);

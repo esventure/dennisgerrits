@@ -201,7 +201,7 @@ const Index = () => {
       </section>
 
       {/* ── How It Works (process + concierge) ── */}
-      <section id="how-it-works" className="py-24 lg:py-32 scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}>
+      <section id="how-it-works" className="py-16 md:py-20 lg:py-32 scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}>
         <div className="container mx-auto px-6 lg:px-12">
 
           {/* Heading */}
@@ -475,7 +475,7 @@ const Index = () => {
       </section>
 
       {/* ── Rick Steves Feature ── */}
-      <div className="py-20 lg:py-28" style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.15)" }}>
+      <div className="py-14 md:py-20 lg:py-28" style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.15)" }}>
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <FadeIn>
@@ -628,7 +628,7 @@ const Index = () => {
 
 
       {/* ── 4. Proof: Reviews & Guests ── */}
-      <section id="proof" className="py-24 lg:py-32 scroll-mt-20">
+      <section id="proof" className="py-16 md:py-20 lg:py-32 scroll-mt-20">
         <div className="container mx-auto px-6 lg:px-12">
           {(() => {
             const TA_URL =
@@ -858,7 +858,7 @@ const Index = () => {
         </div>
       </section>
       {/* ── Podcast: Two Stories, One City ── */}
-      <section id="podcast" className="py-24 lg:py-32 scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}>
+      <section id="podcast" className="py-16 md:py-20 lg:py-32 scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}>
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <FadeIn>
@@ -896,7 +896,7 @@ const Index = () => {
       </section>
 
       {/* ── 6. Stories (Blog) ── */}
-      <section id="stories" className="py-24 lg:py-32 scroll-mt-20">
+      <section id="stories" className="py-16 md:py-20 lg:py-32 scroll-mt-20">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mb-16">
             <FadeIn>
@@ -953,7 +953,7 @@ const Index = () => {
       </section>
 
       {/* ── 7. Contact, FAQ & Footer ── */}
-      <section id="contact" className="py-24 lg:py-32 scroll-mt-20">
+      <section id="contact" className="py-16 md:py-20 lg:py-32 scroll-mt-20">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-20 items-start">
             {/* Left: editorial intro, no box */}

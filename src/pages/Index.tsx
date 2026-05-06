@@ -1118,7 +1118,7 @@ const Index = () => {
           let's talk →
         </p>
 
-        <div className="container mx-auto px-6 lg:px-12 relative">
+        <div className="container mx-auto px-6 lg:px-12 relative" style={{ zIndex: 10 }}>
           {/* Big section marker */}
           <FadeIn>
             <div className="text-center mb-14 lg:mb-20">

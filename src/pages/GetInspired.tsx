@@ -71,6 +71,42 @@ const themes = [
     rotate: 1.4,
     pin: "tape-tr",
   },
+  {
+    id: "cafes",
+    title: "Brown Cafes",
+    caption: "Smoky old pubs where regulars have their own stool. We'll have a jenever and listen for a while.",
+    note: "ask for the bitter",
+    image: imgCafes,
+    rotate: -2.0,
+    pin: "tape-tl",
+  },
+  {
+    id: "cycling",
+    title: "On Two Wheels",
+    caption: "I'll get you a proper Dutch bike and we'll take the long way. The city looks different from the saddle.",
+    note: "no helmets, sorry",
+    image: imgCycling,
+    rotate: 1.6,
+    pin: "tape-tr",
+  },
+  {
+    id: "literature",
+    title: "Books & Writers",
+    caption: "I'll show you the cafe where Multatuli sat, and a tiny shop where you can still find first editions.",
+    note: "smell the pages",
+    image: imgLiterature,
+    rotate: -1.4,
+    pin: "tape-tl",
+  },
+  {
+    id: "music",
+    title: "Live Music",
+    caption: "Small rooms, big sound. I know which nights to go and where the locals actually listen.",
+    note: "stay till late",
+    image: imgMusic,
+    rotate: 2.0,
+    pin: "tape-tr",
+  },
 ];
 
 const GetInspired = () => {

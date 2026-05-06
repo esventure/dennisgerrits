@@ -1109,15 +1109,15 @@ const Index = () => {
           />
         </div>
 
-        {/* Top decorative divider — torn-paper / wavy edge */}
+        {/* Top decorative divider — wavy edge cut into the bordeaux from above */}
         <div className="absolute inset-x-0 -top-px pointer-events-none z-10" aria-hidden>
           <svg
             viewBox="0 0 1440 60"
             preserveAspectRatio="none"
-            className="block w-full h-10 md:h-14"
+            className="block w-full h-10 md:h-14 -mb-px"
           >
             <path
-              d="M0,40 C180,10 360,55 540,30 C720,5 900,50 1080,25 C1260,0 1380,40 1440,20 L1440,0 L0,0 Z"
+              d="M0,30 C180,0 360,45 540,20 C720,-5 900,40 1080,15 C1260,-10 1380,30 1440,10 L1440,0 L0,0 Z"
               fill="hsl(var(--background))"
             />
           </svg>

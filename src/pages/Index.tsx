@@ -1084,7 +1084,7 @@ const Index = () => {
       {/* ── 7. Contact, FAQ & Footer ── */}
       <section
         id="contact"
-        className="relative py-20 md:py-28 lg:py-36 scroll-mt-20 overflow-hidden"
+        className="relative py-20 md:py-28 lg:py-36 scroll-mt-20 [overflow-x:clip]"
         style={{ backgroundColor: "hsl(var(--heritage-bordeaux))" }}
       >
         {/* In-section skyline — same scroll progress as the global one,

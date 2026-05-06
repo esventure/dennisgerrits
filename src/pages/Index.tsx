@@ -987,41 +987,39 @@ const Index = () => {
           </FadeIn>
         </div>
       </section>
-      {/* ── Podcast: Two Stories, One City ── */}
-      <section id="podcast" className="py-16 md:py-20 lg:py-32 scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}>
+      {/* ── Podcast: Two Stories, One City (compact shoutout) ── */}
+      <section id="podcast" className="py-10 md:py-12 scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}>
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <FadeIn>
-              <div>
-                <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
-                  The Podcast
+          <FadeIn>
+            <a
+              href="https://twostoriesonecity.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-5 md:gap-7 max-w-3xl mx-auto"
+            >
+              <div className="w-20 h-20 md:w-24 md:h-24 shrink-0 overflow-hidden rounded-sm shadow-md">
+                <img
+                  src={podcastCover}
+                  alt="Two Stories, One City — podcast cover art"
+                  loading="lazy"
+                  width={256}
+                  height={256}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="font-body text-xs tracking-widest uppercase text-secondary mb-1">
+                  The Podcast · Episode 0 out now
                 </p>
-                <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
+                <h2 className="font-heading text-2xl md:text-3xl text-primary leading-tight group-hover:text-secondary transition-colors">
                   Two Stories, One City
                 </h2>
-                <p className="font-body text-muted-foreground leading-relaxed">
-                  Each episode pairs two seemingly unrelated Amsterdam stories and shows how they connect. If you want to know what spending a day with me feels like, start here.
+                <p className="font-body text-sm text-muted-foreground mt-1">
+                  Listen at twostoriesonecity.com →
                 </p>
               </div>
-            </FadeIn>
-            <FadeIn delay={0.15}>
-              <div className="relative">
-                <div className="aspect-square overflow-hidden rounded-sm shadow-elegant">
-                  <img
-                    src={podcastCover}
-                    alt="Two Stories, One City — podcast cover art"
-                    loading="lazy"
-                    width={1024}
-                    height={1024}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <p className="font-body text-xs text-muted-foreground italic mt-3 text-center">
-                  Episodes coming soon.
-                </p>
-              </div>
-            </FadeIn>
-          </div>
+            </a>
+          </FadeIn>
         </div>
       </section>
 

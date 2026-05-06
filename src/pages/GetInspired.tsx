@@ -5,49 +5,67 @@ import FadeIn from "@/components/FadeIn";
 import { cn } from "@/lib/utils";
 import StoryBook from "@/components/StoryBook";
 import { supabase } from "@/integrations/supabase/client";
-import iconHistory from "@/assets/icon-history.png";
-import iconFood from "@/assets/icon-food.png";
-import iconArchitecture from "@/assets/icon-architecture.png";
-import iconArt from "@/assets/icon-art.png";
-import iconNature from "@/assets/icon-nature.png";
-import iconCraft from "@/assets/icon-craft.png";
+import imgHistory from "@/assets/interests/history.jpg";
+import imgFood from "@/assets/interests/food.jpg";
+import imgArchitecture from "@/assets/interests/architecture.jpg";
+import imgArt from "@/assets/interests/art.jpg";
+import imgNature from "@/assets/interests/nature.jpg";
+import imgCraft from "@/assets/interests/craft.jpg";
 
 const themes = [
   {
     id: "history",
     title: "Hidden History",
-    description: "The stories that never made it into guidebooks. Secret passages, forgotten wars, the people who shaped a city but whose names you won't find on any monument.",
-    icon: iconHistory,
+    caption: "I'll take you down an alley most locals walk past. There's a stone above a doorway with a story almost no one knows.",
+    note: "ask me about the cat",
+    image: imgHistory,
+    rotate: -2.4,
+    pin: "tape-tl",
   },
   {
     id: "food",
-    title: "Local Food Culture",
-    description: "Markets where chefs shop at dawn. Bakeries that haven't changed their recipe in a century. The story behind every regional dish you'll taste.",
-    icon: iconFood,
+    title: "Local Food",
+    caption: "I know a baker who pulls bread out of the oven at six. We can be there before the queue starts.",
+    note: "bring an empty stomach",
+    image: imgFood,
+    rotate: 1.8,
+    pin: "tape-tr",
   },
   {
     id: "architecture",
-    title: "Architecture & Design",
-    description: "From medieval brickwork to brutalist experiments. Why a building looks the way it does, and what it says about the people who built it.",
-    icon: iconArchitecture,
+    title: "Architecture",
+    caption: "Every gable in this city is a date stamp. Once you know what to look for, the whole street starts talking.",
+    note: "look up, always",
+    image: imgArchitecture,
+    rotate: -1.2,
+    pin: "tape-tl",
   },
   {
     id: "art",
-    title: "Street Art & Subculture",
-    description: "Murals, studios, underground galleries. Art that lives on the streets and tells you more about a city than any museum could.",
-    icon: iconArt,
+    title: "Street Art",
+    caption: "A friend paints walls in the north. We can knock on her studio door and see what she's working on.",
+    note: "she might be home",
+    image: imgArt,
+    rotate: 2.2,
+    pin: "tape-tr",
   },
   {
     id: "nature",
-    title: "Parks & Hidden Gardens",
-    description: "Green spaces that locals keep to themselves. A bench with the perfect view. A garden that's been tended for three hundred years.",
-    icon: iconNature,
+    title: "Hidden Gardens",
+    caption: "There's a courtyard behind a plain wooden door. Three hundred years old, and almost always empty.",
+    note: "my favorite bench",
+    image: imgNature,
+    rotate: -1.6,
+    pin: "tape-tl",
   },
   {
     id: "craft",
-    title: "Local Craft & Makers",
-    description: "Workshops, ateliers, and people who still make things by hand. The stories behind the craft are often as beautiful as the objects.",
-    icon: iconCraft,
+    title: "Makers & Craft",
+    caption: "I'll introduce you to people who still make things by hand. Leather, paper, glass. Their stories stay with you.",
+    note: "watch the hands",
+    image: imgCraft,
+    rotate: 1.4,
+    pin: "tape-tr",
   },
 ];
 
@@ -105,28 +123,64 @@ const GetInspired = () => {
             </FadeIn>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {themes.map((theme, i) => (
-              <FadeIn key={theme.id} delay={i * 0.08}>
-                <button
-                  onClick={() => setActive(active === theme.id ? null : theme.id)}
-                  className={cn(
-                    "w-full text-left p-8 rounded-lg transition-all duration-300 shadow-md border",
-                    active === theme.id
-                      ? "border-secondary bg-secondary/10 shadow-lg border-l-4 border-l-secondary"
-                      : "border-accent/10 bg-accent/5 hover:-translate-y-1 hover:shadow-lg hover:border-l-4 hover:border-l-secondary/40"
-                  )}
-                >
-                  <div className="w-16 h-16 mb-4">
-                    <img src={theme.icon} alt={theme.title} width={64} height={64} loading="lazy" className="w-full h-full object-contain" />
-                  </div>
-                  <h3 className="font-heading text-2xl text-primary mb-3">{theme.title}</h3>
-                  <p className="font-body text-sm text-muted-foreground leading-relaxed">
-                    {theme.description}
-                  </p>
-                </button>
-              </FadeIn>
-            ))}
+          {/* Polaroid wall */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-8 md:gap-x-12 pt-8">
+            {themes.map((theme, i) => {
+              const isActive = active === theme.id;
+              return (
+                <FadeIn key={theme.id} delay={i * 0.08}>
+                  <button
+                    onClick={() => setActive(isActive ? null : theme.id)}
+                    className="group relative block w-full text-left transition-transform duration-500 ease-out hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-4"
+                    style={{ transform: `rotate(${isActive ? 0 : theme.rotate}deg)` }}
+                  >
+                    <div className="bg-[#FAFAF7] p-3 pb-20 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.35),0_2px_6px_-2px_rgba(0,0,0,0.15)] transition-shadow duration-500 group-hover:shadow-[0_18px_40px_-14px_rgba(0,0,0,0.4)] relative">
+                      <span
+                        aria-hidden
+                        className={cn(
+                          "absolute -top-3 w-20 h-7 bg-[hsl(var(--heritage-orange))]/25 border border-[hsl(var(--heritage-orange))]/30",
+                          theme.pin === "tape-tl" ? "left-6 -rotate-[8deg]" : "right-6 rotate-[6deg]"
+                        )}
+                      />
+                      <div className="aspect-square overflow-hidden bg-muted">
+                        <img
+                          src={theme.image}
+                          alt={theme.title}
+                          width={768}
+                          height={768}
+                          loading="lazy"
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                        />
+                      </div>
+                      <div className="absolute bottom-4 left-3 right-3 px-2">
+                        <h3 className="font-heading text-2xl text-primary leading-none tracking-wide">
+                          {theme.title}
+                        </h3>
+                        <p
+                          className="text-lg text-foreground/70 mt-1 leading-snug"
+                          style={{ fontFamily: "'Caveat', cursive" }}
+                        >
+                          {theme.note}
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      className={cn(
+                        "overflow-hidden transition-all duration-500 ease-out",
+                        isActive ? "max-h-48 opacity-100 mt-4" : "max-h-0 opacity-0 mt-0"
+                      )}
+                    >
+                      <p
+                        className="text-xl text-foreground/85 leading-snug px-1"
+                        style={{ fontFamily: "'Caveat', cursive" }}
+                      >
+                        {theme.caption}
+                      </p>
+                    </div>
+                  </button>
+                </FadeIn>
+              );
+            })}
           </div>
 
           <FadeIn>

@@ -33,6 +33,7 @@ const StoryBook = ({ stories, initialStoryId }: StoryBookProps) => {
   };
 
   const story = stories[currentPage];
+  if (!story) return null;
 
   const variants = {
     enter: (dir: number) => ({

@@ -209,6 +209,9 @@ const GetInspired = () => {
                           width={768}
                           height={768}
                           loading="lazy"
+                          decoding="async"
+                          // @ts-expect-error fetchpriority is a valid HTML attribute
+                          fetchpriority="low"
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                         />
                       </div>

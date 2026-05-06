@@ -15,6 +15,8 @@ import imgCafes from "@/assets/interests/cafes.jpg";
 import imgCycling from "@/assets/interests/cycling.jpg";
 import imgLiterature from "@/assets/interests/literature.jpg";
 import imgMusic from "@/assets/interests/music.jpg";
+import imgWater from "@/assets/interests/water.jpg";
+import imgMarkets from "@/assets/interests/markets.jpg";
 
 const themes = [
   {
@@ -105,6 +107,24 @@ const themes = [
     note: "stay till late",
     image: imgMusic,
     rotate: 2.0,
+    pin: "tape-tr",
+  },
+  {
+    id: "water",
+    title: "From the Water",
+    caption: "I know a friend with a small boat. We'll drift through the canals at dusk and see the city the way it was meant to be seen.",
+    note: "bring a sweater",
+    image: imgWater,
+    rotate: -1.8,
+    pin: "tape-tl",
+  },
+  {
+    id: "markets",
+    title: "Markets",
+    caption: "Cheese stalls, flower vendors, the herring guy who's been there since 1978. Markets are where a city actually lives.",
+    note: "go hungry",
+    image: imgMarkets,
+    rotate: 1.2,
     pin: "tape-tr",
   },
 ];

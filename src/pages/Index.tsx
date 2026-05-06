@@ -997,7 +997,7 @@ const Index = () => {
               rel="noopener noreferrer"
               className="group flex items-center gap-5 md:gap-7 max-w-3xl mx-auto"
             >
-              <div className="w-20 h-20 md:w-24 md:h-24 shrink-0 overflow-hidden rounded-sm shadow-md">
+              <div className="w-12 h-12 md:w-14 md:h-14 shrink-0 overflow-hidden rounded-sm shadow-md">
                 <img
                   src={podcastCover}
                   alt="Two Stories, One City — podcast cover art"

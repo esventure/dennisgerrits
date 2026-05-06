@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
 import AmsterdamSkyline from "@/components/AmsterdamSkyline";
 import DayMap from "@/components/DayMap";
-import DayProgress from "@/components/DayProgress";
+
 import MosaicWall from "@/components/MosaicWall";
 import { guestPhotos } from "@/assets/guests";
 import HeroCarousel from "@/components/HeroCarousel";
@@ -27,6 +27,24 @@ import storyBookshop from "@/assets/stories/bookshop.jpg";
 import storyCanalHouses from "@/assets/stories/canal-houses.jpg";
 import storyBench from "@/assets/stories/bench.jpg";
 import podcastCover from "@/assets/podcast-cover.jpg";
+
+/* Hand-drawn ring path for the timeline step circles — matches the
+   sketchbook style used in DayMap. Slightly irregular closed loop. */
+const sketchedRingPath = (cx: number, cy: number, r: number, seed = 0) => {
+  const pts = Array.from({ length: 14 }, (_, i) => {
+    const a = (i / 14) * Math.PI * 2;
+    const wob =
+      Math.sin(i * 1.7 + seed) * 0.8 + Math.cos(i * 2.3 + seed * 1.3) * 0.8;
+    const rr = r + wob;
+    return [cx + Math.cos(a) * rr, cy + Math.sin(a) * rr] as const;
+  });
+  let d = `M ${pts[0][0].toFixed(2)} ${pts[0][1].toFixed(2)}`;
+  for (let i = 1; i <= pts.length; i++) {
+    const p = pts[i % pts.length];
+    d += ` L ${p[0].toFixed(2)} ${p[1].toFixed(2)}`;
+  }
+  return d + " Z";
+};
 
 const moments = [
   {
@@ -203,23 +221,43 @@ const Index = () => {
             </FadeIn>
           </div>
 
-          {/* 4-step timeline with hand-drawn line */}
+          {/* 4-step timeline — hand-drawn sketchbook style */}
           <FadeIn delay={0.1}>
             <div className="relative max-w-5xl mx-auto mb-24 lg:mb-32">
               <svg
-                className="hidden md:block absolute top-8 left-0 w-full pointer-events-none"
-                height="20"
-                viewBox="0 0 1000 20"
+                className="hidden md:block absolute left-0 w-full pointer-events-none"
+                style={{ top: "32px" }}
+                height="40"
+                viewBox="0 0 1000 40"
                 preserveAspectRatio="none"
                 aria-hidden
               >
+                <defs>
+                  <filter id="timelineSketch" x="-2%" y="-20%" width="104%" height="140%">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="5" />
+                    <feDisplacementMap in="SourceGraphic" scale="2.2" />
+                  </filter>
+                </defs>
+                {/* pencil under-stroke */}
                 <path
-                  d="M 60 10 Q 200 2, 340 10 T 660 10 T 940 10"
+                  d="M 70 22 C 220 12, 380 28, 530 18 S 820 26, 935 16"
+                  fill="none"
+                  stroke="hsl(var(--heritage-taupe))"
+                  strokeWidth="2.4"
+                  strokeLinecap="round"
+                  opacity="0.35"
+                  transform="translate(1.5, 1.5)"
+                />
+                {/* ink wobble */}
+                <path
+                  d="M 70 20 C 220 10, 380 26, 530 16 S 820 24, 935 14"
                   fill="none"
                   stroke="hsl(var(--heritage-orange))"
-                  strokeWidth="2"
+                  strokeWidth="1.6"
                   strokeLinecap="round"
-                  strokeDasharray="1 6"
+                  strokeDasharray="2 7"
+                  filter="url(#timelineSketch)"
+                  opacity="0.85"
                 />
               </svg>
 
@@ -229,17 +267,40 @@ const Index = () => {
                   { n: "02", label: "We have a call", text: "I listen. Your pace, your interests, what you've already seen." },
                   { n: "03", label: "I design your trip", text: "A custom itinerary made for you. No templates." },
                   { n: "04", label: "I take care of everything", text: "Bookings, transfers, reservations. One person, one phone number." },
-                ].map((step) => (
+                ].map((step, idx) => (
                   <div key={step.n} className="text-center md:text-left">
-                    <div
-                      className="mx-auto md:mx-0 w-16 h-16 rounded-full flex items-center justify-center mb-5 font-heading text-2xl"
-                      style={{
-                        backgroundColor: "hsl(var(--background))",
-                        color: "hsl(var(--heritage-orange))",
-                        border: "2px solid hsl(var(--heritage-orange))",
-                      }}
-                    >
-                      {step.n}
+                    <div className="mx-auto md:mx-0 mb-5 relative" style={{ width: 64, height: 64 }}>
+                      <svg viewBox="0 0 64 64" className="w-full h-full" style={{ overflow: "visible" }}>
+                        <defs>
+                          <filter id={`stepWobble-${idx}`} x="-15%" y="-15%" width="130%" height="130%">
+                            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed={idx + 1} />
+                            <feDisplacementMap in="SourceGraphic" scale="1.4" />
+                          </filter>
+                        </defs>
+                        {/* paper fill so the orange dashed line is visually broken */}
+                        <circle cx="32" cy="32" r="28" fill="hsl(var(--heritage-taupe-tint))" />
+                        {/* hand-drawn ring */}
+                        <path
+                          d={sketchedRingPath(32, 32, 26, idx)}
+                          fill="hsl(var(--background))"
+                          stroke="hsl(var(--heritage-orange))"
+                          strokeWidth="1.6"
+                          strokeLinecap="round"
+                          filter={`url(#stepWobble-${idx})`}
+                        />
+                        <text
+                          x="32"
+                          y="34"
+                          textAnchor="middle"
+                          dominantBaseline="central"
+                          fontFamily="'Bebas Neue', sans-serif"
+                          fontSize="22"
+                          letterSpacing="0.05em"
+                          fill="hsl(var(--heritage-orange))"
+                        >
+                          {step.n}
+                        </text>
+                      </svg>
                     </div>
                     <h3 className="font-heading text-2xl text-primary leading-tight mb-2">
                       {step.label}
@@ -306,27 +367,30 @@ const Index = () => {
                             <svg
                               aria-hidden
                               viewBox="0 0 40 40"
-                              className="shrink-0 w-8 h-8"
+                              className="shrink-0 w-9 h-9"
                               fill="none"
                               stroke="hsl(var(--heritage-bordeaux))"
-                              strokeWidth="1.6"
+                              strokeWidth="1.4"
                               strokeLinecap="round"
                               strokeLinejoin="round"
                             >
                               <defs>
-                                <filter id="thumbWobble" x="-10%" y="-10%" width="120%" height="120%">
-                                  <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="2" />
-                                  <feDisplacementMap in="SourceGraphic" scale="1.1" />
+                                <filter id="thumbSketch" x="-10%" y="-10%" width="120%" height="120%">
+                                  <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" />
+                                  <feDisplacementMap in="SourceGraphic" scale="1.3" />
                                 </filter>
                               </defs>
-                              <g filter="url(#thumbWobble)">
-                                {/* Thumb (pointing down) */}
-                                <path d="M 18 6 C 18 11, 15 13, 14 16 L 14 22 C 14 24, 15 25, 17 25 L 24 25 C 26 25, 27 26, 27 28 C 27 29, 26 30, 25 30 C 26 30, 27 31, 27 32 C 27 33, 26 34, 25 34 C 26 34, 26 35, 26 36 C 26 37, 25 38, 23 38 L 17 38 C 14 38, 12 36, 11 34" />
-                                {/* Forearm / cuff */}
-                                <path d="M 8 16 L 8 24 C 8 25, 9 26, 10 26 L 14 26" />
-                                <path d="M 8 16 L 14 16" />
-                                {/* Knuckle hint */}
-                                <path d="M 18 28 L 21 28" opacity="0.6" />
+                              <g filter="url(#thumbSketch)">
+                                {/* Cuff at top */}
+                                <path d="M 8 9 L 16 9 L 16 14 L 8 14 Z" />
+                                {/* Palm — rounded rectangle below cuff */}
+                                <path d="M 9 14 L 9 24 C 9 26, 10 27, 12 27 L 21 27 C 23 27, 24 26, 24 24 L 24 14" />
+                                {/* Thumb pointing down on the right */}
+                                <path d="M 24 17 C 27 17, 30 18, 31 21 C 32 24, 31 27, 28 28 L 24 28" />
+                                {/* Knuckle creases */}
+                                <path d="M 12 18 L 15 18" opacity="0.55" />
+                                <path d="M 12 21 L 15 21" opacity="0.55" />
+                                <path d="M 12 24 L 15 24" opacity="0.55" />
                               </g>
                             </svg>
                             <span>{row.worry}</span>
@@ -375,30 +439,32 @@ const Index = () => {
       </section>
 
       {/* ── 3. A Day in the Life ── */}
-      <section id="day" className="relative scroll-mt-20" style={{ height: "200vh" }}>
-        <div className="sticky top-0 min-h-screen flex items-center">
-          <div className="container mx-auto px-6 lg:px-12 py-24 lg:py-32">
-            <div className="max-w-3xl mb-16">
-              <FadeIn>
-                <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
-                  Let's Explore Together
-                </p>
-                <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
-                  A Day in My Life
-                </h2>
-                <p className="font-body text-lg text-muted-foreground leading-relaxed mb-3">
-                  No fixed tours. Every day is shaped by you. Here's what one might look like.
-                </p>
-                <p className="font-body text-base text-muted-foreground italic">
-                  We move on foot, by private boat, or by car beyond the city.
-                </p>
-              </FadeIn>
-            </div>
-
-            <FadeIn delay={0.05}>
-              <DayProgress labels={moments.map((m) => m.time)} />
+      {/* Heading sits ABOVE the sticky section so the map is fully in view
+          the moment the section pins. Scroll then only advances the route. */}
+      <div id="day" className="scroll-mt-20 pt-24 lg:pt-32 pb-8 lg:pb-12">
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="max-w-3xl">
+            <FadeIn>
+              <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
+                Let's Explore Together
+              </p>
+              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-6">
+                A Day in My Life
+              </h2>
+              <p className="font-body text-lg text-muted-foreground leading-relaxed mb-2">
+                No fixed tours. Every day is shaped by you. Here's what one might look like.
+              </p>
+              <p className="font-body text-base text-muted-foreground italic">
+                We move on foot, by private boat, or by car beyond the city.
+              </p>
             </FadeIn>
+          </div>
+        </div>
+      </div>
 
+      <section className="relative" style={{ height: "200vh" }}>
+        <div className="sticky top-0 h-screen flex items-center">
+          <div className="container mx-auto px-6 lg:px-12 w-full">
             <FadeIn>
               <DayMap moments={moments} />
             </FadeIn>

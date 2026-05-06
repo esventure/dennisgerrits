@@ -700,6 +700,63 @@ const Index = () => {
               ))}
             </div>
           </div>
+
+          {/* ── Polaroid peek: bridges into the next section ── */}
+          <div className="relative mt-8 lg:mt-10 flex justify-end pointer-events-none">
+            <FadeIn delay={0.2}>
+              <Link
+                to="/get-inspired"
+                aria-label="See what excites me on the Wall of Curiosities"
+                className="group pointer-events-auto inline-flex items-end gap-4 md:gap-6 relative lg:-mb-32 lg:translate-y-16"
+              >
+                {/* Stack of overlapping polaroids */}
+                <div className="relative w-[200px] sm:w-[240px] h-[150px] sm:h-[170px] shrink-0">
+                  {[
+                    { img: peekHistory, rot: -9, x: 0, y: 14, z: 1 },
+                    { img: peekFood, rot: 5, x: 50, y: 0, z: 2 },
+                    { img: peekWater, rot: -3, x: 110, y: 22, z: 3 },
+                  ].map((p, i) => (
+                    <div
+                      key={i}
+                      className="absolute bg-[#FAFAF7] p-1.5 pb-5 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.35),0_2px_6px_-2px_rgba(0,0,0,0.15)] transition-transform duration-500 ease-out group-hover:[&:nth-child(1)]:-rotate-[12deg] group-hover:[&:nth-child(3)]:rotate-[0deg]"
+                      style={{
+                        left: `${p.x}px`,
+                        top: `${p.y}px`,
+                        transform: `rotate(${p.rot}deg)`,
+                        zIndex: p.z,
+                      }}
+                    >
+                      <div className="w-[100px] h-[100px] sm:w-[120px] sm:h-[120px] overflow-hidden bg-muted">
+                        <img
+                          src={p.img}
+                          alt=""
+                          loading="lazy"
+                          decoding="async"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Handwritten note */}
+                <div className="pb-2">
+                  <p
+                    className="text-2xl md:text-3xl text-primary leading-tight"
+                    style={{ fontFamily: "'Caveat', cursive" }}
+                  >
+                    ...and 9 more
+                  </p>
+                  <p
+                    className="text-lg md:text-xl text-secondary mt-1 inline-block group-hover:translate-x-1 transition-transform"
+                    style={{ fontFamily: "'Caveat', cursive" }}
+                  >
+                    in my notebook →
+                  </p>
+                </div>
+              </Link>
+            </FadeIn>
+          </div>
         </div>
       </div>
 
@@ -970,67 +1027,6 @@ const Index = () => {
               </div>
             </FadeIn>
           </div>
-        </div>
-      </section>
-
-      {/* ── Polaroid peek: tease the Wall of Curiosities ── */}
-      <section className="py-12 md:py-16 lg:py-20 overflow-hidden">
-        <div className="container mx-auto px-6 lg:px-12">
-          <FadeIn>
-            <Link
-              to="/get-inspired"
-              className="group block mx-auto max-w-3xl"
-              aria-label="See what excites me on the Wall of Curiosities"
-            >
-              <div className="flex items-center justify-center gap-6 md:gap-10 flex-wrap md:flex-nowrap">
-                {/* Stack of overlapping polaroids */}
-                <div className="relative w-[280px] sm:w-[340px] h-[180px] sm:h-[220px] shrink-0">
-                  {[
-                    { img: peekHistory, rot: -8, x: 0, y: 10, z: 1 },
-                    { img: peekFood, rot: 4, x: 70, y: 0, z: 2 },
-                    { img: peekWater, rot: -3, x: 150, y: 20, z: 3 },
-                  ].map((p, i) => (
-                    <div
-                      key={i}
-                      className="absolute top-0 bg-[#FAFAF7] p-2 pb-6 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.35),0_2px_6px_-2px_rgba(0,0,0,0.15)] transition-transform duration-500 ease-out"
-                      style={{
-                        left: `${p.x}px`,
-                        top: `${p.y}px`,
-                        transform: `rotate(${p.rot}deg)`,
-                        zIndex: p.z,
-                      }}
-                    >
-                      <div className="w-[120px] h-[120px] sm:w-[140px] sm:h-[140px] overflow-hidden bg-muted">
-                        <img
-                          src={p.img}
-                          alt=""
-                          loading="lazy"
-                          decoding="async"
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Handwritten note */}
-                <div className="text-center md:text-left">
-                  <p
-                    className="text-3xl md:text-4xl text-primary leading-tight"
-                    style={{ fontFamily: "'Caveat', cursive" }}
-                  >
-                    ...and 9 more in my notebook
-                  </p>
-                  <p
-                    className="text-xl md:text-2xl text-secondary mt-1 group-hover:translate-x-1 transition-transform inline-block"
-                    style={{ fontFamily: "'Caveat', cursive" }}
-                  >
-                    take a peek →
-                  </p>
-                </div>
-              </div>
-            </Link>
-          </FadeIn>
         </div>
       </section>
 

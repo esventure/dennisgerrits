@@ -262,6 +262,31 @@ const Index = () => {
               </svg>
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-6 relative">
+                {/* Mobile-only vertical hand-drawn connector */}
+                <svg
+                  className="md:hidden absolute pointer-events-none"
+                  style={{ top: 64, bottom: 64, left: "50%", width: 20, transform: "translateX(-50%)" }}
+                  viewBox="0 0 20 800"
+                  preserveAspectRatio="none"
+                  aria-hidden
+                >
+                  <defs>
+                    <filter id="timelineSketchV" x="-20%" y="-2%" width="140%" height="104%">
+                      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="6" />
+                      <feDisplacementMap in="SourceGraphic" scale="2.2" />
+                    </filter>
+                  </defs>
+                  <path
+                    d="M 10 0 C 14 200, 6 400, 10 600 S 14 760, 10 800"
+                    fill="none"
+                    stroke="hsl(var(--heritage-orange))"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                    strokeDasharray="2 8"
+                    filter="url(#timelineSketchV)"
+                    opacity="0.85"
+                  />
+                </svg>
                 {[
                   { n: "01", label: "You reach out", text: "A quick note, a phone call. Tell me when you're coming." },
                   { n: "02", label: "We have a call", text: "I listen. Your pace, your interests, what you've already seen." },

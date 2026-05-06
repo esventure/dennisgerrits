@@ -700,6 +700,8 @@ const Index = () => {
               ))}
             </div>
           </div>
+        </div>
+      </div>
 
 
       {/* ── 4. Proof: Reviews & Guests ── */}

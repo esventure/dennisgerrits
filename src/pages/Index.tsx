@@ -973,7 +973,68 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ── 6. Stories (Blog) ── */}
+      {/* ── Polaroid peek: tease the Wall of Curiosities ── */}
+      <section className="py-12 md:py-16 lg:py-20 overflow-hidden">
+        <div className="container mx-auto px-6 lg:px-12">
+          <FadeIn>
+            <Link
+              to="/get-inspired"
+              className="group block mx-auto max-w-3xl"
+              aria-label="See what excites me on the Wall of Curiosities"
+            >
+              <div className="flex items-center justify-center gap-6 md:gap-10 flex-wrap md:flex-nowrap">
+                {/* Stack of overlapping polaroids */}
+                <div className="relative w-[280px] sm:w-[340px] h-[180px] sm:h-[220px] shrink-0">
+                  {[
+                    { img: peekHistory, rot: -8, x: 0, y: 10, z: 1 },
+                    { img: peekFood, rot: 4, x: 70, y: 0, z: 2 },
+                    { img: peekWater, rot: -3, x: 150, y: 20, z: 3 },
+                  ].map((p, i) => (
+                    <div
+                      key={i}
+                      className="absolute top-0 bg-[#FAFAF7] p-2 pb-6 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.35),0_2px_6px_-2px_rgba(0,0,0,0.15)] transition-transform duration-500 ease-out"
+                      style={{
+                        left: `${p.x}px`,
+                        top: `${p.y}px`,
+                        transform: `rotate(${p.rot}deg)`,
+                        zIndex: p.z,
+                      }}
+                    >
+                      <div className="w-[120px] h-[120px] sm:w-[140px] sm:h-[140px] overflow-hidden bg-muted">
+                        <img
+                          src={p.img}
+                          alt=""
+                          loading="lazy"
+                          decoding="async"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Handwritten note */}
+                <div className="text-center md:text-left">
+                  <p
+                    className="text-3xl md:text-4xl text-primary leading-tight"
+                    style={{ fontFamily: "'Caveat', cursive" }}
+                  >
+                    ...and 9 more in my notebook
+                  </p>
+                  <p
+                    className="text-xl md:text-2xl text-secondary mt-1 group-hover:translate-x-1 transition-transform inline-block"
+                    style={{ fontFamily: "'Caveat', cursive" }}
+                  >
+                    take a peek →
+                  </p>
+                </div>
+              </div>
+            </Link>
+          </FadeIn>
+        </div>
+      </section>
+
+
       <section id="stories" className="py-16 md:py-20 lg:py-32 scroll-mt-20">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mb-16">

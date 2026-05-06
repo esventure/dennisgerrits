@@ -759,6 +759,7 @@ const Index = () => {
             </Link>
           </FadeIn>
         </div>
+      </div>
 
 
 

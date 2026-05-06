@@ -303,7 +303,7 @@ const Index = () => {
                           </filter>
                         </defs>
                         {/* paper fill so the orange dashed line is visually broken */}
-                        <circle cx="32" cy="32" r="28" fill="hsl(var(--heritage-taupe-tint))" />
+                        <circle cx="32" cy="32" r="30" fill="hsl(var(--background))" className="md:hidden-fill" />
                         {/* hand-drawn ring */}
                         <path
                           d={sketchedRingPath(32, 32, 26, idx)}

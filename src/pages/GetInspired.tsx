@@ -11,6 +11,10 @@ import imgArchitecture from "@/assets/interests/architecture.jpg";
 import imgArt from "@/assets/interests/art.jpg";
 import imgNature from "@/assets/interests/nature.jpg";
 import imgCraft from "@/assets/interests/craft.jpg";
+import imgCafes from "@/assets/interests/cafes.jpg";
+import imgCycling from "@/assets/interests/cycling.jpg";
+import imgLiterature from "@/assets/interests/literature.jpg";
+import imgMusic from "@/assets/interests/music.jpg";
 
 const themes = [
   {
@@ -65,6 +69,42 @@ const themes = [
     note: "watch the hands",
     image: imgCraft,
     rotate: 1.4,
+    pin: "tape-tr",
+  },
+  {
+    id: "cafes",
+    title: "Brown Cafes",
+    caption: "Smoky old pubs where regulars have their own stool. We'll have a jenever and listen for a while.",
+    note: "ask for the bitter",
+    image: imgCafes,
+    rotate: -2.0,
+    pin: "tape-tl",
+  },
+  {
+    id: "cycling",
+    title: "On Two Wheels",
+    caption: "I'll get you a proper Dutch bike and we'll take the long way. The city looks different from the saddle.",
+    note: "no helmets, sorry",
+    image: imgCycling,
+    rotate: 1.6,
+    pin: "tape-tr",
+  },
+  {
+    id: "literature",
+    title: "Books & Writers",
+    caption: "I'll show you the cafe where Multatuli sat, and a tiny shop where you can still find first editions.",
+    note: "smell the pages",
+    image: imgLiterature,
+    rotate: -1.4,
+    pin: "tape-tl",
+  },
+  {
+    id: "music",
+    title: "Live Music",
+    caption: "Small rooms, big sound. I know which nights to go and where the locals actually listen.",
+    note: "stay till late",
+    image: imgMusic,
+    rotate: 2.0,
     pin: "tape-tr",
   },
 ];
@@ -124,7 +164,7 @@ const GetInspired = () => {
           </div>
 
           {/* Polaroid wall */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-8 md:gap-x-12 pt-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-12 md:gap-y-16 gap-x-6 md:gap-x-10 pt-8">
             {themes.map((theme, i) => {
               const isActive = active === theme.id;
               return (

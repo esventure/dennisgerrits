@@ -194,12 +194,12 @@ const GetInspired = () => {
                     className="group relative block w-full text-left transition-transform duration-500 ease-out hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-4"
                     style={{ transform: `rotate(${isActive ? 0 : theme.rotate}deg)` }}
                   >
-                    <div className="bg-[#FAFAF7] p-3 pb-20 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.35),0_2px_6px_-2px_rgba(0,0,0,0.15)] transition-shadow duration-500 group-hover:shadow-[0_18px_40px_-14px_rgba(0,0,0,0.4)] relative">
+                    <div className="bg-[#FAFAF7] p-2.5 sm:p-3 pb-16 sm:pb-20 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.35),0_2px_6px_-2px_rgba(0,0,0,0.15)] transition-shadow duration-500 group-hover:shadow-[0_18px_40px_-14px_rgba(0,0,0,0.4)] relative">
                       <span
                         aria-hidden
                         className={cn(
-                          "absolute -top-3 w-20 h-7 bg-[hsl(var(--heritage-orange))]/25 border border-[hsl(var(--heritage-orange))]/30",
-                          theme.pin === "tape-tl" ? "left-6 -rotate-[8deg]" : "right-6 rotate-[6deg]"
+                          "absolute -top-3 w-16 sm:w-20 h-6 sm:h-7 bg-[hsl(var(--heritage-orange))]/25 border border-[hsl(var(--heritage-orange))]/30",
+                          theme.pin === "tape-tl" ? "left-4 sm:left-6 -rotate-[8deg]" : "right-4 sm:right-6 rotate-[6deg]"
                         )}
                       />
                       <div className="aspect-square overflow-hidden bg-muted">
@@ -212,12 +212,12 @@ const GetInspired = () => {
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                         />
                       </div>
-                      <div className="absolute bottom-4 left-3 right-3 px-2">
-                        <h3 className="font-heading text-2xl text-primary leading-none tracking-wide">
+                      <div className="absolute bottom-3 sm:bottom-4 left-2.5 right-2.5 sm:left-3 sm:right-3 px-1.5 sm:px-2">
+                        <h3 className="font-heading text-lg sm:text-xl md:text-2xl text-primary leading-tight tracking-wide truncate">
                           {theme.title}
                         </h3>
                         <p
-                          className="text-lg text-foreground/70 mt-1 leading-snug"
+                          className="text-base sm:text-lg text-foreground/70 mt-0.5 sm:mt-1 leading-snug truncate"
                           style={{ fontFamily: "'Caveat', cursive" }}
                         >
                           {theme.note}
@@ -227,11 +227,11 @@ const GetInspired = () => {
                     <div
                       className={cn(
                         "overflow-hidden transition-all duration-500 ease-out",
-                        isActive ? "max-h-48 opacity-100 mt-4" : "max-h-0 opacity-0 mt-0"
+                        isActive ? "max-h-60 opacity-100 mt-3 sm:mt-4" : "max-h-0 opacity-0 mt-0"
                       )}
                     >
                       <p
-                        className="text-xl text-foreground/85 leading-snug px-1"
+                        className="text-lg sm:text-xl md:text-2xl text-foreground/90 leading-snug px-1"
                         style={{ fontFamily: "'Caveat', cursive" }}
                       >
                         {theme.caption}

@@ -1087,27 +1087,11 @@ const Index = () => {
         className="relative py-20 md:py-28 lg:py-36 scroll-mt-20 overflow-hidden"
         style={{ backgroundColor: "hsl(var(--heritage-bordeaux))" }}
       >
-        {/* Skyline continues into the red — positioned to align with the global skyline above */}
-        <div
-          className="absolute inset-x-0 top-0 pointer-events-none"
-          aria-hidden
-          style={{ zIndex: 0 }}
-        >
-          <img
-            src={amsterdamSkyline}
-            alt=""
-            className="w-full h-auto -translate-y-[55%]"
-            style={{
-              opacity: 0.22,
-              mixBlendMode: "screen",
-              filter: "brightness(1.4) sepia(1) saturate(4) hue-rotate(-15deg)",
-              maskImage:
-                "linear-gradient(to bottom, black 0%, black 70%, transparent 100%)",
-              WebkitMaskImage:
-                "linear-gradient(to bottom, black 0%, black 70%, transparent 100%)",
-            }}
-          />
-        </div>
+        {/* Skyline continuation is handled by the shared <AmsterdamSkyline />
+            component (rendered globally). Its dark-blend layer activates over
+            this bordeaux background so the reveal stays in sync with the rest
+            of the page. */}
+
 
         {/* Top decorative divider — bordeaux wave eating UP into the section above (no white bar) */}
         <div className="absolute inset-x-0 pointer-events-none z-10" style={{ bottom: "100%" }} aria-hidden>

@@ -59,27 +59,4 @@ const AmsterdamSkyline = ({ variant = 'light' }: Props) => {
   );
 };
 
-
-  return (
-    <div
-      className="fixed bottom-0 left-0 w-full pointer-events-none"
-      style={{ zIndex: 0, clipPath }}
-      aria-hidden
-    >
-      <img
-        src={skyline}
-        alt="Amsterdam skyline illustration"
-        className="w-full h-auto"
-        style={{
-          opacity: 0.07,
-          maskImage: MASK,
-          WebkitMaskImage: MASK,
-          filter: 'invert(1) brightness(1.5) sepia(1) saturate(5) hue-rotate(-15deg)',
-          mixBlendMode: 'multiply',
-        }}
-      />
-    </div>
-  );
-};
-
 export default AmsterdamSkyline;

@@ -17,24 +17,27 @@ interface DayMapProps {
   moments: Moment[];
 }
 
-/* ── Checkpoint positions on the SVG canvas (600×500) ── */
+/* ── Checkpoint positions on the SVG canvas (600×500) ──
+ * Stops follow a west → east → north arc through Amsterdam:
+ * Jordaan → canal belt → Centrum → Plantage → IJ harbour. */
 const stops = [
-  { x: 110, y: 110, label: "Jordaan Café", icon: iconFoot },
-  { x: 250, y: 175, label: "Canal Walk", icon: iconBoat },
-  { x: 360, y: 270, label: "Local Lunch", icon: iconFood },
-  { x: 470, y: 215, label: "Hidden Garden", icon: iconNature },
-  { x: 480, y: 380, label: "Waterfront Bar", icon: iconDining },
+  { x: 95, y: 245, label: "Jordaan Café", icon: iconFoot },
+  { x: 200, y: 200, label: "Canal Walk", icon: iconBoat },
+  { x: 320, y: 230, label: "Local Lunch", icon: iconFood },
+  { x: 430, y: 285, label: "Hidden Garden", icon: iconNature },
+  { x: 515, y: 160, label: "Waterfront Bar", icon: iconDining },
 ];
 
-/* Smooth Bézier route segments between consecutive stops */
+/* Smooth Bézier route segments hugging the canal arc, then cutting
+ * up to the IJ waterfront. */
 const pathSegments = [
-  "M 110 110 C 160 95, 210 150, 250 175",
-  "M 250 175 C 290 220, 320 240, 360 270",
-  "M 360 270 C 400 245, 440 220, 470 215",
-  "M 470 215 C 495 270, 480 330, 480 380",
+  "M 95 245 C 130 215, 165 200, 200 200",
+  "M 200 200 C 245 210, 285 220, 320 230",
+  "M 320 230 C 365 250, 405 275, 430 285",
+  "M 430 285 C 480 245, 510 205, 515 160",
 ];
 
-const PATH_LEN = 280;
+const PATH_LEN = 240;
 
 /* Hand-drawn helpers — slightly irregular shapes via path data */
 const sketchCircle = (cx: number, cy: number, r: number, jitter = 0.6) => {

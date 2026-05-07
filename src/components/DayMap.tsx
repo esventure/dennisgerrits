@@ -1,6 +1,11 @@
 import { useState, useMemo, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import iconFoot from "@/assets/icon-foot.png";
+import iconBoat from "@/assets/icon-boat.png";
+import iconFood from "@/assets/icon-food.png";
+import iconNature from "@/assets/icon-nature.png";
+import iconDining from "@/assets/icon-dining.png";
 
 interface Moment {
   time: string;
@@ -14,11 +19,11 @@ interface DayMapProps {
 
 /* ── Checkpoint positions on the SVG canvas (600×500) ── */
 const stops = [
-  { x: 110, y: 110, label: "Jordaan Café" },
-  { x: 250, y: 175, label: "Canal Walk" },
-  { x: 360, y: 270, label: "Local Lunch" },
-  { x: 470, y: 215, label: "Hidden Garden" },
-  { x: 480, y: 380, label: "Waterfront Bar" },
+  { x: 110, y: 110, label: "Jordaan Café", icon: iconFoot },
+  { x: 250, y: 175, label: "Canal Walk", icon: iconBoat },
+  { x: 360, y: 270, label: "Local Lunch", icon: iconFood },
+  { x: 470, y: 215, label: "Hidden Garden", icon: iconNature },
+  { x: 480, y: 380, label: "Waterfront Bar", icon: iconDining },
 ];
 
 /* Smooth Bézier route segments between consecutive stops */

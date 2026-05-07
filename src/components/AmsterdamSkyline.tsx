@@ -37,7 +37,7 @@ const AmsterdamSkyline = ({ variant = 'global' }: Props) => {
           alt=""
           className="absolute bottom-0 left-0 w-full h-auto block"
           style={{
-            opacity: 0.35,
+            opacity: 0.12,
             maskImage: MASK,
             WebkitMaskImage: MASK,
             filter:
@@ -62,7 +62,7 @@ const AmsterdamSkyline = ({ variant = 'global' }: Props) => {
           alt="Amsterdam skyline illustration"
           className="w-full h-auto block"
           style={{
-            opacity: 0.07,
+            opacity: 0.03,
             maskImage: MASK,
             WebkitMaskImage: MASK,
             filter:
@@ -83,7 +83,7 @@ const AmsterdamSkyline = ({ variant = 'global' }: Props) => {
           alt=""
           className="w-full h-auto block"
           style={{
-            opacity: 0.35,
+            opacity: 0.12,
             maskImage: MASK,
             WebkitMaskImage: MASK,
             filter: 'brightness(1.5) sepia(1) saturate(6) hue-rotate(-15deg)',

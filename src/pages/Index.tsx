@@ -1084,43 +1084,29 @@ const Index = () => {
       {/* ── 7. Contact, FAQ & Footer ── */}
       <section
         id="contact"
-        className="relative py-20 md:py-28 lg:py-36 scroll-mt-20 [overflow-x:clip]"
-        style={{ backgroundColor: "hsl(var(--heritage-green))" }}
+        className="relative py-16 md:py-20 lg:py-24 scroll-mt-20"
       >
-        {/* Section-anchored skyline so the bordeaux is filled with the
-            silhouette through the WHOLE section height — not just the
-            strip at the viewport bottom that the global fixed layer
-            covers. Uses the same scroll-driven clip for sync. */}
-        <AmsterdamSkyline variant="section" />
-
-
-        {/* Top decorative divider — bordeaux wave eating UP into the section above (no white bar) */}
-        <div className="absolute inset-x-0 pointer-events-none z-10" style={{ bottom: "100%" }} aria-hidden>
-          <svg
-            viewBox="0 0 1440 80"
-            preserveAspectRatio="none"
-            className="block w-full h-12 md:h-20 -mb-px"
+        <div className="container mx-auto px-6 lg:px-12">
+          <div
+            className="relative overflow-hidden rounded-3xl px-6 py-16 md:px-12 md:py-20 lg:px-20 lg:py-24"
+            style={{ backgroundColor: "hsl(var(--heritage-green))" }}
           >
-            <path
-              d="M0,80 L0,50 C180,20 360,65 540,40 C720,15 900,60 1080,35 C1260,10 1380,50 1440,30 L1440,80 Z"
-              fill="hsl(var(--heritage-green))"
-            />
-          </svg>
-        </div>
+            {/* Section-anchored skyline silhouette inside the rounded box */}
+            <AmsterdamSkyline variant="section" />
 
-        {/* Handwritten margin note */}
-        <p
-          className="absolute top-6 right-6 md:top-10 md:right-12 text-2xl md:text-3xl rotate-[-4deg] hidden md:block"
-          style={{
-            fontFamily: "'Caveat', cursive",
-            color: "hsl(var(--heritage-orange))",
-          }}
-          aria-hidden
-        >
-          let's talk →
-        </p>
+            {/* Handwritten margin note */}
+            <p
+              className="absolute top-6 right-6 md:top-10 md:right-12 text-2xl md:text-3xl rotate-[-4deg] hidden md:block z-10"
+              style={{
+                fontFamily: "'Caveat', cursive",
+                color: "hsl(var(--heritage-orange))",
+              }}
+              aria-hidden
+            >
+              let's talk →
+            </p>
 
-        <div className="container mx-auto px-6 lg:px-12 relative" style={{ zIndex: 10 }}>
+            <div className="relative" style={{ zIndex: 10 }}>
           {/* Big section marker */}
           <FadeIn>
             <div className="text-center mb-14 lg:mb-20">

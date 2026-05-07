@@ -72,25 +72,10 @@ const AmsterdamSkyline = ({ variant = 'global' }: Props) => {
         />
       </div>
 
-      {/* Dark-background layer (only visually contributes over dark colors) */}
-      <div
-        className="fixed bottom-0 left-0 w-full pointer-events-none"
-        style={{ zIndex: 5, clipPath, isolation: 'isolate' }}
-        aria-hidden
-      >
-        <img
-          src={skyline}
-          alt=""
-          className="w-full h-auto block"
-          style={{
-            opacity: 0.06,
-            maskImage: MASK,
-            WebkitMaskImage: MASK,
-            filter: 'brightness(1.5) sepia(1) saturate(6) hue-rotate(-15deg)',
-            mixBlendMode: 'screen',
-          }}
-        />
-      </div>
+      {/* Note: the previous global "screen" blend layer was removed
+          because it doubled up with the section-variant skyline inside
+          the rounded green contact card. The section variant now owns
+          the dark-background reveal. */}
     </>
   );
 };

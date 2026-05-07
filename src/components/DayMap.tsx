@@ -435,6 +435,18 @@ const DayMap = ({ moments }: DayMapProps) => {
             start here ↘
           </text>
 
+          {/* ── Sketchy compass (bottom-right corner) ── */}
+          <g transform="translate(555, 445)" opacity="0.7" filter="url(#sketch)">
+            <path d={sketchCircle(0, 0, 16, 0.7)} stroke="hsl(var(--primary))" strokeWidth="0.9" fill="none" />
+            <path d={sketchCircle(0, 0, 10, 0.5)} stroke="hsl(var(--primary))" strokeWidth="0.6" fill="none" opacity="0.5" />
+            <line x1="0" y1="-15" x2="0" y2="-23" stroke="hsl(var(--heritage-orange))" strokeWidth="1.3" strokeLinecap="round" />
+            <line x1="0" y1="15" x2="0" y2="20" stroke="hsl(var(--primary))" strokeWidth="0.7" strokeLinecap="round" opacity="0.6" />
+            <line x1="-15" y1="0" x2="-20" y2="0" stroke="hsl(var(--primary))" strokeWidth="0.7" strokeLinecap="round" opacity="0.6" />
+            <line x1="15" y1="0" x2="20" y2="0" stroke="hsl(var(--primary))" strokeWidth="0.7" strokeLinecap="round" opacity="0.6" />
+            <polygon points="0,-16 3,-10 0,-12 -3,-10" fill="hsl(var(--heritage-orange))" />
+            <text x="0" y="-26" textAnchor="middle" fontSize="9" fontFamily="'Bebas Neue', sans-serif" letterSpacing="0.18em" fill="hsl(var(--primary))">N</text>
+          </g>
+
           {/* ── Route: pencil under-drawing + ink wobble on top ── */}
           {pathSegments.map((d, i) => {
             const visible = i < maxVisited;

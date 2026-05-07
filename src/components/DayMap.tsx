@@ -172,7 +172,7 @@ const DayMap = ({ moments }: DayMapProps) => {
             <filter id="sketch" x="-5%" y="-5%" width="110%" height="110%">
               <feTurbulence
                 type="fractalNoise"
-                baseFrequency="0.025"
+                baseFrequency="0.04"
                 numOctaves="2"
                 seed="4"
                 result="noise"
@@ -180,7 +180,7 @@ const DayMap = ({ moments }: DayMapProps) => {
               <feDisplacementMap
                 in="SourceGraphic"
                 in2="noise"
-                scale="1.6"
+                scale="2.6"
               />
             </filter>
 

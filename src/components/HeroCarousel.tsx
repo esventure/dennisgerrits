@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import FadeIn from "./FadeIn";
+import AmsterdamSkyline from "./AmsterdamSkyline";
 import dennisArmsWide from "@/assets/dennis-arms-wide.jpg";
 import dennisCanalSmile from "@/assets/dennis-canal-smile.jpg";
 import dennisTalking from "@/assets/dennis-talking.jpg";

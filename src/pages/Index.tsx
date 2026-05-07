@@ -1192,6 +1192,7 @@ const Index = () => {
               </div>
             </FadeIn>
           </div>
+          </div>
         </div>
       </section>
     </main>

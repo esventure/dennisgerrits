@@ -44,7 +44,7 @@ const themes = [
     note: "look up, always",
     image: imgArchitecture,
     rotate: -1.2,
-    pin: "tape-tl",
+    pin: "tape-gl",
   },
   {
     id: "art",
@@ -53,7 +53,7 @@ const themes = [
     note: "she might be home",
     image: imgArt,
     rotate: 2.2,
-    pin: "tape-tr",
+    pin: "tape-gr",
   },
   {
     id: "nature",
@@ -80,7 +80,7 @@ const themes = [
     note: "ask for the bitter",
     image: imgCafes,
     rotate: -2.0,
-    pin: "tape-tl",
+    pin: "tape-gl",
   },
   {
     id: "cycling",
@@ -89,7 +89,7 @@ const themes = [
     note: "no helmets, sorry",
     image: imgCycling,
     rotate: 1.6,
-    pin: "tape-tr",
+    pin: "tape-gr",
   },
   {
     id: "literature",
@@ -116,7 +116,7 @@ const themes = [
     note: "bring a sweater",
     image: imgWater,
     rotate: -1.8,
-    pin: "tape-tl",
+    pin: "tape-gl",
   },
   {
     id: "markets",
@@ -125,7 +125,7 @@ const themes = [
     note: "go hungry",
     image: imgMarkets,
     rotate: 1.2,
-    pin: "tape-tr",
+    pin: "tape-gr",
   },
 ];
 

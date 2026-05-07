@@ -6,13 +6,12 @@ import dennisIllustration from "@/assets/dennis_illustration.png";
 
 const navLinks = [
   { to: "/#about", label: "About" },
-  { to: "/#how-i-work", label: "How I Work" },
+  { to: "/#how-it-works", label: "How I Work" },
   { to: "/#day", label: "A Day Together" },
-  { to: "/#my-service", label: "My Service" },
   { to: "/#proof", label: "Reviews" },
-  { to: "/#stories", label: "Stories" },
-  { to: "/#contact", label: "Contact" },
   { to: "/get-inspired", label: "Get Inspired" },
+  { to: "/travel-agents", label: "For Professionals" },
+  { to: "/#contact", label: "Contact" },
 ];
 
 const Header = () => {

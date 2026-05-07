@@ -15,11 +15,12 @@ const Footer = () => (
           <nav className="space-y-2">
             {[
               { to: "/#about", label: "About Me" },
+              { to: "/#how-it-works", label: "How I Work" },
               { to: "/#day", label: "A Day Together" },
               { to: "/#proof", label: "Reviews" },
               { to: "/#stories", label: "Stories" },
-              { to: "/#contact", label: "Get in Touch" },
               { to: "/get-inspired", label: "Get Inspired" },
+              { to: "/#contact", label: "Get in Touch" },
             ].map((link) => (
               <Link
                 key={link.to}
@@ -41,10 +42,16 @@ const Footer = () => (
               Travel Agents & Concierges
             </Link>
             <Link
-              to="/travel-agents"
+              to="/travel-agents#universities"
               className="block font-body text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors"
             >
               Universities & Schools
+            </Link>
+            <Link
+              to="/travel-agents#speaking"
+              className="block font-body text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors"
+            >
+              Speaking & Podcast
             </Link>
           </nav>
           <p className="font-body text-primary-foreground/40 text-xs mt-8">

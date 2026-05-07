@@ -1,6 +1,11 @@
 import { useState, useMemo, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import iconFoot from "@/assets/icon-foot.png";
+import iconBoat from "@/assets/icon-boat.png";
+import iconFood from "@/assets/icon-food.png";
+import iconNature from "@/assets/icon-nature.png";
+import iconDining from "@/assets/icon-dining.png";
 
 interface Moment {
   time: string;
@@ -14,11 +19,11 @@ interface DayMapProps {
 
 /* ── Checkpoint positions on the SVG canvas (600×500) ── */
 const stops = [
-  { x: 110, y: 110, label: "Jordaan Café" },
-  { x: 250, y: 175, label: "Canal Walk" },
-  { x: 360, y: 270, label: "Local Lunch" },
-  { x: 470, y: 215, label: "Hidden Garden" },
-  { x: 480, y: 380, label: "Waterfront Bar" },
+  { x: 110, y: 110, label: "Jordaan Café", icon: iconFoot },
+  { x: 250, y: 175, label: "Canal Walk", icon: iconBoat },
+  { x: 360, y: 270, label: "Local Lunch", icon: iconFood },
+  { x: 470, y: 215, label: "Hidden Garden", icon: iconNature },
+  { x: 480, y: 380, label: "Waterfront Bar", icon: iconDining },
 ];
 
 /* Smooth Bézier route segments between consecutive stops */
@@ -167,7 +172,7 @@ const DayMap = ({ moments }: DayMapProps) => {
             <filter id="sketch" x="-5%" y="-5%" width="110%" height="110%">
               <feTurbulence
                 type="fractalNoise"
-                baseFrequency="0.025"
+                baseFrequency="0.04"
                 numOctaves="2"
                 seed="4"
                 result="noise"
@@ -175,7 +180,7 @@ const DayMap = ({ moments }: DayMapProps) => {
               <feDisplacementMap
                 in="SourceGraphic"
                 in2="noise"
-                scale="1.6"
+                scale="2.6"
               />
             </filter>
 
@@ -463,6 +468,16 @@ const DayMap = ({ moments }: DayMapProps) => {
                 </text>
                 {isActive && (
                   <>
+                    {/* Hand-drawn icon floating above the stop */}
+                    <image
+                      href={stop.icon}
+                      x={stop.x - 18}
+                      y={stop.y - 56}
+                      width="36"
+                      height="36"
+                      opacity="0.95"
+                      style={{ filter: "drop-shadow(0 1px 0 rgba(0,0,0,0.05))" }}
+                    />
                     <text
                       x={stop.x}
                       y={stop.y + 36}

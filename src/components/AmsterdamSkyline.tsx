@@ -35,11 +35,11 @@ const AmsterdamSkyline = ({ variant = 'global' }: Props) => {
         <img
           src={skyline}
           alt=""
-          className="absolute bottom-0 left-0 w-full h-auto block"
+          className="absolute inset-0 w-full h-full block"
           style={{
-            opacity: 0.06,
-            maskImage: MASK,
-            WebkitMaskImage: MASK,
+            opacity: 0.08,
+            objectFit: 'cover',
+            objectPosition: 'bottom',
             filter:
               'brightness(1.5) sepia(1) saturate(6) hue-rotate(-15deg)',
             mixBlendMode: 'screen',

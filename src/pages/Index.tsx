@@ -1085,7 +1085,7 @@ const Index = () => {
       <section
         id="contact"
         className="relative py-20 md:py-28 lg:py-36 scroll-mt-20 [overflow-x:clip]"
-        style={{ backgroundColor: "hsl(var(--heritage-bordeaux))" }}
+        style={{ backgroundColor: "hsl(var(--heritage-green))" }}
       >
         {/* Section-anchored skyline so the bordeaux is filled with the
             silhouette through the WHOLE section height — not just the
@@ -1103,7 +1103,7 @@ const Index = () => {
           >
             <path
               d="M0,80 L0,50 C180,20 360,65 540,40 C720,15 900,60 1080,35 C1260,10 1380,50 1440,30 L1440,80 Z"
-              fill="hsl(var(--heritage-bordeaux))"
+              fill="hsl(var(--heritage-green))"
             />
           </svg>
         </div>
@@ -1155,7 +1155,7 @@ const Index = () => {
             <FadeIn delay={0.15}>
               <div
                 className="bg-background p-8 lg:p-10 border-l-4 shadow-2xl rounded-sm"
-                style={{ borderLeftColor: "hsl(var(--heritage-green))" }}
+                style={{ borderLeftColor: "hsl(var(--heritage-orange))" }}
               >
                 <h3 className="font-heading text-3xl text-primary mb-3">
                   {t("booking.form.title", "Book a Call")}

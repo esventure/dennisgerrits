@@ -1088,7 +1088,7 @@ const Index = () => {
       >
         <div className="container mx-auto px-6 lg:px-12">
           <div
-            className="relative overflow-hidden rounded-3xl px-6 py-16 md:px-12 md:py-20 lg:px-20 lg:py-24"
+            className="relative overflow-hidden rounded-3xl px-5 py-12 sm:px-8 sm:py-14 md:px-12 md:py-16 lg:px-16 lg:py-20"
             style={{ backgroundColor: "hsl(var(--heritage-green))" }}
           >
             {/* Section-anchored skyline silhouette inside the rounded box */}
@@ -1096,7 +1096,7 @@ const Index = () => {
 
             {/* Handwritten margin note */}
             <p
-              className="absolute top-6 right-6 md:top-10 md:right-12 text-2xl md:text-3xl rotate-[-4deg] hidden md:block z-10"
+              className="absolute top-5 right-5 md:top-8 md:right-10 text-2xl md:text-3xl rotate-[-4deg] hidden md:block z-10"
               style={{
                 fontFamily: "'Caveat', cursive",
                 color: "hsl(var(--heritage-orange))",
@@ -1106,43 +1106,46 @@ const Index = () => {
               let's talk →
             </p>
 
-            <div className="relative" style={{ zIndex: 10 }}>
-          {/* Big section marker */}
-          <FadeIn>
-            <div className="text-center mb-14 lg:mb-20">
-              <p
-                className="font-body text-sm tracking-[0.3em] uppercase mb-6"
-                style={{ color: "hsl(var(--heritage-orange))" }}
-              >
-                — {t("booking.kicker", "Get in Touch")} —
-              </p>
-              <h2
-                className="font-heading text-6xl md:text-7xl lg:text-8xl leading-[0.95]"
-                style={{ color: "hsl(var(--background))" }}
-              >
-                {t("booking.title", "Let's See if We're a Good Match")}
-              </h2>
-            </div>
-          </FadeIn>
+            <div className="relative mx-auto max-w-5xl" style={{ zIndex: 10 }}>
+              {/* Big section marker */}
+              <FadeIn>
+                <div className="text-center mb-10 md:mb-12 lg:mb-14">
+                  <p
+                    className="font-body text-xs md:text-sm tracking-[0.3em] uppercase mb-4"
+                    style={{ color: "hsl(var(--heritage-orange))" }}
+                  >
+                    — {t("booking.kicker", "Get in Touch")} —
+                  </p>
+                  <h2
+                    className="font-heading text-5xl md:text-6xl lg:text-7xl leading-[0.95] mx-auto max-w-3xl"
+                    style={{ color: "hsl(var(--background))" }}
+                  >
+                    {t("booking.title", "Let's See if We're a Good Match")}
+                  </h2>
+                </div>
+              </FadeIn>
 
-          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-20 items-start">
-            {/* Left: editorial intro */}
-            <FadeIn>
-              <div style={{ color: "hsl(var(--background) / 0.9)" }}>
-                <RichText
-                  className="font-body text-lg leading-relaxed"
-                  html={t("booking.intro", "")}
-                  fallback="The best way to start is a short, informal conversation. No obligations, just a chance to see if my approach feels right."
-                />
-              </div>
-            </FadeIn>
+              <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-8 md:gap-10 lg:gap-14 items-start">
+                {/* Left: editorial intro */}
+                <FadeIn>
+                  <div
+                    className="lg:pt-2"
+                    style={{ color: "hsl(var(--background) / 0.9)" }}
+                  >
+                    <RichText
+                      className="font-body text-base md:text-lg leading-relaxed"
+                      html={t("booking.intro", "")}
+                      fallback="The best way to start is a short, informal conversation. No obligations, just a chance to see if my approach feels right."
+                    />
+                  </div>
+                </FadeIn>
 
-            {/* Right: form on background card */}
-            <FadeIn delay={0.15}>
-              <div
-                className="bg-background p-8 lg:p-10 border-l-4 shadow-2xl rounded-sm"
-                style={{ borderLeftColor: "hsl(var(--heritage-orange))" }}
-              >
+                {/* Right: form on background card */}
+                <FadeIn delay={0.15}>
+                  <div
+                    className="bg-background p-6 sm:p-8 lg:p-10 border-l-4 shadow-2xl rounded-sm"
+                    style={{ borderLeftColor: "hsl(var(--heritage-orange))" }}
+                  >
                 <h3 className="font-heading text-3xl text-primary mb-3">
                   {t("booking.form.title", "Book a Call")}
                 </h3>

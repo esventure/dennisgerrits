@@ -1155,7 +1155,7 @@ const Index = () => {
             <FadeIn delay={0.15}>
               <div
                 className="bg-background p-8 lg:p-10 border-l-4 shadow-2xl rounded-sm"
-                style={{ borderLeftColor: "hsl(var(--heritage-green))" }}
+                style={{ borderLeftColor: "hsl(var(--heritage-orange))" }}
               >
                 <h3 className="font-heading text-3xl text-primary mb-3">
                   {t("booking.form.title", "Book a Call")}

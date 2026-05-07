@@ -305,16 +305,13 @@ const GetInspired = () => {
         style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}
       >
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-3xl mb-16">
+          <div className="max-w-3xl mb-12">
             <FadeIn>
-              <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
-                Stories
-              </p>
-              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
+              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-6">
                 Notes From the City
               </h2>
-              <p className="font-body text-lg text-muted-foreground leading-relaxed">
-                Short stories and reflections about Amsterdam. The kind of things I'd tell you over a coffee.
+              <p className="font-body text-base md:text-lg text-foreground/75 leading-relaxed max-w-xl">
+                Short reflections about Amsterdam. The kind of things I'd tell you over a coffee.
               </p>
             </FadeIn>
           </div>

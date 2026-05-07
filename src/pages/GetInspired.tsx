@@ -171,17 +171,36 @@ const GetInspired = () => {
   return (
     <main>
       {/* Interests section */}
-      <section className="py-24 lg:py-32 bg-gradient-to-b from-accent/5 to-background">
-        <div className="container mx-auto px-6 lg:px-12">
+      <section
+        className="relative py-24 lg:py-32"
+        style={{
+          background:
+            "radial-gradient(1200px 600px at 20% -10%, hsl(var(--heritage-orange) / 0.08), transparent 60%), hsl(var(--background))",
+        }}
+      >
+        {/* Subtle paper texture */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage:
+              "radial-gradient(hsl(var(--foreground)) 1px, transparent 1px)",
+            backgroundSize: "22px 22px",
+          }}
+        />
+        <div className="relative container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mb-16">
             <FadeIn>
-              <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
+              <p
+                className="font-body text-sm tracking-widest uppercase mb-6"
+                style={{ color: "hsl(var(--heritage-orange))" }}
+              >
                 What excites you?
               </p>
               <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl text-primary leading-[0.95] mb-8">
                 Build Your Day
               </h1>
-              <p className="font-body text-lg text-muted-foreground leading-relaxed">
+              <p className="font-body text-lg text-foreground/80 leading-relaxed">
                 Tell me what you love, and I'll show you a side of Amsterdam you won't find in any guidebook.
               </p>
             </FadeIn>
@@ -198,12 +217,15 @@ const GetInspired = () => {
                     className="group relative block w-full text-left transition-transform duration-500 ease-out hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-4"
                     style={{ transform: `rotate(${isActive ? 0 : theme.rotate}deg)` }}
                   >
-                    <div className="bg-[#FAFAF7] p-2.5 sm:p-3 pb-16 sm:pb-20 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.35),0_2px_6px_-2px_rgba(0,0,0,0.15)] transition-shadow duration-500 group-hover:shadow-[0_18px_40px_-14px_rgba(0,0,0,0.4)] relative">
+                    <div className="bg-white p-2.5 sm:p-3 pb-16 sm:pb-20 shadow-[0_10px_28px_-14px_rgba(0,0,0,0.28),0_2px_6px_-2px_rgba(0,0,0,0.12)] transition-shadow duration-500 group-hover:shadow-[0_22px_44px_-16px_rgba(0,0,0,0.35)] relative">
                       <span
                         aria-hidden
                         className={cn(
-                          "absolute -top-3 w-16 sm:w-20 h-6 sm:h-7 bg-[hsl(var(--heritage-orange))]/25 border border-[hsl(var(--heritage-orange))]/30",
-                          theme.pin === "tape-tl" ? "left-4 sm:left-6 -rotate-[8deg]" : "right-4 sm:right-6 rotate-[6deg]"
+                          "absolute -top-3 w-16 sm:w-20 h-6 sm:h-7 border",
+                          theme.pin === "tape-tl" && "left-4 sm:left-6 -rotate-[8deg] bg-[hsl(var(--heritage-orange))]/70 border-[hsl(var(--heritage-bordeaux))]/30",
+                          theme.pin === "tape-tr" && "right-4 sm:right-6 rotate-[6deg] bg-[hsl(var(--heritage-orange))]/70 border-[hsl(var(--heritage-bordeaux))]/30",
+                          theme.pin === "tape-gl" && "left-4 sm:left-6 -rotate-[6deg] bg-[hsl(var(--heritage-green))]/55 border-[hsl(var(--heritage-green))]/40",
+                          theme.pin === "tape-gr" && "right-4 sm:right-6 rotate-[7deg] bg-[hsl(var(--heritage-green))]/55 border-[hsl(var(--heritage-green))]/40",
                         )}
                       />
                       <div className="aspect-square overflow-hidden bg-muted">
@@ -224,8 +246,11 @@ const GetInspired = () => {
                           {theme.title}
                         </h3>
                         <p
-                          className="text-base sm:text-lg text-foreground/70 mt-0.5 sm:mt-1 leading-snug truncate"
-                          style={{ fontFamily: "'Caveat', cursive" }}
+                          className="text-base sm:text-lg mt-0.5 sm:mt-1 leading-snug truncate"
+                          style={{
+                            fontFamily: "'Caveat', cursive",
+                            color: "hsl(var(--heritage-bordeaux))",
+                          }}
                         >
                           {theme.note}
                         </p>
@@ -238,8 +263,11 @@ const GetInspired = () => {
                       )}
                     >
                       <p
-                        className="text-lg sm:text-xl md:text-2xl text-foreground/90 leading-snug px-1"
-                        style={{ fontFamily: "'Caveat', cursive" }}
+                        className="text-lg sm:text-xl md:text-2xl leading-snug px-1"
+                        style={{
+                          fontFamily: "'Caveat', cursive",
+                          color: "hsl(var(--heritage-bordeaux))",
+                        }}
                       >
                         {theme.caption}
                       </p>
@@ -251,11 +279,18 @@ const GetInspired = () => {
           </div>
 
           <FadeIn>
-            <p className="font-body text-center text-muted-foreground mt-16 text-sm mb-4">
+            <p className="font-body text-center text-foreground/70 mt-16 text-base mb-4">
               Pick a few that speak to you, then let's talk about building your perfect day.
             </p>
             <p className="text-center">
-              <a href="/#contact" className="font-body text-secondary hover:text-secondary/80 transition-colors text-sm tracking-wide underline underline-offset-4">
+              <a
+                href="/#contact"
+                className="font-body text-base tracking-wide border-b-2 border-dashed pb-1 transition-colors hover:opacity-80"
+                style={{
+                  color: "hsl(var(--heritage-orange))",
+                  borderColor: "hsl(var(--heritage-orange) / 0.5)",
+                }}
+              >
                 Ready to start planning? Let's talk.
               </a>
             </p>
@@ -264,7 +299,11 @@ const GetInspired = () => {
       </section>
 
       {/* Stories section — accordion style */}
-      <section id="stories-section" className="py-24 lg:py-32 bg-muted/30 scroll-mt-20">
+      <section
+        id="stories-section"
+        className="py-24 lg:py-32 scroll-mt-20"
+        style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}
+      >
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mb-16">
             <FadeIn>

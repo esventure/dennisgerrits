@@ -102,6 +102,18 @@ const Header = () => {
               {link.label}
             </Link>
           ))}
+          <div className="pt-3 mt-3 border-t border-border/40">
+            {secondaryLinks.map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                onClick={() => handleNavClick(link.to)}
+                className="block font-body text-sm tracking-[0.15em] uppercase py-2 text-foreground/50 hover:text-secondary transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
         </nav>
       )}
     </header>

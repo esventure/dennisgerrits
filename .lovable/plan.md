@@ -1,64 +1,57 @@
-## Goal
+# Two Dennises for the About split
 
-Surface three secondary offers without distracting from the main guest journey, respecting that they serve two different audiences:
+The "Person vs Guide" split is currently typography-only on a flat color block. It reads as informational, not personal. Adding two hand-drawn illustrations — one for each side of Dennis — gives the section a face, a story, and the same crafted/editorial feel the rest of the site has.
 
-- **Group A (audience-building):** Speaking engagements + the "Two Stories, One City" podcast.
-- **Group B (B2B utility):** Travel agents & concierges.
+## The two illustrations
 
-These get treated separately: A as an editorial strip on the homepage, B as a quiet header link only.
+Both rendered as transparent PNGs in the same hand-drawn ink-line + light watercolor wash style as the existing `dennis_illustration.png` portrait, so they read as a family with the header logo. Loose, confident lines. No corporate gloss.
 
-## Changes
+**1. Dennis the Person** — `src/assets/dennis-person.png`
+- Casual Amsterdammer, off duty.
+- Standing or leaning relaxed, hands in pockets or holding a coffee, soft smile.
+- Wearing everyday clothes (sweater, jeans), maybe a bike just visible behind him as a hint of the canals.
+- Palette accent: a touch of heritage purple or taupe in the wash.
 
-### 1. New homepage section: "Also" strip (before Contact)
+**2. Dennis the Guide** — `src/assets/dennis-guide.png`
+- Same Dennis, same face, in "guiding" mode.
+- Mid-gesture, walking pose, turning slightly to talk to someone off-frame. One hand pointing or open in explanation.
+- Light jacket, small notebook or map peeking from a pocket.
+- Palette accent: a touch of heritage orange/bordeaux in the wash so it sits well on the dark green/primary panel.
 
-Insert a new section in `src/pages/Index.tsx`, placed directly above the existing `#contact` section.
+Both at roughly 3:4 portrait ratio, full-figure (not head-only), transparent background, drawn so they "stand" on the panel without a baseline shadow.
 
-- Background: off-white (`bg-background`) so it sits quietly between the previous section and the contact block. Generous vertical padding (`py-20 lg:py-28`).
-- Small kicker (Bebas Neue, uppercase, secondary color): "Also".
-- Two editorial cards side-by-side on desktop, stacked on mobile. No buttons, no shadows, no hover lifts. Just a thin divider line under each, a Bebas Neue title, one Outfit sentence, and a subtle text link with an arrow.
+## Layout changes
 
-**Card 1 — Two Stories, One City (podcast)**
-- Title: "Two Stories, One City"
-- Body: "My podcast. Two Amsterdammers, one place, one conversation at a time."
-- Link: "Listen" (placeholder href `#`, can be wired to the real podcast URL later).
+File: `src/pages/Index.tsx`, the `#about` split (lines 162–206).
 
-**Card 2 — Speaking**
-- Title: "Invite me to speak"
-- Body: "I talk to groups, schools and conferences about Amsterdam, storytelling, and the way we travel."
-- Link: "Get in touch" → `/#contact`.
+Each panel becomes a two-column micro-layout on desktop, single-column on mobile:
 
-No imagery in this strip. The point is calm, not visual weight.
+```text
+┌──────────────────────────┬──────────────────────────┐
+│  [illustration]   text   │  text   [illustration]   │
+│   The Person             │            The Guide     │
+└──────────────────────────┴──────────────────────────┘
+```
 
-### 2. Header: add a discreet "For Professionals" link
+- Left panel (Person, light bg): illustration on the left, text on the right.
+- Right panel (Guide, dark primary bg): text on the left, illustration on the right.
+- This makes the two Dennises face each other across the seam, which gives the section a quiet narrative ("same person, two roles").
+- Mobile: illustration sits above the text in each panel.
+- Illustration sizing: roughly `max-w-[260px] lg:max-w-[300px]`, with a very subtle hand-drawn "ground line" SVG underneath (single wobbly pencil stroke) instead of a hard shadow.
+- Subtle entrance: keep the existing `FadeIn`. No floating, no bobbing animations (per the subtle-fade-in-only rule).
 
-In `src/components/Header.tsx`, add a single nav link "For Professionals" pointing to `/travel-agents`. Style it visually lighter than the primary nav items (smaller, muted color, or right-aligned with a thin divider) so it reads as secondary, not part of the main journey.
+No copy changes. Existing CMS fields (`about.person.*` / `about.guide.*`) stay as-is.
 
-If the header has a mobile menu, include it there as well.
+## Out of scope
 
-### 3. Footer cleanup
-
-In `src/components/Footer.tsx`, restructure the right-hand area so the two audiences stay visually separated:
-
-- Keep the existing "For Professionals" column (Travel Agents, Universities, Speaking & Podcast links) but split "Speaking & Podcast" into two distinct links: "Speaking" and "Two Stories, One City".
-- Or: introduce a fourth small column "More" for Speaking + Podcast, leaving "For Professionals" for B2B only. Choose whichever fits the existing 3-column grid without crowding.
-
-### 4. Out of scope
-
-- No new routes or pages. Speaking does not get its own page yet — it links to the contact form.
-- No real podcast URL wired up (placeholder until provided).
-- No changes to copy elsewhere on the site.
-- No changes to the Travel Agents page itself.
-
-## Acceptance criteria
-
-- A reader scrolling the homepage encounters the "Also" strip naturally just before the contact form. It feels like a quiet PS, not a sales pitch.
-- A travel agent landing cold on the homepage can find their entry point in one click via the header.
-- Podcast and speaking are discoverable but never compete with the guest-booking flow.
-- No new pop-ups, floating CTAs, or visual noise.
+- No new CMS fields for the illustration paths; they're imported assets.
+- No changes to the hero portrait or header logo.
+- No animation beyond the existing FadeIn.
+- No copy edits.
 
 ## Technical notes
 
-- Files touched: `src/pages/Index.tsx`, `src/components/Header.tsx`, `src/components/Footer.tsx`.
-- Reuse existing tokens: `font-heading`, `font-body`, `text-primary`, `text-secondary`, `text-muted-foreground`, `bg-background`. No new colors.
-- Wrap new homepage section in `FadeIn` to match site-wide animation pattern.
-- Add the new copy to the CMS schema (`src/lib/siteContentSchema.ts`) under a new `also` section so Dennis can edit it later, with sensible fallbacks.
+- Generate both PNGs via `imagegen--generate_image` with `transparent_background: true`, `premium` quality (the existing portrait is the visual anchor for the brand, so quality matters), and prompts that explicitly reference: hand-drawn ink line, soft watercolor wash, off-white paper feel, full-figure standing/walking, no background, in the spirit of `dennis_illustration.png`.
+- Save to `src/assets/dennis-person.png` and `src/assets/dennis-guide.png`, import as ES6 modules in `Index.tsx`.
+- Use Tailwind's `grid grid-cols-1 md:grid-cols-[auto_1fr]` (left panel) and `md:grid-cols-[1fr_auto]` (right panel) with `gap-8 lg:gap-10` to keep alignment clean.
+- Add `loading="lazy"` and explicit `width` / `height` on the `<img>` tags to avoid layout shift.

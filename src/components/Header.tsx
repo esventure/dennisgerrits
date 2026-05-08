@@ -62,6 +62,20 @@ const Header = () => {
               {link.label}
             </Link>
           ))}
+          <span className="h-4 w-px bg-border/60" aria-hidden />
+          {secondaryLinks.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              onClick={() => handleNavClick(link.to)}
+              className={cn(
+                "font-body text-xs tracking-[0.15em] uppercase transition-colors hover:text-secondary",
+                location.pathname === link.to ? "text-secondary" : "text-foreground/40"
+              )}
+            >
+              {link.label}
+            </Link>
+          ))}
         </nav>
 
         <button

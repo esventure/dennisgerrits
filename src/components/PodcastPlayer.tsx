@@ -14,7 +14,8 @@ const formatTime = (s: number) => {
   return `${m}:${sec.toString().padStart(2, "0")}`;
 };
 
-const PodcastPlayer = () => {
+const PodcastPlayer = ({ tone = "light" }: { tone?: "light" | "dark" }) => {
+  const dark = tone === "dark";
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
   const [current, setCurrent] = useState(0);
@@ -73,22 +74,39 @@ const PodcastPlayer = () => {
           height={256}
           className="w-full h-full object-cover"
         />
-        <span className="absolute inset-0 bg-primary/50 opacity-90 group-hover:opacity-100 transition-opacity flex items-center justify-center text-primary-foreground">
+        <span
+          className="absolute inset-0 opacity-90 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+          style={{
+            backgroundColor: dark
+              ? "hsl(var(--heritage-green) / 0.55)"
+              : "hsl(var(--primary) / 0.5)",
+            color: dark ? "hsl(0 0% 98%)" : "hsl(var(--primary-foreground))",
+          }}
+        >
           {playing ? <Pause size={22} fill="currentColor" /> : <Play size={22} fill="currentColor" />}
         </span>
       </button>
 
       <div className="flex-1 min-w-0">
-        <p className="font-body text-xs tracking-widest uppercase text-secondary mb-1">
+        <p
+          className="font-body text-xs tracking-widest uppercase mb-1"
+          style={{ color: dark ? "hsl(var(--heritage-orange))" : "hsl(var(--secondary))" }}
+        >
           The Podcast · Episode 0 out now
         </p>
-        <h2 className="font-heading text-2xl md:text-3xl text-primary leading-tight">
+        <h2
+          className="font-heading text-2xl md:text-3xl leading-tight"
+          style={{ color: dark ? "hsl(0 0% 98%)" : "hsl(var(--primary))" }}
+        >
           Two Stories, One City
         </h2>
 
         {/* Progress bar */}
         <div className="mt-3 flex items-center gap-3">
-          <span className="font-body text-xs text-muted-foreground tabular-nums w-10">
+          <span
+            className="font-body text-xs tabular-nums w-10"
+            style={{ color: dark ? "hsl(0 0% 80%)" : "hsl(var(--muted-foreground))" }}
+          >
             {formatTime(current)}
           </span>
           <input
@@ -99,9 +117,13 @@ const PodcastPlayer = () => {
             value={progress}
             onChange={onSeek}
             aria-label="Seek"
-            className="flex-1 h-1 accent-secondary cursor-pointer"
+            className={`flex-1 h-1 cursor-pointer ${dark ? "" : "accent-secondary"}`}
+            style={dark ? { accentColor: "hsl(var(--heritage-orange))" } : undefined}
           />
-          <span className="font-body text-xs text-muted-foreground tabular-nums w-10 text-right">
+          <span
+            className="font-body text-xs tabular-nums w-10 text-right"
+            style={{ color: dark ? "hsl(0 0% 80%)" : "hsl(var(--muted-foreground))" }}
+          >
             {formatTime(duration)}
           </span>
         </div>
@@ -110,7 +132,8 @@ const PodcastPlayer = () => {
           href={EPISODE_LINK}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block mt-2 font-body text-sm text-muted-foreground hover:text-secondary transition-colors"
+          className="inline-block mt-2 font-body text-sm transition-colors hover:opacity-80"
+          style={{ color: dark ? "hsl(0 0% 88%)" : "hsl(var(--muted-foreground))" }}
         >
           Listen at twostoriesonecity.com →
         </a>

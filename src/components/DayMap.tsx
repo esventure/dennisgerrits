@@ -22,20 +22,20 @@ interface DayMapProps {
  * Coordinates align with landmarks on the illustrated Amsterdam map:
  * Jordaan/Westerkerk → canal belt → Centrum → Plantage → IJ waterfront. */
 const stops = [
-  { x: 110, y: 205, label: "Jordaan Café", icon: iconFoot },
-  { x: 235, y: 235, label: "Canal Walk", icon: iconBoat },
-  { x: 340, y: 215, label: "Local Lunch", icon: iconFood },
-  { x: 470, y: 235, label: "Hidden Garden", icon: iconNature },
-  { x: 430, y: 75, label: "Waterfront Bar", icon: iconDining },
+  { x: 180, y: 210, label: "Jordaan Café", icon: iconFoot },
+  { x: 230, y: 270, label: "Canal Walk", icon: iconBoat },
+  { x: 305, y: 215, label: "Local Lunch", icon: iconFood },
+  { x: 380, y: 240, label: "Hidden Garden", icon: iconNature },
+  { x: 320, y: 95, label: "Waterfront Bar", icon: iconDining },
 ];
 
-/* Smooth Bézier route segments hugging the canal arc, then cutting
- * up to the IJ waterfront. */
+/* Smooth Bézier route segments tracing the canal horseshoe west → south
+ * → centrum → east, then cutting north to the IJ waterfront. */
 const pathSegments = [
-  "M 110 205 C 155 230, 195 245, 235 235",
-  "M 235 235 C 270 220, 305 210, 340 215",
-  "M 340 215 C 380 230, 425 235, 470 235",
-  "M 470 235 C 480 180, 460 115, 430 75",
+  "M 180 210 C 195 245, 215 265, 230 270",
+  "M 230 270 C 260 270, 290 245, 305 215",
+  "M 305 215 C 330 215, 360 230, 380 240",
+  "M 380 240 C 390 180, 350 130, 320 95",
 ];
 
 const PATH_LEN = 240;

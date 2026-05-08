@@ -51,7 +51,7 @@ const AmsterdamSkyline = ({ variant = 'global' }: Props) => {
 
   return (
     <>
-      {/* Light-background layer */}
+      {/* Light-background layer: dark ink etched into off-white sections. */}
       <div
         className="fixed bottom-0 left-0 w-full pointer-events-none"
         style={{ zIndex: 0, clipPath }}
@@ -72,10 +72,30 @@ const AmsterdamSkyline = ({ variant = 'global' }: Props) => {
         />
       </div>
 
-      {/* Note: the previous global "screen" blend layer was removed
-          because it doubled up with the section-variant skyline inside
-          the rounded green contact card. The section variant now owns
-          the dark-background reveal. */}
+      {/* Dark-background reveal: same image, same fixed position, blended
+          with `screen` so it lights up to a warm orange silhouette wherever
+          a dark surface (like the bordeaux/green contact box) sits behind
+          it. Because both layers share identical positioning and scale,
+          the silhouette reads as ONE continuous skyline that passes
+          through every section, instead of restarting inside the box. */}
+      <div
+        className="fixed bottom-0 left-0 w-full pointer-events-none"
+        style={{ zIndex: 5, clipPath, mixBlendMode: 'screen' }}
+        aria-hidden
+      >
+        <img
+          src={skyline}
+          alt=""
+          className="w-full h-auto block"
+          style={{
+            opacity: 0.55,
+            maskImage: MASK,
+            WebkitMaskImage: MASK,
+            filter:
+              'brightness(1.3) sepia(1) saturate(6) hue-rotate(-15deg)',
+          }}
+        />
+      </div>
     </>
   );
 };

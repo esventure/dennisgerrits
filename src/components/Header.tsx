@@ -10,8 +10,11 @@ const navLinks = [
   { to: "/#day", label: "A Day Together" },
   { to: "/#proof", label: "Reviews" },
   { to: "/get-inspired", label: "Get Inspired" },
-  { to: "/travel-agents", label: "For Professionals" },
   { to: "/#contact", label: "Contact" },
+];
+
+const secondaryLinks = [
+  { to: "/travel-agents", label: "For Professionals" },
 ];
 
 const Header = () => {

@@ -20,6 +20,7 @@ const Footer = () => (
               { to: "/#proof", label: "Reviews" },
               { to: "/#stories", label: "Stories" },
               { to: "/get-inspired", label: "Get Inspired" },
+              { to: "#", label: "Two Stories, One City (Podcast)" },
               { to: "/#contact", label: "Get in Touch" },
             ].map((link) => (
               <Link

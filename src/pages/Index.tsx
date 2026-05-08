@@ -976,9 +976,23 @@ const Index = () => {
       </section>
 
 
-      <section id="stories" className="py-16 md:py-20 lg:py-32 scroll-mt-20">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-3xl mb-16">
+      <section
+        id="stories"
+        className="relative py-16 md:py-20 lg:py-32 scroll-mt-20 overflow-hidden"
+        style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}
+      >
+        {/* Subtle paper-grain noise overlay */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-[0.18] mix-blend-multiply"
+          aria-hidden
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.30  0 0 0 0 0.25  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
+          }}
+        />
+
+        <div className="container mx-auto px-6 lg:px-12 relative">
+          <div className="max-w-3xl mb-12 md:mb-16">
             <FadeIn>
               <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
                 Stories
@@ -989,46 +1003,176 @@ const Index = () => {
               <p className="font-body text-lg text-muted-foreground leading-relaxed">
                 Short reflections and stories about Amsterdam. The kind of things I'd tell you over a coffee.
               </p>
+              {/* faint pencil-stroke divider */}
+              <svg
+                aria-hidden
+                className="mt-8 text-muted-foreground/40"
+                width="180"
+                height="10"
+                viewBox="0 0 180 10"
+                fill="none"
+              >
+                <path
+                  d="M2 6 C 30 2, 60 9, 95 5 S 160 3, 178 6"
+                  stroke="currentColor"
+                  strokeWidth="1.2"
+                  strokeLinecap="round"
+                />
+              </svg>
             </FadeIn>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {stories.map((s, i) => (
-              <FadeIn key={s.title} delay={i * 0.1}>
-                <Link to={`/get-inspired?story=${encodeURIComponent(s.title)}`} className="block">
-                  <div className="border border-border rounded-sm overflow-hidden group cursor-pointer">
-                    <div className="aspect-[16/10] bg-muted overflow-hidden">
-                      <img
-                        src={s.image}
-                        alt={s.title}
-                        loading="lazy"
-                        width={1024}
-                        height={640}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      />
-                    </div>
-                    <div className="p-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-14 pt-6 md:pt-10">
+            {stories.map((s, i) => {
+              const rotations = ["-1.5deg", "0.8deg", "-0.6deg"];
+              const rot = rotations[i % rotations.length];
+              return (
+                <FadeIn key={s.title} delay={i * 0.1}>
+                  <Link
+                    to={`/get-inspired?story=${encodeURIComponent(s.title)}`}
+                    aria-label={`Read "${s.title}" in the book`}
+                    className="block group"
+                    style={{
+                      transform: `rotate(${rot})`,
+                      transition: "transform 400ms ease, box-shadow 400ms ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLElement).style.transform =
+                        "rotate(0deg) translateY(-4px)";
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLElement).style.transform = `rotate(${rot})`;
+                    }}
+                  >
+                    <article
+                      className="relative p-4 pb-7"
+                      style={{
+                        backgroundColor: "hsl(var(--heritage-cream, 40 40% 96%))",
+                        background:
+                          "linear-gradient(180deg, hsl(40 38% 97%) 0%, hsl(38 32% 93%) 100%)",
+                        boxShadow:
+                          "0 1px 0 rgba(0,0,0,0.04), 0 18px 30px -18px rgba(60,40,20,0.28), inset 0 0 0 1px rgba(120,90,60,0.06)",
+                      }}
+                    >
+                      {/* paper-clip in top-left */}
+                      <svg
+                        aria-hidden
+                        className="absolute -top-3 left-6 text-muted-foreground/70"
+                        width="22"
+                        height="34"
+                        viewBox="0 0 22 34"
+                        fill="none"
+                      >
+                        <path
+                          d="M11 2 C 5 2, 3 7, 3 13 L 3 26 C 3 30, 7 32, 11 32 C 15 32, 19 30, 19 26 L 19 10 C 19 7, 17 5, 14 5 C 11 5, 9 7, 9 10 L 9 24"
+                          stroke="currentColor"
+                          strokeWidth="1.4"
+                          strokeLinecap="round"
+                          fill="none"
+                        />
+                      </svg>
+
+                      {/* photo */}
+                      <div
+                        className="aspect-[16/10] overflow-hidden relative"
+                        style={{
+                          boxShadow:
+                            "inset 0 0 0 1px rgba(60,40,20,0.12), 0 6px 14px -8px rgba(60,40,20,0.35)",
+                        }}
+                      >
+                        <img
+                          src={s.image}
+                          alt={s.title}
+                          loading="lazy"
+                          width={1024}
+                          height={640}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                          style={{ filter: "saturate(0.92) contrast(0.98)" }}
+                        />
+                      </div>
+
+                      {/* handwritten caption */}
                       <p
-                        className="text-sm mb-2"
+                        className="mt-4 text-base md:text-lg leading-snug"
                         style={{
                           fontFamily: "'Caveat', 'Outfit', cursive",
                           color: "hsl(var(--heritage-bordeaux))",
+                          transform: "rotate(-0.6deg)",
                         }}
                       >
                         {s.caption}
                       </p>
-                      <h3 className="font-heading text-2xl text-primary mb-3 group-hover:text-secondary transition-colors">
+
+                      <h3
+                        className="font-heading text-2xl md:text-[1.7rem] mt-2 mb-3 leading-[1.05]"
+                        style={{ color: "hsl(var(--heritage-purple))" }}
+                      >
                         {s.title}
                       </h3>
-                      <p className="font-body text-sm text-muted-foreground leading-relaxed">
+
+                      <p className="font-body text-sm md:text-[0.95rem] text-muted-foreground leading-relaxed">
                         {s.intro}
                       </p>
-                    </div>
-                  </div>
-                </Link>
-              </FadeIn>
-            ))}
+
+                      {/* pencil-style "Read in the book" link */}
+                      <div className="mt-5 flex items-center gap-2">
+                        <span
+                          className="text-base"
+                          style={{
+                            fontFamily: "'Caveat', cursive",
+                            color: "hsl(var(--heritage-bordeaux))",
+                            borderBottom: "1px dashed hsl(var(--heritage-bordeaux) / 0.5)",
+                            paddingBottom: "1px",
+                          }}
+                        >
+                          Read in the book
+                        </span>
+                        <span
+                          aria-hidden
+                          style={{
+                            fontFamily: "'Caveat', cursive",
+                            color: "hsl(var(--heritage-bordeaux))",
+                          }}
+                          className="transition-transform group-hover:translate-x-1"
+                        >
+                          →
+                        </span>
+                      </div>
+
+                      {/* torn dog-ear bottom-right */}
+                      <div
+                        aria-hidden
+                        className="absolute bottom-0 right-0 w-8 h-8"
+                        style={{
+                          background:
+                            "linear-gradient(135deg, transparent 50%, hsl(var(--heritage-taupe-tint)) 50%)",
+                          boxShadow: "inset 1px -1px 0 rgba(60,40,20,0.12)",
+                        }}
+                      />
+                    </article>
+                  </Link>
+                </FadeIn>
+              );
+            })}
           </div>
+
+          {/* quiet footer link */}
+          <FadeIn>
+            <div className="mt-14 md:mt-16 text-center">
+              <Link
+                to="/get-inspired"
+                className="inline-block text-lg md:text-xl"
+                style={{
+                  fontFamily: "'Caveat', cursive",
+                  color: "hsl(var(--heritage-purple))",
+                  borderBottom: "1px dashed hsl(var(--heritage-purple) / 0.5)",
+                  paddingBottom: "2px",
+                }}
+              >
+                More notes in the book →
+              </Link>
+            </div>
+          </FadeIn>
         </div>
       </section>
 

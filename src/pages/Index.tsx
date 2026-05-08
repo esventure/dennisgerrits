@@ -992,34 +992,7 @@ const Index = () => {
       <section id="podcast" className="py-10 md:py-12 scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}>
         <div className="container mx-auto px-6 lg:px-12">
           <FadeIn>
-            <a
-              href="https://twostoriesonecity.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-5 md:gap-7 max-w-3xl mx-auto"
-            >
-              <div className="w-12 h-12 md:w-14 md:h-14 shrink-0 overflow-hidden rounded-sm shadow-md">
-                <img
-                  src={podcastCover}
-                  alt="Two Stories, One City — podcast cover art"
-                  loading="lazy"
-                  width={256}
-                  height={256}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="font-body text-xs tracking-widest uppercase text-secondary mb-1">
-                  The Podcast · Episode 0 out now
-                </p>
-                <h2 className="font-heading text-2xl md:text-3xl text-primary leading-tight group-hover:text-secondary transition-colors">
-                  Two Stories, One City
-                </h2>
-                <p className="font-body text-sm text-muted-foreground mt-1">
-                  Listen at twostoriesonecity.com →
-                </p>
-              </div>
-            </a>
+            <PodcastPlayer />
           </FadeIn>
         </div>
       </section>

@@ -70,7 +70,7 @@ const Header = () => {
             <Link
               key={link.to}
               to={link.to}
-              onClick={() => handleNavClick(link.to)}
+              onClick={(e) => handleNavClick(e, link.to)}
               className={cn(
                 "font-body text-sm tracking-wide transition-colors hover:text-secondary",
                 location.pathname === link.to ? "text-secondary font-medium" : "text-foreground/70"
@@ -84,7 +84,7 @@ const Header = () => {
             <Link
               key={link.to}
               to={link.to}
-              onClick={() => handleNavClick(link.to)}
+              onClick={(e) => handleNavClick(e, link.to)}
               className={cn(
                 "font-body text-xs tracking-[0.15em] uppercase transition-colors hover:text-secondary",
                 location.pathname === link.to ? "text-secondary" : "text-foreground/40"
@@ -110,7 +110,7 @@ const Header = () => {
             <Link
               key={link.to}
               to={link.to}
-              onClick={() => handleNavClick(link.to)}
+              onClick={(e) => handleNavClick(e, link.to)}
               className={cn(
                 "block font-body text-lg py-2 transition-colors",
                 location.pathname === link.to ? "text-secondary font-medium" : "text-foreground/70"
@@ -124,7 +124,7 @@ const Header = () => {
               <Link
                 key={link.to}
                 to={link.to}
-                onClick={() => handleNavClick(link.to)}
+                onClick={(e) => handleNavClick(e, link.to)}
                 className="block font-body text-sm tracking-[0.15em] uppercase py-2 text-foreground/50 hover:text-secondary transition-colors"
               >
                 {link.label}

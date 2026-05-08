@@ -997,7 +997,7 @@ const Index = () => {
       {/* ── Podcast: Two Stories, One City (green band) ── */}
       <section
         id="podcast"
-        className="relative py-20 md:py-24 lg:py-28 scroll-mt-20 overflow-hidden"
+        className="relative py-12 md:py-14 lg:py-16 scroll-mt-20 overflow-hidden"
         style={{ backgroundColor: "hsl(var(--heritage-green))" }}
       >
         {/* faint paper-grain overlay for warmth on the deep green */}
@@ -1011,7 +1011,7 @@ const Index = () => {
         />
 
         <div className="container mx-auto px-6 lg:px-12 relative">
-          <div className="max-w-3xl mx-auto mb-10 md:mb-12 text-center">
+          <div className="max-w-3xl mx-auto mb-6 md:mb-8 text-center">
             <FadeIn>
               <p className="font-body text-xs tracking-[0.25em] uppercase mb-4" style={{ color: "hsl(var(--heritage-orange))" }}>
                 Also worth a listen

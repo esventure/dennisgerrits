@@ -162,291 +162,45 @@ const DayMap = ({ moments }: DayMapProps) => {
       {/* ── Left: Sketchbook Map ── */}
       <div
         className="relative w-full"
-        style={{ aspectRatio: "6 / 5", overflow: "visible" }}
+        style={{ aspectRatio: "6 / 4", overflow: "visible" }}
       >
+        {/* Illustrated Amsterdam map */}
+        <img
+          src={amsterdamMap}
+          alt="Hand-drawn illustrated map of central Amsterdam showing the canal belt, Centraal Station, Westerkerk, Vondelpark, Rijksmuseum and the Amstel river."
+          width={1536}
+          height={1024}
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 w-full h-full object-cover rounded-sm shadow-[0_18px_40px_-22px_rgba(0,0,0,0.35)]"
+        />
+
         <svg
-          viewBox="0 0 600 500"
-          className="w-full h-full"
+          viewBox="0 0 600 400"
+          className="relative w-full h-full"
           style={{ overflow: "visible" }}
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
-            {/* Sketch wobble filter — applied to "ink" elements */}
+            {/* Sketch wobble filter */}
             <filter id="sketch" x="-5%" y="-5%" width="110%" height="110%">
-              <feTurbulence
-                type="fractalNoise"
-                baseFrequency="0.04"
-                numOctaves="2"
-                seed="4"
-                result="noise"
-              />
-              <feDisplacementMap
-                in="SourceGraphic"
-                in2="noise"
-                scale="2.6"
-              />
+              <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="4" result="noise" />
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.6" />
             </filter>
-
-            {/* Subtle paper grain */}
-            <filter id="paperGrain" x="0%" y="0%" width="100%" height="100%">
-              <feTurbulence
-                type="fractalNoise"
-                baseFrequency="0.9"
-                numOctaves="2"
-                seed="3"
-              />
-              <feColorMatrix
-                values="0 0 0 0 0.42
-                        0 0 0 0 0.36
-                        0 0 0 0 0.28
-                        0 0 0 0.06 0"
-              />
-            </filter>
-
-            <linearGradient id="paper" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="hsl(var(--heritage-taupe))" stopOpacity="0.05" />
-              <stop offset="100%" stopColor="hsl(var(--heritage-taupe))" stopOpacity="0.13" />
-            </linearGradient>
           </defs>
 
-          {/* ── Paper field ── */}
-          <rect x="0" y="0" width="600" height="500" rx="2" fill="url(#paper)" />
-          <rect
-            x="0"
-            y="0"
-            width="600"
-            height="500"
-            filter="url(#paperGrain)"
-            opacity="0.4"
-          />
-
-          {/* Hand-drawn border — wobbly inset rectangle */}
-          <path
-            d="M 14 18 L 588 12 L 590 484 L 12 488 Z"
-            stroke="hsl(var(--heritage-taupe))"
-            strokeWidth="0.9"
-            fill="none"
-            opacity="0.55"
-            filter="url(#sketch)"
-          />
-          {/* Folded corner crease (top-right) */}
-          <path
-            d="M 575 12 L 588 28 L 572 26 Z"
-            stroke="hsl(var(--heritage-taupe))"
-            strokeWidth="0.8"
-            fill="hsl(var(--heritage-taupe) / 0.08)"
-            filter="url(#sketch)"
-            opacity="0.6"
-          />
-
-          {/* ── The IJ waterfront (curved band across the top) ── */}
-          <path
-            d="M 0 60 C 150 80, 300 50, 600 75 L 600 0 L 0 0 Z"
-            fill="hsl(var(--heritage-taupe))"
-            opacity="0.09"
-          />
-          <path
-            d="M 0 78 C 150 96, 320 64, 600 92"
-            stroke="hsl(var(--heritage-taupe))"
-            strokeWidth="1.1"
-            fill="none"
-            opacity="0.55"
-            filter="url(#sketch)"
-          />
-          {/* Tiny ripples on the IJ */}
-          <g
-            stroke="hsl(var(--heritage-taupe))"
-            strokeWidth="0.6"
-            fill="none"
-            opacity="0.35"
-            strokeLinecap="round"
-          >
-            <path d="M 60 35 q 8 -3 16 0" />
-            <path d="M 180 28 q 10 -3 20 0" />
-            <path d="M 360 38 q 8 -3 16 0" />
-            <path d="M 480 30 q 10 -3 20 0" />
-          </g>
-          <text
-            x="40"
-            y="50"
-            fontFamily="'Bebas Neue', sans-serif"
-            fontSize="14"
-            letterSpacing="0.3em"
-            fill="hsl(var(--heritage-taupe))"
-            opacity="0.85"
-          >
-            HET IJ
-          </text>
-
-          {/* ── Centraal Station on the IJ ── */}
-          <g filter="url(#sketch)" opacity="0.7">
-            <rect
-              x="280"
-              y="78"
-              width="60"
-              height="14"
-              fill="hsl(var(--background))"
-              stroke="hsl(var(--primary))"
-              strokeWidth="0.9"
-            />
-            {/* Two little turrets */}
-            <rect x="284" y="72" width="6" height="6" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.8" />
-            <rect x="330" y="72" width="6" height="6" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.8" />
-          </g>
-          <text
-            x="310"
-            y="105"
-            textAnchor="middle"
-            fontFamily="'Bebas Neue', sans-serif"
-            fontSize="9"
-            letterSpacing="0.25em"
-            fill="hsl(var(--primary))"
-            opacity="0.7"
-          >
-            CENTRAAL
-          </text>
-
-          {/* ── Concentric canal rings (the famous horseshoe) ──
-              Each ring is a half-moon arc anchored to the IJ band. */}
-          <g
-            stroke="hsl(var(--heritage-taupe))"
-            fill="none"
-            strokeLinecap="round"
-            filter="url(#sketch)"
-          >
-            {/* Singel — innermost */}
-            <path d="M 240 105 A 70 105 0 0 0 380 105" strokeWidth="0.9" opacity="0.45" />
-            {/* Herengracht */}
-            <path d="M 220 105 A 100 140 0 0 0 400 105" strokeWidth="1" opacity="0.55" />
-            {/* Keizersgracht */}
-            <path d="M 195 105 A 130 175 0 0 0 425 105" strokeWidth="1.1" opacity="0.6" />
-            {/* Prinsengracht — outer */}
-            <path d="M 165 105 A 165 215 0 0 0 455 105" strokeWidth="1.2" opacity="0.65" />
-          </g>
-
-          {/* ── Radial spoke streets from Centraal outward ── */}
-          <g
-            stroke="hsl(var(--heritage-taupe))"
-            strokeWidth="0.7"
-            fill="none"
-            strokeLinecap="round"
-            opacity="0.4"
-            strokeDasharray="2 3"
-            filter="url(#sketch)"
-          >
-            <line x1="310" y1="105" x2="220" y2="295" />
-            <line x1="310" y1="105" x2="310" y2="320" />
-            <line x1="310" y1="105" x2="410" y2="295" />
-          </g>
-
-          {/* ── Amstel river — meanders south-east out of the rings ── */}
-          <path
-            d="M 360 255 C 380 300, 410 340, 440 380 C 460 415, 470 450, 478 488"
-            stroke="hsl(var(--heritage-taupe))"
-            strokeWidth="1.3"
-            fill="none"
-            strokeLinecap="round"
-            opacity="0.55"
-            filter="url(#sketch)"
-          />
-          <text
-            x="455"
-            y="445"
-            fontFamily="'Bebas Neue', sans-serif"
-            fontSize="9"
-            letterSpacing="0.28em"
-            fill="hsl(var(--heritage-taupe))"
-            opacity="0.85"
-            transform="rotate(58 455 445)"
-          >
-            AMSTEL
-          </text>
-
-          {/* ── Vondelpark (sketched green blob, bottom-left) ── */}
-          <g filter="url(#sketch)">
-            <path
-              d="M 70 360 C 50 350, 50 395, 80 405 C 130 420, 175 405, 180 380 C 185 355, 130 345, 70 360 Z"
-              fill="hsl(var(--heritage-green) / 0.18)"
-              stroke="hsl(var(--heritage-green))"
-              strokeWidth="0.9"
-              opacity="0.7"
-            />
-          </g>
+          {/* Handwritten "start here" near stop 01 */}
           <text
             x="125"
-            y="385"
-            textAnchor="middle"
-            fontFamily="'Bebas Neue', sans-serif"
-            fontSize="9"
-            letterSpacing="0.28em"
-            fill="hsl(var(--heritage-green))"
+            y="188"
+            fontFamily="'Caveat', cursive"
+            fontSize="18"
+            fill="hsl(var(--heritage-bordeaux))"
             opacity="0.9"
-          >
-            VONDELPARK
-          </text>
-
-          {/* ── Neighbourhood labels in the rings ── */}
-          <text
-            x="60"
-            y="220"
-            fontFamily="'Bebas Neue', sans-serif"
-            fontSize="11"
-            letterSpacing="0.3em"
-            fill="hsl(var(--primary))"
-            opacity="0.55"
-          >
-            JORDAAN
-          </text>
-          <text
-            x="305"
-            y="180"
-            textAnchor="middle"
-            fontFamily="'Bebas Neue', sans-serif"
-            fontSize="10"
-            letterSpacing="0.3em"
-            fill="hsl(var(--primary))"
-            opacity="0.45"
-          >
-            CENTRUM
-          </text>
-          <text
-            x="475"
-            y="320"
-            textAnchor="middle"
-            fontFamily="'Bebas Neue', sans-serif"
-            fontSize="9"
-            letterSpacing="0.28em"
-            fill="hsl(var(--primary))"
-            opacity="0.45"
-          >
-            PLANTAGE
-          </text>
-
-          {/* Handwritten note near stop 01 */}
-          <text
-            x="115"
-            y="225"
-            fontFamily="'Outfit', sans-serif"
-            fontStyle="italic"
-            fontSize="10"
-            fill="hsl(var(--heritage-orange))"
-            opacity="0.85"
           >
             start here ↘
           </text>
-
-          {/* ── Sketchy compass (bottom-right corner) ── */}
-          <g transform="translate(555, 445)" opacity="0.7" filter="url(#sketch)">
-            <path d={sketchCircle(0, 0, 16, 0.7)} stroke="hsl(var(--primary))" strokeWidth="0.9" fill="none" />
-            <path d={sketchCircle(0, 0, 10, 0.5)} stroke="hsl(var(--primary))" strokeWidth="0.6" fill="none" opacity="0.5" />
-            <line x1="0" y1="-15" x2="0" y2="-23" stroke="hsl(var(--heritage-orange))" strokeWidth="1.3" strokeLinecap="round" />
-            <line x1="0" y1="15" x2="0" y2="20" stroke="hsl(var(--primary))" strokeWidth="0.7" strokeLinecap="round" opacity="0.6" />
-            <line x1="-15" y1="0" x2="-20" y2="0" stroke="hsl(var(--primary))" strokeWidth="0.7" strokeLinecap="round" opacity="0.6" />
-            <line x1="15" y1="0" x2="20" y2="0" stroke="hsl(var(--primary))" strokeWidth="0.7" strokeLinecap="round" opacity="0.6" />
-            <polygon points="0,-16 3,-10 0,-12 -3,-10" fill="hsl(var(--heritage-orange))" />
-            <text x="0" y="-26" textAnchor="middle" fontSize="9" fontFamily="'Bebas Neue', sans-serif" letterSpacing="0.18em" fill="hsl(var(--primary))">N</text>
-          </g>
 
           {/* ── Route: pencil under-drawing + ink wobble on top ── */}
           {pathSegments.map((d, i) => {

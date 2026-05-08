@@ -6,7 +6,6 @@ import iconBoat from "@/assets/icon-boat.png";
 import iconFood from "@/assets/icon-food.png";
 import iconNature from "@/assets/icon-nature.png";
 import iconDining from "@/assets/icon-dining.png";
-import amsterdamMap from "@/assets/amsterdam-map.jpg";
 
 interface Moment {
   time: string;
@@ -159,48 +158,43 @@ const DayMap = ({ moments }: DayMapProps) => {
       ref={sectionRef}
       className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-16 items-center"
     >
-      {/* ── Left: Sketchbook Map ── */}
+      {/* ── Left: Minimal Sketch Map ── */}
       <div
         className="relative w-full"
         style={{ aspectRatio: "6 / 4", overflow: "visible" }}
       >
-        {/* Illustrated Amsterdam map */}
-        <img
-          src={amsterdamMap}
-          alt="Hand-drawn illustrated map of central Amsterdam showing the canal belt, Centraal Station, Westerkerk, Vondelpark, Rijksmuseum and the Amstel river."
-          width={1536}
-          height={1024}
-          loading="lazy"
-          decoding="async"
-          className="absolute inset-0 w-full h-full object-cover rounded-sm shadow-[0_18px_40px_-22px_rgba(0,0,0,0.35)]"
-        />
-
         <svg
           viewBox="0 0 600 400"
           className="relative w-full h-full"
           style={{ overflow: "visible" }}
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          aria-label="Minimal sketch of Amsterdam's canal belt with the day's route"
         >
           <defs>
-            {/* Sketch wobble filter */}
             <filter id="sketch" x="-5%" y="-5%" width="110%" height="110%">
               <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="4" result="noise" />
-              <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.6" />
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.6" />
             </filter>
           </defs>
 
-          {/* Handwritten "start here" near stop 01 */}
-          <text
-            x="125"
-            y="188"
-            fontFamily="'Caveat', cursive"
-            fontSize="18"
-            fill="hsl(var(--heritage-bordeaux))"
-            opacity="0.9"
+          {/* ── Soft canal-belt arcs (background hint, no labels) ── */}
+          <g
+            stroke="hsl(var(--heritage-taupe))"
+            strokeWidth="1"
+            strokeLinecap="round"
+            fill="none"
+            filter="url(#sketch)"
+            opacity="0.55"
           >
-            start here ↘
-          </text>
+            <path d="M 60 250 C 130 110, 360 70, 520 150" />
+            <path d="M 80 270 C 150 140, 360 105, 510 180" opacity="0.75" />
+            <path d="M 100 290 C 170 170, 360 140, 500 210" opacity="0.55" />
+            {/* IJ waterfront hint */}
+            <path d="M 360 60 C 420 55, 480 60, 560 50" opacity="0.5" />
+            {/* Amstel hint */}
+            <path d="M 470 380 C 480 320, 490 280, 500 230" opacity="0.45" />
+          </g>
 
           {/* ── Route: pencil under-drawing + ink wobble on top ── */}
           {pathSegments.map((d, i) => {

@@ -48,11 +48,17 @@ const Footer = () => (
               Universities & Schools
             </Link>
             <Link
-              to="/travel-agents#speaking"
+              to="/#contact"
               className="block font-body text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors"
             >
-              Speaking & Podcast
+              Speaking
             </Link>
+            <a
+              href="#"
+              className="block font-body text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors"
+            >
+              Two Stories, One City (Podcast)
+            </a>
           </nav>
           <p className="font-body text-primary-foreground/40 text-xs mt-8">
             © {new Date().getFullYear()} Dennis Gerrits. All rights reserved.

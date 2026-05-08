@@ -576,7 +576,7 @@ const Index = () => {
       </div>
 
       <section className="relative -mt-8 lg:-mt-16">
-        <div className="lg:sticky lg:top-0 lg:h-screen lg:flex lg:items-start lg:pt-8">
+        <div className="lg:pt-8">
           <div className="container mx-auto px-6 lg:px-12 w-full">
             <FadeIn>
               <DayMap moments={moments} />

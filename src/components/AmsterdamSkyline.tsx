@@ -88,7 +88,7 @@ const AmsterdamSkyline = ({ variant = 'global' }: Props) => {
           alt=""
           className="w-full h-auto block"
           style={{
-            opacity: 0.07,
+            opacity: 0.05,
             maskImage: MASK,
             WebkitMaskImage: MASK,
             filter:

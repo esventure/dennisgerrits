@@ -966,11 +966,35 @@ const Index = () => {
           </FadeIn>
         </div>
       </section>
-      {/* ── Podcast: Two Stories, One City (compact shoutout) ── */}
-      <section id="podcast" className="py-10 md:py-12 scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}>
-        <div className="container mx-auto px-6 lg:px-12">
+      {/* ── Podcast: Two Stories, One City (green band) ── */}
+      <section
+        id="podcast"
+        className="relative py-20 md:py-24 lg:py-28 scroll-mt-20 overflow-hidden"
+        style={{ backgroundColor: "hsl(var(--heritage-green))" }}
+      >
+        {/* faint paper-grain overlay for warmth on the deep green */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-[0.10] mix-blend-screen"
+          aria-hidden
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.95  0 0 0 0 0.92  0 0 0 0 0.85  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
+          }}
+        />
+
+        <div className="container mx-auto px-6 lg:px-12 relative">
+          <div className="max-w-3xl mx-auto mb-10 md:mb-12 text-center">
+            <FadeIn>
+              <p className="font-body text-xs tracking-[0.25em] uppercase mb-4" style={{ color: "hsl(var(--heritage-orange))" }}>
+                Also worth a listen
+              </p>
+              <p className="font-body text-base md:text-lg leading-relaxed" style={{ color: "hsl(0 0% 96%)" }}>
+                A podcast I make on the side. Two Amsterdammers, one city, one conversation at a time.
+              </p>
+            </FadeIn>
+          </div>
           <FadeIn>
-            <PodcastPlayer />
+            <PodcastPlayer tone="dark" />
           </FadeIn>
         </div>
       </section>

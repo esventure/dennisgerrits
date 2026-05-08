@@ -14,7 +14,8 @@ const formatTime = (s: number) => {
   return `${m}:${sec.toString().padStart(2, "0")}`;
 };
 
-const PodcastPlayer = () => {
+const PodcastPlayer = ({ tone = "light" }: { tone?: "light" | "dark" }) => {
+  const dark = tone === "dark";
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
   const [current, setCurrent] = useState(0);

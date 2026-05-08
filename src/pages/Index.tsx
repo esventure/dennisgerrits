@@ -644,13 +644,8 @@ const Index = () => {
             </FadeIn>
           </div>
 
-          {/* ── Other ways to work with me — postcard pair ── */}
+          {/* ── Invite me card ── */}
           <div className="mt-16 lg:mt-24">
-            <FadeIn>
-              <p className="font-body text-xs tracking-[0.25em] uppercase text-muted-foreground text-center mb-8">
-                Other ways to work with me
-              </p>
-            </FadeIn>
 
             <div className="grid grid-cols-1 gap-6 md:gap-8 max-w-xl mx-auto">
               {[

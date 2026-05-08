@@ -31,6 +31,7 @@ import peekWater from "@/assets/interests/water.jpg";
 import storyCanalHouses from "@/assets/stories/canal-houses.jpg";
 import storyBench from "@/assets/stories/bench.jpg";
 import podcastCover from "@/assets/podcast-cover.jpg";
+import PodcastPlayer from "@/components/PodcastPlayer";
 
 /* Hand-drawn ring path for the timeline step circles — matches the
    sketchbook style used in DayMap. Slightly irregular closed loop. */

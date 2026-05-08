@@ -175,7 +175,8 @@ const Index = () => {
                     width={768}
                     height={1280}
                     loading="lazy"
-                    className="w-[200px] md:w-[240px] lg:w-[280px] h-auto select-none opacity-90"
+                    className="w-[220px] md:w-[260px] lg:w-[300px] h-auto select-none"
+                    style={{ mixBlendMode: "multiply" }}
                   />
                 </div>
                 <div className="max-w-md">
@@ -221,8 +222,8 @@ const Index = () => {
                     width={768}
                     height={1280}
                     loading="lazy"
-                    className="w-[200px] md:w-[240px] lg:w-[280px] h-auto select-none"
-                    style={{ filter: "invert(1) brightness(1.05)" }}
+                    className="w-[220px] md:w-[260px] lg:w-[300px] h-auto select-none"
+                    style={{ filter: "invert(1)", mixBlendMode: "lighten" }}
                   />
                 </div>
               </div>

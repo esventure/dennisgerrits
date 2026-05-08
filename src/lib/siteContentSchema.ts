@@ -98,4 +98,27 @@ export const CONTENT_SCHEMA: ContentSection[] = [
       { key: "booking.form.cta", label: "Submit button label", type: "short", fallback: "Send Message" },
     ],
   },
+  {
+    id: "also",
+    title: "Also (Podcast & Speaking)",
+    description: "The quiet 'Also' strip just before the contact section.",
+    fields: [
+      { key: "also.podcast.title", label: "Podcast — title", type: "short", fallback: "Two Stories, One City" },
+      {
+        key: "also.podcast.body",
+        label: "Podcast — body",
+        type: "long",
+        fallback: "My podcast. Two Amsterdammers, one place, one conversation at a time.",
+      },
+      { key: "also.podcast.url", label: "Podcast — link URL", type: "short", fallback: "#" },
+      { key: "also.speaking.title", label: "Speaking — title", type: "short", fallback: "Invite me to speak" },
+      {
+        key: "also.speaking.body",
+        label: "Speaking — body",
+        type: "long",
+        fallback:
+          "I talk to groups, schools and conferences about Amsterdam, storytelling, and the way we travel.",
+      },
+    ],
+  },
 ];

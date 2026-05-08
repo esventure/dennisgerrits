@@ -1081,65 +1081,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ── Also: Podcast + Speaking (quiet PS strip) ── */}
-      <section className="py-20 lg:py-28 bg-background">
-        <div className="container mx-auto px-6 lg:px-12">
-          <FadeIn>
-            <p className="font-body text-sm tracking-[0.2em] uppercase text-secondary mb-12">
-              Also
-            </p>
-          </FadeIn>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 max-w-5xl">
-            <FadeIn delay={0.05}>
-              <article>
-                <div className="w-10 h-px bg-accent mb-6" />
-                <h3 className="font-heading text-3xl md:text-4xl text-primary leading-[1.05] mb-4">
-                  {t("also.podcast.title", "Two Stories, One City")}
-                </h3>
-                <p className="font-body text-muted-foreground leading-relaxed mb-5">
-                  {t(
-                    "also.podcast.body",
-                    "My podcast. Two Amsterdammers, one place, one conversation at a time."
-                  )}
-                </p>
-                <a
-                  href={t("also.podcast.url", "#")}
-                  className="font-body text-sm tracking-widest uppercase text-primary hover:text-secondary transition-colors inline-flex items-center gap-2"
-                >
-                  Listen
-                  <span aria-hidden>→</span>
-                </a>
-              </article>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <article>
-                <div className="w-10 h-px bg-accent mb-6" />
-                <h3 className="font-heading text-3xl md:text-4xl text-primary leading-[1.05] mb-4">
-                  {t("also.speaking.title", "Invite me to speak")}
-                </h3>
-                <p className="font-body text-muted-foreground leading-relaxed mb-5">
-                  {t(
-                    "also.speaking.body",
-                    "I talk to groups, schools and conferences about Amsterdam, storytelling, and the way we travel."
-                  )}
-                </p>
-                <Link
-                  to="/#contact"
-                  onClick={() => {
-                    const el = document.getElementById("contact");
-                    if (el) el.scrollIntoView({ behavior: "smooth" });
-                  }}
-                  className="font-body text-sm tracking-widest uppercase text-primary hover:text-secondary transition-colors inline-flex items-center gap-2"
-                >
-                  Get in touch
-                  <span aria-hidden>→</span>
-                </Link>
-              </article>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
-
       {/* ── 7. Contact, FAQ & Footer ── */}
       <section
         id="contact"

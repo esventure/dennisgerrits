@@ -20,6 +20,7 @@ const Footer = () => (
               { to: "/#proof", label: "Reviews" },
               { to: "/#stories", label: "Stories" },
               { to: "/get-inspired", label: "Get Inspired" },
+              { to: "#", label: "Two Stories, One City (Podcast)" },
               { to: "/#contact", label: "Get in Touch" },
             ].map((link) => (
               <Link
@@ -53,12 +54,6 @@ const Footer = () => (
             >
               Speaking
             </Link>
-            <a
-              href="#"
-              className="block font-body text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors"
-            >
-              Two Stories, One City (Podcast)
-            </a>
           </nav>
           <p className="font-body text-primary-foreground/40 text-xs mt-8">
             © {new Date().getFullYear()} Dennis Gerrits. All rights reserved.

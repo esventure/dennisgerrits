@@ -167,12 +167,12 @@ const DayMap = ({ moments }: DayMapProps) => {
         {/* Illustrated Amsterdam map */}
         <img
           src={amsterdamMap}
-          alt="Hand-drawn illustrated map of central Amsterdam showing the canal belt, Centraal Station, Westerkerk, Vondelpark, Rijksmuseum and the Amstel river."
+          alt="Hand-drawn sketch of central Amsterdam showing the canal horseshoe, Centraal Station, the IJ and the Amstel."
           width={1536}
           height={1024}
           loading="lazy"
           decoding="async"
-          className="absolute inset-0 w-full h-full object-cover rounded-sm shadow-[0_18px_40px_-22px_rgba(0,0,0,0.35)]"
+          className="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-multiply"
         />
 
         <svg

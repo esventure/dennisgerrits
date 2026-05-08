@@ -171,12 +171,11 @@ const Index = () => {
                 <div className="flex justify-center md:block">
                   <img
                     src={dennisPerson}
-                    alt="Hand-drawn illustration of Dennis as a relaxed Amsterdammer"
-                    width={1024}
-                    height={1536}
+                    alt="Hand-drawn line illustration of Dennis as a relaxed Amsterdammer"
+                    width={768}
+                    height={1280}
                     loading="lazy"
-                    className="w-[200px] md:w-[240px] lg:w-[280px] h-auto select-none"
-                    style={{ filter: "drop-shadow(0 6px 14px hsl(var(--heritage-purple) / 0.10))" }}
+                    className="w-[200px] md:w-[240px] lg:w-[280px] h-auto select-none opacity-90"
                   />
                 </div>
                 <div className="max-w-md">

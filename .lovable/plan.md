@@ -1,54 +1,35 @@
 ## Goal
 
-Replace the abstract sketch in `src/components/DayMap.tsx` with a clearly recognizable hand-drawn Amsterdam map. Keep the existing hand-drawn icons (shoes, boat, food, nature, dining) above each active stop — those work well — and the existing scroll-driven progression and right-side story card untouched.
+Make the Amsterdam map feel like a hand-sketched journal page rather than a rich AI illustration. Looser line work, only two heritage tones, and visually integrated with the surrounding off-white section.
 
-## What changes (only `src/components/DayMap.tsx`)
+## Changes
 
-### 1. Geography people will actually recognize
+### 1. Regenerate the map illustration
 
-Draw the iconic Amsterdam shapes inside the 600×500 viewBox:
+Replace `src/assets/amsterdam-map.jpg` with a new image generated in **premium** quality at 1536×1024:
 
-- **The IJ waterfront** as a wide curved band across the top (~y=60–95), tinted heritage-taupe at very low opacity to read as water.
-- **Centraal Station** as a small labeled rectangle on the IJ, top-center.
-- **Four concentric canal rings** (Singel, Herengracht, Keizersgracht, Prinsengracht) drawn as nested half-moon arcs anchored to the IJ, the signature horseshoe shape that makes Amsterdam instantly readable. Wobbly stroke via the existing `sketch` filter, taupe ink, varied opacities so the inner rings recede.
-- **Radial spoke streets** (3–4 thin lines) running from Centraal outward through the rings.
-- **Amstel river** as a meandering line cutting south-east from the rings down to the bottom edge.
-- **Vondelpark** as a small sketched green blob with a tiny "VONDELPARK" label, bottom-left of the rings.
-- Tiny labels in Bebas Neue at low opacity on key features: `IJ`, `CENTRAAL`, `AMSTEL`, `JORDAAN`, `VONDELPARK`. Replace the current `AMSTERDAM` mega-label and `TO THE HARBOUR` strip with these in-context labels.
-- Keep the wobbly paper border, folded corner, paper grain, and compass — they reinforce the sketchbook feel.
-- Drop the generic top/bottom canal-house silhouette clusters; the canal rings now do the work.
+- Style: loose, hand-drawn ink sketch on off-white paper. Think travel journal, not tourist map.
+- Palette strictly duotone: heritage taupe (#C9B8B0) for the base linework, heritage bordeaux (#7A1F33) for accents (a few key labels, the IJ water hatching, Centraal). No oranges, no greens, no blues.
+- Content: simplified canal horseshoe (4 nested arcs), IJ band at top with light hatching, Amstel meander, tiny Centraal rectangle, small Vondelpark blob, 4-5 sketchy radial streets. Sparse hand-lettered labels: IJ, CENTRAAL, AMSTEL, JORDAAN, VONDELPARK.
+- No photorealism, no watercolor wash, no shading, no compass rose, no decorative borders. Just confident loose pen lines with occasional wobble.
+- Off-white background matching `--background` so it bleeds into the page.
+- Save as `src/assets/amsterdam-map.jpg` (overwrite).
 
-### 2. Stops repositioned along the canal belt
+### 2. Integrate the map into the page (`src/components/DayMap.tsx`)
 
-Stops follow a west → east → north arc that traces a believable day:
-
-```text
-01 Jordaan Café       (west of rings)        ~ (95, 245)
-02 Canal Walk         (Prinsengracht ring)   ~ (200, 200)
-03 Local Lunch        (Centrum)              ~ (320, 230)
-04 Hidden Garden      (Plantage)             ~ (430, 285)
-05 Waterfront Bar     (IJ / NDSM side)       ~ (515, 160)
-```
-
-Route segments redrawn as smooth Béziers that hug the canal arc and then cut up to the waterfront. `PATH_LEN` updated to roughly match the new segment lengths.
-
-### 3. Keep what already works
-
-- Hand-drawn icons (shoes/boat/food/nature/dining) floating above the active stop — unchanged.
-- Numbered checkpoint pucks with sketch wobble — unchanged.
-- Compass, "start here" handwritten note (re-anchored to new stop 01).
-- "X marks the spot" near the final stop — unchanged.
-- Scroll-driven progression, prev/next buttons, dots, story card — untouched.
+- Remove the `shadow-[0_18px_40px_...]` and `rounded-sm` framing on the `<img>` so it has no card edges.
+- Apply `mix-blend-multiply` and `opacity-80` so the paper texture of the page shows through and the lines feel printed onto the section.
+- Keep the existing route, numbered checkpoints, floating icons, and "start here" note unchanged: those are the colored layer that pops on top of the now-quiet base map.
+- Verify route + stop coordinates still land sensibly on the new simpler geometry; nudge if needed (Jordaan west of rings, Canal Walk on Prinsengracht arc, Local Lunch in Centrum, Hidden Garden east, Waterfront Bar on the IJ).
 
 ## Out of scope
 
-- No new dependencies, no real map tiles. The map stays a stylized sketch — just a recognizable Amsterdam one.
-- No copy changes in `Index.tsx`.
-- No layout/spacing changes outside `DayMap.tsx`.
+- No layout changes around the map.
+- No copy changes.
+- No changes to StoryBook or other components.
 
 ## Acceptance
 
-- The map reads as Amsterdam at a glance (canal horseshoe + IJ + Centraal label).
-- The 5 stops sit on the canal belt and form a coherent west-to-east-to-IJ route.
-- Existing icon style above active stops is preserved.
-- No regressions in the scroll progression or the right-hand story card.
+- The map reads as a loose hand-drawn sketch in two heritage tones.
+- It visually melts into the off-white section instead of looking like a pasted-in hero image.
+- Route, numbered stops, and active-stop icons remain the most colorful elements and clearly guide the eye.

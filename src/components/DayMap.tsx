@@ -6,6 +6,7 @@ import iconBoat from "@/assets/icon-boat.png";
 import iconFood from "@/assets/icon-food.png";
 import iconNature from "@/assets/icon-nature.png";
 import iconDining from "@/assets/icon-dining.png";
+import amsterdamMap from "@/assets/amsterdam-map.jpg";
 
 interface Moment {
   time: string;

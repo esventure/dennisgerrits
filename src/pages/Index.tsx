@@ -547,7 +547,7 @@ const Index = () => {
         </div>
       </div>
 
-      <section className="relative pb-16 lg:pb-0 lg:h-[200vh] -mt-8 lg:-mt-16">
+      <section className="relative pb-16 lg:pb-0 lg:h-[130vh] -mt-8 lg:-mt-16">
         <div className="lg:sticky lg:top-0 lg:h-screen lg:flex lg:items-start lg:pt-8">
           <div className="container mx-auto px-6 lg:px-12 w-full">
             <FadeIn>

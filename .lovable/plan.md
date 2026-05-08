@@ -1,54 +1,64 @@
 ## Goal
 
-Replace the abstract sketch in `src/components/DayMap.tsx` with a clearly recognizable hand-drawn Amsterdam map. Keep the existing hand-drawn icons (shoes, boat, food, nature, dining) above each active stop — those work well — and the existing scroll-driven progression and right-side story card untouched.
+Surface three secondary offers without distracting from the main guest journey, respecting that they serve two different audiences:
 
-## What changes (only `src/components/DayMap.tsx`)
+- **Group A (audience-building):** Speaking engagements + the "Two Stories, One City" podcast.
+- **Group B (B2B utility):** Travel agents & concierges.
 
-### 1. Geography people will actually recognize
+These get treated separately: A as an editorial strip on the homepage, B as a quiet header link only.
 
-Draw the iconic Amsterdam shapes inside the 600×500 viewBox:
+## Changes
 
-- **The IJ waterfront** as a wide curved band across the top (~y=60–95), tinted heritage-taupe at very low opacity to read as water.
-- **Centraal Station** as a small labeled rectangle on the IJ, top-center.
-- **Four concentric canal rings** (Singel, Herengracht, Keizersgracht, Prinsengracht) drawn as nested half-moon arcs anchored to the IJ, the signature horseshoe shape that makes Amsterdam instantly readable. Wobbly stroke via the existing `sketch` filter, taupe ink, varied opacities so the inner rings recede.
-- **Radial spoke streets** (3–4 thin lines) running from Centraal outward through the rings.
-- **Amstel river** as a meandering line cutting south-east from the rings down to the bottom edge.
-- **Vondelpark** as a small sketched green blob with a tiny "VONDELPARK" label, bottom-left of the rings.
-- Tiny labels in Bebas Neue at low opacity on key features: `IJ`, `CENTRAAL`, `AMSTEL`, `JORDAAN`, `VONDELPARK`. Replace the current `AMSTERDAM` mega-label and `TO THE HARBOUR` strip with these in-context labels.
-- Keep the wobbly paper border, folded corner, paper grain, and compass — they reinforce the sketchbook feel.
-- Drop the generic top/bottom canal-house silhouette clusters; the canal rings now do the work.
+### 1. New homepage section: "Also" strip (before Contact)
 
-### 2. Stops repositioned along the canal belt
+Insert a new section in `src/pages/Index.tsx`, placed directly above the existing `#contact` section.
 
-Stops follow a west → east → north arc that traces a believable day:
+- Background: off-white (`bg-background`) so it sits quietly between the previous section and the contact block. Generous vertical padding (`py-20 lg:py-28`).
+- Small kicker (Bebas Neue, uppercase, secondary color): "Also".
+- Two editorial cards side-by-side on desktop, stacked on mobile. No buttons, no shadows, no hover lifts. Just a thin divider line under each, a Bebas Neue title, one Outfit sentence, and a subtle text link with an arrow.
 
-```text
-01 Jordaan Café       (west of rings)        ~ (95, 245)
-02 Canal Walk         (Prinsengracht ring)   ~ (200, 200)
-03 Local Lunch        (Centrum)              ~ (320, 230)
-04 Hidden Garden      (Plantage)             ~ (430, 285)
-05 Waterfront Bar     (IJ / NDSM side)       ~ (515, 160)
-```
+**Card 1 — Two Stories, One City (podcast)**
+- Title: "Two Stories, One City"
+- Body: "My podcast. Two Amsterdammers, one place, one conversation at a time."
+- Link: "Listen" (placeholder href `#`, can be wired to the real podcast URL later).
 
-Route segments redrawn as smooth Béziers that hug the canal arc and then cut up to the waterfront. `PATH_LEN` updated to roughly match the new segment lengths.
+**Card 2 — Speaking**
+- Title: "Invite me to speak"
+- Body: "I talk to groups, schools and conferences about Amsterdam, storytelling, and the way we travel."
+- Link: "Get in touch" → `/#contact`.
 
-### 3. Keep what already works
+No imagery in this strip. The point is calm, not visual weight.
 
-- Hand-drawn icons (shoes/boat/food/nature/dining) floating above the active stop — unchanged.
-- Numbered checkpoint pucks with sketch wobble — unchanged.
-- Compass, "start here" handwritten note (re-anchored to new stop 01).
-- "X marks the spot" near the final stop — unchanged.
-- Scroll-driven progression, prev/next buttons, dots, story card — untouched.
+### 2. Header: add a discreet "For Professionals" link
 
-## Out of scope
+In `src/components/Header.tsx`, add a single nav link "For Professionals" pointing to `/travel-agents`. Style it visually lighter than the primary nav items (smaller, muted color, or right-aligned with a thin divider) so it reads as secondary, not part of the main journey.
 
-- No new dependencies, no real map tiles. The map stays a stylized sketch — just a recognizable Amsterdam one.
-- No copy changes in `Index.tsx`.
-- No layout/spacing changes outside `DayMap.tsx`.
+If the header has a mobile menu, include it there as well.
 
-## Acceptance
+### 3. Footer cleanup
 
-- The map reads as Amsterdam at a glance (canal horseshoe + IJ + Centraal label).
-- The 5 stops sit on the canal belt and form a coherent west-to-east-to-IJ route.
-- Existing icon style above active stops is preserved.
-- No regressions in the scroll progression or the right-hand story card.
+In `src/components/Footer.tsx`, restructure the right-hand area so the two audiences stay visually separated:
+
+- Keep the existing "For Professionals" column (Travel Agents, Universities, Speaking & Podcast links) but split "Speaking & Podcast" into two distinct links: "Speaking" and "Two Stories, One City".
+- Or: introduce a fourth small column "More" for Speaking + Podcast, leaving "For Professionals" for B2B only. Choose whichever fits the existing 3-column grid without crowding.
+
+### 4. Out of scope
+
+- No new routes or pages. Speaking does not get its own page yet — it links to the contact form.
+- No real podcast URL wired up (placeholder until provided).
+- No changes to copy elsewhere on the site.
+- No changes to the Travel Agents page itself.
+
+## Acceptance criteria
+
+- A reader scrolling the homepage encounters the "Also" strip naturally just before the contact form. It feels like a quiet PS, not a sales pitch.
+- A travel agent landing cold on the homepage can find their entry point in one click via the header.
+- Podcast and speaking are discoverable but never compete with the guest-booking flow.
+- No new pop-ups, floating CTAs, or visual noise.
+
+## Technical notes
+
+- Files touched: `src/pages/Index.tsx`, `src/components/Header.tsx`, `src/components/Footer.tsx`.
+- Reuse existing tokens: `font-heading`, `font-body`, `text-primary`, `text-secondary`, `text-muted-foreground`, `bg-background`. No new colors.
+- Wrap new homepage section in `FadeIn` to match site-wide animation pattern.
+- Add the new copy to the CMS schema (`src/lib/siteContentSchema.ts`) under a new `also` section so Dennis can edit it later, with sensible fallbacks.

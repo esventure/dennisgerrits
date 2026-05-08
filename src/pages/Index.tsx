@@ -652,7 +652,7 @@ const Index = () => {
               </p>
             </FadeIn>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 gap-6 md:gap-8 max-w-xl mx-auto">
               {[
                 {
                   kicker: "Invite me",
@@ -669,24 +669,6 @@ const Index = () => {
                       <path d="M 14 24 C 14 32, 20 36, 26 36 C 32 36, 38 32, 38 24" />
                       <line x1="26" y1="36" x2="26" y2="44" />
                       <line x1="20" y1="44" x2="32" y2="44" />
-                    </g>
-                  ),
-                },
-                {
-                  kicker: "Travel agents",
-                  title: "A partner for your Amsterdam clients",
-                  body: "I work quietly alongside agencies and concierges. Private guiding, reservations, transfers, on-the-ground support.",
-                  cta: "Partner with me",
-                  href: "#contact",
-                  color: "hsl(var(--heritage-bordeaux))",
-                  rotate: "1deg",
-                  stamp: "TRADE",
-                  icon: (
-                    <g>
-                      <rect x="8" y="16" width="36" height="26" rx="2" />
-                      <path d="M 19 16 L 19 11 C 19 9, 20 8, 22 8 L 30 8 C 32 8, 33 9, 33 11 L 33 16" />
-                      <line x1="8" y1="26" x2="44" y2="26" />
-                      <line x1="24" y1="24" x2="28" y2="24" strokeWidth="2.4" />
                     </g>
                   ),
                 },

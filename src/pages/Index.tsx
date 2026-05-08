@@ -1042,8 +1042,8 @@ const Index = () => {
             className="relative overflow-hidden rounded-3xl px-5 py-12 sm:px-8 sm:py-14 md:px-12 md:py-16 lg:px-16 lg:py-20"
             style={{ backgroundColor: "hsl(var(--heritage-green))" }}
           >
-            {/* Section-anchored skyline silhouette inside the rounded box */}
-            <AmsterdamSkyline variant="section" />
+            {/* Skyline now passes through this box via the global fixed
+                screen-blend layer, so no per-section instance is needed. */}
 
             {/* Handwritten margin note */}
             <p

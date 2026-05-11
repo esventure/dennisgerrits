@@ -755,62 +755,16 @@ const Index = () => {
             </FadeIn>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 md:gap-x-8 gap-y-12 pt-4">
-            {[
-              { id: "history", num: "01", title: "Hidden History", note: "ask me about the cat", image: peekHistory },
-              { id: "food", num: "02", title: "Local Food", note: "bring an empty stomach", image: peekFood },
-              { id: "architecture", num: "03", title: "Architecture", note: "look up, always", image: peekArchitecture },
-              { id: "water", num: "04", title: "From the Water", note: "bring a sweater", image: peekWater },
-            ].map((theme, i) => {
-              const noteColor =
-                i % 3 === 0
-                  ? "hsl(var(--heritage-bordeaux))"
-                  : i % 3 === 1
-                  ? "hsl(var(--heritage-green))"
-                  : "hsl(var(--heritage-orange))";
-              return (
-                <FadeIn key={theme.id} delay={i * 0.08}>
-                  <Link
-                    to="/get-inspired"
-                    className="group block w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-4"
-                  >
-                    <div className="relative overflow-hidden aspect-[4/5] bg-muted shadow-[0_18px_40px_-24px_rgba(0,0,0,0.35)]">
-                      <img
-                        src={theme.image}
-                        alt={theme.title}
-                        loading="lazy"
-                        decoding="async"
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                      />
-                      <span
-                        aria-hidden
-                        className="absolute top-3 left-3 font-heading text-2xl md:text-3xl leading-none px-2"
-                        style={{ color: "hsl(var(--background))", textShadow: "0 1px 6px rgba(0,0,0,0.4)" }}
-                      >
-                        {theme.num}
-                      </span>
-                    </div>
-                    <div className="pt-4 pl-1">
-                      <h3 className="font-heading text-2xl md:text-3xl text-primary leading-tight tracking-wide">
-                        {theme.title}
-                      </h3>
-                      <p
-                        className="text-lg md:text-xl mt-1 leading-snug overflow-hidden max-h-0 opacity-0 group-hover:max-h-12 group-hover:opacity-100 group-hover:mt-2 transition-all duration-500 ease-out"
-                        style={{
-                          fontFamily: "'Caveat', cursive",
-                          color: noteColor,
-                          transform: "rotate(-1deg)",
-                        }}
-                      >
-                        <span aria-hidden className="mr-1.5">↳</span>
-                        {theme.note}
-                      </p>
-                    </div>
-                  </Link>
-                </FadeIn>
-              );
-            })}
-          </div>
+          <PolaroidWall
+            jitter={false}
+            columnsClass="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+            items={[
+              { id: "history", title: "Hidden History", caption: "I'll take you down an alley most locals walk past. There's a stone above a doorway with a story almost no one knows.", note: "ask me about the cat", image: peekHistory, rotate: -2.4, pin: "tape-tl" },
+              { id: "food", title: "Local Food", caption: "I know a baker who pulls bread out of the oven at six. We can be there before the queue starts.", note: "bring an empty stomach", image: peekFood, rotate: 1.8, pin: "tape-tr" },
+              { id: "architecture", title: "Architecture", caption: "Every gable in this city is a date stamp. Once you know what to look for, the whole street starts talking.", note: "look up, always", image: peekArchitecture, rotate: -1.2, pin: "tape-gl" },
+              { id: "water", title: "From the Water", caption: "I know a friend with a small boat. We'll drift through the canals at dusk.", note: "bring a sweater", image: peekWater, rotate: 2.0, pin: "tape-gr" },
+            ]}
+          />
 
           <FadeIn>
             <p className="text-center mt-16">

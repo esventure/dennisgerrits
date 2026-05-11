@@ -130,7 +130,7 @@ const themes = [
 ];
 
 const GetInspired = () => {
-  const [active, setActive] = useState<string | null>(null);
+  
   const [searchParams] = useSearchParams();
   const [openStory, setOpenStory] = useState<string>("");
 
@@ -235,105 +235,77 @@ const GetInspired = () => {
             </FadeIn>
           </div>
 
-          {/* Polaroid wall */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-12 md:gap-y-16 gap-x-6 md:gap-x-10 pt-8">
+          {/* Editorial index — one row per interest, alternating sides */}
+          <div className="space-y-16 md:space-y-24 lg:space-y-28 pt-10 md:pt-14">
             {themes.filter((t) => t && t.title && t.image).map((theme, i) => {
-              const isActive = active === theme.id;
-              const paperBg =
+              const num = String(i + 1).padStart(2, "0");
+              const flip = i % 2 === 1;
+              const noteColor =
                 i % 3 === 0
-                  ? "hsl(40 38% 97%)"
+                  ? "hsl(var(--heritage-bordeaux))"
                   : i % 3 === 1
-                  ? "hsl(28 35% 95%)"
-                  : "hsl(120 15% 96%)";
-              const isLeft = theme.pin === "tape-tl" || theme.pin === "tape-gl";
-              const tapeColors = [
-                { bg: "hsl(var(--heritage-orange) / 0.72)", border: "hsl(var(--heritage-bordeaux) / 0.30)" },
-                { bg: "hsl(var(--heritage-green) / 0.55)", border: "hsl(var(--heritage-green) / 0.40)" },
-                { bg: "hsl(var(--heritage-bordeaux) / 0.45)", border: "hsl(var(--heritage-bordeaux) / 0.35)" },
-              ];
-              const tape = tapeColors[i % 3];
+                  ? "hsl(var(--heritage-green))"
+                  : "hsl(var(--heritage-orange))";
               return (
-                <FadeIn key={theme.id} delay={i * 0.08}>
-                  <button
-                    onClick={() => setActive(isActive ? null : theme.id)}
-                    className="group relative block w-full text-left transition-transform duration-500 ease-out hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-4"
-                    style={{ transform: `rotate(${isActive ? 0 : theme.rotate}deg)` }}
+                <FadeIn key={theme.id} delay={Math.min(i, 4) * 0.06}>
+                  <article
+                    id={theme.id}
+                    className={cn(
+                      "grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center",
+                    )}
                   >
+                    {/* Photo */}
                     <div
-                      aria-hidden
-                      className="pointer-events-none absolute -inset-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl"
-                      style={{
-                        background:
-                          "radial-gradient(closest-side, hsl(var(--heritage-orange) / 0.35), transparent 70%)",
-                      }}
-                    />
-                    <div
-                      className="p-2.5 sm:p-3 pb-16 sm:pb-20 shadow-[0_10px_28px_-14px_rgba(0,0,0,0.28),0_2px_6px_-2px_rgba(0,0,0,0.12)] transition-shadow duration-500 group-hover:shadow-[0_22px_44px_-16px_rgba(0,0,0,0.35)] relative"
-                      style={{ backgroundColor: paperBg }}
+                      className={cn(
+                        "lg:col-span-6",
+                        flip ? "lg:order-2" : "lg:order-1",
+                      )}
                     >
-                      <span
-                        aria-hidden
-                        className={cn(
-                          "absolute -top-3 w-16 sm:w-20 h-6 sm:h-7 border",
-                          isLeft
-                            ? "left-4 sm:left-6 -rotate-[8deg]"
-                            : "right-4 sm:right-6 rotate-[6deg]",
-                        )}
-                        style={{
-                          backgroundColor: tape.bg,
-                          borderColor: tape.border,
-                        }}
-                      />
-                      <div className="aspect-square overflow-hidden bg-muted">
+                      <div className="relative overflow-hidden aspect-[4/5] bg-muted shadow-[0_20px_50px_-30px_rgba(0,0,0,0.4)]">
                         <img
                           src={theme.image}
                           alt={theme.title}
-                          width={768}
-                          height={768}
                           loading="lazy"
                           decoding="async"
-                          // @ts-expect-error fetchpriority is a valid HTML attribute
-                          fetchpriority="low"
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.03]"
                         />
                       </div>
-                      <div className="absolute bottom-3 sm:bottom-4 left-2.5 right-2.5 sm:left-3 sm:right-3 px-1.5 sm:px-2">
-                        <h3 className="font-heading text-lg sm:text-xl md:text-2xl text-primary leading-tight tracking-wide truncate">
-                          {theme.title}
-                        </h3>
+                    </div>
+
+                    {/* Text */}
+                    <div
+                      className={cn(
+                        "lg:col-span-6",
+                        flip ? "lg:order-1 lg:pr-8" : "lg:order-2 lg:pl-8",
+                      )}
+                    >
+                      <div className="relative pl-6 border-l-2" style={{ borderColor: "hsl(var(--heritage-orange))" }}>
                         <p
-                          className="text-base sm:text-lg mt-0.5 sm:mt-1 leading-snug truncate"
+                          className="font-heading text-5xl md:text-6xl mb-2 leading-none"
+                          style={{ color: "hsl(var(--heritage-orange))" }}
+                        >
+                          {num}
+                        </p>
+                        <h2 className="font-heading text-4xl md:text-5xl text-primary leading-[0.95] mb-5">
+                          {theme.title}
+                        </h2>
+                        <p className="font-body text-lg md:text-xl text-foreground/80 leading-relaxed mb-5 max-w-xl">
+                          {theme.caption}
+                        </p>
+                        <p
+                          className="text-xl md:text-2xl inline-block"
                           style={{
                             fontFamily: "'Caveat', cursive",
-                            color: "hsl(var(--heritage-bordeaux))",
+                            color: noteColor,
+                            transform: "rotate(-1.5deg)",
                           }}
                         >
-                          <span
-                            aria-hidden
-                            className="inline-block w-1.5 h-1.5 rounded-full mr-1.5 align-middle"
-                            style={{ backgroundColor: "hsl(var(--heritage-orange))" }}
-                          />
+                          <span aria-hidden className="mr-2">↳</span>
                           {theme.note}
                         </p>
                       </div>
                     </div>
-                    <div
-                      className={cn(
-                        "overflow-hidden transition-all duration-500 ease-out",
-                        isActive ? "max-h-60 opacity-100 mt-3 sm:mt-4" : "max-h-0 opacity-0 mt-0"
-                      )}
-                    >
-                      <p
-                        className="text-lg sm:text-xl md:text-2xl leading-snug px-1"
-                        style={{
-                          fontFamily: "'Caveat', cursive",
-                          color: "hsl(var(--heritage-bordeaux))",
-                        }}
-                      >
-                        {theme.caption}
-                      </p>
-                    </div>
-                  </button>
+                  </article>
                 </FadeIn>
               );
             })}

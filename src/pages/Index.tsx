@@ -428,7 +428,7 @@ const Index = () => {
           the moment the section pins on desktop. On mobile the sticky
           behaviour is disabled — the map renders inline with manual
           prev / next controls. */}
-      <div id="day" className="relative scroll-mt-20 pt-16 lg:pt-32 pb-6 lg:pb-12">
+      <div id="day" className="relative scroll-mt-20 pt-12 lg:pt-20 pb-2">
         {/* ── Polaroid peek: floats over the boundary with "What I take care of" ── */}
         <div className="absolute right-6 lg:right-12 top-0 -translate-y-1/2 z-20 pointer-events-none hidden md:block">
           <FadeIn delay={0.2}>

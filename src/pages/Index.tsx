@@ -1095,7 +1095,8 @@ const Index = () => {
             "radial-gradient(900px 500px at 8% -5%, hsl(var(--heritage-orange) / 0.14), transparent 62%), radial-gradient(1100px 700px at 100% 110%, hsl(var(--heritage-green) / 0.12), transparent 65%), hsl(var(--background))",
         }}
       >
-        <div className="container mx-auto px-6 lg:px-12">
+        <AmsterdamSkyline variant="section-light" />
+        <div className="relative z-10 container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mb-10 md:mb-14">
             <FadeIn>
               <p

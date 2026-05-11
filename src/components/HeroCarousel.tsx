@@ -340,26 +340,6 @@ const HeroEditorialGreen = () => (
               the quiet corners, the places that make you stop and really look.
               That's what I do.
             </p>
-            <a
-              href="#contact"
-              className="inline-flex flex-col items-start gap-2 group"
-            >
-              <span
-                className="font-body text-sm tracking-widest uppercase border-2 px-7 py-4 transition-colors"
-                style={{
-                  borderColor: "hsl(var(--heritage-orange))",
-                  color: "hsl(var(--background))",
-                }}
-              >
-                Say hello →
-              </span>
-              <span
-                className="font-body italic text-sm"
-                style={{ color: "hsl(var(--background) / 0.7)" }}
-              >
-                Let's get to know each other first
-              </span>
-            </a>
           </FadeIn>
         </div>
       </div>

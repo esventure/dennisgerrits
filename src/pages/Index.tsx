@@ -194,7 +194,7 @@ const Index = () => {
               <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
                 {t("process.kicker", "How It Works")}
               </p>
-              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-6">
+              <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary leading-[0.95] mb-6">
                 {t("process.title", "No standard tours. Every trip is built from scratch.")}
               </h2>
               <RichText
@@ -329,7 +329,7 @@ const Index = () => {
               <p className="font-body text-sm tracking-widest uppercase text-accent mb-4">
                 {t("concierge.kicker", "What I take care of")}
               </p>
-              <h3 className="font-heading text-3xl md:text-4xl text-primary leading-tight">
+              <h3 className="font-heading text-3xl sm:text-4xl text-primary leading-tight">
                 {t("concierge.title", "More than a guide. A concierge for your whole stay.")}
               </h3>
             </FadeIn>
@@ -373,7 +373,7 @@ const Index = () => {
               return (
                 <FadeIn delay={0.15}>
                   <div
-                    className="h-full p-8 lg:p-12 bg-background rounded-sm border-t-4 shadow-md"
+                    className="h-full p-6 sm:p-8 lg:p-12 bg-background rounded-sm border-t-4 shadow-md"
                     style={{ borderColor: "hsl(var(--heritage-orange))" }}
                   >
                     <p className="font-body text-xs tracking-widest uppercase text-secondary mb-8 font-semibold">
@@ -469,13 +469,13 @@ const Index = () => {
                 <p className="font-body text-sm tracking-widest uppercase text-accent mb-6">
                   Recommended By
                 </p>
-                <h2 className="font-heading text-4xl md:text-5xl text-primary leading-[0.95] mb-6">
+                <h2 className="font-heading text-4xl sm:text-5xl text-primary leading-[0.95] mb-6">
                   Rick Steves
                 </h2>
-                <blockquote className="relative font-body text-xl text-foreground italic leading-relaxed mb-6 pl-10">
+                <blockquote className="relative font-body text-lg sm:text-xl text-foreground italic leading-relaxed mb-6 pl-7 sm:pl-10">
                   <span
                     aria-hidden
-                    className="absolute -left-2 -top-6 font-heading text-7xl leading-none select-none"
+                    className="absolute -left-1 sm:-left-2 -top-5 sm:-top-6 font-heading text-5xl sm:text-7xl leading-none select-none"
                     style={{ color: "hsl(var(--heritage-green))" }}
                   >
                     “
@@ -657,7 +657,7 @@ const Index = () => {
               >
                 Building Blocks
               </p>
-              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-6">
+              <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary leading-[0.95] mb-6">
                 What excites you?
               </h2>
               <p className="font-body text-lg text-muted-foreground leading-relaxed">
@@ -898,7 +898,7 @@ const Index = () => {
                     <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
                       What Guests Say
                     </p>
-                    <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
+                    <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
                       Real Words From Real People
                     </h2>
                     <p className="font-body text-lg text-muted-foreground leading-relaxed">
@@ -952,17 +952,17 @@ const Index = () => {
                         href={TA_URL}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group block max-w-4xl mx-auto mb-10 bg-background rounded-lg shadow-md hover:shadow-lg transition-all border-l-4 px-8 md:px-12 py-10 md:py-12 relative"
+                        className="group block max-w-4xl mx-auto mb-10 bg-background rounded-lg shadow-md hover:shadow-lg transition-all border-l-4 px-6 sm:px-10 md:px-12 py-8 sm:py-10 md:py-12 relative"
                         style={{ borderLeftColor: "hsl(var(--heritage-green))" }}
                       >
                         <span
                           aria-hidden
-                          className="absolute -left-1 -top-6 font-heading text-7xl md:text-8xl leading-none select-none"
+                          className="absolute -left-1 -top-5 sm:-top-6 font-heading text-6xl sm:text-7xl md:text-8xl leading-none select-none"
                           style={{ color: "hsl(var(--heritage-green))" }}
                         >
                           “
                         </span>
-                        <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center justify-between mb-4 gap-3 flex-wrap">
                           <TripAdvisorBubbles size={16} />
                           <span
                             className="font-body text-xs tracking-wide uppercase opacity-80"
@@ -971,7 +971,7 @@ const Index = () => {
                             Tripadvisor · {hero.date}
                           </span>
                         </div>
-                        <p className="font-heading text-2xl md:text-3xl text-primary leading-snug italic mb-6">
+                        <p className="font-heading text-xl sm:text-2xl md:text-3xl text-primary leading-snug italic mb-6">
                           {hero.quote}
                         </p>
                         <div className="flex items-end justify-between gap-3">
@@ -1069,7 +1069,7 @@ const Index = () => {
                 <p className="font-body text-sm tracking-widest uppercase text-accent mb-4">
                   Faces of the Road
                 </p>
-                <h3 className="font-heading text-4xl lg:text-5xl text-primary mb-4">
+                <h3 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-primary mb-4">
                   Moments spent together.
                 </h3>
                 <p className="font-body text-muted-foreground text-lg leading-relaxed">
@@ -1104,7 +1104,7 @@ const Index = () => {
               >
                 Notes From the City
               </p>
-              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-4">
+              <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary leading-[0.95] mb-4">
                 From my notebook
               </h2>
               <p className="font-body text-lg text-muted-foreground leading-relaxed">

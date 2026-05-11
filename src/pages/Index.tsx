@@ -1090,10 +1090,6 @@ const Index = () => {
       <section
         id="storybook"
         className="relative py-16 md:py-20 lg:py-28 scroll-mt-20 overflow-hidden"
-        style={{
-          background:
-            "radial-gradient(900px 500px at 8% -5%, hsl(var(--heritage-orange) / 0.14), transparent 62%), radial-gradient(1100px 700px at 100% 110%, hsl(var(--heritage-green) / 0.12), transparent 65%), hsl(var(--background))",
-        }}
       >
         <AmsterdamSkyline variant="section-light" />
         <div className="relative z-10 container mx-auto px-6 lg:px-12">

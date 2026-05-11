@@ -32,6 +32,7 @@ import storyBookshop from "@/assets/stories/bookshop.jpg";
 import peekHistory from "@/assets/interests/history.jpg";
 import peekFood from "@/assets/interests/food.jpg";
 import peekWater from "@/assets/interests/water.jpg";
+import peekArchitecture from "@/assets/interests/architecture.jpg";
 import storyCanalHouses from "@/assets/stories/canal-houses.jpg";
 import storyBench from "@/assets/stories/bench.jpg";
 import podcastCover from "@/assets/podcast-cover.jpg";

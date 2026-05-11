@@ -307,6 +307,15 @@ const GetInspired = () => {
                           borderColor: tape.border,
                         }}
                       />
+                      {/* Pushpin on top of the tape */}
+                      <span
+                        aria-hidden
+                        className={cn(
+                          "absolute -top-1 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full shadow-[inset_-1px_-1.5px_2px_rgba(0,0,0,0.35),inset_1.5px_1.5px_2px_rgba(255,255,255,0.45),0_2px_3px_rgba(0,0,0,0.35)] z-10",
+                          isLeft ? "left-7 sm:left-10" : "right-7 sm:right-10",
+                        )}
+                        style={{ backgroundColor: outlineColor }}
+                      />
                       <div className="relative aspect-square overflow-hidden bg-muted">
                         <img
                           src={theme.image}

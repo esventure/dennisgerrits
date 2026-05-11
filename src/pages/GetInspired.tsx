@@ -235,80 +235,9 @@ const GetInspired = () => {
             </FadeIn>
           </div>
 
-          {/* Editorial index — one row per interest, alternating sides */}
-          <div className="space-y-16 md:space-y-24 lg:space-y-28 pt-10 md:pt-14">
-            {themes.filter((t) => t && t.title && t.image).map((theme, i) => {
-              const num = String(i + 1).padStart(2, "0");
-              const flip = i % 2 === 1;
-              const noteColor =
-                i % 3 === 0
-                  ? "hsl(var(--heritage-bordeaux))"
-                  : i % 3 === 1
-                  ? "hsl(var(--heritage-green))"
-                  : "hsl(var(--heritage-orange))";
-              return (
-                <FadeIn key={theme.id} delay={Math.min(i, 4) * 0.06}>
-                  <article
-                    id={theme.id}
-                    className={cn(
-                      "grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center",
-                    )}
-                  >
-                    {/* Photo */}
-                    <div
-                      className={cn(
-                        "lg:col-span-6",
-                        flip ? "lg:order-2" : "lg:order-1",
-                      )}
-                    >
-                      <div className="relative overflow-hidden aspect-[4/5] bg-muted shadow-[0_20px_50px_-30px_rgba(0,0,0,0.4)]">
-                        <img
-                          src={theme.image}
-                          alt={theme.title}
-                          loading="lazy"
-                          decoding="async"
-                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.03]"
-                        />
-                      </div>
-                    </div>
-
-                    {/* Text */}
-                    <div
-                      className={cn(
-                        "lg:col-span-6",
-                        flip ? "lg:order-1 lg:pr-8" : "lg:order-2 lg:pl-8",
-                      )}
-                    >
-                      <div className="relative pl-6 border-l-2" style={{ borderColor: "hsl(var(--heritage-orange))" }}>
-                        <p
-                          className="font-heading text-5xl md:text-6xl mb-2 leading-none"
-                          style={{ color: "hsl(var(--heritage-orange))" }}
-                        >
-                          {num}
-                        </p>
-                        <h2 className="font-heading text-4xl md:text-5xl text-primary leading-[0.95] mb-5">
-                          {theme.title}
-                        </h2>
-                        <p className="font-body text-lg md:text-xl text-foreground/80 leading-relaxed mb-5 max-w-xl">
-                          {theme.caption}
-                        </p>
-                        <p
-                          className="text-xl md:text-2xl inline-block"
-                          style={{
-                            fontFamily: "'Caveat', cursive",
-                            color: noteColor,
-                            transform: "rotate(-1.5deg)",
-                          }}
-                        >
-                          <span aria-hidden className="mr-2">↳</span>
-                          {theme.note}
-                        </p>
-                      </div>
-                    </div>
-                  </article>
-                </FadeIn>
-              );
-            })}
+          {/* Polaroid wall — pinned by hand, click a card to read more */}
+          <div className="pt-6 md:pt-10">
+            <PolaroidWall items={themes} />
           </div>
 
           <FadeIn>

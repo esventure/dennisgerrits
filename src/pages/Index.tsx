@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
 import AmsterdamSkyline from "@/components/AmsterdamSkyline";
+import StoryBook from "@/components/StoryBook";
+import { supabase } from "@/integrations/supabase/client";
 
 import DayMap from "@/components/DayMap";
 

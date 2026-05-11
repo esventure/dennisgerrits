@@ -220,7 +220,7 @@ const StoryBook = ({ stories, initialStoryId }: StoryBookProps) => {
               className="contents"
             >
               {/* LEFT PAGE — title + intro */}
-              <div className="relative p-8 md:p-10 lg:p-14 flex flex-col">
+              <div className="relative p-6 sm:p-8 md:p-10 lg:p-14 flex flex-col">
                 <p
                   className="text-base mb-6 -rotate-[2deg]"
                   style={{
@@ -266,7 +266,7 @@ const StoryBook = ({ stories, initialStoryId }: StoryBookProps) => {
               </div>
 
               {/* RIGHT PAGE — body + signature */}
-              <div className="relative p-8 md:p-10 lg:p-14 flex flex-col border-t md:border-t-0 md:border-l border-foreground/5">
+              <div className="relative p-6 sm:p-8 md:p-10 lg:p-14 flex flex-col border-t md:border-t-0 md:border-l border-foreground/5">
                 <p className="font-body text-base md:text-[17px] text-foreground/85 leading-[1.85] flex-1 first-letter:font-heading first-letter:text-5xl first-letter:float-left first-letter:mr-2 first-letter:leading-[0.9] first-letter:text-primary">
                   {story.body}
                 </p>

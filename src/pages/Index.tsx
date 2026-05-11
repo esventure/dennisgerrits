@@ -1037,8 +1037,6 @@ const Index = () => {
             "linear-gradient(180deg, hsl(28 55% 94%) 0%, hsl(40 45% 95%) 35%, hsl(40 38% 95%) 100%)",
         }}
       >
-        {/* Skyline silhouette through the section */}
-        <AmsterdamSkyline variant="section-light" />
 
         {/* Subtle paper-grain noise overlay */}
         <div

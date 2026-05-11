@@ -429,27 +429,21 @@ const Index = () => {
                               className="shrink-0 w-9 h-9"
                               fill="none"
                               stroke="hsl(var(--heritage-bordeaux))"
-                              strokeWidth="1.4"
+                              strokeWidth="1.6"
                               strokeLinecap="round"
                               strokeLinejoin="round"
                             >
                               <defs>
-                                <filter id="thumbSketch" x="-10%" y="-10%" width="120%" height="120%">
-                                  <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" />
-                                  <feDisplacementMap in="SourceGraphic" scale="1.3" />
+                                <filter id="worryWobble" x="-15%" y="-15%" width="130%" height="130%">
+                                  <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="2" seed="4" />
+                                  <feDisplacementMap in="SourceGraphic" scale="1.4" />
                                 </filter>
                               </defs>
-                              <g filter="url(#thumbSketch)">
-                                {/* Cuff at top */}
-                                <path d="M 8 9 L 16 9 L 16 14 L 8 14 Z" />
-                                {/* Palm — rounded rectangle below cuff */}
-                                <path d="M 9 14 L 9 24 C 9 26, 10 27, 12 27 L 21 27 C 23 27, 24 26, 24 24 L 24 14" />
-                                {/* Thumb pointing down on the right */}
-                                <path d="M 24 17 C 27 17, 30 18, 31 21 C 32 24, 31 27, 28 28 L 24 28" />
-                                {/* Knuckle creases */}
-                                <path d="M 12 18 L 15 18" opacity="0.55" />
-                                <path d="M 12 21 L 15 21" opacity="0.55" />
-                                <path d="M 12 24 L 15 24" opacity="0.55" />
+                              <g filter="url(#worryWobble)">
+                                {/* hand-drawn ring (open, scribbly) */}
+                                <path d="M 20 5 C 28 5, 35 11, 35 20 C 35 29, 28 35, 20 35 C 11 35, 5 28, 5 20 C 5 12, 11 6, 20 5" />
+                                {/* crossed-off slash, like a notebook strike-through */}
+                                <path d="M 11 12 L 29 28" />
                               </g>
                             </svg>
                             <span>{row.worry}</span>

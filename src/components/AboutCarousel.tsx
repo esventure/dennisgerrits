@@ -177,14 +177,50 @@ const AboutCarousel = () => {
 
   return (
     <section id="about" className="relative scroll-mt-20 group">
-      {/* Variation badge */}
-      <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
+      {/* Top control bar — variation badge + nav controls */}
+      <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
+        <button
+          onClick={scrollPrev}
+          aria-label="Previous variation"
+          className="p-2 rounded-full bg-background/80 backdrop-blur-sm border border-border text-muted-foreground hover:text-accent hover:border-accent transition-colors"
+        >
+          <ChevronLeft className="w-4 h-4" />
+        </button>
+
         <span className="font-body text-[10px] tracking-[0.3em] uppercase bg-background/80 backdrop-blur-sm text-secondary px-3 py-1.5 rounded-full border border-border">
           Variation {selected + 1} of {slides.length} · {slides[selected].label}
         </span>
+
+        <div className="flex items-center gap-2 bg-background/80 backdrop-blur-sm border border-border rounded-full px-3 py-2">
+          {slides.map((s, i) => {
+            const isActive = i === selected;
+            return (
+              <button
+                key={s.key}
+                onClick={() => scrollTo(i)}
+                aria-label={`Go to ${s.label} variation`}
+                className="w-3 h-3 flex items-center justify-center"
+              >
+                {isActive ? (
+                  <span className="block w-3 h-3 rounded-full border-[1.5px] border-accent" />
+                ) : (
+                  <span className="block w-2 h-2 rounded-full bg-border" />
+                )}
+              </button>
+            );
+          })}
+        </div>
+
+        <button
+          onClick={scrollNext}
+          aria-label="Next variation"
+          className="p-2 rounded-full bg-background/80 backdrop-blur-sm border border-border text-muted-foreground hover:text-accent hover:border-accent transition-colors"
+        >
+          <ChevronRight className="w-4 h-4" />
+        </button>
       </div>
 
-      <div className="overflow-hidden" ref={emblaRef}>
+      <div className="overflow-hidden pt-16" ref={emblaRef}>
         <div className="flex">
           {slides.map((s) => (
             <div
@@ -195,43 +231,6 @@ const AboutCarousel = () => {
             </div>
           ))}
         </div>
-      </div>
-
-      {/* Dots + arrows */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
-        <button
-          onClick={scrollPrev}
-          aria-label="Previous variation"
-          className="opacity-0 group-hover:opacity-100 transition-opacity p-2 rounded-full bg-background/80 border border-border text-muted-foreground hover:text-accent hover:border-accent"
-        >
-          <ChevronLeft className="w-4 h-4" />
-        </button>
-
-        {slides.map((s, i) => {
-          const isActive = i === selected;
-          return (
-            <button
-              key={s.key}
-              onClick={() => scrollTo(i)}
-              aria-label={`Go to ${s.label} variation`}
-              className="w-3 h-3 flex items-center justify-center"
-            >
-              {isActive ? (
-                <span className="block w-3 h-3 rounded-full border-[1.5px] border-accent" />
-              ) : (
-                <span className="block w-2 h-2 rounded-full bg-border" />
-              )}
-            </button>
-          );
-        })}
-
-        <button
-          onClick={scrollNext}
-          aria-label="Next variation"
-          className="opacity-0 group-hover:opacity-100 transition-opacity p-2 rounded-full bg-background/80 border border-border text-muted-foreground hover:text-accent hover:border-accent"
-        >
-          <ChevronRight className="w-4 h-4" />
-        </button>
       </div>
     </section>
   );

@@ -1,47 +1,74 @@
-## Why it feels "funeral" right now
+## What feels off today
 
-- Hero is a single paragraph on a near‑white wash with one small orange eyebrow. No color, no texture, no warmth.
-- The polaroid wall does most of the visual work, but every card sits on plain white with grey shadows. The "tape" pieces are the only color and they're small.
-- The Stories section drops onto a flat taupe block with a quiet purple headline. After 12 colorful polaroids it reads like a footer.
-- Heritage green is barely used anywhere on the page.
+The Building Blocks section uses tape strips, rotated cards, three different paper tints, hidden click-to-expand captions and tiny truncated titles. Compared to the rest of the site (editorial split panels, big Bebas headlines, generous whitespace, restrained hand-drawn accents, documentary photography), it reads as a craft scrapbook dropped into a magazine.
 
-## Proposed uplift (visual only, copy & structure unchanged)
+It also doesn't make the visitor feel Dennis's depth. Twelve near-identical tiles with two-word notes ("ask me about the cat") show breadth, not passion. The personal stories are hidden one click away.
 
-### 1. Hero block — give it warmth and personality
-- Replace the cool radial wash with a warmer layered background: soft orange glow top‑left + a green wash bottom‑right, both at low opacity over off‑white.
-- Add a hand‑drawn orange squiggle under "Build Your Day" (same style as "Notes From the City" on the homepage), and a small Caveat‑script line in green above the eyebrow ("a few ideas to start with").
-- Add a subtle hand‑drawn green arrow or dotted line pointing down toward the polaroid grid, so the eye is pulled in.
+## What "alive" should mean here
 
-### 2. Polaroid wall — more color, less mortuary white
-- Tint the polaroid paper itself: alternate between off‑white, a very pale cream, and a faint green‑tinted card, instead of pure white. Keeps the analog feel but breaks the uniform grey.
-- Make the tape strips bigger, more varied, and rotate through three colors (orange, green, bordeaux) instead of just two. Slight torn‑paper edge.
-- On hover: lift + a soft orange glow behind the card (instead of just a deeper grey shadow).
-- Active/expanded card: bordeaux caption stays, but add a thin green underline accent on the title and a small orange dot before the script note.
+Not more rotation and tape. Alive on this site is:
+- Bebas headline + Caveat margin note in his own voice
+- Specific proper nouns (the baker, the friend who paints in Noord, Multatuli's cafe)
+- Documentary photo cropped editorially
+- One small hand-drawn accent per block, not five
 
-### 3. Section divider between polaroids and stories
-- Add a hand‑drawn green wavy divider (same family as the orange skyline lines) between the two sections so Stories doesn't feel "dropped in".
-- Optional: a small orange Caveat label "and a few stories…" sitting on the divider, rotated a couple of degrees.
+## Proposed direction
 
-### 4. Stories section — warmer canvas
-- Swap the flat taupe for a layered background: cream base + a soft green radial in one corner + a faint orange paper‑grain noise (same noise pattern used on the homepage Stories section, kept low opacity).
-- Add a small orange "Stories" eyebrow above the H2 (matches the homepage rhythm and ties the two pages together).
-- Give the StoryBook container a subtle green page‑edge or bordeaux thread accent so it reads as a "real" notebook on the page.
+### 1. Get Inspired page: photo-essay index
 
-### 5. CTA line at the bottom of the polaroids
-- Currently a thin orange dashed link. Upgrade to a small handwritten‑style block: green Caveat line ("when you're ready…") above the existing orange link, with a tiny hand‑drawn arrow.
+Replace the 12-card polaroid grid with a vertical list of editorial rows, paced like the Day in My Life section:
 
-## Heritage palette usage after the change
-- Orange: hero glow, squiggle under H1, polaroid hover glow, bottom CTA link, Stories eyebrow.
-- Green: secondary hero wash, ~⅓ of polaroid tape strips, divider squiggle, Stories background accent, "when you're ready" script.
-- Bordeaux: kept where it is (Caveat captions, notes) — already working.
-- Purple: kept for headings only.
+```text
+┌────────────────────────────────────────────────────────────┐
+│  01    HIDDEN HISTORY                                      │
+│  ─────                                  [ photo, 4:5 ]      │
+│  "There's a stone above a doorway in                       │
+│   the Jordaan with a cat carved into                       │
+│   it. Almost no one knows the story."                      │
+│                                                            │
+│   ↳ ask me about the cat   ←caveat margin note            │
+└────────────────────────────────────────────────────────────┘
+```
+
+For each of the 12 themes:
+- Big Bebas number (01..12) + uppercase title, like "A Day in My Life" beats
+- One short personal paragraph in Outfit (2-3 lines, full sentences, with proper nouns: a name, a street, a time of day)
+- One Caveat margin note in bordeaux or green, rotated lightly
+- One documentary photo, alternating left/right side per row
+- Subtle accent only: a thin orange vertical bar before the title (matching the Day map cards)
+
+Even-row backgrounds slightly tinted (taupe-tint), odd rows on off-white — same alternation already used elsewhere on the site.
+
+Removes: tape strips, three paper colours, card rotation, hidden captions, polaroid frames.
+Keeps: orange squiggle under the page H1, the green Caveat eyebrow ("a few ideas to start with"), the closing "when you're ready..." link.
+
+### 2. Homepage preview (4 cards)
+
+Reskin the 4-card preview to match. Two options:
+
+- **Option A — Mini index**: 4 editorial rows, same pattern as the Get Inspired page but compressed. Reads as a teaser of the full magazine spread.
+- **Option B — Editorial photo grid**: 4 full-bleed photos in a clean 2x2 or 1x4, no tape, no rotation. Bebas title + tiny Caveat note in the bottom margin (under the photo, not floating tape on top). Hover: image zooms slightly, Caveat note slides up. CTA stays "See all building blocks".
+
+Recommend Option B for the homepage so the preview is visually distinct from the day map and stays scannable, while the Get Inspired page does the long-form storytelling.
+
+### 3. Show that he actually knows this stuff
+
+The single biggest "wow" lever isn't visual, it's content. With the new layout I'd rewrite each of the 12 entries from a 5-word note into a 2-3 sentence paragraph with at least one of:
+- a real first name (the baker, the boatman, the painter)
+- a real place (Westerstraat, Noorderkerk, a specific brown cafe)
+- a real time or ritual ("at six, before the queue")
+- a sensory detail ("the smell of fresh bread on the corner")
+
+Copy is out of scope for the visual restyle, but I'll leave clear placeholders with one example written out, and flag the rest for Dennis to fill in his own words. He can edit them in the admin or send them to me.
 
 ## Out of scope
-- No copy changes, no structural changes, no new sections, no new images.
-- StoryBook component internals untouched.
-- Homepage untouched.
 
-## Technical notes
-- All edits live in `src/pages/GetInspired.tsx` plus possibly one small reusable SVG squiggle/divider component in `src/components/`.
-- Colors via existing `--heritage-orange`, `--heritage-green`, `--heritage-bordeaux` HSL tokens — no new tokens needed.
-- Animations stay in the existing `FadeIn` envelope (subtle fade‑in only, per project rules).
+- The StoryBook section below Contact
+- The Day in My Life map
+- Any colour token changes (using existing heritage tokens only)
+
+## Files touched
+
+- `src/pages/GetInspired.tsx` — replace the `themes.map(...)` polaroid grid with the editorial row layout; keep the existing page H1, eyebrows, and footer link.
+- `src/pages/Index.tsx` — replace the 4-card "Building Blocks" block with the chosen homepage preview pattern (Option B by default).
+- No new assets, no new dependencies. Reuses the 12 interest images already imported.

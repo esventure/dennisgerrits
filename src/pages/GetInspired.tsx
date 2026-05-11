@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import StoryBook from "@/components/StoryBook";
 import PolaroidWall from "@/components/PolaroidWall";
 import { supabase } from "@/integrations/supabase/client";
+import type { PolaroidItem } from "@/components/PolaroidWall";
 import imgHistory from "@/assets/interests/history.jpg";
 import imgFood from "@/assets/interests/food.jpg";
 import imgArchitecture from "@/assets/interests/architecture.jpg";

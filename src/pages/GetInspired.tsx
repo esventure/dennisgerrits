@@ -407,14 +407,49 @@ const GetInspired = () => {
       {/* Stories section — accordion style */}
       <section
         id="stories-section"
-        className="py-24 lg:py-32 scroll-mt-20"
-        style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}
+        className="relative py-24 lg:py-32 scroll-mt-20 overflow-hidden"
+        style={{
+          background:
+            "radial-gradient(900px 500px at 100% 0%, hsl(var(--heritage-green) / 0.16), transparent 60%), radial-gradient(700px 400px at 0% 100%, hsl(var(--heritage-orange) / 0.10), transparent 65%), hsl(40 38% 95%)",
+        }}
       >
-        <div className="container mx-auto px-6 lg:px-12">
+        {/* Paper-grain noise overlay */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-[0.10] mix-blend-multiply"
+          aria-hidden
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.45  0 0 0 0 0.36  0 0 0 0 0.25  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
+          }}
+        />
+        <div className="relative container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mb-12">
             <FadeIn>
-              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-6">
+              <p
+                className="font-body text-sm tracking-widest uppercase mb-4"
+                style={{ color: "hsl(var(--heritage-orange))" }}
+              >
+                Stories
+              </p>
+              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-6 relative inline-block">
                 Notes From the City
+                <svg
+                  aria-hidden
+                  className="absolute -bottom-2 right-0"
+                  width="140"
+                  height="12"
+                  viewBox="0 0 140 12"
+                  fill="none"
+                  style={{ color: "hsl(var(--heritage-orange))" }}
+                >
+                  <path
+                    d="M2 7 C 22 1, 42 11, 62 5 S 102 1, 122 7 L 138 6"
+                    stroke="currentColor"
+                    strokeWidth="2.2"
+                    strokeLinecap="round"
+                    fill="none"
+                  />
+                </svg>
               </h2>
               <p className="font-body text-base md:text-lg text-foreground/75 leading-relaxed max-w-xl">
                 Short reflections about Amsterdam. The kind of things I'd tell you over a coffee.

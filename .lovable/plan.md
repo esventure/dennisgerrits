@@ -1,47 +1,41 @@
-## Why it feels "funeral" right now
+## Plan: Refine the Get Inspired page
 
-- Hero is a single paragraph on a near‑white wash with one small orange eyebrow. No color, no texture, no warmth.
-- The polaroid wall does most of the visual work, but every card sits on plain white with grey shadows. The "tape" pieces are the only color and they're small.
-- The Stories section drops onto a flat taupe block with a quiet purple headline. After 12 colorful polaroids it reads like a footer.
-- Heritage green is barely used anywhere on the page.
+### 1. Remove the orange gradient on the polaroid wall
+- Delete the orange + bordeaux radial-gradient overlay div sitting on top of the green polaroid section. The corner glow currently reads as a heavy orange wash bleeding into the green.
+- Keep the subtle paper-grain noise overlay so the green still has texture.
 
-## Proposed uplift (visual only, copy & structure unchanged)
+### 2. Differentiate the header band from the polaroid wall
+Right now both the intro band and the polaroid canvas are heritage green, so the section reads as one giant green block.
 
-### 1. Hero block — give it warmth and personality
-- Replace the cool radial wash with a warmer layered background: soft orange glow top‑left + a green wash bottom‑right, both at low opacity over off‑white.
-- Add a hand‑drawn orange squiggle under "Build Your Day" (same style as "Notes From the City" on the homepage), and a small Caveat‑script line in green above the eyebrow ("a few ideas to start with").
-- Add a subtle hand‑drawn green arrow or dotted line pointing down toward the polaroid grid, so the eye is pulled in.
+Proposal:
+- **Header band** stays heritage green (it works well with white headline + orange "What excites you?" eyebrow and ties into the Contact and Podcast green bands elsewhere on the site).
+- **Polaroid wall** moves to a warm off-white / cream canvas (`hsl(40 38% 96%)`), so the white polaroid cards no longer fight the green and the contrast between the two zones is clear.
+- To stop the wall from feeling beige and funereal again, inject color into the cards themselves:
+  - Rotate polaroid paper tints across more colors: cream, soft green, warm orange-blush, dusty bordeaux-pink (instead of the current three near-identical creams).
+  - Keep tape colors rotating through orange / green / bordeaux as today.
+  - Keep the soft orange hover glow behind active cards (this is local to the card, not a section wash).
 
-### 2. Polaroid wall — more color, less mortuary white
-- Tint the polaroid paper itself: alternate between off‑white, a very pale cream, and a faint green‑tinted card, instead of pure white. Keeps the analog feel but breaks the uniform grey.
-- Make the tape strips bigger, more varied, and rotate through three colors (orange, green, bordeaux) instead of just two. Slight torn‑paper edge.
-- On hover: lift + a soft orange glow behind the card (instead of just a deeper grey shadow).
-- Active/expanded card: bordeaux caption stays, but add a thin green underline accent on the title and a small orange dot before the script note.
+### 3. Drop Stories, add Contact section instead
+The notebook / StoryBook now lives on the homepage, so the duplicate at the bottom of Get Inspired is redundant.
 
-### 3. Section divider between polaroids and stories
-- Add a hand‑drawn green wavy divider (same family as the orange skyline lines) between the two sections so Stories doesn't feel "dropped in".
-- Optional: a small orange Caveat label "and a few stories…" sitting on the divider, rotated a couple of degrees.
+- Delete the Stories section (`#stories-section`) and the hand-drawn divider above it from `src/pages/GetInspired.tsx`.
+- Remove the now-unused stories data fetch, `openStory` state, `searchParams` deep-link effect, `StoryBook` import, and supabase + react-query imports if nothing else needs them.
+- Replace with the same Contact section that lives on the homepage so visitors who picked their interests have an immediate next step.
 
-### 4. Stories section — warmer canvas
-- Swap the flat taupe for a layered background: cream base + a soft green radial in one corner + a faint orange paper‑grain noise (same noise pattern used on the homepage Stories section, kept low opacity).
-- Add a small orange "Stories" eyebrow above the H2 (matches the homepage rhythm and ties the two pages together).
-- Give the StoryBook container a subtle green page‑edge or bordeaux thread accent so it reads as a "real" notebook on the page.
+To avoid duplicating ~120 lines of contact form markup, extract the contact block into a reusable component:
+- New file `src/components/ContactSection.tsx` containing the green rounded card, headline, intro photo, and the Book-a-Call form (with its submit handler, `useToast`, and translation hooks).
+- `src/pages/Index.tsx` swaps its inline contact section for `<ContactSection />`.
+- `src/pages/GetInspired.tsx` renders `<ContactSection />` directly after the polaroid wall.
 
-### 5. CTA line at the bottom of the polaroids
-- Currently a thin orange dashed link. Upgrade to a small handwritten‑style block: green Caveat line ("when you're ready…") above the existing orange link, with a tiny hand‑drawn arrow.
+The handwritten "let's talk →" margin note, the Rick Steves trust signal, and any FAQ block currently sitting outside that contact card on the homepage stay only on the homepage; Get Inspired only gets the booking card itself.
 
-## Heritage palette usage after the change
-- Orange: hero glow, squiggle under H1, polaroid hover glow, bottom CTA link, Stories eyebrow.
-- Green: secondary hero wash, ~⅓ of polaroid tape strips, divider squiggle, Stories background accent, "when you're ready" script.
-- Bordeaux: kept where it is (Caveat captions, notes) — already working.
-- Purple: kept for headings only.
-
-## Out of scope
-- No copy changes, no structural changes, no new sections, no new images.
+### Out of scope
+- No copy changes (headlines, eyebrows, captions stay as written).
+- No structural changes to the polaroid grid, sizes, or tape geometry.
+- Homepage layout is untouched apart from the contact-section refactor.
 - StoryBook component internals untouched.
-- Homepage untouched.
 
-## Technical notes
-- All edits live in `src/pages/GetInspired.tsx` plus possibly one small reusable SVG squiggle/divider component in `src/components/`.
-- Colors via existing `--heritage-orange`, `--heritage-green`, `--heritage-bordeaux` HSL tokens — no new tokens needed.
-- Animations stay in the existing `FadeIn` envelope (subtle fade‑in only, per project rules).
+### Files touched
+- `src/pages/GetInspired.tsx` — remove orange wash, change polaroid wall background, expand polaroid paper tint palette, delete Stories block + divider, mount `<ContactSection />`.
+- `src/components/ContactSection.tsx` — new shared component extracted from current Index contact markup.
+- `src/pages/Index.tsx` — replace inline contact section with `<ContactSection />`.

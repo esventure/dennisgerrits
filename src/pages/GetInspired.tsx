@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
 import FadeIn from "@/components/FadeIn";
 import { cn } from "@/lib/utils";
-import StoryBook from "@/components/StoryBook";
-import { supabase } from "@/integrations/supabase/client";
+import ContactSection from "@/components/ContactSection";
 import imgHistory from "@/assets/interests/history.jpg";
 import imgFood from "@/assets/interests/food.jpg";
 import imgArchitecture from "@/assets/interests/architecture.jpg";
@@ -131,42 +128,10 @@ const themes = [
 
 const GetInspired = () => {
   const [active, setActive] = useState<string | null>(null);
-  const [searchParams] = useSearchParams();
-  const [openStory, setOpenStory] = useState<string>("");
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const { data: stories = [] } = useQuery({
-    queryKey: ["stories"],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from("stories")
-        .select("id, slug, title, intro, body, image_path")
-        .order("sort_order", { ascending: true });
-      if (error) throw error;
-      return (data ?? []).map((s) => ({
-        id: s.slug,
-        title: s.title,
-        intro: s.intro,
-        body: s.body,
-      }));
-    },
-  });
-
-  useEffect(() => {
-    const storyParam = searchParams.get("story");
-    if (storyParam && stories.length) {
-      const matched = stories.find((s) => s.title === storyParam);
-      if (matched) {
-        setOpenStory(matched.id);
-        setTimeout(() => {
-          document.getElementById("stories-section")?.scrollIntoView({ behavior: "smooth" });
-        }, 300);
-      }
-    }
-  }, [searchParams, stories]);
 
   return (
     <main>
@@ -238,27 +203,18 @@ const GetInspired = () => {
         </div>
       </section>
 
-      {/* Polaroid wall on heritage green canvas */}
+      {/* Polaroid wall on warm cream canvas */}
       <section
         className="relative py-16 md:py-20 lg:py-24 overflow-hidden"
-        style={{ backgroundColor: "hsl(var(--heritage-green))" }}
+        style={{ backgroundColor: "hsl(40 38% 96%)" }}
       >
-        {/* warm orange + bordeaux glows for depth */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(700px 420px at 12% 8%, hsl(var(--heritage-orange) / 0.28), transparent 60%), radial-gradient(800px 500px at 92% 92%, hsl(var(--heritage-bordeaux) / 0.30), transparent 65%)",
-          }}
-        />
         {/* paper-grain noise overlay */}
         <div
-          className="absolute inset-0 pointer-events-none opacity-[0.10] mix-blend-screen"
+          className="absolute inset-0 pointer-events-none opacity-[0.10] mix-blend-multiply"
           aria-hidden
           style={{
             backgroundImage:
-              "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.95  0 0 0 0 0.92  0 0 0 0 0.85  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
+              "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.45  0 0 0 0 0.36  0 0 0 0 0.25  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
           }}
         />
         <div className="relative container mx-auto px-6 lg:px-12">
@@ -267,12 +223,13 @@ const GetInspired = () => {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-12 md:gap-y-16 gap-x-6 md:gap-x-10 pt-8">
             {themes.filter((t) => t && t.title && t.image).map((theme, i) => {
               const isActive = active === theme.id;
-              const paperBg =
-                i % 3 === 0
-                  ? "hsl(40 38% 97%)"
-                  : i % 3 === 1
-                  ? "hsl(28 35% 95%)"
-                  : "hsl(120 15% 96%)";
+              const paperPalette = [
+                "hsl(40 38% 97%)",            // cream
+                "hsl(120 22% 92%)",           // soft green
+                "hsl(22 70% 92%)",            // warm orange-blush
+                "hsl(350 35% 92%)",           // dusty bordeaux-pink
+              ];
+              const paperBg = paperPalette[i % paperPalette.length];
               const isLeft = theme.pin === "tape-tl" || theme.pin === "tape-gl";
               const tapeColors = [
                 { bg: "hsl(var(--heritage-orange) / 0.72)", border: "hsl(var(--heritage-bordeaux) / 0.30)" },
@@ -379,16 +336,16 @@ const GetInspired = () => {
             >
               when you're ready…
             </p>
-            <p className="font-body text-center text-base mb-4" style={{ color: "hsl(0 0% 94%)" }}>
+            <p className="font-body text-center text-base mb-4 text-foreground/70">
               Pick a few that speak to you, then let's talk about building your perfect day.
             </p>
             <p className="text-center">
               <a
-                href="/#contact"
+                href="#contact"
                 className="font-body text-base tracking-wide border-b-2 border-dashed pb-1 transition-colors hover:opacity-80 inline-flex items-center gap-2"
                 style={{
-                  color: "hsl(var(--heritage-orange))",
-                  borderColor: "hsl(var(--heritage-orange) / 0.5)",
+                  color: "hsl(var(--heritage-bordeaux))",
+                  borderColor: "hsl(var(--heritage-bordeaux) / 0.5)",
                 }}
               >
                 Ready to start planning? Let's talk.
@@ -399,98 +356,8 @@ const GetInspired = () => {
         </div>
       </section>
 
-      {/* Hand-drawn divider between sections */}
-      <div
-        aria-hidden
-        className="relative"
-        style={{ background: "hsl(var(--background))" }}
-      >
-        <svg
-          className="block w-full h-12 md:h-16"
-          viewBox="0 0 1200 60"
-          preserveAspectRatio="none"
-          fill="none"
-        >
-          <path
-            d="M0 32 C 120 12, 240 52, 360 30 S 600 10, 720 34 S 960 54, 1080 28 L 1200 30"
-            stroke="hsl(var(--heritage-green))"
-            strokeOpacity="0.55"
-            strokeWidth="2.2"
-            strokeLinecap="round"
-            fill="none"
-          />
-        </svg>
-        <span
-          className="absolute left-1/2 top-1/2 px-4 text-xl md:text-2xl whitespace-nowrap"
-          style={{
-            fontFamily: "'Caveat', cursive",
-            color: "hsl(var(--heritage-orange))",
-            transform: "translate(-50%, -50%) rotate(-2deg)",
-            background: "hsl(var(--background))",
-          }}
-        >
-          and a few stories…
-        </span>
-      </div>
-
-      {/* Stories section — accordion style */}
-      <section
-        id="stories-section"
-        className="relative py-24 lg:py-32 scroll-mt-20 overflow-hidden"
-        style={{
-          background:
-            "radial-gradient(900px 500px at 100% 0%, hsl(var(--heritage-green) / 0.16), transparent 60%), radial-gradient(700px 400px at 0% 100%, hsl(var(--heritage-orange) / 0.10), transparent 65%), hsl(40 38% 95%)",
-        }}
-      >
-        {/* Paper-grain noise overlay */}
-        <div
-          className="absolute inset-0 pointer-events-none opacity-[0.10] mix-blend-multiply"
-          aria-hidden
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.45  0 0 0 0 0.36  0 0 0 0 0.25  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
-          }}
-        />
-        <div className="relative container mx-auto px-6 lg:px-12">
-          <div className="max-w-3xl mb-12">
-            <FadeIn>
-              <p
-                className="font-body text-sm tracking-widest uppercase mb-4"
-                style={{ color: "hsl(var(--heritage-orange))" }}
-              >
-                Stories
-              </p>
-              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-6 relative inline-block">
-                Notes From the City
-                <svg
-                  aria-hidden
-                  className="absolute -bottom-2 right-0"
-                  width="140"
-                  height="12"
-                  viewBox="0 0 140 12"
-                  fill="none"
-                  style={{ color: "hsl(var(--heritage-orange))" }}
-                >
-                  <path
-                    d="M2 7 C 22 1, 42 11, 62 5 S 102 1, 122 7 L 138 6"
-                    stroke="currentColor"
-                    strokeWidth="2.2"
-                    strokeLinecap="round"
-                    fill="none"
-                  />
-                </svg>
-              </h2>
-              <p className="font-body text-base md:text-lg text-foreground/75 leading-relaxed max-w-xl">
-                Short reflections about Amsterdam. The kind of things I'd tell you over a coffee.
-              </p>
-            </FadeIn>
-          </div>
-
-          <FadeIn>
-            <StoryBook stories={stories} initialStoryId={openStory || undefined} />
-          </FadeIn>
-        </div>
-      </section>
+      {/* Contact section — same as homepage so visitors can act now */}
+      <ContactSection />
     </main>
   );
 };

@@ -1028,7 +1028,7 @@ const Index = () => {
         className="relative py-16 md:py-20 lg:py-32 scroll-mt-20 overflow-hidden"
         style={{
           background:
-            "linear-gradient(180deg, hsl(28 55% 94%) 0%, hsl(40 45% 95%) 35%, hsl(40 38% 95%) 100%)",
+            "linear-gradient(180deg, hsl(28 55% 94% / 0.55) 0%, hsl(40 45% 95% / 0.45) 35%, hsl(40 38% 95% / 0.35) 100%)",
         }}
       >
 

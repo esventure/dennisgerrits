@@ -32,6 +32,7 @@ import storyBookshop from "@/assets/stories/bookshop.jpg";
 import peekHistory from "@/assets/interests/history.jpg";
 import peekFood from "@/assets/interests/food.jpg";
 import peekWater from "@/assets/interests/water.jpg";
+import peekArchitecture from "@/assets/interests/architecture.jpg";
 import storyCanalHouses from "@/assets/stories/canal-houses.jpg";
 import storyBench from "@/assets/stories/bench.jpg";
 import podcastCover from "@/assets/podcast-cover.jpg";
@@ -691,6 +692,156 @@ const Index = () => {
         </div>
       </div>
 
+
+      {/* ── Building Blocks preview (4 cards from Get Inspired) ── */}
+      <section
+        className="relative py-20 md:py-24 lg:py-28 overflow-hidden"
+        style={{
+          background:
+            "radial-gradient(800px 420px at 8% -5%, hsl(var(--heritage-orange) / 0.14), transparent 62%), radial-gradient(900px 600px at 100% 110%, hsl(var(--heritage-green) / 0.12), transparent 65%), hsl(var(--background))",
+        }}
+      >
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage:
+              "radial-gradient(hsl(var(--foreground)) 1px, transparent 1px)",
+            backgroundSize: "22px 22px",
+          }}
+        />
+        <div className="relative container mx-auto px-6 lg:px-12">
+          <div className="max-w-3xl mb-12 lg:mb-16">
+            <FadeIn>
+              <p
+                className="mb-3 text-2xl md:text-3xl"
+                style={{
+                  fontFamily: "'Caveat', cursive",
+                  color: "hsl(var(--heritage-green))",
+                  transform: "rotate(-2deg)",
+                  display: "inline-block",
+                }}
+              >
+                a few ideas to start with
+              </p>
+              <p
+                className="font-body text-sm tracking-widest uppercase mb-6"
+                style={{ color: "hsl(var(--heritage-orange))" }}
+              >
+                Building Blocks
+              </p>
+              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-6">
+                What excites you?
+              </h2>
+              <p className="font-body text-lg text-muted-foreground leading-relaxed">
+                Pick a thread, and we'll pull on it together. Here are a few to start with.
+              </p>
+            </FadeIn>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-12 md:gap-y-16 gap-x-6 md:gap-x-10 pt-4">
+            {[
+              { id: "history", title: "Hidden History", note: "ask me about the cat", image: peekHistory, rotate: -2.4, pin: "tape-tl" },
+              { id: "food", title: "Local Food", note: "bring an empty stomach", image: peekFood, rotate: 1.8, pin: "tape-tr" },
+              { id: "architecture", title: "Architecture", note: "look up, always", image: peekArchitecture, rotate: -1.2, pin: "tape-gl" },
+              { id: "water", title: "From the Water", note: "bring a sweater", image: peekWater, rotate: 2.0, pin: "tape-gr" },
+            ].map((theme, i) => {
+              const paperBg =
+                i % 3 === 0
+                  ? "hsl(40 38% 97%)"
+                  : i % 3 === 1
+                  ? "hsl(28 35% 95%)"
+                  : "hsl(120 15% 96%)";
+              const isLeft = theme.pin === "tape-tl" || theme.pin === "tape-gl";
+              const tapeColors = [
+                { bg: "hsl(var(--heritage-orange) / 0.72)", border: "hsl(var(--heritage-bordeaux) / 0.30)" },
+                { bg: "hsl(var(--heritage-green) / 0.55)", border: "hsl(var(--heritage-green) / 0.40)" },
+                { bg: "hsl(var(--heritage-bordeaux) / 0.45)", border: "hsl(var(--heritage-bordeaux) / 0.35)" },
+              ];
+              const tape = tapeColors[i % 3];
+              return (
+                <FadeIn key={theme.id} delay={i * 0.08}>
+                  <Link
+                    to="/get-inspired"
+                    className="group relative block w-full text-left transition-transform duration-500 ease-out hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-4"
+                    style={{ transform: `rotate(${theme.rotate}deg)` }}
+                  >
+                    <div
+                      aria-hidden
+                      className="pointer-events-none absolute -inset-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl"
+                      style={{
+                        background:
+                          "radial-gradient(closest-side, hsl(var(--heritage-orange) / 0.35), transparent 70%)",
+                      }}
+                    />
+                    <div
+                      className="p-2.5 sm:p-3 pb-16 sm:pb-20 shadow-[0_10px_28px_-14px_rgba(0,0,0,0.28),0_2px_6px_-2px_rgba(0,0,0,0.12)] transition-shadow duration-500 group-hover:shadow-[0_22px_44px_-16px_rgba(0,0,0,0.35)] relative"
+                      style={{ backgroundColor: paperBg }}
+                    >
+                      <span
+                        aria-hidden
+                        className={`absolute -top-3 w-16 sm:w-20 h-6 sm:h-7 border ${
+                          isLeft
+                            ? "left-4 sm:left-6 -rotate-[8deg]"
+                            : "right-4 sm:right-6 rotate-[6deg]"
+                        }`}
+                        style={{
+                          backgroundColor: tape.bg,
+                          borderColor: tape.border,
+                        }}
+                      />
+                      <div className="aspect-square overflow-hidden bg-muted">
+                        <img
+                          src={theme.image}
+                          alt={theme.title}
+                          loading="lazy"
+                          decoding="async"
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                        />
+                      </div>
+                      <div className="absolute bottom-3 sm:bottom-4 left-2.5 right-2.5 sm:left-3 sm:right-3 px-1.5 sm:px-2">
+                        <h3 className="font-heading text-lg sm:text-xl md:text-2xl text-primary leading-tight tracking-wide truncate">
+                          {theme.title}
+                        </h3>
+                        <p
+                          className="text-base sm:text-lg mt-0.5 sm:mt-1 leading-snug truncate"
+                          style={{
+                            fontFamily: "'Caveat', cursive",
+                            color: "hsl(var(--heritage-bordeaux))",
+                          }}
+                        >
+                          <span
+                            aria-hidden
+                            className="inline-block w-1.5 h-1.5 rounded-full mr-1.5 align-middle"
+                            style={{ backgroundColor: "hsl(var(--heritage-orange))" }}
+                          />
+                          {theme.note}
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
+                </FadeIn>
+              );
+            })}
+          </div>
+
+          <FadeIn>
+            <p className="text-center mt-16">
+              <Link
+                to="/get-inspired"
+                className="font-body text-base tracking-wide border-b-2 border-dashed pb-1 transition-colors hover:opacity-80 inline-flex items-center gap-2"
+                style={{
+                  color: "hsl(var(--heritage-orange))",
+                  borderColor: "hsl(var(--heritage-orange))",
+                }}
+              >
+                See all building blocks
+                <span aria-hidden>→</span>
+              </Link>
+            </p>
+          </FadeIn>
+        </div>
+      </section>
 
       {/* ── 4. Proof: Reviews & Guests ── */}
       <section id="proof" className="py-16 md:py-20 lg:py-32 scroll-mt-20">

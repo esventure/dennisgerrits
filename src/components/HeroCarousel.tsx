@@ -436,7 +436,7 @@ const HeroCarousel = () => {
         </button>
       </div>
 
-      <div className="overflow-hidden pt-16" ref={emblaRef}>
+      <div className="overflow-hidden pt-4" ref={emblaRef}>
         <div className="flex">
           {slides.map((s) => (
             <div

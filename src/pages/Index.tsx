@@ -1251,7 +1251,7 @@ const Index = () => {
                         className="absolute bottom-0 right-0 w-8 h-8"
                         style={{
                           background:
-                            "linear-gradient(135deg, transparent 50%, hsl(var(--heritage-taupe-tint)) 50%)",
+                            "linear-gradient(135deg, transparent 50%, hsl(40 38% 95%) 50%)",
                           boxShadow: "inset 1px -1px 0 rgba(60,40,20,0.12)",
                         }}
                       />

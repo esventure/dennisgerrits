@@ -603,8 +603,8 @@ const Index = () => {
               {[
                 {
                   kicker: "Invite me",
-                  title: "Lectures, podcasts & radio",
-                  body: "If you're a host, producer, or organiser looking for a story about Amsterdam beyond the tourist trail.",
+                  title: "Lectures, podcasts, radio & universities",
+                  body: "If you're a host, producer, organiser, or university looking for a guest lecture or a story about Amsterdam beyond the tourist trail.",
                   cta: "Get in touch",
                   href: "#contact",
                   color: "hsl(var(--accent))",

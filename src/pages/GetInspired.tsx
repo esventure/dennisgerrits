@@ -130,7 +130,7 @@ const themes = [
 ];
 
 const GetInspired = () => {
-  const [active, setActive] = useState<string | null>(null);
+  
   const [searchParams] = useSearchParams();
   const [openStory, setOpenStory] = useState<string>("");
 

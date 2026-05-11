@@ -155,17 +155,14 @@ import dennisGuideLine from "@/assets/dennis-guide-line.png";
 const AboutFigures = () => {
   const t = useSiteContent();
   return (
-    <div
-      className="px-6 md:px-12 py-20 lg:py-28 min-h-[70vh] flex items-center"
-      style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}
-    >
+    <div className="px-6 md:px-12 py-20 lg:py-28 min-h-[70vh] flex items-center">
       <div className="container mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         {/* The Person */}
         <FadeIn>
           <div className="flex flex-col items-center text-center">
             <div
-              className="rounded-full p-6 mb-6 flex items-center justify-center"
-              style={{ backgroundColor: "hsl(var(--heritage-cream))" }}
+              className="rounded-full p-6 mb-6 flex items-center justify-center border-2"
+              style={{ borderColor: "hsl(var(--heritage-bordeaux) / 0.4)" }}
             >
               <img
                 src={dennisPersonLine}

@@ -1273,11 +1273,11 @@ const Index = () => {
                 </div>
               </FadeIn>
 
-              <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-8 md:gap-10 lg:gap-14 items-start">
+              <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-8 md:gap-10 lg:gap-14 items-stretch">
                 {/* Left: editorial intro + photo */}
-                <FadeIn>
+                <FadeIn className="h-full">
                   <div
-                    className="lg:pt-2"
+                    className="lg:pt-2 h-full flex flex-col"
                     style={{ color: "hsl(var(--background) / 0.9)" }}
                   >
                     <RichText
@@ -1285,14 +1285,14 @@ const Index = () => {
                       html={t("booking.intro", "")}
                       fallback="The best way to start is a short, informal conversation. No obligations, just a chance to see if my approach feels right."
                     />
-                    <div className="mt-8 md:mt-10">
+                    <div className="mt-8 md:mt-10 flex-1 min-h-0">
                       <img
                         src={dennisCanalSmile}
                         alt="Dennis smiling by the canal"
                         loading="lazy"
                         width={800}
                         height={600}
-                        className="w-full max-w-md rounded-sm shadow-xl"
+                        className="w-full h-full max-w-md object-cover rounded-sm shadow-xl"
                         style={{ filter: "saturate(0.92) contrast(0.98)" }}
                       />
                     </div>

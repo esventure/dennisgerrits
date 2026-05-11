@@ -237,6 +237,11 @@ const GetInspired = () => {
                 { bg: "hsl(var(--heritage-bordeaux) / 0.45)", border: "hsl(var(--heritage-bordeaux) / 0.35)" },
               ];
               const tape = tapeColors[i % 3];
+              const outlineColors = [
+                "hsl(var(--heritage-orange))",
+                "hsl(var(--heritage-green))",
+              ];
+              const outlineColor = outlineColors[i % 2];
               return (
                 <FadeIn key={theme.id} delay={i * 0.08}>
                   <button

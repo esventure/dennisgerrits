@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
 import AmsterdamSkyline from "@/components/AmsterdamSkyline";
 import StoryBook from "@/components/StoryBook";
+import PolaroidWall from "@/components/PolaroidWall";
 import { supabase } from "@/integrations/supabase/client";
 
 import DayMap from "@/components/DayMap";

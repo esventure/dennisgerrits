@@ -22,8 +22,8 @@ interface MosaicWallProps {
 const MosaicWall = ({
   photos,
   duration = 60,
-  rows = 5,
-  columns = 10,
+  rows: rowsProp = 5,
+  columns: colsProp = 10,
 }: MosaicWallProps) => {
   // Stable shuffle per mount.
   const shuffled = useMemo(() => {
@@ -38,6 +38,18 @@ const MosaicWall = ({
   // Track failed image sources so they drop out of the layout entirely.
   const [broken, setBroken] = useState<Set<string>>(new Set());
   const pool = shuffled.filter((src) => !broken.has(src));
+
+  // Responsive: use fewer rows/cols on small viewports so tiles aren't tiny.
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 640px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+  const rows = isMobile ? Math.min(3, rowsProp) : rowsProp;
+  const columns = isMobile ? Math.min(4, colsProp) : colsProp;
 
   // Build exactly rows × columns tiles, repeating from the pool if needed.
   const slots = rows * columns;

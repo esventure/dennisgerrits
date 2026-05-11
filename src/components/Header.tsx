@@ -51,18 +51,18 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-background/90 backdrop-blur-sm border-b border-border/40">
-      <div className="container mx-auto flex items-center justify-between py-4 px-6 lg:px-12">
-        <Link to="/" onClick={handleLogoClick} className="flex items-center gap-3">
+      <div className="container mx-auto flex items-center justify-between py-3 sm:py-4 px-5 sm:px-6 lg:px-12">
+        <Link to="/" onClick={handleLogoClick} className="flex items-center gap-2 sm:gap-3 min-w-0">
           <img
             src={dennisIllustration}
             alt="Dennis Gerrits logo"
-            className="h-16 w-16 object-contain -my-4"
+            className="h-12 w-12 sm:h-16 sm:w-16 object-contain -my-2 sm:-my-4 shrink-0"
             style={{
               filter:
                 "brightness(0) saturate(100%) invert(36%) sepia(89%) saturate(2876%) hue-rotate(7deg) brightness(95%) contrast(105%)",
             }}
           />
-          <span className="font-heading text-2xl tracking-wider text-primary">Dennis Gerrits</span>
+          <span className="font-heading text-xl sm:text-2xl tracking-wider text-primary truncate">Dennis Gerrits</span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">

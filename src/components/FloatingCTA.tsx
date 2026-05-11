@@ -17,7 +17,7 @@ const FloatingCTA = () => {
   if (dismissed || !visible) return null;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3 animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-2 sm:gap-3 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <Link
         to="/#contact"
         className="flex items-center gap-3 bg-primary text-primary-foreground px-6 py-3 rounded-full shadow-lg hover:bg-primary/90 transition-colors font-body text-sm tracking-wide"

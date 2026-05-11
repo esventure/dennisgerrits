@@ -1144,23 +1144,39 @@ const Index = () => {
                           "0 1px 0 rgba(0,0,0,0.04), 0 18px 30px -18px rgba(60,40,20,0.28), inset 0 0 0 1px rgba(120,90,60,0.06)",
                       }}
                     >
-                      {/* paper-clip in top-left */}
-                      <svg
-                        aria-hidden
-                        className="absolute -top-3 left-6 text-muted-foreground/70"
-                        width="22"
-                        height="34"
-                        viewBox="0 0 22 34"
-                        fill="none"
-                      >
-                        <path
-                          d="M11 2 C 5 2, 3 7, 3 13 L 3 26 C 3 30, 7 32, 11 32 C 15 32, 19 30, 19 26 L 19 10 C 19 7, 17 5, 14 5 C 11 5, 9 7, 9 10 L 9 24"
-                          stroke="currentColor"
-                          strokeWidth="1.4"
-                          strokeLinecap="round"
+                      {/* washi tape (cards 0 & 2) or paper-clip (card 1) */}
+                      {i === 1 ? (
+                        <svg
+                          aria-hidden
+                          className="absolute -top-3 left-6 text-muted-foreground/70"
+                          width="22"
+                          height="34"
+                          viewBox="0 0 22 34"
                           fill="none"
+                        >
+                          <path
+                            d="M11 2 C 5 2, 3 7, 3 13 L 3 26 C 3 30, 7 32, 11 32 C 15 32, 19 30, 19 26 L 19 10 C 19 7, 17 5, 14 5 C 11 5, 9 7, 9 10 L 9 24"
+                            stroke="currentColor"
+                            strokeWidth="1.4"
+                            strokeLinecap="round"
+                            fill="none"
+                          />
+                        </svg>
+                      ) : (
+                        <div
+                          aria-hidden
+                          className="absolute -top-3 left-6 w-20 h-6"
+                          style={{
+                            backgroundColor:
+                              i === 0
+                                ? "hsl(var(--heritage-orange) / 0.55)"
+                                : "hsl(var(--heritage-green) / 0.5)",
+                            transform: i === 0 ? "rotate(-6deg)" : "rotate(5deg)",
+                            boxShadow:
+                              "0 2px 6px -2px rgba(60,40,20,0.25), inset 0 0 0 1px rgba(255,255,255,0.25)",
+                          }}
                         />
-                      </svg>
+                      )}
 
                       {/* photo */}
                       <div
@@ -1177,7 +1193,7 @@ const Index = () => {
                           width={1024}
                           height={640}
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                          style={{ filter: "saturate(0.92) contrast(0.98)" }}
+                          style={{ filter: "saturate(1.06) contrast(1.02) brightness(1.02)" }}
                         />
                       </div>
 

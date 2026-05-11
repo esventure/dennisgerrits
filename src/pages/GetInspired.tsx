@@ -170,32 +170,28 @@ const GetInspired = () => {
 
   return (
     <main>
-      {/* Interests section */}
+      {/* Interests — green header band */}
       <section
-        className="relative py-24 lg:py-32 overflow-hidden"
-        style={{
-          background:
-            "radial-gradient(900px 500px at 8% -5%, hsl(var(--heritage-orange) / 0.18), transparent 62%), radial-gradient(1100px 700px at 100% 110%, hsl(var(--heritage-green) / 0.16), transparent 65%), hsl(var(--background))",
-        }}
+        className="relative pt-20 md:pt-24 lg:pt-28 pb-12 md:pb-16 overflow-hidden"
+        style={{ backgroundColor: "hsl(var(--heritage-green))" }}
       >
-        {/* Subtle paper texture */}
+        {/* paper-grain overlay for warmth on the green */}
         <div
+          className="absolute inset-0 pointer-events-none opacity-[0.10] mix-blend-screen"
           aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.04]"
           style={{
             backgroundImage:
-              "radial-gradient(hsl(var(--foreground)) 1px, transparent 1px)",
-            backgroundSize: "22px 22px",
+              "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.95  0 0 0 0 0.92  0 0 0 0 0.85  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
           }}
         />
         <div className="relative container mx-auto px-6 lg:px-12">
-          <div className="max-w-3xl mb-16">
+          <div className="max-w-3xl">
             <FadeIn>
               <p
                 className="mb-3 text-2xl md:text-3xl"
                 style={{
                   fontFamily: "'Caveat', cursive",
-                  color: "hsl(var(--heritage-green))",
+                  color: "hsl(var(--heritage-orange))",
                   transform: "rotate(-2deg)",
                   display: "inline-block",
                 }}
@@ -208,9 +204,11 @@ const GetInspired = () => {
               >
                 What excites you?
               </p>
-              <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl text-primary leading-[0.95] mb-8 relative inline-block">
+              <h1
+                className="font-heading text-5xl md:text-6xl lg:text-7xl leading-[0.95] mb-8 relative inline-block"
+                style={{ color: "hsl(0 0% 98%)" }}
+              >
                 Build Your Day
-                {/* hand-drawn squiggle under "Day" */}
                 <svg
                   aria-hidden
                   className="absolute -bottom-2 right-0"
@@ -229,11 +227,33 @@ const GetInspired = () => {
                   />
                 </svg>
               </h1>
-              <p className="font-body text-lg text-foreground/80 leading-relaxed">
+              <p
+                className="font-body text-lg leading-relaxed"
+                style={{ color: "hsl(0 0% 94%)" }}
+              >
                 Tell me what you love, and I'll show you a side of Amsterdam you won't find in any guidebook.
               </p>
             </FadeIn>
           </div>
+        </div>
+      </section>
+
+      {/* Polaroid wall on warm cream */}
+      <section
+        className="relative py-16 md:py-20 lg:py-24 overflow-hidden"
+        style={{ backgroundColor: "hsl(40 38% 96%)" }}
+      >
+        {/* Subtle paper dot texture */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.05]"
+          style={{
+            backgroundImage:
+              "radial-gradient(hsl(var(--foreground)) 1px, transparent 1px)",
+            backgroundSize: "22px 22px",
+          }}
+        />
+        <div className="relative container mx-auto px-6 lg:px-12">
 
           {/* Polaroid wall */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-12 md:gap-y-16 gap-x-6 md:gap-x-10 pt-8">

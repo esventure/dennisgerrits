@@ -238,11 +238,15 @@ const GetInspired = () => {
               ];
               const tape = tapeColors[i % 3];
               const outlineColors = [
-                "hsl(var(--heritage-orange) / 0.72)",
-                "hsl(var(--heritage-green) / 0.60)",
-                "hsl(var(--heritage-purple) / 0.55)",
+                "hsl(var(--heritage-orange))",
+                "hsl(var(--heritage-green))",
+                "hsl(var(--heritage-purple))",
               ];
               const outlineColor = outlineColors[i % 3];
+              const sketchPaths = [
+                "M 3 4 C 22 2.5, 48 4, 70 2.8 S 96 3.4, 97.5 5 C 98.6 26, 96.8 50, 98 74 C 98.4 92, 97.5 97, 95.5 97.6 C 74 98.8, 50 97.2, 26 98.6 C 9 99, 3 98, 2.5 95.5 C 1.4 75, 3.2 50, 1.8 26 C 1.4 8, 2.2 3, 4 3.4 Z",
+                "M 4 3 C 24 4, 50 2.6, 72 4.2 S 97 4.6, 96.6 6.2 C 97.8 27, 98.6 51, 96.8 75 C 96.4 93, 97.8 96.4, 95 97.4 C 73 97, 49 98.6, 25 96.8 C 8 96.4, 4 97, 3.6 94 C 2.6 74, 1.6 49, 3 25 C 3.4 7, 3 4, 4.4 3.2 Z",
+              ];
               return (
                 <FadeIn key={theme.id} delay={i * 0.08}>
                   <button

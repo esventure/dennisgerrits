@@ -148,9 +148,7 @@ const stories = [
 
 
 const Index = () => {
-  const { toast } = useToast();
   const t = useSiteContent();
-  const [contactForm, setContactForm] = useState({ name: "", email: "", message: "" });
 
   const { data: bookStories = [] } = useQuery({
     queryKey: ["stories"],
@@ -168,12 +166,6 @@ const Index = () => {
       }));
     },
   });
-
-  const handleContactSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast({ title: "Message sent", description: "Thank you. I'll be in touch soon." });
-    setContactForm({ name: "", email: "", message: "" });
-  };
 
   return (
     <main className="relative z-10">

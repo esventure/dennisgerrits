@@ -20,7 +20,7 @@ import imgMusic from "@/assets/interests/music.jpg";
 import imgWater from "@/assets/interests/water.jpg";
 import imgMarkets from "@/assets/interests/markets.jpg";
 
-const themes = [
+const themes: PolaroidItem[] = [
   {
     id: "history",
     title: "Hidden History",

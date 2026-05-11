@@ -1032,29 +1032,63 @@ const Index = () => {
       <section
         id="stories"
         className="relative py-16 md:py-20 lg:py-32 scroll-mt-20 overflow-hidden"
-        style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}
+        style={{
+          background:
+            "linear-gradient(180deg, hsl(28 55% 94%) 0%, hsl(40 45% 95%) 35%, hsl(40 38% 95%) 100%)",
+        }}
       >
         {/* Skyline silhouette through the section */}
         <AmsterdamSkyline variant="section-light" />
 
         {/* Subtle paper-grain noise overlay */}
         <div
-          className="absolute inset-0 pointer-events-none opacity-[0.18] mix-blend-multiply"
+          className="absolute inset-0 pointer-events-none opacity-[0.10] mix-blend-multiply"
           aria-hidden
           style={{
             backgroundImage:
-              "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.30  0 0 0 0 0.25  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
+              "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.45  0 0 0 0 0.36  0 0 0 0 0.25  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
           }}
         />
 
         <div className="container mx-auto px-6 lg:px-12 relative">
           <div className="max-w-3xl mb-12 md:mb-16">
             <FadeIn>
-              <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
+              <p
+                className="font-body text-sm tracking-widest uppercase mb-4"
+                style={{ color: "hsl(var(--heritage-bordeaux))" }}
+              >
                 Stories
               </p>
-              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
+              <p
+                className="mb-2 text-2xl md:text-3xl"
+                style={{
+                  fontFamily: "'Caveat', cursive",
+                  color: "hsl(var(--heritage-orange))",
+                  transform: "rotate(-2deg)",
+                  display: "inline-block",
+                }}
+              >
+                from my notebook
+              </p>
+              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8 relative inline-block">
                 Notes From the City
+                {/* hand-drawn squiggle under "City" */}
+                <svg
+                  aria-hidden
+                  className="absolute -bottom-2 right-0"
+                  width="140"
+                  height="12"
+                  viewBox="0 0 140 12"
+                  fill="none"
+                  style={{ color: "hsl(var(--heritage-orange))" }}
+                >
+                  <path
+                    d="M2 7 C 25 2, 55 11, 80 6 S 125 3, 138 8"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                </svg>
               </h2>
               <p className="font-body text-lg text-muted-foreground leading-relaxed">
                 Short reflections and stories about Amsterdam. The kind of things I'd tell you over a coffee.
@@ -1110,23 +1144,39 @@ const Index = () => {
                           "0 1px 0 rgba(0,0,0,0.04), 0 18px 30px -18px rgba(60,40,20,0.28), inset 0 0 0 1px rgba(120,90,60,0.06)",
                       }}
                     >
-                      {/* paper-clip in top-left */}
-                      <svg
-                        aria-hidden
-                        className="absolute -top-3 left-6 text-muted-foreground/70"
-                        width="22"
-                        height="34"
-                        viewBox="0 0 22 34"
-                        fill="none"
-                      >
-                        <path
-                          d="M11 2 C 5 2, 3 7, 3 13 L 3 26 C 3 30, 7 32, 11 32 C 15 32, 19 30, 19 26 L 19 10 C 19 7, 17 5, 14 5 C 11 5, 9 7, 9 10 L 9 24"
-                          stroke="currentColor"
-                          strokeWidth="1.4"
-                          strokeLinecap="round"
+                      {/* washi tape (cards 0 & 2) or paper-clip (card 1) */}
+                      {i === 1 ? (
+                        <svg
+                          aria-hidden
+                          className="absolute -top-3 left-6 text-muted-foreground/70"
+                          width="22"
+                          height="34"
+                          viewBox="0 0 22 34"
                           fill="none"
+                        >
+                          <path
+                            d="M11 2 C 5 2, 3 7, 3 13 L 3 26 C 3 30, 7 32, 11 32 C 15 32, 19 30, 19 26 L 19 10 C 19 7, 17 5, 14 5 C 11 5, 9 7, 9 10 L 9 24"
+                            stroke="currentColor"
+                            strokeWidth="1.4"
+                            strokeLinecap="round"
+                            fill="none"
+                          />
+                        </svg>
+                      ) : (
+                        <div
+                          aria-hidden
+                          className="absolute -top-3 left-6 w-20 h-6"
+                          style={{
+                            backgroundColor:
+                              i === 0
+                                ? "hsl(var(--heritage-orange) / 0.55)"
+                                : "hsl(var(--heritage-green) / 0.5)",
+                            transform: i === 0 ? "rotate(-6deg)" : "rotate(5deg)",
+                            boxShadow:
+                              "0 2px 6px -2px rgba(60,40,20,0.25), inset 0 0 0 1px rgba(255,255,255,0.25)",
+                          }}
                         />
-                      </svg>
+                      )}
 
                       {/* photo */}
                       <div
@@ -1143,7 +1193,7 @@ const Index = () => {
                           width={1024}
                           height={640}
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                          style={{ filter: "saturate(0.92) contrast(0.98)" }}
+                          style={{ filter: "saturate(1.06) contrast(1.02) brightness(1.02)" }}
                         />
                       </div>
 
@@ -1201,7 +1251,7 @@ const Index = () => {
                         className="absolute bottom-0 right-0 w-8 h-8"
                         style={{
                           background:
-                            "linear-gradient(135deg, transparent 50%, hsl(var(--heritage-taupe-tint)) 50%)",
+                            "linear-gradient(135deg, transparent 50%, hsl(40 38% 95%) 50%)",
                           boxShadow: "inset 1px -1px 0 rgba(60,40,20,0.12)",
                         }}
                       />

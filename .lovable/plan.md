@@ -1,37 +1,31 @@
 ## Goal
 
-Replace the two watercolor Dennis illustrations on the "Person / Guide" split section with **pure line-art** versions — same poses, recognizable as Dennis (glasses, beard, hair shape), but stripped down to thin ink lines on transparent backgrounds. This unifies them with the existing hand-drawn header logo and the orange Amsterdam skyline line-art running through the page.
+Transform the Stories section from cool grey-paper to a sun-lit, scrapbook-warm spread that feels alive instead of "funereal".
 
-## Why
+## Changes (all in `src/pages/Index.tsx`, Stories section only)
 
-The current watercolor portraits read almost photo-real and pull a lot of attention. Switching to line-art makes them feel like *signature marks* rather than *portraits* — quieter, more editorial, and visually consistent with the rest of the hand-drawn identity (header logo, skyline, sketchy DayMap icons).
+### 1. Warm cream background
+- Swap `backgroundColor: hsl(var(--heritage-taupe-tint))` for a warm ivory (`hsl(40 38% 95%)`), with a soft top-to-bottom gradient that adds a faint peach glow at the top.
+- Bump the orange `section-light` skyline opacity slightly so it reads more clearly against the warmer base (still subtle, no neon).
+- Lighten the paper-grain noise overlay so it adds texture without muddying the cream.
 
-## What changes
+### 2. Playful polaroids
+- Give each of the three story cards a slight, varied rotation (`-1.5deg`, `+1deg`, `-0.8deg`) so they feel pinned by hand instead of grid-aligned.
+- Add a small washi-tape strip at the top of each card in alternating heritage colours (orange, green, bordeaux) at low opacity, replacing the lone paperclip on two of the three cards (keep the clip on one for variety).
+- Slightly warm the photo treatment (`saturate(1.05) contrast(1.02)`) so the images themselves feel sunnier.
 
-### 1. Generate two new line-art illustrations
-
-- **`src/assets/dennis-person-line.png`** — same relaxed standing pose as today (hands in pockets, sweater, jeans). Thin ink lines, no fill, no shading, no color. Transparent background. Recognizable Dennis: glasses, short beard, tousled hair.
-- **`src/assets/dennis-guide-line.png`** — same mid-stride walking pose, open hand gesturing, scarf, jacket with notebook. Same line-art treatment. Transparent background.
-
-Both rendered in a single ink color so they can be tinted via CSS if needed. Style reference: the existing hand-drawn header portrait logo.
-
-### 2. Swap the imports in `src/pages/Index.tsx`
-
-Replace the two `dennisPerson` / `dennisGuide` imports with the new line-art assets. Keep the layout, sizing, and surrounding copy untouched.
-
-### 3. Light styling tweaks
-
-- On **The Person** panel (light background): render the line-art in `heritage-purple` (matches the headline color) so the ink reads clearly.
-- On **The Guide** panel (dark purple background): render the line-art in off-white / `background` so it reads against the dark.
-- Keep the current responsive sizes (`w-[200px] md:w-[240px] lg:w-[280px]`).
-- Drop the `drop-shadow` — line-art doesn't need it and shadows would feel wrong against the flat style.
-
-### 4. Keep the old watercolor files in place
-
-Do not delete `dennis-person.png` / `dennis-guide.png` — leaving them in `src/assets` keeps a fallback in case you want to revisit the warmer style later.
+### 3. Warmer typography
+- Add a handwritten Caveat sub-line above "Notes From the City" (e.g. "from my notebook"), rotated `-2deg`, in heritage-orange — matches the sketchbook voice already used elsewhere.
+- Shift the "STORIES" kicker from `text-secondary` (purple) to `heritage-bordeaux` for warmth.
+- Keep the main headline in heritage-purple (it's the brand anchor) but add a thin orange underline accent on the word "City" via a hand-drawn SVG squiggle, echoing the divider already below the intro.
 
 ## Out of scope
+- No copy changes to the three story titles or intros.
+- No layout changes to the 3-column grid.
+- No changes outside the Stories section.
+- No changes to the StoryBook on `/get-inspired`.
 
-- No copy changes ("The Person" / "The Guide" headlines and body text stay as-is).
-- No layout changes to the split section.
-- No changes to the header logo, skyline, or other illustrations.
+## Technical notes
+- All colours stay within the existing Heritage Palette tokens (`--heritage-orange`, `--heritage-bordeaux`, `--heritage-green`, `--heritage-purple`).
+- Card rotations use inline `transform` so they don't fight the existing hover scale.
+- Washi-tape strips are pure CSS divs (no new assets needed).

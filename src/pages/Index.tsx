@@ -368,21 +368,6 @@ const Index = () => {
                   title: "Full itinerary",
                   desc: "A day-by-day plan for your whole stay, even after we part ways.",
                 },
-                {
-                  icon: iconBike,
-                  title: "Bike rentals",
-                  desc: "Comfortable city bikes delivered to your hotel.",
-                },
-                {
-                  icon: iconBoat,
-                  title: "Private boat tours",
-                  desc: "A quiet hour on the canals, just the two of us.",
-                },
-                {
-                  icon: iconFoot,
-                  title: "Walking routes",
-                  desc: "Hand-drawn maps for the streets worth wandering.",
-                },
               ];
 
               return (

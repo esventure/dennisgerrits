@@ -17,7 +17,7 @@ import dennisPhoto from "@/assets/dennis_photo.png";
 import dennisPerson from "@/assets/dennis-person-line.png";
 import dennisGuide from "@/assets/dennis-guide-line.png";
 import dennisRickSteves from "@/assets/dennis_rick_steves.jpg";
-import dennisCanalSmile from "@/assets/dennis-canal-smile.jpg";
+
 import iconTickets from "@/assets/icon-tickets.png";
 import iconDining from "@/assets/icon-dining.png";
 import iconItinerary from "@/assets/icon-itinerary.png";

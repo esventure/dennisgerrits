@@ -240,8 +240,9 @@ const GetInspired = () => {
               const outlineColors = [
                 "hsl(var(--heritage-orange) / 0.72)",
                 "hsl(var(--heritage-green) / 0.60)",
+                "hsl(var(--heritage-purple) / 0.55)",
               ];
-              const outlineColor = outlineColors[i % 2];
+              const outlineColor = outlineColors[i % 3];
               return (
                 <FadeIn key={theme.id} delay={i * 0.08}>
                   <button

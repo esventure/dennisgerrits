@@ -414,59 +414,6 @@ const Index = () => {
           behaviour is disabled — the map renders inline with manual
           prev / next controls. */}
       <div id="day" className="relative scroll-mt-20 pt-12 lg:pt-20 pb-2">
-        {/* ── Polaroid peek: floats over the boundary with "What I take care of" ── */}
-        <div className="absolute right-6 lg:right-12 top-0 -translate-y-1/2 z-20 pointer-events-none hidden md:block">
-          <FadeIn delay={0.2}>
-            <Link
-              to="/get-inspired"
-              aria-label="Get inspired by what excites Dennis"
-              className="group pointer-events-auto inline-flex items-end gap-4 md:gap-6"
-            >
-              <div className="relative w-[200px] lg:w-[240px] h-[150px] lg:h-[170px] shrink-0">
-                {[
-                  { img: peekHistory, rot: -9, x: 0, y: 14, z: 1 },
-                  { img: peekFood, rot: 5, x: 50, y: 0, z: 2 },
-                  { img: peekWater, rot: -3, x: 110, y: 22, z: 3 },
-                ].map((p, i) => (
-                  <div
-                    key={i}
-                    className="absolute bg-[#FAFAF7] p-1.5 pb-5 shadow-[0_12px_28px_-10px_rgba(0,0,0,0.4),0_2px_6px_-2px_rgba(0,0,0,0.2)] transition-transform duration-500 ease-out"
-                    style={{
-                      left: `${p.x}px`,
-                      top: `${p.y}px`,
-                      transform: `rotate(${p.rot}deg)`,
-                      zIndex: p.z,
-                    }}
-                  >
-                    <div className="w-[100px] h-[100px] lg:w-[120px] lg:h-[120px] overflow-hidden bg-muted">
-                      <img
-                        src={p.img}
-                        alt=""
-                        loading="lazy"
-                        decoding="async"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className="pb-2">
-                <p
-                  className="text-2xl lg:text-3xl text-primary leading-tight"
-                  style={{ fontFamily: "'Caveat', cursive" }}
-                >
-                  Curious what inspires me?
-                </p>
-                <p
-                  className="text-lg lg:text-xl text-secondary mt-1 inline-block group-hover:translate-x-1 transition-transform"
-                  style={{ fontFamily: "'Caveat', cursive" }}
-                >
-                  peek inside my notebook →
-                </p>
-              </div>
-            </Link>
-          </FadeIn>
-        </div>
       </div>
 
       <section className="relative lg:h-[420vh]">

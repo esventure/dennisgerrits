@@ -6,7 +6,6 @@
 // below, and push them into `sourcePhotos`. The build50 helper handles
 // distribution and prevents adjacent duplicates.
 
-import p16 from "./p16.jpg";
 import p17 from "./p17.jpg";
 import p18 from "./p18.jpg";
 import p19 from "./p19.jpg";
@@ -59,7 +58,7 @@ import p65 from "./p65.jpg";
 import p66 from "./p66.jpg";
 
 const sourcePhotos = [
-  p16, p17, p18, p19, p20,
+  p17, p18, p19, p20,
   p21, p22, p23, p24, p25,
   p26, p27, p28, p29, p30, p31, p32, p33, p34, p35,
   p36, p37, p38, p39, p40, p41, p42, p43, p44, p45,

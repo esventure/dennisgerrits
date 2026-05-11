@@ -294,28 +294,29 @@ const GetInspired = () => {
                         <path d={sketchPaths[0]} fill={paperBg} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" style={{ strokeWidth: "2.4px" }} />
                         <path d={sketchPaths[1]} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" style={{ strokeWidth: "1.2px", opacity: 0.55 }} />
                       </svg>
-                      <span
-                        aria-hidden
-                        className={cn(
-                          "absolute -top-3 w-16 sm:w-20 h-6 sm:h-7 border",
-                          isLeft
-                            ? "left-4 sm:left-6 -rotate-[8deg]"
-                            : "right-4 sm:right-6 rotate-[6deg]",
-                        )}
-                        style={{
-                          backgroundColor: tape.bg,
-                          borderColor: tape.border,
-                        }}
-                      />
-                      {/* Pushpin on top of the tape */}
-                      <span
-                        aria-hidden
-                        className={cn(
-                          "absolute -top-1 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full shadow-[inset_-1px_-1.5px_2px_rgba(0,0,0,0.35),inset_1.5px_1.5px_2px_rgba(255,255,255,0.45),0_2px_3px_rgba(0,0,0,0.35)] z-10",
-                          isLeft ? "left-7 sm:left-10" : "right-7 sm:right-10",
-                        )}
-                        style={{ backgroundColor: outlineColor }}
-                      />
+                      {/* Fastener: alternate between tape and pushpin so it
+                          really feels like the polaroid is stuck to the wall */}
+                      {i % 2 === 0 ? (
+                        <span
+                          aria-hidden
+                          className={cn(
+                            "absolute top-1 sm:top-1.5 w-16 sm:w-20 h-5 sm:h-6 border z-10 shadow-[0_1px_2px_rgba(0,0,0,0.15)]",
+                            isLeft
+                              ? "left-3 sm:left-5 -rotate-[8deg]"
+                              : "right-3 sm:right-5 rotate-[6deg]",
+                          )}
+                          style={{
+                            backgroundColor: tape.bg,
+                            borderColor: tape.border,
+                          }}
+                        />
+                      ) : (
+                        <span
+                          aria-hidden
+                          className="absolute top-2 sm:top-3 left-1/2 -translate-x-1/2 w-4 h-4 sm:w-5 sm:h-5 rounded-full z-10 shadow-[inset_-1.5px_-2px_2.5px_rgba(0,0,0,0.4),inset_2px_2px_2.5px_rgba(255,255,255,0.55),0_3px_4px_rgba(0,0,0,0.4)]"
+                          style={{ backgroundColor: outlineColor }}
+                        />
+                      )}
                       <div className="relative aspect-square overflow-hidden bg-muted">
                         <img
                           src={theme.image}

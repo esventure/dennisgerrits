@@ -24,6 +24,9 @@ import iconItinerary from "@/assets/icon-itinerary.png";
 import iconMessage from "@/assets/icon-message.png";
 import iconTransport from "@/assets/icon-transport.png";
 import iconHotel from "@/assets/icon-hotel.png";
+import iconBike from "@/assets/icon-bike.png";
+import iconBoat from "@/assets/icon-boat.png";
+import iconFoot from "@/assets/icon-foot.png";
 import { useSiteContent } from "@/hooks/useSiteContent";
 import ContactSection from "@/components/ContactSection";
 import ServiceIcon from "@/components/ServiceIcon";
@@ -364,6 +367,21 @@ const Index = () => {
                   icon: iconItinerary,
                   title: "Full itinerary",
                   desc: "A day-by-day plan for your whole stay, even after we part ways.",
+                },
+                {
+                  icon: iconBike,
+                  title: "Bike rentals",
+                  desc: "Comfortable city bikes delivered to your hotel.",
+                },
+                {
+                  icon: iconBoat,
+                  title: "Private boat tours",
+                  desc: "A quiet hour on the canals, just the two of us.",
+                },
+                {
+                  icon: iconFoot,
+                  title: "Walking routes",
+                  desc: "Hand-drawn maps for the streets worth wandering.",
                 },
               ];
 

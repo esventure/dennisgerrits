@@ -82,17 +82,7 @@ const StoryBook = ({ stories, initialStoryId }: StoryBookProps) => {
 
   return (
     <div className="relative">
-      {/* Handwritten margin note above the book */}
-      <p
-        className="text-2xl md:text-3xl mb-6 -rotate-[3deg] pl-2 md:pl-12"
-        style={{
-          fontFamily: "'Caveat', cursive",
-          color: "hsl(var(--heritage-bordeaux))",
-        }}
-        aria-hidden
-      >
-        from my notebook —
-      </p>
+
 
       {/* Cast shadow on the page surface */}
       <div

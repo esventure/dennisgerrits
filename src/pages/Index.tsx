@@ -327,23 +327,20 @@ const Index = () => {
             </FadeIn>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-8 max-w-6xl mx-auto items-stretch">
+          <div className="max-w-4xl mx-auto">
             {(() => {
               const rows = [
                 {
-                  worry: "Refreshing the Anne Frank House page hoping a slot opens up.",
                   icon: iconTickets,
                   title: "Museum reservations",
                   desc: "Time slots booked in advance. No queues.",
                 },
                 {
-                  worry: "Reading 200 reviews to find a restaurant that isn't a tourist trap.",
                   icon: iconDining,
                   title: "Dining bookings",
                   desc: "Tables at the kind of places locals actually go.",
                 },
                 {
-                  worry: "Wondering, at 9pm, where to eat tonight.",
                   icon: iconMessage,
                   title: "WhatsApp lifeline",
                   desc: "One message away for the whole trip.",
@@ -353,74 +350,31 @@ const Index = () => {
               const ROW_MIN_H = "min-h-[96px]";
 
               return (
-                <>
-                  <FadeIn className="lg:col-span-2 h-full">
-                    <div
-                      className="lg:col-span-2 h-full p-8 lg:p-10 bg-background rounded-sm border-t-4 shadow-sm"
-                      style={{ borderColor: "hsl(var(--heritage-taupe))" }}
-                    >
-                      <p className="font-body text-xs tracking-widest uppercase text-muted-foreground mb-6 font-semibold">
-                        Planning it yourself
-                      </p>
-                      <ul className="font-body text-base lg:text-lg text-foreground leading-relaxed">
-                        {rows.map((row) => (
-                          <li key={row.worry} className={`flex gap-4 items-center ${ROW_MIN_H}`}>
-                            <svg
-                              aria-hidden
-                              viewBox="0 0 40 40"
-                              className="shrink-0 w-9 h-9"
-                              fill="none"
-                              stroke="hsl(var(--heritage-bordeaux))"
-                              strokeWidth="1.6"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            >
-                              <defs>
-                                <filter id="worryWobble" x="-15%" y="-15%" width="130%" height="130%">
-                                  <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="2" seed="4" />
-                                  <feDisplacementMap in="SourceGraphic" scale="1.4" />
-                                </filter>
-                              </defs>
-                              <g filter="url(#worryWobble)">
-                                {/* hand-drawn ring (open, scribbly) */}
-                                <path d="M 20 5 C 28 5, 35 11, 35 20 C 35 29, 28 35, 20 35 C 11 35, 5 28, 5 20 C 5 12, 11 6, 20 5" />
-                                {/* crossed-off slash, like a notebook strike-through */}
-                                <path d="M 11 12 L 29 28" />
-                              </g>
-                            </svg>
-                            <span>{row.worry}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </FadeIn>
-
-                  <FadeIn delay={0.15} className="lg:col-span-3 h-full">
-                    <div
-                      className="lg:col-span-3 h-full p-8 lg:p-12 bg-background rounded-sm border-t-4 shadow-md"
-                      style={{ borderColor: "hsl(var(--heritage-orange))" }}
-                    >
-                      <p className="font-body text-xs tracking-widest uppercase text-secondary mb-6 font-semibold">
-                        With me alongside you
-                      </p>
-                      <ul className="font-body text-foreground leading-relaxed">
-                        {rows.map((row) => (
-                          <li key={row.title} className={`flex gap-5 items-center ${ROW_MIN_H}`}>
-                            <ServiceIcon src={row.icon} size={56} padding={10} tinted />
-                            <span>
-                              <span className="font-heading text-xl text-primary block leading-tight mb-1">
-                                {row.title}
-                              </span>
-                              <span className="text-foreground/85 text-base">
-                                {row.desc}
-                              </span>
+                <FadeIn delay={0.15}>
+                  <div
+                    className="h-full p-8 lg:p-12 bg-background rounded-sm border-t-4 shadow-md"
+                    style={{ borderColor: "hsl(var(--heritage-orange))" }}
+                  >
+                    <p className="font-body text-xs tracking-widest uppercase text-secondary mb-6 font-semibold">
+                      With me alongside you
+                    </p>
+                    <ul className="font-body text-foreground leading-relaxed">
+                      {rows.map((row) => (
+                        <li key={row.title} className={`flex gap-5 items-center ${ROW_MIN_H}`}>
+                          <ServiceIcon src={row.icon} size={56} padding={10} tinted />
+                          <span>
+                            <span className="font-heading text-xl text-primary block leading-tight mb-1">
+                              {row.title}
                             </span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </FadeIn>
-                </>
+                            <span className="text-foreground/85 text-base">
+                              {row.desc}
+                            </span>
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </FadeIn>
               );
             })()}
           </div>

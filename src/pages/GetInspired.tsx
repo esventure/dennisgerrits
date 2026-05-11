@@ -278,17 +278,20 @@ const GetInspired = () => {
                       }}
                     />
                     <div
-                      className="p-2.5 sm:p-3 pb-16 sm:pb-20 shadow-[0_10px_28px_-14px_rgba(0,0,0,0.28),0_2px_6px_-2px_rgba(0,0,0,0.12)] transition-shadow duration-500 group-hover:shadow-[0_22px_44px_-16px_rgba(0,0,0,0.35)] relative"
-                      style={{ backgroundColor: paperBg }}
+                      className="p-2.5 sm:p-3 pb-16 sm:pb-20 transition-all duration-500 relative"
                     >
                       <svg
                         aria-hidden
-                        className="absolute inset-0 w-full h-full pointer-events-none"
+                        className="absolute inset-0 w-full h-full pointer-events-none transition-[filter] duration-500 group-hover:[filter:drop-shadow(0_22px_24px_rgba(0,0,0,0.28))]"
                         viewBox="0 0 100 100"
                         preserveAspectRatio="none"
-                        style={{ color: outlineColor, overflow: "visible" }}
+                        style={{
+                          color: outlineColor,
+                          overflow: "visible",
+                          filter: "drop-shadow(0 10px 16px rgba(0,0,0,0.22)) drop-shadow(0 2px 4px rgba(0,0,0,0.12))",
+                        }}
                       >
-                        <path d={sketchPaths[0]} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" style={{ strokeWidth: "2.4px" }} />
+                        <path d={sketchPaths[0]} fill={paperBg} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" style={{ strokeWidth: "2.4px" }} />
                         <path d={sketchPaths[1]} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" style={{ strokeWidth: "1.2px", opacity: 0.55 }} />
                       </svg>
                       <span
@@ -304,7 +307,7 @@ const GetInspired = () => {
                           borderColor: tape.border,
                         }}
                       />
-                      <div className="aspect-square overflow-hidden bg-muted">
+                      <div className="relative aspect-square overflow-hidden bg-muted">
                         <img
                           src={theme.image}
                           alt={theme.title}

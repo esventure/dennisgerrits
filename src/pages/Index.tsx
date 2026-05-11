@@ -1032,29 +1032,63 @@ const Index = () => {
       <section
         id="stories"
         className="relative py-16 md:py-20 lg:py-32 scroll-mt-20 overflow-hidden"
-        style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}
+        style={{
+          background:
+            "linear-gradient(180deg, hsl(28 55% 94%) 0%, hsl(40 45% 95%) 35%, hsl(40 38% 95%) 100%)",
+        }}
       >
         {/* Skyline silhouette through the section */}
         <AmsterdamSkyline variant="section-light" />
 
         {/* Subtle paper-grain noise overlay */}
         <div
-          className="absolute inset-0 pointer-events-none opacity-[0.18] mix-blend-multiply"
+          className="absolute inset-0 pointer-events-none opacity-[0.10] mix-blend-multiply"
           aria-hidden
           style={{
             backgroundImage:
-              "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.30  0 0 0 0 0.25  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
+              "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.45  0 0 0 0 0.36  0 0 0 0 0.25  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
           }}
         />
 
         <div className="container mx-auto px-6 lg:px-12 relative">
           <div className="max-w-3xl mb-12 md:mb-16">
             <FadeIn>
-              <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
+              <p
+                className="font-body text-sm tracking-widest uppercase mb-4"
+                style={{ color: "hsl(var(--heritage-bordeaux))" }}
+              >
                 Stories
               </p>
-              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
+              <p
+                className="mb-2 text-2xl md:text-3xl"
+                style={{
+                  fontFamily: "'Caveat', cursive",
+                  color: "hsl(var(--heritage-orange))",
+                  transform: "rotate(-2deg)",
+                  display: "inline-block",
+                }}
+              >
+                from my notebook
+              </p>
+              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8 relative inline-block">
                 Notes From the City
+                {/* hand-drawn squiggle under "City" */}
+                <svg
+                  aria-hidden
+                  className="absolute -bottom-2 right-0"
+                  width="140"
+                  height="12"
+                  viewBox="0 0 140 12"
+                  fill="none"
+                  style={{ color: "hsl(var(--heritage-orange))" }}
+                >
+                  <path
+                    d="M2 7 C 25 2, 55 11, 80 6 S 125 3, 138 8"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                </svg>
               </h2>
               <p className="font-body text-lg text-muted-foreground leading-relaxed">
                 Short reflections and stories about Amsterdam. The kind of things I'd tell you over a coffee.

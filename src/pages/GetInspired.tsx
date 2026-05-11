@@ -307,7 +307,7 @@ const GetInspired = () => {
                           borderColor: tape.border,
                         }}
                       />
-                      <div className="aspect-square overflow-hidden bg-muted">
+                      <div className="relative aspect-square overflow-hidden bg-muted">
                         <img
                           src={theme.image}
                           alt={theme.title}

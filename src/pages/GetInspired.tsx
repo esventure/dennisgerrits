@@ -314,7 +314,8 @@ const GetInspired = () => {
                           decoding="async"
                           // @ts-expect-error fetchpriority is a valid HTML attribute
                           fetchpriority="low"
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                          className="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.02] group-hover:saturate-150"
+                          style={{ filter: "saturate(1.18) brightness(1.06) contrast(1.04)" }}
                         />
                       </div>
                       <div className="absolute bottom-3 sm:bottom-4 left-2.5 right-2.5 sm:left-3 sm:right-3 px-1.5 sm:px-2">

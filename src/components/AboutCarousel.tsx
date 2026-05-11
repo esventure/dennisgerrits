@@ -163,12 +163,17 @@ const AboutFigures = () => {
         {/* The Person */}
         <FadeIn>
           <div className="flex flex-col items-center text-center">
-            <img
-              src={dennisPersonLine}
-              alt="Hand-drawn figure of Dennis the person"
-              className="w-44 md:w-60 h-auto mb-6 object-contain"
-              loading="lazy"
-            />
+            <div
+              className="rounded-full p-6 mb-6 flex items-center justify-center"
+              style={{ backgroundColor: "hsl(var(--heritage-cream))" }}
+            >
+              <img
+                src={dennisPersonLine}
+                alt="Hand-drawn figure of Dennis the person"
+                className="w-44 md:w-60 h-auto object-contain"
+                loading="lazy"
+              />
+            </div>
             <p className="font-body text-xs tracking-[0.3em] uppercase text-secondary mb-3">
               {t("about.person.kicker", "A True Amsterdammer")}
             </p>
@@ -187,12 +192,17 @@ const AboutFigures = () => {
         {/* The Guide */}
         <FadeIn delay={0.15}>
           <div className="flex flex-col items-center text-center">
-            <img
-              src={dennisGuideLine}
-              alt="Hand-drawn figure of Dennis the guide"
-              className="w-44 md:w-60 h-auto mb-6 object-contain"
-              loading="lazy"
-            />
+            <div
+              className="rounded-full p-6 mb-6 flex items-center justify-center"
+              style={{ backgroundColor: "hsl(var(--heritage-purple) / 0.18)" }}
+            >
+              <img
+                src={dennisGuideLine}
+                alt="Hand-drawn figure of Dennis the guide"
+                className="w-44 md:w-60 h-auto object-contain"
+                loading="lazy"
+              />
+            </div>
             <p className="font-body text-xs tracking-[0.3em] uppercase text-secondary mb-3">
               {t("about.guide.kicker", "A Different Kind of Guide")}
             </p>

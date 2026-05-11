@@ -303,26 +303,37 @@ const DayMap = ({ moments }: DayMapProps) => {
                       opacity="0.95"
                       style={{ filter: "drop-shadow(0 1px 0 rgba(0,0,0,0.05))" }}
                     />
+                    {/* Cream pill behind label for legibility on the photo map */}
+                    {(() => {
+                      const labelW = Math.max(72, stop.label.length * 8.2);
+                      return (
+                        <g filter="url(#sketch)">
+                          <rect
+                            x={stop.x - labelW / 2}
+                            y={stop.y + 26}
+                            width={labelW}
+                            height="20"
+                            rx="3"
+                            fill="hsl(40 38% 95%)"
+                            stroke="hsl(var(--heritage-orange))"
+                            strokeWidth="1"
+                            opacity="0.96"
+                          />
+                        </g>
+                      );
+                    })()}
                     <text
                       x={stop.x}
-                      y={stop.y + 36}
+                      y={stop.y + 40}
                       textAnchor="middle"
-                      fill="hsl(var(--primary))"
-                      fontSize="11"
+                      fill="hsl(var(--heritage-purple))"
+                      fontSize="13"
                       fontFamily="'Bebas Neue', sans-serif"
-                      letterSpacing="0.22em"
+                      letterSpacing="0.18em"
+                      fontWeight="500"
                     >
                       {stop.label.toUpperCase()}
                     </text>
-                    <path
-                      d={`M ${stop.x - 28} ${stop.y + 42} C ${stop.x - 10} ${stop.y + 45}, ${stop.x + 10} ${stop.y + 39}, ${stop.x + 28} ${stop.y + 42}`}
-                      stroke="hsl(var(--heritage-orange))"
-                      strokeWidth="1.1"
-                      fill="none"
-                      strokeLinecap="round"
-                      opacity="0.7"
-                      filter="url(#sketch)"
-                    />
                   </>
                 )}
               </g>

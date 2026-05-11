@@ -373,13 +373,13 @@ const GetInspired = () => {
               className="text-center mt-16 mb-2 text-2xl md:text-3xl"
               style={{
                 fontFamily: "'Caveat', cursive",
-                color: "hsl(var(--heritage-green))",
+                color: "hsl(var(--heritage-orange))",
                 transform: "rotate(-1.5deg)",
               }}
             >
               when you're ready…
             </p>
-            <p className="font-body text-center text-foreground/70 text-base mb-4">
+            <p className="font-body text-center text-base mb-4" style={{ color: "hsl(0 0% 94%)" }}>
               Pick a few that speak to you, then let's talk about building your perfect day.
             </p>
             <p className="text-center">

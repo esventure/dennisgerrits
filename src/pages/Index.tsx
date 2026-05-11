@@ -332,7 +332,7 @@ const Index = () => {
             </FadeIn>
           </div>
 
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             {(() => {
               const rows = [
                 {
@@ -367,20 +367,18 @@ const Index = () => {
                 },
               ];
 
-              const ROW_MIN_H = "min-h-[96px]";
-
               return (
                 <FadeIn delay={0.15}>
                   <div
                     className="h-full p-8 lg:p-12 bg-background rounded-sm border-t-4 shadow-md"
                     style={{ borderColor: "hsl(var(--heritage-orange))" }}
                   >
-                    <p className="font-body text-xs tracking-widest uppercase text-secondary mb-6 font-semibold">
+                    <p className="font-body text-xs tracking-widest uppercase text-secondary mb-8 font-semibold">
                       With me alongside you
                     </p>
-                    <ul className="font-body text-foreground leading-relaxed">
+                    <ul className="font-body text-foreground leading-relaxed grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10">
                       {rows.map((row) => (
-                        <li key={row.title} className={`flex gap-5 items-center ${ROW_MIN_H}`}>
+                        <li key={row.title} className="flex flex-col items-start gap-3">
                           <ServiceIcon src={row.icon} size={56} padding={10} tinted />
                           <span>
                             <span className="font-heading text-xl text-primary block leading-tight mb-1">

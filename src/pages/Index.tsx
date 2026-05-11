@@ -8,6 +8,7 @@ import DayMap from "@/components/DayMap";
 import MosaicWall from "@/components/MosaicWall";
 import { guestPhotos } from "@/assets/guests";
 import HeroCarousel from "@/components/HeroCarousel";
+import AboutCarousel from "@/components/AboutCarousel";
 import dennisIllustration from "@/assets/dennis_illustration.png";
 import dennisPhoto from "@/assets/dennis_photo.png";
 import dennisPerson from "@/assets/dennis-person-line.png";

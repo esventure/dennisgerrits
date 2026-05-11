@@ -693,7 +693,7 @@ const Index = () => {
         className="relative py-20 md:py-24 lg:py-28 overflow-hidden"
         style={{
           background:
-            "radial-gradient(800px 420px at 8% -5%, hsl(var(--heritage-orange) / 0.14), transparent 62%), radial-gradient(900px 600px at 100% 110%, hsl(var(--heritage-green) / 0.12), transparent 65%), hsl(var(--background))",
+            "radial-gradient(900px 600px at 100% 110%, hsl(var(--heritage-green) / 0.12), transparent 65%), hsl(var(--background))",
         }}
       >
         <div

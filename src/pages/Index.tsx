@@ -379,7 +379,7 @@ const Index = () => {
                     <p className="font-body text-xs tracking-widest uppercase text-secondary mb-8 font-semibold">
                       With me alongside you
                     </p>
-                    <ul className="font-body text-foreground leading-relaxed grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10">
+                    <ul className="font-body text-foreground leading-relaxed grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10">
                       {rows.map((row) => (
                         <li key={row.title} className="flex flex-col items-start gap-3">
                           <ServiceIcon src={row.icon} size={56} padding={10} tinted />

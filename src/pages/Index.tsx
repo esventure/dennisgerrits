@@ -162,77 +162,8 @@ const Index = () => {
       {/* ── 1. Hero (3 swipeable variations for Dennis to choose from) ── */}
       <HeroCarousel />
 
-      {/* ── 2. About Me — Full-Screen Split ── */}
-      <section id="about" className="scroll-mt-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2">
-          {/* Left Panel — The Person (light) */}
-          <div className="bg-background px-8 md:px-12 lg:px-16 py-16 lg:py-20">
-            <FadeIn>
-              <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] items-center gap-8 lg:gap-10 max-w-2xl mx-auto md:mx-0 md:ml-auto">
-                <div className="flex justify-center md:block">
-                  <img
-                    src={dennisPerson}
-                    alt="Hand-drawn line illustration of Dennis as a relaxed Amsterdammer"
-                    width={768}
-                    height={1280}
-                    loading="lazy"
-                    className="w-[220px] md:w-[260px] lg:w-[300px] h-auto select-none"
-                    style={{ mixBlendMode: "multiply" }}
-                  />
-                </div>
-                <div className="max-w-md">
-                  <h2 className="font-heading text-4xl md:text-5xl text-primary leading-[0.95] mb-3">
-                    {t("about.person.title", "The Person")}
-                  </h2>
-                  <div className="w-12 h-0.5 bg-accent mb-4" />
-                  <p className="font-body text-sm tracking-[0.15em] uppercase text-secondary mb-4">
-                    {t("about.person.kicker", "A True Amsterdammer")}
-                  </p>
-                  <RichText
-                    className="font-body text-muted-foreground leading-relaxed"
-                    html={t("about.person.body", "")}
-                    fallback="I'm a free spirit with deep roots here. I grew up cycling these canals and collecting stories along the way. Amsterdam isn't just where I live, it's how I think."
-                  />
-                </div>
-              </div>
-            </FadeIn>
-          </div>
-
-          {/* Right Panel — The Guide (dark) */}
-          <div className="bg-primary px-8 md:px-12 lg:px-16 py-16 lg:py-20">
-            <FadeIn>
-              <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] items-center gap-8 lg:gap-10 max-w-2xl mx-auto md:mx-0 md:mr-auto">
-                <div className="max-w-md md:order-1 order-2">
-                  <h2 className="font-heading text-4xl md:text-5xl text-primary-foreground leading-[0.95] mb-3">
-                    {t("about.guide.title", "The Guide")}
-                  </h2>
-                  <div className="w-12 h-0.5 bg-primary-foreground/30 mb-4" />
-                  <p className="font-body text-sm tracking-[0.15em] uppercase text-primary-foreground/60 mb-4">
-                    {t("about.guide.kicker", "A Different Kind of Guide")}
-                  </p>
-                  <RichText
-                    className="font-body text-primary-foreground/80 leading-relaxed"
-                    html={t("about.guide.body", "")}
-                    fallback="No flag, no script. Depth over highlights, connection over information. A friend who knows the city inside out, walking beside you instead of in front of you."
-                  />
-                </div>
-                <div className="flex justify-center md:block md:order-2 order-1">
-                  <img
-                    src={dennisGuide}
-                    alt="Hand-drawn line illustration of Dennis as a city guide, mid-stride and gesturing"
-                    width={768}
-                    height={1280}
-                    loading="lazy"
-                    className="w-[220px] md:w-[260px] lg:w-[300px] h-auto select-none"
-                    style={{ filter: "invert(1)", mixBlendMode: "lighten" }}
-                  />
-                </div>
-              </div>
-            </FadeIn>
-          </div>
-        </div>
-
-      </section>
+      {/* ── 2. About Me — 2 swipeable variations for Dennis to choose from ── */}
+      <AboutCarousel />
 
       {/* ── How It Works (process + concierge) ── */}
       <section id="how-it-works" className="py-16 md:py-20 lg:py-32 scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}>

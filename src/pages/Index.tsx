@@ -483,30 +483,26 @@ const Index = () => {
             </Link>
           </FadeIn>
         </div>
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-3xl">
-            <FadeIn>
-              <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
-                Let's Explore Together
-              </p>
-              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-6">
-                A Day in My Life
-              </h2>
-              <p className="font-body text-lg text-muted-foreground leading-relaxed mb-2">
-                No fixed tours. Every day is shaped by you. Here's what one might look like.
-              </p>
-              <p className="font-body text-base text-muted-foreground italic">
-                We move on foot, by private boat, or by car beyond the city.
-              </p>
-            </FadeIn>
-          </div>
-        </div>
       </div>
 
       <section className="relative lg:h-[420vh]">
-        <div className="lg:sticky lg:top-20 lg:h-[calc(100vh-5rem)] lg:flex lg:items-start lg:pt-4">
-
+        <div className="lg:sticky lg:top-20 lg:h-[calc(100vh-5rem)] lg:flex lg:flex-col lg:pt-6 lg:pb-4">
           <div className="container mx-auto px-6 lg:px-12 w-full">
+            <FadeIn>
+              <div className="max-w-3xl mb-4 lg:mb-6">
+                <p className="font-body text-xs lg:text-sm tracking-widest uppercase text-secondary mb-2">
+                  Let's Explore Together
+                </p>
+                <h2 className="font-heading text-4xl md:text-5xl text-primary leading-[0.95] mb-2">
+                  A Day in My Life
+                </h2>
+                <p className="font-body text-base text-muted-foreground leading-relaxed">
+                  No fixed tours. Every day is shaped by you. Here's what one might look like.
+                </p>
+              </div>
+            </FadeIn>
+          </div>
+          <div className="container mx-auto px-6 lg:px-12 w-full lg:flex-1 lg:min-h-0">
             <FadeIn>
               <DayMap moments={moments} />
             </FadeIn>

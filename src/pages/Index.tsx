@@ -345,6 +345,21 @@ const Index = () => {
                   title: "WhatsApp lifeline",
                   desc: "One message away for the whole trip.",
                 },
+                {
+                  icon: iconTransport,
+                  title: "Airport transfers",
+                  desc: "Picked up at Schiphol, dropped off when you leave.",
+                },
+                {
+                  icon: iconHotel,
+                  title: "Hotel recommendations",
+                  desc: "The right neighbourhood, the right room, the right rate.",
+                },
+                {
+                  icon: iconItinerary,
+                  title: "Full itinerary",
+                  desc: "A day-by-day plan for your whole stay, even after we part ways.",
+                },
               ];
 
               const ROW_MIN_H = "min-h-[96px]";

@@ -1,74 +1,72 @@
-## What feels off today
+## Goal
 
-The Building Blocks section uses tape strips, rotated cards, three different paper tints, hidden click-to-expand captions and tiny truncated titles. Compared to the rest of the site (editorial split panels, big Bebas headlines, generous whitespace, restrained hand-drawn accents, documentary photography), it reads as a craft scrapbook dropped into a magazine.
+Bring back the polaroid grid the user liked (12 themes on Get Inspired, 4 preview on Home) with tape strips, rotation, title + click-to-reveal short description. Then layer in details that make the wall feel alive — like Dennis pinned these up himself this morning — so the visitor's first reaction is "wow, he really cares about all of this."
 
-It also doesn't make the visitor feel Dennis's depth. Twelve near-identical tiles with two-word notes ("ask me about the cat") show breadth, not passion. The personal stories are hidden one click away.
+## What we're keeping (from the previous version)
 
-## What "alive" should mean here
+- Polaroid card frame: white photo with a thin border and soft shadow.
+- Slight per-card rotation (-2.4° to +2.2°), tape strips at top corners or "gaffer" tape on the sides — exactly the four pin variants we had (`tape-tl`, `tape-tr`, `tape-gl`, `tape-gr`).
+- Title visible by default under the photo. Short description (2–3 lines) and the Caveat hand-written note hidden behind a click/tap on the card.
+- Same 12 themes on `/get-inspired`, same 4-card preview on the homepage with "See all building blocks" link.
 
-Not more rotation and tape. Alive on this site is:
-- Bebas headline + Caveat margin note in his own voice
-- Specific proper nouns (the baker, the friend who paints in Noord, Multatuli's cafe)
-- Documentary photo cropped editorially
-- One small hand-drawn accent per block, not five
+## What we're changing to make it more alive
 
-## Proposed direction
+1. **A real wall, not a flat grid.**
+   - Cork-board / off-white paper background with very subtle grain (already have the dotted/noise overlay).
+   - Cards sit on the wall at slightly varied vertical offsets (every 2nd or 3rd card nudged 12–24 px up or down) so the row reads as "pinned by hand", not as a CSS grid.
+   - Two or three cards get a second piece of tape at the bottom corner instead of the top, for variation.
 
-### 1. Get Inspired page: photo-essay index
+2. **Dennis's handwriting all over it.**
+   - One Caveat margin annotation floating between cards every few rows (e.g. "↳ this one is my favourite", "ask me first", "we'll need a boat"), rotated, in heritage green or bordeaux. These live in the gutter, not on the cards, so they read as scribbles on the wall.
+   - A short Caveat eyebrow above the grid: "things I keep coming back to" — already in the current copy palette.
 
-Replace the 12-card polaroid grid with a vertical list of editorial rows, paced like the Day in My Life section:
+3. **Tactile detail on the polaroids themselves.**
+   - Each polaroid gets a faint hand-written caption on the white margin (just the title, in Caveat, low contrast) in addition to the printed Bebas title below — like Dennis labelled the photo before pinning it.
+   - On hover (desktop): card lifts ~6 px, rotation eases to 0°, shadow deepens. On tap (mobile): same lift, then the description and note fade in beneath.
+   - Click anywhere on the card to expand the description+note inline (current behaviour). Click again to collapse. One open at a time.
+
+4. **A few "objects" between the cards.**
+   - Sparse decorative elements pinned to the wall between polaroids: a small stamp (orange "AMS"), a torn ticket stub, a paper-clipped index card with a Caveat line, a tiny pressed leaf SVG. Three to five of these total across the 12-card grid, never overlapping a card. Pure SVG/CSS, no new image assets.
+   - These give the wall texture and signal "this person actually collects things", without competing with the photos.
+
+5. **Subtle motion (not animation everywhere).**
+   - On mount, cards fade/slide in with a 40–80 ms stagger (existing `FadeIn`).
+   - Once visible, two or three random cards do a one-time 1° "settle" wobble, like tape relaxing. No looping animation.
+
+6. **Homepage preview matches the wall vibe.**
+   - 4 polaroids in the same style, same wall background, one Caveat scribble in the gutter, one decorative object. Hover/click behaviour identical. CTA stays "See all building blocks →".
+
+## What we're not doing
+
+- No editorial photo-essay rows (the version the user just rejected).
+- No new colour tokens; we keep the heritage palette.
+- No new image assets; we reuse the 12 interest images and the 4 peek images already imported.
+- No copy rewrite in this pass — we keep the current titles, descriptions and notes. Copy is a separate task.
+- No changes to the StoryBook section, the Day Map, or anything else on either page.
+
+## Layout sketch (Get Inspired grid)
 
 ```text
-┌────────────────────────────────────────────────────────────┐
-│  01    HIDDEN HISTORY                                      │
-│  ─────                                  [ photo, 4:5 ]      │
-│  "There's a stone above a doorway in                       │
-│   the Jordaan with a cat carved into                       │
-│   it. Almost no one knows the story."                      │
-│                                                            │
-│   ↳ ask me about the cat   ←caveat margin note            │
-└────────────────────────────────────────────────────────────┘
+   ┌──┐ tape         ┌──┐         ┌──┐ tape    "↳ ask me   ┌──┐
+   │01│              │02│         │03│          first"     │04│
+   └──┘   ┌──┐       └──┘ ┌──┐    └──┘   ┌──┐              └──┘
+          │05│            │06│           │07│  [ticket]         ┌──┐
+          └──┘            └──┘           └──┘                   │08│
+   ┌──┐         ┌──┐ tape         ┌──┐         ┌──┐ tape        └──┘
+   │09│ [stamp] │10│              │11│         │12│
+   └──┘         └──┘              └──┘         └──┘
 ```
 
-For each of the 12 themes:
-- Big Bebas number (01..12) + uppercase title, like "A Day in My Life" beats
-- One short personal paragraph in Outfit (2-3 lines, full sentences, with proper nouns: a name, a street, a time of day)
-- One Caveat margin note in bordeaux or green, rotated lightly
-- One documentary photo, alternating left/right side per row
-- Subtle accent only: a thin orange vertical bar before the title (matching the Day map cards)
-
-Even-row backgrounds slightly tinted (taupe-tint), odd rows on off-white — same alternation already used elsewhere on the site.
-
-Removes: tape strips, three paper colours, card rotation, hidden captions, polaroid frames.
-Keeps: orange squiggle under the page H1, the green Caveat eyebrow ("a few ideas to start with"), the closing "when you're ready..." link.
-
-### 2. Homepage preview (4 cards)
-
-Reskin the 4-card preview to match. Two options:
-
-- **Option A — Mini index**: 4 editorial rows, same pattern as the Get Inspired page but compressed. Reads as a teaser of the full magazine spread.
-- **Option B — Editorial photo grid**: 4 full-bleed photos in a clean 2x2 or 1x4, no tape, no rotation. Bebas title + tiny Caveat note in the bottom margin (under the photo, not floating tape on top). Hover: image zooms slightly, Caveat note slides up. CTA stays "See all building blocks".
-
-Recommend Option B for the homepage so the preview is visually distinct from the day map and stays scannable, while the Get Inspired page does the long-form storytelling.
-
-### 3. Show that he actually knows this stuff
-
-The single biggest "wow" lever isn't visual, it's content. With the new layout I'd rewrite each of the 12 entries from a 5-word note into a 2-3 sentence paragraph with at least one of:
-- a real first name (the baker, the boatman, the painter)
-- a real place (Westerstraat, Noorderkerk, a specific brown cafe)
-- a real time or ritual ("at six, before the queue")
-- a sensory detail ("the smell of fresh bread on the corner")
-
-Copy is out of scope for the visual restyle, but I'll leave clear placeholders with one example written out, and flag the rest for Dennis to fill in his own words. He can edit them in the admin or send them to me.
-
-## Out of scope
-
-- The StoryBook section below Contact
-- The Day in My Life map
-- Any colour token changes (using existing heritage tokens only)
+Three columns on tablet, four on desktop, one on phone. Vertical jitter only on `md+`.
 
 ## Files touched
 
-- `src/pages/GetInspired.tsx` — replace the `themes.map(...)` polaroid grid with the editorial row layout; keep the existing page H1, eyebrows, and footer link.
-- `src/pages/Index.tsx` — replace the 4-card "Building Blocks" block with the chosen homepage preview pattern (Option B by default).
-- No new assets, no new dependencies. Reuses the 12 interest images already imported.
+- `src/pages/GetInspired.tsx` — replace the editorial rows with the polaroid grid (restored from the prior version) plus the wall background, gutter scribbles, and decorative SVG objects.
+- `src/pages/Index.tsx` — replace the current 4-card preview with the matching polaroid preview wall (one scribble, one object).
+- No new files, no new dependencies, no new assets.
+
+## Done when
+
+- The 12-theme polaroid wall is back on Get Inspired with click-to-expand description+note, varied tape, vertical jitter, 3–5 wall objects, and 2–3 gutter scribbles.
+- The homepage preview shows 4 matching polaroids with the same behaviour and the existing CTA.
+- The page feels like a wall in Dennis's office, not a product grid.

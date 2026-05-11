@@ -1051,17 +1051,6 @@ const Index = () => {
               >
                 Stories
               </p>
-              <p
-                className="mb-2 text-2xl md:text-3xl"
-                style={{
-                  fontFamily: "'Caveat', cursive",
-                  color: "hsl(var(--heritage-orange))",
-                  transform: "rotate(-2deg)",
-                  display: "inline-block",
-                }}
-              >
-                from my notebook
-              </p>
               <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8 relative inline-block">
                 Notes From the City
                 {/* hand-drawn squiggle under "City" */}

@@ -1251,6 +1251,38 @@ const Index = () => {
         </div>
         </div>
       </section>
+
+      {/* ── Story Book (notebook from Get Inspired) ── */}
+      <section
+        id="storybook"
+        className="relative py-16 md:py-20 lg:py-28 scroll-mt-20 overflow-hidden"
+        style={{
+          background:
+            "radial-gradient(900px 500px at 8% -5%, hsl(var(--heritage-orange) / 0.14), transparent 62%), radial-gradient(1100px 700px at 100% 110%, hsl(var(--heritage-green) / 0.12), transparent 65%), hsl(var(--background))",
+        }}
+      >
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="max-w-3xl mb-10 md:mb-14">
+            <FadeIn>
+              <p
+                className="font-body text-sm tracking-widest uppercase mb-4"
+                style={{ color: "hsl(var(--heritage-bordeaux))" }}
+              >
+                Notes From the City
+              </p>
+              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-4">
+                From my notebook
+              </h2>
+              <p className="font-body text-lg text-muted-foreground leading-relaxed">
+                Short reflections about Amsterdam. The kind of things I'd tell you over a coffee.
+              </p>
+            </FadeIn>
+          </div>
+          <FadeIn>
+            <StoryBook stories={bookStories} />
+          </FadeIn>
+        </div>
+      </section>
     </main>
   );
 };

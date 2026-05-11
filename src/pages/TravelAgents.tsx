@@ -164,7 +164,7 @@ const TravelAgents = () => {
               <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
                 For Travel Advisors
               </p>
-              <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl text-primary leading-[0.95] mb-8">
+              <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-primary leading-[0.95] mb-8">
                 I take care of your clients<br />in Amsterdam.
               </h1>
               <p className="font-body text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-2xl mb-10">
@@ -252,7 +252,7 @@ const TravelAgents = () => {
               <p className="font-body text-sm tracking-widest uppercase text-secondary mb-4">
                 How We Work
               </p>
-              <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-primary leading-[0.95]">
+              <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-primary leading-[0.95]">
                 Two ways to work together
               </h2>
               <p className="font-body text-lg text-muted-foreground mt-6">
@@ -380,7 +380,7 @@ const TravelAgents = () => {
                   className="w-16 h-16 mb-8"
                   loading="lazy"
                 />
-                <h2 className="font-heading text-4xl md:text-5xl text-primary leading-[1] mb-6">
+                <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl text-primary leading-[1] mb-6">
                   Your clients have a local they can rely on.
                 </h2>
               </div>
@@ -433,7 +433,7 @@ const TravelAgents = () => {
                 <div className="flex justify-center mb-6">
                   <BridgeIcon />
                 </div>
-                <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-primary leading-[0.95]">
+                <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-primary leading-[0.95]">
                   Deeply local.<br />Personally connected.
                 </h2>
               </div>
@@ -582,7 +582,7 @@ const TravelAgents = () => {
                 <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
                   Let's Connect
                 </p>
-                <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-primary leading-[0.95] mb-8">
+                <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-primary leading-[0.95] mb-8">
                   If this resonates, I'd love to hear from you.
                 </h2>
                 <p className="font-body text-lg text-muted-foreground leading-relaxed mb-10">

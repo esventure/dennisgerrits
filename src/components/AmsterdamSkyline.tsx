@@ -52,7 +52,7 @@ const AmsterdamSkyline = ({ variant = 'global' }: Props) => {
 
   if (variant === 'section-light') {
     const fadeMask =
-      'linear-gradient(to bottom, black 0%, black 40%, transparent 95%)';
+      'linear-gradient(to bottom, transparent 0%, black 70%, black 100%)';
     return (
       <div
         className="absolute inset-0 overflow-hidden pointer-events-none"
@@ -62,12 +62,11 @@ const AmsterdamSkyline = ({ variant = 'global' }: Props) => {
         <img
           src={skyline}
           alt=""
-          className="absolute inset-x-0 top-0 w-full block"
+          className="absolute inset-x-0 bottom-0 w-full block"
           style={{
             opacity: 0.10,
             objectFit: 'contain',
-            objectPosition: 'top',
-            transform: 'scaleY(-1)',
+            objectPosition: 'bottom',
             maskImage: fadeMask,
             WebkitMaskImage: fadeMask,
             filter:

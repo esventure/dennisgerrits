@@ -1274,7 +1274,7 @@ const Index = () => {
               </FadeIn>
 
               <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-8 md:gap-10 lg:gap-14 items-start">
-                {/* Left: editorial intro */}
+                {/* Left: editorial intro + photo */}
                 <FadeIn>
                   <div
                     className="lg:pt-2"
@@ -1285,6 +1285,17 @@ const Index = () => {
                       html={t("booking.intro", "")}
                       fallback="The best way to start is a short, informal conversation. No obligations, just a chance to see if my approach feels right."
                     />
+                    <div className="mt-8 md:mt-10">
+                      <img
+                        src={dennisCanalSmile}
+                        alt="Dennis smiling by the canal"
+                        loading="lazy"
+                        width={800}
+                        height={600}
+                        className="w-full max-w-md rounded-sm shadow-xl"
+                        style={{ filter: "saturate(0.92) contrast(0.98)" }}
+                      />
+                    </div>
                   </div>
                 </FadeIn>
 

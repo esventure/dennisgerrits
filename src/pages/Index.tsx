@@ -1285,14 +1285,12 @@ const Index = () => {
                       html={t("booking.intro", "")}
                       fallback="The best way to start is a short, informal conversation. No obligations, just a chance to see if my approach feels right."
                     />
-                    <div className="mt-8 md:mt-10 flex-1 min-h-0">
+                    <div className="mt-8 md:mt-10 flex-1 min-h-0 relative max-w-md w-full">
                       <img
                         src={dennisCanalSmile}
                         alt="Dennis smiling by the canal"
                         loading="lazy"
-                        width={800}
-                        height={600}
-                        className="w-full h-full max-w-md object-cover rounded-sm shadow-xl"
+                        className="absolute inset-0 w-full h-full object-cover rounded-sm shadow-xl"
                         style={{ filter: "saturate(0.92) contrast(0.98)" }}
                       />
                     </div>

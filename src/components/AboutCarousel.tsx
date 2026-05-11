@@ -155,10 +155,7 @@ import dennisGuideLine from "@/assets/dennis-guide-line.png";
 const AboutFigures = () => {
   const t = useSiteContent();
   return (
-    <div
-      className="px-6 md:px-12 py-20 lg:py-28 min-h-[70vh] flex items-center"
-      style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}
-    >
+    <div className="px-6 md:px-12 py-20 lg:py-28 min-h-[70vh] flex items-center">
       <div className="container mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         {/* The Person */}
         <FadeIn>

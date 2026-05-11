@@ -401,6 +401,53 @@ const DayMap = ({ moments }: DayMapProps) => {
             <p className="font-body text-xs tracking-[0.25em] uppercase text-accent font-semibold mb-4">
               {moments[active].time}
             </p>
+
+            {/* Controls — moved to the top, just under the time label */}
+            <div className="flex items-center gap-4 mb-6">
+              <button
+                onClick={goPrev}
+                disabled={active === 0}
+                className="p-2 rounded-full border border-border text-muted-foreground hover:text-accent hover:border-accent disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                aria-label="Previous stop"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+
+              <div className="flex gap-2 items-center">
+                {moments.map((_, i) => {
+                  const isActive = i === active;
+                  const wasVisited = visited.has(i);
+                  return (
+                    <button
+                      key={i}
+                      onClick={() => handleSelect(i)}
+                      className="w-3 h-3 flex items-center justify-center"
+                      aria-label={`Go to stop ${i + 1}`}
+                    >
+                      {isActive ? (
+                        <span className="block w-3 h-3 rounded-full border-[1.5px] border-accent" />
+                      ) : (
+                        <span
+                          className={`block w-2 h-2 rounded-full ${
+                            wasVisited ? "bg-accent/40" : "bg-border"
+                          }`}
+                        />
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+
+              <button
+                onClick={goNext}
+                disabled={active === moments.length - 1}
+                className="p-2 rounded-full border border-border text-muted-foreground hover:text-accent hover:border-accent disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                aria-label="Next stop"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+
             <h3 className="font-heading text-4xl lg:text-5xl text-primary leading-[1] mb-5">
               {moments[active].title}
             </h3>
@@ -409,54 +456,6 @@ const DayMap = ({ moments }: DayMapProps) => {
             </p>
           </motion.div>
         </AnimatePresence>
-
-        {/* Controls */}
-        <div className="flex items-center justify-center gap-4 mt-6">
-          <button
-            onClick={goPrev}
-            disabled={active === 0}
-            className="p-2 rounded-full border border-border text-muted-foreground hover:text-accent hover:border-accent disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-            aria-label="Previous stop"
-          >
-            <ChevronLeft className="w-4 h-4" />
-          </button>
-
-          <div className="flex gap-2 items-center">
-            {moments.map((_, i) => {
-              const isActive = i === active;
-              const wasVisited = visited.has(i);
-              return (
-                <button
-                  key={i}
-                  onClick={() => handleSelect(i)}
-                  className="w-3 h-3 flex items-center justify-center"
-                  aria-label={`Go to stop ${i + 1}`}
-                >
-                  {isActive ? (
-                    <span
-                      className="block w-3 h-3 rounded-full border-[1.5px] border-accent"
-                    />
-                  ) : (
-                    <span
-                      className={`block w-2 h-2 rounded-full ${
-                        wasVisited ? "bg-accent/40" : "bg-border"
-                      }`}
-                    />
-                  )}
-                </button>
-              );
-            })}
-          </div>
-
-          <button
-            onClick={goNext}
-            disabled={active === moments.length - 1}
-            className="p-2 rounded-full border border-border text-muted-foreground hover:text-accent hover:border-accent disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-            aria-label="Next stop"
-          >
-            <ChevronRight className="w-4 h-4" />
-          </button>
-        </div>
       </div>
     </div>
   );

@@ -336,16 +336,16 @@ const GetInspired = () => {
             >
               when you're ready…
             </p>
-            <p className="font-body text-center text-base mb-4" style={{ color: "hsl(0 0% 94%)" }}>
+            <p className="font-body text-center text-base mb-4 text-foreground/70">
               Pick a few that speak to you, then let's talk about building your perfect day.
             </p>
             <p className="text-center">
               <a
-                href="/#contact"
+                href="#contact"
                 className="font-body text-base tracking-wide border-b-2 border-dashed pb-1 transition-colors hover:opacity-80 inline-flex items-center gap-2"
                 style={{
-                  color: "hsl(var(--heritage-orange))",
-                  borderColor: "hsl(var(--heritage-orange) / 0.5)",
+                  color: "hsl(var(--heritage-bordeaux))",
+                  borderColor: "hsl(var(--heritage-bordeaux) / 0.5)",
                 }}
               >
                 Ready to start planning? Let's talk.

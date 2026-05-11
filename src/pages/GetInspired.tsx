@@ -172,10 +172,10 @@ const GetInspired = () => {
     <main>
       {/* Interests section */}
       <section
-        className="relative py-24 lg:py-32"
+        className="relative py-24 lg:py-32 overflow-hidden"
         style={{
           background:
-            "radial-gradient(1200px 600px at 20% -10%, hsl(var(--heritage-orange) / 0.08), transparent 60%), hsl(var(--background))",
+            "radial-gradient(900px 500px at 8% -5%, hsl(var(--heritage-orange) / 0.18), transparent 62%), radial-gradient(1100px 700px at 100% 110%, hsl(var(--heritage-green) / 0.16), transparent 65%), hsl(var(--background))",
         }}
       >
         {/* Subtle paper texture */}
@@ -192,13 +192,42 @@ const GetInspired = () => {
           <div className="max-w-3xl mb-16">
             <FadeIn>
               <p
+                className="mb-3 text-2xl md:text-3xl"
+                style={{
+                  fontFamily: "'Caveat', cursive",
+                  color: "hsl(var(--heritage-green))",
+                  transform: "rotate(-2deg)",
+                  display: "inline-block",
+                }}
+              >
+                a few ideas to start with
+              </p>
+              <p
                 className="font-body text-sm tracking-widest uppercase mb-6"
                 style={{ color: "hsl(var(--heritage-orange))" }}
               >
                 What excites you?
               </p>
-              <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl text-primary leading-[0.95] mb-8">
+              <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl text-primary leading-[0.95] mb-8 relative inline-block">
                 Build Your Day
+                {/* hand-drawn squiggle under "Day" */}
+                <svg
+                  aria-hidden
+                  className="absolute -bottom-2 right-0"
+                  width="160"
+                  height="14"
+                  viewBox="0 0 160 14"
+                  fill="none"
+                  style={{ color: "hsl(var(--heritage-orange))" }}
+                >
+                  <path
+                    d="M2 8 C 22 2, 42 12, 62 6 S 102 2, 122 8 S 152 4, 158 7"
+                    stroke="currentColor"
+                    strokeWidth="2.4"
+                    strokeLinecap="round"
+                    fill="none"
+                  />
+                </svg>
               </h1>
               <p className="font-body text-lg text-foreground/80 leading-relaxed">
                 Tell me what you love, and I'll show you a side of Amsterdam you won't find in any guidebook.
@@ -210,6 +239,19 @@ const GetInspired = () => {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-12 md:gap-y-16 gap-x-6 md:gap-x-10 pt-8">
             {themes.filter((t) => t && t.title && t.image).map((theme, i) => {
               const isActive = active === theme.id;
+              const paperBg =
+                i % 3 === 0
+                  ? "hsl(40 38% 97%)"
+                  : i % 3 === 1
+                  ? "hsl(28 35% 95%)"
+                  : "hsl(120 15% 96%)";
+              const isLeft = theme.pin === "tape-tl" || theme.pin === "tape-gl";
+              const tapeColors = [
+                { bg: "hsl(var(--heritage-orange) / 0.72)", border: "hsl(var(--heritage-bordeaux) / 0.30)" },
+                { bg: "hsl(var(--heritage-green) / 0.55)", border: "hsl(var(--heritage-green) / 0.40)" },
+                { bg: "hsl(var(--heritage-bordeaux) / 0.45)", border: "hsl(var(--heritage-bordeaux) / 0.35)" },
+              ];
+              const tape = tapeColors[i % 3];
               return (
                 <FadeIn key={theme.id} delay={i * 0.08}>
                   <button
@@ -217,16 +259,30 @@ const GetInspired = () => {
                     className="group relative block w-full text-left transition-transform duration-500 ease-out hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-4"
                     style={{ transform: `rotate(${isActive ? 0 : theme.rotate}deg)` }}
                   >
-                    <div className="bg-white p-2.5 sm:p-3 pb-16 sm:pb-20 shadow-[0_10px_28px_-14px_rgba(0,0,0,0.28),0_2px_6px_-2px_rgba(0,0,0,0.12)] transition-shadow duration-500 group-hover:shadow-[0_22px_44px_-16px_rgba(0,0,0,0.35)] relative">
+                    <div
+                      aria-hidden
+                      className="pointer-events-none absolute -inset-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl"
+                      style={{
+                        background:
+                          "radial-gradient(closest-side, hsl(var(--heritage-orange) / 0.35), transparent 70%)",
+                      }}
+                    />
+                    <div
+                      className="p-2.5 sm:p-3 pb-16 sm:pb-20 shadow-[0_10px_28px_-14px_rgba(0,0,0,0.28),0_2px_6px_-2px_rgba(0,0,0,0.12)] transition-shadow duration-500 group-hover:shadow-[0_22px_44px_-16px_rgba(0,0,0,0.35)] relative"
+                      style={{ backgroundColor: paperBg }}
+                    >
                       <span
                         aria-hidden
                         className={cn(
                           "absolute -top-3 w-16 sm:w-20 h-6 sm:h-7 border",
-                          theme.pin === "tape-tl" && "left-4 sm:left-6 -rotate-[8deg] bg-[hsl(var(--heritage-orange))]/70 border-[hsl(var(--heritage-bordeaux))]/30",
-                          theme.pin === "tape-tr" && "right-4 sm:right-6 rotate-[6deg] bg-[hsl(var(--heritage-orange))]/70 border-[hsl(var(--heritage-bordeaux))]/30",
-                          theme.pin === "tape-gl" && "left-4 sm:left-6 -rotate-[6deg] bg-[hsl(var(--heritage-green))]/55 border-[hsl(var(--heritage-green))]/40",
-                          theme.pin === "tape-gr" && "right-4 sm:right-6 rotate-[7deg] bg-[hsl(var(--heritage-green))]/55 border-[hsl(var(--heritage-green))]/40",
+                          isLeft
+                            ? "left-4 sm:left-6 -rotate-[8deg]"
+                            : "right-4 sm:right-6 rotate-[6deg]",
                         )}
+                        style={{
+                          backgroundColor: tape.bg,
+                          borderColor: tape.border,
+                        }}
                       />
                       <div className="aspect-square overflow-hidden bg-muted">
                         <img
@@ -252,6 +308,11 @@ const GetInspired = () => {
                             color: "hsl(var(--heritage-bordeaux))",
                           }}
                         >
+                          <span
+                            aria-hidden
+                            className="inline-block w-1.5 h-1.5 rounded-full mr-1.5 align-middle"
+                            style={{ backgroundColor: "hsl(var(--heritage-orange))" }}
+                          />
                           {theme.note}
                         </p>
                       </div>
@@ -279,36 +340,116 @@ const GetInspired = () => {
           </div>
 
           <FadeIn>
-            <p className="font-body text-center text-foreground/70 mt-16 text-base mb-4">
+            <p
+              className="text-center mt-16 mb-2 text-2xl md:text-3xl"
+              style={{
+                fontFamily: "'Caveat', cursive",
+                color: "hsl(var(--heritage-green))",
+                transform: "rotate(-1.5deg)",
+              }}
+            >
+              when you're ready…
+            </p>
+            <p className="font-body text-center text-foreground/70 text-base mb-4">
               Pick a few that speak to you, then let's talk about building your perfect day.
             </p>
             <p className="text-center">
               <a
                 href="/#contact"
-                className="font-body text-base tracking-wide border-b-2 border-dashed pb-1 transition-colors hover:opacity-80"
+                className="font-body text-base tracking-wide border-b-2 border-dashed pb-1 transition-colors hover:opacity-80 inline-flex items-center gap-2"
                 style={{
                   color: "hsl(var(--heritage-orange))",
                   borderColor: "hsl(var(--heritage-orange) / 0.5)",
                 }}
               >
                 Ready to start planning? Let's talk.
+                <span aria-hidden>→</span>
               </a>
             </p>
           </FadeIn>
         </div>
       </section>
 
+      {/* Hand-drawn divider between sections */}
+      <div
+        aria-hidden
+        className="relative"
+        style={{ background: "hsl(var(--background))" }}
+      >
+        <svg
+          className="block w-full h-12 md:h-16"
+          viewBox="0 0 1200 60"
+          preserveAspectRatio="none"
+          fill="none"
+        >
+          <path
+            d="M0 32 C 120 12, 240 52, 360 30 S 600 10, 720 34 S 960 54, 1080 28 L 1200 30"
+            stroke="hsl(var(--heritage-green))"
+            strokeOpacity="0.55"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            fill="none"
+          />
+        </svg>
+        <span
+          className="absolute left-1/2 top-1/2 px-4 text-xl md:text-2xl whitespace-nowrap"
+          style={{
+            fontFamily: "'Caveat', cursive",
+            color: "hsl(var(--heritage-orange))",
+            transform: "translate(-50%, -50%) rotate(-2deg)",
+            background: "hsl(var(--background))",
+          }}
+        >
+          and a few stories…
+        </span>
+      </div>
+
       {/* Stories section — accordion style */}
       <section
         id="stories-section"
-        className="py-24 lg:py-32 scroll-mt-20"
-        style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}
+        className="relative py-24 lg:py-32 scroll-mt-20 overflow-hidden"
+        style={{
+          background:
+            "radial-gradient(900px 500px at 100% 0%, hsl(var(--heritage-green) / 0.16), transparent 60%), radial-gradient(700px 400px at 0% 100%, hsl(var(--heritage-orange) / 0.10), transparent 65%), hsl(40 38% 95%)",
+        }}
       >
-        <div className="container mx-auto px-6 lg:px-12">
+        {/* Paper-grain noise overlay */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-[0.10] mix-blend-multiply"
+          aria-hidden
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.45  0 0 0 0 0.36  0 0 0 0 0.25  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
+          }}
+        />
+        <div className="relative container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mb-12">
             <FadeIn>
-              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-6">
+              <p
+                className="font-body text-sm tracking-widest uppercase mb-4"
+                style={{ color: "hsl(var(--heritage-orange))" }}
+              >
+                Stories
+              </p>
+              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-6 relative inline-block">
                 Notes From the City
+                <svg
+                  aria-hidden
+                  className="absolute -bottom-2 right-0"
+                  width="140"
+                  height="12"
+                  viewBox="0 0 140 12"
+                  fill="none"
+                  style={{ color: "hsl(var(--heritage-orange))" }}
+                >
+                  <path
+                    d="M2 7 C 22 1, 42 11, 62 5 S 102 1, 122 7 L 138 6"
+                    stroke="currentColor"
+                    strokeWidth="2.2"
+                    strokeLinecap="round"
+                    fill="none"
+                  />
+                </svg>
               </h2>
               <p className="font-body text-base md:text-lg text-foreground/75 leading-relaxed max-w-xl">
                 Short reflections about Amsterdam. The kind of things I'd tell you over a coffee.

@@ -161,8 +161,8 @@ const AboutFigures = () => {
         <FadeIn>
           <div className="flex flex-col items-center text-center">
             <div
-              className="rounded-full p-6 mb-6 flex items-center justify-center"
-              style={{ backgroundColor: "hsl(var(--heritage-cream))" }}
+              className="rounded-full p-6 mb-6 flex items-center justify-center border-2"
+              style={{ borderColor: "hsl(var(--heritage-bordeaux) / 0.4)" }}
             >
               <img
                 src={dennisPersonLine}

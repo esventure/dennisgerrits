@@ -37,7 +37,7 @@ const ContactSection = () => {
             }}
             aria-hidden
           >
-            let's talk →
+            let's talk
           </p>
 
           <div className="relative mx-auto max-w-5xl" style={{ zIndex: 10 }}>

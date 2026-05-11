@@ -13,8 +13,8 @@ import dennisTalking from "@/assets/dennis-talking.jpg";
    ──────────────────────────────────────────────────────────── */
 
 const HeroEditorial = () => (
-  <div className="container mx-auto px-6 lg:px-12 pt-2 pb-24">
-    <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-16 items-center">
+  <div className="container mx-auto px-5 sm:px-6 lg:px-12 pt-2 pb-16 md:pb-24">
+    <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-10 md:gap-16 items-center">
       <FadeIn>
         <div className="flex flex-col items-center lg:items-start h-full">
           <img
@@ -22,13 +22,13 @@ const HeroEditorial = () => (
             alt="Dennis Gerrits on an Amsterdam canal bridge"
             className="w-full max-w-lg rounded-sm object-cover shadow-lg aspect-[3/4]"
           />
-          <p className="font-body text-sm tracking-widest uppercase text-secondary mt-6">
+          <p className="font-body text-xs sm:text-sm tracking-widest uppercase text-secondary mt-5 md:mt-6">
             Personal Travel Companion
           </p>
         </div>
       </FadeIn>
       <FadeIn delay={0.2}>
-        <h1 className="font-heading text-6xl md:text-7xl lg:text-8xl text-primary leading-[0.95] mb-8">
+        <h1 className="font-heading text-[2.75rem] sm:text-5xl md:text-7xl lg:text-8xl text-primary leading-[0.95] mb-6 md:mb-8">
           Hello,<br />
           <span className="relative inline-block text-accent">
             I'm Dennis.
@@ -51,7 +51,7 @@ const HeroEditorial = () => (
           I don't show a city.<br />
           I translate it.
         </h1>
-        <p className="font-body text-lg text-foreground/75 leading-relaxed max-w-lg mb-8">
+        <p className="font-body text-base md:text-lg text-foreground/75 leading-relaxed max-w-lg mb-7 md:mb-8">
           I walk alongside you, not in front of you. We'll find the stories, the quiet corners,
           the places that make you stop and really look. That's what I do.
         </p>
@@ -59,7 +59,7 @@ const HeroEditorial = () => (
           href="#contact"
           className="inline-flex flex-col items-start gap-2 group"
         >
-          <span className="font-body text-sm tracking-widest uppercase border-2 border-primary text-primary px-7 py-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+          <span className="font-body text-sm tracking-widest uppercase border-2 border-primary text-primary px-6 sm:px-7 py-3.5 sm:py-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
             Say hello →
           </span>
           <span className="font-body italic text-sm text-foreground/60">
@@ -74,12 +74,12 @@ const HeroEditorial = () => (
 const HeroMagazine = () => (
   <div className="relative w-full min-h-[85vh] grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] items-stretch bg-[hsl(var(--heritage-taupe)/0.25)]">
     {/* Left: huge cover headline */}
-    <div className="relative z-10 flex items-center px-6 lg:px-16 py-20 lg:py-0">
+    <div className="relative z-10 flex items-center px-5 sm:px-6 lg:px-16 py-16 sm:py-20 lg:py-0">
       <FadeIn>
         <p className="font-body text-xs tracking-[0.3em] uppercase text-secondary mb-6">
           Issue 01 · Amsterdam
         </p>
-        <h1 className="font-heading text-primary leading-[0.85] mb-8 text-[clamp(3.5rem,9vw,8rem)]">
+        <h1 className="font-heading text-primary leading-[0.85] mb-8 text-[clamp(2.6rem,11vw,8rem)]">
           AMSTERDAM,
           <br />
           <span className="relative inline-block text-accent">
@@ -125,16 +125,16 @@ const HeroMagazine = () => (
 );
 
 const HeroLetter = () => (
-  <div className="container mx-auto px-6 lg:px-12 py-20 lg:py-24">
+  <div className="container mx-auto px-5 sm:px-6 lg:px-12 py-16 sm:py-20 lg:py-24">
     <div className="max-w-3xl mx-auto text-center">
       <FadeIn>
         <p className="font-body text-xs tracking-[0.3em] uppercase text-secondary mb-10">
           A note from Dennis
         </p>
-        <blockquote className="relative font-heading text-primary leading-[1.05] text-[clamp(2.5rem,6vw,5.5rem)] mb-10">
+        <blockquote className="relative font-heading text-primary leading-[1.05] text-[clamp(2rem,7vw,5.5rem)] mb-10">
           <span
             aria-hidden
-            className="absolute -top-10 left-1/2 -translate-x-1/2 font-heading text-[8rem] leading-none select-none"
+            className="absolute -top-8 sm:-top-10 left-1/2 -translate-x-1/2 font-heading text-[5rem] sm:text-[8rem] leading-none select-none"
             style={{ color: "hsl(var(--heritage-green))" }}
           >
             “
@@ -302,7 +302,7 @@ const HeroEditorialGreen = () => (
           {/* Right: editorial headline + copy */}
           <FadeIn delay={0.2}>
             <h1
-              className="font-heading text-6xl md:text-7xl lg:text-8xl leading-[0.95] mb-8"
+              className="font-heading text-[2.75rem] sm:text-5xl md:text-7xl lg:text-8xl leading-[0.95] mb-6 md:mb-8"
               style={{ color: "hsl(var(--background))" }}
             >
               Hello,

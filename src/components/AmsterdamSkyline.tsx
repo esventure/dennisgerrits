@@ -62,7 +62,7 @@ const AmsterdamSkyline = ({ variant = 'global' }: Props) => {
           alt=""
           className="absolute inset-x-0 bottom-0 w-full block"
           style={{
-            opacity: 0.22,
+            opacity: 0.32,
             objectFit: 'contain',
             objectPosition: 'bottom',
             filter:

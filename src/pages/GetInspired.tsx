@@ -238,19 +238,27 @@ const GetInspired = () => {
         </div>
       </section>
 
-      {/* Polaroid wall on warm cream */}
+      {/* Polaroid wall on heritage green canvas */}
       <section
         className="relative py-16 md:py-20 lg:py-24 overflow-hidden"
-        style={{ backgroundColor: "hsl(40 38% 96%)" }}
+        style={{ backgroundColor: "hsl(var(--heritage-green))" }}
       >
-        {/* Subtle paper dot texture */}
+        {/* warm orange + bordeaux glows for depth */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.05]"
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(700px 420px at 12% 8%, hsl(var(--heritage-orange) / 0.28), transparent 60%), radial-gradient(800px 500px at 92% 92%, hsl(var(--heritage-bordeaux) / 0.30), transparent 65%)",
+          }}
+        />
+        {/* paper-grain noise overlay */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-[0.10] mix-blend-screen"
+          aria-hidden
           style={{
             backgroundImage:
-              "radial-gradient(hsl(var(--foreground)) 1px, transparent 1px)",
-            backgroundSize: "22px 22px",
+              "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.95  0 0 0 0 0.92  0 0 0 0 0.85  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
           }}
         />
         <div className="relative container mx-auto px-6 lg:px-12">
@@ -365,13 +373,13 @@ const GetInspired = () => {
               className="text-center mt-16 mb-2 text-2xl md:text-3xl"
               style={{
                 fontFamily: "'Caveat', cursive",
-                color: "hsl(var(--heritage-green))",
+                color: "hsl(var(--heritage-orange))",
                 transform: "rotate(-1.5deg)",
               }}
             >
               when you're ready…
             </p>
-            <p className="font-body text-center text-foreground/70 text-base mb-4">
+            <p className="font-body text-center text-base mb-4" style={{ color: "hsl(0 0% 94%)" }}>
               Pick a few that speak to you, then let's talk about building your perfect day.
             </p>
             <p className="text-center">

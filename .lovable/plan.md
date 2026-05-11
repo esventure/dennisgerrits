@@ -1,72 +1,47 @@
-## Goal
+## Why it feels "funeral" right now
 
-Bring back the polaroid grid the user liked (12 themes on Get Inspired, 4 preview on Home) with tape strips, rotation, title + click-to-reveal short description. Then layer in details that make the wall feel alive — like Dennis pinned these up himself this morning — so the visitor's first reaction is "wow, he really cares about all of this."
+- Hero is a single paragraph on a near‑white wash with one small orange eyebrow. No color, no texture, no warmth.
+- The polaroid wall does most of the visual work, but every card sits on plain white with grey shadows. The "tape" pieces are the only color and they're small.
+- The Stories section drops onto a flat taupe block with a quiet purple headline. After 12 colorful polaroids it reads like a footer.
+- Heritage green is barely used anywhere on the page.
 
-## What we're keeping (from the previous version)
+## Proposed uplift (visual only, copy & structure unchanged)
 
-- Polaroid card frame: white photo with a thin border and soft shadow.
-- Slight per-card rotation (-2.4° to +2.2°), tape strips at top corners or "gaffer" tape on the sides — exactly the four pin variants we had (`tape-tl`, `tape-tr`, `tape-gl`, `tape-gr`).
-- Title visible by default under the photo. Short description (2–3 lines) and the Caveat hand-written note hidden behind a click/tap on the card.
-- Same 12 themes on `/get-inspired`, same 4-card preview on the homepage with "See all building blocks" link.
+### 1. Hero block — give it warmth and personality
+- Replace the cool radial wash with a warmer layered background: soft orange glow top‑left + a green wash bottom‑right, both at low opacity over off‑white.
+- Add a hand‑drawn orange squiggle under "Build Your Day" (same style as "Notes From the City" on the homepage), and a small Caveat‑script line in green above the eyebrow ("a few ideas to start with").
+- Add a subtle hand‑drawn green arrow or dotted line pointing down toward the polaroid grid, so the eye is pulled in.
 
-## What we're changing to make it more alive
+### 2. Polaroid wall — more color, less mortuary white
+- Tint the polaroid paper itself: alternate between off‑white, a very pale cream, and a faint green‑tinted card, instead of pure white. Keeps the analog feel but breaks the uniform grey.
+- Make the tape strips bigger, more varied, and rotate through three colors (orange, green, bordeaux) instead of just two. Slight torn‑paper edge.
+- On hover: lift + a soft orange glow behind the card (instead of just a deeper grey shadow).
+- Active/expanded card: bordeaux caption stays, but add a thin green underline accent on the title and a small orange dot before the script note.
 
-1. **A real wall, not a flat grid.**
-   - Cork-board / off-white paper background with very subtle grain (already have the dotted/noise overlay).
-   - Cards sit on the wall at slightly varied vertical offsets (every 2nd or 3rd card nudged 12–24 px up or down) so the row reads as "pinned by hand", not as a CSS grid.
-   - Two or three cards get a second piece of tape at the bottom corner instead of the top, for variation.
+### 3. Section divider between polaroids and stories
+- Add a hand‑drawn green wavy divider (same family as the orange skyline lines) between the two sections so Stories doesn't feel "dropped in".
+- Optional: a small orange Caveat label "and a few stories…" sitting on the divider, rotated a couple of degrees.
 
-2. **Dennis's handwriting all over it.**
-   - One Caveat margin annotation floating between cards every few rows (e.g. "↳ this one is my favourite", "ask me first", "we'll need a boat"), rotated, in heritage green or bordeaux. These live in the gutter, not on the cards, so they read as scribbles on the wall.
-   - A short Caveat eyebrow above the grid: "things I keep coming back to" — already in the current copy palette.
+### 4. Stories section — warmer canvas
+- Swap the flat taupe for a layered background: cream base + a soft green radial in one corner + a faint orange paper‑grain noise (same noise pattern used on the homepage Stories section, kept low opacity).
+- Add a small orange "Stories" eyebrow above the H2 (matches the homepage rhythm and ties the two pages together).
+- Give the StoryBook container a subtle green page‑edge or bordeaux thread accent so it reads as a "real" notebook on the page.
 
-3. **Tactile detail on the polaroids themselves.**
-   - Each polaroid gets a faint hand-written caption on the white margin (just the title, in Caveat, low contrast) in addition to the printed Bebas title below — like Dennis labelled the photo before pinning it.
-   - On hover (desktop): card lifts ~6 px, rotation eases to 0°, shadow deepens. On tap (mobile): same lift, then the description and note fade in beneath.
-   - Click anywhere on the card to expand the description+note inline (current behaviour). Click again to collapse. One open at a time.
+### 5. CTA line at the bottom of the polaroids
+- Currently a thin orange dashed link. Upgrade to a small handwritten‑style block: green Caveat line ("when you're ready…") above the existing orange link, with a tiny hand‑drawn arrow.
 
-4. **A few "objects" between the cards.**
-   - Sparse decorative elements pinned to the wall between polaroids: a small stamp (orange "AMS"), a torn ticket stub, a paper-clipped index card with a Caveat line, a tiny pressed leaf SVG. Three to five of these total across the 12-card grid, never overlapping a card. Pure SVG/CSS, no new image assets.
-   - These give the wall texture and signal "this person actually collects things", without competing with the photos.
+## Heritage palette usage after the change
+- Orange: hero glow, squiggle under H1, polaroid hover glow, bottom CTA link, Stories eyebrow.
+- Green: secondary hero wash, ~⅓ of polaroid tape strips, divider squiggle, Stories background accent, "when you're ready" script.
+- Bordeaux: kept where it is (Caveat captions, notes) — already working.
+- Purple: kept for headings only.
 
-5. **Subtle motion (not animation everywhere).**
-   - On mount, cards fade/slide in with a 40–80 ms stagger (existing `FadeIn`).
-   - Once visible, two or three random cards do a one-time 1° "settle" wobble, like tape relaxing. No looping animation.
+## Out of scope
+- No copy changes, no structural changes, no new sections, no new images.
+- StoryBook component internals untouched.
+- Homepage untouched.
 
-6. **Homepage preview matches the wall vibe.**
-   - 4 polaroids in the same style, same wall background, one Caveat scribble in the gutter, one decorative object. Hover/click behaviour identical. CTA stays "See all building blocks →".
-
-## What we're not doing
-
-- No editorial photo-essay rows (the version the user just rejected).
-- No new colour tokens; we keep the heritage palette.
-- No new image assets; we reuse the 12 interest images and the 4 peek images already imported.
-- No copy rewrite in this pass — we keep the current titles, descriptions and notes. Copy is a separate task.
-- No changes to the StoryBook section, the Day Map, or anything else on either page.
-
-## Layout sketch (Get Inspired grid)
-
-```text
-   ┌──┐ tape         ┌──┐         ┌──┐ tape    "↳ ask me   ┌──┐
-   │01│              │02│         │03│          first"     │04│
-   └──┘   ┌──┐       └──┘ ┌──┐    └──┘   ┌──┐              └──┘
-          │05│            │06│           │07│  [ticket]         ┌──┐
-          └──┘            └──┘           └──┘                   │08│
-   ┌──┐         ┌──┐ tape         ┌──┐         ┌──┐ tape        └──┘
-   │09│ [stamp] │10│              │11│         │12│
-   └──┘         └──┘              └──┘         └──┘
-```
-
-Three columns on tablet, four on desktop, one on phone. Vertical jitter only on `md+`.
-
-## Files touched
-
-- `src/pages/GetInspired.tsx` — replace the editorial rows with the polaroid grid (restored from the prior version) plus the wall background, gutter scribbles, and decorative SVG objects.
-- `src/pages/Index.tsx` — replace the current 4-card preview with the matching polaroid preview wall (one scribble, one object).
-- No new files, no new dependencies, no new assets.
-
-## Done when
-
-- The 12-theme polaroid wall is back on Get Inspired with click-to-expand description+note, varied tape, vertical jitter, 3–5 wall objects, and 2–3 gutter scribbles.
-- The homepage preview shows 4 matching polaroids with the same behaviour and the existing CTA.
-- The page feels like a wall in Dennis's office, not a product grid.
+## Technical notes
+- All edits live in `src/pages/GetInspired.tsx` plus possibly one small reusable SVG squiggle/divider component in `src/components/`.
+- Colors via existing `--heritage-orange`, `--heritage-green`, `--heritage-bordeaux` HSL tokens — no new tokens needed.
+- Animations stay in the existing `FadeIn` envelope (subtle fade‑in only, per project rules).

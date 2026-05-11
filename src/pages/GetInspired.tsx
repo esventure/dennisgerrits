@@ -4,9 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import FadeIn from "@/components/FadeIn";
 import { cn } from "@/lib/utils";
 import StoryBook from "@/components/StoryBook";
-import PolaroidWall from "@/components/PolaroidWall";
 import { supabase } from "@/integrations/supabase/client";
-import type { PolaroidItem } from "@/components/PolaroidWall";
 import imgHistory from "@/assets/interests/history.jpg";
 import imgFood from "@/assets/interests/food.jpg";
 import imgArchitecture from "@/assets/interests/architecture.jpg";
@@ -20,7 +18,7 @@ import imgMusic from "@/assets/interests/music.jpg";
 import imgWater from "@/assets/interests/water.jpg";
 import imgMarkets from "@/assets/interests/markets.jpg";
 
-const themes: PolaroidItem[] = [
+const themes = [
   {
     id: "history",
     title: "Hidden History",
@@ -132,7 +130,7 @@ const themes: PolaroidItem[] = [
 ];
 
 const GetInspired = () => {
-  
+  const [active, setActive] = useState<string | null>(null);
   const [searchParams] = useSearchParams();
   const [openStory, setOpenStory] = useState<string>("");
 
@@ -237,9 +235,108 @@ const GetInspired = () => {
             </FadeIn>
           </div>
 
-          {/* Polaroid wall — pinned by hand, click a card to read more */}
-          <div className="pt-6 md:pt-10">
-            <PolaroidWall items={themes} />
+          {/* Polaroid wall */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-12 md:gap-y-16 gap-x-6 md:gap-x-10 pt-8">
+            {themes.filter((t) => t && t.title && t.image).map((theme, i) => {
+              const isActive = active === theme.id;
+              const paperBg =
+                i % 3 === 0
+                  ? "hsl(40 38% 97%)"
+                  : i % 3 === 1
+                  ? "hsl(28 35% 95%)"
+                  : "hsl(120 15% 96%)";
+              const isLeft = theme.pin === "tape-tl" || theme.pin === "tape-gl";
+              const tapeColors = [
+                { bg: "hsl(var(--heritage-orange) / 0.72)", border: "hsl(var(--heritage-bordeaux) / 0.30)" },
+                { bg: "hsl(var(--heritage-green) / 0.55)", border: "hsl(var(--heritage-green) / 0.40)" },
+                { bg: "hsl(var(--heritage-bordeaux) / 0.45)", border: "hsl(var(--heritage-bordeaux) / 0.35)" },
+              ];
+              const tape = tapeColors[i % 3];
+              return (
+                <FadeIn key={theme.id} delay={i * 0.08}>
+                  <button
+                    onClick={() => setActive(isActive ? null : theme.id)}
+                    className="group relative block w-full text-left transition-transform duration-500 ease-out hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-4"
+                    style={{ transform: `rotate(${isActive ? 0 : theme.rotate}deg)` }}
+                  >
+                    <div
+                      aria-hidden
+                      className="pointer-events-none absolute -inset-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl"
+                      style={{
+                        background:
+                          "radial-gradient(closest-side, hsl(var(--heritage-orange) / 0.35), transparent 70%)",
+                      }}
+                    />
+                    <div
+                      className="p-2.5 sm:p-3 pb-16 sm:pb-20 shadow-[0_10px_28px_-14px_rgba(0,0,0,0.28),0_2px_6px_-2px_rgba(0,0,0,0.12)] transition-shadow duration-500 group-hover:shadow-[0_22px_44px_-16px_rgba(0,0,0,0.35)] relative"
+                      style={{ backgroundColor: paperBg }}
+                    >
+                      <span
+                        aria-hidden
+                        className={cn(
+                          "absolute -top-3 w-16 sm:w-20 h-6 sm:h-7 border",
+                          isLeft
+                            ? "left-4 sm:left-6 -rotate-[8deg]"
+                            : "right-4 sm:right-6 rotate-[6deg]",
+                        )}
+                        style={{
+                          backgroundColor: tape.bg,
+                          borderColor: tape.border,
+                        }}
+                      />
+                      <div className="aspect-square overflow-hidden bg-muted">
+                        <img
+                          src={theme.image}
+                          alt={theme.title}
+                          width={768}
+                          height={768}
+                          loading="lazy"
+                          decoding="async"
+                          // @ts-expect-error fetchpriority is a valid HTML attribute
+                          fetchpriority="low"
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                        />
+                      </div>
+                      <div className="absolute bottom-3 sm:bottom-4 left-2.5 right-2.5 sm:left-3 sm:right-3 px-1.5 sm:px-2">
+                        <h3 className="font-heading text-lg sm:text-xl md:text-2xl text-primary leading-tight tracking-wide truncate">
+                          {theme.title}
+                        </h3>
+                        <p
+                          className="text-base sm:text-lg mt-0.5 sm:mt-1 leading-snug truncate"
+                          style={{
+                            fontFamily: "'Caveat', cursive",
+                            color: "hsl(var(--heritage-bordeaux))",
+                          }}
+                        >
+                          <span
+                            aria-hidden
+                            className="inline-block w-1.5 h-1.5 rounded-full mr-1.5 align-middle"
+                            style={{ backgroundColor: "hsl(var(--heritage-orange))" }}
+                          />
+                          {theme.note}
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      className={cn(
+                        "overflow-hidden transition-all duration-500 ease-out",
+                        isActive ? "max-h-60 opacity-100 mt-3 sm:mt-4" : "max-h-0 opacity-0 mt-0"
+                      )}
+                    >
+                      <p
+                        className="text-lg sm:text-xl md:text-2xl leading-snug px-1"
+                        style={{
+                          fontFamily: "'Caveat', cursive",
+                          color: "hsl(var(--heritage-bordeaux))",
+                        }}
+                      >
+                        {theme.caption}
+                      </p>
+                    </div>
+                  </button>
+                </FadeIn>
+              );
+            })}
           </div>
 
           <FadeIn>

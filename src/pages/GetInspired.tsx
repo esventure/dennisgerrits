@@ -172,10 +172,10 @@ const GetInspired = () => {
     <main>
       {/* Interests section */}
       <section
-        className="relative py-24 lg:py-32"
+        className="relative py-24 lg:py-32 overflow-hidden"
         style={{
           background:
-            "radial-gradient(1200px 600px at 20% -10%, hsl(var(--heritage-orange) / 0.08), transparent 60%), hsl(var(--background))",
+            "radial-gradient(900px 500px at 8% -5%, hsl(var(--heritage-orange) / 0.18), transparent 62%), radial-gradient(1100px 700px at 100% 110%, hsl(var(--heritage-green) / 0.16), transparent 65%), hsl(var(--background))",
         }}
       >
         {/* Subtle paper texture */}
@@ -192,13 +192,42 @@ const GetInspired = () => {
           <div className="max-w-3xl mb-16">
             <FadeIn>
               <p
+                className="mb-3 text-2xl md:text-3xl"
+                style={{
+                  fontFamily: "'Caveat', cursive",
+                  color: "hsl(var(--heritage-green))",
+                  transform: "rotate(-2deg)",
+                  display: "inline-block",
+                }}
+              >
+                a few ideas to start with
+              </p>
+              <p
                 className="font-body text-sm tracking-widest uppercase mb-6"
                 style={{ color: "hsl(var(--heritage-orange))" }}
               >
                 What excites you?
               </p>
-              <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl text-primary leading-[0.95] mb-8">
+              <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl text-primary leading-[0.95] mb-8 relative inline-block">
                 Build Your Day
+                {/* hand-drawn squiggle under "Day" */}
+                <svg
+                  aria-hidden
+                  className="absolute -bottom-2 right-0"
+                  width="160"
+                  height="14"
+                  viewBox="0 0 160 14"
+                  fill="none"
+                  style={{ color: "hsl(var(--heritage-orange))" }}
+                >
+                  <path
+                    d="M2 8 C 22 2, 42 12, 62 6 S 102 2, 122 8 S 152 4, 158 7"
+                    stroke="currentColor"
+                    strokeWidth="2.4"
+                    strokeLinecap="round"
+                    fill="none"
+                  />
+                </svg>
               </h1>
               <p className="font-body text-lg text-foreground/80 leading-relaxed">
                 Tell me what you love, and I'll show you a side of Amsterdam you won't find in any guidebook.

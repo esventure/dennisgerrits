@@ -155,6 +155,23 @@ const Index = () => {
   const t = useSiteContent();
   const [contactForm, setContactForm] = useState({ name: "", email: "", message: "" });
 
+  const { data: bookStories = [] } = useQuery({
+    queryKey: ["stories"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("stories")
+        .select("id, slug, title, intro, body, image_path")
+        .order("sort_order", { ascending: true });
+      if (error) throw error;
+      return (data ?? []).map((s) => ({
+        id: s.slug,
+        title: s.title,
+        intro: s.intro,
+        body: s.body,
+      }));
+    },
+  });
+
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({ title: "Message sent", description: "Thank you. I'll be in touch soon." });

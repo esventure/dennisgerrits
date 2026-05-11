@@ -1034,6 +1034,9 @@ const Index = () => {
         className="relative py-16 md:py-20 lg:py-32 scroll-mt-20 overflow-hidden"
         style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}
       >
+        {/* Skyline silhouette through the section */}
+        <AmsterdamSkyline variant="section-light" />
+
         {/* Subtle paper-grain noise overlay */}
         <div
           className="absolute inset-0 pointer-events-none opacity-[0.18] mix-blend-multiply"

@@ -9,11 +9,12 @@ type Props = {
    * "global" (default): two `position: fixed` layers anchored to the
    * viewport bottom — used once at the page root.
    * "section": a single `position: absolute` layer that fills its
-   * parent, intended to be dropped inside the bordeaux contact
-   * section so the skyline keeps "filling" the red instead of leaving
-   * a tall solid-red band above the fixed viewport-bottom layer.
+   * parent (dark backgrounds), uses `screen` blend.
+   * "section-light": same fill, but tuned for light backgrounds —
+   * `multiply` blend in warm orange so it reads as an etched silhouette
+   * against off-white / taupe-tint sections.
    */
-  variant?: 'global' | 'section';
+  variant?: 'global' | 'section' | 'section-light';
 };
 
 const AmsterdamSkyline = ({ variant = 'global' }: Props) => {
@@ -43,6 +44,30 @@ const AmsterdamSkyline = ({ variant = 'global' }: Props) => {
             filter:
               'brightness(1.5) sepia(1) saturate(6) hue-rotate(-15deg)',
             mixBlendMode: 'screen',
+          }}
+        />
+      </div>
+    );
+  }
+
+  if (variant === 'section-light') {
+    return (
+      <div
+        className="absolute inset-0 overflow-hidden pointer-events-none"
+        style={{ zIndex: 0, clipPath }}
+        aria-hidden
+      >
+        <img
+          src={skyline}
+          alt=""
+          className="absolute inset-x-0 bottom-0 w-full block"
+          style={{
+            opacity: 0.22,
+            objectFit: 'contain',
+            objectPosition: 'bottom',
+            filter:
+              'invert(1) brightness(1.2) sepia(1) saturate(6) hue-rotate(-15deg)',
+            mixBlendMode: 'multiply',
           }}
         />
       </div>

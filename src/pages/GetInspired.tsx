@@ -128,42 +128,10 @@ const themes = [
 
 const GetInspired = () => {
   const [active, setActive] = useState<string | null>(null);
-  const [searchParams] = useSearchParams();
-  const [openStory, setOpenStory] = useState<string>("");
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const { data: stories = [] } = useQuery({
-    queryKey: ["stories"],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from("stories")
-        .select("id, slug, title, intro, body, image_path")
-        .order("sort_order", { ascending: true });
-      if (error) throw error;
-      return (data ?? []).map((s) => ({
-        id: s.slug,
-        title: s.title,
-        intro: s.intro,
-        body: s.body,
-      }));
-    },
-  });
-
-  useEffect(() => {
-    const storyParam = searchParams.get("story");
-    if (storyParam && stories.length) {
-      const matched = stories.find((s) => s.title === storyParam);
-      if (matched) {
-        setOpenStory(matched.id);
-        setTimeout(() => {
-          document.getElementById("stories-section")?.scrollIntoView({ behavior: "smooth" });
-        }, 300);
-      }
-    }
-  }, [searchParams, stories]);
 
   return (
     <main>

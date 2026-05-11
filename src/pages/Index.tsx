@@ -379,15 +379,15 @@ const Index = () => {
                     <p className="font-body text-xs tracking-widest uppercase text-secondary mb-8 font-semibold">
                       With me alongside you
                     </p>
-                    <ul className="font-body text-foreground leading-relaxed grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10">
+                    <ul className="font-body text-foreground leading-relaxed divide-y divide-border/60 border-y border-border/60">
                       {rows.map((row) => (
-                        <li key={row.title} className="flex flex-col items-start gap-3">
-                          <ServiceIcon src={row.icon} size={56} padding={10} tinted />
-                          <span>
-                            <span className="font-heading text-xl text-primary block leading-tight mb-1">
+                        <li key={row.title} className="flex items-center gap-4 py-3.5">
+                          <ServiceIcon src={row.icon} size={36} padding={7} tinted />
+                          <span className="flex-1 flex flex-col sm:flex-row sm:items-baseline sm:gap-3">
+                            <span className="font-heading text-lg text-primary leading-tight sm:min-w-[14rem]">
                               {row.title}
                             </span>
-                            <span className="text-foreground/85 text-base">
+                            <span className="text-foreground/80 text-sm sm:text-base">
                               {row.desc}
                             </span>
                           </span>

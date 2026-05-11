@@ -84,7 +84,10 @@ const AboutLetter = () => {
       className="px-6 md:px-12 py-20 lg:py-28 min-h-[70vh] flex items-center"
       style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}
     >
-      <div className="container mx-auto max-w-3xl">
+      <div
+        className="container mx-auto max-w-3xl rounded-sm bg-background/60 px-6 md:px-12 py-16 lg:py-20"
+        style={{ border: "3px solid hsl(var(--heritage-orange))" }}
+      >
         <FadeIn>
           <p className="font-body text-xs tracking-[0.3em] uppercase text-secondary text-center mb-8">
             About me

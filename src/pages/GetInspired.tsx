@@ -238,8 +238,8 @@ const GetInspired = () => {
               ];
               const tape = tapeColors[i % 3];
               const outlineColors = [
-                "hsl(var(--heritage-orange))",
-                "hsl(var(--heritage-green))",
+                "hsl(var(--heritage-orange) / 0.72)",
+                "hsl(var(--heritage-green) / 0.60)",
               ];
               const outlineColor = outlineColors[i % 2];
               return (

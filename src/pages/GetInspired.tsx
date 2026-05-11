@@ -203,27 +203,18 @@ const GetInspired = () => {
         </div>
       </section>
 
-      {/* Polaroid wall on heritage green canvas */}
+      {/* Polaroid wall on warm cream canvas */}
       <section
         className="relative py-16 md:py-20 lg:py-24 overflow-hidden"
-        style={{ backgroundColor: "hsl(var(--heritage-green))" }}
+        style={{ backgroundColor: "hsl(40 38% 96%)" }}
       >
-        {/* warm orange + bordeaux glows for depth */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(700px 420px at 12% 8%, hsl(var(--heritage-orange) / 0.28), transparent 60%), radial-gradient(800px 500px at 92% 92%, hsl(var(--heritage-bordeaux) / 0.30), transparent 65%)",
-          }}
-        />
         {/* paper-grain noise overlay */}
         <div
-          className="absolute inset-0 pointer-events-none opacity-[0.10] mix-blend-screen"
+          className="absolute inset-0 pointer-events-none opacity-[0.10] mix-blend-multiply"
           aria-hidden
           style={{
             backgroundImage:
-              "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.95  0 0 0 0 0.92  0 0 0 0 0.85  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
+              "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.45  0 0 0 0 0.36  0 0 0 0 0.25  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
           }}
         />
         <div className="relative container mx-auto px-6 lg:px-12">
@@ -232,12 +223,13 @@ const GetInspired = () => {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-12 md:gap-y-16 gap-x-6 md:gap-x-10 pt-8">
             {themes.filter((t) => t && t.title && t.image).map((theme, i) => {
               const isActive = active === theme.id;
-              const paperBg =
-                i % 3 === 0
-                  ? "hsl(40 38% 97%)"
-                  : i % 3 === 1
-                  ? "hsl(28 35% 95%)"
-                  : "hsl(120 15% 96%)";
+              const paperPalette = [
+                "hsl(40 38% 97%)",            // cream
+                "hsl(120 22% 92%)",           // soft green
+                "hsl(22 70% 92%)",            // warm orange-blush
+                "hsl(350 35% 92%)",           // dusty bordeaux-pink
+              ];
+              const paperBg = paperPalette[i % paperPalette.length];
               const isLeft = theme.pin === "tape-tl" || theme.pin === "tape-gl";
               const tapeColors = [
                 { bg: "hsl(var(--heritage-orange) / 0.72)", border: "hsl(var(--heritage-bordeaux) / 0.30)" },

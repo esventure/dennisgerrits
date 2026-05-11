@@ -345,6 +345,21 @@ const Index = () => {
                   title: "WhatsApp lifeline",
                   desc: "One message away for the whole trip.",
                 },
+                {
+                  icon: iconTransport,
+                  title: "Airport transfers",
+                  desc: "Picked up at Schiphol, dropped off when you leave.",
+                },
+                {
+                  icon: iconHotel,
+                  title: "Hotel recommendations",
+                  desc: "The right neighbourhood, the right room, the right rate.",
+                },
+                {
+                  icon: iconItinerary,
+                  title: "Full itinerary",
+                  desc: "A day-by-day plan for your whole stay, even after we part ways.",
+                },
               ];
 
               const ROW_MIN_H = "min-h-[96px]";
@@ -381,7 +396,7 @@ const Index = () => {
 
           <FadeIn delay={0.2}>
             <p className="mt-10 text-center font-body text-sm text-muted-foreground italic max-w-2xl mx-auto">
-              And everything else: transfers from Schiphol, hotel recommendations, a full itinerary for your whole stay, even after we part ways.
+              And everything else you didn't think to ask for. If it makes your stay smoother, it's already on my list.
             </p>
           </FadeIn>
         </div>

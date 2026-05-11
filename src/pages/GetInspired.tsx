@@ -170,7 +170,7 @@ const GetInspired = () => {
                 What excites you?
               </p>
               <h1
-                className="font-heading text-5xl md:text-6xl lg:text-7xl leading-[0.95] mb-8 relative inline-block"
+                className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95] mb-8 relative inline-block"
                 style={{ color: "hsl(0 0% 98%)" }}
               >
                 Build Your Day

@@ -380,7 +380,7 @@ const DayMap = ({ moments }: DayMapProps) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="relative rounded-sm p-8 lg:p-10 pl-10 lg:pl-12"
+            className="relative rounded-sm p-6 sm:p-8 lg:p-10 pl-7 sm:pl-10 lg:pl-12"
           >
             {/* Hand-drawn vertical squiggle replacing the solid border */}
             <svg
@@ -401,7 +401,7 @@ const DayMap = ({ moments }: DayMapProps) => {
             <p className="font-body text-xs tracking-[0.25em] uppercase text-accent font-semibold mb-4">
               {moments[active].time}
             </p>
-            <h3 className="font-heading text-4xl lg:text-5xl text-primary leading-[1] mb-5">
+            <h3 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-primary leading-[1] mb-5">
               {moments[active].title}
             </h3>
             <p className="font-body text-muted-foreground leading-relaxed text-base">

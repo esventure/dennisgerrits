@@ -50,7 +50,7 @@ const ContactSection = () => {
                   — {t("booking.kicker", "Get in Touch")} —
                 </p>
                 <h2
-                  className="font-heading text-5xl md:text-6xl lg:text-7xl leading-[0.95] mx-auto max-w-3xl"
+                  className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95] mx-auto max-w-3xl"
                   style={{ color: "hsl(var(--background))" }}
                 >
                   {t("booking.title", "Let's See if We're a Good Match")}
@@ -69,7 +69,7 @@ const ContactSection = () => {
                     html={t("booking.intro", "")}
                     fallback="The best way to start is a short, informal conversation. No obligations, just a chance to see if my approach feels right."
                   />
-                  <div className="mt-8 md:mt-10 flex-1 min-h-0 relative max-w-md w-full">
+                  <div className="mt-6 md:mt-10 flex-1 min-h-[260px] md:min-h-0 relative max-w-md w-full">
                     <img
                       src={dennisCanalSmile}
                       alt="Dennis smiling by the canal"

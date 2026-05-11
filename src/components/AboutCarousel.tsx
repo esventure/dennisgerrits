@@ -22,11 +22,11 @@ const AboutEditorial = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[70vh]">
       {/* Left: The Person */}
-      <div className="bg-background px-8 md:px-16 lg:px-20 py-20 lg:py-28 flex items-center">
+      <div className="bg-background px-6 sm:px-10 md:px-16 lg:px-20 py-14 sm:py-20 lg:py-28 flex items-center">
         <FadeIn>
           <div className="max-w-md mx-auto lg:ml-auto lg:mr-0">
             <p
-              className="font-heading text-7xl md:text-8xl mb-6 leading-none"
+              className="font-heading text-6xl sm:text-7xl md:text-8xl mb-5 sm:mb-6 leading-none"
               style={{ color: "hsl(var(--heritage-orange))" }}
             >
               01
@@ -34,7 +34,7 @@ const AboutEditorial = () => {
             <p className="font-body text-xs tracking-[0.3em] uppercase text-secondary mb-4">
               {t("about.person.kicker", "A True Amsterdammer")}
             </p>
-            <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-6">
+            <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary leading-[0.95] mb-6">
               {t("about.person.title", "The Person")}
             </h2>
             <div className="w-12 h-0.5 bg-accent mb-6" />
@@ -48,11 +48,11 @@ const AboutEditorial = () => {
       </div>
 
       {/* Right: The Guide */}
-      <div className="bg-primary px-8 md:px-16 lg:px-20 py-20 lg:py-28 flex items-center">
+      <div className="bg-primary px-6 sm:px-10 md:px-16 lg:px-20 py-14 sm:py-20 lg:py-28 flex items-center">
         <FadeIn delay={0.15}>
           <div className="max-w-md mx-auto lg:mr-auto lg:ml-0">
             <p
-              className="font-heading text-7xl md:text-8xl mb-6 leading-none"
+              className="font-heading text-6xl sm:text-7xl md:text-8xl mb-5 sm:mb-6 leading-none"
               style={{ color: "hsl(var(--heritage-orange))" }}
             >
               02
@@ -60,7 +60,7 @@ const AboutEditorial = () => {
             <p className="font-body text-xs tracking-[0.3em] uppercase text-primary-foreground/60 mb-4">
               {t("about.guide.kicker", "A Different Kind of Guide")}
             </p>
-            <h2 className="font-heading text-5xl md:text-6xl text-primary-foreground leading-[0.95] mb-6">
+            <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary-foreground leading-[0.95] mb-6">
               {t("about.guide.title", "The Guide")}
             </h2>
             <div className="w-12 h-0.5 bg-primary-foreground/40 mb-6" />
@@ -81,11 +81,11 @@ const AboutLetter = () => {
   const t = useSiteContent();
   return (
     <div
-      className="px-6 md:px-12 py-20 lg:py-28 min-h-[70vh] flex items-center"
+      className="px-5 sm:px-6 md:px-12 py-14 sm:py-20 lg:py-28 min-h-[70vh] flex items-center"
       style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}
     >
       <div
-        className="container mx-auto max-w-3xl rounded-sm bg-background/60 px-6 md:px-12 py-16 lg:py-20"
+        className="container mx-auto max-w-3xl rounded-sm bg-background/60 px-5 sm:px-6 md:px-12 py-10 sm:py-16 lg:py-20"
         style={{ border: "3px solid hsl(var(--heritage-orange))" }}
       >
         <FadeIn>
@@ -94,8 +94,8 @@ const AboutLetter = () => {
           </p>
 
           {/* The Person */}
-          <div className="mb-16">
-            <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-3 text-center">
+          <div className="mb-12 sm:mb-16">
+            <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary leading-[0.95] mb-3 text-center">
               {t("about.person.title", "The Person")}
             </h2>
             <p className="font-body text-xs tracking-[0.25em] uppercase text-secondary text-center mb-6">
@@ -109,7 +109,7 @@ const AboutLetter = () => {
           </div>
 
           {/* Hand-drawn divider */}
-          <div className="flex justify-center mb-16">
+          <div className="flex justify-center mb-12 sm:mb-16">
             <svg
               aria-hidden
               viewBox="0 0 200 14"
@@ -128,7 +128,7 @@ const AboutLetter = () => {
           {/* The Guide */}
           <div>
             <h2
-              className="font-heading text-5xl md:text-6xl leading-[0.95] mb-3 text-center"
+              className="font-heading text-4xl sm:text-5xl md:text-6xl leading-[0.95] mb-3 text-center"
               style={{ color: "hsl(var(--heritage-bordeaux))" }}
             >
               {t("about.guide.title", "The Guide")}
@@ -155,7 +155,7 @@ import dennisGuideLine from "@/assets/dennis-guide-line.png";
 const AboutFigures = () => {
   const t = useSiteContent();
   return (
-    <div className="px-6 md:px-12 py-20 lg:py-28 min-h-[70vh] flex items-center">
+    <div className="px-5 sm:px-6 md:px-12 py-14 sm:py-20 lg:py-28 min-h-[70vh] flex items-center">
       <div className="container mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         {/* The Person */}
         <FadeIn>
@@ -174,7 +174,7 @@ const AboutFigures = () => {
             <p className="font-body text-xs tracking-[0.3em] uppercase text-secondary mb-3">
               {t("about.person.kicker", "A True Amsterdammer")}
             </p>
-            <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-4">
+            <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary leading-[0.95] mb-4">
               {t("about.person.title", "The Person")}
             </h2>
             <div className="w-12 h-0.5 bg-accent mb-5" />
@@ -204,7 +204,7 @@ const AboutFigures = () => {
               {t("about.guide.kicker", "A Different Kind of Guide")}
             </p>
             <h2
-              className="font-heading text-5xl md:text-6xl leading-[0.95] mb-4"
+              className="font-heading text-4xl sm:text-5xl md:text-6xl leading-[0.95] mb-4"
               style={{ color: "hsl(var(--heritage-bordeaux))" }}
             >
               {t("about.guide.title", "The Guide")}
@@ -259,20 +259,21 @@ const AboutCarousel = () => {
   return (
     <section id="about" className="relative scroll-mt-20 group">
       {/* Top control bar — variation badge + nav controls */}
-      <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
+      <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 sm:gap-3 max-w-[calc(100%-1rem)]">
         <button
           onClick={scrollPrev}
           aria-label="Previous variation"
-          className="p-2 rounded-full bg-background/80 backdrop-blur-sm border border-border text-muted-foreground hover:text-accent hover:border-accent transition-colors"
+          className="p-1.5 sm:p-2 rounded-full bg-background/80 backdrop-blur-sm border border-border text-muted-foreground hover:text-accent hover:border-accent transition-colors shrink-0"
         >
           <ChevronLeft className="w-4 h-4" />
         </button>
 
-        <span className="font-body text-[10px] tracking-[0.3em] uppercase bg-background/80 backdrop-blur-sm text-secondary px-3 py-1.5 rounded-full border border-border">
-          Variation {selected + 1} of {slides.length} · {slides[selected].label}
+        <span className="font-body text-[9px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.3em] uppercase bg-background/80 backdrop-blur-sm text-secondary px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full border border-border whitespace-nowrap">
+          <span className="sm:hidden">{selected + 1}/{slides.length} · {slides[selected].label}</span>
+          <span className="hidden sm:inline">Variation {selected + 1} of {slides.length} · {slides[selected].label}</span>
         </span>
 
-        <div className="flex items-center gap-2 bg-background/80 backdrop-blur-sm border border-border rounded-full px-3 py-2">
+        <div className="hidden sm:flex items-center gap-2 bg-background/80 backdrop-blur-sm border border-border rounded-full px-3 py-2">
           {slides.map((s, i) => {
             const isActive = i === selected;
             return (
@@ -295,7 +296,7 @@ const AboutCarousel = () => {
         <button
           onClick={scrollNext}
           aria-label="Next variation"
-          className="p-2 rounded-full bg-background/80 backdrop-blur-sm border border-border text-muted-foreground hover:text-accent hover:border-accent transition-colors"
+          className="p-1.5 sm:p-2 rounded-full bg-background/80 backdrop-blur-sm border border-border text-muted-foreground hover:text-accent hover:border-accent transition-colors shrink-0"
         >
           <ChevronRight className="w-4 h-4" />
         </button>

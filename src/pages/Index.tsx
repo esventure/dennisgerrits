@@ -751,12 +751,13 @@ const Index = () => {
               { id: "architecture", title: "Architecture", note: "look up, always", image: peekArchitecture, rotate: -1.2, pin: "tape-gl" },
               { id: "water", title: "From the Water", note: "bring a sweater", image: peekWater, rotate: 2.0, pin: "tape-gr" },
             ].map((theme, i) => {
-              const paperBg =
-                i % 3 === 0
-                  ? "hsl(40 38% 97%)"
-                  : i % 3 === 1
-                  ? "hsl(28 35% 95%)"
-                  : "hsl(120 15% 96%)";
+              const paperPalette = [
+                "hsl(40 38% 97%)",
+                "hsl(120 22% 92%)",
+                "hsl(22 70% 92%)",
+                "hsl(350 35% 92%)",
+              ];
+              const paperBg = paperPalette[i % paperPalette.length];
               const isLeft = theme.pin === "tape-tl" || theme.pin === "tape-gl";
               const tapeColors = [
                 { bg: "hsl(var(--heritage-orange) / 0.72)", border: "hsl(var(--heritage-bordeaux) / 0.30)" },
@@ -764,6 +765,31 @@ const Index = () => {
                 { bg: "hsl(var(--heritage-bordeaux) / 0.45)", border: "hsl(var(--heritage-bordeaux) / 0.35)" },
               ];
               const tape = tapeColors[i % 3];
+              const outlineColors = [
+                "hsl(var(--heritage-orange))",
+                "hsl(var(--heritage-green))",
+                "hsl(var(--heritage-purple))",
+              ];
+              const outlineColor = outlineColors[i % 3];
+              const sketchVariants = [
+                [
+                  "M 3 4 C 22 2.5, 48 4, 70 2.8 S 96 3.4, 97.5 5 C 98.6 26, 96.8 50, 98 74 C 98.4 92, 97.5 97, 95.5 97.6 C 74 98.8, 50 97.2, 26 98.6 C 9 99, 3 98, 2.5 95.5 C 1.4 75, 3.2 50, 1.8 26 C 1.4 8, 2.2 3, 4 3.4 Z",
+                  "M 4 3 C 24 4, 50 2.6, 72 4.2 S 97 4.6, 96.6 6.2 C 97.8 27, 98.6 51, 96.8 75 C 96.4 93, 97.8 96.4, 95 97.4 C 73 97, 49 98.6, 25 96.8 C 8 96.4, 4 97, 3.6 94 C 2.6 74, 1.6 49, 3 25 C 3.4 7, 3 4, 4.4 3.2 Z",
+                ],
+                [
+                  "M 2.5 5 C 26 3.6, 52 5.2, 74 3.4 S 97 4.2, 97 6.4 C 96 28, 98.4 52, 97.2 76 C 97 91, 96 97.8, 94 97 C 72 98, 48 96.6, 24 98 C 7 98.6, 3 97.4, 3.4 94.4 C 2 74, 4 48, 2.4 24 C 2 6, 2.6 4, 4.6 4 Z",
+                  "M 5 4 C 28 5.4, 54 3, 75 5.4 S 96 5.6, 95.8 7.4 C 96.6 28, 97 53, 96 77 C 95.6 92, 96.4 95.8, 93.6 96.8 C 71 96.4, 47 98, 23 96.4 C 7 96, 4.4 96.6, 4.4 93.4 C 3.4 73, 2 48, 3.6 24 C 4 6.6, 4 4.4, 5.2 4 Z",
+                ],
+                [
+                  "M 3.4 3 C 23 4.4, 49 2.4, 71 4 S 96.4 2.8, 98 4.4 C 99 27, 97.4 51, 98.6 75 C 99 93, 96.6 97.4, 94.4 98 C 73 98.4, 49 96.6, 25 98 C 8 98.4, 2 98, 2.8 95 C 1 75, 3.6 49, 2 25 C 1.6 8, 2.4 2.6, 4.4 3 Z",
+                  "M 4.6 4.4 C 25 3, 51 4.6, 73 3 S 96 6, 96.4 7.2 C 97.4 28, 98.8 52, 97 76 C 96.6 92, 97.4 96, 94.6 97 C 73 97.6, 49 98, 25 96.4 C 9 96, 4 97.6, 3.6 94.6 C 2.4 74, 1.4 49, 3 25 C 3.4 7, 3 4.4, 4.4 4 Z",
+                ],
+                [
+                  "M 3 3.4 C 24 2, 47 4.4, 69 3 S 95 4, 97.6 5.4 C 98 26, 97.6 50, 98.4 75 C 98.6 93, 96.6 96, 95 97 C 75 99, 51 97.6, 27 99 C 9 98.6, 2.6 97.4, 2.6 95 C 1.6 76, 2.6 51, 1.4 26 C 1.6 7, 2 3.4, 4 3 Z",
+                  "M 4.4 4 C 26 5, 52 3.4, 74 4.6 S 96.4 4, 96 6 C 97 27, 98.4 50, 96.4 76 C 96.6 92, 97.6 95.6, 94.6 96.8 C 72 97.4, 48 99, 24 97 C 7 96.6, 4 97, 3.4 94 C 2.4 74, 1.6 48, 3.4 24 C 3.6 7, 2.6 4.4, 4.4 3.4 Z",
+                ],
+              ];
+              const sketchPaths = sketchVariants[i % sketchVariants.length];
               return (
                 <FadeIn key={theme.id} delay={i * 0.08}>
                   <Link
@@ -779,10 +805,21 @@ const Index = () => {
                           "radial-gradient(closest-side, hsl(var(--heritage-orange) / 0.35), transparent 70%)",
                       }}
                     />
-                    <div
-                      className="p-2.5 sm:p-3 pb-16 sm:pb-20 shadow-[0_10px_28px_-14px_rgba(0,0,0,0.28),0_2px_6px_-2px_rgba(0,0,0,0.12)] transition-shadow duration-500 group-hover:shadow-[0_22px_44px_-16px_rgba(0,0,0,0.35)] relative"
-                      style={{ backgroundColor: paperBg }}
-                    >
+                    <div className="p-2.5 sm:p-3 pb-16 sm:pb-20 transition-all duration-500 relative">
+                      <svg
+                        aria-hidden
+                        className="absolute inset-0 w-full h-full pointer-events-none transition-[filter] duration-500 group-hover:[filter:drop-shadow(0_22px_24px_rgba(0,0,0,0.28))]"
+                        viewBox="0 0 100 100"
+                        preserveAspectRatio="none"
+                        style={{
+                          color: outlineColor,
+                          overflow: "visible",
+                          filter: "drop-shadow(0 10px 16px rgba(0,0,0,0.22)) drop-shadow(0 2px 4px rgba(0,0,0,0.12))",
+                        }}
+                      >
+                        <path d={sketchPaths[0]} fill={paperBg} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" style={{ strokeWidth: "2.4px" }} />
+                        <path d={sketchPaths[1]} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" style={{ strokeWidth: "1.2px", opacity: 0.55 }} />
+                      </svg>
                       <span
                         aria-hidden
                         className={`absolute -top-3 w-16 sm:w-20 h-6 sm:h-7 border ${
@@ -795,13 +832,21 @@ const Index = () => {
                           borderColor: tape.border,
                         }}
                       />
-                      <div className="aspect-square overflow-hidden bg-muted">
+                      <span
+                        aria-hidden
+                        className={`absolute -top-1 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full shadow-[inset_-1px_-1.5px_2px_rgba(0,0,0,0.35),inset_1.5px_1.5px_2px_rgba(255,255,255,0.45),0_2px_3px_rgba(0,0,0,0.35)] z-10 ${
+                          isLeft ? "left-7 sm:left-10" : "right-7 sm:right-10"
+                        }`}
+                        style={{ backgroundColor: outlineColor }}
+                      />
+                      <div className="relative aspect-square overflow-hidden bg-muted">
                         <img
                           src={theme.image}
                           alt={theme.title}
                           loading="lazy"
                           decoding="async"
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                          className="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.02] group-hover:saturate-150"
+                          style={{ filter: "saturate(1.18) brightness(1.06) contrast(1.04)" }}
                         />
                       </div>
                       <div className="absolute bottom-3 sm:bottom-4 left-2.5 right-2.5 sm:left-3 sm:right-3 px-1.5 sm:px-2">

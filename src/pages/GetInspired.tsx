@@ -237,6 +237,11 @@ const GetInspired = () => {
                 { bg: "hsl(var(--heritage-bordeaux) / 0.45)", border: "hsl(var(--heritage-bordeaux) / 0.35)" },
               ];
               const tape = tapeColors[i % 3];
+              const outlineColors = [
+                "hsl(var(--heritage-orange))",
+                "hsl(var(--heritage-green))",
+              ];
+              const outlineColor = outlineColors[i % 2];
               return (
                 <FadeIn key={theme.id} delay={i * 0.08}>
                   <button
@@ -253,8 +258,8 @@ const GetInspired = () => {
                       }}
                     />
                     <div
-                      className="p-2.5 sm:p-3 pb-16 sm:pb-20 shadow-[0_10px_28px_-14px_rgba(0,0,0,0.28),0_2px_6px_-2px_rgba(0,0,0,0.12)] transition-shadow duration-500 group-hover:shadow-[0_22px_44px_-16px_rgba(0,0,0,0.35)] relative"
-                      style={{ backgroundColor: paperBg }}
+                      className="p-2.5 sm:p-3 pb-16 sm:pb-20 shadow-[0_10px_28px_-14px_rgba(0,0,0,0.28),0_2px_6px_-2px_rgba(0,0,0,0.12)] transition-shadow duration-500 group-hover:shadow-[0_22px_44px_-16px_rgba(0,0,0,0.35)] relative border-2 sm:border-[3px]"
+                      style={{ backgroundColor: paperBg, borderColor: outlineColor }}
                     >
                       <span
                         aria-hidden

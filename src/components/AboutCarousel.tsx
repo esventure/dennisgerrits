@@ -163,12 +163,12 @@ const AboutFigures = () => {
         {/* The Person */}
         <FadeIn>
           <div className="flex flex-col items-center text-center">
-            <div
-              className="w-40 md:w-52 h-64 md:h-80 mb-6"
-              style={{ color: "hsl(var(--heritage-orange))" }}
-            >
-              <PersonFigure />
-            </div>
+            <img
+              src={dennisPersonLine}
+              alt="Hand-drawn figure of Dennis the person"
+              className="w-44 md:w-60 h-auto mb-6 object-contain"
+              loading="lazy"
+            />
             <p className="font-body text-xs tracking-[0.3em] uppercase text-secondary mb-3">
               {t("about.person.kicker", "A True Amsterdammer")}
             </p>

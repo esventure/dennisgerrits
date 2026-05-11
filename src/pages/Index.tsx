@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
 import AmsterdamSkyline from "@/components/AmsterdamSkyline";
+import StoryBook from "@/components/StoryBook";
+import { supabase } from "@/integrations/supabase/client";
 
 import DayMap from "@/components/DayMap";
 
@@ -151,6 +154,23 @@ const Index = () => {
   const { toast } = useToast();
   const t = useSiteContent();
   const [contactForm, setContactForm] = useState({ name: "", email: "", message: "" });
+
+  const { data: bookStories = [] } = useQuery({
+    queryKey: ["stories"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("stories")
+        .select("id, slug, title, intro, body, image_path")
+        .order("sort_order", { ascending: true });
+      if (error) throw error;
+      return (data ?? []).map((s) => ({
+        id: s.slug,
+        title: s.title,
+        intro: s.intro,
+        body: s.body,
+      }));
+    },
+  });
 
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -1103,245 +1123,6 @@ const Index = () => {
       </section>
 
 
-      <section
-        id="stories"
-        className="relative py-16 md:py-20 lg:py-32 scroll-mt-20 overflow-hidden"
-        style={{
-          background:
-            "linear-gradient(180deg, hsl(28 55% 94% / 0.55) 0%, hsl(40 45% 95% / 0.45) 35%, hsl(40 38% 95% / 0.35) 100%)",
-        }}
-      >
-
-        {/* Subtle paper-grain noise overlay */}
-        <div
-          className="absolute inset-0 pointer-events-none opacity-[0.10] mix-blend-multiply"
-          aria-hidden
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.45  0 0 0 0 0.36  0 0 0 0 0.25  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
-          }}
-        />
-
-        <div className="container mx-auto px-6 lg:px-12 relative">
-          <div className="max-w-3xl mb-12 md:mb-16">
-            <FadeIn>
-              <p
-                className="font-body text-sm tracking-widest uppercase mb-4"
-                style={{ color: "hsl(var(--heritage-bordeaux))" }}
-              >
-                Stories
-              </p>
-              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-8 relative inline-block">
-                Notes From the City
-                {/* hand-drawn squiggle under "City" */}
-                <svg
-                  aria-hidden
-                  className="absolute -bottom-2 right-0"
-                  width="140"
-                  height="12"
-                  viewBox="0 0 140 12"
-                  fill="none"
-                  style={{ color: "hsl(var(--heritage-orange))" }}
-                >
-                  <path
-                    d="M2 7 C 25 2, 55 11, 80 6 S 125 3, 138 8"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </h2>
-              <p className="font-body text-lg text-muted-foreground leading-relaxed">
-                Short reflections and stories about Amsterdam. The kind of things I'd tell you over a coffee.
-              </p>
-              {/* faint pencil-stroke divider */}
-              <svg
-                aria-hidden
-                className="mt-8 text-muted-foreground/40"
-                width="180"
-                height="10"
-                viewBox="0 0 180 10"
-                fill="none"
-              >
-                <path
-                  d="M2 6 C 30 2, 60 9, 95 5 S 160 3, 178 6"
-                  stroke="currentColor"
-                  strokeWidth="1.2"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </FadeIn>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-14 pt-6 md:pt-10">
-            {stories.map((s, i) => {
-              const rotations = ["-1.5deg", "0.8deg", "-0.6deg"];
-              const rot = rotations[i % rotations.length];
-              return (
-                <FadeIn key={s.title} delay={i * 0.1}>
-                  <Link
-                    to={`/get-inspired?story=${encodeURIComponent(s.title)}`}
-                    aria-label={`Read "${s.title}" in the book`}
-                    className="block group"
-                    style={{
-                      transform: `rotate(${rot})`,
-                      transition: "transform 400ms ease, box-shadow 400ms ease",
-                    }}
-                    onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLElement).style.transform =
-                        "rotate(0deg) translateY(-4px)";
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLElement).style.transform = `rotate(${rot})`;
-                    }}
-                  >
-                    <article
-                      className="relative p-4 pb-7"
-                      style={{
-                        backgroundColor: "hsl(var(--heritage-cream, 40 40% 96%))",
-                        background:
-                          "linear-gradient(180deg, hsl(40 38% 97%) 0%, hsl(38 32% 93%) 100%)",
-                        boxShadow:
-                          "0 1px 0 rgba(0,0,0,0.04), 0 18px 30px -18px rgba(60,40,20,0.28), inset 0 0 0 1px rgba(120,90,60,0.06)",
-                      }}
-                    >
-                      {/* washi tape (cards 0 & 2) or paper-clip (card 1) */}
-                      {i === 1 ? (
-                        <svg
-                          aria-hidden
-                          className="absolute -top-3 left-6 text-muted-foreground/70"
-                          width="22"
-                          height="34"
-                          viewBox="0 0 22 34"
-                          fill="none"
-                        >
-                          <path
-                            d="M11 2 C 5 2, 3 7, 3 13 L 3 26 C 3 30, 7 32, 11 32 C 15 32, 19 30, 19 26 L 19 10 C 19 7, 17 5, 14 5 C 11 5, 9 7, 9 10 L 9 24"
-                            stroke="currentColor"
-                            strokeWidth="1.4"
-                            strokeLinecap="round"
-                            fill="none"
-                          />
-                        </svg>
-                      ) : (
-                        <div
-                          aria-hidden
-                          className="absolute -top-3 left-6 w-20 h-6"
-                          style={{
-                            backgroundColor:
-                              i === 0
-                                ? "hsl(var(--heritage-orange) / 0.55)"
-                                : "hsl(var(--heritage-green) / 0.5)",
-                            transform: i === 0 ? "rotate(-6deg)" : "rotate(5deg)",
-                            boxShadow:
-                              "0 2px 6px -2px rgba(60,40,20,0.25), inset 0 0 0 1px rgba(255,255,255,0.25)",
-                          }}
-                        />
-                      )}
-
-                      {/* photo */}
-                      <div
-                        className="aspect-[16/10] overflow-hidden relative"
-                        style={{
-                          boxShadow:
-                            "inset 0 0 0 1px rgba(60,40,20,0.12), 0 6px 14px -8px rgba(60,40,20,0.35)",
-                        }}
-                      >
-                        <img
-                          src={s.image}
-                          alt={s.title}
-                          loading="lazy"
-                          width={1024}
-                          height={640}
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                          style={{ filter: "saturate(1.06) contrast(1.02) brightness(1.02)" }}
-                        />
-                      </div>
-
-                      {/* handwritten caption */}
-                      <p
-                        className="mt-4 text-base md:text-lg leading-snug"
-                        style={{
-                          fontFamily: "'Caveat', 'Outfit', cursive",
-                          color: "hsl(var(--heritage-bordeaux))",
-                          transform: "rotate(-0.6deg)",
-                        }}
-                      >
-                        {s.caption}
-                      </p>
-
-                      <h3
-                        className="font-heading text-2xl md:text-[1.7rem] mt-2 mb-3 leading-[1.05]"
-                        style={{ color: "hsl(var(--heritage-purple))" }}
-                      >
-                        {s.title}
-                      </h3>
-
-                      <p className="font-body text-sm md:text-[0.95rem] text-muted-foreground leading-relaxed">
-                        {s.intro}
-                      </p>
-
-                      {/* pencil-style "Read in the book" link */}
-                      <div className="mt-5 flex items-center gap-2">
-                        <span
-                          className="text-base"
-                          style={{
-                            fontFamily: "'Caveat', cursive",
-                            color: "hsl(var(--heritage-bordeaux))",
-                            borderBottom: "1px dashed hsl(var(--heritage-bordeaux) / 0.5)",
-                            paddingBottom: "1px",
-                          }}
-                        >
-                          Read in the book
-                        </span>
-                        <span
-                          aria-hidden
-                          style={{
-                            fontFamily: "'Caveat', cursive",
-                            color: "hsl(var(--heritage-bordeaux))",
-                          }}
-                          className="transition-transform group-hover:translate-x-1"
-                        >
-                          →
-                        </span>
-                      </div>
-
-                      {/* torn dog-ear bottom-right */}
-                      <div
-                        aria-hidden
-                        className="absolute bottom-0 right-0 w-8 h-8"
-                        style={{
-                          background:
-                            "linear-gradient(135deg, transparent 50%, hsl(40 38% 95%) 50%)",
-                          boxShadow: "inset 1px -1px 0 rgba(60,40,20,0.12)",
-                        }}
-                      />
-                    </article>
-                  </Link>
-                </FadeIn>
-              );
-            })}
-          </div>
-
-          {/* quiet footer link */}
-          <FadeIn>
-            <div className="mt-14 md:mt-16 text-center">
-              <Link
-                to="/get-inspired"
-                className="inline-block text-lg md:text-xl"
-                style={{
-                  fontFamily: "'Caveat', cursive",
-                  color: "hsl(var(--heritage-purple))",
-                  borderBottom: "1px dashed hsl(var(--heritage-purple) / 0.5)",
-                  paddingBottom: "2px",
-                }}
-              >
-                More notes in the book →
-              </Link>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
 
       {/* ── 7. Contact, FAQ & Footer ── */}
       <section
@@ -1468,6 +1249,38 @@ const Index = () => {
           </div>
           </div>
         </div>
+        </div>
+      </section>
+
+      {/* ── Story Book (notebook from Get Inspired) ── */}
+      <section
+        id="storybook"
+        className="relative py-16 md:py-20 lg:py-28 scroll-mt-20 overflow-hidden"
+        style={{
+          background:
+            "radial-gradient(900px 500px at 8% -5%, hsl(var(--heritage-orange) / 0.14), transparent 62%), radial-gradient(1100px 700px at 100% 110%, hsl(var(--heritage-green) / 0.12), transparent 65%), hsl(var(--background))",
+        }}
+      >
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="max-w-3xl mb-10 md:mb-14">
+            <FadeIn>
+              <p
+                className="font-body text-sm tracking-widest uppercase mb-4"
+                style={{ color: "hsl(var(--heritage-bordeaux))" }}
+              >
+                Notes From the City
+              </p>
+              <h2 className="font-heading text-5xl md:text-6xl text-primary leading-[0.95] mb-4">
+                From my notebook
+              </h2>
+              <p className="font-body text-lg text-muted-foreground leading-relaxed">
+                Short reflections about Amsterdam. The kind of things I'd tell you over a coffee.
+              </p>
+            </FadeIn>
+          </div>
+          <FadeIn>
+            <StoryBook stories={bookStories} />
+          </FadeIn>
         </div>
       </section>
     </main>

@@ -429,7 +429,7 @@ const HeroGreenSentence = () => (
               className="font-heading leading-[0.9] mb-8 text-[clamp(3rem,7.5vw,6.5rem)] lowercase"
               style={{ color: "hsl(var(--background))" }}
             >
-              <span className="normal-case">A</span>friend<br />who happens<br />
+              <span className="normal-case">A</span> friend<br />who happens<br />
               <span style={{ color: "hsl(var(--heritage-orange))" }}>to know</span><br />
               the city.
             </h1>

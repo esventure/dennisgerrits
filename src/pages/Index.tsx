@@ -376,9 +376,6 @@ const Index = () => {
                     className="h-full p-6 sm:p-8 lg:p-12 bg-background rounded-sm border-t-4 shadow-md"
                     style={{ borderColor: "hsl(var(--heritage-orange))" }}
                   >
-                    <p className="font-body text-xs tracking-widest uppercase text-secondary mb-8 font-semibold">
-                      With me alongside you
-                    </p>
                     <ul className="font-body text-foreground leading-relaxed divide-y divide-border/60 border-y border-border/60">
                       {rows.map((row) => (
                         <li key={row.title} className="flex items-center gap-4 py-3.5">

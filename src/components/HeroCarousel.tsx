@@ -447,6 +447,73 @@ const HeroGreenCaps = () => (
   </div>
 );
 
+const HeroGreenStoryteller = () => (
+  <div className="w-full container mx-auto px-6 lg:px-12 py-10 md:py-14">
+    <div
+      className="relative overflow-hidden rounded-3xl px-5 py-12 sm:px-8 sm:py-16 md:px-12 md:py-20 lg:px-16 lg:py-24"
+      style={{ backgroundColor: "hsl(var(--heritage-green))" }}
+    >
+      <AmsterdamSkyline variant="section" />
+
+      <div className="relative mx-auto max-w-5xl" style={{ zIndex: 10 }}>
+        <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 md:gap-14 items-center">
+          <FadeIn>
+            <p
+              className="font-body text-xs md:text-sm tracking-[0.3em] uppercase mb-6"
+              style={{ color: "hsl(var(--heritage-orange))" }}
+            >
+              Storyteller &amp; Travel Companion
+            </p>
+            <h1
+              className="font-heading leading-[0.9] mb-8 text-[clamp(2.6rem,6.8vw,6rem)]"
+              style={{ color: "hsl(var(--background))" }}
+            >
+              <span
+                className="uppercase tracking-tight"
+                style={{ color: "hsl(var(--heritage-orange))" }}
+              >
+                HELLO, I'M DENNIS.
+              </span>
+              <br />
+              A friend who
+              <br />
+              knows the city.
+            </h1>
+            <p
+              className="font-body text-base md:text-lg leading-relaxed max-w-md"
+              style={{ color: "hsl(var(--background) / 0.85)" }}
+            >
+              We slow down, follow curiosity, and discover places together, one
+              story at a time. The best moments are rarely planned.
+            </p>
+          </FadeIn>
+
+          <FadeIn delay={0.15}>
+            <div
+              className="bg-background border-l-4 shadow-2xl rounded-sm overflow-hidden"
+              style={{ borderLeftColor: "hsl(var(--heritage-orange))" }}
+            >
+              <img
+                src={dennisCanalSmile}
+                alt="Dennis Gerrits on an Amsterdam canal bridge"
+                className="w-full aspect-[4/5] object-cover"
+              />
+              <div className="p-5 md:p-6">
+                <p className="font-heading text-2xl text-primary leading-tight">
+                  Dennis Gerrits
+                </p>
+                <p className="font-body text-sm text-muted-foreground mt-1">
+                  Amsterdammer · Storyteller &amp; Travel Companion
+                </p>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
 const slides = [
   { key: "editorial", label: "Editorial", render: () => <HeroEditorial /> },
   { key: "magazine", label: "Magazine", render: () => <HeroMagazine /> },
@@ -454,7 +521,9 @@ const slides = [
   { key: "green", label: "Green Card", render: () => <HeroGreen /> },
   { key: "editorial-green", label: "Editorial Green", render: () => <HeroEditorialGreen /> },
   { key: "green-caps", label: "Green Caps", render: () => <HeroGreenCaps /> },
+  { key: "green-storyteller", label: "Green Storyteller", render: () => <HeroGreenStoryteller /> },
 ];
+
 
 
 const HeroCarousel = () => {

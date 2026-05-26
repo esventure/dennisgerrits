@@ -63,7 +63,7 @@ const moments = [
   {
     time: "Beginning of the day",
     title: "Meeting",
-    text: "I’ll meet you at your hotel and together we slowly step into the rhythm of the city.\nJust an easy walk through one of Amsterdam’s beautiful neighborhoods as the day begins.\n",
+    text: "I’ll meet you at your hotel and together we slowly step into the rhythm of the city. Just an easy walk through one of Amsterdam’s beautiful neighborhoods as the day begins.",
   },
   {
     time: "Late Morning",
@@ -195,7 +195,7 @@ const Index = () => {
                 {t("process.kicker", "How I Work")}
               </p>
               <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary leading-[0.95] mb-6">
-                {t("process.title", "Every journey starts with a conversation.\nEvery experience is shaped around you.\n")}
+                {t("process.title", "Every journey starts with a conversation. Every experience is shaped around you.")}
               </h2>
               <RichText
                 className="font-body text-lg text-muted-foreground leading-relaxed"
@@ -273,7 +273,7 @@ const Index = () => {
                 </svg>
                 {[
                   { n: "01", label: t("process.step1.label", "Let’s Connect"), text: t("process.step1.text", "You reach out, and we plan a personal video call to get to know each other and your travel plans.") },
-                  { n: "02", label: t("process.step2.label", "Getting to Know You"), text: t("process.step2.text", "I take the time to listen. Your interests, travel style and wishes help shape the experience.\n") },
+                  { n: "02", label: t("process.step2.label", "Getting to Know You"), text: t("process.step2.text", "I take the time to listen. Your interests, travel style and wishes help shape the experience.") },
                   { n: "03", label: t("process.step3.label", "Creating Your Journey"), text: t("process.step3.text", "Together, we shape an experience that feels personal and completely tailored to you.") },
                   { n: "04", label: t("process.step4.label", "I Take Care of the Details"), text: t("process.step4.text", "From reservations and transportation to personal recommendations and museum tickets, everything is thoughtfully taken care of.") },
                 ].map((step, idx) => (
@@ -419,10 +419,8 @@ const Index = () => {
                 <h2 className="font-heading text-4xl md:text-5xl text-primary leading-[0.95] mb-2">
                   A Day in My Amsterdam
                 </h2>
-                <p className="font-body text-base text-muted-foreground leading-relaxed whitespace-pre-line">
-                  Every day unfolds differently.{"\n"}
-                  Shaped by curiosity, conversation and the rhythm of the city.{"\n"}
-                  We discover hidden places, share stories and simply see where the day takes us.{"\n"}
+                <p className="font-body text-base text-muted-foreground leading-relaxed">
+                  Every day unfolds differently. Shaped by curiosity, conversation and the rhythm of the city. We discover hidden places, share stories and simply see where the day takes us.
                 </p>
               </div>
             </FadeIn>

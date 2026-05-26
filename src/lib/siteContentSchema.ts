@@ -32,7 +32,7 @@ export const CONTENT_SCHEMA: ContentSection[] = [
           "I have always been drawn to stories, people and places that move you in some way.\n\nAmsterdam became that place for me. I’ve called this city home for more than twenty years now, and over time it became an integral part of who I am.\n\nThis city gave me freedom. It connected me to the world and shaped me into the person I am today. Curious, creative and fascinated by culture, art, architecture, nature, and the rhythm of life.",
       },
       { key: "about.guide.title", label: "Guide — title", type: "short", fallback: "The Guide" },
-      { key: "about.guide.kicker", label: "Guide — kicker", type: "short", fallback: "Helping you find your own way\n\n" },
+      { key: "about.guide.kicker", label: "Guide — kicker", type: "short", fallback: "Helping you find your own way" },
       {
         key: "about.guide.body",
         label: "Guide — paragraph",
@@ -52,7 +52,7 @@ export const CONTENT_SCHEMA: ContentSection[] = [
         key: "process.title",
         label: "Section title",
         type: "long",
-        fallback: "Every journey starts with a conversation.\nEvery experience is shaped around you.\n",
+        fallback: "Every journey starts with a conversation. Every experience is shaped around you.",
       },
       {
         key: "process.intro",
@@ -79,7 +79,7 @@ export const CONTENT_SCHEMA: ContentSection[] = [
         key: "process.step2.text",
         label: "Step 2 — text",
         type: "long",
-        fallback: "I take the time to listen. Your interests, travel style and wishes help shape the experience.\n",
+        fallback: "I take the time to listen. Your interests, travel style and wishes help shape the experience.",
       },
       { key: "process.step3.label", label: "Step 3 — label", type: "short", fallback: "Creating Your Journey" },
       {

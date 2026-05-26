@@ -184,7 +184,7 @@ const Index = () => {
       {/* ── 2. About Me — 2 swipeable variations for Dennis to choose from ── */}
       <AboutCarousel />
 
-      {/* ── How It Works (process + concierge) ── */}
+      {/* ── How I Work (process + concierge) ── */}
       <section id="how-it-works" className="py-16 md:py-20 lg:py-32 scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}>
         <div className="container mx-auto px-6 lg:px-12">
 
@@ -192,7 +192,7 @@ const Index = () => {
           <div className="max-w-3xl mx-auto text-center mb-16 lg:mb-20">
             <FadeIn>
               <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
-                {t("process.kicker", "How It Works")}
+                {t("process.kicker", "How I Work")}
               </p>
               <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary leading-[0.95] mb-6">
                 {t("process.title", "No standard tours. Every trip is built from scratch.")}

@@ -23,7 +23,7 @@ import RichTextEditor from "@/components/RichTextEditor";
 
 const PREVIEW_ROUTES = [
   { path: "/#about", label: "About" },
-  { path: "/#how-it-works", label: "How It Works" },
+  { path: "/#how-it-works", label: "How I Work" },
   { path: "/#booking", label: "Booking" },
   { path: "/", label: "Full homepage" },
 ];

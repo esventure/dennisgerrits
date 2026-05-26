@@ -419,10 +419,8 @@ const Index = () => {
                 <h2 className="font-heading text-4xl md:text-5xl text-primary leading-[0.95] mb-2">
                   A Day in My Amsterdam
                 </h2>
-                <p className="font-body text-base text-muted-foreground leading-relaxed whitespace-pre-line">
-                  Every day unfolds differently.{"\n"}
-                  Shaped by curiosity, conversation and the rhythm of the city.{"\n"}
-                  We discover hidden places, share stories and simply see where the day takes us.{"\n"}
+                <p className="font-body text-base text-muted-foreground leading-relaxed">
+                  Every day unfolds differently. Shaped by curiosity, conversation and the rhythm of the city. We discover hidden places, share stories and simply see where the day takes us.
                 </p>
               </div>
             </FadeIn>

@@ -65,7 +65,7 @@ export const CONTENT_SCHEMA: ContentSection[] = [
         key: "concierge.title",
         label: "Concierge title",
         type: "long",
-        fallback: "More than a guide. A concierge for your whole stay.",
+        fallback: "More than a guide. Personal support, thoughtful guidance and local knowledge throughout your stay.",
       },
       { key: "process.step1.label", label: "Step 1 — label", type: "short", fallback: "Let’s Connect" },
       {

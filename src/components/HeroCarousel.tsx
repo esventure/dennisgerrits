@@ -663,9 +663,10 @@ const HeroEditorialGreenListen = () => (
 );
 
 const slides = [
-  { key: "editorial", label: "Editorial", render: () => <HeroEditorial /> },
-  { key: "magazine", label: "Magazine", render: () => <HeroMagazine /> },
-  { key: "letter", label: "Letter", render: () => <HeroLetter /> },
+  // Hidden for now (still available in code):
+  // { key: "editorial", label: "Editorial", render: () => <HeroEditorial /> },
+  // { key: "magazine", label: "Magazine", render: () => <HeroMagazine /> },
+  // { key: "letter", label: "Letter", render: () => <HeroLetter /> },
   { key: "green", label: "Green Card", render: () => <HeroGreen /> },
   { key: "editorial-green", label: "Editorial Green", render: () => <HeroEditorialGreen /> },
   { key: "green-caps", label: "Green Caps", render: () => <HeroGreenCaps /> },

@@ -417,10 +417,12 @@ const Index = () => {
                   Let's Explore Together
                 </p>
                 <h2 className="font-heading text-4xl md:text-5xl text-primary leading-[0.95] mb-2">
-                  A Day in My Life
+                  A Day in My Amsterdam
                 </h2>
-                <p className="font-body text-base text-muted-foreground leading-relaxed">
-                  No fixed tours. Every day is shaped by you. Here's what one might look like.
+                <p className="font-body text-base text-muted-foreground leading-relaxed whitespace-pre-line">
+                  Every day unfolds differently.{"\n"}
+                  Shaped by curiosity, conversation and the rhythm of the city.{"\n"}
+                  We discover hidden places, share stories and simply see where the day takes us.
                 </p>
               </div>
             </FadeIn>

@@ -61,9 +61,9 @@ const sketchedRingPath = (cx: number, cy: number, r: number, seed = 0) => {
 
 const moments = [
   {
-    time: "Morning",
-    title: "A Quiet Start",
-    text: "We meet at a café I like, somewhere away from the tourist centre. Over coffee, we talk about what you're curious about, what you've already seen, what caught your eye. No rush.",
+    time: "Beginning of the day",
+    title: "Meeting",
+    text: "I’ll meet you at your hotel and together we slowly step into the rhythm of the city.\nJust an easy walk through one of Amsterdam’s beautiful neighborhoods as the day begins.\n",
   },
   {
     time: "Late Morning",

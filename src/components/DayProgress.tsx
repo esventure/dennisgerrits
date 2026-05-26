@@ -8,7 +8,7 @@ interface DayProgressProps {
 }
 
 /**
- * A thin, sticky-friendly progress strip for the "A Day in My Life" section.
+ * A thin, sticky-friendly progress strip for the "A Day in My Amsterdam" section.
  * Shows a horizontal track from "Morning" to "Evening" with an animated
  * marker that follows scroll progress through the parent <section>.
  *

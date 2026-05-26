@@ -341,7 +341,7 @@ const Index = () => {
                 {
                   icon: iconTickets,
                   title: t("concierge.tickets.title", "Museum reservations"),
-                  desc: t("concierge.tickets.desc", "Including tickets and timed entry reservations for museums and cultural experiences.\n"),
+                  desc: t("concierge.tickets.desc", "Including tickets and timed entry reservations for museums and cultural experiences."),
                 },
                 {
                   icon: iconDining,
@@ -350,18 +350,18 @@ const Index = () => {
                 },
                 {
                   icon: iconTransport,
-                  title: t("concierge.transport.title", "Transportation Coordination\n"),
-                  desc: t("concierge.transport.desc", "Help arranging transportation, including airport transfers and train tickets.\n"),
+                  title: t("concierge.transport.title", "Transportation Coordination"),
+                  desc: t("concierge.transport.desc", "Help arranging transportation, including airport transfers and train tickets."),
                 },
                 {
                   icon: iconHotel,
-                  title: t("concierge.hotel.title", "Hotel & B&B Recommendations\n"),
-                  desc: t("concierge.hotel.desc", "Helping you find the place and neighborhood that fit your travel style best.\n"),
+                  title: t("concierge.hotel.title", "Hotel & B&B Recommendations"),
+                  desc: t("concierge.hotel.desc", "Helping you find the place and neighborhood that fit your travel style best."),
                 },
                 {
                   icon: iconMessage,
-                  title: t("concierge.support.title", "Guidance & Support\n"),
-                  desc: t("concierge.support.desc", "Always available for questions, practical help and personal support throughout your stay.\n"),
+                  title: t("concierge.support.title", "Guidance & Support"),
+                  desc: t("concierge.support.desc", "Always available for questions, practical help and personal support throughout your stay."),
                 },
               ];
 

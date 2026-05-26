@@ -272,10 +272,10 @@ const Index = () => {
                   />
                 </svg>
                 {[
-                  { n: "01", label: "You reach out", text: "A quick note, a phone call. Tell me when you're coming." },
-                  { n: "02", label: "We have a call", text: "I listen. Your pace, your interests, what you've already seen." },
-                  { n: "03", label: "I design your trip", text: "A custom itinerary made for you. No templates." },
-                  { n: "04", label: "I take care of everything", text: "Bookings, transfers, reservations. One person, one phone number." },
+                  { n: "01", label: t("process.step1.label", "Let’s Connect"), text: t("process.step1.text", "You reach out, and we plan a personal video call to get to know each other and your travel plans.") },
+                  { n: "02", label: t("process.step2.label", "Getting to Know You"), text: t("process.step2.text", "I take the time to listen. Your interests, travel style and wishes help shape the experience.\n") },
+                  { n: "03", label: t("process.step3.label", "Creating Your Journey"), text: t("process.step3.text", "Together, we shape an experience that feels personal and completely tailored to you.") },
+                  { n: "04", label: t("process.step4.label", "I Take Care of the Details"), text: t("process.step4.text", "From reservations and transportation to personal recommendations and museum tickets, everything is thoughtfully taken care of.") },
                 ].map((step, idx) => (
                   <div key={step.n} className="text-center md:text-left">
                     <div className="mx-auto md:mx-0 mb-5 relative" style={{ width: 64, height: 64 }}>

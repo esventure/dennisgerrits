@@ -87,7 +87,7 @@ const AboutEditorial = () => {
               02
             </p>
             <p className="font-body text-xs tracking-[0.3em] uppercase text-primary-foreground/70 mb-4">
-              {t("about.guide.kicker", "A Different Kind of Guide")}
+              {t("about.guide.kicker", "Helping you find your own way\n\n")}
             </p>
             <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary-foreground leading-[0.95] mb-6">
               {t("about.guide.title", "The Guide")}
@@ -163,7 +163,7 @@ const AboutLetter = () => {
               {t("about.guide.title", "The Guide")}
             </h2>
             <p className="font-body text-xs tracking-[0.25em] uppercase text-secondary text-center mb-6">
-              {t("about.guide.kicker", "A Different Kind of Guide")}
+              {t("about.guide.kicker", "Helping you find your own way\n\n")}
             </p>
             <RichText
               className="font-body text-lg md:text-xl text-foreground/80 leading-relaxed text-center"
@@ -230,7 +230,7 @@ const AboutFigures = () => {
               />
             </div>
             <p className="font-body text-xs tracking-[0.3em] uppercase text-secondary mb-3">
-              {t("about.guide.kicker", "A Different Kind of Guide")}
+              {t("about.guide.kicker", "Helping you find your own way\n\n")}
             </p>
             <h2
               className="font-heading text-4xl sm:text-5xl md:text-6xl leading-[0.95] mb-4"

@@ -283,7 +283,7 @@ const TravelAgents = () => {
                   <HandoverIcon color="hsl(var(--heritage-purple))" />
                 </div>
                 <h3 className="font-heading text-3xl lg:text-4xl text-primary mb-6 leading-tight">
-                  You hand it over. I take care of everything.
+                  You hand it over. I Take Care of the Details.
                 </h3>
                 <p className="font-body text-muted-foreground leading-relaxed mb-8">
                   If you prefer to stay at a higher level, I step in as your local partner.

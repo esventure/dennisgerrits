@@ -16,14 +16,30 @@ const PERSON_FALLBACK =
 const GUIDE_FALLBACK =
   "No flag, no script. Depth over highlights, connection over information. A friend who knows the city inside out, walking beside you instead of in front of you.";
 
-/* ── Variation A — Editorial split, no illustrations ─────── */
+import dennisPersonBike from "@/assets/dennis-person-bike.jpg";
+import dennisGuideHands from "@/assets/dennis-guide-hands.jpg";
+
+/* ── Variation A — Editorial split with photo backgrounds ── */
 const AboutEditorial = () => {
   const t = useSiteContent();
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[70vh]">
       {/* Left: The Person */}
-      <div className="bg-background px-6 sm:px-10 md:px-16 lg:px-20 py-14 sm:py-20 lg:py-28 flex items-center">
-        <FadeIn>
+      <div className="relative overflow-hidden px-6 sm:px-10 md:px-16 lg:px-20 py-14 sm:py-20 lg:py-28 flex items-center min-h-[70vh]">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${dennisPersonBike})` }}
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to right, hsl(var(--background)) 0%, hsl(var(--background) / 0.95) 35%, hsl(var(--background) / 0.55) 65%, hsl(var(--background) / 0) 100%)",
+          }}
+          aria-hidden
+        />
+        <FadeIn className="relative z-10">
           <div className="max-w-md mx-auto lg:ml-auto lg:mr-0">
             <p
               className="font-heading text-6xl sm:text-7xl md:text-8xl mb-5 sm:mb-6 leading-none"
@@ -39,7 +55,7 @@ const AboutEditorial = () => {
             </h2>
             <div className="w-12 h-0.5 bg-accent mb-6" />
             <RichText
-              className="font-body text-base md:text-lg text-muted-foreground leading-relaxed"
+              className="font-body text-base md:text-lg text-foreground/85 leading-relaxed"
               html={t("about.person.body", "")}
               fallback={PERSON_FALLBACK}
             />
@@ -48,8 +64,21 @@ const AboutEditorial = () => {
       </div>
 
       {/* Right: The Guide */}
-      <div className="bg-primary px-6 sm:px-10 md:px-16 lg:px-20 py-14 sm:py-20 lg:py-28 flex items-center">
-        <FadeIn delay={0.15}>
+      <div className="relative overflow-hidden px-6 sm:px-10 md:px-16 lg:px-20 py-14 sm:py-20 lg:py-28 flex items-center min-h-[70vh]">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${dennisGuideHands})` }}
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to right, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.95) 35%, hsl(var(--primary) / 0.55) 65%, hsl(var(--primary) / 0.15) 100%)",
+          }}
+          aria-hidden
+        />
+        <FadeIn delay={0.15} className="relative z-10">
           <div className="max-w-md mx-auto lg:mr-auto lg:ml-0">
             <p
               className="font-heading text-6xl sm:text-7xl md:text-8xl mb-5 sm:mb-6 leading-none"
@@ -57,7 +86,7 @@ const AboutEditorial = () => {
             >
               02
             </p>
-            <p className="font-body text-xs tracking-[0.3em] uppercase text-primary-foreground/60 mb-4">
+            <p className="font-body text-xs tracking-[0.3em] uppercase text-primary-foreground/70 mb-4">
               {t("about.guide.kicker", "A Different Kind of Guide")}
             </p>
             <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary-foreground leading-[0.95] mb-6">
@@ -65,7 +94,7 @@ const AboutEditorial = () => {
             </h2>
             <div className="w-12 h-0.5 bg-primary-foreground/40 mb-6" />
             <RichText
-              className="font-body text-base md:text-lg text-primary-foreground/80 leading-relaxed"
+              className="font-body text-base md:text-lg text-primary-foreground/90 leading-relaxed"
               html={t("about.guide.body", "")}
               fallback={GUIDE_FALLBACK}
             />

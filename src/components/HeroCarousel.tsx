@@ -590,6 +590,78 @@ const HeroEditorialGreenCaps = () => (
   </div>
 );
 
+const HeroEditorialGreenListen = () => (
+  <div className="w-full container mx-auto px-6 lg:px-12 py-10 md:py-14">
+    <div
+      className="relative overflow-hidden rounded-3xl px-6 py-14 sm:px-10 sm:py-20 md:px-16 md:py-24 lg:px-20 lg:py-28"
+      style={{ backgroundColor: "hsl(var(--heritage-green))" }}
+    >
+      <AmsterdamSkyline variant="section" />
+
+      <div className="relative mx-auto max-w-6xl" style={{ zIndex: 10 }}>
+        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-center">
+          <FadeIn>
+            <div className="flex flex-col items-center lg:items-start">
+              <img
+                src={dennisCanalSmile}
+                alt="Dennis Gerrits on an Amsterdam canal bridge"
+                className="w-full max-w-lg rounded-sm object-cover shadow-2xl aspect-[3/4]"
+              />
+              <p
+                className="font-body text-sm tracking-widest uppercase mt-6"
+                style={{ color: "hsl(var(--heritage-orange))" }}
+              >
+                Storyteller, Host &amp; Companion
+              </p>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.2}>
+            <h1
+              className="font-heading text-[2.6rem] sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95] mb-6 md:mb-8"
+              style={{ color: "hsl(var(--background))" }}
+            >
+              <span
+                className="relative inline-block uppercase tracking-tight"
+                style={{ color: "hsl(var(--heritage-orange))" }}
+              >
+                HELLO, I'M DENNIS.
+                <svg
+                  aria-hidden
+                  viewBox="0 0 200 12"
+                  preserveAspectRatio="none"
+                  className="absolute left-0 -bottom-2 w-full h-3"
+                >
+                  <path
+                    d="M 4 8 C 60 2, 130 10, 196 5"
+                    stroke="hsl(var(--heritage-orange))"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    fill="none"
+                  />
+                </svg>
+              </span>
+              <br />
+              I listen first.
+              <br />
+              Then I open
+              <br />
+              the city.
+            </h1>
+            <p
+              className="font-body text-lg leading-relaxed max-w-lg"
+              style={{ color: "hsl(var(--background) / 0.85)" }}
+            >
+              We slow down, follow curiosity, and discover places together, one
+              story at a time. The best moments are rarely planned.
+            </p>
+          </FadeIn>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
 const slides = [
   { key: "editorial", label: "Editorial", render: () => <HeroEditorial /> },
   { key: "magazine", label: "Magazine", render: () => <HeroMagazine /> },
@@ -599,7 +671,9 @@ const slides = [
   { key: "green-caps", label: "Green Caps", render: () => <HeroGreenCaps /> },
   { key: "green-storyteller", label: "Green Storyteller", render: () => <HeroGreenStoryteller /> },
   { key: "editorial-green-caps", label: "Editorial Green Caps", render: () => <HeroEditorialGreenCaps /> },
+  { key: "editorial-green-listen", label: "Editorial Green Listen", render: () => <HeroEditorialGreenListen /> },
 ];
+
 
 
 

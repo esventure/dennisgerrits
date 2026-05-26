@@ -363,11 +363,6 @@ const Index = () => {
                   title: t("concierge.support.title", "Guidance & Support\n"),
                   desc: t("concierge.support.desc", "Always available for questions, practical help and personal support throughout your stay.\n"),
                 },
-                {
-                  icon: iconItinerary,
-                  title: t("concierge.itinerary.title", "Full itinerary"),
-                  desc: t("concierge.itinerary.desc", "A day-by-day plan for your whole stay, even after we part ways."),
-                },
               ];
 
               return (

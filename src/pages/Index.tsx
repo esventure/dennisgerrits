@@ -340,33 +340,33 @@ const Index = () => {
               const rows = [
                 {
                   icon: iconTickets,
-                  title: "Museum reservations",
-                  desc: "Time slots booked in advance. No queues.",
+                  title: t("concierge.tickets.title", "Museum reservations"),
+                  desc: t("concierge.tickets.desc", "Including tickets and timed entry reservations for museums and cultural experiences."),
                 },
                 {
                   icon: iconDining,
-                  title: "Dining bookings",
-                  desc: "Tables at the kind of places locals actually go.",
+                  title: t("concierge.dining.title", "Dining reservations"),
+                  desc: t("concierge.dining.desc", "Thoughtfully selected places to eat, from local favorites to memorable dining experiences."),
                 },
                 {
                   icon: iconMessage,
-                  title: "WhatsApp lifeline",
-                  desc: "One message away for the whole trip.",
+                  title: t("concierge.whatsapp.title", "WhatsApp lifeline"),
+                  desc: t("concierge.whatsapp.desc", "One message away for the whole trip."),
                 },
                 {
                   icon: iconTransport,
-                  title: "Airport transfers",
-                  desc: "Picked up at Schiphol, dropped off when you leave.",
+                  title: t("concierge.transport.title", "Airport transfers"),
+                  desc: t("concierge.transport.desc", "Picked up at Schiphol, dropped off when you leave."),
                 },
                 {
                   icon: iconHotel,
-                  title: "Hotel recommendations",
-                  desc: "The right neighbourhood, the right room, the right rate.",
+                  title: t("concierge.hotel.title", "Hotel recommendations"),
+                  desc: t("concierge.hotel.desc", "The right neighbourhood, the right room, the right rate."),
                 },
                 {
                   icon: iconItinerary,
-                  title: "Full itinerary",
-                  desc: "A day-by-day plan for your whole stay, even after we part ways.",
+                  title: t("concierge.itinerary.title", "Full itinerary"),
+                  desc: t("concierge.itinerary.desc", "A day-by-day plan for your whole stay, even after we part ways."),
                 },
               ];
 

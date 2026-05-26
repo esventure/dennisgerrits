@@ -330,7 +330,7 @@ const Index = () => {
                 {t("concierge.kicker", "What I take care of")}
               </p>
               <h3 className="font-heading text-3xl sm:text-4xl text-primary leading-tight">
-                {t("concierge.title", "More than a guide. A concierge for your whole stay.")}
+                {t("concierge.title", "More than a guide. Personal support, thoughtful guidance and local knowledge throughout your stay.")}
               </h3>
             </FadeIn>
           </div>

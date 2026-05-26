@@ -12,7 +12,7 @@ import { useSiteContent } from "@/hooks/useSiteContent";
    ──────────────────────────────────────────────────────────── */
 
 const PERSON_FALLBACK =
-  "I'm a free spirit with deep roots here. I grew up cycling these canals and collecting stories along the way. Amsterdam isn't just where I live, it's how I think.";
+  "I have always been drawn to stories, people and places that move you in some way.\n\nAmsterdam became that place for me. I’ve called this city home for more than twenty years now, and over time it became an integral part of who I am.\n\nThis city gave me freedom. It connected me to the world and shaped me into the person I am today. Curious, creative and fascinated by culture, art, architecture, nature, and the rhythm of life.";
 const GUIDE_FALLBACK =
   "No flag, no script. Depth over highlights, connection over information. A friend who knows the city inside out, walking beside you instead of in front of you.";
 

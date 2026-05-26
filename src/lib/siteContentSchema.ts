@@ -52,13 +52,13 @@ export const CONTENT_SCHEMA: ContentSection[] = [
         key: "process.title",
         label: "Section title",
         type: "long",
-        fallback: "No standard tours. Every trip is built from scratch.",
+        fallback: "Every journey starts with a conversation.\nEvery experience is shaped around you.\n",
       },
       {
         key: "process.intro",
         label: "Intro paragraph",
         type: "rich",
-        fallback: "From the first message to the last goodbye, one person looks after every detail.",
+        fallback: "From the first message to the last goodbye, you’ll always have someone local by your side.",
       },
       { key: "concierge.kicker", label: "Concierge kicker", type: "short", fallback: "What I take care of" },
       {

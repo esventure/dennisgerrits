@@ -195,12 +195,12 @@ const Index = () => {
                 {t("process.kicker", "How I Work")}
               </p>
               <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary leading-[0.95] mb-6">
-                {t("process.title", "No standard tours. Every trip is built from scratch.")}
+                {t("process.title", "Every journey starts with a conversation.\nEvery experience is shaped around you.\n")}
               </h2>
               <RichText
                 className="font-body text-lg text-muted-foreground leading-relaxed"
                 html={t("process.intro", "")}
-                fallback="From the first message to the last goodbye, one person looks after every detail."
+                fallback="From the first message to the last goodbye, you’ll always have someone local by your side."
               />
             </FadeIn>
           </div>

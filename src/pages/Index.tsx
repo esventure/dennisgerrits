@@ -422,7 +422,7 @@ const Index = () => {
                 <p className="font-body text-base text-muted-foreground leading-relaxed whitespace-pre-line">
                   Every day unfolds differently.{"\n"}
                   Shaped by curiosity, conversation and the rhythm of the city.{"\n"}
-                  We discover hidden places, share stories and simply see where the day takes us.
+                  We discover hidden places, share stories and simply see where the day takes us.{"\n"}
                 </p>
               </div>
             </FadeIn>

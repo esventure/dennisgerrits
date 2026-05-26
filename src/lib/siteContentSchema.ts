@@ -44,10 +44,10 @@ export const CONTENT_SCHEMA: ContentSection[] = [
   },
   {
     id: "process",
-    title: "How It Works",
+    title: "How I Work",
     description: "The 4-step process intro and the concierge sub-heading.",
     fields: [
-      { key: "process.kicker", label: "Kicker", type: "short", fallback: "How It Works" },
+      { key: "process.kicker", label: "Kicker", type: "short", fallback: "How I Work" },
       {
         key: "process.title",
         label: "Section title",

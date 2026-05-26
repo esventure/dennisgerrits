@@ -668,11 +668,12 @@ const slides = [
   // { key: "magazine", label: "Magazine", render: () => <HeroMagazine /> },
   // { key: "letter", label: "Letter", render: () => <HeroLetter /> },
   { key: "green", label: "Green Card", render: () => <HeroGreen /> },
-  { key: "editorial-green", label: "Editorial Green", render: () => <HeroEditorialGreen /> },
-  { key: "green-caps", label: "Green Caps", render: () => <HeroGreenCaps /> },
-  { key: "green-storyteller", label: "Green Storyteller", render: () => <HeroGreenStoryteller /> },
-  { key: "editorial-green-caps", label: "Editorial Green Caps", render: () => <HeroEditorialGreenCaps /> },
   { key: "editorial-green-listen", label: "Editorial Green Listen", render: () => <HeroEditorialGreenListen /> },
+  { key: "editorial-green-caps", label: "Editorial Green Caps", render: () => <HeroEditorialGreenCaps /> },
+  // Hidden for now (still available in code):
+  // { key: "editorial-green", label: "Editorial Green", render: () => <HeroEditorialGreen /> },
+  // { key: "green-caps", label: "Green Caps", render: () => <HeroGreenCaps /> },
+  // { key: "green-storyteller", label: "Green Storyteller", render: () => <HeroGreenStoryteller /> },
 ];
 
 

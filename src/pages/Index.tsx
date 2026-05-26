@@ -341,7 +341,7 @@ const Index = () => {
                 {
                   icon: iconTickets,
                   title: t("concierge.tickets.title", "Museum reservations"),
-                  desc: t("concierge.tickets.desc", "Including tickets and timed entry reservations for museums and cultural experiences."),
+                  desc: t("concierge.tickets.desc", "Including tickets and timed entry reservations for museums and cultural experiences.\n"),
                 },
                 {
                   icon: iconDining,
@@ -349,19 +349,19 @@ const Index = () => {
                   desc: t("concierge.dining.desc", "Thoughtfully selected places to eat, from local favorites to memorable dining experiences."),
                 },
                 {
-                  icon: iconMessage,
-                  title: t("concierge.whatsapp.title", "WhatsApp lifeline"),
-                  desc: t("concierge.whatsapp.desc", "One message away for the whole trip."),
-                },
-                {
                   icon: iconTransport,
-                  title: t("concierge.transport.title", "Airport transfers"),
-                  desc: t("concierge.transport.desc", "Picked up at Schiphol, dropped off when you leave."),
+                  title: t("concierge.transport.title", "Transportation Coordination\n"),
+                  desc: t("concierge.transport.desc", "Help arranging transportation, including airport transfers and train tickets.\n"),
                 },
                 {
                   icon: iconHotel,
-                  title: t("concierge.hotel.title", "Hotel recommendations"),
-                  desc: t("concierge.hotel.desc", "The right neighbourhood, the right room, the right rate."),
+                  title: t("concierge.hotel.title", "Hotel & B&B Recommendations\n"),
+                  desc: t("concierge.hotel.desc", "Helping you find the place and neighborhood that fit your travel style best.\n"),
+                },
+                {
+                  icon: iconMessage,
+                  title: t("concierge.support.title", "Guidance & Support\n"),
+                  desc: t("concierge.support.desc", "Always available for questions, practical help and personal support throughout your stay.\n"),
                 },
                 {
                   icon: iconItinerary,

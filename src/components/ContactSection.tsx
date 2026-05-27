@@ -67,7 +67,7 @@ const ContactSection = () => {
                   <RichText
                     className="font-body text-base md:text-lg leading-relaxed"
                     html={t("booking.intro", "")}
-                    fallback="The best way to start is a short, informal conversation. No obligations, just a chance to see if my approach feels right."
+                    fallback="Send me a message, and I’ll reply by email within 24 hours. If it feels right, we can take the next step with a video call. No pressure, no obligations, just a chance to get to know each other."
                   />
                   <div className="mt-6 md:mt-10 flex-1 min-h-[260px] md:min-h-0 relative max-w-md w-full">
                     <img
@@ -87,12 +87,12 @@ const ContactSection = () => {
                   style={{ borderLeftColor: "hsl(var(--heritage-orange))" }}
                 >
                   <h3 className="font-heading text-3xl text-primary mb-3">
-                    {t("booking.form.title", "Book a Call")}
+                    {t("booking.form.title", "Let’s Connect")}
                   </h3>
                   <RichText
                     className="font-body text-muted-foreground leading-relaxed mb-8"
                     html={t("booking.form.intro", "")}
-                    fallback="Leave your details and a few words about your trip. I'll reach out personally."
+                    fallback="Leave your contact details and tell me a little about yourself and the experience you're hoping for."
                   />
                   <form onSubmit={handleContactSubmit} className="space-y-6">
                     <div className="space-y-2">
@@ -129,7 +129,7 @@ const ContactSection = () => {
                       type="submit"
                       className="w-full font-body text-sm tracking-widest uppercase px-8 py-4 border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
                     >
-                      {t("booking.form.cta", "Send Message")}
+                      {t("booking.form.cta", "Reach out")}
                     </button>
                   </form>
                 </div>

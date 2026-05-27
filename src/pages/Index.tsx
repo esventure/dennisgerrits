@@ -528,7 +528,7 @@ const Index = () => {
                 {
                   kicker: "Invite Dennis",
                   title: "Podcasts • Lectures • Radio • Live Events",
-                  body: "If you're a host, producer, organiser, or university looking for a guest lecture or a story about Amsterdam beyond the tourist trail.",
+                  body: "Dennis regularly joins conversations about Amsterdam, storytelling, travel, culture, and human connection.\n\nHe is available for podcast conversations, guest lectures, interviews, radio shows, cultural programs, and educational events.",
                   cta: "Get in touch",
                   href: "#contact",
                   color: "hsl(var(--accent))",

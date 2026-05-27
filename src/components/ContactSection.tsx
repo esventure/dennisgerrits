@@ -67,7 +67,7 @@ const ContactSection = () => {
                   <RichText
                     className="font-body text-base md:text-lg leading-relaxed"
                     html={t("booking.intro", "")}
-                    fallback="The best way to start is a short, informal conversation. No obligations, just a chance to see if my approach feels right."
+                    fallback="Send me a message, and I’ll reply by email within 24 hours. If it feels right, we can take the next step with a video call. No pressure, no obligations, just a chance to get to know each other."
                   />
                   <div className="mt-6 md:mt-10 flex-1 min-h-[260px] md:min-h-0 relative max-w-md w-full">
                     <img

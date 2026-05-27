@@ -1063,13 +1063,13 @@ const Index = () => {
             <div className="mt-20 lg:mt-28">
               <div className="max-w-3xl mb-8">
                 <p className="font-body text-sm tracking-widest uppercase text-accent mb-4">
-                  Faces of the Road
+                  Shared Moments
                 </p>
                 <h3 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-primary mb-4">
-                  Moments spent together.
+                  Memories made together
                 </h3>
                 <p className="font-body text-muted-foreground text-lg leading-relaxed">
-                  Real people, real moments. A glimpse of what a day with me actually feels like.
+                  Moments of connection created with people from all around the world.
                 </p>
               </div>
               <MosaicWall photos={guestPhotos} />

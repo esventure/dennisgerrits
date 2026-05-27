@@ -114,16 +114,16 @@ export const CONTENT_SCHEMA: ContentSection[] = [
         label: "Intro paragraph",
         type: "rich",
         fallback:
-          "The best way to start is a short, informal conversation. No obligations, just a chance to see if my approach feels right.",
+          "Send me a message, and I’ll reply by email within 24 hours. If it feels right, we can take the next step with a video call. No pressure, no obligations, just a chance to get to know each other.",
       },
-      { key: "booking.form.title", label: "Form title", type: "short", fallback: "Book a Call" },
+      { key: "booking.form.title", label: "Form title", type: "short", fallback: "Let’s Connect" },
       {
         key: "booking.form.intro",
         label: "Form intro",
         type: "rich",
-        fallback: "Leave your details and a few words about your trip. I'll reach out personally.",
+        fallback: "Leave your contact details and tell me a little about yourself and the experience you're hoping for.",
       },
-      { key: "booking.form.cta", label: "Submit button label", type: "short", fallback: "Send Message" },
+      { key: "booking.form.cta", label: "Submit button label", type: "short", fallback: "Reach out" },
     ],
   },
   {

@@ -129,7 +129,7 @@ const ContactSection = () => {
                       type="submit"
                       className="w-full font-body text-sm tracking-widest uppercase px-8 py-4 border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
                     >
-                      {t("booking.form.cta", "Send Message")}
+                      {t("booking.form.cta", "Reach out")}
                     </button>
                   </form>
                 </div>

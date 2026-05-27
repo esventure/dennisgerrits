@@ -78,7 +78,7 @@ const moments = [
   {
     time: "Afternoon",
     title: "Following Curiosity",
-    text: "Maybe we visit a hidden garden, or explore a quiet museum. Maybe we just sit on a bench and talk about what we've seen. The afternoon goes wherever feels right.",
+    text: "In the afternoon, we continue exploring the streets together. Maybe we step into a small museum, discover a hidden courtyard or stop by my favorite chocolate shop. Some of the best moments are the ones we never planned.",
   },
   {
     time: "Late Afternoon",

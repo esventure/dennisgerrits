@@ -71,9 +71,9 @@ const moments = [
     text: "Somewhere along the way, we can stop at a small local café for a good cup of coffee. A moment to slow down, observe the city around us and simply enjoy the atmosphere.",
   },
   {
-    time: "Midday",
-    title: "A Shared Table",
-    text: "Lunch at a place the locals actually go. Not a tourist restaurant with laminated menus, but somewhere with a story of its own. We eat, talk, watch the city move around us.",
+    time: "Lunch",
+    title: "A Hidden Place",
+    text: "For lunch, we settle into one of my favorite local restaurants, hidden inside a beautiful garden with an amazing menu. Here we take our time, continue our conversation and enjoy the slower rhythm of the day.",
   },
   {
     time: "Afternoon",

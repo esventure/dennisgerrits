@@ -898,7 +898,7 @@ const Index = () => {
                       Real Words From Real People
                     </h2>
                     <p className="font-body text-lg text-muted-foreground leading-relaxed">
-                      Every review below is from <TripAdvisorWordmark className="text-lg" />. Click any card to read the full review on Tripadvisor.
+                      These are words shared by travelers after their time with me. Click any card to read the full review on <TripAdvisorWordmark className="text-lg" />.
                     </p>
                   </FadeIn>
                 </div>

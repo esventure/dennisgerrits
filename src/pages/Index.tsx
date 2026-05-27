@@ -66,9 +66,9 @@ const moments = [
     text: "I’ll meet you at your hotel and together we slowly step into the rhythm of the city. Just an easy walk through one of Amsterdam’s beautiful neighborhoods as the day begins.",
   },
   {
-    time: "Late Morning",
-    title: "Into the City",
-    text: "We walk. Slowly. I share stories about the streets, the buildings, the people who shaped them. If something catches your eye, we stop. The best discoveries are never planned.",
+    time: "Morning",
+    title: "Coffee & Conversation",
+    text: "Somewhere along the way, we can stop at a small local café for a good cup of coffee. A moment to slow down, observe the city around us and simply enjoy the atmosphere.",
   },
   {
     time: "Midday",

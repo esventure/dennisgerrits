@@ -98,7 +98,7 @@ const PodcastPlayer = ({ tone = "light" }: { tone?: "light" | "dark" }) => {
           className="font-heading text-2xl md:text-3xl leading-tight"
           style={{ color: dark ? "hsl(0 0% 98%)" : "hsl(var(--primary))" }}
         >
-          Two Stories, One City
+          Two Stories, One City • AMSTERDAM
         </h2>
 
         {/* Progress bar */}

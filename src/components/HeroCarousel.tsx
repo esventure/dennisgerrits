@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import FadeIn from "./FadeIn";
-import AmsterdamSkyline from "./AmsterdamSkyline";
+
 import dennisArmsWide from "@/assets/dennis-arms-wide.jpg";
 import dennisCanalSmile from "@/assets/dennis-canal-smile.jpg";
 import dennisTalking from "@/assets/dennis-talking.jpg";
@@ -198,7 +198,6 @@ const HeroGreen = () => (
       style={{ backgroundColor: "hsl(var(--heritage-green))" }}
     >
       {/* Skyline silhouette inside the rounded box */}
-      <AmsterdamSkyline variant="section" />
 
       {/* Handwritten margin note */}
       <p
@@ -278,7 +277,6 @@ const HeroEditorialGreen = () => (
       className="relative overflow-hidden rounded-3xl px-6 py-14 sm:px-10 sm:py-20 md:px-16 md:py-24 lg:px-20 lg:py-28"
       style={{ backgroundColor: "hsl(var(--heritage-green))" }}
     >
-      <AmsterdamSkyline variant="section" />
 
       <div className="relative mx-auto max-w-6xl" style={{ zIndex: 10 }}>
         <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-center">
@@ -353,7 +351,6 @@ const HeroGreenCaps = () => (
       className="relative overflow-hidden rounded-3xl px-5 py-12 sm:px-8 sm:py-16 md:px-12 md:py-20 lg:px-16 lg:py-24"
       style={{ backgroundColor: "hsl(var(--heritage-green))" }}
     >
-      <AmsterdamSkyline variant="section" />
 
       <p
         className="absolute top-5 right-5 md:top-8 md:right-10 text-2xl md:text-3xl rotate-[-4deg] hidden md:block z-10"
@@ -453,7 +450,6 @@ const HeroGreenStoryteller = () => (
       className="relative overflow-hidden rounded-3xl px-5 py-12 sm:px-8 sm:py-16 md:px-12 md:py-20 lg:px-16 lg:py-24"
       style={{ backgroundColor: "hsl(var(--heritage-green))" }}
     >
-      <AmsterdamSkyline variant="section" />
 
       <div className="relative mx-auto max-w-5xl" style={{ zIndex: 10 }}>
         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 md:gap-14 items-center">
@@ -520,7 +516,6 @@ const HeroEditorialGreenCaps = () => (
       className="relative overflow-hidden rounded-3xl px-6 py-14 sm:px-10 sm:py-20 md:px-16 md:py-24 lg:px-20 lg:py-28"
       style={{ backgroundColor: "hsl(var(--heritage-green))" }}
     >
-      <AmsterdamSkyline variant="section" />
 
       <div className="relative mx-auto max-w-6xl" style={{ zIndex: 10 }}>
         <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-center">
@@ -596,7 +591,6 @@ const HeroEditorialGreenListen = () => (
       className="relative overflow-hidden rounded-3xl px-6 py-14 sm:px-10 sm:py-20 md:px-16 md:py-24 lg:px-20 lg:py-28"
       style={{ backgroundColor: "hsl(var(--heritage-green))" }}
     >
-      <AmsterdamSkyline variant="section" />
 
       <div className="relative mx-auto max-w-6xl" style={{ zIndex: 10 }}>
         <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-center">
@@ -668,7 +662,6 @@ const HeroEditorialGreenV4Caps = () => (
       className="relative overflow-hidden rounded-3xl px-6 py-14 sm:px-10 sm:py-20 md:px-16 md:py-24 lg:px-20 lg:py-28"
       style={{ backgroundColor: "hsl(var(--heritage-green))" }}
     >
-      <AmsterdamSkyline variant="section" />
 
       <div className="relative mx-auto max-w-6xl" style={{ zIndex: 10 }}>
         <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-center">
@@ -763,7 +756,6 @@ const HeroEditorialGreenV4Mixed = () => (
       className="relative overflow-hidden rounded-3xl px-6 py-14 sm:px-10 sm:py-20 md:px-16 md:py-24 lg:px-20 lg:py-28"
       style={{ backgroundColor: "hsl(var(--heritage-green))" }}
     >
-      <AmsterdamSkyline variant="section" />
 
       <div className="relative mx-auto max-w-6xl" style={{ zIndex: 10 }}>
         <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-center">
@@ -837,7 +829,6 @@ const HeroGreenAllCaps = () => (
       className="relative overflow-hidden rounded-3xl px-5 py-12 sm:px-8 sm:py-16 md:px-12 md:py-20 lg:px-16 lg:py-24"
       style={{ backgroundColor: "hsl(var(--heritage-green))" }}
     >
-      <AmsterdamSkyline variant="section" />
 
       <p
         className="absolute top-5 right-5 md:top-8 md:right-10 text-2xl md:text-3xl rotate-[-4deg] hidden md:block z-10"
@@ -914,7 +905,6 @@ const HeroGreenHelloCaps = () => (
       className="relative overflow-hidden rounded-3xl px-5 py-12 sm:px-8 sm:py-16 md:px-12 md:py-20 lg:px-16 lg:py-24"
       style={{ backgroundColor: "hsl(var(--heritage-green))" }}
     >
-      <AmsterdamSkyline variant="section" />
 
       <p
         className="absolute top-5 right-5 md:top-8 md:right-10 text-2xl md:text-3xl rotate-[-4deg] hidden md:block z-10"
@@ -1004,7 +994,6 @@ const HeroEditorialGreenAllCaps = () => (
       className="relative overflow-hidden rounded-3xl px-6 py-14 sm:px-10 sm:py-20 md:px-16 md:py-24 lg:px-20 lg:py-28"
       style={{ backgroundColor: "hsl(var(--heritage-green))" }}
     >
-      <AmsterdamSkyline variant="section" />
 
       <div className="relative mx-auto max-w-6xl" style={{ zIndex: 10 }}>
         <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-center">
@@ -1079,7 +1068,6 @@ const HeroEditorialGreenHelloCaps = () => (
       className="relative overflow-hidden rounded-3xl px-6 py-14 sm:px-10 sm:py-20 md:px-16 md:py-24 lg:px-20 lg:py-28"
       style={{ backgroundColor: "hsl(var(--heritage-green))" }}
     >
-      <AmsterdamSkyline variant="section" />
 
       <div className="relative mx-auto max-w-6xl" style={{ zIndex: 10 }}>
         <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-center">

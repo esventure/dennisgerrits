@@ -451,7 +451,7 @@ const Index = () => {
                     color: "hsl(var(--heritage-bordeaux))",
                   }}
                 >
-                  With Rick Steves on an Amsterdam canal, 2023
+                  Sharing stories with Rick Steves along the canals of Amsterdam.
                 </p>
               </div>
             </FadeIn>
@@ -475,11 +475,11 @@ const Index = () => {
                   Dennis is the kind of local guide every traveler dreams of finding. He doesn't just show you Amsterdam. He makes you feel like you belong there.
                 </blockquote>
                 <p className="font-body text-foreground/80 leading-relaxed mb-8">
-                  Guest on the Rick Steves Travel with Rick Steves podcast across three episodes, exploring Amsterdam and the Netherlands beyond the tourist trail.
+                  Since 2018, Dennis has been featured in Rick Steves’ Amsterdam & the Netherlands guidebook and invited back for three podcast conversations, where Rick turned to Dennis for his trusted perspective on Amsterdam, its culture, and the people who call it home.
                 </p>
 
                 <p className="font-body text-sm tracking-widest uppercase text-secondary mb-4">
-                  Listen on Rick Steves
+                  In conversation with Rick Steves
                 </p>
                 <ul className="space-y-3">
                   {[

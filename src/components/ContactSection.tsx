@@ -92,7 +92,7 @@ const ContactSection = () => {
                   <RichText
                     className="font-body text-muted-foreground leading-relaxed mb-8"
                     html={t("booking.form.intro", "")}
-                    fallback="Leave your details and a few words about your trip. I'll reach out personally."
+                    fallback="Leave your contact details and tell me a little about yourself and the experience you're hoping for."
                   />
                   <form onSubmit={handleContactSubmit} className="space-y-6">
                     <div className="space-y-2">

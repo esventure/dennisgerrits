@@ -837,7 +837,7 @@ const Index = () => {
                 <p>A podcast about Amsterdam, identity, culture, city life and personal stories. Told through honest conversations with the people who shape the city.</p>
                 <p>Start with Episode 0 and step into the world of Two Stories, One City.</p>
                 <p>Curious for more conversations?</p>
-                <p>Listen to all episodes and join the journey at twostoriesonecity.com →</p>
+                <p>Listen to all episodes and join the journey at <a href="https://twostoriesonecity.com" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 transition-opacity hover:opacity-80" style={{ color: "hsl(var(--heritage-orange))" }}>twostoriesonecity.com</a> →</p>
               </div>
             </FadeIn>
           </div>

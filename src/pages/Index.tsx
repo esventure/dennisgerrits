@@ -892,7 +892,7 @@ const Index = () => {
                 <div className="max-w-3xl mb-12">
                   <FadeIn>
                     <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
-                      What Guests Say
+                      Stories from my guests
                     </p>
                     <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
                       Real Words From Real People

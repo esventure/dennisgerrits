@@ -641,19 +641,19 @@ const Index = () => {
                   display: "inline-block",
                 }}
               >
-                a few ideas to start with
+                Some ideas to inspire your journey
               </p>
               <p
                 className="font-body text-sm tracking-widest uppercase mb-6"
                 style={{ color: "hsl(var(--heritage-orange))" }}
               >
-                Building Blocks
+                Threads to follow
               </p>
               <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary leading-[0.95] mb-6">
-                What excites you?
+                What draws you in?
               </h2>
               <p className="font-body text-lg text-muted-foreground leading-relaxed">
-                Pick a thread, and we'll pull on it together. Here are a few to start with.
+                No two journeys are ever the same. These are a few places where they often begin.
               </p>
             </FadeIn>
           </div>

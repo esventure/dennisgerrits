@@ -526,8 +526,8 @@ const Index = () => {
             <div className="grid grid-cols-1 gap-6 md:gap-8 max-w-xl mx-auto">
               {[
                 {
-                  kicker: "Invite me",
-                  title: "Lectures, podcasts, radio & universities",
+                  kicker: "Invite Dennis",
+                  title: "Podcasts • Lectures • Radio • Live Events",
                   body: "If you're a host, producer, organiser, or university looking for a guest lecture or a story about Amsterdam beyond the tourist trail.",
                   cta: "Get in touch",
                   href: "#contact",

@@ -87,7 +87,7 @@ const ContactSection = () => {
                   style={{ borderLeftColor: "hsl(var(--heritage-orange))" }}
                 >
                   <h3 className="font-heading text-3xl text-primary mb-3">
-                    {t("booking.form.title", "Book a Call")}
+                    {t("booking.form.title", "Let’s Connect")}
                   </h3>
                   <RichText
                     className="font-body text-muted-foreground leading-relaxed mb-8"

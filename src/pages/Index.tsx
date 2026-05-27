@@ -832,9 +832,13 @@ const Index = () => {
               <p className="font-body text-xs tracking-[0.25em] uppercase mb-4" style={{ color: "hsl(var(--heritage-orange))" }}>
                 Also worth a listen
               </p>
-              <p className="font-body text-base md:text-lg leading-relaxed" style={{ color: "hsl(0 0% 96%)" }}>
-                A podcast I make on the side. Two Amsterdammers, one city, one conversation at a time.
-              </p>
+              <div className="font-body text-base md:text-lg leading-relaxed space-y-4" style={{ color: "hsl(0 0% 96%)" }}>
+                <p>A podcast by Louke &amp; Dennis. Two locals in conversation with their city, inviting you to listen.</p>
+                <p>A podcast about Amsterdam, identity, culture, city life and personal stories. Told through honest conversations with the people who shape the city.</p>
+                <p>Start with Episode 0 and step into the world of Two Stories, One City.</p>
+                <p>Curious for more conversations?</p>
+                <p>Listen to all episodes and join the journey at twostoriesonecity.com →</p>
+              </div>
             </FadeIn>
           </div>
           <FadeIn>

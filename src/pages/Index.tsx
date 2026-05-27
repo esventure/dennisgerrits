@@ -802,7 +802,7 @@ const Index = () => {
                   borderColor: "hsl(var(--heritage-orange))",
                 }}
               >
-                See all building blocks
+                Discover more
                 <span aria-hidden>→</span>
               </Link>
             </p>

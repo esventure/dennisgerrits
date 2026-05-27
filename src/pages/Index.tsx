@@ -591,7 +591,7 @@ const Index = () => {
                         <h3 className="font-heading text-xl md:text-2xl text-primary leading-tight mb-2">
                           {card.title}
                         </h3>
-                        <p className="font-body text-sm text-muted-foreground leading-relaxed mb-3">
+                        <p className="font-body text-sm text-muted-foreground leading-relaxed mb-3 whitespace-pre-line">
                           {card.body}
                         </p>
                         <span

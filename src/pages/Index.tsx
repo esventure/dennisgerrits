@@ -82,8 +82,8 @@ const moments = [
   },
   {
     time: "Late Afternoon",
-    title: "Winding Down",
-    text: "We find a spot for a drink. Something local, something good. We reflect on the day. By now, the city probably feels a bit different to you. More personal. More yours.",
+    title: "The City from the Water",
+    text: "At the end of the day, we step aboard a private boat and we can enjoy a glass of wine. As the light begins to reflect on the canals and the city slowly softens, Amsterdam somehow feels different again. Usually, that's the moment people truly start to feel the city.",
   },
 ];
 

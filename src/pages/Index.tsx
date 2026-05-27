@@ -472,7 +472,7 @@ const Index = () => {
                   >
                     “
                   </span>
-                  Dennis is the kind of local guide every traveller dreams of finding. He doesn't just show you Amsterdam. He makes you feel like you belong there.
+                  Dennis is the kind of local guide every traveler dreams of finding. He doesn't just show you Amsterdam. He makes you feel like you belong there.
                 </blockquote>
                 <p className="font-body text-foreground/80 leading-relaxed mb-8">
                   Guest on the Rick Steves Travel with Rick Steves podcast across three episodes, exploring Amsterdam and the Netherlands beyond the tourist trail.

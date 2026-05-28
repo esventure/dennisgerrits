@@ -8,6 +8,10 @@ import { useToast } from "@/hooks/use-toast";
 import dennisCanalSmile from "@/assets/dennis-canal-smile.jpg";
 import dennisTalking from "@/assets/dennis-talking.jpg";
 import iconMessage from "@/assets/icon-message.png";
+import iconItinerary from "@/assets/icon-itinerary.png";
+import iconFoot from "@/assets/icon-foot.png";
+import iconBoat from "@/assets/icon-boat.png";
+import iconHistory from "@/assets/icon-history.png";
 
 /* ── Small inline visual helpers (reused across sections) ── */
 
@@ -247,7 +251,7 @@ const TravelAgents = () => {
                       01
                     </p>
                   </div>
-                  <HandoverIcon color="hsl(var(--heritage-purple))" />
+                  <img src={iconItinerary} alt="" aria-hidden className="w-14 h-14 object-contain" loading="lazy" />
                 </div>
                 <h3 className="font-heading text-3xl lg:text-4xl text-primary mb-6 leading-tight">
                   You hand it over. I take care of the rest.
@@ -294,7 +298,7 @@ const TravelAgents = () => {
                       02
                     </p>
                   </div>
-                  <HandshakeIcon color="hsl(var(--heritage-green))" />
+                  <img src={iconFoot} alt="" aria-hidden className="w-14 h-14 object-contain" loading="lazy" />
                 </div>
                 <h3 className="font-heading text-3xl lg:text-4xl text-primary mb-6 leading-tight">
                   You plan. I deliver on the ground.
@@ -362,17 +366,11 @@ const TravelAgents = () => {
                   I'm there as a trusted presence on the ground, before, during, and whenever
                   needed throughout their stay.
                 </p>
-                <div className="relative">
-                  <p>
-                    I personally share my phone number with every client, so they can easily
-                    contact me throughout their stay, including in the evenings when needed.
-                  </p>
-                  <span className="hidden lg:block absolute -right-6 top-2">
-                    <HandwrittenNote rotate="6deg" color="hsl(var(--heritage-orange))">
-                      evenings included
-                    </HandwrittenNote>
-                  </span>
-                </div>
+                <p>
+                  I personally share my phone number with every client, so they can easily
+                  contact me throughout their stay, including in the evenings when needed.
+                </p>
+
                 <p>
                   Whether it's practical support like finding a pharmacy, help with local
                   coordination, last-minute adjustments, or simply a familiar contact in the
@@ -393,7 +391,7 @@ const TravelAgents = () => {
           <div className="max-w-4xl mx-auto">
             <FadeIn>
               <div className="flex justify-center mb-12">
-                <BridgeIcon />
+                <img src={iconBoat} alt="" aria-hidden className="w-16 h-16 object-contain" loading="lazy" />
               </div>
             </FadeIn>
 
@@ -409,7 +407,7 @@ const TravelAgents = () => {
               >
                 <PaperGrain />
                 <div className="relative">
-                  <StarSketch />
+                  <img src={iconHistory} alt="" aria-hidden className="w-12 h-12 object-contain" loading="lazy" />
                   <h3 className="font-heading text-3xl lg:text-4xl text-primary mt-4 mb-6 leading-tight">
                     A true extension of your service.
                   </h3>
@@ -440,14 +438,12 @@ const TravelAgents = () => {
         <div className="container mx-auto px-6 lg:px-12 relative">
           <FadeIn>
             <div className="text-center mb-16">
-              <HandwrittenNote rotate="-2deg" color="hsl(var(--heritage-green))" className="mb-3">
-                Their words
-              </HandwrittenNote>
               <p className="font-body text-sm tracking-widest uppercase text-secondary">
                 From Advisors I Work With
               </p>
             </div>
           </FadeIn>
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 max-w-5xl mx-auto">
             {[
               {

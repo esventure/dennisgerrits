@@ -298,7 +298,7 @@ const TravelAgents = () => {
                       02
                     </p>
                   </div>
-                  <HandshakeIcon color="hsl(var(--heritage-green))" />
+                  <img src={iconFoot} alt="" aria-hidden className="w-14 h-14 object-contain" loading="lazy" />
                 </div>
                 <h3 className="font-heading text-3xl lg:text-4xl text-primary mb-6 leading-tight">
                   You plan. I deliver on the ground.

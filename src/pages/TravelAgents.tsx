@@ -158,22 +158,28 @@ const TravelAgents = () => {
         <div className="container mx-auto px-6 lg:px-12 relative">
           <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-center">
             <FadeIn>
-              <HandwrittenNote rotate="-2deg" className="mb-4">
-                a quiet word for advisors
-              </HandwrittenNote>
               <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
                 For Travel Advisors
               </p>
               <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-primary leading-[0.95] mb-8">
                 I take care of your clients<br />in Amsterdam.
               </h1>
-              <p className="font-body text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-2xl mb-10">
-                You don't need another guide. You need someone you can trust with your clients,
-                completely. I am your trusted contact in Amsterdam, and when needed, throughout
-                the Netherlands.
-              </p>
+              <div className="font-body text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-2xl mb-10 space-y-5">
+                <p>
+                  I am your trusted contact in Amsterdam and, when needed, throughout the
+                  Netherlands.
+                </p>
+                <p>
+                  Someone who understands that your reputation is on the line. That your clients
+                  expect not just a well-planned trip, but a seamless, personal, and deeply local
+                  experience.
+                </p>
+                <p className="font-heading text-2xl lg:text-3xl text-primary tracking-wide uppercase">
+                  That's where I come in.
+                </p>
+              </div>
               <Link to="/#contact" className={ctaPrimary} style={ctaPrimaryStyle}>
-                Schedule a Short Call
+                Let's Connect
               </Link>
             </FadeIn>
 

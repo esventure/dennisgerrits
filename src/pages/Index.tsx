@@ -39,6 +39,8 @@ import peekArchitecture from "@/assets/interests/architecture.jpg";
 import storyCanalHouses from "@/assets/stories/canal-houses.jpg";
 import storyBench from "@/assets/stories/bench.jpg";
 import podcastCover from "@/assets/podcast-cover.jpg";
+import podcastHosts from "@/assets/podcast-hosts.jpg";
+import twoStoriesLogo from "@/assets/two-stories-one-city-logo.png";
 import PodcastPlayer from "@/components/PodcastPlayer";
 
 /* Hand-drawn ring path for the timeline step circles — matches the
@@ -827,23 +829,99 @@ const Index = () => {
         />
 
         <div className="container mx-auto px-6 lg:px-12 relative">
-          <div className="max-w-3xl mx-auto mb-6 md:mb-8 text-center">
-            <FadeIn>
-              <p className="font-body text-xs tracking-[0.25em] uppercase mb-4" style={{ color: "hsl(var(--heritage-orange))" }}>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+            {/* Left: wordmark logo */}
+            <FadeIn className="lg:col-span-3 flex justify-center lg:justify-start">
+              <img
+                src={twoStoriesLogo}
+                alt="Two Stories, One City — Amsterdam wordmark"
+                loading="lazy"
+                className="w-44 md:w-52 lg:w-full max-w-[260px] h-auto"
+                style={{ filter: "brightness(0) invert(1)" }}
+              />
+            </FadeIn>
+
+            {/* Center: kicker, heading, copy, player */}
+            <FadeIn className="lg:col-span-6 lg:border-x lg:px-10 lg:[border-color:hsl(0_0%_100%/0.15)]">
+              <p
+                className="font-body text-xs tracking-[0.25em] uppercase mb-4"
+                style={{ color: "hsl(var(--heritage-orange))" }}
+              >
                 Also worth a listen
               </p>
-              <div className="font-body text-base md:text-lg leading-relaxed space-y-4" style={{ color: "hsl(0 0% 96%)" }}>
-                <p>A podcast by Louke &amp; Dennis. Two locals in conversation with their city, inviting you to listen.</p>
-                <p>A podcast about Amsterdam, identity, culture, city life and personal stories. Told through honest conversations with the people who shape the city.</p>
-                <p>Start with Episode 0 and step into the world of Two Stories, One City.</p>
-                <p>Curious for more conversations?</p>
-                <p>Listen to all episodes and join the journey at <a href="https://twostoriesonecity.com" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 transition-opacity hover:opacity-80" style={{ color: "hsl(var(--heritage-orange))" }}>twostoriesonecity.com</a> →</p>
+              <h2
+                className="font-heading text-3xl md:text-4xl lg:text-5xl leading-[1.05] mb-5"
+                style={{ color: "hsl(0 0% 98%)" }}
+              >
+                Two Stories, One City<br />Amsterdam
+              </h2>
+              <p className="font-body text-base md:text-lg leading-relaxed mb-2" style={{ color: "hsl(0 0% 92%)" }}>
+                A podcast by Louke and Dennis.
+              </p>
+              <p
+                className="font-body italic text-base md:text-lg leading-relaxed mb-5"
+                style={{ color: "hsl(var(--heritage-orange))" }}
+              >
+                Two locals in conversation with their city, inviting you to listen.
+              </p>
+              <p className="font-body text-base leading-relaxed mb-6" style={{ color: "hsl(0 0% 88%)" }}>
+                Stories about Amsterdam, identity, culture, city life and personal experiences, told through the people who shape the city.
+              </p>
+
+              <div className="flex items-start gap-3 mb-6">
+                <span
+                  className="shrink-0 w-9 h-9 rounded-full border flex items-center justify-center"
+                  style={{ borderColor: "hsl(var(--heritage-orange))", color: "hsl(var(--heritage-orange))" }}
+                  aria-hidden
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="9" y="2" width="6" height="12" rx="3" />
+                    <path d="M5 10a7 7 0 0 0 14 0" />
+                    <line x1="12" y1="19" x2="12" y2="22" />
+                  </svg>
+                </span>
+                <p className="font-body text-base leading-snug" style={{ color: "hsl(0 0% 94%)" }}>
+                  <span className="font-semibold">Start with Episode 0</span><br />
+                  <span style={{ color: "hsl(0 0% 82%)" }}>and step into the world of <em>Two Stories, One City</em>.</span>
+                </p>
               </div>
+
+              <PodcastPlayer tone="dark" />
+            </FadeIn>
+
+            {/* Right: hosts photo + listen link */}
+            <FadeIn className="lg:col-span-3 flex flex-col items-center lg:items-start gap-6">
+              <img
+                src={podcastHosts}
+                alt="Louke and Dennis, hosts of Two Stories, One City"
+                loading="lazy"
+                className="w-full max-w-[280px] h-auto rounded-sm shadow-lg object-cover aspect-[4/3]"
+              />
+              <a
+                href="https://twostoriesonecity.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-start gap-3 transition-opacity hover:opacity-80"
+              >
+                <span
+                  className="shrink-0 w-9 h-9 rounded-full border flex items-center justify-center mt-1"
+                  style={{ borderColor: "hsl(var(--heritage-orange))", color: "hsl(var(--heritage-orange))" }}
+                  aria-hidden
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </span>
+                <span className="font-body text-sm md:text-base leading-snug" style={{ color: "hsl(0 0% 92%)" }}>
+                  Listen to all episodes and<br />join the journey at<br />
+                  <span className="underline underline-offset-4" style={{ color: "hsl(var(--heritage-orange))" }}>
+                    twostoriesonecity.com →
+                  </span>
+                </span>
+              </a>
             </FadeIn>
           </div>
-          <FadeIn>
-            <PodcastPlayer tone="dark" />
-          </FadeIn>
         </div>
       </section>
 

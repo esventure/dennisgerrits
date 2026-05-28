@@ -392,28 +392,12 @@ const TravelAgents = () => {
         <div className="container mx-auto px-6 lg:px-12 relative">
           <div className="max-w-4xl mx-auto">
             <FadeIn>
-              <div className="text-center mb-12">
-                <div className="flex justify-center mb-6">
-                  <BridgeIcon />
-                </div>
-                <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-primary leading-[0.95]">
-                  Deeply local.<br />Personally connected.
-                </h2>
+              <div className="flex justify-center mb-12">
+                <BridgeIcon />
               </div>
             </FadeIn>
-            <FadeIn delay={0.1}>
-              <div className="space-y-6 font-body text-lg text-foreground/90 leading-relaxed max-w-2xl mx-auto">
-                <p>
-                  I've lived in Amsterdam for over 20 years. I know the city like the back of my
-                  hand, not just the highlights, but the places that make people feel something.
-                </p>
-                <p>
-                  And for many of my clients, the experience doesn't stop there. I also guide
-                  and support them throughout the Netherlands, from other cities to the
-                  countryside.
-                </p>
-              </div>
-            </FadeIn>
+
+
 
             <FadeIn delay={0.2}>
               <div

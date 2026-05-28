@@ -299,28 +299,23 @@ const TravelAgents = () => {
                 <h3 className="font-heading text-3xl lg:text-4xl text-primary mb-6 leading-tight">
                   You plan. I deliver on the ground.
                 </h3>
-                <p className="font-body text-muted-foreground leading-relaxed mb-8">
-                  If you prefer to design everything yourself, I become your trusted presence in
-                  Amsterdam.
-                </p>
-                <ul className="space-y-4 font-body text-foreground/90">
-                  {[
-                    "I guide your clients in a personal, meaningful way",
-                    "I elevate your itinerary with local knowledge and access",
-                    "I make sure everything runs smoothly once they arrive",
-                  ].map((item) => (
-                    <li key={item} className="flex gap-4 items-start">
-                      <span
-                        className="block h-[2px] w-4 mt-3 shrink-0"
-                        style={{ backgroundColor: "hsl(var(--heritage-orange))" }}
-                      />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <p className="font-body text-sm text-muted-foreground italic mt-8">
-                  You stay in control. I make sure it comes to life.
-                </p>
+                <div className="space-y-5 font-body text-foreground/90 leading-relaxed">
+                  <p>
+                    You already have the trip, itinerary, or structure in place. I step in as
+                    your trusted local contact on the ground in Amsterdam and throughout the
+                    Netherlands.
+                  </p>
+                  <p>
+                    I welcome your clients personally, help bring the itinerary to life, assist
+                    with local coordination when needed, and make sure everything runs smoothly
+                    during their stay.
+                  </p>
+                  <p>
+                    Your clients experience the warmth, flexibility, and local connection of
+                    having someone nearby while you remain their trusted advisor throughout the
+                    journey.
+                  </p>
+                </div>
               </article>
             </FadeIn>
           </div>

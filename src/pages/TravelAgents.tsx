@@ -407,7 +407,7 @@ const TravelAgents = () => {
               >
                 <PaperGrain />
                 <div className="relative">
-                  <StarSketch />
+                  <img src={iconHistory} alt="" aria-hidden className="w-12 h-12 object-contain" loading="lazy" />
                   <h3 className="font-heading text-3xl lg:text-4xl text-primary mt-4 mb-6 leading-tight">
                     A true extension of your service.
                   </h3>

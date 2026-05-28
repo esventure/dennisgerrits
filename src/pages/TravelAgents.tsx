@@ -441,7 +441,7 @@ const TravelAgents = () => {
           <FadeIn>
             <div className="text-center mb-16">
               <HandwrittenNote rotate="-2deg" color="hsl(var(--heritage-green))" className="mb-3">
-                in their words
+                Their words
               </HandwrittenNote>
               <p className="font-body text-sm tracking-widest uppercase text-secondary">
                 From Advisors I Work With

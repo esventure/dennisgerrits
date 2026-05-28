@@ -214,55 +214,16 @@ const TravelAgents = () => {
         </div>
       </section>
 
-      {/* ────────────────── 2. The Promise ────────────────── */}
-      <section
-        className="relative py-20 lg:py-28 overflow-hidden"
-        style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.18)" }}
-      >
-        <PaperGrain />
-        <div className="container mx-auto px-6 lg:px-12 relative">
-          <FadeIn>
-            <div className="max-w-3xl mx-auto text-center relative">
-              <span
-                aria-hidden
-                className="absolute -top-12 left-1/2 -translate-x-1/2 font-heading text-9xl leading-none select-none"
-                style={{ color: "hsl(var(--heritage-orange) / 0.7)" }}
-              >
-                “
-              </span>
-              <p className="font-body text-2xl lg:text-3xl text-primary leading-relaxed pt-8">
-                Someone who understands that your reputation is on the line. That your clients
-                expect not just a well-planned trip, but a seamless, personal, and deeply local
-                experience.
-              </p>
-              <div className="mt-12 inline-block">
-                <p className="font-heading text-3xl lg:text-4xl text-primary">
-                  That's where I come in.
-                </p>
-                <div className="flex justify-center mt-2">
-                  <Squiggle />
-                </div>
-              </div>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      <SectionDivider />
-
       {/* ────────────────── 3. Two Ways to Work Together ────────────────── */}
       <section className="py-20 lg:py-28">
         <div className="container mx-auto px-6 lg:px-12">
           <FadeIn>
             <div className="max-w-3xl mb-16">
-              <p className="font-body text-sm tracking-widest uppercase text-secondary mb-4">
-                How We Work
-              </p>
               <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-primary leading-[0.95]">
                 Two ways to work together
               </h2>
               <p className="font-body text-lg text-muted-foreground mt-6">
-                Every travel advisor works differently. I adapt to you.
+                Every travel advisor works differently. I adapt to the way you prefer to work.
               </p>
             </div>
           </FadeIn>

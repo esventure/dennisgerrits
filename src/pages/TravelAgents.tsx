@@ -523,26 +523,20 @@ const TravelAgents = () => {
                     loading="lazy"
                   />
                 </div>
-                <HandwrittenNote rotate="-3deg" className="mb-4">
-                  write me, I read every one
-                </HandwrittenNote>
                 <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
                   Let's Connect
                 </p>
                 <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-primary leading-[0.95] mb-8">
                   If this resonates, I'd love to hear from you.
                 </h2>
-                <p className="font-body text-lg text-muted-foreground leading-relaxed mb-10">
-                  The easiest way to start is a short call. We can talk through how you work,
-                  the kind of clients you serve, and whether we're a good fit.
-                </p>
-                <Link to="/#contact" className={`${ctaPrimary} mb-8`} style={ctaPrimaryStyle}>
-                  Schedule a Short Call
-                </Link>
-                <p className="font-body text-sm text-muted-foreground mt-6">
-                  Or write directly using the form. I read and respond to every message
-                  personally.
-                </p>
+                <div className="font-body text-lg text-muted-foreground leading-relaxed space-y-5">
+                  <p>The easiest way to start is simply by sending me a message.</p>
+                  <p>
+                    From there, we can schedule a short introductory call so I can introduce
+                    myself and learn more about how you like to work and what your clients are
+                    looking for.
+                  </p>
+                </div>
               </div>
             </FadeIn>
 

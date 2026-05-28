@@ -18,9 +18,9 @@ import imgMarkets from "@/assets/interests/markets.jpg";
 const themes = [
   {
     id: "history",
-    title: "Hidden History",
-    caption: "I'll take you down an alley most locals walk past. There's a stone above a doorway with a story almost no one knows.",
-    note: "ask me about the cat",
+    title: "The Neighbourhood Way",
+    caption: "A bench in the sun. Someone watering plants outside their front door. Fresh bread somewhere nearby.",
+    note: "real Amsterdam lives here",
     image: imgHistory,
     rotate: -2.4,
     pin: "tape-tl",

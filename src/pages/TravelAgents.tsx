@@ -438,14 +438,12 @@ const TravelAgents = () => {
         <div className="container mx-auto px-6 lg:px-12 relative">
           <FadeIn>
             <div className="text-center mb-16">
-              <HandwrittenNote rotate="-2deg" color="hsl(var(--heritage-green))" className="mb-3">
-                Their words
-              </HandwrittenNote>
               <p className="font-body text-sm tracking-widest uppercase text-secondary">
                 From Advisors I Work With
               </p>
             </div>
           </FadeIn>
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 max-w-5xl mx-auto">
             {[
               {

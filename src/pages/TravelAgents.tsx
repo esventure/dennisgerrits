@@ -366,17 +366,11 @@ const TravelAgents = () => {
                   I'm there as a trusted presence on the ground, before, during, and whenever
                   needed throughout their stay.
                 </p>
-                <div className="relative">
-                  <p>
-                    I personally share my phone number with every client, so they can easily
-                    contact me throughout their stay, including in the evenings when needed.
-                  </p>
-                  <span className="hidden lg:block absolute -right-6 top-2">
-                    <HandwrittenNote rotate="6deg" color="hsl(var(--heritage-orange))">
-                      evenings included
-                    </HandwrittenNote>
-                  </span>
-                </div>
+                <p>
+                  I personally share my phone number with every client, so they can easily
+                  contact me throughout their stay, including in the evenings when needed.
+                </p>
+
                 <p>
                   Whether it's practical support like finding a pharmacy, help with local
                   coordination, last-minute adjustments, or simply a familiar contact in the

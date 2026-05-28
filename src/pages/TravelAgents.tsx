@@ -583,7 +583,7 @@ const TravelAgents = () => {
                     />
                   </div>
                   <button type="submit" className={`${ctaPrimary} w-full`} style={ctaPrimaryStyle}>
-                    Send Message
+                    Reach out
                   </button>
                 </form>
               </div>

@@ -353,19 +353,19 @@ const TravelAgents = () => {
                     className="float-left font-heading text-7xl leading-[0.8] pr-3 pt-1"
                     style={{ color: "hsl(var(--heritage-bordeaux))" }}
                   >
-                    F
+                    T
                   </span>
-                  rom the moment your clients are preparing for their trip, I am there. Once
-                  they arrive, I become their direct point of contact. I share my phone number
-                  with them personally, so they can reach me whenever they need to.
+                  ravel plans can change. Questions come up. Sometimes clients simply feel more
+                  comfortable knowing they have someone local they can reach out to.
+                </p>
+                <p>
+                  I'm there as a trusted presence on the ground, before, during, and whenever
+                  needed throughout their stay.
                 </p>
                 <div className="relative">
                   <p>
-                    I'm available throughout their stay, evenings included, for guidance,
-                    support, and peace of mind. Whether it's something simple or unexpected, they
-                    know they have someone local they can trust. From last-minute reservations to
-                    help navigating public transportation, or practical needs such as finding a
-                    pharmacy.
+                    I personally share my phone number with every client, so they can easily
+                    contact me throughout their stay, including in the evenings when needed.
                   </p>
                   <span className="hidden lg:block absolute -right-6 top-2">
                     <HandwrittenNote rotate="6deg" color="hsl(var(--heritage-orange))">
@@ -373,8 +373,10 @@ const TravelAgents = () => {
                     </HandwrittenNote>
                   </span>
                 </div>
-                <p className="font-heading text-2xl text-primary pt-4">
-                  Quietly, quickly, and personally. So you don't have to.
+                <p>
+                  Whether it's practical support like finding a pharmacy, help with local
+                  coordination, last-minute adjustments, or simply a familiar contact in the
+                  city, your clients know they are not navigating Amsterdam alone.
                 </p>
               </div>
             </FadeIn>

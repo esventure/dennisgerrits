@@ -251,7 +251,7 @@ const TravelAgents = () => {
                       01
                     </p>
                   </div>
-                  <HandoverIcon color="hsl(var(--heritage-purple))" />
+                  <img src={iconItinerary} alt="" aria-hidden className="w-14 h-14 object-contain" loading="lazy" />
                 </div>
                 <h3 className="font-heading text-3xl lg:text-4xl text-primary mb-6 leading-tight">
                   You hand it over. I take care of the rest.

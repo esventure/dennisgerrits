@@ -158,22 +158,28 @@ const TravelAgents = () => {
         <div className="container mx-auto px-6 lg:px-12 relative">
           <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-center">
             <FadeIn>
-              <HandwrittenNote rotate="-2deg" className="mb-4">
-                a quiet word for advisors
-              </HandwrittenNote>
               <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
                 For Travel Advisors
               </p>
               <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-primary leading-[0.95] mb-8">
                 I take care of your clients<br />in Amsterdam.
               </h1>
-              <p className="font-body text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-2xl mb-10">
-                You don't need another guide. You need someone you can trust with your clients,
-                completely. I am your trusted contact in Amsterdam, and when needed, throughout
-                the Netherlands.
-              </p>
+              <div className="font-body text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-2xl mb-10 space-y-5">
+                <p>
+                  I am your trusted contact in Amsterdam and, when needed, throughout the
+                  Netherlands.
+                </p>
+                <p>
+                  Someone who understands that your reputation is on the line. That your clients
+                  expect not just a well-planned trip, but a seamless, personal, and deeply local
+                  experience.
+                </p>
+                <p className="font-heading text-2xl lg:text-3xl text-primary tracking-wide uppercase">
+                  That's where I come in.
+                </p>
+              </div>
               <Link to="/#contact" className={ctaPrimary} style={ctaPrimaryStyle}>
-                Schedule a Short Call
+                Let's Connect
               </Link>
             </FadeIn>
 
@@ -208,55 +214,16 @@ const TravelAgents = () => {
         </div>
       </section>
 
-      {/* ────────────────── 2. The Promise ────────────────── */}
-      <section
-        className="relative py-20 lg:py-28 overflow-hidden"
-        style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.18)" }}
-      >
-        <PaperGrain />
-        <div className="container mx-auto px-6 lg:px-12 relative">
-          <FadeIn>
-            <div className="max-w-3xl mx-auto text-center relative">
-              <span
-                aria-hidden
-                className="absolute -top-12 left-1/2 -translate-x-1/2 font-heading text-9xl leading-none select-none"
-                style={{ color: "hsl(var(--heritage-orange) / 0.7)" }}
-              >
-                “
-              </span>
-              <p className="font-body text-2xl lg:text-3xl text-primary leading-relaxed pt-8">
-                Someone who understands that your reputation is on the line. That your clients
-                expect not just a well-planned trip, but a seamless, personal, and deeply local
-                experience.
-              </p>
-              <div className="mt-12 inline-block">
-                <p className="font-heading text-3xl lg:text-4xl text-primary">
-                  That's where I come in.
-                </p>
-                <div className="flex justify-center mt-2">
-                  <Squiggle />
-                </div>
-              </div>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      <SectionDivider />
-
       {/* ────────────────── 3. Two Ways to Work Together ────────────────── */}
       <section className="py-20 lg:py-28">
         <div className="container mx-auto px-6 lg:px-12">
           <FadeIn>
             <div className="max-w-3xl mb-16">
-              <p className="font-body text-sm tracking-widest uppercase text-secondary mb-4">
-                How We Work
-              </p>
               <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-primary leading-[0.95]">
                 Two ways to work together
               </h2>
               <p className="font-body text-lg text-muted-foreground mt-6">
-                Every travel advisor works differently. I adapt to you.
+                Every travel advisor works differently. I adapt to the way you prefer to work.
               </p>
             </div>
           </FadeIn>
@@ -283,30 +250,29 @@ const TravelAgents = () => {
                   <HandoverIcon color="hsl(var(--heritage-purple))" />
                 </div>
                 <h3 className="font-heading text-3xl lg:text-4xl text-primary mb-6 leading-tight">
-                  You hand it over. I Take Care of the Details.
+                  You hand it over. I take care of the rest.
                 </h3>
-                <p className="font-body text-muted-foreground leading-relaxed mb-8">
-                  If you prefer to stay at a higher level, I step in as your local partner.
-                </p>
-                <ul className="space-y-4 font-body text-foreground/90">
-                  {[
-                    "A personal video call to connect with your clients",
-                    "Fully tailored itineraries based on who they are",
-                    "Advice on hotels, neighbourhoods, pacing and overall flow",
-                    "All reservations and logistics: tickets, timed entries, restaurants, private boats and private cars",
-                  ].map((item) => (
-                    <li key={item} className="flex gap-4 items-start">
-                      <span
-                        className="block h-[2px] w-4 mt-3 shrink-0"
-                        style={{ backgroundColor: "hsl(var(--heritage-orange))" }}
-                      />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <p className="font-body text-sm text-muted-foreground italic mt-8">
-                  From planning to execution, your clients are completely looked after.
-                </p>
+                <div className="space-y-5 font-body text-foreground/90 leading-relaxed">
+                  <p>
+                    Your clients are personally taken care of before they even arrive in
+                    Amsterdam.
+                  </p>
+                  <p>
+                    I begin with a video call to get to know them, their interests, travel style,
+                    pace, and what they hope to experience during their time in the Netherlands.
+                    Based on that, I create a fully personalized itinerary that feels thoughtful,
+                    seamless, and deeply local.
+                  </p>
+                  <p>
+                    I take care of reservations, tickets and timed entries, private boats,
+                    transportation, restaurant recommendations, and personal guidance throughout
+                    their stay. Always with flexibility, attention to detail, and genuine care.
+                  </p>
+                  <p>
+                    You stay informed, while your clients feel relaxed, welcomed, and completely
+                    looked after.
+                  </p>
+                </div>
               </article>
             </FadeIn>
 
@@ -333,28 +299,23 @@ const TravelAgents = () => {
                 <h3 className="font-heading text-3xl lg:text-4xl text-primary mb-6 leading-tight">
                   You plan. I deliver on the ground.
                 </h3>
-                <p className="font-body text-muted-foreground leading-relaxed mb-8">
-                  If you prefer to design everything yourself, I become your trusted presence in
-                  Amsterdam.
-                </p>
-                <ul className="space-y-4 font-body text-foreground/90">
-                  {[
-                    "I guide your clients in a personal, meaningful way",
-                    "I elevate your itinerary with local knowledge and access",
-                    "I make sure everything runs smoothly once they arrive",
-                  ].map((item) => (
-                    <li key={item} className="flex gap-4 items-start">
-                      <span
-                        className="block h-[2px] w-4 mt-3 shrink-0"
-                        style={{ backgroundColor: "hsl(var(--heritage-orange))" }}
-                      />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <p className="font-body text-sm text-muted-foreground italic mt-8">
-                  You stay in control. I make sure it comes to life.
-                </p>
+                <div className="space-y-5 font-body text-foreground/90 leading-relaxed">
+                  <p>
+                    You already have the trip, itinerary, or structure in place. I step in as
+                    your trusted local contact on the ground in Amsterdam and throughout the
+                    Netherlands.
+                  </p>
+                  <p>
+                    I welcome your clients personally, help bring the itinerary to life, assist
+                    with local coordination when needed, and make sure everything runs smoothly
+                    during their stay.
+                  </p>
+                  <p>
+                    Your clients experience the warmth, flexibility, and local connection of
+                    having someone nearby while you remain their trusted advisor throughout the
+                    journey.
+                  </p>
+                </div>
               </article>
             </FadeIn>
           </div>
@@ -392,19 +353,19 @@ const TravelAgents = () => {
                     className="float-left font-heading text-7xl leading-[0.8] pr-3 pt-1"
                     style={{ color: "hsl(var(--heritage-bordeaux))" }}
                   >
-                    F
+                    T
                   </span>
-                  rom the moment your clients are preparing for their trip, I am there. Once
-                  they arrive, I become their direct point of contact. I share my phone number
-                  with them personally, so they can reach me whenever they need to.
+                  ravel plans can change. Questions come up. Sometimes clients simply feel more
+                  comfortable knowing they have someone local they can reach out to.
+                </p>
+                <p>
+                  I'm there as a trusted presence on the ground, before, during, and whenever
+                  needed throughout their stay.
                 </p>
                 <div className="relative">
                   <p>
-                    I'm available throughout their stay, evenings included, for guidance,
-                    support, and peace of mind. Whether it's something simple or unexpected, they
-                    know they have someone local they can trust. From last-minute reservations to
-                    help navigating public transportation, or practical needs such as finding a
-                    pharmacy.
+                    I personally share my phone number with every client, so they can easily
+                    contact me throughout their stay, including in the evenings when needed.
                   </p>
                   <span className="hidden lg:block absolute -right-6 top-2">
                     <HandwrittenNote rotate="6deg" color="hsl(var(--heritage-orange))">
@@ -412,8 +373,10 @@ const TravelAgents = () => {
                     </HandwrittenNote>
                   </span>
                 </div>
-                <p className="font-heading text-2xl text-primary pt-4">
-                  Quietly, quickly, and personally. So you don't have to.
+                <p>
+                  Whether it's practical support like finding a pharmacy, help with local
+                  coordination, last-minute adjustments, or simply a familiar contact in the
+                  city, your clients know they are not navigating Amsterdam alone.
                 </p>
               </div>
             </FadeIn>
@@ -429,32 +392,16 @@ const TravelAgents = () => {
         <div className="container mx-auto px-6 lg:px-12 relative">
           <div className="max-w-4xl mx-auto">
             <FadeIn>
-              <div className="text-center mb-12">
-                <div className="flex justify-center mb-6">
-                  <BridgeIcon />
-                </div>
-                <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-primary leading-[0.95]">
-                  Deeply local.<br />Personally connected.
-                </h2>
-              </div>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <div className="space-y-6 font-body text-lg text-foreground/90 leading-relaxed max-w-2xl mx-auto">
-                <p>
-                  I've lived in Amsterdam for over 20 years. I know the city like the back of my
-                  hand, not just the highlights, but the places that make people feel something.
-                </p>
-                <p>
-                  And for many of my clients, the experience doesn't stop there. I also guide
-                  and support them throughout the Netherlands, from other cities to the
-                  countryside.
-                </p>
+              <div className="flex justify-center mb-12">
+                <BridgeIcon />
               </div>
             </FadeIn>
 
+
+
             <FadeIn delay={0.2}>
               <div
-                className="relative mt-20 p-10 lg:p-12 border-l-4 bg-background shadow-md"
+                className="relative p-10 lg:p-12 border-l-4 bg-background shadow-md"
                 style={{
                   borderColor: "hsl(var(--heritage-orange))",
                   transform: "rotate(-0.5deg)",
@@ -494,7 +441,7 @@ const TravelAgents = () => {
           <FadeIn>
             <div className="text-center mb-16">
               <HandwrittenNote rotate="-2deg" color="hsl(var(--heritage-green))" className="mb-3">
-                in their words
+                Their words
               </HandwrittenNote>
               <p className="font-body text-sm tracking-widest uppercase text-secondary">
                 From Advisors I Work With
@@ -576,26 +523,20 @@ const TravelAgents = () => {
                     loading="lazy"
                   />
                 </div>
-                <HandwrittenNote rotate="-3deg" className="mb-4">
-                  write me, I read every one
-                </HandwrittenNote>
                 <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
                   Let's Connect
                 </p>
                 <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-primary leading-[0.95] mb-8">
                   If this resonates, I'd love to hear from you.
                 </h2>
-                <p className="font-body text-lg text-muted-foreground leading-relaxed mb-10">
-                  The easiest way to start is a short call. We can talk through how you work,
-                  the kind of clients you serve, and whether we're a good fit.
-                </p>
-                <Link to="/#contact" className={`${ctaPrimary} mb-8`} style={ctaPrimaryStyle}>
-                  Schedule a Short Call
-                </Link>
-                <p className="font-body text-sm text-muted-foreground mt-6">
-                  Or write directly using the form. I read and respond to every message
-                  personally.
-                </p>
+                <div className="font-body text-lg text-muted-foreground leading-relaxed space-y-5">
+                  <p>The easiest way to start is simply by sending me a message.</p>
+                  <p>
+                    From there, we can schedule a short introductory call so I can introduce
+                    myself and learn more about how you like to work and what your clients are
+                    looking for.
+                  </p>
+                </div>
               </div>
             </FadeIn>
 
@@ -604,7 +545,7 @@ const TravelAgents = () => {
                 className="bg-background rounded-sm p-10 shadow-md border-t-4"
                 style={{ borderColor: "hsl(var(--heritage-orange))" }}
               >
-                <h3 className="font-heading text-2xl text-primary mb-6">Send a message</h3>
+                <h3 className="font-heading text-2xl text-primary mb-6">Get in touch</h3>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="space-y-2">
                     <Label className="font-body text-sm">Your Name</Label>
@@ -642,7 +583,7 @@ const TravelAgents = () => {
                     />
                   </div>
                   <button type="submit" className={`${ctaPrimary} w-full`} style={ctaPrimaryStyle}>
-                    Send Message
+                    Reach out
                   </button>
                 </form>
               </div>

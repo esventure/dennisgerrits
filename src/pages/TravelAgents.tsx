@@ -545,7 +545,7 @@ const TravelAgents = () => {
                 className="bg-background rounded-sm p-10 shadow-md border-t-4"
                 style={{ borderColor: "hsl(var(--heritage-orange))" }}
               >
-                <h3 className="font-heading text-2xl text-primary mb-6">Send a message</h3>
+                <h3 className="font-heading text-2xl text-primary mb-6">Get in touch</h3>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="space-y-2">
                     <Label className="font-body text-sm">Your Name</Label>

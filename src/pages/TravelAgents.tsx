@@ -401,7 +401,7 @@ const TravelAgents = () => {
 
             <FadeIn delay={0.2}>
               <div
-                className="relative mt-20 p-10 lg:p-12 border-l-4 bg-background shadow-md"
+                className="relative p-10 lg:p-12 border-l-4 bg-background shadow-md"
                 style={{
                   borderColor: "hsl(var(--heritage-orange))",
                   transform: "rotate(-0.5deg)",

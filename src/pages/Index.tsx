@@ -842,7 +842,7 @@ const Index = () => {
             </FadeIn>
 
             {/* Center: kicker, heading, copy, player */}
-            <FadeIn className="lg:col-span-6 lg:border-x lg:px-10" style={{ borderColor: "hsl(0 0% 100% / 0.15)" }}>
+            <FadeIn className="lg:col-span-6 lg:border-x lg:px-10 lg:[border-color:hsl(0_0%_100%/0.15)]">
               <p
                 className="font-body text-xs tracking-[0.25em] uppercase mb-4"
                 style={{ color: "hsl(var(--heritage-orange))" }}

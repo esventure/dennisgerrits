@@ -8,6 +8,10 @@ import { useToast } from "@/hooks/use-toast";
 import dennisCanalSmile from "@/assets/dennis-canal-smile.jpg";
 import dennisTalking from "@/assets/dennis-talking.jpg";
 import iconMessage from "@/assets/icon-message.png";
+import iconItinerary from "@/assets/icon-itinerary.png";
+import iconFoot from "@/assets/icon-foot.png";
+import iconBoat from "@/assets/icon-boat.png";
+import iconHistory from "@/assets/icon-history.png";
 
 /* ── Small inline visual helpers (reused across sections) ── */
 

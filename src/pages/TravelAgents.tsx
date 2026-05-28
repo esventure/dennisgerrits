@@ -391,7 +391,7 @@ const TravelAgents = () => {
           <div className="max-w-4xl mx-auto">
             <FadeIn>
               <div className="flex justify-center mb-12">
-                <BridgeIcon />
+                <img src={iconBoat} alt="" aria-hidden className="w-16 h-16 object-contain" loading="lazy" />
               </div>
             </FadeIn>
 

@@ -161,19 +161,19 @@ const GetInspired = () => {
                   display: "inline-block",
                 }}
               >
-                a few ideas to start with
+                Some ideas to inspire your journey
               </p>
               <p
                 className="font-body text-sm tracking-widest uppercase mb-6"
                 style={{ color: "hsl(var(--heritage-orange))" }}
               >
-                What excites you?
+                Threads to follow
               </p>
               <h1
                 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95] mb-8 relative inline-block"
                 style={{ color: "hsl(0 0% 98%)" }}
               >
-                Build Your Day
+                What draws you in?
                 <svg
                   aria-hidden
                   className="absolute -bottom-2 right-0"
@@ -196,7 +196,7 @@ const GetInspired = () => {
                 className="font-body text-lg leading-relaxed"
                 style={{ color: "hsl(0 0% 94%)" }}
               >
-                Tell me what you love, and I'll show you a side of Amsterdam you won't find in any guidebook.
+                No two journeys are ever the same. These are a few places where they often begin.
               </p>
             </FadeIn>
           </div>

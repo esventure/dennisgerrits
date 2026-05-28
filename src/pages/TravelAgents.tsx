@@ -250,30 +250,29 @@ const TravelAgents = () => {
                   <HandoverIcon color="hsl(var(--heritage-purple))" />
                 </div>
                 <h3 className="font-heading text-3xl lg:text-4xl text-primary mb-6 leading-tight">
-                  You hand it over. I Take Care of the Details.
+                  You hand it over. I take care of the rest.
                 </h3>
-                <p className="font-body text-muted-foreground leading-relaxed mb-8">
-                  If you prefer to stay at a higher level, I step in as your local partner.
-                </p>
-                <ul className="space-y-4 font-body text-foreground/90">
-                  {[
-                    "A personal video call to connect with your clients",
-                    "Fully tailored itineraries based on who they are",
-                    "Advice on hotels, neighbourhoods, pacing and overall flow",
-                    "All reservations and logistics: tickets, timed entries, restaurants, private boats and private cars",
-                  ].map((item) => (
-                    <li key={item} className="flex gap-4 items-start">
-                      <span
-                        className="block h-[2px] w-4 mt-3 shrink-0"
-                        style={{ backgroundColor: "hsl(var(--heritage-orange))" }}
-                      />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <p className="font-body text-sm text-muted-foreground italic mt-8">
-                  From planning to execution, your clients are completely looked after.
-                </p>
+                <div className="space-y-5 font-body text-foreground/90 leading-relaxed">
+                  <p>
+                    Your clients are personally taken care of before they even arrive in
+                    Amsterdam.
+                  </p>
+                  <p>
+                    I begin with a video call to get to know them, their interests, travel style,
+                    pace, and what they hope to experience during their time in the Netherlands.
+                    Based on that, I create a fully personalized itinerary that feels thoughtful,
+                    seamless, and deeply local.
+                  </p>
+                  <p>
+                    I take care of reservations, tickets and timed entries, private boats,
+                    transportation, restaurant recommendations, and personal guidance throughout
+                    their stay. Always with flexibility, attention to detail, and genuine care.
+                  </p>
+                  <p>
+                    You stay informed, while your clients feel relaxed, welcomed, and completely
+                    looked after.
+                  </p>
+                </div>
               </article>
             </FadeIn>
 

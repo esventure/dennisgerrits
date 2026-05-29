@@ -195,9 +195,9 @@ const TravelAgents = () => {
                   That's where I come in.
                 </p>
               </div>
-              <Link to="/#contact" className={ctaPrimary} style={ctaPrimaryStyle}>
+              <a href="#contact" onClick={scrollToContact} className={ctaPrimary} style={ctaPrimaryStyle}>
                 Let's Connect
-              </Link>
+              </a>
             </FadeIn>
 
             <FadeIn delay={0.15}>

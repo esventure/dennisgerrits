@@ -1165,7 +1165,7 @@ const Index = () => {
         id="storybook"
         className="relative py-16 md:py-20 lg:py-28 scroll-mt-20 overflow-hidden"
       >
-        <AmsterdamSkyline variant="section-light" />
+        
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mb-10 md:mb-14">
             <FadeIn>

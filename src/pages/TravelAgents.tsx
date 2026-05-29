@@ -630,6 +630,16 @@ const TravelAgents = () => {
           </div>
         </div>
       </section>
+      {showStickyCTA && (
+        <a
+          href="#contact"
+          onClick={scrollToContact}
+          className="fixed bottom-6 left-1/2 -translate-x-1/2 lg:left-auto lg:right-6 lg:translate-x-0 z-40 font-body text-xs tracking-widest uppercase px-6 py-3 shadow-lg text-primary-foreground rounded-sm animate-in fade-in slide-in-from-bottom-4 duration-500"
+          style={ctaPrimaryStyle}
+        >
+          Contact Dennis
+        </a>
+      )}
     </main>
   );
 };

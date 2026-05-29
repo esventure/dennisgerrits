@@ -515,7 +515,7 @@ const TravelAgents = () => {
       <SectionDivider />
 
       {/* ────────────────── 7. Let's Connect ────────────────── */}
-      <section className="py-20 lg:py-28">
+      <section id="contact" className="py-20 lg:py-28 scroll-mt-24">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start max-w-6xl mx-auto relative">
             {/* hand-drawn vertical divider on desktop */}

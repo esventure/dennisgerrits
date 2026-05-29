@@ -266,6 +266,12 @@ const TravelAgents = () => {
                   </div>
                   <img src={iconItinerary} alt="" aria-hidden className="w-14 h-14 object-contain" loading="lazy" />
                 </div>
+                <span
+                  className="inline-block font-body text-xs tracking-widest uppercase px-3 py-1 mb-4 rounded-sm"
+                  style={{ backgroundColor: "hsl(var(--heritage-purple) / 0.12)", color: "hsl(var(--heritage-purple))" }}
+                >
+                  Full concierge — I plan and deliver
+                </span>
                 <h3 className="font-heading text-3xl lg:text-4xl text-primary mb-6 leading-tight">
                   You hand it over. I take care of the rest.
                 </h3>

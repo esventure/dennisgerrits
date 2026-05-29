@@ -138,12 +138,24 @@ const FaintCanal = ({ side = "right" }: { side?: "left" | "right" }) => (
 
 const TravelAgents = () => {
   const { toast } = useToast();
-  const [form, setForm] = useState({ name: "", company: "", email: "", message: "" });
+  const [form, setForm] = useState({ name: "", company: "", email: "", inquiryType: "", message: "" });
+  const [showStickyCTA, setShowStickyCTA] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setShowStickyCTA(window.scrollY > 600);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const scrollToContact = (e: React.MouseEvent) => {
+    e.preventDefault();
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({ title: "Inquiry sent", description: "Thank you. I'll be in touch personally." });
-    setForm({ name: "", company: "", email: "", message: "" });
+    setForm({ name: "", company: "", email: "", inquiryType: "", message: "" });
   };
 
   /* Shared CTA — match homepage primary style */

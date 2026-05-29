@@ -13,7 +13,6 @@ const exploreLinks = [
 
 const proLinks = [
   { to: "/travel-agents", label: "Travel Agents & Concierges" },
-  { to: "/travel-agents#universities", label: "Universities & Schools" },
   { to: "/#contact", label: "Speaking" },
 ];
 

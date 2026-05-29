@@ -319,6 +319,12 @@ const TravelAgents = () => {
                   </div>
                   <img src={iconFoot} alt="" aria-hidden className="w-14 h-14 object-contain" loading="lazy" />
                 </div>
+                <span
+                  className="inline-block font-body text-xs tracking-widest uppercase px-3 py-1 mb-4 rounded-sm"
+                  style={{ backgroundColor: "hsl(var(--heritage-green) / 0.14)", color: "hsl(var(--heritage-green))" }}
+                >
+                  Local partner — you plan, I host
+                </span>
                 <h3 className="font-heading text-3xl lg:text-4xl text-primary mb-6 leading-tight">
                   You plan. I deliver on the ground.
                 </h3>

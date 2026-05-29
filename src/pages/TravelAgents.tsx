@@ -222,7 +222,7 @@ const TravelAgents = () => {
                     className="text-center mt-4 text-2xl"
                     style={{ fontFamily: "'Caveat', cursive", color: "hsl(var(--heritage-bordeaux))" }}
                   >
-                    your man in Amsterdam
+                    based in Amsterdam
                   </p>
                 </div>
               </div>

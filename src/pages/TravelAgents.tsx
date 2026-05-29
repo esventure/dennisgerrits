@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import FadeIn from "@/components/FadeIn";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -137,12 +138,24 @@ const FaintCanal = ({ side = "right" }: { side?: "left" | "right" }) => (
 
 const TravelAgents = () => {
   const { toast } = useToast();
-  const [form, setForm] = useState({ name: "", company: "", email: "", message: "" });
+  const [form, setForm] = useState({ name: "", company: "", email: "", inquiryType: "", message: "" });
+  const [showStickyCTA, setShowStickyCTA] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setShowStickyCTA(window.scrollY > 600);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const scrollToContact = (e: React.MouseEvent) => {
+    e.preventDefault();
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({ title: "Inquiry sent", description: "Thank you. I'll be in touch personally." });
-    setForm({ name: "", company: "", email: "", message: "" });
+    setForm({ name: "", company: "", email: "", inquiryType: "", message: "" });
   };
 
   /* Shared CTA — match homepage primary style */
@@ -182,9 +195,9 @@ const TravelAgents = () => {
                   That's where I come in.
                 </p>
               </div>
-              <Link to="/#contact" className={ctaPrimary} style={ctaPrimaryStyle}>
+              <a href="#contact" onClick={scrollToContact} className={ctaPrimary} style={ctaPrimaryStyle}>
                 Let's Connect
-              </Link>
+              </a>
             </FadeIn>
 
             <FadeIn delay={0.15}>
@@ -209,7 +222,7 @@ const TravelAgents = () => {
                     className="text-center mt-4 text-2xl"
                     style={{ fontFamily: "'Caveat', cursive", color: "hsl(var(--heritage-bordeaux))" }}
                   >
-                    your man in Amsterdam
+                    based in Amsterdam
                   </p>
                 </div>
               </div>
@@ -253,6 +266,12 @@ const TravelAgents = () => {
                   </div>
                   <img src={iconItinerary} alt="" aria-hidden className="w-14 h-14 object-contain" loading="lazy" />
                 </div>
+                <span
+                  className="inline-block font-body text-xs tracking-widest uppercase px-3 py-1 mb-4 rounded-sm"
+                  style={{ backgroundColor: "hsl(var(--heritage-purple) / 0.12)", color: "hsl(var(--heritage-purple))" }}
+                >
+                  Full concierge — I plan and deliver
+                </span>
                 <h3 className="font-heading text-3xl lg:text-4xl text-primary mb-6 leading-tight">
                   You hand it over. I take care of the rest.
                 </h3>
@@ -300,6 +319,12 @@ const TravelAgents = () => {
                   </div>
                   <img src={iconFoot} alt="" aria-hidden className="w-14 h-14 object-contain" loading="lazy" />
                 </div>
+                <span
+                  className="inline-block font-body text-xs tracking-widest uppercase px-3 py-1 mb-4 rounded-sm"
+                  style={{ backgroundColor: "hsl(var(--heritage-green) / 0.14)", color: "hsl(var(--heritage-green))" }}
+                >
+                  Local partner — you plan, I host
+                </span>
                 <h3 className="font-heading text-3xl lg:text-4xl text-primary mb-6 leading-tight">
                   You plan. I deliver on the ground.
                 </h3>
@@ -490,7 +515,7 @@ const TravelAgents = () => {
       <SectionDivider />
 
       {/* ────────────────── 7. Let's Connect ────────────────── */}
-      <section className="py-20 lg:py-28">
+      <section id="contact" className="py-20 lg:py-28 scroll-mt-24">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start max-w-6xl mx-auto relative">
             {/* hand-drawn vertical divider on desktop */}
@@ -571,10 +596,28 @@ const TravelAgents = () => {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label className="font-body text-sm">Tell me about your clients</Label>
+                    <Label className="font-body text-sm">How can I help? <span className="text-muted-foreground/70">(optional)</span></Label>
+                    <Select
+                      value={form.inquiryType}
+                      onValueChange={(v) => setForm({ ...form, inquiryType: v })}
+                    >
+                      <SelectTrigger className="h-12 text-base font-body">
+                        <SelectValue placeholder="Choose what fits best" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="full-concierge">Full concierge — I plan and deliver</SelectItem>
+                        <SelectItem value="local-partner">Local partner — you plan, I host</SelectItem>
+                        <SelectItem value="exploring">Just exploring a fit</SelectItem>
+                        <SelectItem value="other">Something else</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="space-y-2">
+                    <Label className="font-body text-sm">Tell me about your clients <span className="text-muted-foreground/70">(optional)</span></Label>
                     <Textarea
                       value={form.message}
                       onChange={(e) => setForm({ ...form, message: e.target.value })}
+                      placeholder="A few words about who's coming, when, and what they're hoping for."
                       className="min-h-[120px] text-base font-body"
                     />
                   </div>
@@ -587,6 +630,16 @@ const TravelAgents = () => {
           </div>
         </div>
       </section>
+      {showStickyCTA && (
+        <a
+          href="#contact"
+          onClick={scrollToContact}
+          className="fixed bottom-6 left-1/2 -translate-x-1/2 lg:left-auto lg:right-6 lg:translate-x-0 z-40 font-body text-xs tracking-widest uppercase px-6 py-3 shadow-lg text-primary-foreground rounded-sm animate-in fade-in slide-in-from-bottom-4 duration-500"
+          style={ctaPrimaryStyle}
+        >
+          Contact Dennis
+        </a>
+      )}
     </main>
   );
 };

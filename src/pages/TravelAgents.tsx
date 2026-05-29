@@ -596,10 +596,28 @@ const TravelAgents = () => {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label className="font-body text-sm">Tell me about your clients</Label>
+                    <Label className="font-body text-sm">How can I help? <span className="text-muted-foreground/70">(optional)</span></Label>
+                    <Select
+                      value={form.inquiryType}
+                      onValueChange={(v) => setForm({ ...form, inquiryType: v })}
+                    >
+                      <SelectTrigger className="h-12 text-base font-body">
+                        <SelectValue placeholder="Choose what fits best" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="full-concierge">Full concierge — I plan and deliver</SelectItem>
+                        <SelectItem value="local-partner">Local partner — you plan, I host</SelectItem>
+                        <SelectItem value="exploring">Just exploring a fit</SelectItem>
+                        <SelectItem value="other">Something else</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="space-y-2">
+                    <Label className="font-body text-sm">Tell me about your clients <span className="text-muted-foreground/70">(optional)</span></Label>
                     <Textarea
                       value={form.message}
                       onChange={(e) => setForm({ ...form, message: e.target.value })}
+                      placeholder="A few words about who's coming, when, and what they're hoping for."
                       className="min-h-[120px] text-base font-body"
                     />
                   </div>

@@ -41,12 +41,6 @@ const AboutEditorial = () => {
         />
         <FadeIn className="relative z-10">
           <div className="max-w-md mx-auto lg:ml-auto lg:mr-0">
-            <p
-              className="font-heading text-6xl sm:text-7xl md:text-8xl mb-5 sm:mb-6 leading-none"
-              style={{ color: "hsl(var(--heritage-orange))" }}
-            >
-              01
-            </p>
             <p className="font-body text-xs tracking-[0.3em] uppercase text-secondary mb-4">
               {t("about.person.kicker", "A True Amsterdammer")}
             </p>
@@ -80,12 +74,6 @@ const AboutEditorial = () => {
         />
         <FadeIn delay={0.15} className="relative z-10">
           <div className="max-w-md mx-auto lg:mr-auto lg:ml-0">
-            <p
-              className="font-heading text-6xl sm:text-7xl md:text-8xl mb-5 sm:mb-6 leading-none"
-              style={{ color: "hsl(var(--heritage-orange))" }}
-            >
-              02
-            </p>
             <p className="font-body text-xs tracking-[0.3em] uppercase text-primary-foreground/70 mb-4">
               {t("about.guide.kicker", "Helping you find your own way")}
             </p>

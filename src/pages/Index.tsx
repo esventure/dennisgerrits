@@ -604,7 +604,7 @@ const Index = () => {
                         scrolling="no"
                         frameBorder="no"
                         allow="autoplay"
-                        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/taboe-media/dennis-gerrits-i-love-my-city&color=%23b8651a&inverse=false&auto_play=false&show_user=true"
+                        src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Ftaboe-media%2Fdennis-gerrits-i-love-my-city&color=%23b8651a&inverse=false&auto_play=false&show_user=true"
                       />
                     </div>
 

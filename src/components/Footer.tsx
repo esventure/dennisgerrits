@@ -25,7 +25,7 @@ const Footer = () => {
 
     const scrollToId = (id: string) => {
       const tryScroll = (attempts = 0) => {
-        AREA       const el = document.getElementById(id);
+        const el = document.getElementById(id);
         if (el) {
           el.scrollIntoView({ behavior: "smooth" });
           return;

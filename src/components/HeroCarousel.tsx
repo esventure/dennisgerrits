@@ -1022,7 +1022,7 @@ const HeroEditorialGreenAllCaps = () => (
                 className="font-body text-sm tracking-widest uppercase mt-6"
                 style={{ color: "hsl(var(--heritage-orange))" }}
               >
-                PERSONAL TRAVEL COMPANION
+                STORYTELLER, HOST & TRAVEL COMPANION
               </p>
             </div>
           </FadeIn>
@@ -1055,19 +1055,18 @@ const HeroEditorialGreenAllCaps = () => (
                 </svg>
               </span>
               <br />
-              I DON'T SHOW
+              I DON'T LEAD
               <br />
-              A CITY.
+              THE WAY.
               <br />
-              I TRANSLATE IT.
+              I HELP YOU FIND YOUR OWN.
             </h1>
             <p
               className="font-body text-lg leading-relaxed max-w-lg"
               style={{ color: "hsl(var(--background) / 0.85)" }}
             >
-              I walk alongside you, not in front of you. We'll find the stories,
-              the quiet corners, the places that make you stop and really look.
-              That's what I do.
+              We slow down, follow curiosity, and discover places together,
+              one story at a time. The best moments are rarely planned.
             </p>
           </FadeIn>
         </div>

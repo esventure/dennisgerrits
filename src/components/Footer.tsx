@@ -5,7 +5,7 @@ const exploreLinks = [
   { to: "/#how-it-works", label: "How I Work" },
   { to: "/#day", label: "A Day Together" },
   { to: "/#proof", label: "Reviews" },
-  { to: "/#stories", label: "Stories" },
+  { to: "/#storybook", label: "Stories" },
   { to: "/get-inspired", label: "Get Inspired" },
   { to: "#", label: "Two Stories, One City (Podcast)" },
   { to: "/#contact", label: "Get in Touch" },

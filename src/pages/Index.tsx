@@ -456,7 +456,7 @@ const Index = () => {
       <div id="day" className="relative scroll-mt-20 pt-12 lg:pt-20 pb-2">
       </div>
 
-      <section className="relative lg:h-[420vh]">
+      <section className="relative lg:h-[280vh]">
         <div className="lg:sticky lg:top-20 lg:h-[calc(100vh-5rem)] lg:flex lg:flex-col lg:pt-6 lg:pb-4">
           <div className="container mx-auto px-6 lg:px-12 w-full">
             <FadeIn>

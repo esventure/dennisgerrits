@@ -41,6 +41,7 @@ import storyBench from "@/assets/stories/bench.jpg";
 import podcastCover from "@/assets/podcast-cover.jpg";
 import podcastHosts from "@/assets/podcast-hosts.jpg";
 import twoStoriesLogo from "@/assets/two-stories-one-city-logo.png";
+import dennisRadioTaboe from "@/assets/dennis-radio-taboe.jpg.asset.json";
 import PodcastPlayer from "@/components/PodcastPlayer";
 
 /* Hand-drawn ring path for the timeline step circles — matches the
@@ -550,8 +551,82 @@ const Index = () => {
               ))}
             </div>
           </div>
+
+          {/* ── In the Media ── */}
+          <div className="mt-20 lg:mt-28">
+            <FadeIn>
+              <div className="max-w-5xl mx-auto">
+                <div className="flex items-baseline gap-4 mb-8 md:mb-10">
+                  <span
+                    className="font-body text-[11px] tracking-[0.3em] uppercase"
+                    style={{ color: "hsl(var(--heritage-orange))" }}
+                  >
+                    In the Media
+                  </span>
+                  <span
+                    aria-hidden
+                    className="flex-1 h-px"
+                    style={{ background: "hsl(var(--border))" }}
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-10 items-start">
+                  <figure className="md:col-span-2">
+                    <div className="overflow-hidden rounded-sm shadow-sm">
+                      <img
+                        src={dennisRadioTaboe.url}
+                        alt="Dennis Gerrits being interviewed live at Taboe Media radio studio on Zeedijk, Amsterdam"
+                        loading="lazy"
+                        className="w-full h-auto object-cover"
+                      />
+                    </div>
+                    <figcaption className="font-body text-xs text-muted-foreground mt-3 italic">
+                      Live at Taboe Media, Zeedijk — Amsterdam.
+                    </figcaption>
+                  </figure>
+
+                  <div className="md:col-span-3">
+                    <p className="font-body text-[11px] tracking-[0.25em] uppercase text-muted-foreground mb-2">
+                      Radio Interview · Taboe Media
+                    </p>
+                    <h3 className="font-heading text-2xl md:text-3xl text-primary leading-tight mb-4">
+                      Dennis Gerrits — I Love My City
+                    </h3>
+                    <p className="font-body text-base text-muted-foreground leading-relaxed mb-6">
+                      A conversation about Amsterdam, the people who shape its neighbourhoods, and what it means to share the city as a local. Recorded live on the Zeedijk.
+                    </p>
+
+                    <div className="rounded-sm overflow-hidden border border-border/60">
+                      <iframe
+                        title="Dennis Gerrits — I Love My City (SoundCloud)"
+                        width="100%"
+                        height="166"
+                        scrolling="no"
+                        frameBorder="no"
+                        allow="autoplay"
+                        src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Ftaboe-media%2Fdennis-gerrits-i-love-my-city&color=%23b8651a&inverse=false&auto_play=false&show_user=true"
+                      />
+                    </div>
+
+                    <a
+                      href="https://soundcloud.com/taboe-media/dennis-gerrits-i-love-my-city"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 mt-4 font-body text-sm font-medium hover:gap-2 transition-all"
+                      style={{ color: "hsl(var(--heritage-orange))" }}
+                    >
+                      Listen on SoundCloud
+                      <span aria-hidden>→</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
         </div>
       </div>
+
+
 
 
       {/* ── Building Blocks preview (4 cards from Get Inspired) ── */}

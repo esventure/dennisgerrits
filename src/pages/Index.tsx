@@ -207,115 +207,55 @@ const Index = () => {
             </FadeIn>
           </div>
 
-          {/* 4-step timeline — hand-drawn sketchbook style */}
+          {/* 4-step timeline — editorial chapter numbers */}
           <FadeIn delay={0.1}>
             <div className="relative max-w-5xl mx-auto mb-24 lg:mb-32">
-              <svg
-                className="hidden md:block absolute left-0 w-full pointer-events-none"
-                style={{ top: "32px" }}
-                height="40"
-                viewBox="0 0 1000 40"
-                preserveAspectRatio="none"
-                aria-hidden
-              >
-                <defs>
-                  <filter id="timelineSketch" x="-2%" y="-20%" width="104%" height="140%">
-                    <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="5" />
-                    <feDisplacementMap in="SourceGraphic" scale="2.2" />
-                  </filter>
-                </defs>
-                {/* pencil under-stroke */}
-                <path
-                  d="M 70 22 C 220 12, 380 28, 530 18 S 820 26, 935 16"
-                  fill="none"
-                  stroke="hsl(var(--heritage-taupe))"
-                  strokeWidth="2.4"
-                  strokeLinecap="round"
-                  opacity="0.35"
-                  transform="translate(1.5, 1.5)"
-                />
-                {/* ink wobble */}
-                <path
-                  d="M 70 20 C 220 10, 380 26, 530 16 S 820 24, 935 14"
-                  fill="none"
-                  stroke="hsl(var(--heritage-orange))"
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
-                  strokeDasharray="2 7"
-                  filter="url(#timelineSketch)"
-                  opacity="0.85"
-                />
-              </svg>
-
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-6 relative">
-                {/* Mobile-only vertical hand-drawn connector */}
-                <svg
-                  className="md:hidden absolute pointer-events-none"
-                  style={{ top: 64, bottom: 64, left: "50%", width: 20, transform: "translateX(-50%)" }}
-                  viewBox="0 0 20 800"
-                  preserveAspectRatio="none"
-                  aria-hidden
-                >
-                  <defs>
-                    <filter id="timelineSketchV" x="-20%" y="-2%" width="140%" height="104%">
-                      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="6" />
-                      <feDisplacementMap in="SourceGraphic" scale="2.2" />
-                    </filter>
-                  </defs>
-                  <path
-                    d="M 10 0 C 14 200, 6 400, 10 600 S 14 760, 10 800"
-                    fill="none"
-                    stroke="hsl(var(--heritage-orange))"
-                    strokeWidth="1.6"
-                    strokeLinecap="round"
-                    strokeDasharray="2 8"
-                    filter="url(#timelineSketchV)"
-                    opacity="0.85"
-                  />
-                </svg>
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 relative">
                 {[
                   { n: "01", label: t("process.step1.label", "Let’s Connect"), text: t("process.step1.text", "You reach out, and we plan a personal video call to get to know each other and your travel plans.") },
                   { n: "02", label: t("process.step2.label", "Getting to Know You"), text: t("process.step2.text", "I take the time to listen. Your interests, travel style and wishes help shape the experience.") },
                   { n: "03", label: t("process.step3.label", "Creating Your Journey"), text: t("process.step3.text", "Together, we shape an experience that feels personal and completely tailored to you.") },
                   { n: "04", label: t("process.step4.label", "I Take Care of the Details"), text: t("process.step4.text", "From reservations and transportation to personal recommendations and museum tickets, everything is thoughtfully taken care of.") },
-                ].map((step, idx) => (
+                ].map((step) => (
                   <div key={step.n} className="text-center md:text-left">
-                    <div className="mx-auto md:mx-0 mb-5 relative" style={{ width: 64, height: 64 }}>
-                      <svg viewBox="0 0 64 64" className="w-full h-full" style={{ overflow: "visible" }}>
-                        <defs>
-                          <filter id={`stepWobble-${idx}`} x="-15%" y="-15%" width="130%" height="130%">
-                            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed={idx + 1} />
-                            <feDisplacementMap in="SourceGraphic" scale="1.4" />
-                          </filter>
-                        </defs>
-                        {/* paper fill so the orange dashed line is visually broken */}
-                        <circle cx="32" cy="32" r="30" fill="hsl(var(--heritage-taupe-tint))" />
-                        {/* hand-drawn ring */}
-                        <path
-                          d={sketchedRingPath(32, 32, 26, idx)}
-                          fill="hsl(var(--background))"
-                          stroke="hsl(var(--heritage-orange))"
-                          strokeWidth="1.6"
-                          strokeLinecap="round"
-                          filter={`url(#stepWobble-${idx})`}
-                        />
-                        <text
-                          x="32"
-                          y="34"
-                          textAnchor="middle"
-                          dominantBaseline="central"
-                          fontFamily="'Bebas Neue', sans-serif"
-                          fontSize="22"
-                          letterSpacing="0.05em"
-                          fill="hsl(var(--heritage-orange))"
-                        >
-                          {step.n}
-                        </text>
-                      </svg>
+                    <div
+                      className="font-heading leading-none mb-3 md:mb-4"
+                      style={{
+                        color: "hsl(var(--heritage-orange))",
+                        fontSize: "clamp(4rem, 7vw, 6rem)",
+                        letterSpacing: "0.02em",
+                      }}
+                    >
+                      {step.n}
                     </div>
-                    <h3 className="font-heading text-2xl text-primary leading-tight mb-2">
+                    <h3 className="font-heading text-2xl text-primary leading-tight mb-3">
                       {step.label}
                     </h3>
+                    {/* single thin hand-drawn squiggle under each headline,
+                        together they form one continuous line across the row */}
+                    <svg
+                      className="mx-auto md:mx-0 mb-4"
+                      width="72"
+                      height="8"
+                      viewBox="0 0 72 8"
+                      aria-hidden
+                    >
+                      <defs>
+                        <filter id={`squiggle-${step.n}`} x="-5%" y="-50%" width="110%" height="200%">
+                          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed={Number(step.n)} />
+                          <feDisplacementMap in="SourceGraphic" scale="1.2" />
+                        </filter>
+                      </defs>
+                      <path
+                        d="M 2 4 Q 12 1, 22 4 T 42 4 T 62 4 T 70 4"
+                        fill="none"
+                        stroke="hsl(var(--heritage-orange))"
+                        strokeWidth="1.4"
+                        strokeLinecap="round"
+                        filter={`url(#squiggle-${step.n})`}
+                        opacity="0.85"
+                      />
+                    </svg>
                     <p className="font-body text-muted-foreground leading-relaxed">
                       {step.text}
                     </p>

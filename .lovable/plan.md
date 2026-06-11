@@ -1,41 +1,43 @@
-# Rethinking the "How I Work" step markers
+# Hand-drawn route for "How I Work"
 
-The current section uses circular number badges connected by an orange dashed line. That geometric, infographic feel clashes with the editorial, hand-drawn, magazine-like rest of the site (Caveat handwriting, postcards, sketchy map lines, paper textures).
+Borrow the visual language from `DayMap.tsx` — sketchy circles with wobble filter, Bebas Neue numbers in heritage-orange, pencil under-drawing with ink stroke on top, hand-drawn squiggle routes — and apply it to the four steps in How I Work. No actual map, just the same hand-drawn route feeling as a quiet backdrop tying the numbers together.
 
-Here are four directions that stay closer to the site's voice. All keep the four steps, their labels, and copy untouched — only the visual treatment of the step markers and the connector changes.
+## What changes
 
----
+Only the four numbered step markers and the line between them, in `src/pages/Index.tsx` (How I Work section, ~lines 211–267). Heading, intro, body copy, and the concierge block below stay untouched.
 
-## Direction A — Postage stamps on a postcard
-Each step becomes a small Polaroid/postage-stamp card: off-white paper, slight rotation, the number written in Caveat handwriting in heritage-orange. No connector line between them — the staggered rotations carry the rhythm.
+## The new treatment
 
-- Reuses postcard/tape treatment already present elsewhere on the site
-- Feels collected, like souvenirs pinned to a board
-- Quietest option, lets the copy lead
+**Step markers** — replace each oversized orange numeral with a small sketchy circle marker (same look as the map's checkpoints):
+- Wobbly hand-drawn circle outline using a `feTurbulence` + `feDisplacementMap` filter (the `#sketch` filter pattern from DayMap)
+- Filled with heritage-orange
+- Number "01"–"04" centered inside in Bebas Neue, cream/off-white text
+- A faint taupe pencil shadow offset behind the circle
+- A subtle dashed "compass" ring around each marker on hover (also from DayMap)
 
-## Direction B — Handwritten chapter numbers
-Drop the badges entirely. Each step opens with an oversized Bebas Neue numeral (01, 02, 03, 04) in heritage-orange, sitting above the step label like a magazine chapter opener. Replace the orange dashed line with a single thin hand-drawn squiggle running underneath all four headlines.
+**Connecting route** — replace the dashed straight line between numerals with a single hand-drawn sketchy curve threading through all four markers:
+- One continuous Bézier path with gentle ups and downs (not a straight rule)
+- Pencil under-drawing in heritage-taupe, slightly offset
+- Heritage-orange ink wobble on top via the `#sketch` filter
+- A small hand-drawn "X marks the spot" / tiny flag at the end of step 04 (echoing the map's destination marker)
+- On mobile (single column), the curve becomes a vertical sketchy line down the left side connecting the markers
 
-- Most editorial / magazine-like
-- Strongest typographic hierarchy
-- Cleanest on tablet/iPad
+**Headline + body** — unchanged structure, but drop the small straight squiggle SVG that currently sits under each headline (the route below the markers replaces that motif).
 
-## Direction C — Map pins along a route
-Each marker becomes a small hand-drawn map pin in heritage-orange (teardrop with the number inside, sketchy line-art). A dotted, sketchy "route" curves between them, ending in a tiny destination flag on step 4.
+## Technical details
 
-- Echoes the Amsterdam skyline + treasure-map language already on the site
-- Most narrative — literally a journey
-- Slightly more visual weight than A or B
+- Reuse the same SVG `<defs><filter id="sketch">` pattern from `DayMap.tsx` (feTurbulence baseFrequency ~0.04, feDisplacementMap scale ~2.6) — define it once inside a single full-width SVG layered behind the four step columns
+- The full-width SVG sits absolutely positioned at the top of the steps grid (around marker height), `pointer-events: none`, so the existing grid markup for labels and copy stays the same
+- Marker coordinates computed from the column count (4 evenly spaced points across the SVG viewBox)
+- Use existing CSS tokens only: `hsl(var(--heritage-orange))`, `hsl(var(--heritage-taupe))`, `hsl(var(--heritage-bordeaux))`, `hsl(var(--background))`
+- Wrap the SVG in `FadeIn` so the route fades in on scroll (consistent with the rest of the site's motion rules)
+- Mobile: hide the horizontal route SVG below `md`, render a thin vertical sketchy line + smaller markers stacked vertically
 
-## Direction D — Numbered notebook tabs
-Each step gets a small rectangular notebook tab (off-white, slight rotation, torn/rough top edge, Bebas Neue number with a heritage-orange underline). No connector line; staggered vertical positions imply order.
+## Out of scope
 
-- Tactile, paper-forward
-- Reads like a travel journal
-- Mid-weight between A and C
+- Section heading, intro copy, step labels, step body text
+- The concierge "What I take care of" block below
+- Section background color
+- No new images or icons
 
----
-
-**Out of scope:** section copy, background color, surrounding sections.
-
-**Next step:** pick one direction and I'll implement it in `src/pages/Index.tsx` (How I Work section, lines ~185–345).
+Once you approve, I'll switch to build mode and implement it in `src/pages/Index.tsx`.

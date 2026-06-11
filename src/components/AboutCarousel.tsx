@@ -41,13 +41,22 @@ const AboutEditorial = () => {
         />
         <FadeIn className="relative z-10">
           <div className="max-w-md mx-auto lg:ml-auto lg:mr-0">
-            <p className="font-body text-xs tracking-[0.3em] uppercase text-secondary mb-4">
+            <p className="font-body text-xs tracking-[0.3em] uppercase text-accent font-semibold mb-4">
               {t("about.person.kicker", "A True Amsterdammer")}
             </p>
             <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary leading-[0.95] mb-6">
-              {t("about.person.title", "The Person")}
+              <span className="text-accent">The</span> {t("about.person.title", "The Person").replace(/^The\s+/i, "")}
             </h2>
-            <div className="w-12 h-0.5 bg-accent mb-6" />
+            {/* hand-drawn orange underline */}
+            <svg aria-hidden width="96" height="10" viewBox="0 0 96 10" className="mb-6">
+              <path
+                d="M 2 6 Q 16 1, 32 5 T 64 5 T 94 4"
+                fill="none"
+                stroke="hsl(var(--heritage-orange))"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            </svg>
             <RichText
               className="font-body text-base md:text-lg text-foreground/85 leading-relaxed"
               html={t("about.person.body", "")}
@@ -55,6 +64,7 @@ const AboutEditorial = () => {
             />
           </div>
         </FadeIn>
+
       </div>
 
       {/* Right: The Guide */}

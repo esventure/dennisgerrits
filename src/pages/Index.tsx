@@ -696,12 +696,12 @@ const Index = () => {
               {/* Right: Picture spanning full height */}
               <FadeIn delay={0.04}>
                 <figure className="h-full flex flex-col">
-                  <div className="flex-1 overflow-hidden rounded-sm shadow-sm min-h-[420px]">
+                  <div className="relative flex-1 min-h-[320px] overflow-hidden rounded-sm shadow-sm">
                     <img
                       src={dennisRadioTaboe.url}
                       alt="Dennis Gerrits being interviewed live at Taboe Media radio studio on Zeedijk, Amsterdam"
                       loading="lazy"
-                      className="w-full h-full object-cover"
+                      className="absolute inset-0 w-full h-full object-cover"
                     />
                   </div>
                   <figcaption className="font-body text-xs text-muted-foreground mt-2 italic">
@@ -709,6 +709,7 @@ const Index = () => {
                   </figcaption>
                 </figure>
               </FadeIn>
+
             </div>
           </div>
 

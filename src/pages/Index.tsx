@@ -568,26 +568,27 @@ const Index = () => {
             </FadeIn>
           </div>
 
-          {/* ── In the Media (feature) ── */}
-          <div className="mt-16 lg:mt-24 max-w-5xl mx-auto">
+          {/* ── In the Media + Invite Dennis (side by side) ── */}
+          <div className="mt-16 lg:mt-24 max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-stretch">
+            {/* In the Media */}
             <FadeIn>
-              <div className="flex items-baseline gap-4 mb-8">
-                <span
-                  className="font-body text-[11px] tracking-[0.3em] uppercase"
-                  style={{ color: "hsl(var(--heritage-orange))" }}
-                >
-                  In the Media
-                </span>
-                <span
-                  aria-hidden
-                  className="flex-1 h-px"
-                  style={{ background: "hsl(var(--border))" }}
-                />
-              </div>
+              <div className="h-full flex flex-col">
+                <div className="flex items-baseline gap-4 mb-6">
+                  <span
+                    className="font-body text-[11px] tracking-[0.3em] uppercase"
+                    style={{ color: "hsl(var(--heritage-orange))" }}
+                  >
+                    In the Media
+                  </span>
+                  <span
+                    aria-hidden
+                    className="flex-1 h-px"
+                    style={{ background: "hsl(var(--border))" }}
+                  />
+                </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-start">
-                <figure>
-                  <div className="overflow-hidden rounded-sm shadow-sm">
+                <figure className="mb-5">
+                  <div className="overflow-hidden rounded-sm shadow-sm max-w-[240px]">
                     <img
                       src={dennisRadioTaboe.url}
                       alt="Dennis Gerrits being interviewed live at Taboe Media radio studio on Zeedijk, Amsterdam"
@@ -600,50 +601,46 @@ const Index = () => {
                   </figcaption>
                 </figure>
 
-                <div>
-                  <p className="font-body text-[11px] tracking-[0.25em] uppercase text-muted-foreground mb-2">
-                    Radio Interview · Taboe Media
-                  </p>
-                  <h3 className="font-heading text-2xl md:text-3xl text-primary leading-tight mb-3">
-                    Dennis Gerrits — I Love My City
-                  </h3>
-                  <p className="font-body text-sm text-muted-foreground leading-relaxed mb-5">
-                    A conversation about Amsterdam, the people who shape its neighbourhoods, and what it means to share the city as a local. Recorded live on the Zeedijk.
-                  </p>
+                <p className="font-body text-[11px] tracking-[0.25em] uppercase text-muted-foreground mb-2">
+                  Radio Interview · Taboe Media
+                </p>
+                <h3 className="font-heading text-2xl md:text-3xl text-primary leading-tight mb-3">
+                  Dennis Gerrits — I Love My City
+                </h3>
+                <p className="font-body text-sm text-muted-foreground leading-relaxed mb-5">
+                  A conversation about Amsterdam, the people who shape its neighbourhoods, and what it means to share the city as a local. Recorded live on the Zeedijk.
+                </p>
 
-                  <div className="rounded-sm overflow-hidden border border-border/60">
-                    <iframe
-                      title="Dennis Gerrits — I Love My City (SoundCloud)"
-                      width="100%"
-                      height="166"
-                      scrolling="no"
-                      frameBorder="no"
-                      allow="autoplay"
-                      src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Ftaboe-media%2Fdennis-gerrits-i-love-my-city&color=%23b8651a&inverse=false&auto_play=false&show_user=true"
-                    />
-                  </div>
-
-                  <a
-                    href="https://soundcloud.com/taboe-media/dennis-gerrits-i-love-my-city"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 mt-4 font-body text-sm font-medium hover:gap-2 transition-all"
-                    style={{ color: "hsl(var(--heritage-orange))" }}
-                  >
-                    Listen on SoundCloud
-                    <span aria-hidden>→</span>
-                  </a>
+                <div className="rounded-sm overflow-hidden border border-border/60">
+                  <iframe
+                    title="Dennis Gerrits — I Love My City (SoundCloud)"
+                    width="100%"
+                    height="166"
+                    scrolling="no"
+                    frameBorder="no"
+                    allow="autoplay"
+                    src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Ftaboe-media%2Fdennis-gerrits-i-love-my-city&color=%23b8651a&inverse=false&auto_play=false&show_user=true"
+                  />
                 </div>
+
+                <a
+                  href="https://soundcloud.com/taboe-media/dennis-gerrits-i-love-my-city"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 mt-4 font-body text-sm font-medium hover:gap-2 transition-all self-start"
+                  style={{ color: "hsl(var(--heritage-orange))" }}
+                >
+                  Listen on SoundCloud
+                  <span aria-hidden>→</span>
+                </a>
               </div>
             </FadeIn>
-          </div>
 
-          {/* ── Invite Dennis (CTA banner) ── */}
-          <div className="mt-16 lg:mt-20 max-w-5xl mx-auto">
+            {/* Invite Dennis */}
             <FadeIn delay={0.08}>
               <a
                 href="#contact"
-                className="group block relative bg-background rounded-sm border border-border/60 border-l-[3px] p-8 md:p-10 shadow-sm hover:shadow-md transition-all"
+                className="group block relative h-full bg-background rounded-sm border border-border/60 border-l-[3px] p-8 md:p-10 shadow-sm hover:shadow-md transition-all"
                 style={{ borderLeftColor: "hsl(var(--accent))" }}
               >
                 <span
@@ -708,6 +705,7 @@ const Index = () => {
               </a>
             </FadeIn>
           </div>
+
         </div>
       </div>
 

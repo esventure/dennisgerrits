@@ -463,12 +463,12 @@ const Index = () => {
             </FadeIn>
           </div>
 
-          {/* ── Invite me card ── */}
+          {/* ── Invite Dennis + In the Media side by side ── */}
           <div className="mt-16 lg:mt-24">
-
-            <div className="grid grid-cols-1 gap-6 md:gap-8 max-w-xl mx-auto">
-              {[
-                {
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 max-w-6xl mx-auto items-start">
+              {/* Invite card */}
+              {(() => {
+                const card = {
                   kicker: "Invite Dennis",
                   title: "Podcasts • Lectures • Radio • Live Events",
                   body: "Dennis regularly joins conversations about Amsterdam, storytelling, travel, culture, and human connection.\n\nHe is available for podcast conversations, guest lectures, interviews, radio shows, cultural programs, and educational events.",
@@ -477,86 +477,81 @@ const Index = () => {
                   color: "hsl(var(--accent))",
                   rotate: "-1.2deg",
                   stamp: "GUEST",
-                  icon: (
-                    <g>
-                      <rect x="20" y="8" width="12" height="22" rx="6" />
-                      <path d="M 14 24 C 14 32, 20 36, 26 36 C 32 36, 38 32, 38 24" />
-                      <line x1="26" y1="36" x2="26" y2="44" />
-                      <line x1="20" y1="44" x2="32" y2="44" />
-                    </g>
-                  ),
-                },
-              ].map((card, i) => (
-                <FadeIn key={card.kicker} delay={i * 0.08}>
-                  <a
-                    href={card.href}
-                    className="group block relative bg-background rounded-sm border-l-[3px] p-6 md:p-7 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
-                    style={{
-                      borderLeftColor: card.color,
-                      transform: `rotate(${card.rotate})`,
-                    }}
-                  >
-                    <span
-                      aria-hidden
-                      className="absolute top-3 right-3 font-body text-[10px] tracking-[0.3em] uppercase border px-2 py-0.5 rounded-sm opacity-60 group-hover:opacity-90 transition-opacity"
-                      style={{ color: card.color, borderColor: card.color, transform: "rotate(6deg)" }}
+                };
+                const i = 0;
+                return (
+                  <FadeIn delay={0}>
+                    <a
+                      href={card.href}
+                      className="group block relative bg-background rounded-sm border-l-[3px] p-6 md:p-7 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
+                      style={{
+                        borderLeftColor: card.color,
+                        transform: `rotate(${card.rotate})`,
+                      }}
                     >
-                      {card.stamp}
-                    </span>
-
-                    <div className="flex items-start gap-4">
-                      <svg
-                        viewBox="0 0 52 52"
-                        className="shrink-0 w-12 h-12"
-                        fill="none"
-                        stroke={card.color}
-                        strokeWidth="1.6"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
+                      <span
                         aria-hidden
+                        className="absolute top-3 right-3 font-body text-[10px] tracking-[0.3em] uppercase border px-2 py-0.5 rounded-sm opacity-60 group-hover:opacity-90 transition-opacity"
+                        style={{ color: card.color, borderColor: card.color, transform: "rotate(6deg)" }}
                       >
-                        <defs>
-                          <filter id={`callcard-${i}`} x="-10%" y="-10%" width="120%" height="120%">
-                            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed={i + 7} />
-                            <feDisplacementMap in="SourceGraphic" scale="1.3" />
-                          </filter>
-                        </defs>
-                        <g filter={`url(#callcard-${i})`}>{card.icon}</g>
-                      </svg>
+                        {card.stamp}
+                      </span>
 
-                      <div className="flex-1 min-w-0">
-                        <p
-                          className="font-body text-[11px] tracking-[0.25em] uppercase mb-1.5"
-                          style={{ color: card.color }}
+                      <div className="flex items-start gap-4">
+                        <svg
+                          viewBox="0 0 52 52"
+                          className="shrink-0 w-12 h-12"
+                          fill="none"
+                          stroke={card.color}
+                          strokeWidth="1.6"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          aria-hidden
                         >
-                          {card.kicker}
-                        </p>
-                        <h3 className="font-heading text-xl md:text-2xl text-primary leading-tight mb-2">
-                          {card.title}
-                        </h3>
-                        <p className="font-body text-sm text-muted-foreground leading-relaxed mb-3 whitespace-pre-line">
-                          {card.body}
-                        </p>
-                        <span
-                          className="inline-flex items-center gap-1 font-body text-sm font-medium group-hover:gap-2 transition-all"
-                          style={{ color: card.color }}
-                        >
-                          {card.cta}
-                          <span aria-hidden>→</span>
-                        </span>
+                          <defs>
+                            <filter id={`callcard-${i}`} x="-10%" y="-10%" width="120%" height="120%">
+                              <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed={i + 7} />
+                              <feDisplacementMap in="SourceGraphic" scale="1.3" />
+                            </filter>
+                          </defs>
+                          <g filter={`url(#callcard-${i})`}>
+                            <rect x="20" y="8" width="12" height="22" rx="6" />
+                            <path d="M 14 24 C 14 32, 20 36, 26 36 C 32 36, 38 32, 38 24" />
+                            <line x1="26" y1="36" x2="26" y2="44" />
+                            <line x1="20" y1="44" x2="32" y2="44" />
+                          </g>
+                        </svg>
+
+                        <div className="flex-1 min-w-0">
+                          <p
+                            className="font-body text-[11px] tracking-[0.25em] uppercase mb-1.5"
+                            style={{ color: card.color }}
+                          >
+                            {card.kicker}
+                          </p>
+                          <h3 className="font-heading text-xl md:text-2xl text-primary leading-tight mb-2">
+                            {card.title}
+                          </h3>
+                          <p className="font-body text-sm text-muted-foreground leading-relaxed mb-3 whitespace-pre-line">
+                            {card.body}
+                          </p>
+                          <span
+                            className="inline-flex items-center gap-1 font-body text-sm font-medium group-hover:gap-2 transition-all"
+                            style={{ color: card.color }}
+                          >
+                            {card.cta}
+                            <span aria-hidden>→</span>
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  </a>
-                </FadeIn>
-              ))}
-            </div>
-          </div>
+                    </a>
+                  </FadeIn>
+                );
+              })()}
 
-          {/* ── In the Media ── */}
-          <div className="mt-20 lg:mt-28">
-            <FadeIn>
-              <div className="max-w-5xl mx-auto">
-                <div className="flex items-baseline gap-4 mb-8 md:mb-10">
+              {/* In the Media */}
+              <FadeIn delay={0.08}>
+                <div className="flex items-baseline gap-4 mb-6">
                   <span
                     className="font-body text-[11px] tracking-[0.3em] uppercase"
                     style={{ color: "hsl(var(--heritage-orange))" }}
@@ -570,58 +565,54 @@ const Index = () => {
                   />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-10 items-start">
-                  <figure className="md:col-span-2">
-                    <div className="overflow-hidden rounded-sm shadow-sm">
-                      <img
-                        src={dennisRadioTaboe.url}
-                        alt="Dennis Gerrits being interviewed live at Taboe Media radio studio on Zeedijk, Amsterdam"
-                        loading="lazy"
-                        className="w-full h-auto object-cover"
-                      />
-                    </div>
-                    <figcaption className="font-body text-xs text-muted-foreground mt-3 italic">
-                      Live at Taboe Media, Zeedijk — Amsterdam.
-                    </figcaption>
-                  </figure>
-
-                  <div className="md:col-span-3">
-                    <p className="font-body text-[11px] tracking-[0.25em] uppercase text-muted-foreground mb-2">
-                      Radio Interview · Taboe Media
-                    </p>
-                    <h3 className="font-heading text-2xl md:text-3xl text-primary leading-tight mb-4">
-                      Dennis Gerrits — I Love My City
-                    </h3>
-                    <p className="font-body text-base text-muted-foreground leading-relaxed mb-6">
-                      A conversation about Amsterdam, the people who shape its neighbourhoods, and what it means to share the city as a local. Recorded live on the Zeedijk.
-                    </p>
-
-                    <div className="rounded-sm overflow-hidden border border-border/60">
-                      <iframe
-                        title="Dennis Gerrits — I Love My City (SoundCloud)"
-                        width="100%"
-                        height="166"
-                        scrolling="no"
-                        frameBorder="no"
-                        allow="autoplay"
-                        src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Ftaboe-media%2Fdennis-gerrits-i-love-my-city&color=%23b8651a&inverse=false&auto_play=false&show_user=true"
-                      />
-                    </div>
-
-                    <a
-                      href="https://soundcloud.com/taboe-media/dennis-gerrits-i-love-my-city"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 mt-4 font-body text-sm font-medium hover:gap-2 transition-all"
-                      style={{ color: "hsl(var(--heritage-orange))" }}
-                    >
-                      Listen on SoundCloud
-                      <span aria-hidden>→</span>
-                    </a>
+                <figure className="mb-5">
+                  <div className="overflow-hidden rounded-sm shadow-sm">
+                    <img
+                      src={dennisRadioTaboe.url}
+                      alt="Dennis Gerrits being interviewed live at Taboe Media radio studio on Zeedijk, Amsterdam"
+                      loading="lazy"
+                      className="w-full h-auto object-cover"
+                    />
                   </div>
+                  <figcaption className="font-body text-xs text-muted-foreground mt-2 italic">
+                    Live at Taboe Media, Zeedijk — Amsterdam.
+                  </figcaption>
+                </figure>
+
+                <p className="font-body text-[11px] tracking-[0.25em] uppercase text-muted-foreground mb-2">
+                  Radio Interview · Taboe Media
+                </p>
+                <h3 className="font-heading text-xl md:text-2xl text-primary leading-tight mb-3">
+                  Dennis Gerrits — I Love My City
+                </h3>
+                <p className="font-body text-sm text-muted-foreground leading-relaxed mb-5">
+                  A conversation about Amsterdam, the people who shape its neighbourhoods, and what it means to share the city as a local. Recorded live on the Zeedijk.
+                </p>
+
+                <div className="rounded-sm overflow-hidden border border-border/60">
+                  <iframe
+                    title="Dennis Gerrits — I Love My City (SoundCloud)"
+                    width="100%"
+                    height="166"
+                    scrolling="no"
+                    frameBorder="no"
+                    allow="autoplay"
+                    src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Ftaboe-media%2Fdennis-gerrits-i-love-my-city&color=%23b8651a&inverse=false&auto_play=false&show_user=true"
+                  />
                 </div>
-              </div>
-            </FadeIn>
+
+                <a
+                  href="https://soundcloud.com/taboe-media/dennis-gerrits-i-love-my-city"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 mt-4 font-body text-sm font-medium hover:gap-2 transition-all"
+                  style={{ color: "hsl(var(--heritage-orange))" }}
+                >
+                  Listen on SoundCloud
+                  <span aria-hidden>→</span>
+                </a>
+              </FadeIn>
+            </div>
           </div>
         </div>
       </div>

@@ -5,9 +5,9 @@ const exploreLinks = [
   { to: "/#how-it-works", label: "How I Work" },
   { to: "/#day", label: "A Day Together" },
   { to: "/#proof", label: "Reviews" },
-  { to: "/#stories", label: "Stories" },
+  { to: "/#storybook", label: "Stories" },
   { to: "/get-inspired", label: "Get Inspired" },
-  { to: "#", label: "Two Stories, One City (Podcast)" },
+  { to: "/#podcast", label: "Two Stories, One City (Podcast)" },
   { to: "/#contact", label: "Get in Touch" },
 ];
 
@@ -22,28 +22,39 @@ const Footer = () => {
 
   const handleClick = (e: React.MouseEvent, to: string) => {
     if (to === "#") return;
+
+    const scrollToId = (id: string) => {
+      const tryScroll = (attempts = 0) => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+          return;
+        }
+        if (attempts < 20) {
+          requestAnimationFrame(() => tryScroll(attempts + 1));
+        }
+      };
+      tryScroll();
+    };
+
     // Same-page hash on home: smooth-scroll
     if (to.startsWith("/#")) {
       e.preventDefault();
       const id = to.slice(2);
-      const scroll = () => {
-        const el = document.getElementById(id);
-        if (el) el.scrollIntoView({ behavior: "smooth" });
-      };
-      if (location.pathname === "/") scroll();
+      if (location.pathname === "/") scrollToId(id);
       else {
         navigate("/");
-        setTimeout(scroll, 80);
+        setTimeout(() => scrollToId(id), 50);
       }
       return;
     }
+
     // Cross-page hash like "/travel-agents#universities"
     if (to.includes("#")) {
       const [path, id] = to.split("#");
       if (location.pathname === path) {
         e.preventDefault();
-        const el = document.getElementById(id);
-        if (el) el.scrollIntoView({ behavior: "smooth" });
+        scrollToId(id);
       }
     }
   };

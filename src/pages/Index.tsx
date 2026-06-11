@@ -221,13 +221,14 @@ const Index = () => {
 
                 // SVG viewBox: 1000 wide × 120 tall. Four markers spaced across,
                 // with a gently undulating curve threading through them.
-                const xs = [125, 415, 705, 905];
-                const ys = [70, 38, 78, 44];
+                // Align number markers with the 4-column grid centers (12.5%, 37.5%, 62.5%, 87.5%)
+                const xs = [125, 375, 625, 875];
+                const ys = [60, 60, 60, 60];
                 const routeD =
                   `M ${xs[0]} ${ys[0]} ` +
-                  `C ${xs[0] + 90} ${ys[0] - 50}, ${xs[1] - 90} ${ys[1] + 50}, ${xs[1]} ${ys[1]} ` +
-                  `S ${xs[2] - 90} ${ys[2] + 40}, ${xs[2]} ${ys[2]} ` +
-                  `S ${xs[3] - 60} ${ys[3] + 40}, ${xs[3]} ${ys[3]}`;
+                  `C ${xs[0] + 80} ${ys[0] - 40}, ${xs[1] - 80} ${ys[1] + 40}, ${xs[1]} ${ys[1]} ` +
+                  `S ${xs[2] - 80} ${ys[2] + 40}, ${xs[2]} ${ys[2]} ` +
+                  `S ${xs[3] - 80} ${ys[3] - 40}, ${xs[3]} ${ys[3]}`;
 
                 // Sketchy circle helper (wobbly closed path)
                 const sketchCircle = (cx: number, cy: number, r: number, jitter = 0.7) => {

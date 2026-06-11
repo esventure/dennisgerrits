@@ -208,61 +208,175 @@ const Index = () => {
             </FadeIn>
           </div>
 
-          {/* 4-step timeline — editorial chapter numbers */}
+          {/* 4-step hand-drawn route — sketchy markers connected by a wobbly trail */}
           <FadeIn delay={0.1}>
             <div className="relative max-w-5xl mx-auto mb-24 lg:mb-32">
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 relative">
-                {[
+              {(() => {
+                const steps = [
                   { n: "01", label: t("process.step1.label", "Let’s Connect"), text: t("process.step1.text", "You reach out, and we plan a personal video call to get to know each other and your travel plans.") },
                   { n: "02", label: t("process.step2.label", "Getting to Know You"), text: t("process.step2.text", "I take the time to listen. Your interests, travel style and wishes help shape the experience.") },
                   { n: "03", label: t("process.step3.label", "Creating Your Journey"), text: t("process.step3.text", "Together, we shape an experience that feels personal and completely tailored to you.") },
                   { n: "04", label: t("process.step4.label", "I Take Care of the Details"), text: t("process.step4.text", "From reservations and transportation to personal recommendations and museum tickets, everything is thoughtfully taken care of.") },
-                ].map((step) => (
-                  <div key={step.n} className="text-center md:text-left">
-                    <div
-                      className="font-heading leading-none mb-3 md:mb-4"
-                      style={{
-                        color: "hsl(var(--heritage-orange))",
-                        fontSize: "clamp(4rem, 7vw, 6rem)",
-                        letterSpacing: "0.02em",
-                      }}
-                    >
-                      {step.n}
-                    </div>
-                    <h3 className="font-heading text-2xl text-primary leading-tight mb-3">
-                      {step.label}
-                    </h3>
-                    {/* single thin hand-drawn squiggle under each headline,
-                        together they form one continuous line across the row */}
+                ];
+
+                // SVG viewBox: 1000 wide × 120 tall. Four markers spaced across,
+                // with a gently undulating curve threading through them.
+                const xs = [125, 415, 705, 905];
+                const ys = [70, 38, 78, 44];
+                const routeD =
+                  `M ${xs[0]} ${ys[0]} ` +
+                  `C ${xs[0] + 90} ${ys[0] - 50}, ${xs[1] - 90} ${ys[1] + 50}, ${xs[1]} ${ys[1]} ` +
+                  `S ${xs[2] - 90} ${ys[2] + 40}, ${xs[2]} ${ys[2]} ` +
+                  `S ${xs[3] - 60} ${ys[3] + 40}, ${xs[3]} ${ys[3]}`;
+
+                // Sketchy circle helper (wobbly closed path)
+                const sketchCircle = (cx: number, cy: number, r: number, jitter = 0.7) => {
+                  const pts = Array.from({ length: 14 }, (_, i) => {
+                    const a = (i / 14) * Math.PI * 2;
+                    const rr = r + (Math.sin(i * 1.7) * jitter + Math.cos(i * 2.3) * jitter);
+                    return [cx + Math.cos(a) * rr, cy + Math.sin(a) * rr] as const;
+                  });
+                  let d = `M ${pts[0][0].toFixed(2)} ${pts[0][1].toFixed(2)}`;
+                  for (let i = 1; i <= pts.length; i++) {
+                    const p = pts[i % pts.length];
+                    d += ` L ${p[0].toFixed(2)} ${p[1].toFixed(2)}`;
+                  }
+                  return d + " Z";
+                };
+
+                return (
+                  <>
+                    {/* Desktop: horizontal hand-drawn route behind the row of markers */}
                     <svg
-                      className="mx-auto md:mx-0 mb-4"
-                      width="72"
-                      height="8"
-                      viewBox="0 0 72 8"
                       aria-hidden
+                      viewBox="0 0 1000 120"
+                      preserveAspectRatio="none"
+                      className="hidden md:block absolute left-0 right-0 top-0 w-full pointer-events-none"
+                      style={{ height: "120px" }}
                     >
                       <defs>
-                        <filter id={`squiggle-${step.n}`} x="-5%" y="-50%" width="110%" height="200%">
-                          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed={Number(step.n)} />
-                          <feDisplacementMap in="SourceGraphic" scale="1.2" />
+                        <filter id="howiwork-sketch" x="-5%" y="-20%" width="110%" height="140%">
+                          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="7" result="noise" />
+                          <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.6" />
                         </filter>
                       </defs>
+
+                      {/* pencil under-drawing for the route */}
                       <path
-                        d="M 2 4 Q 12 1, 22 4 T 42 4 T 62 4 T 70 4"
-                        fill="none"
-                        stroke="hsl(var(--heritage-orange))"
-                        strokeWidth="1.4"
+                        d={routeD}
+                        stroke="hsl(var(--heritage-taupe))"
+                        strokeWidth="2.4"
                         strokeLinecap="round"
-                        filter={`url(#squiggle-${step.n})`}
+                        fill="none"
+                        opacity="0.35"
+                        transform="translate(1.5, 1.8)"
+                      />
+                      {/* inked route */}
+                      <path
+                        d={routeD}
+                        stroke="hsl(var(--heritage-orange))"
+                        strokeWidth="1.8"
+                        strokeLinecap="round"
+                        strokeDasharray="6 5"
+                        fill="none"
+                        filter="url(#howiwork-sketch)"
                         opacity="0.85"
                       />
+
+                      {/* sketchy circle markers */}
+                      {xs.map((x, i) => (
+                        <g key={i}>
+                          <path
+                            d={sketchCircle(x + 1.5, ys[i] + 1.8, 22, 0.9)}
+                            fill="hsl(var(--heritage-taupe))"
+                            opacity="0.3"
+                          />
+                          <path
+                            d={sketchCircle(x, ys[i], 22, 0.9)}
+                            fill="hsl(var(--heritage-orange))"
+                            stroke="hsl(var(--heritage-orange))"
+                            strokeWidth="1.2"
+                            filter="url(#howiwork-sketch)"
+                          />
+                          <text
+                            x={x}
+                            y={ys[i] + 1}
+                            textAnchor="middle"
+                            dominantBaseline="central"
+                            fontSize="18"
+                            fontFamily="'Bebas Neue', sans-serif"
+                            letterSpacing="0.05em"
+                            fill="hsl(var(--background))"
+                          >
+                            {steps[i].n}
+                          </text>
+                        </g>
+                      ))}
+
+                      {/* "X marks the spot" near the final marker */}
+                      <g
+                        transform={`translate(${xs[3] + 34}, ${ys[3] - 22})`}
+                        opacity="0.85"
+                        filter="url(#howiwork-sketch)"
+                      >
+                        <path
+                          d={sketchCircle(0, 0, 10, 0.8)}
+                          stroke="hsl(var(--heritage-bordeaux))"
+                          strokeWidth="0.9"
+                          fill="none"
+                          opacity="0.55"
+                        />
+                        <line x1="-5" y1="-5" x2="5" y2="5" stroke="hsl(var(--heritage-bordeaux))" strokeWidth="1.8" strokeLinecap="round" />
+                        <line x1="-5" y1="5" x2="5" y2="-5" stroke="hsl(var(--heritage-bordeaux))" strokeWidth="1.8" strokeLinecap="round" />
+                      </g>
                     </svg>
-                    <p className="font-body text-muted-foreground leading-relaxed">
-                      {step.text}
-                    </p>
-                  </div>
-                ))}
-              </div>
+
+                    {/* Content grid — reserves top space for the route on desktop */}
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 relative md:pt-[140px]">
+                      {steps.map((step) => (
+                        <div key={step.n} className="relative text-center md:text-left">
+                          {/* Mobile-only sketchy marker above each step */}
+                          <div className="md:hidden mb-4 flex items-center justify-center">
+                            <svg width="56" height="56" viewBox="0 0 56 56" aria-hidden>
+                              <defs>
+                                <filter id={`howiwork-sketch-m-${step.n}`} x="-10%" y="-10%" width="120%" height="120%">
+                                  <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed={Number(step.n) + 3} result="n" />
+                                  <feDisplacementMap in="SourceGraphic" in2="n" scale="2.2" />
+                                </filter>
+                              </defs>
+                              <path d={sketchCircle(29.5, 29.8, 22, 0.9)} fill="hsl(var(--heritage-taupe))" opacity="0.3" />
+                              <path
+                                d={sketchCircle(28, 28, 22, 0.9)}
+                                fill="hsl(var(--heritage-orange))"
+                                filter={`url(#howiwork-sketch-m-${step.n})`}
+                              />
+                              <text
+                                x="28"
+                                y="29"
+                                textAnchor="middle"
+                                dominantBaseline="central"
+                                fontSize="18"
+                                fontFamily="'Bebas Neue', sans-serif"
+                                letterSpacing="0.05em"
+                                fill="hsl(var(--background))"
+                              >
+                                {step.n}
+                              </text>
+                            </svg>
+                          </div>
+
+                          <h3 className="font-heading text-2xl text-primary leading-tight mb-3 mt-0 md:mt-2">
+                            {step.label}
+                          </h3>
+                          <p className="font-body text-muted-foreground leading-relaxed">
+                            {step.text}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                );
+              })()}
             </div>
           </FadeIn>
 

@@ -319,17 +319,6 @@ const Index = () => {
                         </g>
                       ))}
 
-                      {/* hand-drawn arrowhead at the end of the route — like the "say hello" callout */}
-                      <g filter="url(#howiwork-sketch)" opacity="0.95">
-                        <path
-                          d={`M ${xs[3] + 22} ${ys[3] - 10} L ${xs[3] + 40} ${ys[3] + 2} L ${xs[3] + 24} ${ys[3] + 14}`}
-                          stroke="hsl(var(--heritage-orange))"
-                          strokeWidth="2.4"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          fill="none"
-                        />
-                      </g>
 
                     </svg>
 

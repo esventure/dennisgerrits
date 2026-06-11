@@ -353,98 +353,83 @@ const TravelAgents = () => {
 
       {/* ────────────────── 4. Always On Call ────────────────── */}
       <section
-        className="relative py-20 lg:py-28"
+        className="relative py-16 lg:py-20 overflow-hidden"
         style={{
           background:
             "linear-gradient(180deg, hsl(var(--heritage-bordeaux) / 0.08) 0%, hsl(var(--background)) 100%)",
         }}
       >
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
-            <FadeIn className="lg:col-span-5">
-              <div>
+        <FaintCanal side="left" />
+        <div className="container mx-auto px-6 lg:px-12 relative">
+          <div className="max-w-6xl mx-auto">
+            {/* Header */}
+            <FadeIn>
+              <div className="max-w-3xl mb-12 lg:mb-16">
                 <img
                   src={iconMessage}
                   alt=""
                   aria-hidden
-                  className="w-16 h-16 mb-8"
+                  className="w-14 h-14 mb-6"
                   loading="lazy"
                 />
-                <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl text-primary leading-[1] mb-6">
+                <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl text-primary leading-[1]">
                   Your clients have a local they can rely on.
                 </h2>
               </div>
             </FadeIn>
-            <FadeIn delay={0.1} className="lg:col-span-7">
-              <div className="relative space-y-6 font-body text-lg text-foreground/90 leading-relaxed">
-                <p>
-                  <span
-                    className="float-left font-heading text-7xl leading-[0.8] pr-3 pt-1"
-                    style={{ color: "hsl(var(--heritage-bordeaux))" }}
-                  >
-                    T
-                  </span>
-                  ravel plans can change. Questions come up. Sometimes clients simply feel more
-                  comfortable knowing they have someone local they can reach out to.
-                </p>
-                <p>
-                  I'm there as a trusted presence on the ground, before, during, and whenever
-                  needed throughout their stay.
-                </p>
-                <p>
-                  I personally share my phone number with every client, so they can easily
-                  contact me throughout their stay, including in the evenings when needed.
-                </p>
 
-                <p>
-                  Whether it's practical support like finding a pharmacy, help with local
-                  coordination, last-minute adjustments, or simply a familiar contact in the
-                  city, your clients know they are not navigating Amsterdam alone.
-                </p>
-              </div>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
+            {/* Two-column compact grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 mb-12 lg:mb-16">
+              {[
+                {
+                  title: "A trusted presence",
+                  body: "Travel plans can change. Questions come up. I'm there before, during, and whenever needed throughout their stay.",
+                },
+                {
+                  title: "Reachable, personally",
+                  body: "Every client gets my phone number, so they can contact me throughout their stay, including in the evenings when needed.",
+                },
+                {
+                  title: "Practical support",
+                  body: "From finding a pharmacy to last-minute adjustments, your clients know they are not navigating Amsterdam alone.",
+                },
+              ].map((item, i) => (
+                <FadeIn key={item.title} delay={i * 0.08}>
+                  <div className="border-t pt-5" style={{ borderColor: "hsl(var(--heritage-bordeaux) / 0.4)" }}>
+                    <h3 className="font-heading text-xl text-primary mb-2 leading-tight">
+                      {item.title}
+                    </h3>
+                    <p className="font-body text-base text-foreground/85 leading-relaxed">
+                      {item.body}
+                    </p>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
 
-      <SectionDivider />
-
-      {/* ────────────────── 5. Deeply Local ────────────────── */}
-      <section className="relative py-20 lg:py-28 overflow-hidden">
-        <FaintCanal side="left" />
-        <div className="container mx-auto px-6 lg:px-12 relative">
-          <div className="max-w-4xl mx-auto">
-            <FadeIn>
-              <div className="flex justify-center mb-12">
-                <img src={iconBoat} alt="" aria-hidden className="w-16 h-16 object-contain" loading="lazy" />
-              </div>
-            </FadeIn>
-
-
-
+            {/* Pull-quote callout: A true extension of your service */}
             <FadeIn delay={0.2}>
               <div
-                className="relative p-10 lg:p-12 border-l-4 bg-background shadow-md"
+                className="relative p-8 lg:p-10 border-l-4 bg-background shadow-md"
                 style={{
                   borderColor: "hsl(var(--heritage-orange))",
-                  transform: "rotate(-0.5deg)",
+                  transform: "rotate(-0.4deg)",
                 }}
               >
                 <PaperGrain />
-                <div className="relative">
-                  <img src={iconHistory} alt="" aria-hidden className="w-12 h-12 object-contain" loading="lazy" />
-                  <h3 className="font-heading text-3xl lg:text-4xl text-primary mt-4 mb-6 leading-tight">
-                    A true extension of your service.
-                  </h3>
-                  <div className="space-y-4 font-body text-lg text-foreground/90 leading-relaxed">
+                <div className="relative grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-start">
+                  <div className="md:col-span-5">
+                    <img src={iconHistory} alt="" aria-hidden className="w-12 h-12 object-contain mb-4" loading="lazy" />
+                    <h3 className="font-heading text-2xl lg:text-3xl text-primary leading-tight">
+                      A true extension of your service.
+                    </h3>
+                  </div>
+                  <div className="md:col-span-7 space-y-4 font-body text-base lg:text-lg text-foreground/90 leading-relaxed">
                     <p>
-                      When we work together, you're not handing your clients off. You're extending
-                      your service with someone you can trust. Someone who understands your
-                      clients. Someone who takes ownership. Someone who is there when it matters.
+                      When we work together, you're not handing your clients off. You're extending your service with someone you can trust. Someone who understands your clients, takes ownership, and is there when it matters.
                     </p>
-                    <p className="font-heading text-2xl text-primary pt-2">
-                      So you can say: "I have someone in Amsterdam. He'll take care of you." And
-                      truly mean it.
+                    <p className="font-heading text-xl lg:text-2xl text-primary pt-1">
+                      So you can say: "I have someone in Amsterdam. He'll take care of you." And truly mean it.
                     </p>
                   </div>
                 </div>
@@ -453,6 +438,7 @@ const TravelAgents = () => {
           </div>
         </div>
       </section>
+
 
       {/* ────────────────── 6. Testimonials ────────────────── */}
       <section

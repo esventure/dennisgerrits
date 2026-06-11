@@ -1011,7 +1011,7 @@ const Index = () => {
 
                 {/* Remaining reviews — smaller grid for rhythm */}
                 <div className="overflow-x-auto md:overflow-visible scroll-smooth snap-x snap-mandatory -mx-6 px-6 md:mx-0 md:px-0 pb-2 md:pb-0">
-                  <div className="flex md:grid md:grid-cols-2 lg:grid-cols-5 gap-5 mb-8 max-w-6xl mx-auto" style={{ minWidth: 'max-content' }}>
+                  <div className="flex md:grid md:grid-cols-2 lg:grid-cols-5 gap-5 mb-8 max-w-6xl mx-auto min-w-max md:min-w-0">
                     {reviews.slice(1).map((r, i) => {
                       // Vary widths to break the wall: spans 2/2/3/3/2 across 5 cols
                       const spans = ["lg:col-span-2", "lg:col-span-3", "lg:col-span-3", "lg:col-span-2", "lg:col-span-5"];

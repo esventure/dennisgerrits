@@ -905,21 +905,15 @@ const HeroGreenHelloCaps = () => (
       className="relative overflow-hidden rounded-3xl px-5 py-12 sm:px-8 sm:py-16 md:px-12 md:py-20 lg:px-16 lg:py-24"
       style={{ backgroundColor: "hsl(var(--heritage-green))" }}
     >
-
-      <p
-        className="absolute top-5 right-5 md:top-8 md:right-10 text-2xl md:text-3xl rotate-[-4deg] hidden md:block z-10"
-        style={{
-          fontFamily: "'Caveat', cursive",
-          color: "hsl(var(--heritage-orange))",
-        }}
-        aria-hidden
-      >
-        say hello →
-      </p>
-
       <div className="relative mx-auto max-w-5xl" style={{ zIndex: 10 }}>
         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 md:gap-14 items-center">
           <FadeIn>
+            <p
+              className="font-body text-xs md:text-sm tracking-[0.3em] uppercase mb-6"
+              style={{ color: "hsl(var(--heritage-orange))" }}
+            >
+              — Personal Travel Companion —
+            </p>
             <h1
               className="font-heading leading-[0.9] mb-8 text-[clamp(2.6rem,6.5vw,5.5rem)]"
               style={{ color: "hsl(var(--background))" }}
@@ -944,18 +938,39 @@ const HeroGreenHelloCaps = () => (
                   />
                 </svg>
               </span>
-              <span className="block mt-6">A friend who</span>
-              happens to know
-              <br />
-              the city.
+              <span className="block mt-6">I don't show a city.</span>
+              I translate it.
             </h1>
             <p
               className="font-body text-base md:text-lg leading-relaxed max-w-md mb-10"
               style={{ color: "hsl(var(--background) / 0.85)" }}
             >
-              I walk alongside you, not in front of you. We find the stories,
+              I walk alongside you, not in front of you. We'll find the stories,
               the quiet corners, the places that make you stop and really look.
+              That's what I do.
             </p>
+            <div className="flex flex-col items-start gap-3">
+              <a
+                href="#contact"
+                className="group inline-flex items-center gap-2 font-body text-sm tracking-widest uppercase px-7 py-4 rounded-sm transition-colors"
+                style={{
+                  backgroundColor: "hsl(var(--heritage-orange))",
+                  color: "hsl(var(--background))",
+                }}
+              >
+                Say hello
+                <span aria-hidden className="transition-transform group-hover:translate-x-0.5">→</span>
+              </a>
+              <p
+                className="text-lg md:text-xl rotate-[-2deg] ml-1"
+                style={{
+                  fontFamily: "'Caveat', cursive",
+                  color: "hsl(var(--background) / 0.9)",
+                }}
+              >
+                Let's get to know each other first
+              </p>
+            </div>
           </FadeIn>
 
           <FadeIn delay={0.15}>

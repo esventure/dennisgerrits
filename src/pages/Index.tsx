@@ -41,6 +41,7 @@ import storyBench from "@/assets/stories/bench.jpg";
 import podcastCover from "@/assets/podcast-cover.jpg";
 import podcastHosts from "@/assets/podcast-hosts.jpg";
 import twoStoriesLogo from "@/assets/two-stories-one-city-logo.png";
+import dennisRadioTaboe from "@/assets/dennis-radio-taboe.jpg.asset.json";
 import PodcastPlayer from "@/components/PodcastPlayer";
 
 /* Hand-drawn ring path for the timeline step circles — matches the

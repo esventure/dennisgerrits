@@ -7,7 +7,7 @@ const exploreLinks = [
   { to: "/#proof", label: "Reviews" },
   { to: "/#storybook", label: "Stories" },
   { to: "/get-inspired", label: "Get Inspired" },
-  { to: "#", label: "Two Stories, One City (Podcast)" },
+  { to: "/#podcast", label: "Two Stories, One City (Podcast)" },
   { to: "/#contact", label: "Get in Touch" },
 ];
 

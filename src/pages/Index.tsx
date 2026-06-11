@@ -255,32 +255,37 @@ const Index = () => {
                       style={{ height: "120px" }}
                     >
                       <defs>
-                        <filter id="howiwork-sketch" x="-5%" y="-20%" width="110%" height="140%">
-                          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="7" result="noise" />
-                          <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.6" />
+                        <filter id="howiwork-sketch" x="-5%" y="-30%" width="110%" height="160%">
+                          <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" seed="7" result="noise" />
+                          <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" />
+                        </filter>
+                        <filter id="howiwork-sketch-soft" x="-5%" y="-30%" width="110%" height="160%">
+                          <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="3" result="noise2" />
+                          <feDisplacementMap in="SourceGraphic" in2="noise2" scale="3" />
                         </filter>
                       </defs>
 
-                      {/* pencil under-drawing for the route */}
-                      <path
-                        d={routeD}
-                        stroke="hsl(var(--heritage-taupe))"
-                        strokeWidth="2.4"
-                        strokeLinecap="round"
-                        fill="none"
-                        opacity="0.35"
-                        transform="translate(1.5, 1.8)"
-                      />
-                      {/* inked route */}
+                      {/* loose double-pass ink — gives the line that felt-tip handmade feel */}
                       <path
                         d={routeD}
                         stroke="hsl(var(--heritage-orange))"
-                        strokeWidth="1.8"
+                        strokeWidth="2.6"
                         strokeLinecap="round"
-                        strokeDasharray="6 5"
+                        strokeLinejoin="round"
                         fill="none"
                         filter="url(#howiwork-sketch)"
-                        opacity="0.85"
+                        opacity="0.95"
+                      />
+                      <path
+                        d={routeD}
+                        stroke="hsl(var(--heritage-orange))"
+                        strokeWidth="1.6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        fill="none"
+                        filter="url(#howiwork-sketch-soft)"
+                        opacity="0.55"
+                        transform="translate(0.8, -1.2)"
                       />
 
                       {/* sketchy circle markers */}
@@ -296,7 +301,7 @@ const Index = () => {
                             fill="hsl(var(--heritage-orange))"
                             stroke="hsl(var(--heritage-orange))"
                             strokeWidth="1.2"
-                            filter="url(#howiwork-sketch)"
+                            filter="url(#howiwork-sketch-soft)"
                           />
                           <text
                             x={x}
@@ -313,22 +318,18 @@ const Index = () => {
                         </g>
                       ))}
 
-                      {/* "X marks the spot" near the final marker */}
-                      <g
-                        transform={`translate(${xs[3] + 34}, ${ys[3] - 22})`}
-                        opacity="0.85"
-                        filter="url(#howiwork-sketch)"
-                      >
+                      {/* hand-drawn arrowhead at the end of the route — like the "say hello" callout */}
+                      <g filter="url(#howiwork-sketch)" opacity="0.95">
                         <path
-                          d={sketchCircle(0, 0, 10, 0.8)}
-                          stroke="hsl(var(--heritage-bordeaux))"
-                          strokeWidth="0.9"
+                          d={`M ${xs[3] + 22} ${ys[3] - 10} L ${xs[3] + 40} ${ys[3] + 2} L ${xs[3] + 24} ${ys[3] + 14}`}
+                          stroke="hsl(var(--heritage-orange))"
+                          strokeWidth="2.4"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                           fill="none"
-                          opacity="0.55"
                         />
-                        <line x1="-5" y1="-5" x2="5" y2="5" stroke="hsl(var(--heritage-bordeaux))" strokeWidth="1.8" strokeLinecap="round" />
-                        <line x1="-5" y1="5" x2="5" y2="-5" stroke="hsl(var(--heritage-bordeaux))" strokeWidth="1.8" strokeLinecap="round" />
                       </g>
+
                     </svg>
 
                     {/* Content grid — reserves top space for the route on desktop */}

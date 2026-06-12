@@ -843,32 +843,32 @@ const HeroEditorialGreenV4Mixed = () => (
 const HeroGreenAllCaps = () => (
   <div className="w-full container mx-auto px-6 lg:px-12 py-10 md:py-14">
     <div
-      className="relative overflow-hidden rounded-3xl px-5 py-12 sm:px-8 sm:py-16 md:px-12 md:py-20 lg:px-16 lg:py-24"
+      className="relative overflow-hidden rounded-3xl px-6 py-14 sm:px-10 sm:py-20 md:px-16 md:py-24 lg:px-20 lg:py-28"
       style={{ backgroundColor: "hsl(var(--heritage-green))" }}
     >
-
-      <p
-        className="absolute top-5 right-5 md:top-8 md:right-10 text-2xl md:text-3xl rotate-[-4deg] hidden md:block z-10"
-        style={{
-          fontFamily: "'Caveat', cursive",
-          color: "hsl(var(--heritage-orange))",
-        }}
-        aria-hidden
-      >
-        say hello →
-      </p>
-
-      <div className="relative mx-auto max-w-5xl" style={{ zIndex: 10 }}>
-        <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 md:gap-14 items-center">
+      <div className="relative mx-auto max-w-6xl" style={{ zIndex: 10 }}>
+        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-center">
+          {/* Left: portrait, editorial framing */}
           <FadeIn>
-            <p
-              className="font-body text-xs md:text-sm tracking-[0.3em] uppercase mb-6"
-              style={{ color: "hsl(var(--heritage-orange))" }}
-            >
-              — HELLO, I AM DENNIS —
-            </p>
+            <div className="flex flex-col items-center lg:items-start">
+              <img
+                src={dennisCanalSmile}
+                alt="Dennis Gerrits on an Amsterdam canal bridge"
+                className="w-full max-w-lg rounded-sm object-cover shadow-2xl aspect-[3/4]"
+              />
+              <p
+                className="font-body text-sm tracking-widest uppercase mt-6"
+                style={{ color: "hsl(var(--heritage-orange))" }}
+              >
+                — HELLO, I AM DENNIS —
+              </p>
+            </div>
+          </FadeIn>
+
+          {/* Right: editorial headline + copy */}
+          <FadeIn delay={0.2}>
             <h1
-              className="font-heading leading-[0.9] mb-8 text-[clamp(2.6rem,7vw,6rem)] uppercase tracking-tight"
+              className="font-heading text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95] mb-6 md:mb-8 uppercase tracking-tight"
               style={{ color: "hsl(var(--background))" }}
             >
               A FRIEND
@@ -882,33 +882,12 @@ const HeroGreenAllCaps = () => (
               THE CITY.
             </h1>
             <p
-              className="font-body text-base md:text-lg leading-relaxed max-w-md mb-10"
+              className="font-body text-base md:text-lg leading-relaxed max-w-lg mb-10"
               style={{ color: "hsl(var(--background) / 0.85)" }}
             >
               I walk alongside you, not in front of you. We find the stories,
               the quiet corners, the places that make you stop and really look.
             </p>
-          </FadeIn>
-
-          <FadeIn delay={0.15}>
-            <div
-              className="bg-background border-l-4 shadow-2xl rounded-sm overflow-hidden"
-              style={{ borderLeftColor: "hsl(var(--heritage-orange))" }}
-            >
-              <img
-                src={dennisCanalSmile}
-                alt="Dennis Gerrits on an Amsterdam canal bridge"
-                className="w-full aspect-[4/5] object-cover"
-              />
-              <div className="p-5 md:p-6">
-                <p className="font-heading text-2xl text-primary leading-tight uppercase">
-                  DENNIS GERRITS
-                </p>
-                <p className="font-body text-sm text-muted-foreground mt-1">
-                  Amsterdammer · Personal Travel Companion
-                </p>
-              </div>
-            </div>
           </FadeIn>
         </div>
       </div>

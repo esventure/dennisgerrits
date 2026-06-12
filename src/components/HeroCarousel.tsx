@@ -901,20 +901,32 @@ const HeroGreenAllCaps = () => (
 const HeroGreenHelloCaps = () => (
   <div className="w-full container mx-auto px-6 lg:px-12 py-10 md:py-14">
     <div
-      className="relative overflow-hidden rounded-3xl px-5 py-12 sm:px-8 sm:py-16 md:px-12 md:py-20 lg:px-16 lg:py-24"
+      className="relative overflow-hidden rounded-3xl px-6 py-14 sm:px-10 sm:py-20 md:px-16 md:py-24 lg:px-20 lg:py-28"
       style={{ backgroundColor: "hsl(var(--heritage-green))" }}
     >
-      <div className="relative mx-auto max-w-5xl" style={{ zIndex: 10 }}>
-        <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 md:gap-14 items-center">
+      <div className="relative mx-auto max-w-6xl" style={{ zIndex: 10 }}>
+        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-center">
+          {/* Left: portrait, editorial framing */}
           <FadeIn>
-            <p
-              className="font-body text-xs md:text-sm tracking-[0.3em] uppercase mb-6"
-              style={{ color: "hsl(var(--heritage-orange))" }}
-            >
-              — Personal Travel Companion —
-            </p>
+            <div className="flex flex-col items-center lg:items-start">
+              <img
+                src={dennisCanalSmile}
+                alt="Dennis Gerrits on an Amsterdam canal bridge"
+                className="w-full max-w-lg rounded-sm object-cover shadow-2xl aspect-[3/4]"
+              />
+              <p
+                className="font-body text-sm tracking-widest uppercase mt-6"
+                style={{ color: "hsl(var(--heritage-orange))" }}
+              >
+                Storyteller & Travel Companion
+              </p>
+            </div>
+          </FadeIn>
+
+          {/* Right: editorial headline + copy */}
+          <FadeIn delay={0.2}>
             <h1
-              className="font-heading leading-[0.9] mb-8 text-[clamp(2.6rem,6.5vw,5.5rem)]"
+              className="font-heading text-[2.75rem] sm:text-5xl md:text-7xl lg:text-8xl leading-[0.95] mb-6 md:mb-8"
               style={{ color: "hsl(var(--background))" }}
             >
               <span
@@ -937,66 +949,25 @@ const HeroGreenHelloCaps = () => (
                   />
                 </svg>
               </span>
-              <span className="block mt-6">I don't show a city.</span>
-              I translate it.
+              <br />
+              A friend who
+              <br />
+              knows the city.
             </h1>
             <p
-              className="font-body text-base md:text-lg leading-relaxed max-w-md mb-10"
+              className="font-body text-lg leading-relaxed max-w-lg"
               style={{ color: "hsl(var(--background) / 0.85)" }}
             >
-              I walk alongside you, not in front of you. We'll find the stories,
-              the quiet corners, the places that make you stop and really look.
-              That's what I do.
+              We slow down, follow curiosity, and discover places together,
+              one story at a time. The best moments are rarely planned.
             </p>
-            <div className="flex flex-col items-start gap-3">
-              <a
-                href="#contact"
-                className="group inline-flex items-center gap-2 font-body text-sm tracking-widest uppercase px-7 py-4 rounded-sm transition-colors"
-                style={{
-                  backgroundColor: "hsl(var(--heritage-orange))",
-                  color: "hsl(var(--background))",
-                }}
-              >
-                Say hello
-                <span aria-hidden className="transition-transform group-hover:translate-x-0.5">→</span>
-              </a>
-              <p
-                className="text-lg md:text-xl rotate-[-2deg] ml-1"
-                style={{
-                  fontFamily: "'Caveat', cursive",
-                  color: "hsl(var(--background) / 0.9)",
-                }}
-              >
-                Let's get to know each other first
-              </p>
-            </div>
-          </FadeIn>
-
-          <FadeIn delay={0.15}>
-            <div
-              className="bg-background border-l-4 shadow-2xl rounded-sm overflow-hidden"
-              style={{ borderLeftColor: "hsl(var(--heritage-orange))" }}
-            >
-              <img
-                src={dennisCanalSmile}
-                alt="Dennis Gerrits on an Amsterdam canal bridge"
-                className="w-full aspect-[4/5] object-cover"
-              />
-              <div className="p-5 md:p-6">
-                <p className="font-heading text-2xl text-primary leading-tight">
-                  Dennis Gerrits
-                </p>
-                <p className="font-body text-sm text-muted-foreground mt-1">
-                  Amsterdammer · Personal Travel Companion
-                </p>
-              </div>
-            </div>
           </FadeIn>
         </div>
       </div>
     </div>
   </div>
 );
+
 
 /* ────────────────────────────────────────────────────────────
    Variants of HeroEditorialGreen

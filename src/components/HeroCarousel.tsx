@@ -949,7 +949,7 @@ const HeroGreenHelloCaps = () => (
                 </span>
               </h1>
               <p
-                className="font-body text-[2.75rem] sm:text-5xl md:text-7xl lg:text-8xl leading-[0.95] mt-1"
+                className="font-body text-[1.625rem] sm:text-2xl md:text-3xl lg:text-4xl leading-[1.2] mt-2 tracking-[0.03em]"
                 style={{ color: "hsl(var(--background))" }}
               >
                 A friend who knows the city.

@@ -297,25 +297,8 @@ const HeroEditorialGreen = () => (
     >
 
       <div className="relative mx-auto max-w-6xl" style={{ zIndex: 10 }}>
-        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-center">
-          {/* Left: portrait, editorial framing */}
-          <FadeIn>
-            <div className="flex flex-col items-center lg:items-start">
-              <img
-                src={dennisCanalSmile}
-                alt="Dennis Gerrits on an Amsterdam canal bridge"
-                className="w-full max-w-lg rounded-sm object-cover shadow-2xl aspect-[3/4]"
-              />
-              <p
-                className="font-body text-sm tracking-widest uppercase mt-6"
-                style={{ color: "hsl(var(--heritage-orange))" }}
-              >
-                Storyteller & Travel Companion
-              </p>
-            </div>
-          </FadeIn>
-
-          {/* Right: editorial headline + copy */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 items-center">
+          {/* Left: editorial headline + copy */}
           <FadeIn delay={0.2}>
             <h1
               className="font-heading text-[2.75rem] sm:text-5xl md:text-7xl lg:text-8xl leading-[0.95] mb-6 md:mb-8"
@@ -355,6 +338,23 @@ const HeroEditorialGreen = () => (
               We slow down, follow curiosity, and discover places together,
               one story at a time. The best moments are rarely planned.
             </p>
+          </FadeIn>
+
+          {/* Right: portrait, editorial framing */}
+          <FadeIn>
+            <div className="flex flex-col items-center lg:items-end">
+              <img
+                src={dennisCanalSmile}
+                alt="Dennis Gerrits on an Amsterdam canal bridge"
+                className="w-full max-w-lg rounded-sm object-cover shadow-2xl aspect-[3/4]"
+              />
+              <p
+                className="font-body text-sm tracking-widest uppercase mt-6"
+                style={{ color: "hsl(var(--heritage-orange))" }}
+              >
+                Storyteller & Travel Companion
+              </p>
+            </div>
           </FadeIn>
         </div>
       </div>
@@ -978,23 +978,7 @@ const HeroEditorialGreenAllCaps = () => (
     >
 
       <div className="relative mx-auto max-w-6xl" style={{ zIndex: 10 }}>
-        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-center">
-          <FadeIn>
-            <div className="flex flex-col items-center lg:items-start">
-              <img
-                src={dennisCanalSmile}
-                alt="Dennis Gerrits on an Amsterdam canal bridge"
-                className="w-full max-w-lg rounded-sm object-cover shadow-2xl aspect-[3/4]"
-              />
-              <p
-                className="font-body text-sm tracking-widest uppercase mt-6"
-                style={{ color: "hsl(var(--heritage-orange))" }}
-              >
-                STORYTELLER, HOST & TRAVEL COMPANION
-              </p>
-            </div>
-          </FadeIn>
-
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 items-center">
           <FadeIn delay={0.2}>
             <h1
               className="font-heading text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95] mb-6 md:mb-8 uppercase tracking-tight"
@@ -1037,6 +1021,22 @@ const HeroEditorialGreenAllCaps = () => (
               one story at a time. The best moments are rarely planned.
             </p>
           </FadeIn>
+
+          <FadeIn>
+            <div className="flex flex-col items-center lg:items-end">
+              <img
+                src={dennisCanalSmile}
+                alt="Dennis Gerrits on an Amsterdam canal bridge"
+                className="w-full max-w-lg rounded-sm object-cover shadow-2xl aspect-[3/4]"
+              />
+              <p
+                className="font-body text-sm tracking-widest uppercase mt-6"
+                style={{ color: "hsl(var(--heritage-orange))" }}
+              >
+                STORYTELLER, HOST & TRAVEL COMPANION
+              </p>
+            </div>
+          </FadeIn>
         </div>
       </div>
     </div>
@@ -1051,23 +1051,7 @@ const HeroEditorialGreenHelloCaps = () => (
     >
 
       <div className="relative mx-auto max-w-6xl" style={{ zIndex: 10 }}>
-        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-center">
-          <FadeIn>
-            <div className="flex flex-col items-center lg:items-start">
-              <img
-                src={dennisCanalSmile}
-                alt="Dennis Gerrits on an Amsterdam canal bridge"
-                className="w-full max-w-lg rounded-sm object-cover shadow-2xl aspect-[3/4]"
-              />
-              <p
-                className="font-body text-sm tracking-widest uppercase mt-6"
-                style={{ color: "hsl(var(--heritage-orange))" }}
-              >
-                Storyteller, Host & Companion
-              </p>
-            </div>
-          </FadeIn>
-
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 items-center">
           <FadeIn delay={0.2}>
             <h1
               className="font-heading text-[2.6rem] sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95] mb-6 md:mb-8"
@@ -1105,6 +1089,22 @@ const HeroEditorialGreenHelloCaps = () => (
               We slow down, follow curiosity, and discover places together,
               one story at a time. The best moments are rarely planned.
             </p>
+          </FadeIn>
+
+          <FadeIn>
+            <div className="flex flex-col items-center lg:items-end">
+              <img
+                src={dennisCanalSmile}
+                alt="Dennis Gerrits on an Amsterdam canal bridge"
+                className="w-full max-w-lg rounded-sm object-cover shadow-2xl aspect-[3/4]"
+              />
+              <p
+                className="font-body text-sm tracking-widest uppercase mt-6"
+                style={{ color: "hsl(var(--heritage-orange))" }}
+              >
+                Storyteller, Host & Companion
+              </p>
+            </div>
           </FadeIn>
         </div>
       </div>

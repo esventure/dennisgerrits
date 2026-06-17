@@ -922,35 +922,39 @@ const HeroGreenHelloCaps = () => (
 
           {/* Right: editorial headline + copy */}
           <FadeIn delay={0.2}>
-            <h1
-              className="font-heading text-[2.75rem] sm:text-5xl md:text-7xl lg:text-8xl leading-[0.95] mb-6 md:mb-8"
-              style={{ color: "hsl(var(--background))" }}
-            >
-              <span
-                className="relative inline-block uppercase tracking-tight"
-                style={{ color: "hsl(var(--heritage-orange))" }}
+            <div className="mb-6 md:mb-8">
+              <h1
+                className="font-heading text-[2.75rem] sm:text-5xl md:text-7xl lg:text-8xl leading-[0.95]"
+                style={{ color: "hsl(var(--background))" }}
               >
-                HELLO, I'M DENNIS.
-                <svg
-                  aria-hidden
-                  viewBox="0 0 200 12"
-                  preserveAspectRatio="none"
-                  className="absolute left-0 -bottom-2 w-full h-3"
+                <span
+                  className="relative inline-block uppercase tracking-tight"
+                  style={{ color: "hsl(var(--heritage-orange))" }}
                 >
-                  <path
-                    d="M 4 8 C 60 2, 130 10, 196 5"
-                    stroke="hsl(var(--heritage-orange))"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    fill="none"
-                  />
-                </svg>
-              </span>
-              <br />
-              A friend who
-              <br />
-              knows the city.
-            </h1>
+                  HELLO, I'M DENNIS.
+                  <svg
+                    aria-hidden
+                    viewBox="0 0 200 12"
+                    preserveAspectRatio="none"
+                    className="absolute left-0 -bottom-2 w-full h-3"
+                  >
+                    <path
+                      d="M 4 8 C 60 2, 130 10, 196 5"
+                      stroke="hsl(var(--heritage-orange))"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      fill="none"
+                    />
+                  </svg>
+                </span>
+              </h1>
+              <p
+                className="font-body text-[2.75rem] sm:text-5xl md:text-7xl lg:text-8xl leading-[0.95] mt-1"
+                style={{ color: "hsl(var(--background))" }}
+              >
+                A friend who knows the city.
+              </p>
+            </div>
             <p
               className="font-body text-lg leading-relaxed max-w-lg"
               style={{ color: "hsl(var(--background) / 0.85)" }}

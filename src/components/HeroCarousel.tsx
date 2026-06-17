@@ -923,11 +923,11 @@ const HeroGreenHelloCaps = () => (
           {/* Right: editorial headline + copy */}
           <FadeIn delay={0.2}>
             <h1
-              className="font-heading text-[2.75rem] sm:text-5xl md:text-7xl lg:text-8xl leading-[0.95] mb-6 md:mb-8"
+              className="font-body text-[2.75rem] sm:text-5xl md:text-7xl lg:text-8xl leading-[0.95] mb-6 md:mb-8"
               style={{ color: "hsl(var(--background))" }}
             >
               <span
-                className="relative inline-block uppercase tracking-tight"
+                className="font-heading relative inline-block uppercase tracking-tight"
                 style={{ color: "hsl(var(--heritage-orange))" }}
               >
                 HELLO, I'M DENNIS.

@@ -629,7 +629,7 @@ const HeroEditorialGreenListen = () => (
 
           <FadeIn delay={0.2}>
             <h1
-              className="font-heading text-[2.6rem] sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95] mb-6 md:mb-8"
+              className="font-heading text-[2.6rem] sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95] mb-2 md:mb-3"
               style={{ color: "hsl(var(--background))" }}
             >
               <span
@@ -652,13 +652,17 @@ const HeroEditorialGreenListen = () => (
                   />
                 </svg>
               </span>
-              <br />
-              I listen first.
-              <br />
-              Then I open
-              <br />
-              the city.
             </h1>
+            <p
+              className="font-heading text-[1.625rem] sm:text-2xl md:text-3xl lg:text-4xl tracking-[0.12em] leading-[1.2] mb-6 md:mb-8"
+              style={{ color: "hsl(var(--background))" }}
+            >
+              I LISTEN FIRST.
+              <br />
+              THEN I OPEN
+              <br />
+              THE CITY.
+            </p>
             <p
               className="font-body text-lg leading-relaxed max-w-lg"
               style={{ color: "hsl(var(--background) / 0.85)" }}

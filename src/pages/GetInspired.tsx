@@ -15,116 +15,161 @@ import imgMusic from "@/assets/interests/music.jpg";
 import imgWater from "@/assets/interests/water.jpg";
 import imgMarkets from "@/assets/interests/markets.jpg";
 
-const themes = [
+const blocks: { title: string; note: string; caption: string; image: string }[] = [
   {
-    id: "history",
     title: "The Neighbourhood Way",
-    caption: "A bench in the sun. Someone watering plants outside their front door. Fresh bread somewhere nearby.",
     note: "real Amsterdam lives here",
-    image: imgHistory,
-    rotate: -2.4,
-    pin: "tape-tl",
-  },
-  {
-    id: "food",
-    title: "Local Food",
-    caption: "I know a baker who pulls bread out of the oven at six. We can be there before the queue starts.",
-    note: "bring an empty stomach",
-    image: imgFood,
-    rotate: 1.8,
-    pin: "tape-tr",
-  },
-  {
-    id: "architecture",
-    title: "Architecture",
-    caption: "Every gable in this city is a date stamp. Once you know what to look for, the whole street starts talking.",
-    note: "look up, always",
-    image: imgArchitecture,
-    rotate: -1.2,
-    pin: "tape-gl",
-  },
-  {
-    id: "art",
-    title: "Street Art",
-    caption: "A friend paints walls in the north. We can knock on her studio door and see what she's working on.",
-    note: "she might be home",
-    image: imgArt,
-    rotate: 2.2,
-    pin: "tape-gr",
-  },
-  {
-    id: "nature",
-    title: "Hidden Gardens",
-    caption: "There's a courtyard behind a plain wooden door. Three hundred years old, and almost always empty.",
-    note: "my favorite bench",
-    image: imgNature,
-    rotate: -1.6,
-    pin: "tape-tl",
-  },
-  {
-    id: "craft",
-    title: "Makers & Craft",
-    caption: "I'll introduce you to people who still make things by hand. Leather, paper, glass. Their stories stay with you.",
-    note: "watch the hands",
-    image: imgCraft,
-    rotate: 1.4,
-    pin: "tape-tr",
-  },
-  {
-    id: "cafes",
-    title: "Brown Cafes",
-    caption: "Smoky old pubs where regulars have their own stool. We'll have a jenever and listen for a while.",
-    note: "ask for the bitter",
+    caption:
+      "Quiet side streets where everyday life unfolds. Someone watering plants outside their front door. A neighbour locking up a bicycle.",
     image: imgCafes,
-    rotate: -2.0,
-    pin: "tape-gl",
   },
   {
-    id: "cycling",
-    title: "On Two Wheels",
-    caption: "I'll get you a proper Dutch bike and we'll take the long way. The city looks different from the saddle.",
-    note: "no helmets, sorry",
-    image: imgCycling,
-    rotate: 1.6,
-    pin: "tape-gr",
+    title: "Rembrandt and the Golden Age Stories",
+    note: "the city that painted itself into history",
+    caption:
+      "Rembrandt and his living light. Rijksmuseum walls full of time and memory. Golden Age architecture where history still breathes.",
+    image: imgArt,
   },
   {
-    id: "literature",
-    title: "Books & Writers",
-    caption: "I'll show you the cafe where Multatuli sat, and a tiny shop where you can still find first editions.",
-    note: "smell the pages",
-    image: imgLiterature,
-    rotate: -1.4,
-    pin: "tape-tl",
+    title: "Food Culture",
+    note: "where you taste Amsterdam, one bite at a time",
+    caption:
+      "Morning markets full of daily life. The smell of fresh bread from bakeries. Local flavours in every bite.",
+    image: imgFood,
   },
   {
-    id: "music",
-    title: "Live Music",
-    caption: "Small rooms, big sound. I know which nights to go and where the locals actually listen.",
-    note: "stay till late",
-    image: imgMusic,
-    rotate: 2.0,
-    pin: "tape-tr",
+    title: "Slow Evenings",
+    note: "when Amsterdam turns quiet and cozy",
+    caption:
+      "Brown cafés where time disappears. Locals settling into their night. Small restaurants that feel like home.",
+    image: imgCafes,
   },
   {
-    id: "water",
     title: "From the Water",
-    caption: "I know a friend with a small boat. We'll drift through the canals at dusk and see the city the way it was meant to be seen.",
-    note: "bring a sweater",
+    note: "seeing the city in a different rhythm",
+    caption:
+      "On a private boat through quiet canals. The city unfolding around you. A picnic, wine, and shared moments.",
     image: imgWater,
-    rotate: -1.8,
-    pin: "tape-gl",
   },
   {
-    id: "markets",
-    title: "Markets",
-    caption: "Cheese stalls, flower vendors, the herring guy who's been there since 1978. Markets are where a city actually lives.",
-    note: "go hungry",
+    title: "Living Architecture",
+    note: "unlike anywhere else in the world",
+    caption:
+      "A city built in layers of time. Old and modern architecture side by side. Every building carries its own story.",
+    image: imgArchitecture,
+  },
+  {
+    title: "Stories of History",
+    note: "feel how time has passed through Amsterdam",
+    caption:
+      "So many lives have shaped this city. History still lives in every street. 750 years of change.",
+    image: imgHistory,
+  },
+  {
+    title: "Van Gogh Creates",
+    note: "see the world through his eyes",
+    caption:
+      "Van Gogh Museum, where his work lives. His art is also found in the Kröller-Müller Museum. A life shaped by colour and emotion.",
+    image: imgArt,
+  },
+  {
+    title: "On Two Wheels",
+    note: "experience Amsterdam like the locals do",
+    caption:
+      "Feel the freedom of movement. Bikes shape the city's DNA. It's a way of life for locals.",
+    image: imgCycling,
+  },
+  {
+    title: "Heritage of Memory",
+    note: "Jewish history and World War II in Amsterdam",
+    caption:
+      "Jewish life through the centuries. Stories of survival, courage and resistance. The impact of World War II on the city.",
+    image: imgLiterature,
+  },
+  {
+    title: "Art Scene",
+    note: "a vibrant art world in Amsterdam",
+    caption:
+      "Artists shaping the city. Streets full of galleries and antique stores. Graffiti and art in public spaces.",
+    image: imgArt,
+  },
+  {
+    title: "Gardens & Green Spaces",
+    note: "a greener side of Amsterdam",
+    caption:
+      "Hidden gardens and botanical gardens in the city. Beautiful parks where people gather and enjoy life. Quiet spaces to relax and unwind.",
+    image: imgNature,
+  },
+  {
+    title: "Quiet Corners",
+    note: "benches where Amsterdam slows down",
+    caption:
+      "Sit and watch the city pass by. Rest, enjoy and just be. Share stories with locals nearby.",
+    image: imgNature,
+  },
+  {
+    title: "Shaped by Water",
+    note: "how the Netherlands lives with water every day",
+    caption:
+      "A constant fight with water. Continuous innovation in water management. Cities built around water systems.",
+    image: imgWater,
+  },
+  {
+    title: "The Dutch Countryside",
+    note: "step into a living postcard",
+    caption:
+      "Endless farmlands stretching to the horizon. Colourful houses, windmills and waterlands. A quiet rhythm of rural life.",
+    image: imgNature,
+  },
+  {
+    title: "Tulip Season",
+    note: "in spring, the landscape blooms even brighter",
+    caption:
+      "Tulip fields in endless bloom. Keukenhof Gardens, wandering among countless flowers. A vibrant mix of colours and scents that stays with you forever.",
     image: imgMarkets,
-    rotate: 1.2,
-    pin: "tape-gr",
+  },
+  {
+    title: "Haarlem",
+    note: "home of Frans Hals and hidden beauty",
+    caption:
+      "Close to Amsterdam, different in spirit. Frans Hals Museum, see the master at work. A city of courtyards, quiet streets and timeless elegance.",
+    image: imgArchitecture,
+  },
+  {
+    title: "Leiden",
+    note: "birthplace of Rembrandt and rich in history",
+    caption:
+      "Centuries of stories along its beautiful canals. The Netherlands' oldest university city. Home to many Pilgrim Fathers before the Mayflower voyage.",
+    image: imgLiterature,
+  },
+  {
+    title: "Rotterdam",
+    note: "where innovation, architecture and creativity meet",
+    caption:
+      "A city reinvented through vision and design. Bold architecture and a modern skyline. Where the future is already taking shape.",
+    image: imgArchitecture,
+  },
+  {
+    title: "Delft & The Hague",
+    note: "Dutch history, royalty and art together",
+    caption:
+      "The Hague, royal palaces and political power. Delft, home of Vermeer and Delft Blue porcelain. Two iconic cities shaped by centuries of culture.",
+    image: imgCraft,
   },
 ];
+
+const rotations = [-2.4, 1.8, -1.2, 2.2, -1.6, 1.4, -2.0, 1.6];
+const pins = ["tape-tl", "tape-tr", "tape-gl", "tape-gr"] as const;
+
+const themes = blocks.map((b, i) => ({
+  id: `block-${i + 1}`,
+  title: b.title,
+  caption: b.caption,
+  note: b.note,
+  image: b.image,
+  rotate: rotations[i % rotations.length],
+  pin: pins[i % pins.length],
+}));
 
 const GetInspired = () => {
   const [active, setActive] = useState<string | null>(null);

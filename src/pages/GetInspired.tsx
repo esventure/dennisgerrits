@@ -14,6 +14,16 @@ import imgLiterature from "@/assets/interests/literature.jpg";
 import imgMusic from "@/assets/interests/music.jpg";
 import imgWater from "@/assets/interests/water.jpg";
 import imgMarkets from "@/assets/interests/markets.jpg";
+import imgNeighbourhood from "@/assets/interests/neighbourhood.jpg";
+import imgTulips from "@/assets/interests/tulips.jpg";
+import imgHeritageMemory from "@/assets/interests/heritage-memory.jpg";
+import imgLeiden from "@/assets/interests/leiden.jpg";
+import imgCountryside from "@/assets/interests/countryside.jpg";
+import imgRotterdam from "@/assets/interests/rotterdam.jpg";
+import imgDelft from "@/assets/interests/delft.jpg";
+import imgBrownCafe from "@/assets/interests/brown-cafe.jpg";
+import imgVanGogh from "@/assets/interests/vangogh.jpg";
+import imgHaarlem from "@/assets/interests/haarlem.jpg";
 
 const blocks: { title: string; note: string; caption: string; image: string }[] = [
   {

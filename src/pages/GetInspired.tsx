@@ -31,7 +31,7 @@ const blocks: { title: string; note: string; caption: string; image: string }[] 
     note: "real Amsterdam lives here",
     caption:
       "Quiet side streets where everyday life unfolds. Someone watering plants outside their front door. A neighbour locking up a bicycle.",
-    image: imgCafes,
+    image: imgNeighbourhood,
   },
   {
     title: "Rembrandt and the Golden Age Stories",
@@ -52,7 +52,7 @@ const blocks: { title: string; note: string; caption: string; image: string }[] 
     note: "when Amsterdam turns quiet and cozy",
     caption:
       "Brown cafés where time disappears. Locals settling into their night. Small restaurants that feel like home.",
-    image: imgCafes,
+    image: imgBrownCafe,
   },
   {
     title: "From the Water",
@@ -80,7 +80,7 @@ const blocks: { title: string; note: string; caption: string; image: string }[] 
     note: "see the world through his eyes",
     caption:
       "Van Gogh Museum, where his work lives. His art is also found in the Kröller-Müller Museum. A life shaped by colour and emotion.",
-    image: imgArt,
+    image: imgVanGogh,
   },
   {
     title: "On Two Wheels",
@@ -94,7 +94,7 @@ const blocks: { title: string; note: string; caption: string; image: string }[] 
     note: "Jewish history and World War II in Amsterdam",
     caption:
       "Jewish life through the centuries. Stories of survival, courage and resistance. The impact of World War II on the city.",
-    image: imgLiterature,
+    image: imgHeritageMemory,
   },
   {
     title: "Art Scene",
@@ -129,42 +129,42 @@ const blocks: { title: string; note: string; caption: string; image: string }[] 
     note: "step into a living postcard",
     caption:
       "Endless farmlands stretching to the horizon. Colourful houses, windmills and waterlands. A quiet rhythm of rural life.",
-    image: imgNature,
+    image: imgCountryside,
   },
   {
     title: "Tulip Season",
     note: "in spring, the landscape blooms even brighter",
     caption:
       "Tulip fields in endless bloom. Keukenhof Gardens, wandering among countless flowers. A vibrant mix of colours and scents that stays with you forever.",
-    image: imgMarkets,
+    image: imgTulips,
   },
   {
     title: "Haarlem",
     note: "home of Frans Hals and hidden beauty",
     caption:
       "Close to Amsterdam, different in spirit. Frans Hals Museum, see the master at work. A city of courtyards, quiet streets and timeless elegance.",
-    image: imgArchitecture,
+    image: imgHaarlem,
   },
   {
     title: "Leiden",
     note: "birthplace of Rembrandt and rich in history",
     caption:
       "Centuries of stories along its beautiful canals. The Netherlands' oldest university city. Home to many Pilgrim Fathers before the Mayflower voyage.",
-    image: imgLiterature,
+    image: imgLeiden,
   },
   {
     title: "Rotterdam",
     note: "where innovation, architecture and creativity meet",
     caption:
       "A city reinvented through vision and design. Bold architecture and a modern skyline. Where the future is already taking shape.",
-    image: imgArchitecture,
+    image: imgRotterdam,
   },
   {
     title: "Delft & The Hague",
     note: "Dutch history, royalty and art together",
     caption:
       "The Hague, royal palaces and political power. Delft, home of Vermeer and Delft Blue porcelain. Two iconic cities shaped by centuries of culture.",
-    image: imgCraft,
+    image: imgDelft,
   },
 ];
 

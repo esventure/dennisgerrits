@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect, useRef, useCallback } from "react";
+import { useState, useMemo, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import iconFoot from "@/assets/icon-foot.png";
@@ -60,7 +60,6 @@ const DayMap = ({ moments }: DayMapProps) => {
   const [active, setActive] = useState(0);
   const [visited, setVisited] = useState<Set<number>>(new Set([0]));
   const sectionRef = useRef<HTMLDivElement>(null);
-  const rafRef = useRef<number | null>(null);
 
   const handleSelect = useCallback((idx: number) => {
     setActive(idx);
@@ -73,78 +72,6 @@ const DayMap = ({ moments }: DayMapProps) => {
 
   const goPrev = () => handleSelect(Math.max(0, active - 1));
   const goNext = () => handleSelect(Math.min(moments.length - 1, active + 1));
-
-  /* Scroll-driven progression — desktop only.
-     On mobile / tablet the section is not sticky, so manual prev / next
-     and dot controls drive the experience instead. */
-  useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-    const section = el.closest("section");
-    if (!section) return;
-
-    const mq = window.matchMedia("(min-width: 1024px)");
-    let attached = false;
-    let ticking = false;
-    let lastIdx = 0;
-
-    const update = () => {
-      ticking = false;
-      const rect = section.getBoundingClientRect();
-      const viewH = window.innerHeight;
-      if (rect.bottom < viewH * 0.2 || rect.top > viewH * 0.8) return;
-
-      const start = viewH * 0.3;
-      const end = viewH * 0.7;
-      const traveled = start - rect.top;
-      const total = rect.height - (viewH - end + (viewH - start));
-      const raw = total > 0 ? traveled / total : 0;
-      const progress = Math.max(0, Math.min(1, raw));
-
-      const exact = progress * (moments.length - 1);
-      let next = Math.round(exact);
-      if (Math.abs(exact - lastIdx) < 0.35) next = lastIdx;
-      next = Math.max(0, Math.min(moments.length - 1, next));
-
-      if (next !== lastIdx) {
-        lastIdx = next;
-        setActive(next);
-        setVisited((prev) => {
-          const s = new Set(prev);
-          for (let i = 0; i <= next; i++) s.add(i);
-          return s;
-        });
-      }
-    };
-
-    const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
-      rafRef.current = requestAnimationFrame(update);
-    };
-
-    const attach = () => {
-      if (attached) return;
-      attached = true;
-      window.addEventListener("scroll", onScroll, { passive: true });
-      update();
-    };
-    const detach = () => {
-      if (!attached) return;
-      attached = false;
-      window.removeEventListener("scroll", onScroll);
-    };
-
-    const sync = () => (mq.matches ? attach() : detach());
-    sync();
-    mq.addEventListener("change", sync);
-
-    return () => {
-      detach();
-      mq.removeEventListener("change", sync);
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    };
-  }, [moments.length]);
 
   const maxVisited = useMemo(() => {
     let max = 0;

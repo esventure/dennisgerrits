@@ -43,7 +43,7 @@ const AboutEditorial = () => {
         />
 
         <FadeIn className="relative z-10">
-          <div className="max-w-md mx-auto lg:ml-auto lg:mr-0">
+          <div className="max-w-md mx-auto lg:mr-auto lg:ml-0">
             <p className="font-body text-xs tracking-[0.3em] uppercase text-accent font-semibold mb-4">
               {t("about.person.kicker", "A True Amsterdammer")}
             </p>

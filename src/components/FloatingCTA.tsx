@@ -29,7 +29,7 @@ const FloatingCTA = () => {
         }}
       >
         <MessageCircle size={18} />
-        Let's Talk
+        Let's connect
       </Link>
       <button
         onClick={() => setDismissed(true)}

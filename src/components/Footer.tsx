@@ -3,17 +3,16 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 const exploreLinks = [
   { to: "/#about", label: "About Me" },
   { to: "/#how-it-works", label: "How I Work" },
-  { to: "/#day", label: "A Day Together" },
+  { to: "/#rick-steves", label: "Rick Steves" },
+  { to: "/get-inspired", label: "Experiences" },
+  { to: "/#podcast", label: "Podcast" },
   { to: "/#proof", label: "Reviews" },
-  { to: "/#storybook", label: "Stories" },
-  { to: "/get-inspired", label: "Get Inspired" },
-  { to: "/#podcast", label: "Two Stories, One City (Podcast)" },
-  { to: "/#contact", label: "Get in Touch" },
+  { to: "/#contact", label: "Contact" },
+  { to: "/notebook", label: "Notebook" },
 ];
 
 const proLinks = [
   { to: "/travel-agents", label: "Travel Agents & Concierges" },
-  { to: "/#contact", label: "Speaking" },
 ];
 
 const Footer = () => {
@@ -37,7 +36,6 @@ const Footer = () => {
       tryScroll();
     };
 
-    // Same-page hash on home: smooth-scroll
     if (to.startsWith("/#")) {
       e.preventDefault();
       const id = to.slice(2);
@@ -49,7 +47,6 @@ const Footer = () => {
       return;
     }
 
-    // Cross-page hash like "/travel-agents#universities"
     if (to.includes("#")) {
       const [path, id] = to.split("#");
       if (location.pathname === path) {
@@ -64,9 +61,12 @@ const Footer = () => {
       <div className="container mx-auto px-6 lg:px-12 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
-            <h3 className="font-heading text-3xl mb-4">Dennis Gerrits</h3>
-            <p className="font-body text-primary-foreground/70 text-sm leading-relaxed max-w-xs">
-              A personal, trust-based way of experiencing places. Guided by someone who feels like a friend.
+            <h3 className="font-heading text-3xl mb-3">Dennis Gerrits</h3>
+            <p className="font-body text-primary-foreground/80 text-sm tracking-wide mb-4">
+              Storyteller, Host &amp; Travel Companion
+            </p>
+            <p className="font-body text-primary-foreground/60 text-xs leading-relaxed max-w-xs">
+              Formerly Love My City Tours — now dennisgerrits.com.
             </p>
           </div>
           <div>

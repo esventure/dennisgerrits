@@ -76,7 +76,7 @@ const ContactSection = () => {
                       alt="Dennis smiling by the canal"
                       loading="lazy"
                       className="absolute inset-0 w-full h-full object-cover rounded-sm shadow-xl"
-                      style={{ filter: "saturate(0.92) contrast(0.98)", objectPosition: "center 15%" }}
+                      style={{ filter: "saturate(0.92) contrast(0.98)", objectPosition: "center 80%" }}
                     />
                   </div>
                 </div>

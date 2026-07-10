@@ -781,11 +781,11 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ── Podcast: Two Stories, One City (bordeaux band, clearly a podcast) ── */}
+      {/* ── Podcast: Two Stories, One City (green band) ── */}
       <section
         id="podcast"
         className="relative py-12 md:py-14 lg:py-16 scroll-mt-20 overflow-hidden"
-        style={{ backgroundColor: "hsl(var(--heritage-bordeaux))" }}
+        style={{ backgroundColor: "hsl(var(--heritage-green))" }}
       >
         {/* faint paper-grain overlay */}
         <div
@@ -821,7 +821,7 @@ const Index = () => {
               <div className="inline-flex items-center gap-2 mb-4">
                 <span
                   className="inline-flex items-center justify-center w-6 h-6 rounded-full"
-                  style={{ backgroundColor: "hsl(var(--heritage-orange))", color: "hsl(var(--heritage-bordeaux))" }}
+                  style={{ backgroundColor: "hsl(var(--heritage-orange))", color: "hsl(var(--heritage-green))" }}
                   aria-hidden
                 >
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

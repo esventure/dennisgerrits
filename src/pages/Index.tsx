@@ -1286,6 +1286,9 @@ const Index = () => {
       </section>
 
 
+      {/* ── 7. Contact ── */}
+      <ContactSection />
+
       {/* ── Co-Founder Projects: AroundFriends ── */}
       <section
         id="around-friends"

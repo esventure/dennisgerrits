@@ -16,9 +16,8 @@ const PERSON_FALLBACK =
 const GUIDE_FALLBACK =
   "For me, discovering places should feel personal, relaxed and natural. More like spending time with a local friend.\n\nI always listen first. Every person experiences a place differently, which is why I take the time to understand who you are and what inspires you.\n\nI carefully shape each day around you, creating experiences that feel meaningful. More than anything, I’m simply somebody who walks beside you during your trip.";
 
-import dennisPersonAsset from "@/assets/dennis-person.jpg.asset.json";
+import dennisPersonBike from "@/assets/dennis-person-bike.jpg";
 import dennisGuideAsset from "@/assets/dennis-guide.jpg.asset.json";
-const dennisPersonBike = dennisPersonAsset.url;
 const dennisGuideHands = dennisGuideAsset.url;
 
 /* ── Variation A — Editorial split with photo backgrounds ── */
@@ -27,47 +26,57 @@ const AboutEditorial = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[70vh]">
       {/* Left: The Person */}
-      <div className="relative overflow-hidden px-6 sm:px-10 md:px-16 lg:px-20 py-14 sm:py-20 lg:py-28 flex items-center min-h-[70vh]">
-        <div
-          className="absolute inset-0 bg-cover bg-[35%_center]"
-          style={{ backgroundImage: `url(${dennisPersonBike})` }}
-          aria-hidden
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to right, hsl(var(--background)) 0%, hsl(var(--background) / 0.95) 35%, hsl(var(--background) / 0.55) 65%, hsl(var(--background) / 0) 100%)",
-          }}
-          aria-hidden
-        />
-
-        <FadeIn className="relative z-10">
-          <div className="max-w-md mx-auto lg:mr-auto lg:ml-0">
-            <p className="font-body text-xs tracking-[0.3em] uppercase text-accent font-semibold mb-4">
-              {t("about.person.kicker", "A True Amsterdammer")}
-            </p>
-            <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary leading-[0.95] mb-6">
-              <span className="text-accent">The</span> {t("about.person.title", "The Person").replace(/^The\s+/i, "")}
-            </h2>
-            {/* hand-drawn orange underline */}
-            <svg aria-hidden width="96" height="10" viewBox="0 0 96 10" className="mb-6">
-              <path
-                d="M 2 6 Q 16 1, 32 5 T 64 5 T 94 4"
-                fill="none"
-                stroke="hsl(var(--heritage-orange))"
-                strokeWidth="2"
-                strokeLinecap="round"
+      <div className="relative overflow-hidden grid grid-cols-1 lg:grid-cols-[2fr_3fr] min-h-[70vh]">
+        {/* Left side: white fade with text */}
+        <div className="relative flex items-center px-6 sm:px-10 md:px-16 lg:px-20 py-14 sm:py-20 lg:py-28">
+          <div
+            className="absolute inset-0"
+            style={{ backgroundColor: "hsl(var(--background))" }}
+            aria-hidden
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to right, hsl(var(--background)) 0%, hsl(var(--background) / 0.98) 60%, hsl(var(--background) / 0.75) 85%, hsl(var(--background) / 0) 100%)",
+            }}
+            aria-hidden
+          />
+          <FadeIn className="relative z-10">
+            <div className="max-w-md mx-auto lg:mr-auto lg:ml-0">
+              <p className="font-body text-xs tracking-[0.3em] uppercase text-accent font-semibold mb-4">
+                {t("about.person.kicker", "A True Amsterdammer")}
+              </p>
+              <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary leading-[0.95] mb-6">
+                <span className="text-accent">The</span> {t("about.person.title", "The Person").replace(/^The\s+/i, "")}
+              </h2>
+              {/* hand-drawn orange underline */}
+              <svg aria-hidden width="96" height="10" viewBox="0 0 96 10" className="mb-6">
+                <path
+                  d="M 2 6 Q 16 1, 32 5 T 64 5 T 94 4"
+                  fill="none"
+                  stroke="hsl(var(--heritage-orange))"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+              </svg>
+              <RichText
+                className="font-body text-base md:text-lg text-foreground/85 leading-relaxed"
+                html={t("about.person.body", "")}
+                fallback={PERSON_FALLBACK}
               />
-            </svg>
-            <RichText
-              className="font-body text-base md:text-lg text-foreground/85 leading-relaxed"
-              html={t("about.person.body", "")}
-              fallback={PERSON_FALLBACK}
-            />
-          </div>
-        </FadeIn>
+            </div>
+          </FadeIn>
+        </div>
 
+        {/* Right side: image container */}
+        <div className="relative min-h-[50vh] lg:min-h-0">
+          <div
+            className="absolute inset-0 bg-cover bg-[50%_center]"
+            style={{ backgroundImage: `url(${dennisPersonBike})` }}
+            aria-hidden
+          />
+        </div>
       </div>
 
       {/* Right: The Guide */}

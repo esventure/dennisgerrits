@@ -27,7 +27,7 @@ const AboutEditorial = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[70vh]">
       {/* Left: The Person */}
-      <div className="relative overflow-hidden grid grid-cols-1 lg:grid-cols-[1fr_1fr] min-h-[70vh]">
+      <div className="relative overflow-hidden grid grid-cols-1 lg:grid-cols-[2fr_3fr] min-h-[70vh]">
         {/* Left side: white fade with text */}
         <div className="relative flex items-center px-6 sm:px-10 md:px-16 lg:px-20 py-14 sm:py-20 lg:py-28">
           <div

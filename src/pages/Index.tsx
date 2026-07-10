@@ -978,9 +978,6 @@ const Index = () => {
               >
                 Two Stories, One City<br />Amsterdam
               </h2>
-              <p className="font-body text-base md:text-lg leading-relaxed mb-2" style={{ color: "hsl(0 0% 92%)" }}>
-                A podcast by Louke and Dennis.
-              </p>
               <p
                 className="font-body italic text-base md:text-lg leading-relaxed mb-5"
                 style={{ color: "hsl(var(--heritage-orange))" }}
@@ -1098,7 +1095,7 @@ const Index = () => {
                     <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
                       Real Words From Real People
                     </h2>
-                    <p className="font-body text-lg text-muted-foreground leading-relaxed">
+                    <p className="font-body text-base md:text-lg text-muted-foreground leading-relaxed md:whitespace-nowrap">
                       These are words shared by travelers after their time with me. Click any card to read the full review on <TripAdvisorWordmark className="text-lg" />.
                     </p>
                   </FadeIn>

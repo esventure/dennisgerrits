@@ -50,7 +50,7 @@ const ContactSection = () => {
                   — {t("booking.kicker", "Get in Touch")} —
                 </p>
                 <h2
-                  className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95] mx-auto max-w-3xl"
+                  className="font-heading text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] leading-[0.95] mx-auto max-w-none md:whitespace-nowrap"
                   style={{ color: "hsl(var(--background))" }}
                 >
                   {t("booking.title", "Let's See if We're a Good Match")}

@@ -1286,15 +1286,72 @@ const Index = () => {
       </section>
 
 
-      {/* ── 7. Contact ── */}
-      <ContactSection />
+      {/* ── Co-Founder Projects: AroundFriends ── */}
+      <section
+        id="around-friends"
+        className="relative py-16 md:py-20 lg:py-24 scroll-mt-20 overflow-hidden"
+        style={{ backgroundColor: "hsl(40 38% 96%)" }}
+      >
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="max-w-4xl mx-auto">
+            <FadeIn>
+              <p
+                className="font-body text-sm tracking-widest uppercase mb-4"
+                style={{ color: "hsl(var(--heritage-orange))" }}
+              >
+                Co-Founder Projects
+              </p>
+              <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
+                AroundFriends
+              </h2>
+              <p className="font-body text-lg text-foreground/85 leading-relaxed mb-5">
+                In addition to my work as a travel advisor and local guide in Amsterdam and the Netherlands, I am the co-founder and Guide Community Director of AroundFriends.
+              </p>
+              <p className="font-body text-base text-muted-foreground leading-relaxed mb-5">
+                AroundFriends is a guide-matching platform that connects travelers with carefully selected local guides. Travelers complete a short questionnaire and are then matched with guides who fit their travel style and interests. They can explore detailed guide profiles, watch personal introduction videos, and connect directly with guides before booking, creating a more personal and transparent way to plan meaningful travel experiences.
+              </p>
+              <p className="font-body text-base text-muted-foreground leading-relaxed mb-8">
+                The platform was born from a shared belief that travel becomes more meaningful when it is built on genuine human connection and local insight.
+              </p>
 
-      {/* ── Story Book (notebook from Get Inspired) ── */}
+              <blockquote
+                className="relative pl-6 border-l-4 py-2 mb-8"
+                style={{ borderColor: "hsl(var(--heritage-bordeaux))" }}
+              >
+                <p
+                  className="font-body italic text-lg leading-relaxed"
+                  style={{ color: "hsl(var(--heritage-bordeaux))" }}
+                >
+                  “The brainchild of recommended guide Dennis Gerrits.”
+                </p>
+                <footer className="font-body text-sm tracking-widest uppercase mt-3 text-muted-foreground">
+                  Rick Steves Amsterdam &amp; the Netherlands Guidebook, 2025 edition
+                </footer>
+              </blockquote>
+
+              <a
+                href="https://www.aroundfriends.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 font-body text-base tracking-wide border-b-2 border-dashed pb-1 transition-opacity hover:opacity-80"
+                style={{
+                  color: "hsl(var(--heritage-bordeaux))",
+                  borderColor: "hsl(var(--heritage-bordeaux) / 0.5)",
+                }}
+              >
+                Visit aroundfriends.com
+                <span aria-hidden>→</span>
+              </a>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Notebook teaser (short list + link to full notebook for SEO) ── */}
       <section
         id="storybook"
         className="relative py-16 md:py-20 lg:py-28 scroll-mt-20 overflow-hidden"
       >
-        
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mb-10 md:mb-14">
             <FadeIn>
@@ -1315,6 +1372,24 @@ const Index = () => {
           <FadeIn>
             <StoryBook stories={bookStories} />
           </FadeIn>
+
+          {bookStories.length > 0 && (
+            <FadeIn>
+              <div className="mt-12 md:mt-16 text-center">
+                <Link
+                  to="/notebook"
+                  className="inline-flex items-center gap-2 font-body text-base tracking-wide border-b-2 border-dashed pb-1 transition-opacity hover:opacity-80"
+                  style={{
+                    color: "hsl(var(--heritage-bordeaux))",
+                    borderColor: "hsl(var(--heritage-bordeaux) / 0.5)",
+                  }}
+                >
+                  Read all {bookStories.length} chapters in the notebook
+                  <span aria-hidden>→</span>
+                </Link>
+              </div>
+            </FadeIn>
+          )}
         </div>
       </section>
     </main>

@@ -5,12 +5,14 @@ import { cn } from "@/lib/utils";
 import dennisIllustration from "@/assets/dennis_illustration.png";
 
 const navLinks = [
-  { to: "/#about", label: "About" },
+  { to: "/#about", label: "About Me" },
   { to: "/#how-it-works", label: "How I Work" },
-  { to: "/#day", label: "A Day Together" },
+  { to: "/#rick-steves", label: "Rick Steves" },
+  { to: "/get-inspired", label: "Experiences" },
+  { to: "/#podcast", label: "Podcast" },
   { to: "/#proof", label: "Reviews" },
-  { to: "/get-inspired", label: "Get Inspired" },
   { to: "/#contact", label: "Contact" },
+  { to: "/notebook", label: "Notebook" },
 ];
 
 const secondaryLinks = [

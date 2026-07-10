@@ -899,7 +899,7 @@ const HeroGreenAllCaps = () => (
   </div>
 );
 
-const HeroGreenHelloCaps = () => (
+const HeroGreenHelloCaps = ({ divider = true }: { divider?: boolean }) => (
   <div className="w-full container mx-auto px-6 lg:px-12 py-10 md:py-14">
     <div
       className="relative overflow-hidden rounded-3xl px-6 py-14 sm:px-10 sm:py-20 md:px-16 md:py-24 lg:px-20 lg:py-28"
@@ -919,7 +919,7 @@ const HeroGreenHelloCaps = () => (
                 className="font-body text-sm tracking-widest uppercase mt-6"
                 style={{ color: "hsl(var(--heritage-orange))" }}
               >
-                Storyteller & Travel Companion
+                Storyteller, Host &amp; Travel Companion
               </p>
             </div>
           </FadeIn>
@@ -928,40 +928,48 @@ const HeroGreenHelloCaps = () => (
           <FadeIn delay={0.2}>
             <div className="mb-6 md:mb-8">
               <h1
-                className="font-heading text-[2.75rem] sm:text-5xl md:text-7xl lg:text-8xl leading-[0.95]"
+                className="font-heading text-[2rem] xs:text-[2.4rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[0.95]"
                 style={{ color: "hsl(var(--background))" }}
               >
                 <span
-                  className="relative inline-block uppercase tracking-tight"
+                  className="block whitespace-nowrap uppercase tracking-tight"
                   style={{ color: "hsl(var(--heritage-orange))" }}
                 >
-                  HELLO, I'M DENNIS.
-                  <svg
-                    aria-hidden
-                    viewBox="0 0 200 12"
-                    preserveAspectRatio="none"
-                    className="absolute left-0 -bottom-2 w-full h-3"
-                  >
-                    <path
-                      d="M 4 8 C 60 2, 130 10, 196 5"
-                      stroke="hsl(var(--heritage-orange))"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      fill="none"
-                    />
-                  </svg>
+                  HELLO,
+                </span>
+                <span
+                  className="relative inline-block whitespace-nowrap uppercase tracking-tight"
+                  style={{ color: "hsl(var(--heritage-orange))" }}
+                >
+                  I'M DENNIS.
+                  {divider && (
+                    <svg
+                      aria-hidden
+                      viewBox="0 0 200 12"
+                      preserveAspectRatio="none"
+                      className="absolute left-0 -bottom-2 w-full h-3"
+                    >
+                      <path
+                        d="M 4 8 C 60 2, 130 10, 196 5"
+                        stroke="hsl(var(--heritage-orange))"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        fill="none"
+                      />
+                    </svg>
+                  )}
                 </span>
               </h1>
               <p
-                className="font-heading text-[1.625rem] sm:text-2xl md:text-3xl lg:text-4xl leading-[1.2] mt-2 tracking-[0.12em]"
+                className="font-heading text-[1.5rem] sm:text-2xl md:text-3xl lg:text-4xl leading-[1.2] mt-3 tracking-[0.12em]"
                 style={{ color: "hsl(var(--background))" }}
               >
                 A friend who knows the city.
               </p>
             </div>
             <p
-              className="font-body text-lg leading-relaxed max-w-lg"
-              style={{ color: "hsl(var(--background) / 0.85)" }}
+              className="font-body italic text-lg leading-relaxed max-w-lg mb-3"
+              style={{ color: "hsl(var(--background) / 0.9)" }}
             >
               We slow down, follow curiosity, and discover places together,
               one story at a time. The best moments are rarely planned.
@@ -972,6 +980,9 @@ const HeroGreenHelloCaps = () => (
     </div>
   </div>
 );
+
+
+
 
 
 /* ────────────────────────────────────────────────────────────
@@ -1051,7 +1062,7 @@ const HeroEditorialGreenAllCaps = () => (
   </div>
 );
 
-const HeroEditorialGreenHelloCaps = () => (
+const HeroEditorialGreenHelloCaps = ({ divider = true }: { divider?: boolean }) => (
   <div className="w-full container mx-auto px-6 lg:px-12 py-10 md:py-14">
     <div
       className="relative overflow-hidden rounded-3xl px-6 py-14 sm:px-10 sm:py-20 md:px-16 md:py-24 lg:px-20 lg:py-28"
@@ -1062,37 +1073,47 @@ const HeroEditorialGreenHelloCaps = () => (
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 items-center">
           <FadeIn delay={0.2}>
             <h1
-              className="font-heading text-[2.6rem] sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95] mb-6 md:mb-8"
+              className="font-heading text-[2rem] xs:text-[2.4rem] sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95] mb-4 md:mb-6"
               style={{ color: "hsl(var(--background))" }}
             >
               <span
-                className="relative inline-block uppercase tracking-tight"
+                className="block whitespace-nowrap uppercase tracking-tight"
                 style={{ color: "hsl(var(--heritage-orange))" }}
               >
-                HELLO, I'M DENNIS.
-                <svg
-                  aria-hidden
-                  viewBox="0 0 200 12"
-                  preserveAspectRatio="none"
-                  className="absolute left-0 -bottom-2 w-full h-3"
-                >
-                  <path
-                    d="M 4 8 C 60 2, 130 10, 196 5"
-                    stroke="hsl(var(--heritage-orange))"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    fill="none"
-                  />
-                </svg>
+                HELLO,
               </span>
-              <br />
-              I listen first.
-              <br />
-              Then I open the city.
+              <span
+                className="relative inline-block whitespace-nowrap uppercase tracking-tight"
+                style={{ color: "hsl(var(--heritage-orange))" }}
+              >
+                I'M DENNIS.
+                {divider && (
+                  <svg
+                    aria-hidden
+                    viewBox="0 0 200 12"
+                    preserveAspectRatio="none"
+                    className="absolute left-0 -bottom-2 w-full h-3"
+                  >
+                    <path
+                      d="M 4 8 C 60 2, 130 10, 196 5"
+                      stroke="hsl(var(--heritage-orange))"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      fill="none"
+                    />
+                  </svg>
+                )}
+              </span>
             </h1>
             <p
-              className="font-body text-lg leading-relaxed max-w-lg"
-              style={{ color: "hsl(var(--background) / 0.85)" }}
+              className="font-heading text-[1.5rem] sm:text-2xl md:text-3xl leading-[1.2] tracking-[0.12em] mb-6"
+              style={{ color: "hsl(var(--background))" }}
+            >
+              A friend who knows the city.
+            </p>
+            <p
+              className="font-body italic text-lg leading-relaxed max-w-lg"
+              style={{ color: "hsl(var(--background) / 0.9)" }}
             >
               We slow down, follow curiosity, and discover places together,
               one story at a time. The best moments are rarely planned.
@@ -1110,7 +1131,7 @@ const HeroEditorialGreenHelloCaps = () => (
                 className="font-body text-sm tracking-widest uppercase mt-6"
                 style={{ color: "hsl(var(--heritage-orange))" }}
               >
-                Storyteller, Host & Companion
+                Storyteller, Host &amp; Travel Companion
               </p>
             </div>
           </FadeIn>
@@ -1120,13 +1141,12 @@ const HeroEditorialGreenHelloCaps = () => (
   </div>
 );
 
+
 const slides = [
-  { key: "green", label: "Green Card", render: () => <HeroGreen /> },
-  { key: "green-all-caps", label: "Green Card · All Caps", render: () => <HeroGreenAllCaps /> },
-  { key: "green-hello-caps", label: "Green Card · Hello Caps", render: () => <HeroGreenHelloCaps /> },
-  { key: "editorial-green", label: "Editorial Green", render: () => <HeroEditorialGreen /> },
-  { key: "editorial-green-all-caps", label: "Editorial Green · All Caps", render: () => <HeroEditorialGreenAllCaps /> },
-  { key: "editorial-green-hello-caps", label: "Editorial Green · Hello Caps", render: () => <HeroEditorialGreenHelloCaps /> },
+  { key: "green-hello-caps-line", label: "Variation 3 · met streep", render: () => <HeroGreenHelloCaps divider={true} /> },
+  { key: "green-hello-caps-no-line", label: "Variation 3 · zonder streep", render: () => <HeroGreenHelloCaps divider={false} /> },
+  { key: "editorial-hello-caps-line", label: "Variation 6 · met streep", render: () => <HeroEditorialGreenHelloCaps divider={true} /> },
+  { key: "editorial-hello-caps-no-line", label: "Variation 6 · zonder streep", render: () => <HeroEditorialGreenHelloCaps divider={false} /> },
 ];
 
 

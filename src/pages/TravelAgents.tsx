@@ -176,16 +176,16 @@ const TravelAgents = () => {
               </h1>
               <div className="font-body text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-2xl mb-10 space-y-5">
                 <p>
-                  I am your trusted contact in Amsterdam and, when needed, throughout the
-                  Netherlands.
+                  Travel plans can change. Questions come up. Sometimes clients simply feel more comfortable knowing they have someone local they can reach out to.
                 </p>
                 <p>
-                  Someone who understands that your reputation is on the line. That your clients
-                  expect not just a well-planned trip, but a seamless, personal, and deeply local
-                  experience.
+                  I'm there as a trusted presence on the ground, before, during, and whenever needed throughout their stay.
                 </p>
-                <p className="font-heading text-2xl lg:text-3xl text-primary tracking-wide uppercase">
-                  That's where I come in.
+                <p>
+                  I personally share my phone number with every client, so they can easily contact me throughout their stay, including in the evenings when needed.
+                </p>
+                <p>
+                  Whether it's practical support like finding a pharmacy, help with local coordination, last-minute adjustments, or simply a familiar contact in the city, your clients know they are not navigating Amsterdam alone.
                 </p>
               </div>
               <a href="#contact" onClick={scrollToContact} className={ctaPrimary} style={ctaPrimaryStyle}>

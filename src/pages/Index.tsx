@@ -448,41 +448,31 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ── 3. A Day in the Life ── */}
-      {/* Heading sits ABOVE the sticky section so the map is fully in view
-          the moment the section pins on desktop. On mobile the sticky
-          behaviour is disabled — the map renders inline with manual
-          prev / next controls. */}
-      <div id="day" className="relative scroll-mt-20 pt-12 lg:pt-20 pb-2">
-      </div>
-
-      <section className="relative lg:h-[280vh]">
-        <div className="lg:sticky lg:top-20 lg:h-[calc(100vh-5rem)] lg:flex lg:flex-col lg:pt-6 lg:pb-4">
-          <div className="container mx-auto px-6 lg:px-12 w-full">
-            <FadeIn>
-              <div className="max-w-3xl mb-4 lg:mb-6">
-                <p className="font-body text-xs lg:text-sm tracking-widest uppercase text-secondary mb-2">
-                  Let's Explore Together
-                </p>
-                <h2 className="font-heading text-4xl md:text-5xl text-primary leading-[0.95] mb-2">
-                  A Day in My Amsterdam
-                </h2>
-                <p className="font-body text-base text-muted-foreground leading-relaxed">
-                  Every day unfolds differently. Shaped by curiosity, conversation and the rhythm of the city. We discover hidden places, share stories and simply see where the day takes us.
-                </p>
-              </div>
-            </FadeIn>
-          </div>
-          <div className="container mx-auto px-6 lg:px-12 w-full lg:flex-1 lg:min-h-0">
-            <FadeIn>
-              <DayMap moments={moments} />
-            </FadeIn>
-          </div>
+      {/* ── 3. A Day in the Life (click-to-explore, no scroll driver) ── */}
+      <section id="day" className="relative scroll-mt-20 pt-12 lg:pt-20 pb-16 md:pb-20">
+        <div className="container mx-auto px-6 lg:px-12">
+          <FadeIn>
+            <div className="max-w-3xl mb-6 lg:mb-8">
+              <p className="font-body text-xs lg:text-sm tracking-widest uppercase text-secondary mb-2">
+                Let's Explore Together
+              </p>
+              <h2 className="font-heading text-4xl md:text-5xl text-primary leading-[0.95] mb-3">
+                A Day in My Amsterdam
+              </h2>
+              <p className="font-body text-base text-muted-foreground leading-relaxed">
+                Every day unfolds differently. Shaped by curiosity, conversation and the rhythm of the city. Tap a number on the map to peek into a moment of the day.
+              </p>
+            </div>
+          </FadeIn>
+          <FadeIn>
+            <DayMap moments={moments} />
+          </FadeIn>
         </div>
       </section>
 
+
       {/* ── Rick Steves Feature ── */}
-      <div className="relative py-14 md:py-20 lg:py-28" style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.15)" }}>
+      <div id="rick-steves" className="relative py-14 md:py-20 lg:py-28 scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.15)" }}>
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <FadeIn>
@@ -592,17 +582,20 @@ const Index = () => {
                 <FadeIn>
                   <div>
                     <p className="font-body text-[11px] tracking-[0.25em] uppercase text-muted-foreground mb-2">
-                      Radio Interview · Taboe Media
+                      Radio Interview about Amsterdam
                     </p>
-                    <h3 className="font-heading text-2xl md:text-3xl text-primary leading-tight mb-3">
-                      Dennis Gerrits — I Love My City
+                    <h3 className="font-heading text-2xl md:text-3xl text-primary leading-tight mb-1">
+                      Dennis Gerrits — dennisgerrits.com
                     </h3>
+                    <p className="font-body text-xs tracking-widest uppercase text-secondary mb-3">
+                      Recorded live at Studio Zeedijk — Amsterdam
+                    </p>
                     <p className="font-body text-sm text-muted-foreground leading-relaxed mb-4">
-                      A conversation about Amsterdam, the people who shape its neighbourhoods, and what it means to share the city as a local. Recorded live on the Zeedijk.
+                      I was invited to speak on Dutch radio about Amsterdam, its culture, the people who shape its neighbourhoods and what it means to share the city with visitors. The interview is in Dutch. I'm honored to have been featured as a local voice.
                     </p>
                     <div className="rounded-sm overflow-hidden border border-border/60">
                       <iframe
-                        title="Dennis Gerrits — I Love My City (SoundCloud)"
+                        title="Dennis Gerrits — Radio interview about Amsterdam (SoundCloud)"
                         width="100%"
                         height="140"
                         scrolling="no"
@@ -919,13 +912,13 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ── Podcast: Two Stories, One City (green band) ── */}
+      {/* ── Podcast: Two Stories, One City (bordeaux band, clearly a podcast) ── */}
       <section
         id="podcast"
         className="relative py-12 md:py-14 lg:py-16 scroll-mt-20 overflow-hidden"
-        style={{ backgroundColor: "hsl(var(--heritage-green))" }}
+        style={{ backgroundColor: "hsl(var(--heritage-bordeaux))" }}
       >
-        {/* faint paper-grain overlay for warmth on the deep green */}
+        {/* faint paper-grain overlay */}
         <div
           className="absolute inset-0 pointer-events-none opacity-[0.10] mix-blend-screen"
           aria-hidden
@@ -937,8 +930,8 @@ const Index = () => {
 
         <div className="container mx-auto px-6 lg:px-12 relative">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-            {/* Left: wordmark logo */}
-            <FadeIn className="lg:col-span-3 flex justify-center lg:justify-start">
+            {/* Left: wordmark logo + podcast tagline underneath */}
+            <FadeIn className="lg:col-span-3 flex flex-col items-center lg:items-start gap-4">
               <img
                 src={twoStoriesLogo}
                 alt="Two Stories, One City — Amsterdam wordmark"
@@ -946,25 +939,45 @@ const Index = () => {
                 className="w-44 md:w-52 lg:w-full max-w-[260px] h-auto"
                 style={{ filter: "brightness(0) invert(1)" }}
               />
+              <p
+                className="font-body italic text-base leading-snug text-center lg:text-left"
+                style={{ color: "hsl(var(--heritage-orange))" }}
+              >
+                A podcast by Louke and Dennis
+              </p>
             </FadeIn>
 
             {/* Center: kicker, heading, copy, player */}
             <FadeIn className="lg:col-span-6 lg:border-x lg:px-10 lg:[border-color:hsl(0_0%_100%/0.15)]">
-              <p
-                className="font-body text-xs tracking-[0.25em] uppercase mb-4"
-                style={{ color: "hsl(var(--heritage-orange))" }}
-              >
-                Also worth a listen
-              </p>
+              <div className="inline-flex items-center gap-2 mb-4">
+                <span
+                  className="inline-flex items-center justify-center w-6 h-6 rounded-full"
+                  style={{ backgroundColor: "hsl(var(--heritage-orange))", color: "hsl(var(--heritage-bordeaux))" }}
+                  aria-hidden
+                >
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="9" y="2" width="6" height="12" rx="3" />
+                    <path d="M5 10a7 7 0 0 0 14 0" />
+                    <line x1="12" y1="19" x2="12" y2="22" />
+                  </svg>
+                </span>
+                <span
+                  className="font-body text-[11px] tracking-[0.3em] uppercase px-3 py-1 rounded-full border"
+                  style={{
+                    color: "hsl(var(--heritage-orange))",
+                    borderColor: "hsl(var(--heritage-orange) / 0.5)",
+                  }}
+                >
+                  Podcast
+                </span>
+              </div>
+
               <h2
                 className="font-heading text-3xl md:text-4xl lg:text-5xl leading-[1.05] mb-5"
                 style={{ color: "hsl(0 0% 98%)" }}
               >
                 Two Stories, One City<br />Amsterdam
               </h2>
-              <p className="font-body text-base md:text-lg leading-relaxed mb-2" style={{ color: "hsl(0 0% 92%)" }}>
-                A podcast by Louke and Dennis.
-              </p>
               <p
                 className="font-body italic text-base md:text-lg leading-relaxed mb-5"
                 style={{ color: "hsl(var(--heritage-orange))" }}
@@ -1082,7 +1095,7 @@ const Index = () => {
                     <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
                       Real Words From Real People
                     </h2>
-                    <p className="font-body text-lg text-muted-foreground leading-relaxed">
+                    <p className="font-body text-base md:text-lg text-muted-foreground leading-relaxed md:whitespace-nowrap">
                       These are words shared by travelers after their time with me. Click any card to read the full review on <TripAdvisorWordmark className="text-lg" />.
                     </p>
                   </FadeIn>
@@ -1276,12 +1289,72 @@ const Index = () => {
       {/* ── 7. Contact ── */}
       <ContactSection />
 
-      {/* ── Story Book (notebook from Get Inspired) ── */}
+      {/* ── Co-Founder Projects: AroundFriends ── */}
+      <section
+        id="around-friends"
+        className="relative py-16 md:py-20 lg:py-24 scroll-mt-20 overflow-hidden"
+        style={{ backgroundColor: "hsl(40 38% 96%)" }}
+      >
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="max-w-4xl mx-auto">
+            <FadeIn>
+              <p
+                className="font-body text-sm tracking-widest uppercase mb-4"
+                style={{ color: "hsl(var(--heritage-orange))" }}
+              >
+                Co-Founder Projects
+              </p>
+              <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary leading-[0.95] mb-8">
+                AroundFriends
+              </h2>
+              <p className="font-body text-lg text-foreground/85 leading-relaxed mb-5">
+                In addition to my work as a travel advisor and local guide in Amsterdam and the Netherlands, I am the co-founder and Guide Community Director of AroundFriends.
+              </p>
+              <p className="font-body text-base text-muted-foreground leading-relaxed mb-5">
+                AroundFriends is a guide-matching platform that connects travelers with carefully selected local guides. Travelers complete a short questionnaire and are then matched with guides who fit their travel style and interests. They can explore detailed guide profiles, watch personal introduction videos, and connect directly with guides before booking, creating a more personal and transparent way to plan meaningful travel experiences.
+              </p>
+              <p className="font-body text-base text-muted-foreground leading-relaxed mb-8">
+                The platform was born from a shared belief that travel becomes more meaningful when it is built on genuine human connection and local insight.
+              </p>
+
+              <blockquote
+                className="relative pl-6 border-l-4 py-2 mb-8"
+                style={{ borderColor: "hsl(var(--heritage-bordeaux))" }}
+              >
+                <p
+                  className="font-body italic text-lg leading-relaxed"
+                  style={{ color: "hsl(var(--heritage-bordeaux))" }}
+                >
+                  “The brainchild of recommended guide Dennis Gerrits.”
+                </p>
+                <footer className="font-body text-sm tracking-widest uppercase mt-3 text-muted-foreground">
+                  Rick Steves Amsterdam &amp; the Netherlands Guidebook, 2025 edition
+                </footer>
+              </blockquote>
+
+              <a
+                href="https://www.aroundfriends.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 font-body text-base tracking-wide border-b-2 border-dashed pb-1 transition-opacity hover:opacity-80"
+                style={{
+                  color: "hsl(var(--heritage-bordeaux))",
+                  borderColor: "hsl(var(--heritage-bordeaux) / 0.5)",
+                }}
+              >
+                Visit aroundfriends.com
+                <span aria-hidden>→</span>
+              </a>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Notebook teaser (short list + link to full notebook for SEO) ── */}
       <section
         id="storybook"
         className="relative py-16 md:py-20 lg:py-28 scroll-mt-20 overflow-hidden"
       >
-        
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mb-10 md:mb-14">
             <FadeIn>
@@ -1302,6 +1375,24 @@ const Index = () => {
           <FadeIn>
             <StoryBook stories={bookStories} />
           </FadeIn>
+
+          {bookStories.length > 0 && (
+            <FadeIn>
+              <div className="mt-12 md:mt-16 text-center">
+                <Link
+                  to="/notebook"
+                  className="inline-flex items-center gap-2 font-body text-base tracking-wide border-b-2 border-dashed pb-1 transition-opacity hover:opacity-80"
+                  style={{
+                    color: "hsl(var(--heritage-bordeaux))",
+                    borderColor: "hsl(var(--heritage-bordeaux) / 0.5)",
+                  }}
+                >
+                  Read all {bookStories.length} chapters in the notebook
+                  <span aria-hidden>→</span>
+                </Link>
+              </div>
+            </FadeIn>
+          )}
         </div>
       </section>
     </main>

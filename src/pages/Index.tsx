@@ -208,9 +208,23 @@ const Index = () => {
             </FadeIn>
           </div>
 
-          {/* 4-step hand-drawn route — sketchy markers connected by a wobbly trail */}
+          {/* Decorative squiggle beneath heading */}
+          <FadeIn delay={0.05}>
+            <div className="flex justify-center -mt-10 mb-16 lg:mb-20">
+              <svg width="192" height="16" viewBox="0 0 200 20" fill="none" aria-hidden>
+                <path
+                  d="M2 18C25.5 2.5 54.5 2 78 8.5C101.5 15 130.5 17.5 154 11C177.5 4.5 198 2 198 2"
+                  stroke="hsl(var(--heritage-orange))"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </div>
+          </FadeIn>
+
+          {/* 4-step editorial notebook grid — staggered */}
           <FadeIn delay={0.1}>
-            <div className="relative max-w-5xl mx-auto mb-24 lg:mb-32">
+            <div className="max-w-6xl mx-auto mb-24 lg:mb-32">
               {(() => {
                 const steps = [
                   { n: "01", label: t("process.step1.label", "Let’s Connect"), text: t("process.step1.text", "You reach out, and we plan a personal video call to get to know each other and your travel plans.") },
@@ -218,216 +232,70 @@ const Index = () => {
                   { n: "03", label: t("process.step3.label", "Creating Your Journey"), text: t("process.step3.text", "Together, we shape an experience that feels personal and completely tailored to you.") },
                   { n: "04", label: t("process.step4.label", "I Take Care of the Details"), text: t("process.step4.text", "From reservations and transportation to personal recommendations and museum tickets, everything is thoughtfully taken care of.") },
                 ];
-
-                // SVG viewBox: 1000 wide × 120 tall. Four markers spaced across,
-                // with a gently undulating curve threading through them.
-                // Align number markers with the 4-column grid centers (12.5%, 37.5%, 62.5%, 87.5%)
-                const xs = [125, 375, 625, 875];
-                const ys = [60, 60, 60, 60];
-                const routeD =
-                  `M ${xs[0]} ${ys[0]} ` +
-                  `C ${xs[0] + 80} ${ys[0] - 40}, ${xs[1] - 80} ${ys[1] + 40}, ${xs[1]} ${ys[1]} ` +
-                  `S ${xs[2] - 80} ${ys[2] + 40}, ${xs[2]} ${ys[2]} ` +
-                  `S ${xs[3] - 80} ${ys[3] - 40}, ${xs[3]} ${ys[3]}`;
-
-                // Sketchy circle helper (wobbly closed path)
-                const sketchCircle = (cx: number, cy: number, r: number, jitter = 0.7) => {
-                  const pts = Array.from({ length: 14 }, (_, i) => {
-                    const a = (i / 14) * Math.PI * 2;
-                    const rr = r + (Math.sin(i * 1.7) * jitter + Math.cos(i * 2.3) * jitter);
-                    return [cx + Math.cos(a) * rr, cy + Math.sin(a) * rr] as const;
-                  });
-                  let d = `M ${pts[0][0].toFixed(2)} ${pts[0][1].toFixed(2)}`;
-                  for (let i = 1; i <= pts.length; i++) {
-                    const p = pts[i % pts.length];
-                    d += ` L ${p[0].toFixed(2)} ${p[1].toFixed(2)}`;
-                  }
-                  return d + " Z";
-                };
-
                 return (
-                  <>
-                    {/* Desktop: horizontal hand-drawn route behind the row of markers */}
-                    <svg
-                      aria-hidden
-                      viewBox="0 0 1000 120"
-                      preserveAspectRatio="none"
-                      className="hidden md:block absolute left-0 right-0 top-0 w-full pointer-events-none"
-                      style={{ height: "120px" }}
-                    >
-                      <defs>
-                        <filter id="howiwork-sketch" x="-5%" y="-30%" width="110%" height="160%">
-                          <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" seed="7" result="noise" />
-                          <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" />
-                        </filter>
-                        <filter id="howiwork-sketch-soft" x="-5%" y="-30%" width="110%" height="160%">
-                          <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="3" result="noise2" />
-                          <feDisplacementMap in="SourceGraphic" in2="noise2" scale="3" />
-                        </filter>
-                      </defs>
-
-                      {/* loose double-pass ink — gives the line that felt-tip handmade feel */}
-                      <path
-                        d={routeD}
-                        stroke="hsl(var(--heritage-orange))"
-                        strokeWidth="2.6"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        fill="none"
-                        filter="url(#howiwork-sketch)"
-                        opacity="0.95"
-                      />
-                      <path
-                        d={routeD}
-                        stroke="hsl(var(--heritage-orange))"
-                        strokeWidth="1.6"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        fill="none"
-                        filter="url(#howiwork-sketch-soft)"
-                        opacity="0.55"
-                        transform="translate(0.8, -1.2)"
-                      />
-
-                      {/* sketchy circle markers */}
-                      {xs.map((x, i) => (
-                        <g key={i}>
-                          <path
-                            d={sketchCircle(x + 1.5, ys[i] + 1.8, 22, 0.9)}
-                            fill="hsl(var(--heritage-taupe))"
-                            opacity="0.3"
-                          />
-                          <path
-                            d={sketchCircle(x, ys[i], 22, 0.9)}
-                            fill="hsl(var(--heritage-orange))"
-                            stroke="hsl(var(--heritage-orange))"
-                            strokeWidth="1.2"
-                            filter="url(#howiwork-sketch-soft)"
-                          />
-                          <text
-                            x={x}
-                            y={ys[i] + 1}
-                            textAnchor="middle"
-                            dominantBaseline="central"
-                            fontSize="18"
-                            fontFamily="'Bebas Neue', sans-serif"
-                            letterSpacing="0.05em"
-                            fill="hsl(var(--background))"
-                          >
-                            {steps[i].n}
-                          </text>
-                        </g>
-                      ))}
-
-
-                    </svg>
-
-                    {/* Content grid — reserves top space for the route on desktop */}
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 relative md:pt-[140px]">
-                      {steps.map((step) => (
-                        <div key={step.n} className="relative text-center md:text-left">
-                          {/* Mobile-only sketchy marker above each step */}
-                          <div className="md:hidden mb-4 flex items-center justify-center">
-                            <svg width="56" height="56" viewBox="0 0 56 56" aria-hidden>
-                              <defs>
-                                <filter id={`howiwork-sketch-m-${step.n}`} x="-10%" y="-10%" width="120%" height="120%">
-                                  <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed={Number(step.n) + 3} result="n" />
-                                  <feDisplacementMap in="SourceGraphic" in2="n" scale="2.2" />
-                                </filter>
-                              </defs>
-                              <path d={sketchCircle(29.5, 29.8, 22, 0.9)} fill="hsl(var(--heritage-taupe))" opacity="0.3" />
-                              <path
-                                d={sketchCircle(28, 28, 22, 0.9)}
-                                fill="hsl(var(--heritage-orange))"
-                                filter={`url(#howiwork-sketch-m-${step.n})`}
-                              />
-                              <text
-                                x="28"
-                                y="29"
-                                textAnchor="middle"
-                                dominantBaseline="central"
-                                fontSize="18"
-                                fontFamily="'Bebas Neue', sans-serif"
-                                letterSpacing="0.05em"
-                                fill="hsl(var(--background))"
-                              >
-                                {step.n}
-                              </text>
-                            </svg>
-                          </div>
-
-                          <h3 className="font-heading text-2xl text-primary leading-tight mb-3 mt-0 md:mt-2">
-                            {step.label}
-                          </h3>
-                          <p className="font-body text-muted-foreground leading-relaxed">
-                            {step.text}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  </>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 md:gap-8">
+                    {steps.map((step, i) => (
+                      <div
+                        key={step.n}
+                        className={`text-center md:text-left ${i % 2 === 1 ? "md:mt-16" : ""}`}
+                      >
+                        <span
+                          className="block text-6xl leading-none mb-3 text-[hsl(var(--heritage-orange))]"
+                          style={{ fontFamily: "'Caveat', cursive", fontWeight: 700 }}
+                        >
+                          {step.n}
+                        </span>
+                        <h3 className="font-heading text-2xl md:text-[1.65rem] tracking-wide text-primary leading-tight mb-3 uppercase">
+                          {step.label}
+                        </h3>
+                        <p className="font-body text-base text-muted-foreground leading-relaxed">
+                          {step.text}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
                 );
               })()}
             </div>
           </FadeIn>
 
-          {/* Concierge: slimmed comparison */}
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <FadeIn>
-              <p className="font-body text-sm tracking-widest uppercase text-accent mb-4">
-                {t("concierge.kicker", "What I take care of")}
-              </p>
-              <h3 className="font-heading text-3xl sm:text-4xl text-primary leading-tight">
-                {t("concierge.title", "More than a guide. Personal support, thoughtful guidance and local knowledge throughout your stay.")}
-              </h3>
-            </FadeIn>
-          </div>
-
-          <div className="max-w-6xl mx-auto">
+          {/* Concierge — editorial split with dot list */}
+          <div className="max-w-6xl mx-auto pt-12 lg:pt-16 border-t border-border/60">
             {(() => {
               const rows = [
-                {
-                  icon: iconTickets,
-                  title: t("concierge.tickets.title", "Museum reservations"),
-                  desc: t("concierge.tickets.desc", "Including tickets and timed entry reservations for museums and cultural experiences."),
-                },
-                {
-                  icon: iconDining,
-                  title: t("concierge.dining.title", "Dining reservations"),
-                  desc: t("concierge.dining.desc", "Thoughtfully selected places to eat, from local favorites to memorable dining experiences."),
-                },
-                {
-                  icon: iconTransport,
-                  title: t("concierge.transport.title", "Transportation Coordination"),
-                  desc: t("concierge.transport.desc", "Help arranging transportation, including airport transfers and train tickets."),
-                },
-                {
-                  icon: iconHotel,
-                  title: t("concierge.hotel.title", "Hotel & B&B Recommendations"),
-                  desc: t("concierge.hotel.desc", "Helping you find the place and neighborhood that fit your travel style best."),
-                },
-                {
-                  icon: iconMessage,
-                  title: t("concierge.support.title", "Guidance & Support"),
-                  desc: t("concierge.support.desc", "Always available for questions, practical help and personal support throughout your stay."),
-                },
+                { icon: iconTickets, title: t("concierge.tickets.title", "Museum reservations"), desc: t("concierge.tickets.desc", "Including tickets and timed entry reservations for museums and cultural experiences.") },
+                { icon: iconDining, title: t("concierge.dining.title", "Dining reservations"), desc: t("concierge.dining.desc", "Thoughtfully selected places to eat, from local favorites to memorable dining experiences.") },
+                { icon: iconTransport, title: t("concierge.transport.title", "Transportation Coordination"), desc: t("concierge.transport.desc", "Help arranging transportation, including airport transfers and train tickets.") },
+                { icon: iconHotel, title: t("concierge.hotel.title", "Hotel & B&B Recommendations"), desc: t("concierge.hotel.desc", "Helping you find the place and neighborhood that fit your travel style best.") },
+                { icon: iconMessage, title: t("concierge.support.title", "Guidance & Support"), desc: t("concierge.support.desc", "Always available for questions, practical help and personal support throughout your stay.") },
               ];
-
               return (
                 <FadeIn delay={0.15}>
-                  <div
-                    className="h-full p-6 sm:p-8 lg:p-12 bg-background rounded-sm border-t-4 shadow-md"
-                    style={{ borderColor: "hsl(var(--heritage-orange))" }}
-                  >
-                    <ul className="font-body text-foreground leading-relaxed divide-y divide-border/60 border-y border-border/60">
+                  <div className="flex flex-col md:flex-row gap-12 lg:gap-16 items-start">
+                    <div className="md:w-1/3">
+                      <p className="font-body text-sm tracking-widest uppercase text-accent mb-4">
+                        {t("concierge.kicker", "What I take care of")}
+                      </p>
+                      <h3 className="font-heading text-3xl sm:text-4xl text-primary leading-tight mb-4">
+                        {t("concierge.title", "More than a guide. Personal support, thoughtful guidance and local knowledge throughout your stay.")}
+                      </h3>
+                      <p className="font-body text-muted-foreground italic leading-relaxed">
+                        Beyond the itinerary, I look after the small details that make a trip feel effortless.
+                      </p>
+                    </div>
+                    <ul className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-6">
                       {rows.map((row) => (
-                        <li key={row.title} className="flex items-center gap-4 py-3.5">
-                          <ServiceIcon src={row.icon} size={36} padding={7} tinted />
-                          <span className="flex-1 flex flex-col sm:flex-row sm:items-baseline sm:gap-3">
-                            <span className="font-heading text-lg text-primary leading-tight sm:min-w-[14rem]">
+                        <li key={row.title} className="flex items-start gap-4">
+                          <span
+                            className="mt-2 w-2 h-2 rounded-full shrink-0"
+                            style={{ backgroundColor: "hsl(var(--heritage-green))" }}
+                            aria-hidden
+                          />
+                          <span className="flex-1">
+                            <span className="block font-heading text-lg text-primary tracking-wide uppercase leading-tight mb-1">
                               {row.title}
                             </span>
-                            <span className="text-foreground/80 text-sm sm:text-base">
+                            <span className="block font-body text-sm text-muted-foreground leading-relaxed">
                               {row.desc}
                             </span>
                           </span>
@@ -445,6 +313,7 @@ const Index = () => {
               And everything else you didn't think to ask for. If it makes your stay smoother, it's already on my list.
             </p>
           </FadeIn>
+
         </div>
       </section>
 

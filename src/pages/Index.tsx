@@ -454,17 +454,17 @@ const Index = () => {
                       Radio Interview about Amsterdam
                     </p>
                     <h3 className="font-heading text-2xl md:text-3xl text-primary leading-tight mb-1">
-                      Dennis Gerrits — dennisgerrits.com
+                      Dennis Gerrits – dennisgerrits.com
                     </h3>
                     <p className="font-body text-xs tracking-widest uppercase text-secondary mb-3">
-                      Recorded live at Studio Zeedijk — Amsterdam
+                      Recorded live at Studio Zeedijk – Amsterdam
                     </p>
                     <p className="font-body text-sm text-muted-foreground leading-relaxed mb-4">
                       I was invited to speak on Dutch radio about Amsterdam, its culture, the people who shape its neighbourhoods and what it means to share the city with visitors. The interview is in Dutch. I'm honored to have been featured as a local voice.
                     </p>
                     <div className="rounded-sm overflow-hidden border border-border/60">
                       <iframe
-                        title="Dennis Gerrits — Radio interview about Amsterdam (SoundCloud)"
+                        title="Dennis Gerrits – Radio interview about Amsterdam (SoundCloud)"
                         width="100%"
                         height="140"
                         scrolling="no"
@@ -567,7 +567,7 @@ const Index = () => {
                     />
                   </div>
                   <figcaption className="font-body text-xs text-muted-foreground mt-2 italic">
-                    Live at Taboe Media, Zeedijk — Amsterdam.
+                    Live at Taboe Media, Zeedijk – Amsterdam.
                   </figcaption>
                 </figure>
               </FadeIn>
@@ -803,7 +803,7 @@ const Index = () => {
             <FadeIn className="lg:col-span-3 flex flex-col items-center lg:items-start gap-4">
               <img
                 src={twoStoriesLogo}
-                alt="Two Stories, One City — Amsterdam wordmark"
+                alt="Two Stories, One City – Amsterdam wordmark"
                 loading="lazy"
                 className="w-44 md:w-52 lg:w-full max-w-[260px] h-auto"
                 style={{ filter: "brightness(0) invert(1)" }}

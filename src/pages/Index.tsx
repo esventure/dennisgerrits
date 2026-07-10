@@ -448,41 +448,31 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ── 3. A Day in the Life ── */}
-      {/* Heading sits ABOVE the sticky section so the map is fully in view
-          the moment the section pins on desktop. On mobile the sticky
-          behaviour is disabled — the map renders inline with manual
-          prev / next controls. */}
-      <div id="day" className="relative scroll-mt-20 pt-12 lg:pt-20 pb-2">
-      </div>
-
-      <section className="relative lg:h-[280vh]">
-        <div className="lg:sticky lg:top-20 lg:h-[calc(100vh-5rem)] lg:flex lg:flex-col lg:pt-6 lg:pb-4">
-          <div className="container mx-auto px-6 lg:px-12 w-full">
-            <FadeIn>
-              <div className="max-w-3xl mb-4 lg:mb-6">
-                <p className="font-body text-xs lg:text-sm tracking-widest uppercase text-secondary mb-2">
-                  Let's Explore Together
-                </p>
-                <h2 className="font-heading text-4xl md:text-5xl text-primary leading-[0.95] mb-2">
-                  A Day in My Amsterdam
-                </h2>
-                <p className="font-body text-base text-muted-foreground leading-relaxed">
-                  Every day unfolds differently. Shaped by curiosity, conversation and the rhythm of the city. We discover hidden places, share stories and simply see where the day takes us.
-                </p>
-              </div>
-            </FadeIn>
-          </div>
-          <div className="container mx-auto px-6 lg:px-12 w-full lg:flex-1 lg:min-h-0">
-            <FadeIn>
-              <DayMap moments={moments} />
-            </FadeIn>
-          </div>
+      {/* ── 3. A Day in the Life (click-to-explore, no scroll driver) ── */}
+      <section id="day" className="relative scroll-mt-20 pt-12 lg:pt-20 pb-16 md:pb-20">
+        <div className="container mx-auto px-6 lg:px-12">
+          <FadeIn>
+            <div className="max-w-3xl mb-6 lg:mb-8">
+              <p className="font-body text-xs lg:text-sm tracking-widest uppercase text-secondary mb-2">
+                Let's Explore Together
+              </p>
+              <h2 className="font-heading text-4xl md:text-5xl text-primary leading-[0.95] mb-3">
+                A Day in My Amsterdam
+              </h2>
+              <p className="font-body text-base text-muted-foreground leading-relaxed">
+                Every day unfolds differently. Shaped by curiosity, conversation and the rhythm of the city. Tap a number on the map to peek into a moment of the day.
+              </p>
+            </div>
+          </FadeIn>
+          <FadeIn>
+            <DayMap moments={moments} />
+          </FadeIn>
         </div>
       </section>
 
+
       {/* ── Rick Steves Feature ── */}
-      <div className="relative py-14 md:py-20 lg:py-28" style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.15)" }}>
+      <div id="rick-steves" className="relative py-14 md:py-20 lg:py-28 scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.15)" }}>
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <FadeIn>
@@ -592,17 +582,20 @@ const Index = () => {
                 <FadeIn>
                   <div>
                     <p className="font-body text-[11px] tracking-[0.25em] uppercase text-muted-foreground mb-2">
-                      Radio Interview · Taboe Media
+                      Radio Interview about Amsterdam
                     </p>
-                    <h3 className="font-heading text-2xl md:text-3xl text-primary leading-tight mb-3">
-                      Dennis Gerrits — I Love My City
+                    <h3 className="font-heading text-2xl md:text-3xl text-primary leading-tight mb-1">
+                      Dennis Gerrits — dennisgerrits.com
                     </h3>
+                    <p className="font-body text-xs tracking-widest uppercase text-secondary mb-3">
+                      Recorded live at Studio Zeedijk — Amsterdam
+                    </p>
                     <p className="font-body text-sm text-muted-foreground leading-relaxed mb-4">
-                      A conversation about Amsterdam, the people who shape its neighbourhoods, and what it means to share the city as a local. Recorded live on the Zeedijk.
+                      I was invited to speak on Dutch radio about Amsterdam, its culture, the people who shape its neighbourhoods and what it means to share the city with visitors. The interview is in Dutch. I'm honored to have been featured as a local voice.
                     </p>
                     <div className="rounded-sm overflow-hidden border border-border/60">
                       <iframe
-                        title="Dennis Gerrits — I Love My City (SoundCloud)"
+                        title="Dennis Gerrits — Radio interview about Amsterdam (SoundCloud)"
                         width="100%"
                         height="140"
                         scrolling="no"

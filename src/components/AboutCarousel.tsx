@@ -73,7 +73,7 @@ const AboutEditorial = () => {
         {/* Right side: image container */}
         <div className="relative min-h-[50vh] lg:min-h-0">
           <div
-            className="absolute inset-0 bg-cover bg-[35%_center]"
+            className="absolute inset-0 bg-cover bg-[60%_center]"
             style={{ backgroundImage: `url(${dennisPersonBike})` }}
             aria-hidden
           />

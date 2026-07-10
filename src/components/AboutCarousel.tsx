@@ -16,8 +16,10 @@ const PERSON_FALLBACK =
 const GUIDE_FALLBACK =
   "For me, discovering places should feel personal, relaxed and natural. More like spending time with a local friend.\n\nI always listen first. Every person experiences a place differently, which is why I take the time to understand who you are and what inspires you.\n\nI carefully shape each day around you, creating experiences that feel meaningful. More than anything, I’m simply somebody who walks beside you during your trip.";
 
-import dennisPersonBike from "@/assets/dennis-person-bike.jpg";
-import dennisGuideHands from "@/assets/dennis-guide-hands.jpg";
+import dennisPersonAsset from "@/assets/dennis-person.jpg.asset.json";
+import dennisGuideAsset from "@/assets/dennis-guide.jpg.asset.json";
+const dennisPersonBike = dennisPersonAsset.url;
+const dennisGuideHands = dennisGuideAsset.url;
 
 /* ── Variation A — Editorial split with photo backgrounds ── */
 const AboutEditorial = () => {

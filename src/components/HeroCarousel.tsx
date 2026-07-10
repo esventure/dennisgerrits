@@ -3,9 +3,10 @@ import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import FadeIn from "./FadeIn";
 
-import dennisArmsWide from "@/assets/dennis-arms-wide.jpg";
-import dennisCanalSmile from "@/assets/dennis-canal-smile.jpg";
-import dennisTalking from "@/assets/dennis-talking.jpg";
+import dennisHeroAsset from "@/assets/dennis-hero.jpg.asset.json";
+const dennisArmsWide = dennisHeroAsset.url;
+const dennisCanalSmile = dennisHeroAsset.url;
+const dennisTalking = dennisHeroAsset.url;
 
 /* ────────────────────────────────────────────────────────────
    Three hero variations. Each is a self-contained section

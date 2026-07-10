@@ -259,60 +259,73 @@ const Index = () => {
             </div>
           </FadeIn>
 
-          {/* Concierge — editorial split with dot list */}
-          <div className="max-w-6xl mx-auto pt-12 lg:pt-16 border-t border-border/60">
+          {/* Concierge — editorial list card */}
+          <div className="max-w-5xl mx-auto">
             {(() => {
               const rows = [
-                { icon: iconTickets, title: t("concierge.tickets.title", "Museum reservations"), desc: t("concierge.tickets.desc", "Including tickets and timed entry reservations for museums and cultural experiences.") },
-                { icon: iconDining, title: t("concierge.dining.title", "Dining reservations"), desc: t("concierge.dining.desc", "Thoughtfully selected places to eat, from local favorites to memorable dining experiences.") },
+                { icon: iconTickets, title: t("concierge.tickets.title", "Museum Reservations"), desc: t("concierge.tickets.desc", "Including tickets and timed entry reservations for museums and cultural experiences.") },
+                { icon: iconDining, title: t("concierge.dining.title", "Dining Reservations"), desc: t("concierge.dining.desc", "Thoughtfully selected places to eat, from local favorites to memorable dining experiences.") },
                 { icon: iconTransport, title: t("concierge.transport.title", "Transportation Coordination"), desc: t("concierge.transport.desc", "Help arranging transportation, including airport transfers and train tickets.") },
                 { icon: iconHotel, title: t("concierge.hotel.title", "Hotel & B&B Recommendations"), desc: t("concierge.hotel.desc", "Helping you find the place and neighborhood that fit your travel style best.") },
                 { icon: iconMessage, title: t("concierge.support.title", "Guidance & Support"), desc: t("concierge.support.desc", "Always available for questions, practical help and personal support throughout your stay.") },
               ];
               return (
-                <FadeIn delay={0.15}>
-                  <div className="flex flex-col md:flex-row gap-12 lg:gap-16 items-start">
-                    <div className="md:w-1/3">
+                <>
+                  <FadeIn delay={0.15}>
+                    <div className="text-center mb-10 md:mb-12">
                       <p className="font-body text-sm tracking-widest uppercase text-accent mb-4">
                         {t("concierge.kicker", "What I take care of")}
                       </p>
-                      <h3 className="font-heading text-3xl sm:text-4xl text-primary leading-tight mb-4">
+                      <h3 className="font-heading text-3xl sm:text-4xl md:text-5xl text-primary leading-[0.95] uppercase">
                         {t("concierge.title", "More than a guide. Personal support, thoughtful guidance and local knowledge throughout your stay.")}
                       </h3>
-                      <p className="font-body text-muted-foreground italic leading-relaxed">
-                        Beyond the itinerary, I look after the small details that make a trip feel effortless.
-                      </p>
                     </div>
-                    <ul className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-6">
-                      {rows.map((row) => (
-                        <li key={row.title} className="flex items-start gap-4">
-                          <span
-                            className="mt-2 w-2 h-2 rounded-full shrink-0"
-                            style={{ backgroundColor: "hsl(var(--heritage-green))" }}
-                            aria-hidden
-                          />
-                          <span className="flex-1">
-                            <span className="block font-heading text-lg text-primary tracking-wide uppercase leading-tight mb-1">
-                              {row.title}
-                            </span>
-                            <span className="block font-body text-sm text-muted-foreground leading-relaxed">
-                              {row.desc}
-                            </span>
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </FadeIn>
+                  </FadeIn>
+
+                  <FadeIn delay={0.2}>
+                    <div
+                      className="bg-background rounded-sm shadow-sm overflow-hidden"
+                      style={{ borderTop: "4px solid hsl(var(--heritage-orange))" }}
+                    >
+                      <ul className="divide-y divide-border/40">
+                        {rows.map((row) => (
+                          <li key={row.title} className="flex items-start gap-5 px-6 py-6 md:px-10 md:py-7">
+                            <div
+                              className="shrink-0 w-12 h-12 rounded-full flex items-center justify-center"
+                              style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.2)" }}
+                              aria-hidden
+                            >
+                              <img
+                                src={row.icon}
+                                alt=""
+                                className="w-6 h-6 object-contain"
+                                loading="lazy"
+                                aria-hidden
+                              />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <h4 className="font-heading text-lg md:text-xl text-primary tracking-wide uppercase leading-tight mb-1">
+                                {row.title}
+                              </h4>
+                              <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed">
+                                {row.desc}
+                              </p>
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </FadeIn>
+
+                  <FadeIn delay={0.25}>
+                    <p className="mt-10 md:mt-12 text-center font-body text-sm md:text-base text-muted-foreground italic max-w-2xl mx-auto">
+                      And everything else you didn't think to ask for. If it makes your stay smoother, it's already on my list.
+                    </p>
+                  </FadeIn>
+                </>
               );
             })()}
           </div>
-
-          <FadeIn delay={0.2}>
-            <p className="mt-10 text-center font-body text-sm text-muted-foreground italic max-w-2xl mx-auto">
-              And everything else you didn't think to ask for. If it makes your stay smoother, it's already on my list.
-            </p>
-          </FadeIn>
 
         </div>
       </section>

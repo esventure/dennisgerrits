@@ -29,7 +29,7 @@ const AboutEditorial = () => {
       {/* Left: The Person */}
       <div className="relative overflow-hidden px-6 sm:px-10 md:px-16 lg:px-20 py-14 sm:py-20 lg:py-28 flex items-center min-h-[70vh]">
         <div
-          className="absolute inset-0 bg-cover bg-[right_center]"
+          className="absolute inset-0 bg-cover bg-[35%_center]"
           style={{ backgroundImage: `url(${dennisPersonBike})` }}
           aria-hidden
         />
@@ -73,7 +73,7 @@ const AboutEditorial = () => {
       {/* Right: The Guide */}
       <div className="relative overflow-hidden px-6 sm:px-10 md:px-16 lg:px-20 py-14 sm:py-20 lg:py-28 flex items-center min-h-[70vh]">
         <div
-          className="absolute inset-0 bg-cover bg-[right_center]"
+          className="absolute inset-0 bg-cover bg-[90%_center]"
           style={{ backgroundImage: `url(${dennisGuideHands})` }}
           aria-hidden
         />

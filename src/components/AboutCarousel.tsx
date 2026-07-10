@@ -29,7 +29,7 @@ const AboutEditorial = () => {
       {/* Left: The Person */}
       <div className="relative overflow-hidden px-6 sm:px-10 md:px-16 lg:px-20 py-14 sm:py-20 lg:py-28 flex items-center min-h-[70vh]">
         <div
-          className="absolute inset-0 bg-cover bg-[40%_center]"
+          className="absolute inset-0 bg-cover bg-[right_center]"
           style={{ backgroundImage: `url(${dennisPersonBike})` }}
           aria-hidden
         />
@@ -41,8 +41,9 @@ const AboutEditorial = () => {
           }}
           aria-hidden
         />
+
         <FadeIn className="relative z-10">
-          <div className="max-w-md mx-auto lg:ml-auto lg:mr-0">
+          <div className="max-w-md mx-auto lg:mr-auto lg:ml-0">
             <p className="font-body text-xs tracking-[0.3em] uppercase text-accent font-semibold mb-4">
               {t("about.person.kicker", "A True Amsterdammer")}
             </p>
@@ -72,10 +73,11 @@ const AboutEditorial = () => {
       {/* Right: The Guide */}
       <div className="relative overflow-hidden px-6 sm:px-10 md:px-16 lg:px-20 py-14 sm:py-20 lg:py-28 flex items-center min-h-[70vh]">
         <div
-          className="absolute inset-0 bg-cover bg-[40%_center]"
+          className="absolute inset-0 bg-cover bg-[right_center]"
           style={{ backgroundImage: `url(${dennisGuideHands})` }}
           aria-hidden
         />
+
         <div
           className="absolute inset-0"
           style={{

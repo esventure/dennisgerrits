@@ -912,13 +912,13 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ── Podcast: Two Stories, One City (green band) ── */}
+      {/* ── Podcast: Two Stories, One City (bordeaux band, clearly a podcast) ── */}
       <section
         id="podcast"
         className="relative py-12 md:py-14 lg:py-16 scroll-mt-20 overflow-hidden"
-        style={{ backgroundColor: "hsl(var(--heritage-green))" }}
+        style={{ backgroundColor: "hsl(var(--heritage-bordeaux))" }}
       >
-        {/* faint paper-grain overlay for warmth on the deep green */}
+        {/* faint paper-grain overlay */}
         <div
           className="absolute inset-0 pointer-events-none opacity-[0.10] mix-blend-screen"
           aria-hidden
@@ -930,8 +930,8 @@ const Index = () => {
 
         <div className="container mx-auto px-6 lg:px-12 relative">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-            {/* Left: wordmark logo */}
-            <FadeIn className="lg:col-span-3 flex justify-center lg:justify-start">
+            {/* Left: wordmark logo + podcast tagline underneath */}
+            <FadeIn className="lg:col-span-3 flex flex-col items-center lg:items-start gap-4">
               <img
                 src={twoStoriesLogo}
                 alt="Two Stories, One City — Amsterdam wordmark"
@@ -939,16 +939,39 @@ const Index = () => {
                 className="w-44 md:w-52 lg:w-full max-w-[260px] h-auto"
                 style={{ filter: "brightness(0) invert(1)" }}
               />
+              <p
+                className="font-body italic text-base leading-snug text-center lg:text-left"
+                style={{ color: "hsl(var(--heritage-orange))" }}
+              >
+                A podcast by Louke and Dennis
+              </p>
             </FadeIn>
 
             {/* Center: kicker, heading, copy, player */}
             <FadeIn className="lg:col-span-6 lg:border-x lg:px-10 lg:[border-color:hsl(0_0%_100%/0.15)]">
-              <p
-                className="font-body text-xs tracking-[0.25em] uppercase mb-4"
-                style={{ color: "hsl(var(--heritage-orange))" }}
-              >
-                Also worth a listen
-              </p>
+              <div className="inline-flex items-center gap-2 mb-4">
+                <span
+                  className="inline-flex items-center justify-center w-6 h-6 rounded-full"
+                  style={{ backgroundColor: "hsl(var(--heritage-orange))", color: "hsl(var(--heritage-bordeaux))" }}
+                  aria-hidden
+                >
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="9" y="2" width="6" height="12" rx="3" />
+                    <path d="M5 10a7 7 0 0 0 14 0" />
+                    <line x1="12" y1="19" x2="12" y2="22" />
+                  </svg>
+                </span>
+                <span
+                  className="font-body text-[11px] tracking-[0.3em] uppercase px-3 py-1 rounded-full border"
+                  style={{
+                    color: "hsl(var(--heritage-orange))",
+                    borderColor: "hsl(var(--heritage-orange) / 0.5)",
+                  }}
+                >
+                  Podcast
+                </span>
+              </div>
+
               <h2
                 className="font-heading text-3xl md:text-4xl lg:text-5xl leading-[1.05] mb-5"
                 style={{ color: "hsl(0 0% 98%)" }}

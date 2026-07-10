@@ -351,31 +351,37 @@ const StoryBook = ({ stories, initialStoryId }: StoryBookProps) => {
               onClick={() => goTo(currentPage + 1)}
               aria-label="Turn to next story"
               className="group absolute bottom-0 right-0 z-30"
-              style={{ width: "64px", height: "64px" }}
+              style={{ width: "72px", height: "72px" }}
             >
               <div
                 className="absolute inset-0 transition-transform duration-300 group-hover:scale-110"
                 style={{
                   background:
-                    "linear-gradient(135deg, transparent 50%, hsl(35 22% 88%) 50%, hsl(30 18% 80%) 100%)",
+                    "linear-gradient(135deg, transparent 50%, hsl(35 22% 86%) 50%, hsl(30 18% 78%) 100%)",
                   boxShadow:
                     "-3px -3px 6px hsl(var(--heritage-dark) / 0.12)",
                 }}
               />
+              <span
+                className="absolute bottom-1.5 right-1.5 text-sm font-medium"
+                style={{ color: "hsl(var(--heritage-bordeaux))" }}
+              >
+                →
+              </span>
             </button>
           )}
 
-          {/* Previous corner (subtle, bottom-left) */}
+          {/* Previous corner (bottom-left) */}
           {currentPage > 0 && (
             <button
               type="button"
               onClick={() => goTo(currentPage - 1)}
               aria-label="Turn to previous story"
               className="group absolute bottom-0 left-0 z-30"
-              style={{ width: "44px", height: "44px" }}
+              style={{ width: "56px", height: "56px" }}
             >
               <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
+                className="absolute inset-0 transition-transform duration-300 group-hover:scale-110"
                 style={{
                   background:
                     "linear-gradient(225deg, transparent 50%, hsl(35 22% 90%) 50%, hsl(30 18% 84%) 100%)",
@@ -383,7 +389,55 @@ const StoryBook = ({ stories, initialStoryId }: StoryBookProps) => {
                     "3px -3px 6px hsl(var(--heritage-dark) / 0.1)",
                 }}
               />
+              <span
+                className="absolute bottom-1.5 left-1.5 text-sm font-medium"
+                style={{ color: "hsl(var(--heritage-bordeaux))" }}
+              >
+                ←
+              </span>
             </button>
+          )}
+        </div>
+      </div>
+
+      {/* Bottom navigation bar — explicit next/previous story affordances */}
+      <div className="relative z-10 max-w-4xl mx-auto mt-6 px-4">
+        <div className="flex items-center justify-between gap-4">
+          {currentPage > 0 ? (
+            <button
+              type="button"
+              onClick={() => goTo(currentPage - 1)}
+              className="group inline-flex items-center gap-2 font-body text-sm transition-colors hover:text-secondary"
+              style={{ color: "hsl(var(--heritage-bordeaux))" }}
+            >
+              <span aria-hidden>←</span>
+              <span className="hidden sm:inline">Previous story</span>
+              <span className="sm:hidden">Previous</span>
+            </button>
+          ) : (
+            <span />
+          )}
+
+          <p
+            className="font-body text-xs tracking-widest uppercase"
+            style={{ color: "hsl(var(--muted-foreground))" }}
+          >
+            Story {currentPage + 1} of {stories.length}
+          </p>
+
+          {currentPage < stories.length - 1 ? (
+            <button
+              type="button"
+              onClick={() => goTo(currentPage + 1)}
+              className="group inline-flex items-center gap-2 font-body text-sm transition-colors hover:text-secondary"
+              style={{ color: "hsl(var(--heritage-bordeaux))" }}
+            >
+              <span className="hidden sm:inline">Next story</span>
+              <span className="sm:hidden">Next</span>
+              <span aria-hidden>→</span>
+            </button>
+          ) : (
+            <span />
           )}
         </div>
       </div>

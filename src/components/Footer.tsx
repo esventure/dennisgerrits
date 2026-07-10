@@ -66,7 +66,7 @@ const Footer = () => {
               Storyteller, Host &amp; Travel Companion
             </p>
             <p className="font-body text-primary-foreground/60 text-xs leading-relaxed max-w-xs">
-              Formerly Love My City Tours — now dennisgerrits.com.
+              Formerly Love My City Tours – now dennisgerrits.com.
             </p>
           </div>
           <div>

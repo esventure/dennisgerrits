@@ -268,7 +268,7 @@ const StoryBook = ({ stories, initialStoryId }: StoryBookProps) => {
                   }}
                   aria-hidden
                 >
-                  — D.
+                  – D.
                 </p>
                 <p
                   className="text-xs tracking-widest mt-2 self-end"

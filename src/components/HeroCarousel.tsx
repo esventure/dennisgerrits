@@ -865,7 +865,7 @@ const HeroGreenAllCaps = () => (
                 className="font-body text-sm tracking-widest uppercase mt-6"
                 style={{ color: "hsl(var(--heritage-orange))" }}
               >
-                — HELLO, I AM DENNIS —
+                – HELLO, I AM DENNIS –
               </p>
             </div>
           </FadeIn>

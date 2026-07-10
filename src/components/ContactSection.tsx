@@ -48,7 +48,7 @@ const ContactSection = () => {
                   className="font-body text-xs md:text-sm tracking-[0.3em] uppercase mb-4"
                   style={{ color: "hsl(var(--heritage-orange))" }}
                 >
-                  — {t("booking.kicker", "Get in Touch")} —
+                  – {t("booking.kicker", "Get in Touch")} –
                 </p>
                 <h2
                   className="font-heading text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] leading-[0.95] mx-auto max-w-none md:whitespace-nowrap"

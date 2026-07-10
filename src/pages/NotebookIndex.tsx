@@ -34,7 +34,7 @@ const NotebookIndex = () => {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Blog",
-    name: "Dennis Gerrits — Notebook",
+    name: "Dennis Gerrits – Notebook",
     description:
       "Short reflections from Amsterdam by Dennis Gerrits. Stories about the city, its people and everyday traditions.",
     url: "https://dennisgerrits.lovable.app/notebook",
@@ -49,13 +49,13 @@ const NotebookIndex = () => {
   return (
     <main className="relative">
       <Helmet>
-        <title>Notebook — Dennis Gerrits | Stories from Amsterdam</title>
+        <title>Notebook – Dennis Gerrits | Stories from Amsterdam</title>
         <meta
           name="description"
           content="Short reflections from Amsterdam by Dennis Gerrits. Asparagus season, bike exams, Nijntje, Van Gogh in bricks, and more."
         />
         <link rel="canonical" href="https://dennisgerrits.lovable.app/notebook" />
-        <meta property="og:title" content="Notebook — Dennis Gerrits" />
+        <meta property="og:title" content="Notebook – Dennis Gerrits" />
         <meta
           property="og:description"
           content="Short reflections from Amsterdam by Dennis Gerrits."

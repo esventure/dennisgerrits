@@ -41,7 +41,7 @@ const MovedBanner = () => {
         >
           <span aria-hidden className="mr-2 inline-block">↪</span>
           <span className="font-medium">Formerly Love My City Tours</span>
-          <span className="opacity-70"> — now dennisgerrits.com. Same Dennis, same Amsterdam, new home.</span>
+          <span className="opacity-70"> – now dennisgerrits.com. Same Dennis, same Amsterdam, new home.</span>
         </p>
         <button
           onClick={dismiss}

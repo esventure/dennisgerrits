@@ -37,7 +37,7 @@ const AboutEditorial = () => {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to right, hsl(var(--background) / 0.92) 0%, hsl(var(--background) / 0.75) 30%, hsl(var(--background) / 0.35) 55%, hsl(var(--background) / 0) 85%)",
+              "linear-gradient(to right, hsl(var(--background) / 0.82) 0%, hsl(var(--background) / 0.55) 28%, hsl(var(--background) / 0.18) 52%, hsl(var(--background) / 0) 78%)",
           }}
           aria-hidden
         />

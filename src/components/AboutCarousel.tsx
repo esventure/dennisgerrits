@@ -29,7 +29,7 @@ const AboutEditorial = () => {
       {/* Left: The Person */}
       <div className="relative overflow-hidden px-6 sm:px-10 md:px-16 lg:px-20 py-14 sm:py-20 lg:py-28 flex items-center min-h-[70vh]">
         <div
-          className="absolute inset-0 bg-cover bg-[10%_center]"
+          className="absolute inset-0 bg-cover bg-[60%_bottom]"
           style={{ backgroundImage: `url(${dennisPersonBike})` }}
           aria-hidden
         />
@@ -37,7 +37,7 @@ const AboutEditorial = () => {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to right, hsl(var(--background)) 0%, hsl(var(--background) / 0.95) 35%, hsl(var(--background) / 0.55) 65%, hsl(var(--background) / 0) 100%)",
+              "linear-gradient(to right, hsl(var(--background) / 0.92) 0%, hsl(var(--background) / 0.75) 30%, hsl(var(--background) / 0.35) 55%, hsl(var(--background) / 0) 85%)",
           }}
           aria-hidden
         />

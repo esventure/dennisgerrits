@@ -79,8 +79,14 @@ const AboutEditorial = () => {
       {/* Right: The Guide */}
       <div className="relative overflow-hidden px-6 sm:px-10 md:px-16 lg:px-20 py-14 sm:py-20 lg:py-28 flex items-center min-h-[70vh]">
         <div
-          className="absolute inset-0 bg-cover bg-[90%_center]"
-          style={{ backgroundImage: `url(${dennisGuideHands})` }}
+          className="absolute inset-y-0 right-0 w-[54%] sm:w-[58%] lg:w-[62%] bg-cover bg-[40%_center]"
+          style={{
+            backgroundImage: `url(${dennisGuideHands})`,
+            WebkitMaskImage:
+              "linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.12) 18%, rgb(0 0 0 / 0.72) 34%, rgb(0 0 0) 48%)",
+            maskImage:
+              "linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.12) 18%, rgb(0 0 0 / 0.72) 34%, rgb(0 0 0) 48%)",
+          }}
           aria-hidden
         />
 
@@ -88,7 +94,7 @@ const AboutEditorial = () => {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to right, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.95) 35%, hsl(var(--primary) / 0.55) 65%, hsl(var(--primary) / 0.15) 100%)",
+              "linear-gradient(to right, hsl(var(--primary)) 0%, hsl(var(--primary)) 54%, hsl(var(--primary) / 0.86) 66%, hsl(var(--primary) / 0.18) 88%, hsl(var(--primary) / 0) 100%)",
           }}
           aria-hidden
         />

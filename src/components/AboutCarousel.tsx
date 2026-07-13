@@ -16,9 +16,8 @@ const PERSON_FALLBACK =
 const GUIDE_FALLBACK =
   "For me, discovering places should feel personal, relaxed and natural. More like spending time with a local friend.\n\nI always listen first. Every person experiences a place differently, which is why I take the time to understand who you are and what inspires you.\n\nI carefully shape each day around you, creating experiences that feel meaningful. More than anything, I’m simply somebody who walks beside you during your trip.";
 
-import dennisPersonAsset from "@/assets/dennis-person.jpg.asset.json";
+import dennisPersonBike from "@/assets/dennis-person-bike.jpg";
 import dennisGuideAsset from "@/assets/dennis-guide.jpg.asset.json";
-const dennisPersonBike = dennisPersonAsset.url;
 const dennisGuideHands = dennisGuideAsset.url;
 
 /* ── Variation A — Editorial split with photo backgrounds ── */
@@ -29,15 +28,21 @@ const AboutEditorial = () => {
       {/* Left: The Person */}
       <div className="relative overflow-hidden px-6 sm:px-10 md:px-16 lg:px-20 py-14 sm:py-20 lg:py-28 flex items-center min-h-[70vh]">
         <div
-          className="absolute inset-0 bg-cover bg-[35%_bottom]"
-          style={{ backgroundImage: `url(${dennisPersonBike})` }}
+          className="absolute inset-y-0 right-0 w-[54%] sm:w-[58%] lg:w-[62%] bg-cover bg-[30%_bottom]"
+          style={{
+            backgroundImage: `url(${dennisPersonBike})`,
+            WebkitMaskImage:
+              "linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.12) 18%, rgb(0 0 0 / 0.72) 34%, rgb(0 0 0) 48%)",
+            maskImage:
+              "linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.12) 18%, rgb(0 0 0 / 0.72) 34%, rgb(0 0 0) 48%)",
+          }}
           aria-hidden
         />
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to right, hsl(var(--background) / 0.95) 0%, hsl(var(--background) / 0.95) 42%, hsl(var(--background) / 0.45) 62%, hsl(var(--background) / 0) 85%)",
+              "linear-gradient(to right, hsl(var(--background)) 0%, hsl(var(--background)) 54%, hsl(var(--background) / 0.86) 66%, hsl(var(--background) / 0.18) 88%, hsl(var(--background) / 0) 100%)",
           }}
           aria-hidden
         />

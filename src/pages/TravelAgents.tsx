@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import dennisBoat from "@/assets/dennis-boat.jpg.asset.json";
+import dennisBoat from "@/assets/dennis-hero.jpg.asset.json";
 import dennisContact from "@/assets/dennis-contact.jpg.asset.json";
 import iconMessage from "@/assets/icon-message.png";
 import iconItinerary from "@/assets/icon-itinerary.png";
@@ -207,7 +207,7 @@ const TravelAgents = () => {
                 >
                   <img
                     src={dennisBoat.url}
-                    alt="Dennis steering a canal boat in Amsterdam"
+                    alt="Dennis in Amsterdam"
                     className="w-full aspect-[4/5] object-cover"
                     loading="lazy"
                   />

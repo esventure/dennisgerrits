@@ -81,9 +81,9 @@ const AboutEditorial = () => {
         <div
           className="absolute inset-y-0 right-0 w-[64%] sm:w-[68%] lg:w-[74%] bg-no-repeat"
           style={{
-            backgroundImage: `url(${dennisGuideHands})`,
+            backgroundImage: `url(${dennisGuideClient})`,
             backgroundSize: "130% auto",
-            backgroundPosition: "55% 92%",
+            backgroundPosition: "right bottom 8%",
             WebkitMaskImage:
               "linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.12) 18%, rgb(0 0 0 / 0.72) 34%, rgb(0 0 0) 48%)",
             maskImage:

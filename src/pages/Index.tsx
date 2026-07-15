@@ -32,7 +32,7 @@ import ContactSection from "@/components/ContactSection";
 import ServiceIcon from "@/components/ServiceIcon";
 import RichText from "@/components/RichText";
 import storyBookshop from "@/assets/stories/bookshop.jpg";
-import peekHistory from "@/assets/interests/history.jpg";
+import peekNeighbourhood from "@/assets/interests/neighbourhood.jpg";
 import peekFood from "@/assets/interests/food.jpg";
 import peekWater from "@/assets/interests/water.jpg";
 import peekArchitecture from "@/assets/interests/architecture.jpg";

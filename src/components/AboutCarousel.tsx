@@ -28,8 +28,8 @@ type PhotoAdjustments = {
 };
 
 const DEFAULT_ADJUSTMENTS: PhotoAdjustments = {
-  person: { x: 30, y: 100, zoom: 100 },
-  guide: { x: 110, y: 25, zoom: 120 },
+  person: { x: 36, y: 91, zoom: 166 },
+  guide: { x: 21, y: 59, zoom: 143 },
 };
 
 const STORAGE_KEY = "about-photo-adjustments";

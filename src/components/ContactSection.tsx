@@ -73,10 +73,10 @@ const ContactSection = () => {
                   <div className="mt-6 md:mt-10 flex-1 min-h-[260px] md:min-h-0 relative max-w-md w-full">
                     <img
                       src={dennisCanalSmile}
-                      alt="Dennis smiling by the canal"
+                      alt="Dennis smiling on a canal bridge"
                       loading="lazy"
                       className="absolute inset-0 w-full h-full object-cover rounded-sm shadow-xl"
-                      style={{ filter: "saturate(0.92) contrast(0.98)", objectPosition: "center 80%" }}
+                      style={{ filter: "saturate(0.92) contrast(0.98)", objectPosition: "center" }}
                     />
                   </div>
                 </div>

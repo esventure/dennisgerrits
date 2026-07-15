@@ -79,9 +79,11 @@ const AboutEditorial = () => {
       {/* Right: The Guide */}
       <div className="relative overflow-hidden px-6 sm:px-10 md:px-16 lg:px-20 py-14 sm:py-20 lg:py-28 flex items-center min-h-[70vh]">
         <div
-          className="absolute inset-y-0 right-0 w-[64%] sm:w-[68%] lg:w-[74%] bg-no-repeat bg-contain bg-right-bottom"
+          className="absolute inset-y-0 right-0 w-[64%] sm:w-[68%] lg:w-[74%] bg-no-repeat"
           style={{
             backgroundImage: `url(${dennisGuideHands})`,
+            backgroundSize: "120% auto",
+            backgroundPosition: "100% 90%",
             WebkitMaskImage:
               "linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.12) 18%, rgb(0 0 0 / 0.72) 34%, rgb(0 0 0) 48%)",
             maskImage:

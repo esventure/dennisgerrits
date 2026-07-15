@@ -59,6 +59,25 @@ const saveAdjustments = (a: PhotoAdjustments) => {
 /* ── Variation A — Editorial split with photo backgrounds ── */
 const AboutEditorial = () => {
   const t = useSiteContent();
+  const [adjustments, setAdjustments] = useState<PhotoAdjustments>(loadAdjustments);
+  const [editing, setEditing] = useState(false);
+
+  const updatePhoto = useCallback(
+    (photo: keyof PhotoAdjustments, key: keyof PhotoAdjustments["person"], value: number) => {
+      setAdjustments((prev) => {
+        const next = { ...prev, [photo]: { ...prev[photo], [key]: value } };
+        saveAdjustments(next);
+        return next;
+      });
+    },
+    []
+  );
+
+  const resetPhotos = useCallback(() => {
+    setAdjustments(DEFAULT_ADJUSTMENTS);
+    saveAdjustments(DEFAULT_ADJUSTMENTS);
+  }, []);
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[70vh]">
       {/* Left: The Person */}

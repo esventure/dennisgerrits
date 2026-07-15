@@ -389,7 +389,7 @@ const GetInspired = () => {
                           style={{ filter: "saturate(1.18) brightness(1.06) contrast(1.04)" }}
                         />
                       </div>
-                      <div className="mt-3 sm:mt-4 px-1.5 sm:px-2">
+                      <div className="relative mt-3 sm:mt-4 px-1.5 sm:px-2">
                         <h3 className="font-heading text-lg sm:text-xl md:text-2xl text-primary leading-tight tracking-wide truncate">
                           {theme.title}
                         </h3>

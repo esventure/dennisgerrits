@@ -644,7 +644,7 @@ const Index = () => {
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-12 md:gap-y-16 gap-x-6 md:gap-x-10 pt-4">
             {[
-              { id: "neighbourhood", title: "The Neighbourhood Way", note: "real Amsterdam lives here", image: peekHistory, rotate: -2.4, pin: "tape-tl" },
+              { id: "neighbourhood", title: "The Neighbourhood Way", note: "real Amsterdam lives here", image: peekNeighbourhood, rotate: -2.4, pin: "tape-tl" },
               { id: "food", title: "Food Culture", note: "one bite at a time", image: peekFood, rotate: 1.8, pin: "tape-tr" },
               { id: "architecture", title: "Living Architecture", note: "unlike anywhere else", image: peekArchitecture, rotate: -1.2, pin: "tape-gl" },
               { id: "water", title: "From the Water", note: "a different rhythm", image: peekWater, rotate: 2.0, pin: "tape-gr" },

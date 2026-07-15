@@ -83,7 +83,7 @@ const AboutEditorial = () => {
           style={{
             backgroundImage: `url(${dennisGuideHands})`,
             backgroundSize: "120% auto",
-            backgroundPosition: "110% 100%",
+            backgroundPosition: "110% 0%",
             WebkitMaskImage:
               "linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.12) 18%, rgb(0 0 0 / 0.72) 34%, rgb(0 0 0) 48%)",
             maskImage:

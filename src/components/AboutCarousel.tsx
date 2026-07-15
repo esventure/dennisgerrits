@@ -78,6 +78,11 @@ const AboutEditorial = () => {
     saveAdjustments(DEFAULT_ADJUSTMENTS);
   }, []);
 
+  const showEditor =
+    import.meta.env.DEV ||
+    new URLSearchParams(window.location.search).has("edit-photos") ||
+    localStorage.getItem("about-photo-editor-enabled") === "true";
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[70vh]">
       {/* Left: The Person */}

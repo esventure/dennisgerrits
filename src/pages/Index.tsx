@@ -692,8 +692,11 @@ const Index = () => {
               const sketchPaths = sketchVariants[i % sketchVariants.length];
               return (
                 <FadeIn key={theme.id} delay={i * 0.08}>
-                  <Link
-                    to="/get-inspired"
+                  <button
+                    type="button"
+                    onClick={() => setOpenInterest((cur) => (cur === theme.id ? null : theme.id))}
+                    aria-expanded={openInterest === theme.id}
+                    aria-label={`${theme.title} — ${openInterest === theme.id ? "close" : "read more"}`}
                     className="group relative block w-full text-left transition-transform duration-500 ease-out hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-4"
                     style={{ transform: `rotate(${theme.rotate}deg)` }}
                   >
@@ -746,9 +749,33 @@ const Index = () => {
                           alt={theme.title}
                           loading="lazy"
                           decoding="async"
-                          className="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.02] group-hover:saturate-150"
+                          className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.02] group-hover:saturate-150 ${
+                            openInterest === theme.id ? "scale-105 blur-[2px]" : ""
+                          }`}
                           style={{ filter: "saturate(1.18) brightness(1.06) contrast(1.04)" }}
                         />
+                        <div
+                          className={`absolute inset-0 flex flex-col justify-center px-4 sm:px-5 py-4 transition-opacity duration-500 ${
+                            openInterest === theme.id ? "opacity-100" : "opacity-0 pointer-events-none"
+                          }`}
+                          style={{
+                            background: `linear-gradient(180deg, ${paperBg} 0%, ${paperBg} 60%, ${paperBg}f2 100%)`,
+                          }}
+                        >
+                          <p
+                            className="font-body text-sm sm:text-base leading-relaxed text-primary"
+                          >
+                            {theme.caption}
+                          </p>
+                          <Link
+                            to="/get-inspired"
+                            onClick={(e) => e.stopPropagation()}
+                            className="mt-4 font-body text-xs sm:text-sm tracking-widest uppercase inline-flex items-center gap-1.5 self-start border-b border-dashed pb-0.5 transition-opacity hover:opacity-70"
+                            style={{ color: "hsl(var(--heritage-orange))", borderColor: "hsl(var(--heritage-orange))" }}
+                          >
+                            Read more <span aria-hidden>→</span>
+                          </Link>
+                        </div>
                       </div>
                       <div className="relative mt-3 sm:mt-4 px-1.5 sm:px-2">
                         <h3 className="font-heading text-lg sm:text-xl md:text-2xl text-primary leading-tight tracking-wide truncate">
@@ -770,7 +797,7 @@ const Index = () => {
                         </p>
                       </div>
                     </div>
-                  </Link>
+                  </button>
                 </FadeIn>
               );
             })}

@@ -21,6 +21,41 @@ import dennisGuideAsset from "@/assets/dennis-guide.jpg.asset.json";
 const dennisPersonBike = dennisPersonAsset.url;
 const dennisGuideHands = dennisGuideAsset.url;
 
+/* ── Photo adjustment helpers ── */
+type PhotoAdjustments = {
+  person: { x: number; y: number; zoom: number };
+  guide: { x: number; y: number; zoom: number };
+};
+
+const DEFAULT_ADJUSTMENTS: PhotoAdjustments = {
+  person: { x: 30, y: 100, zoom: 100 },
+  guide: { x: 110, y: 25, zoom: 120 },
+};
+
+const STORAGE_KEY = "about-photo-adjustments";
+
+const loadAdjustments = (): PhotoAdjustments => {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return DEFAULT_ADJUSTMENTS;
+    const parsed = JSON.parse(raw);
+    return {
+      person: { ...DEFAULT_ADJUSTMENTS.person, ...parsed.person },
+      guide: { ...DEFAULT_ADJUSTMENTS.guide, ...parsed.guide },
+    };
+  } catch {
+    return DEFAULT_ADJUSTMENTS;
+  }
+};
+
+const saveAdjustments = (a: PhotoAdjustments) => {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(a));
+  } catch {
+    // ignore
+  }
+};
+
 /* ── Variation A — Editorial split with photo backgrounds ── */
 const AboutEditorial = () => {
   const t = useSiteContent();

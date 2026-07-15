@@ -83,9 +83,11 @@ const AboutEditorial = () => {
       {/* Left: The Person */}
       <div className="relative overflow-hidden px-6 sm:px-10 md:px-16 lg:px-20 py-14 sm:py-20 lg:py-28 flex items-center min-h-[70vh]">
         <div
-          className="absolute inset-y-0 right-0 w-[54%] sm:w-[58%] lg:w-[62%] bg-cover bg-[30%_bottom]"
+          className="absolute inset-y-0 right-0 w-[54%] sm:w-[58%] lg:w-[62%] bg-no-repeat"
           style={{
             backgroundImage: `url(${dennisPersonBike})`,
+            backgroundSize: `${adjustments.person.zoom}% auto`,
+            backgroundPosition: `${adjustments.person.x}% ${adjustments.person.y}%`,
             WebkitMaskImage:
               "linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.12) 18%, rgb(0 0 0 / 0.72) 34%, rgb(0 0 0) 48%)",
             maskImage:

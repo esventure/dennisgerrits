@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Move, ZoomIn, RotateCcw } from "lucide-react";
 import FadeIn from "./FadeIn";
 import RichText from "./RichText";
 import { useSiteContent } from "@/hooks/useSiteContent";

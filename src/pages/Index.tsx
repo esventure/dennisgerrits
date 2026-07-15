@@ -703,7 +703,7 @@ const Index = () => {
                           "radial-gradient(closest-side, hsl(var(--heritage-orange) / 0.35), transparent 70%)",
                       }}
                     />
-                    <div className="p-2.5 sm:p-3 pb-16 sm:pb-20 transition-all duration-500 relative">
+                    <div className="p-2.5 sm:p-3 pb-4 sm:pb-5 transition-all duration-500 relative">
                       <svg
                         aria-hidden
                         className="absolute inset-0 w-full h-full pointer-events-none transition-[filter] duration-500 group-hover:[filter:drop-shadow(0_22px_24px_rgba(0,0,0,0.28))]"
@@ -718,8 +718,6 @@ const Index = () => {
                         <path d={sketchPaths[0]} fill={paperBg} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" style={{ strokeWidth: "2.4px" }} />
                         <path d={sketchPaths[1]} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" style={{ strokeWidth: "1.2px", opacity: 0.55 }} />
                       </svg>
-                      {/* Fastener: alternate tape vs pushpin so cards feel
-                          actually stuck to the wall */}
                       {i % 2 === 0 ? (
                         <span
                           aria-hidden
@@ -740,7 +738,7 @@ const Index = () => {
                           style={{ backgroundColor: outlineColor }}
                         />
                       )}
-                      <div className="relative aspect-square overflow-hidden bg-muted">
+                      <div className="relative aspect-[4/5] overflow-hidden bg-muted">
                         <img
                           src={theme.image}
                           alt={theme.title}
@@ -750,7 +748,7 @@ const Index = () => {
                           style={{ filter: "saturate(1.18) brightness(1.06) contrast(1.04)" }}
                         />
                       </div>
-                      <div className="absolute bottom-3 sm:bottom-4 left-2.5 right-2.5 sm:left-3 sm:right-3 px-1.5 sm:px-2">
+                      <div className="relative mt-3 sm:mt-4 px-1.5 sm:px-2">
                         <h3 className="font-heading text-lg sm:text-xl md:text-2xl text-primary leading-tight tracking-wide truncate">
                           {theme.title}
                         </h3>

@@ -6,8 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import dennisCanalSmile from "@/assets/dennis-canal-smile.jpg";
-import dennisTalking from "@/assets/dennis-talking.jpg";
+import dennisBoat from "@/assets/dennis-boat.jpg.asset.json";
+import dennisContact from "@/assets/dennis-contact.jpg.asset.json";
 import iconMessage from "@/assets/icon-message.png";
 import iconItinerary from "@/assets/icon-itinerary.png";
 import iconFoot from "@/assets/icon-foot.png";
@@ -206,8 +206,8 @@ const TravelAgents = () => {
                   style={{ transform: "rotate(-1.5deg)" }}
                 >
                   <img
-                    src={dennisCanalSmile}
-                    alt="Portrait of Dennis on an Amsterdam canal"
+                    src={dennisBoat.url}
+                    alt="Dennis steering a canal boat in Amsterdam"
                     className="w-full aspect-[4/5] object-cover"
                     loading="lazy"
                   />
@@ -517,7 +517,7 @@ const TravelAgents = () => {
                   style={{ transform: "rotate(-2deg)" }}
                 >
                   <img
-                    src={dennisTalking}
+                    src={dennisContact.url}
                     alt="Dennis"
                     className="w-full h-full object-cover"
                     loading="lazy"

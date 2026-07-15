@@ -375,12 +375,12 @@ const GetInspired = () => {
                           style={{ backgroundColor: outlineColor }}
                         />
                       )}
-                      <div className="relative aspect-square overflow-hidden bg-muted">
+                      <div className="relative aspect-[4/5] overflow-hidden bg-muted">
                         <img
                           src={theme.image}
                           alt={theme.title}
                           width={768}
-                          height={768}
+                          height={960}
                           loading="lazy"
                           decoding="async"
                           // @ts-expect-error fetchpriority is a valid HTML attribute
@@ -389,7 +389,7 @@ const GetInspired = () => {
                           style={{ filter: "saturate(1.18) brightness(1.06) contrast(1.04)" }}
                         />
                       </div>
-                      <div className="absolute bottom-3 sm:bottom-4 left-2.5 right-2.5 sm:left-3 sm:right-3 px-1.5 sm:px-2">
+                      <div className="mt-3 sm:mt-4 px-1.5 sm:px-2">
                         <h3 className="font-heading text-lg sm:text-xl md:text-2xl text-primary leading-tight tracking-wide truncate">
                           {theme.title}
                         </h3>

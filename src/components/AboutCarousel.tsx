@@ -189,106 +189,107 @@ const AboutEditorial = () => {
 
       </div>
 
-      {/* Photo adjustment panel */}
-      <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-2">
-        <button
-          type="button"
-          onClick={() => setEditing((v) => !v)}
-          className="rounded-full px-4 py-2 text-sm font-body font-medium shadow-lg transition-transform hover:scale-105"
-          style={{
-            backgroundColor: "hsl(var(--heritage-orange))",
-            color: "hsl(var(--primary))",
-          }}
-          aria-expanded={editing}
-        >
-          {editing ? "Close photo editor" : "Edit photos"}
-        </button>
-
-        {editing && (
-          <div
-            className="w-72 sm:w-80 rounded-lg p-4 shadow-xl"
+      {showEditor && (
+        <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-2">
+          <button
+            type="button"
+            onClick={() => setEditing((v) => !v)}
+            className="rounded-full px-4 py-2 text-sm font-body font-medium shadow-lg transition-transform hover:scale-105"
             style={{
-              backgroundColor: "hsl(var(--background))",
-              border: "1px solid hsl(var(--heritage-taupe))",
+              backgroundColor: "hsl(var(--heritage-orange))",
+              color: "hsl(var(--primary))",
             }}
+            aria-expanded={editing}
           >
-            <div className="flex items-center justify-between mb-3">
-              <span className="font-heading text-lg text-primary">Photo position</span>
-              <button
-                type="button"
-                onClick={resetPhotos}
-                className="flex items-center gap-1 text-xs font-body font-medium text-secondary hover:text-primary"
-                title="Reset to defaults"
-              >
-                <RotateCcw className="w-3 h-3" />
-                Reset
-              </button>
-            </div>
+            {editing ? "Close photo editor" : "Edit photos"}
+          </button>
 
-            {(["person", "guide"] as const).map((photo) => (
-              <div key={photo} className="mb-4 last:mb-0">
-                <p className="font-body text-xs uppercase tracking-wider text-secondary mb-2">
-                  {photo === "person" ? "The Person" : "The Guide"}
-                </p>
-                <div className="space-y-2">
-                  <label className="flex items-center gap-2 text-xs font-body text-foreground/80">
-                    <Move className="w-3 h-3 shrink-0" />
-                    Horizontal
-                    <input
-                      type="range"
-                      min={-50}
-                      max={150}
-                      value={adjustments[photo].x}
-                      onChange={(e) => updatePhoto(photo, "x", Number(e.target.value))}
-                      className="flex-1 accent-orange-500"
-                      style={{ accentColor: "hsl(var(--heritage-orange))" }}
-                    />
-                    <span className="w-8 text-right tabular-nums">{adjustments[photo].x}</span>
-                  </label>
-                  <label className="flex items-center gap-2 text-xs font-body text-foreground/80">
-                    <Move className="w-3 h-3 shrink-0" />
-                    Vertical
-                    <input
-                      type="range"
-                      min={-50}
-                      max={150}
-                      value={adjustments[photo].y}
-                      onChange={(e) => updatePhoto(photo, "y", Number(e.target.value))}
-                      className="flex-1"
-                      style={{ accentColor: "hsl(var(--heritage-orange))" }}
-                    />
-                    <span className="w-8 text-right tabular-nums">{adjustments[photo].y}</span>
-                  </label>
-                  <label className="flex items-center gap-2 text-xs font-body text-foreground/80">
-                    <ZoomIn className="w-3 h-3 shrink-0" />
-                    Zoom
-                    <input
-                      type="range"
-                      min={50}
-                      max={200}
-                      value={adjustments[photo].zoom}
-                      onChange={(e) => updatePhoto(photo, "zoom", Number(e.target.value))}
-                      className="flex-1"
-                      style={{ accentColor: "hsl(var(--heritage-orange))" }}
-                    />
-                    <span className="w-8 text-right tabular-nums">{adjustments[photo].zoom}</span>
-                  </label>
-                </div>
-              </div>
-            ))}
-
-            <p className="mt-3 text-[10px] font-body text-foreground/50 leading-snug">
-              Adjustments are saved in your browser. Share the values below if you want them applied to the site.
-            </p>
-            <pre
-              className="mt-1 text-[10px] font-mono p-2 rounded overflow-x-auto"
-              style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}
+          {editing && (
+            <div
+              className="w-72 sm:w-80 rounded-lg p-4 shadow-xl"
+              style={{
+                backgroundColor: "hsl(var(--background))",
+                border: "1px solid hsl(var(--heritage-taupe))",
+              }}
             >
-              {JSON.stringify(adjustments, null, 2)}
-            </pre>
-          </div>
-        )}
-      </div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="font-heading text-lg text-primary">Photo position</span>
+                <button
+                  type="button"
+                  onClick={resetPhotos}
+                  className="flex items-center gap-1 text-xs font-body font-medium text-secondary hover:text-primary"
+                  title="Reset to defaults"
+                >
+                  <RotateCcw className="w-3 h-3" />
+                  Reset
+                </button>
+              </div>
+
+              {(["person", "guide"] as const).map((photo) => (
+                <div key={photo} className="mb-4 last:mb-0">
+                  <p className="font-body text-xs uppercase tracking-wider text-secondary mb-2">
+                    {photo === "person" ? "The Person" : "The Guide"}
+                  </p>
+                  <div className="space-y-2">
+                    <label className="flex items-center gap-2 text-xs font-body text-foreground/80">
+                      <Move className="w-3 h-3 shrink-0" />
+                      Horizontal
+                      <input
+                        type="range"
+                        min={-50}
+                        max={150}
+                        value={adjustments[photo].x}
+                        onChange={(e) => updatePhoto(photo, "x", Number(e.target.value))}
+                        className="flex-1 accent-orange-500"
+                        style={{ accentColor: "hsl(var(--heritage-orange))" }}
+                      />
+                      <span className="w-8 text-right tabular-nums">{adjustments[photo].x}</span>
+                    </label>
+                    <label className="flex items-center gap-2 text-xs font-body text-foreground/80">
+                      <Move className="w-3 h-3 shrink-0" />
+                      Vertical
+                      <input
+                        type="range"
+                        min={-50}
+                        max={150}
+                        value={adjustments[photo].y}
+                        onChange={(e) => updatePhoto(photo, "y", Number(e.target.value))}
+                        className="flex-1"
+                        style={{ accentColor: "hsl(var(--heritage-orange))" }}
+                      />
+                      <span className="w-8 text-right tabular-nums">{adjustments[photo].y}</span>
+                    </label>
+                    <label className="flex items-center gap-2 text-xs font-body text-foreground/80">
+                      <ZoomIn className="w-3 h-3 shrink-0" />
+                      Zoom
+                      <input
+                        type="range"
+                        min={50}
+                        max={200}
+                        value={adjustments[photo].zoom}
+                        onChange={(e) => updatePhoto(photo, "zoom", Number(e.target.value))}
+                        className="flex-1"
+                        style={{ accentColor: "hsl(var(--heritage-orange))" }}
+                      />
+                      <span className="w-8 text-right tabular-nums">{adjustments[photo].zoom}</span>
+                    </label>
+                  </div>
+                </div>
+              ))}
+
+              <p className="mt-3 text-[10px] font-body text-foreground/50 leading-snug">
+                Adjustments are saved in your browser. Share the values below if you want them applied to the site.
+              </p>
+              <pre
+                className="mt-1 text-[10px] font-mono p-2 rounded overflow-x-auto"
+                style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}
+              >
+                {JSON.stringify(adjustments, null, 2)}
+              </pre>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };

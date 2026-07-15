@@ -24,6 +24,9 @@ import imgDelft from "@/assets/interests/delft.jpg";
 import imgBrownCafe from "@/assets/interests/brown-cafe.jpg";
 import imgVanGogh from "@/assets/interests/vangogh.jpg";
 import imgHaarlem from "@/assets/interests/haarlem.jpg";
+import imgRembrandt from "@/assets/interests/rembrandt.jpg";
+import imgQuietCorners from "@/assets/interests/quiet-corners.jpg";
+import imgShapedByWater from "@/assets/interests/shaped-by-water.jpg";
 
 const blocks: { title: string; note: string; caption: string; image: string }[] = [
   {
@@ -38,7 +41,7 @@ const blocks: { title: string; note: string; caption: string; image: string }[] 
     note: "the city that painted itself into history",
     caption:
       "Rembrandt and his living light. Rijksmuseum walls full of time and memory. Golden Age architecture where history still breathes.",
-    image: imgArt,
+    image: imgRembrandt,
   },
   {
     title: "Food Culture",
@@ -115,14 +118,14 @@ const blocks: { title: string; note: string; caption: string; image: string }[] 
     note: "benches where Amsterdam slows down",
     caption:
       "Sit and watch the city pass by. Rest, enjoy and just be. Share stories with locals nearby.",
-    image: imgNature,
+    image: imgQuietCorners,
   },
   {
     title: "Shaped by Water",
     note: "how the Netherlands lives with water every day",
     caption:
       "A constant fight with water. Continuous innovation in water management. Cities built around water systems.",
-    image: imgWater,
+    image: imgShapedByWater,
   },
   {
     title: "The Dutch Countryside",

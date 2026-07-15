@@ -152,9 +152,22 @@ const AboutEditorial = () => {
       </div>
 
       {/* Right: The Guide */}
-      <div className="relative overflow-hidden px-6 sm:px-10 md:px-16 lg:px-20 py-14 sm:py-20 lg:py-28 flex items-center min-h-[70vh]">
+      <div className="relative overflow-hidden px-6 sm:px-10 md:px-16 lg:px-20 py-14 sm:py-20 lg:py-28 flex flex-col lg:block lg:items-center lg:justify-center min-h-[70vh] bg-primary lg:bg-transparent">
+        {/* Mobile/tablet: stacked responsive image */}
+        <div className="lg:hidden mb-8 -mx-6 sm:-mx-10 md:-mx-16">
+          <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] overflow-hidden">
+            <img
+              src={dennisGuideHands}
+              alt={t("about.guide.title", "The Guide")}
+              className="w-full h-full object-cover"
+              style={{ objectPosition: `${adjustments.guide.x}% ${adjustments.guide.y}%` }}
+              loading="lazy"
+            />
+          </div>
+        </div>
+
         <div
-          className="absolute inset-y-0 right-0 w-[64%] sm:w-[68%] lg:w-[74%] bg-no-repeat"
+          className="hidden lg:block absolute inset-y-0 right-0 w-[74%] bg-no-repeat"
           style={{
             backgroundImage: `url(${dennisGuideHands})`,
             backgroundSize: `${adjustments.guide.zoom}% auto`,
@@ -168,7 +181,7 @@ const AboutEditorial = () => {
         />
 
         <div
-          className="absolute inset-0"
+          className="hidden lg:block absolute inset-0"
           style={{
             background:
               "linear-gradient(to right, hsl(var(--primary)) 0%, hsl(var(--primary)) 42%, hsl(var(--primary) / 0.55) 58%, hsl(var(--primary) / 0.12) 78%, hsl(var(--primary) / 0) 100%)",

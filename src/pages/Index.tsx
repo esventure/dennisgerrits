@@ -1,4 +1,5 @@
 
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
@@ -155,6 +156,7 @@ const stories = [
 
 const Index = () => {
   const t = useSiteContent();
+  const [openInterest, setOpenInterest] = useState<string | null>(null);
 
   const { data: bookStories = [] } = useQuery({
     queryKey: ["stories"],
@@ -644,10 +646,10 @@ const Index = () => {
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-12 md:gap-y-16 gap-x-6 md:gap-x-10 pt-4">
             {[
-              { id: "neighbourhood", title: "The Neighbourhood Way", note: "real Amsterdam lives here", image: peekNeighbourhood, rotate: -2.4, pin: "tape-tl" },
-              { id: "food", title: "Food Culture", note: "one bite at a time", image: peekFood, rotate: 1.8, pin: "tape-tr" },
-              { id: "architecture", title: "Living Architecture", note: "unlike anywhere else", image: peekArchitecture, rotate: -1.2, pin: "tape-gl" },
-              { id: "water", title: "From the Water", note: "a different rhythm", image: peekWater, rotate: 2.0, pin: "tape-gr" },
+              { id: "neighbourhood", title: "The Neighbourhood Way", note: "real Amsterdam lives here", caption: "Quiet side streets where everyday life unfolds. Someone watering plants outside their front door. A neighbour locking up a bicycle.", image: peekNeighbourhood, rotate: -2.4, pin: "tape-tl" },
+              { id: "food", title: "Food Culture", note: "one bite at a time", caption: "Morning markets full of daily life. The smell of fresh bread from bakeries. Local flavours in every bite.", image: peekFood, rotate: 1.8, pin: "tape-tr" },
+              { id: "architecture", title: "Living Architecture", note: "unlike anywhere else", caption: "A city built in layers of time. Old and modern architecture side by side. Every building carries its own story.", image: peekArchitecture, rotate: -1.2, pin: "tape-gl" },
+              { id: "water", title: "From the Water", note: "a different rhythm", caption: "On a private boat through quiet canals. The city unfolding around you. A picnic, wine, and shared moments.", image: peekWater, rotate: 2.0, pin: "tape-gr" },
             ].map((theme, i) => {
               const paperPalette = [
                 "hsl(40 38% 97%)",

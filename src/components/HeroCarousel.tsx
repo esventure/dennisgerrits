@@ -1,7 +1,5 @@
-import { useCallback, useEffect, useState } from "react";
-import useEmblaCarousel from "embla-carousel-react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import FadeIn from "./FadeIn";
+
 
 import dennisHeroAsset from "@/assets/dennis-hero.jpg.asset.json";
 const dennisArmsWide = dennisHeroAsset.url;

@@ -131,7 +131,7 @@ const NotebookIndex = () => {
                           borderColor: "hsl(var(--heritage-bordeaux) / 0.5)",
                         }}
                       >
-                        Read this chapter <span aria-hidden>→</span>
+                        <span aria-hidden>→</span>
                       </Link>
                     </article>
                   </FadeIn>

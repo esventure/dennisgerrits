@@ -130,7 +130,7 @@ const AboutEditorial = () => {
             <p className="font-body text-xs tracking-[0.3em] uppercase text-accent font-semibold mb-4">
               {t("about.person.kicker", "A True Amsterdammer")}
             </p>
-            <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary leading-[0.95] mb-6">
+            <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-foreground leading-[0.95] mb-6">
               {t("about.person.title", "The Person")}
             </h2>
 

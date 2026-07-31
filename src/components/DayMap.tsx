@@ -22,12 +22,13 @@ interface DayMapProps {
  * Coordinates align with landmarks on the illustrated Amsterdam map:
  * Jordaan/Westerkerk → canal belt → Centrum → Plantage → IJ waterfront. */
 const stops = [
-  { x: 110, y: 205, label: "Jordaan Café", icon: iconFoot },
-  { x: 235, y: 235, label: "Canal Walk", icon: iconBoat },
-  { x: 340, y: 215, label: "Local Lunch", icon: iconFood },
-  { x: 470, y: 235, label: "Hidden Garden", icon: iconNature },
-  { x: 430, y: 75, label: "Waterfront Bar", icon: iconDining },
+  { x: 110, y: 205, label: "Neighborhood", icon: iconFoot },
+  { x: 235, y: 235, label: "Local Cafe", icon: iconBoat },
+  { x: 340, y: 215, label: "Hidden Garden", icon: iconFood },
+  { x: 470, y: 235, label: "Streets and Canals", icon: iconNature },
+  { x: 430, y: 75, label: "Private Boat", icon: iconDining },
 ];
+
 
 /* Smooth Bézier route segments hugging the canal arc, then cutting
  * up to the IJ waterfront. */

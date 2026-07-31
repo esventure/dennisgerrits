@@ -30,16 +30,8 @@ const ContactSection = () => {
           className="relative overflow-hidden rounded-3xl px-5 py-12 sm:px-8 sm:py-14 md:px-12 md:py-16 lg:px-16 lg:py-20"
           style={{ backgroundColor: "hsl(var(--heritage-green))" }}
         >
-          <p
-            className="absolute top-5 right-5 md:top-8 md:right-10 text-2xl md:text-3xl rotate-[-4deg] hidden md:block z-10"
-            style={{
-              fontFamily: "'Caveat', cursive",
-              color: "hsl(var(--heritage-orange))",
-            }}
-            aria-hidden
-          >
-            let's talk
-          </p>
+
+
 
           <div className="relative mx-auto max-w-5xl" style={{ zIndex: 10 }}>
             <FadeIn>

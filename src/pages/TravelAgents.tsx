@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import dennisBoat from "@/assets/dennis-hero.jpg.asset.json";
-import dennisContact from "@/assets/dennis-contact.jpg.asset.json";
+
 import iconMessage from "@/assets/icon-message.png";
 import iconItinerary from "@/assets/icon-itinerary.png";
 import iconFoot from "@/assets/icon-foot.png";
@@ -169,7 +169,7 @@ const TravelAgents = () => {
           <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-center">
             <FadeIn>
               <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
-                For Travel Advisors
+                For Travel Advisors &amp; Concierges
               </p>
               <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-primary leading-[0.95] mb-8">
                 I take care of your clients<br />in Amsterdam.
@@ -512,17 +512,8 @@ const TravelAgents = () => {
 
             <FadeIn>
               <div>
-                <div
-                  className="relative mb-8 w-32 h-32 overflow-hidden shadow-md"
-                  style={{ transform: "rotate(-2deg)" }}
-                >
-                  <img
-                    src={dennisContact.url}
-                    alt="Dennis"
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                </div>
+
+
                 <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
                   Let's Connect
                 </p>

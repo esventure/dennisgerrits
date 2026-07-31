@@ -41,7 +41,7 @@ import storyCanalHouses from "@/assets/stories/canal-houses.jpg";
 import storyBench from "@/assets/stories/bench.jpg";
 import podcastCover from "@/assets/podcast-cover.jpg";
 import podcastHosts from "@/assets/podcast-hosts.jpg";
-import twoStoriesLogo from "@/assets/two-stories-one-city-logo.png";
+
 import dennisRadioTaboe from "@/assets/dennis-radio-taboe.jpg.asset.json";
 import PodcastPlayer from "@/components/PodcastPlayer";
 
@@ -91,7 +91,13 @@ const moments = [
   },
 ];
 
+/* Single source of truth for the Tripadvisor rating + review count.
+   Update these two values whenever the Tripadvisor page changes. */
+const TA_RATING = "5.0";
+const TA_REVIEW_COUNT = 218;
+
 const reviews = [
+
   {
     quote: "Two wonderful days of walking, eating at favorite restaurants, touring the canals, and visiting the Rijks and Van Gogh museums…",
     author: "James E.",
@@ -319,11 +325,8 @@ const Index = () => {
                     </div>
                   </FadeIn>
 
-                  <FadeIn delay={0.25}>
-                    <p className="mt-10 md:mt-12 text-center font-body text-sm md:text-base text-muted-foreground italic max-w-2xl mx-auto">
-                      And everything else you didn't think to ask for. If it makes your stay smoother, it's already on my list.
-                    </p>
-                  </FadeIn>
+
+
                 </>
               );
             })()}
@@ -465,15 +468,13 @@ const Index = () => {
               <div className="flex flex-col gap-6">
                 <FadeIn>
                   <div>
-                    <p className="font-body text-[11px] tracking-[0.25em] uppercase text-muted-foreground mb-2">
-                      Radio Interview about Amsterdam
-                    </p>
                     <h3 className="font-heading text-2xl md:text-3xl text-primary leading-tight mb-1">
-                      Dennis Gerrits – dennisgerrits.com
+                      Radio Interview about Amsterdam
                     </h3>
                     <p className="font-body text-xs tracking-widest uppercase text-secondary mb-3">
                       Recorded live at Studio Zeedijk – Amsterdam
                     </p>
+
                     <p className="font-body text-sm text-muted-foreground leading-relaxed mb-4">
                       I was invited to speak on Dutch radio about Amsterdam, its culture, the people who shape its neighbourhoods and what it means to share the city with visitors. The interview is in Dutch. I'm honored to have been featured as a local voice.
                     </p>
@@ -501,73 +502,6 @@ const Index = () => {
                   </div>
                 </FadeIn>
 
-                <FadeIn delay={0.08}>
-                  <a
-                    href="#contact"
-                    className="group block relative bg-background rounded-sm border border-border/60 border-l-[3px] p-5 md:p-6 shadow-sm hover:shadow-md transition-all"
-                    style={{ borderLeftColor: "hsl(var(--accent))" }}
-                  >
-                    <span
-                      aria-hidden
-                      className="absolute top-3 right-3 font-body text-[9px] tracking-[0.3em] uppercase border px-2 py-0.5 rounded-sm opacity-70 group-hover:opacity-100 transition-opacity"
-                      style={{
-                        color: "hsl(var(--accent))",
-                        borderColor: "hsl(var(--accent))",
-                        transform: "rotate(4deg)",
-                      }}
-                    >
-                      GUEST
-                    </span>
-
-                    <div className="flex items-start gap-4">
-                      <svg
-                        viewBox="0 0 52 52"
-                        className="shrink-0 w-9 h-9 md:w-10 md:h-10"
-                        fill="none"
-                        stroke="hsl(var(--accent))"
-                        strokeWidth="1.6"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        aria-hidden
-                      >
-                        <defs>
-                          <filter id="invite-mic" x="-10%" y="-10%" width="120%" height="120%">
-                            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="7" />
-                            <feDisplacementMap in="SourceGraphic" scale="1.3" />
-                          </filter>
-                        </defs>
-                        <g filter="url(#invite-mic)">
-                          <rect x="20" y="8" width="12" height="22" rx="6" />
-                          <path d="M 14 24 C 14 32, 20 36, 26 36 C 32 36, 38 32, 38 24" />
-                          <line x1="26" y1="36" x2="26" y2="44" />
-                          <line x1="20" y1="44" x2="32" y2="44" />
-                        </g>
-                      </svg>
-
-                      <div className="flex-1 min-w-0 pr-12">
-                        <p
-                          className="font-body text-[11px] tracking-[0.25em] uppercase mb-1"
-                          style={{ color: "hsl(var(--accent))" }}
-                        >
-                          Invite Dennis
-                        </p>
-                        <h3 className="font-heading text-lg md:text-xl text-primary leading-tight mb-1.5">
-                          Podcasts · Lectures · Radio · Live Events
-                        </h3>
-                        <p className="font-body text-sm text-muted-foreground leading-relaxed mb-2">
-                          Available for podcast conversations, guest lectures, interviews, and cultural programs.
-                        </p>
-                        <span
-                          className="inline-flex items-center gap-1 font-body text-sm font-medium group-hover:gap-2 transition-all"
-                          style={{ color: "hsl(var(--accent))" }}
-                        >
-                          Get in touch
-                          <span aria-hidden>→</span>
-                        </span>
-                      </div>
-                    </div>
-                  </a>
-                </FadeIn>
               </div>
 
               {/* Right: Picture spanning full height */}
@@ -588,6 +522,76 @@ const Index = () => {
               </FadeIn>
 
             </div>
+
+            {/* Invite Dennis — standing on its own */}
+            <FadeIn delay={0.08}>
+              <a
+                href="#contact"
+                className="group block relative mt-8 lg:mt-12 bg-background rounded-sm border border-border/60 border-l-[3px] p-5 md:p-6 shadow-sm hover:shadow-md transition-all"
+                style={{ borderLeftColor: "hsl(var(--accent))" }}
+              >
+                <span
+                  aria-hidden
+                  className="absolute top-3 right-3 font-body text-[9px] tracking-[0.3em] uppercase border px-2 py-0.5 rounded-sm opacity-70 group-hover:opacity-100 transition-opacity"
+                  style={{
+                    color: "hsl(var(--accent))",
+                    borderColor: "hsl(var(--accent))",
+                    transform: "rotate(4deg)",
+                  }}
+                >
+                  GUEST
+                </span>
+
+                <div className="flex items-start gap-4">
+                  <svg
+                    viewBox="0 0 52 52"
+                    className="shrink-0 w-9 h-9 md:w-10 md:h-10"
+                    fill="none"
+                    stroke="hsl(var(--accent))"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden
+                  >
+                    <defs>
+                      <filter id="invite-mic" x="-10%" y="-10%" width="120%" height="120%">
+                        <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="7" />
+                        <feDisplacementMap in="SourceGraphic" scale="1.3" />
+                      </filter>
+                    </defs>
+                    <g filter="url(#invite-mic)">
+                      <rect x="20" y="8" width="12" height="22" rx="6" />
+                      <path d="M 14 24 C 14 32, 20 36, 26 36 C 32 36, 38 32, 38 24" />
+                      <line x1="26" y1="36" x2="26" y2="44" />
+                      <line x1="20" y1="44" x2="32" y2="44" />
+                    </g>
+                  </svg>
+
+                  <div className="flex-1 min-w-0 pr-12">
+                    <p
+                      className="font-body text-[11px] tracking-[0.25em] uppercase mb-1"
+                      style={{ color: "hsl(var(--accent))" }}
+                    >
+                      Invite Dennis
+                    </p>
+                    <h3 className="font-heading text-lg md:text-xl text-primary leading-tight mb-1.5">
+                      Podcasts · Lectures · Radio · Live Events
+                    </h3>
+                    <p className="font-body text-sm text-muted-foreground leading-relaxed mb-2">
+                      Available for podcast conversations, guest lectures, interviews, and cultural programs.
+                    </p>
+                    <span
+                      className="inline-flex items-center gap-1 font-body text-sm font-medium group-hover:gap-2 transition-all"
+                      style={{ color: "hsl(var(--accent))" }}
+                    >
+                      Get in touch
+                      <span aria-hidden>→</span>
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </FadeIn>
+
           </div>
 
 
@@ -778,11 +782,11 @@ const Index = () => {
                         </div>
                       </div>
                       <div className="relative mt-3 sm:mt-4 px-1.5 sm:px-2">
-                        <h3 className="font-heading text-lg sm:text-xl md:text-2xl text-primary leading-tight tracking-wide truncate">
+                        <h3 className="font-heading text-lg sm:text-xl md:text-2xl text-primary leading-tight tracking-wide">
                           {theme.title}
                         </h3>
                         <p
-                          className="text-base sm:text-lg mt-0.5 sm:mt-1 leading-snug truncate"
+                          className="text-base sm:text-lg mt-0.5 sm:mt-1 leading-snug"
                           style={{
                             fontFamily: "'Caveat', cursive",
                             color: "hsl(var(--heritage-bordeaux))",
@@ -839,25 +843,9 @@ const Index = () => {
 
         <div className="container mx-auto px-6 lg:px-12 relative">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-            {/* Left: wordmark logo + podcast tagline underneath */}
-            <FadeIn className="lg:col-span-3 flex flex-col items-center lg:items-start gap-4">
-              <img
-                src={twoStoriesLogo}
-                alt="Two Stories, One City – Amsterdam wordmark"
-                loading="lazy"
-                className="w-44 md:w-52 lg:w-full max-w-[260px] h-auto"
-                style={{ filter: "brightness(0) invert(1)" }}
-              />
-              <p
-                className="font-body italic text-base leading-snug text-center lg:text-left"
-                style={{ color: "hsl(var(--heritage-orange))" }}
-              >
-                A podcast by Louke and Dennis
-              </p>
-            </FadeIn>
+            {/* Left: kicker, heading, copy, player */}
+            <FadeIn className="lg:col-span-8 lg:border-r lg:pr-10 lg:[border-color:hsl(0_0%_100%/0.15)]">
 
-            {/* Center: kicker, heading, copy, player */}
-            <FadeIn className="lg:col-span-6 lg:border-x lg:px-10 lg:[border-color:hsl(0_0%_100%/0.15)]">
               <div className="inline-flex items-center gap-2 mb-4">
                 <span
                   className="inline-flex items-center justify-center w-6 h-6 rounded-full"
@@ -891,7 +879,7 @@ const Index = () => {
                 className="font-body italic text-base md:text-lg leading-relaxed mb-5"
                 style={{ color: "hsl(var(--heritage-orange))" }}
               >
-                Two locals in conversation with their city, inviting you to listen.
+                A podcast by Louke and Dennis. Two locals in conversation with their city, inviting you to listen.
               </p>
               <p className="font-body text-base leading-relaxed mb-6" style={{ color: "hsl(0 0% 88%)" }}>
                 Stories about Amsterdam, identity, culture, city life and personal experiences, told through the people who shape the city.
@@ -919,7 +907,7 @@ const Index = () => {
             </FadeIn>
 
             {/* Right: hosts photo + listen link */}
-            <FadeIn className="lg:col-span-3 flex flex-col items-center lg:items-start gap-6">
+            <FadeIn className="lg:col-span-4 flex flex-col items-center lg:items-start gap-6">
               <img
                 src={podcastHosts}
                 alt="Louke and Dennis, hosts of Two Stories, One City"
@@ -1041,7 +1029,7 @@ const Index = () => {
                         <div className="flex items-center gap-3 mt-1">
                           <TripAdvisorBubbles />
                           <span className="font-body text-sm text-foreground">
-                            <strong>5.0</strong> · 218 reviews
+                            <strong>{TA_RATING}</strong> · {TA_REVIEW_COUNT} reviews
                           </span>
                         </div>
                       </div>
@@ -1166,7 +1154,7 @@ const Index = () => {
                         borderColor: `${TA_GREEN}66`,
                       }}
                     >
-                      Read all 218 reviews on Tripadvisor →
+                      Read all {TA_REVIEW_COUNT} reviews on Tripadvisor →
                     </a>
                   </div>
                 </FadeIn>

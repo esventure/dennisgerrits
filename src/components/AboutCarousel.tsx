@@ -17,9 +17,10 @@ const GUIDE_FALLBACK =
   "For me, discovering places should feel personal, relaxed and natural. More like spending time with a local friend.\n\nI always listen first. Every person experiences a place differently, which is why I take the time to understand who you are and what inspires you.\n\nI carefully shape each day around you, creating experiences that feel meaningful. More than anything, I’m simply somebody who walks beside you during your trip.";
 
 import dennisPersonAsset from "@/assets/dennis-person.jpg.asset.json";
-import dennisGuideAsset from "@/assets/dennis-guide.jpg.asset.json";
+import dennisGuideAsset from "@/assets/dennis-guide-new.jpg.asset.json";
 const dennisPersonBike = dennisPersonAsset.url;
 const dennisGuideHands = dennisGuideAsset.url;
+
 
 /* ── Photo adjustment helpers ── */
 type PhotoAdjustments = {
@@ -29,8 +30,9 @@ type PhotoAdjustments = {
 
 const DEFAULT_ADJUSTMENTS: PhotoAdjustments = {
   person: { x: 36, y: 91, zoom: 166 },
-  guide: { x: 21, y: 59, zoom: 143 },
+  guide: { x: 62, y: 38, zoom: 118 },
 };
+
 
 const STORAGE_KEY = "about-photo-adjustments";
 
@@ -128,9 +130,10 @@ const AboutEditorial = () => {
             <p className="font-body text-xs tracking-[0.3em] uppercase text-accent font-semibold mb-4">
               {t("about.person.kicker", "A True Amsterdammer")}
             </p>
-            <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary leading-[0.95] mb-6">
-              <span className="text-accent">The</span> {t("about.person.title", "The Person").replace(/^The\s+/i, "")}
+            <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-foreground leading-[0.95] mb-6">
+              {t("about.person.title", "The Person")}
             </h2>
+
             {/* hand-drawn orange underline */}
             <svg aria-hidden width="96" height="10" viewBox="0 0 96 10" className="mb-6">
               <path
@@ -194,8 +197,9 @@ const AboutEditorial = () => {
               {t("about.guide.kicker", "Helping you find your own way")}
             </p>
             <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary-foreground leading-[0.95] mb-6">
-              <span className="text-accent">The</span> {t("about.guide.title", "The Guide").replace(/^The\s+/i, "")}
+              {t("about.guide.title", "The Guide")}
             </h2>
+
             {/* hand-drawn orange underline */}
             <svg aria-hidden width="96" height="10" viewBox="0 0 96 10" className="mb-6">
               <path

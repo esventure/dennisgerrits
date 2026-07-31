@@ -12,8 +12,9 @@ const exploreLinks = [
 ];
 
 const proLinks = [
-  { to: "/travel-agents", label: "Travel Agents & Concierges" },
+  { to: "/travel-agents", label: "For Travel Advisors & Concierges" },
 ];
+
 
 const Footer = () => {
   const location = useLocation();

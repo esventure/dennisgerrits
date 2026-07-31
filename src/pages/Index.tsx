@@ -319,11 +319,8 @@ const Index = () => {
                     </div>
                   </FadeIn>
 
-                  <FadeIn delay={0.25}>
-                    <p className="mt-10 md:mt-12 text-center font-body text-sm md:text-base text-muted-foreground italic max-w-2xl mx-auto">
-                      And everything else you didn't think to ask for. If it makes your stay smoother, it's already on my list.
-                    </p>
-                  </FadeIn>
+
+
                 </>
               );
             })()}
@@ -465,15 +462,13 @@ const Index = () => {
               <div className="flex flex-col gap-6">
                 <FadeIn>
                   <div>
-                    <p className="font-body text-[11px] tracking-[0.25em] uppercase text-muted-foreground mb-2">
-                      Radio Interview about Amsterdam
-                    </p>
                     <h3 className="font-heading text-2xl md:text-3xl text-primary leading-tight mb-1">
-                      Dennis Gerrits – dennisgerrits.com
+                      Radio Interview about Amsterdam
                     </h3>
                     <p className="font-body text-xs tracking-widest uppercase text-secondary mb-3">
                       Recorded live at Studio Zeedijk – Amsterdam
                     </p>
+
                     <p className="font-body text-sm text-muted-foreground leading-relaxed mb-4">
                       I was invited to speak on Dutch radio about Amsterdam, its culture, the people who shape its neighbourhoods and what it means to share the city with visitors. The interview is in Dutch. I'm honored to have been featured as a local voice.
                     </p>

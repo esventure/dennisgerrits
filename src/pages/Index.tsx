@@ -91,7 +91,13 @@ const moments = [
   },
 ];
 
+/* Single source of truth for the Tripadvisor rating + review count.
+   Update these two values whenever the Tripadvisor page changes. */
+const TA_RATING = "5.0";
+const TA_REVIEW_COUNT = 218;
+
 const reviews = [
+
   {
     quote: "Two wonderful days of walking, eating at favorite restaurants, touring the canals, and visiting the Rijks and Van Gogh museums…",
     author: "James E.",

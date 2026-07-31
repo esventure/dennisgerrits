@@ -496,73 +496,6 @@ const Index = () => {
                   </div>
                 </FadeIn>
 
-                <FadeIn delay={0.08}>
-                  <a
-                    href="#contact"
-                    className="group block relative bg-background rounded-sm border border-border/60 border-l-[3px] p-5 md:p-6 shadow-sm hover:shadow-md transition-all"
-                    style={{ borderLeftColor: "hsl(var(--accent))" }}
-                  >
-                    <span
-                      aria-hidden
-                      className="absolute top-3 right-3 font-body text-[9px] tracking-[0.3em] uppercase border px-2 py-0.5 rounded-sm opacity-70 group-hover:opacity-100 transition-opacity"
-                      style={{
-                        color: "hsl(var(--accent))",
-                        borderColor: "hsl(var(--accent))",
-                        transform: "rotate(4deg)",
-                      }}
-                    >
-                      GUEST
-                    </span>
-
-                    <div className="flex items-start gap-4">
-                      <svg
-                        viewBox="0 0 52 52"
-                        className="shrink-0 w-9 h-9 md:w-10 md:h-10"
-                        fill="none"
-                        stroke="hsl(var(--accent))"
-                        strokeWidth="1.6"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        aria-hidden
-                      >
-                        <defs>
-                          <filter id="invite-mic" x="-10%" y="-10%" width="120%" height="120%">
-                            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="7" />
-                            <feDisplacementMap in="SourceGraphic" scale="1.3" />
-                          </filter>
-                        </defs>
-                        <g filter="url(#invite-mic)">
-                          <rect x="20" y="8" width="12" height="22" rx="6" />
-                          <path d="M 14 24 C 14 32, 20 36, 26 36 C 32 36, 38 32, 38 24" />
-                          <line x1="26" y1="36" x2="26" y2="44" />
-                          <line x1="20" y1="44" x2="32" y2="44" />
-                        </g>
-                      </svg>
-
-                      <div className="flex-1 min-w-0 pr-12">
-                        <p
-                          className="font-body text-[11px] tracking-[0.25em] uppercase mb-1"
-                          style={{ color: "hsl(var(--accent))" }}
-                        >
-                          Invite Dennis
-                        </p>
-                        <h3 className="font-heading text-lg md:text-xl text-primary leading-tight mb-1.5">
-                          Podcasts · Lectures · Radio · Live Events
-                        </h3>
-                        <p className="font-body text-sm text-muted-foreground leading-relaxed mb-2">
-                          Available for podcast conversations, guest lectures, interviews, and cultural programs.
-                        </p>
-                        <span
-                          className="inline-flex items-center gap-1 font-body text-sm font-medium group-hover:gap-2 transition-all"
-                          style={{ color: "hsl(var(--accent))" }}
-                        >
-                          Get in touch
-                          <span aria-hidden>→</span>
-                        </span>
-                      </div>
-                    </div>
-                  </a>
-                </FadeIn>
               </div>
 
               {/* Right: Picture spanning full height */}
@@ -583,6 +516,76 @@ const Index = () => {
               </FadeIn>
 
             </div>
+
+            {/* Invite Dennis — standing on its own */}
+            <FadeIn delay={0.08}>
+              <a
+                href="#contact"
+                className="group block relative mt-8 lg:mt-12 bg-background rounded-sm border border-border/60 border-l-[3px] p-5 md:p-6 shadow-sm hover:shadow-md transition-all"
+                style={{ borderLeftColor: "hsl(var(--accent))" }}
+              >
+                <span
+                  aria-hidden
+                  className="absolute top-3 right-3 font-body text-[9px] tracking-[0.3em] uppercase border px-2 py-0.5 rounded-sm opacity-70 group-hover:opacity-100 transition-opacity"
+                  style={{
+                    color: "hsl(var(--accent))",
+                    borderColor: "hsl(var(--accent))",
+                    transform: "rotate(4deg)",
+                  }}
+                >
+                  GUEST
+                </span>
+
+                <div className="flex items-start gap-4">
+                  <svg
+                    viewBox="0 0 52 52"
+                    className="shrink-0 w-9 h-9 md:w-10 md:h-10"
+                    fill="none"
+                    stroke="hsl(var(--accent))"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden
+                  >
+                    <defs>
+                      <filter id="invite-mic" x="-10%" y="-10%" width="120%" height="120%">
+                        <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="7" />
+                        <feDisplacementMap in="SourceGraphic" scale="1.3" />
+                      </filter>
+                    </defs>
+                    <g filter="url(#invite-mic)">
+                      <rect x="20" y="8" width="12" height="22" rx="6" />
+                      <path d="M 14 24 C 14 32, 20 36, 26 36 C 32 36, 38 32, 38 24" />
+                      <line x1="26" y1="36" x2="26" y2="44" />
+                      <line x1="20" y1="44" x2="32" y2="44" />
+                    </g>
+                  </svg>
+
+                  <div className="flex-1 min-w-0 pr-12">
+                    <p
+                      className="font-body text-[11px] tracking-[0.25em] uppercase mb-1"
+                      style={{ color: "hsl(var(--accent))" }}
+                    >
+                      Invite Dennis
+                    </p>
+                    <h3 className="font-heading text-lg md:text-xl text-primary leading-tight mb-1.5">
+                      Podcasts · Lectures · Radio · Live Events
+                    </h3>
+                    <p className="font-body text-sm text-muted-foreground leading-relaxed mb-2">
+                      Available for podcast conversations, guest lectures, interviews, and cultural programs.
+                    </p>
+                    <span
+                      className="inline-flex items-center gap-1 font-body text-sm font-medium group-hover:gap-2 transition-all"
+                      style={{ color: "hsl(var(--accent))" }}
+                    >
+                      Get in touch
+                      <span aria-hidden>→</span>
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </FadeIn>
+
           </div>
 
 

@@ -464,45 +464,39 @@ const Index = () => {
             </FadeIn>
 
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-8 lg:gap-12 items-stretch">
-              {/* Left: SoundCloud block + Invite Dennis card */}
-              <div className="flex flex-col gap-6">
-                <FadeIn>
-                  <div>
-                    <h3 className="font-heading text-2xl md:text-3xl text-primary leading-tight mb-1">
-                      Radio Interview about Amsterdam
-                    </h3>
-                    <p className="font-body text-xs tracking-widest uppercase text-secondary mb-3">
-                      Recorded live at Studio Zeedijk – Amsterdam
-                    </p>
+              {/* Left: SoundCloud block */}
+              <FadeIn>
+                <div>
+                  <h3 className="font-heading text-2xl md:text-3xl text-primary leading-tight mb-4">
+                    Radio Interview about Amsterdam
+                  </h3>
 
-                    <p className="font-body text-sm text-muted-foreground leading-relaxed mb-4">
-                      I was invited to speak on Dutch radio about Amsterdam, its culture, the people who shape its neighbourhoods and what it means to share the city with visitors. The interview is in Dutch. I'm honored to have been featured as a local voice.
-                    </p>
-                    <div className="rounded-sm overflow-hidden border border-border/60">
-                      <iframe
-                        title="Dennis Gerrits – Radio interview about Amsterdam (SoundCloud)"
-                        width="100%"
-                        height="140"
-                        scrolling="no"
-                        frameBorder="no"
-                        allow="autoplay"
-                        src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Ftaboe-media%2Fdennis-gerrits-i-love-my-city&color=%23b8651a&inverse=false&auto_play=false&show_user=true"
-                      />
-                    </div>
-                    <a
-                      href="https://soundcloud.com/taboe-media/dennis-gerrits-i-love-my-city"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 mt-3 font-body text-sm font-medium hover:gap-2 transition-all"
-                      style={{ color: "hsl(var(--heritage-orange))" }}
-                    >
-                      Listen on SoundCloud
-                      <span aria-hidden>→</span>
-                    </a>
+                  <p className="font-body text-sm text-muted-foreground leading-relaxed mb-4">
+                    I was invited to speak on Dutch radio about Amsterdam, its culture, the people who shape its neighbourhoods and what it means to share the city with visitors. The interview is in Dutch. I'm honored to have been featured as a local voice.
+                  </p>
+                  <div className="rounded-sm overflow-hidden border border-border/60">
+                    <iframe
+                      title="Dennis Gerrits – Radio interview about Amsterdam (SoundCloud)"
+                      width="100%"
+                      height="140"
+                      scrolling="no"
+                      frameBorder="no"
+                      allow="autoplay"
+                      src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Ftaboe-media%2Fdennis-gerrits-i-love-my-city&color=%23b8651a&inverse=false&auto_play=false&show_user=true"
+                    />
                   </div>
-                </FadeIn>
-
-              </div>
+                  <a
+                    href="https://soundcloud.com/taboe-media/dennis-gerrits-i-love-my-city"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 mt-3 font-body text-sm font-medium hover:gap-2 transition-all"
+                    style={{ color: "hsl(var(--heritage-orange))" }}
+                  >
+                    Listen on SoundCloud
+                    <span aria-hidden>→</span>
+                  </a>
+                </div>
+              </FadeIn>
 
               {/* Right: Picture spanning full height */}
               <FadeIn delay={0.04}>
@@ -521,76 +515,75 @@ const Index = () => {
                 </figure>
               </FadeIn>
 
-            </div>
-
-            {/* Invite Dennis — standing on its own */}
-            <FadeIn delay={0.08}>
-              <a
-                href="#contact"
-                className="group block relative mt-8 lg:mt-12 bg-background rounded-sm border border-border/60 border-l-[3px] p-5 md:p-6 shadow-sm hover:shadow-md transition-all"
-                style={{ borderLeftColor: "hsl(var(--accent))" }}
-              >
-                <span
-                  aria-hidden
-                  className="absolute top-3 right-3 font-body text-[9px] tracking-[0.3em] uppercase border px-2 py-0.5 rounded-sm opacity-70 group-hover:opacity-100 transition-opacity"
-                  style={{
-                    color: "hsl(var(--accent))",
-                    borderColor: "hsl(var(--accent))",
-                    transform: "rotate(4deg)",
-                  }}
+              {/* Invite Dennis — full width below the SoundCloud card and picture */}
+              <FadeIn delay={0.08} className="lg:col-span-2">
+                <a
+                  href="#contact"
+                  className="group block relative bg-background rounded-sm border border-border/60 border-l-[3px] p-5 md:p-6 shadow-sm hover:shadow-md transition-all"
+                  style={{ borderLeftColor: "hsl(var(--accent))" }}
                 >
-                  GUEST
-                </span>
-
-                <div className="flex items-start gap-4">
-                  <svg
-                    viewBox="0 0 52 52"
-                    className="shrink-0 w-9 h-9 md:w-10 md:h-10"
-                    fill="none"
-                    stroke="hsl(var(--accent))"
-                    strokeWidth="1.6"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+                  <span
                     aria-hidden
+                    className="absolute top-3 right-3 font-body text-[9px] tracking-[0.3em] uppercase border px-2 py-0.5 rounded-sm opacity-70 group-hover:opacity-100 transition-opacity"
+                    style={{
+                      color: "hsl(var(--accent))",
+                      borderColor: "hsl(var(--accent))",
+                      transform: "rotate(4deg)",
+                    }}
                   >
-                    <defs>
-                      <filter id="invite-mic" x="-10%" y="-10%" width="120%" height="120%">
-                        <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="7" />
-                        <feDisplacementMap in="SourceGraphic" scale="1.3" />
-                      </filter>
-                    </defs>
-                    <g filter="url(#invite-mic)">
-                      <rect x="20" y="8" width="12" height="22" rx="6" />
-                      <path d="M 14 24 C 14 32, 20 36, 26 36 C 32 36, 38 32, 38 24" />
-                      <line x1="26" y1="36" x2="26" y2="44" />
-                      <line x1="20" y1="44" x2="32" y2="44" />
-                    </g>
-                  </svg>
+                    GUEST
+                  </span>
 
-                  <div className="flex-1 min-w-0 pr-12">
-                    <p
-                      className="font-body text-[11px] tracking-[0.25em] uppercase mb-1"
-                      style={{ color: "hsl(var(--accent))" }}
+                  <div className="flex items-start gap-4">
+                    <svg
+                      viewBox="0 0 52 52"
+                      className="shrink-0 w-9 h-9 md:w-10 md:h-10"
+                      fill="none"
+                      stroke="hsl(var(--accent))"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden
                     >
-                      Invite Dennis
-                    </p>
-                    <h3 className="font-heading text-lg md:text-xl text-primary leading-tight mb-1.5">
-                      Podcasts · Lectures · Radio · Live Events
-                    </h3>
-                    <p className="font-body text-sm text-muted-foreground leading-relaxed mb-2">
-                      Available for podcast conversations, guest lectures, interviews, and cultural programs.
-                    </p>
-                    <span
-                      className="inline-flex items-center gap-1 font-body text-sm font-medium group-hover:gap-2 transition-all"
-                      style={{ color: "hsl(var(--accent))" }}
-                    >
-                      Get in touch
-                      <span aria-hidden>→</span>
-                    </span>
+                      <defs>
+                        <filter id="invite-mic" x="-10%" y="-10%" width="120%" height="120%">
+                          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="7" />
+                          <feDisplacementMap in="SourceGraphic" scale="1.3" />
+                        </filter>
+                      </defs>
+                      <g filter="url(#invite-mic)">
+                        <rect x="20" y="8" width="12" height="22" rx="6" />
+                        <path d="M 14 24 C 14 32, 20 36, 26 36 C 32 36, 38 32, 38 24" />
+                        <line x1="26" y1="36" x2="26" y2="44" />
+                        <line x1="20" y1="44" x2="32" y2="44" />
+                      </g>
+                    </svg>
+
+                    <div className="flex-1 min-w-0 pr-12">
+                      <p
+                        className="font-body text-[11px] tracking-[0.25em] uppercase mb-1"
+                        style={{ color: "hsl(var(--accent))" }}
+                      >
+                        Invite Dennis
+                      </p>
+                      <h3 className="font-heading text-lg md:text-xl text-primary leading-tight mb-1.5">
+                        Podcasts · Lectures · Radio · Live Events
+                      </h3>
+                      <p className="font-body text-sm text-muted-foreground leading-relaxed mb-2">
+                        Available for podcast conversations, guest lectures, interviews, and cultural programs.
+                      </p>
+                      <span
+                        className="inline-flex items-center gap-1 font-body text-sm font-medium group-hover:gap-2 transition-all"
+                        style={{ color: "hsl(var(--accent))" }}
+                      >
+                        Get in touch
+                        <span aria-hidden>→</span>
+                      </span>
+                    </div>
                   </div>
-                </div>
-              </a>
-            </FadeIn>
+                </a>
+              </FadeIn>
+            </div>
 
           </div>
 

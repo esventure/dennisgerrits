@@ -782,11 +782,11 @@ const Index = () => {
                         </div>
                       </div>
                       <div className="relative mt-3 sm:mt-4 px-1.5 sm:px-2">
-                        <h3 className="font-heading text-lg sm:text-xl md:text-2xl text-primary leading-tight tracking-wide truncate">
+                        <h3 className="font-heading text-lg sm:text-xl md:text-2xl text-primary leading-tight tracking-wide">
                           {theme.title}
                         </h3>
                         <p
-                          className="text-base sm:text-lg mt-0.5 sm:mt-1 leading-snug truncate"
+                          className="text-base sm:text-lg mt-0.5 sm:mt-1 leading-snug"
                           style={{
                             fontFamily: "'Caveat', cursive",
                             color: "hsl(var(--heritage-bordeaux))",

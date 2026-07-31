@@ -41,7 +41,7 @@ import storyCanalHouses from "@/assets/stories/canal-houses.jpg";
 import storyBench from "@/assets/stories/bench.jpg";
 import podcastCover from "@/assets/podcast-cover.jpg";
 import podcastHosts from "@/assets/podcast-hosts.jpg";
-import twoStoriesLogo from "@/assets/two-stories-one-city-logo.png";
+
 import dennisRadioTaboe from "@/assets/dennis-radio-taboe.jpg.asset.json";
 import PodcastPlayer from "@/components/PodcastPlayer";
 
@@ -873,7 +873,7 @@ const Index = () => {
                 className="font-body italic text-base md:text-lg leading-relaxed mb-5"
                 style={{ color: "hsl(var(--heritage-orange))" }}
               >
-                Two locals in conversation with their city, inviting you to listen.
+                A podcast by Louke and Dennis. Two locals in conversation with their city, inviting you to listen.
               </p>
               <p className="font-body text-base leading-relaxed mb-6" style={{ color: "hsl(0 0% 88%)" }}>
                 Stories about Amsterdam, identity, culture, city life and personal experiences, told through the people who shape the city.
@@ -901,7 +901,7 @@ const Index = () => {
             </FadeIn>
 
             {/* Right: hosts photo + listen link */}
-            <FadeIn className="lg:col-span-3 flex flex-col items-center lg:items-start gap-6">
+            <FadeIn className="lg:col-span-4 flex flex-col items-center lg:items-start gap-6">
               <img
                 src={podcastHosts}
                 alt="Louke and Dennis, hosts of Two Stories, One City"

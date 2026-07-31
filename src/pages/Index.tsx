@@ -837,25 +837,9 @@ const Index = () => {
 
         <div className="container mx-auto px-6 lg:px-12 relative">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-            {/* Left: wordmark logo + podcast tagline underneath */}
-            <FadeIn className="lg:col-span-3 flex flex-col items-center lg:items-start gap-4">
-              <img
-                src={twoStoriesLogo}
-                alt="Two Stories, One City – Amsterdam wordmark"
-                loading="lazy"
-                className="w-44 md:w-52 lg:w-full max-w-[260px] h-auto"
-                style={{ filter: "brightness(0) invert(1)" }}
-              />
-              <p
-                className="font-body italic text-base leading-snug text-center lg:text-left"
-                style={{ color: "hsl(var(--heritage-orange))" }}
-              >
-                A podcast by Louke and Dennis
-              </p>
-            </FadeIn>
+            {/* Left: kicker, heading, copy, player */}
+            <FadeIn className="lg:col-span-8 lg:border-r lg:pr-10 lg:[border-color:hsl(0_0%_100%/0.15)]">
 
-            {/* Center: kicker, heading, copy, player */}
-            <FadeIn className="lg:col-span-6 lg:border-x lg:px-10 lg:[border-color:hsl(0_0%_100%/0.15)]">
               <div className="inline-flex items-center gap-2 mb-4">
                 <span
                   className="inline-flex items-center justify-center w-6 h-6 rounded-full"

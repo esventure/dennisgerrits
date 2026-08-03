@@ -3,7 +3,7 @@ import { X } from "lucide-react";
 
 /* Dennis' business WhatsApp number in international format, digits only
    (e.g. "31612345678"). Leave empty to fall back to the contact section. */
-const WHATSAPP_NUMBER = "";
+const WHATSAPP_NUMBER = "31638402919";
 const WHATSAPP_URL = WHATSAPP_NUMBER
   ? `https://wa.me/${WHATSAPP_NUMBER}`
   : "";

@@ -584,7 +584,7 @@ const AboutProfileCards = () => {
       <div className="grid grid-cols-1 md:grid-cols-2">
         {/* The Person — text first, photo below */}
         <div className="bg-background flex flex-col">
-          <div className="flex-1 flex items-center px-6 sm:px-10 md:px-12 py-10 sm:py-14 lg:py-18">
+          <div className="flex-1 flex items-center px-6 sm:px-10 md:px-12 py-8 sm:py-10 lg:py-12">
             <FadeIn className="w-full">
               <div className="max-w-md mx-auto">
                 <p className="font-body text-xs tracking-[0.3em] uppercase text-accent font-semibold mb-4">

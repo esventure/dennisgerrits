@@ -102,10 +102,14 @@ const AboutEditorial = () => {
           </div>
         </div>
 
-        {/* Desktop: overlapping background image */}
+        {/* Desktop: overlapping background image.
+            Width is derived from the panel height (aspect-ratio) so the
+            framing stays identical at any viewport width. */}
         <div
-          className="hidden lg:block absolute inset-y-0 right-0 w-[62%] bg-no-repeat"
+          className="hidden lg:block absolute inset-y-0 right-0 bg-no-repeat"
           style={{
+            aspectRatio: "2 / 3",
+            maxWidth: "70%",
             backgroundImage: `url(${dennisPersonBike})`,
             backgroundSize: `${adjustments.person.zoom}% auto`,
             backgroundPosition: `${adjustments.person.x}% ${adjustments.person.y}%`,
@@ -116,6 +120,7 @@ const AboutEditorial = () => {
           }}
           aria-hidden
         />
+
         <div
           className="hidden lg:block absolute inset-0"
           style={{

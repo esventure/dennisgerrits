@@ -447,8 +447,8 @@ const GetInspired = () => {
                   </button>
                   </div>
                 </FadeIn>
-
               );
+
             })}
           </div>
 

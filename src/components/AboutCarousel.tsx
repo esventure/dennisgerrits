@@ -627,7 +627,7 @@ const AboutProfileCards = () => {
 
         {/* The Guide — text first, photo below */}
         <div className="bg-primary flex flex-col">
-          <div className="flex-1 flex items-center px-6 sm:px-10 md:px-12 py-10 sm:py-14 lg:py-18">
+          <div className="flex-1 flex items-center px-6 sm:px-10 md:px-12 py-8 sm:py-10 lg:py-12">
             <FadeIn delay={0.15} className="w-full">
               <div className="max-w-md mx-auto">
                 <p className="font-body text-xs tracking-[0.3em] uppercase text-accent font-semibold mb-4">

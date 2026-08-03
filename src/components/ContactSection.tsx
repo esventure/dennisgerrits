@@ -52,12 +52,16 @@ const ContactSection = () => {
             </FadeIn>
 
             <FadeIn>
-              <RichText
-                className="max-w-4xl mx-auto text-center font-body text-base md:text-lg leading-relaxed mb-10 md:mb-12"
+              <div
+                className="max-w-4xl mx-auto text-center mb-10 md:mb-12"
                 style={{ color: "hsl(var(--background) / 0.9)" }}
-                html={t("booking.intro", "")}
-                fallback="Send me a message, and I’ll reply within 24 hours. If it feels right, we can take the next step with a video call. No pressure, no obligations, just a chance toda get to know each other."
-              />
+              >
+                <RichText
+                  className="font-body text-base md:text-lg leading-relaxed"
+                  html={t("booking.intro", "")}
+                  fallback="Send me a message, and I’ll reply within 24 hours. If it feels right, we can take the next step with a video call. No pressure, no obligations, just a chance to get to know each other."
+                />
+              </div>
             </FadeIn>
 
             <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-8 md:gap-10 lg:gap-14 items-stretch">

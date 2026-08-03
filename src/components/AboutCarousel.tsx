@@ -30,8 +30,8 @@ type PhotoAdjustments = {
 };
 
 const DEFAULT_ADJUSTMENTS: PhotoAdjustments = {
-  person: { x: -50, y: 91, zoom: 108 },
-  guide: { x: 112, y: 59, zoom: 98 },
+  person: { x: -120, y: 91, zoom: 108 },
+  guide: { x: 210, y: 59, zoom: 98 },
 };
 
 
@@ -271,8 +271,8 @@ const AboutEditorial = () => {
                       Horizontal
                       <input
                         type="range"
-                        min={-100}
-                        max={200}
+                        min={-150}
+                        max={250}
                         value={adjustments[photo].x}
                         onChange={(e) => updatePhoto(photo, "x", Number(e.target.value))}
                         className="flex-1 accent-orange-500"

@@ -161,6 +161,11 @@ const PodcastPlayer = forwardRef<PodcastPlayerHandle, { tone?: "light" | "dark" 
       <audio ref={audioRef} src={EPISODE_AUDIO_URL} preload="metadata" />
     </div>
   );
-};
+});
+
+PodcastPlayer.displayName = "PodcastPlayer";
+
+export default PodcastPlayer;
+
 
 export default PodcastPlayer;

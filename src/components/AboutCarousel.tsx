@@ -175,8 +175,10 @@ const AboutEditorial = () => {
         </div>
 
         <div
-          className="hidden lg:block absolute inset-y-0 right-0 w-[74%] bg-no-repeat"
+          className="hidden lg:block absolute inset-y-0 right-0 bg-no-repeat"
           style={{
+            aspectRatio: "4 / 5",
+            maxWidth: "80%",
             backgroundImage: `url(${dennisGuideHands})`,
             backgroundSize: `${adjustments.guide.zoom}% auto`,
             backgroundPosition: `${adjustments.guide.x}% ${adjustments.guide.y}%`,
@@ -187,6 +189,7 @@ const AboutEditorial = () => {
           }}
           aria-hidden
         />
+
 
         <div
           className="hidden lg:block absolute inset-0"

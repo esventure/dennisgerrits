@@ -77,9 +77,9 @@ const ContactSection = () => {
                 </div>
               </FadeIn>
 
-              <FadeIn delay={0.15}>
+              <FadeIn delay={0.15} className="h-full">
                 <div
-                  className="bg-background p-6 sm:p-8 lg:p-10 border-l-4 shadow-2xl rounded-sm"
+                  className="bg-background p-6 sm:p-8 lg:p-10 border-l-4 shadow-2xl rounded-sm h-full"
                   style={{ borderLeftColor: "hsl(var(--heritage-orange))" }}
                 >
                   <h3 className="font-heading text-3xl text-primary mb-3">

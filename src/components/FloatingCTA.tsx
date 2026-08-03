@@ -44,7 +44,7 @@ const FloatingCTA = () => {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 px-5 py-3 hover state-layer hover:bg-primary/90 transition-colors"
+            className="flex items-center gap-3 px-5 py-3 hover:bg-primary/90 transition-colors"
           >
             <WhatsAppIcon />
             Get in Touch

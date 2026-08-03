@@ -916,7 +916,7 @@ const Index = () => {
                 </p>
               </button>
 
-              <PodcastPlayer tone="dark" />
+              <PodcastPlayer ref={podcastRef} tone="dark" />
             </FadeIn>
 
             {/* Right: hosts photo + listen link */}

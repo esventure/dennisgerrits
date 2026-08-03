@@ -55,6 +55,18 @@ const PodcastPlayer = forwardRef<PodcastPlayerHandle, { tone?: "light" | "dark" 
     }
   };
 
+  useImperativeHandle(ref, () => ({
+    play: () => {
+      const a = audioRef.current;
+      if (a) a.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+    },
+    pause: () => {
+      const a = audioRef.current;
+      if (a) { a.pause(); setPlaying(false); }
+    },
+    toggle,
+  }));
+
   const onSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
     const a = audioRef.current;
     if (!a || !duration) return;

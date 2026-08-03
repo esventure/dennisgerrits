@@ -110,9 +110,9 @@ const AboutEditorial = () => {
             backgroundSize: `${adjustments.person.zoom}% auto`,
             backgroundPosition: `${adjustments.person.x}% ${adjustments.person.y}%`,
             WebkitMaskImage:
-              "linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.12) 18%, rgb(0 0 0 / 0.72) 34%, rgb(0 0 0) 48%)",
+              "linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.35) 10%, rgb(0 0 0 / 0.85) 22%, rgb(0 0 0) 32%)",
             maskImage:
-              "linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.12) 18%, rgb(0 0 0 / 0.72) 34%, rgb(0 0 0) 48%)",
+              "linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.35) 10%, rgb(0 0 0 / 0.85) 22%, rgb(0 0 0) 32%)",
           }}
           aria-hidden
         />
@@ -120,7 +120,7 @@ const AboutEditorial = () => {
           className="hidden lg:block absolute inset-0"
           style={{
             background:
-              "linear-gradient(to right, hsl(var(--background)) 0%, hsl(var(--background)) 35%, hsl(var(--background) / 0.55) 50%, hsl(var(--background) / 0.12) 65%, hsl(var(--background) / 0) 80%)",
+              "linear-gradient(to right, hsl(var(--background)) 0%, hsl(var(--background)) 28%, hsl(var(--background) / 0.35) 42%, hsl(var(--background) / 0.05) 55%, hsl(var(--background) / 0) 68%)",
           }}
           aria-hidden
         />

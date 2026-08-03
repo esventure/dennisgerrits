@@ -24,7 +24,14 @@ const dennisGuideHands = lovableAssetUrl(dennisGuideAsset.url);
 
 
 /* ── Photo adjustment helpers ── */
-type PhotoSetting = { x: number; y: number; zoom: number; rotate: number; ratio: number };
+type PhotoSetting = {
+  x: number;
+  y: number;
+  zoom: number;
+  rotate: number;
+  ratio: number;
+  ratioMobile: number;
+};
 type PhotoAdjustments = {
   person: PhotoSetting;
   guide: PhotoSetting;
@@ -38,8 +45,8 @@ const ASPECT_PRESETS = [
 ] as const;
 
 const DEFAULT_ADJUSTMENTS: PhotoAdjustments = {
-  person: { x: 50, y: 55, zoom: 100, rotate: 0, ratio: 16 / 9 },
-  guide: { x: 72, y: 48, zoom: 100, rotate: 0, ratio: 16 / 9 },
+  person: { x: 50, y: 55, zoom: 100, rotate: 0, ratio: 16 / 9, ratioMobile: 4 / 5 },
+  guide: { x: 72, y: 48, zoom: 100, rotate: 0, ratio: 16 / 9, ratioMobile: 4 / 5 },
 };
 
 

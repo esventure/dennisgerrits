@@ -120,7 +120,7 @@ const AboutEditorial = () => {
           className="hidden lg:block absolute inset-0"
           style={{
             background:
-              "linear-gradient(to right, hsl(var(--background)) 0%, hsl(var(--background)) 42%, hsl(var(--background) / 0.55) 58%, hsl(var(--background) / 0.12) 78%, hsl(var(--background) / 0) 100%)",
+              "linear-gradient(to right, hsl(var(--background)) 0%, hsl(var(--background)) 35%, hsl(var(--background) / 0.55) 50%, hsl(var(--background) / 0.12) 65%, hsl(var(--background) / 0) 80%)",
           }}
           aria-hidden
         />

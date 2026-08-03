@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight, Move, ZoomIn, RotateCcw } from "lucide-react";
 import FadeIn from "./FadeIn";
@@ -469,7 +469,6 @@ const EditablePhoto = ({
   editable: boolean;
   onChange: (patch: Partial<PhotoSetting>) => void;
 }) => {
-  const containerRef = useState<{ el: HTMLDivElement | null }>({ el: null })[0];
   const stateRef = useRef(setting);
   stateRef.current = setting;
   const onChangeRef = useRef(onChange);
@@ -519,8 +518,6 @@ const EditablePhoto = ({
       e.currentTarget.releasePointerCapture(e.pointerId);
     }
   };
-
-  void containerRef;
 
   return (
     <div

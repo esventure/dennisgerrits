@@ -36,12 +36,12 @@ const NotebookIndex = () => {
     name: "Dennis Gerrits – Notebook",
     description:
       "Short reflections from Amsterdam by Dennis Gerrits. Stories about the city, its people and everyday traditions.",
-    url: "https://dennisgerrits.lovable.app/notebook",
+    url: "https://dennisgerrits.com/notebook",
     blogPost: stories.map((s) => ({
       "@type": "BlogPosting",
       headline: s.title,
       description: s.intro,
-      url: `https://dennisgerrits.lovable.app/notebook/${s.slug}`,
+      url: `https://dennisgerrits.com/notebook/${s.slug}`,
     })),
   };
 
@@ -53,14 +53,14 @@ const NotebookIndex = () => {
           name="description"
           content="Short reflections from Amsterdam by Dennis Gerrits. Asparagus season, bike exams, Nijntje, Van Gogh in bricks, and more."
         />
-        <link rel="canonical" href="https://dennisgerrits.lovable.app/notebook" />
+        <link rel="canonical" href="https://dennisgerrits.com/notebook" />
         <meta property="og:title" content="Notebook – Dennis Gerrits" />
         <meta
           property="og:description"
           content="Short reflections from Amsterdam by Dennis Gerrits."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://dennisgerrits.lovable.app/notebook" />
+        <meta property="og:url" content="https://dennisgerrits.com/notebook" />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       </Helmet>
 

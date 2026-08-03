@@ -1,4 +1,5 @@
 
+import { Helmet } from "react-helmet-async";
 import { useState, useRef } from "react";
 import { Play } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
@@ -182,7 +183,50 @@ const Index = () => {
 
   return (
     <main className="relative z-10">
+      <Helmet>
+        <title>Dennis Gerrits – Personal Travel Companion in Amsterdam</title>
+        <meta
+          name="description"
+          content="Discover Amsterdam with Dennis Gerrits, a personal travel companion and storyteller who walks alongside you and shows the city the way a friend would."
+        />
+        <link rel="canonical" href="https://dennisgerrits.com/" />
+        <meta property="og:title" content="Dennis Gerrits – Personal Travel Companion in Amsterdam" />
+        <meta
+          property="og:description"
+          content="A personal, trust-based way of experiencing Amsterdam, guided by someone who feels like a friend."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://dennisgerrits.com/" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "WebSite",
+                name: "Dennis Gerrits",
+                url: "https://dennisgerrits.com/",
+                description:
+                  "A personal, trust-based way of experiencing Amsterdam, guided by someone who feels like a friend.",
+              },
+              {
+                "@type": "Person",
+                name: "Dennis Gerrits",
+                jobTitle: "Travel Companion & Storyteller",
+                url: "https://dennisgerrits.com/",
+                description:
+                  "Dennis Gerrits is a personal travel companion and storyteller in Amsterdam.",
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: "Amsterdam",
+                  addressCountry: "NL",
+                },
+              },
+            ],
+          })}
+        </script>
+      </Helmet>
       <AmsterdamSkyline />
+
       {/* ── 1. Hero (3 swipeable variations for Dennis to choose from) ── */}
       <HeroCarousel />
 

@@ -38,8 +38,8 @@ const ASPECT_PRESETS = [
 ] as const;
 
 const DEFAULT_ADJUSTMENTS: PhotoAdjustments = {
-  person: { x: 50, y: 55, zoom: 100, rotate: 0, ratio: 4 / 5 },
-  guide: { x: 72, y: 48, zoom: 100, rotate: 0, ratio: 4 / 5 },
+  person: { x: 50, y: 55, zoom: 100, rotate: 0, ratio: 16 / 9 },
+  guide: { x: 72, y: 48, zoom: 100, rotate: 0, ratio: 16 / 9 },
 };
 
 
@@ -584,7 +584,7 @@ const AboutProfileCards = () => {
       <div className="grid grid-cols-1 md:grid-cols-2">
         {/* The Person — text first, photo below */}
         <div className="bg-background flex flex-col">
-          <div className="flex-1 flex items-center px-6 sm:px-10 md:px-12 py-10 sm:py-14 lg:py-18">
+          <div className="flex-1 flex items-center px-6 sm:px-10 md:px-12 py-8 sm:py-10 lg:py-12">
             <FadeIn className="w-full">
               <div className="max-w-md mx-auto">
                 <p className="font-body text-xs tracking-[0.3em] uppercase text-accent font-semibold mb-4">
@@ -612,18 +612,22 @@ const AboutProfileCards = () => {
               </div>
             </FadeIn>
           </div>
-          <EditablePhoto
-            src={dennisPersonBike}
-            alt="Dennis Gerrits sitting on his bicycle on an Amsterdam bridge"
-            setting={adjustments.person}
-            editable={showEditor && editing}
-            onChange={(patch) => updatePhoto("person", patch)}
-          />
+          <div className="px-6 pb-10 md:px-12 md:pb-14 flex justify-center">
+            <div className="w-full max-w-xs sm:max-w-sm">
+              <EditablePhoto
+                src={dennisPersonBike}
+                alt="Dennis Gerrits sitting on his bicycle on an Amsterdam bridge"
+                setting={adjustments.person}
+                editable={showEditor && editing}
+                onChange={(patch) => updatePhoto("person", patch)}
+              />
+            </div>
+          </div>
         </div>
 
         {/* The Guide — text first, photo below */}
         <div className="bg-primary flex flex-col">
-          <div className="flex-1 flex items-center px-6 sm:px-10 md:px-12 py-10 sm:py-14 lg:py-18">
+          <div className="flex-1 flex items-center px-6 sm:px-10 md:px-12 py-8 sm:py-10 lg:py-12">
             <FadeIn delay={0.15} className="w-full">
               <div className="max-w-md mx-auto">
                 <p className="font-body text-xs tracking-[0.3em] uppercase text-accent font-semibold mb-4">
@@ -651,13 +655,17 @@ const AboutProfileCards = () => {
               </div>
             </FadeIn>
           </div>
-          <EditablePhoto
-            src={dennisGuideHands}
-            alt="Dennis Gerrits sharing a story while guiding in Amsterdam"
-            setting={adjustments.guide}
-            editable={showEditor && editing}
-            onChange={(patch) => updatePhoto("guide", patch)}
-          />
+          <div className="px-6 pb-10 md:px-12 md:pb-14 flex justify-center">
+            <div className="w-full max-w-xs sm:max-w-sm">
+              <EditablePhoto
+                src={dennisGuideHands}
+                alt="Dennis Gerrits sharing a story while guiding in Amsterdam"
+                setting={adjustments.guide}
+                editable={showEditor && editing}
+                onChange={(patch) => updatePhoto("guide", patch)}
+              />
+            </div>
+          </div>
         </div>
       </div>
 

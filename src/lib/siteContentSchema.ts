@@ -114,7 +114,7 @@ export const CONTENT_SCHEMA: ContentSection[] = [
         label: "Intro paragraph",
         type: "rich",
         fallback:
-          "Send me a message, and I’ll reply by email within 24 hours. If it feels right, we can take the next step with a video call. No pressure, no obligations, just a chance to get to know each other.",
+          "Send me a message, and I’ll reply within 24 hours. If it feels right, we can take the next step with a video call. No pressure, no obligations, just a chance to get to know each other.",
       },
       { key: "booking.form.title", label: "Form title", type: "short", fallback: "Let’s Connect" },
       {

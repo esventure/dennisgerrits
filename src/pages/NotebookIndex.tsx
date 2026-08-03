@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
@@ -108,31 +107,18 @@ const NotebookIndex = () => {
                         Chapter {story.sort_order}
                       </p>
                       <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl text-primary leading-[1] mb-4">
-                        <Link
-                          to={`/notebook/${story.slug}`}
-                          className="hover:text-secondary transition-colors"
-                        >
-                          {story.title}
-                        </Link>
+                        {story.title}
                       </h2>
-                      <p className="font-body text-lg leading-relaxed mb-3 text-foreground/85">
+                      <p className="font-body text-xl leading-relaxed mb-5 text-foreground/90">
                         {story.intro}
                       </p>
                       {story.body && (
-                        <p className="font-body text-base leading-relaxed text-muted-foreground">
-                          {story.body}
-                        </p>
+                        <div className="font-body text-lg leading-relaxed text-foreground/80 space-y-5">
+                          {story.body.split(/\n\n+/).map((para, i) => (
+                            <p key={i}>{para}</p>
+                          ))}
+                        </div>
                       )}
-                      <Link
-                        to={`/notebook/${story.slug}`}
-                        className="inline-flex items-center gap-1 mt-4 font-body text-sm tracking-wide border-b border-dashed pb-0.5"
-                        style={{
-                          color: "hsl(var(--heritage-bordeaux))",
-                          borderColor: "hsl(var(--heritage-bordeaux) / 0.5)",
-                        }}
-                      >
-                        <span aria-hidden>→</span>
-                      </Link>
                     </article>
                   </FadeIn>
                   {i < stories.length - 1 && (

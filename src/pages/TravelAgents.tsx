@@ -162,6 +162,38 @@ const TravelAgents = () => {
 
   return (
     <main className="bg-background">
+      <Helmet>
+        <title>Amsterdam Local Partner for Travel Advisors</title>
+        <meta
+          name="description"
+          content="Dennis Gerrits supports travel advisors and concierges in Amsterdam: on-the-ground care for your clients, tailored days, bookings and local answers."
+        />
+        <link rel="canonical" href="https://dennisgerrits.com/travel-agents" />
+        <meta property="og:title" content="Amsterdam Local Partner for Travel Advisors" />
+        <meta
+          property="og:description"
+          content="On-the-ground care in Amsterdam for the clients of travel advisors and concierges."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://dennisgerrits.com/travel-agents" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            name: "Dennis Gerrits – Amsterdam Travel Companion",
+            url: "https://dennisgerrits.com/travel-agents",
+            description:
+              "Collaboration for travel advisors and concierges: a trusted local companion in Amsterdam who looks after your clients, arranges tailored days and answers questions on the ground.",
+            areaServed: { "@type": "City", name: "Amsterdam" },
+            provider: {
+              "@type": "Person",
+              name: "Dennis Gerrits",
+              jobTitle: "Travel Companion & Storyteller",
+            },
+          })}
+        </script>
+      </Helmet>
+
       {/* ────────────────── 1. Hero ────────────────── */}
       <section className="relative py-20 lg:py-28 overflow-hidden">
         <FaintCanal side="right" />

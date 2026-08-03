@@ -211,6 +211,22 @@ const GetInspired = () => {
 
   return (
     <main>
+      <Helmet>
+        <title>Amsterdam Experience Inspiration | Dennis Gerrits</title>
+        <meta
+          name="description"
+          content="Themes and threads to shape your days in Amsterdam: neighbourhood life, water, food culture, art, architecture, gardens and quiet corners."
+        />
+        <link rel="canonical" href="https://dennisgerrits.com/get-inspired" />
+        <meta property="og:title" content="Amsterdam Experience Inspiration" />
+        <meta
+          property="og:description"
+          content="Themes and threads to shape your days in Amsterdam, from neighbourhood life and water to art, food culture and quiet corners."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://dennisgerrits.com/get-inspired" />
+      </Helmet>
+
       {/* Interests — green header band */}
       <section
         className="relative pt-20 md:pt-24 lg:pt-28 pb-12 md:pb-16 overflow-hidden"

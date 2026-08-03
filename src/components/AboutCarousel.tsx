@@ -88,9 +88,23 @@ const AboutEditorial = () => {
 
   return (
     <div>
-      {/* The Person: text and image have independent, stable columns. */}
-      <div className="grid grid-cols-1 lg:grid-cols-[46%_54%] bg-background">
-        <div className="flex items-center px-6 sm:px-10 md:px-16 lg:pl-[max(5rem,calc((100vw-80rem)/2+3rem))] lg:pr-10 py-14 sm:py-20 lg:py-24">
+      {/* The Person: photo left, text right. Fixed section heights. */}
+      <div className="grid grid-cols-1 lg:grid-cols-[54%_46%] bg-background">
+        <div className="relative order-first h-[22rem] sm:h-[30rem] lg:h-[42rem] overflow-hidden">
+          <img
+            src={dennisPersonBike}
+            alt="Dennis Gerrits sitting on his bicycle on an Amsterdam bridge"
+            className="absolute inset-0 h-full w-full object-cover"
+            style={{
+              objectPosition: `${adjustments.person.x}% ${adjustments.person.y}%`,
+              transform: `scale(${adjustments.person.zoom / 100}) rotate(${adjustments.person.rotate}deg)`,
+              transformOrigin: `${adjustments.person.x}% ${adjustments.person.y}%`,
+            }}
+            loading="lazy"
+          />
+          <div className="hidden lg:block absolute inset-y-0 right-0 w-28 bg-gradient-to-l from-background to-transparent" aria-hidden />
+        </div>
+        <div className="flex items-center px-6 sm:px-10 md:px-16 lg:pl-10 lg:pr-[max(5rem,calc((100vw-80rem)/2+3rem))] py-14 sm:py-20 lg:py-24">
           <FadeIn className="relative z-10 w-full">
             <div className="max-w-lg">
             <p className="font-body text-xs tracking-[0.3em] uppercase text-accent font-semibold mb-4">
@@ -117,20 +131,6 @@ const AboutEditorial = () => {
             />
             </div>
           </FadeIn>
-        </div>
-        <div className="relative order-first lg:order-none aspect-[4/3] sm:aspect-[16/10] lg:aspect-auto lg:min-h-[42rem] overflow-hidden">
-          <img
-            src={dennisPersonBike}
-            alt="Dennis Gerrits sitting on his bicycle on an Amsterdam bridge"
-            className="absolute inset-0 h-full w-full object-cover"
-            style={{
-              objectPosition: `${adjustments.person.x}% ${adjustments.person.y}%`,
-              transform: `scale(${adjustments.person.zoom / 100})`,
-              transformOrigin: `${adjustments.person.x}% ${adjustments.person.y}%`,
-            }}
-            loading="lazy"
-          />
-          <div className="hidden lg:block absolute inset-y-0 left-0 w-28 bg-gradient-to-r from-background to-transparent" aria-hidden />
         </div>
       </div>
 

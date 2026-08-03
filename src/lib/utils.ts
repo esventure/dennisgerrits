@@ -5,8 +5,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-const LOVABLE_ASSET_ORIGIN =
-  "https://id-preview--d8f5b35b-ed2f-4aed-a9c2-4376af53467e.lovable.app";
+const LOVABLE_ASSET_ORIGIN = "https://dennisgerrits.lovable.app";
 
 /**
  * Custom-domain redirects currently intercept root-relative Lovable asset

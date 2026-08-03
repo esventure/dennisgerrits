@@ -165,6 +165,7 @@ const Index = () => {
   const t = useSiteContent();
   const [openInterest, setOpenInterest] = useState<string | null>(null);
   const navigate = useNavigate();
+  const podcastRef = useRef<PodcastPlayerHandle | null>(null);
 
   const { data: bookStories = [] } = useQuery({
     queryKey: ["stories"],

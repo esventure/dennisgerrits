@@ -103,21 +103,23 @@ const AboutEditorial = () => {
           </div>
         </div>
 
-        {/* Desktop: the image fills the complete panel. The editor's zoom
-            values are width-based, matching how the saved framing was made. */}
-        <div
-          className="hidden lg:block absolute inset-0 bg-no-repeat"
-          style={{
-            backgroundImage: `url(${dennisPersonBike})`,
-            backgroundSize: `${adjustments.person.zoom}% auto`,
-            backgroundPosition: `${adjustments.person.x}% ${adjustments.person.y}%`,
-            WebkitMaskImage:
-              "linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.35) 10%, rgb(0 0 0 / 0.85) 22%, rgb(0 0 0) 32%)",
-            maskImage:
-              "linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.35) 10%, rgb(0 0 0 / 0.85) 22%, rgb(0 0 0) 32%)",
-          }}
-          aria-hidden
-        />
+        {/* Desktop: fixed-aspect photo canvas so the framing stays identical
+            at every viewport size and browser zoom level. */}
+        <div className="hidden lg:block absolute inset-0 overflow-hidden" aria-hidden>
+          <div
+            className="absolute left-0 right-0 top-1/2 -translate-y-1/2 aspect-[3/2] bg-no-repeat"
+            style={{
+              backgroundImage: `url(${dennisPersonBike})`,
+              backgroundSize: `${adjustments.person.zoom}% auto`,
+              backgroundPosition: `${adjustments.person.x}% ${adjustments.person.y}%`,
+              WebkitMaskImage:
+                "linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.35) 10%, rgb(0 0 0 / 0.85) 22%, rgb(0 0 0) 32%)",
+              maskImage:
+                "linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.35) 10%, rgb(0 0 0 / 0.85) 22%, rgb(0 0 0) 32%)",
+            }}
+          />
+        </div>
+
 
         <div
           className="hidden lg:block absolute inset-0"

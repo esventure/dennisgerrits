@@ -958,6 +958,8 @@ const Index = () => {
             const TA_URL =
               "https://www.tripadvisor.com/Attraction_Review-g188590-d13431295-Reviews-Love_My_City_Tours-Amsterdam_North_Holland_Province.html";
             const TA_GREEN = "#00AA6C";
+            const taRating = t("tripadvisor.rating", "5.0");
+            const taReviewCount = parseInt(t("tripadvisor.review_count", "218"), 10) || 0;
 
             const TripAdvisorBubbles = ({ size = 14 }: { size?: number }) => (
               <span

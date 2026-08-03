@@ -165,7 +165,7 @@ export const CONTENT_SCHEMA: ContentSection[] = [
         key: "tripadvisor.review_count",
         label: "Tripadvisor review count",
         type: "short",
-        fallback: "218 = 218",
+        fallback: "218",
         hint: "A whole number, e.g. 218",
       },
     ],

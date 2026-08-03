@@ -36,44 +36,43 @@ const FloatingCTA = () => {
 
   if (dismissed || !visible) return null;
 
-  const className =
-    "flex items-center gap-3 bg-primary text-primary-foreground px-6 py-3 rounded-full shadow-lg hover:bg-primary/90 transition-colors font-body text-sm tracking-wide";
-
   return (
-    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-2 sm:gap-3 animate-in fade-in slide-in-from-bottom-4 duration-500">
-      {WHATSAPP_URL ? (
-        <a
-          href={WHATSAPP_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={className}
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 animate-in fade-in slide-in-from-bottom-4 duration-500">
+      <div className="flex items-center bg-primary text-primary-foreground rounded-full shadow-lg font-body text-sm tracking-wide overflow-hidden">
+        {WHATSAPP_URL ? (
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 px-5 py-3 hover state-layer hover:bg-primary/90 transition-colors"
+          >
+            <WhatsAppIcon />
+            Get in Touch
+          </a>
+        ) : (
+          <a
+            href="#contact"
+            className="flex items-center gap-3 px-5 py-3 hover:bg-primary/90 transition-colors"
+            onClick={(e) => {
+              const el = document.getElementById("contact");
+              if (el) {
+                e.preventDefault();
+                el.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+          >
+            <WhatsAppIcon />
+            Get in Touch
+          </a>
+        )}
+        <button
+          onClick={() => setDismissed(true)}
+          className="flex items-center justify-center w-10 h-10 mr-1 rounded-full hover:bg-primary-foreground/10 transition-colors"
+          aria-label="Dismiss"
         >
-          <WhatsAppIcon />
-          Get in Touch
-        </a>
-      ) : (
-        <a
-          href="#contact"
-          className={className}
-          onClick={(e) => {
-            const el = document.getElementById("contact");
-            if (el) {
-              e.preventDefault();
-              el.scrollIntoView({ behavior: "smooth" });
-            }
-          }}
-        >
-          <WhatsAppIcon />
-          Get in Touch
-        </a>
-      )}
-      <button
-        onClick={() => setDismissed(true)}
-        className="p-2 rounded-full bg-muted text-muted-foreground hover:bg-muted/80 transition-colors"
-        aria-label="Dismiss"
-      >
-        <X size={14} />
-      </button>
+          <X size={14} />
+        </button>
+      </div>
     </div>
   );
 };

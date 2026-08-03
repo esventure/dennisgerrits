@@ -455,6 +455,106 @@ const AboutFigures = () => {
   );
 };
 
+/* ── Editable photo canvas: drag to pan, wheel/pinch to zoom ── */
+const EditablePhoto = ({
+  src,
+  alt,
+  setting,
+  editable,
+  onChange,
+}: {
+  src: string;
+  alt: string;
+  setting: PhotoSetting;
+  editable: boolean;
+  onChange: (patch: Partial<PhotoSetting>) => void;
+}) => {
+  const containerRef = useState<{ el: HTMLDivElement | null }>({ el: null })[0];
+  const stateRef = useRef(setting);
+  stateRef.current = setting;
+  const onChangeRef = useRef(onChange);
+  onChangeRef.current = onChange;
+  const editableRef = useRef(editable);
+  editableRef.current = editable;
+  const nodeRef = useRef<HTMLDivElement | null>(null);
+  const dragRef = useRef<{ x: number; y: number; w: number; h: number } | null>(null);
+
+  useEffect(() => {
+    const el = nodeRef.current;
+    if (!el) return;
+    const onWheel = (e: WheelEvent) => {
+      if (!editableRef.current) return;
+      e.preventDefault();
+      const dy = e.deltaY * (e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? 100 : 1);
+      const next = Math.min(300, Math.max(100, stateRef.current.zoom * Math.exp(-dy * 0.0015)));
+      onChangeRef.current({ zoom: Math.round(next) });
+    };
+    el.addEventListener("wheel", onWheel, { passive: false });
+    return () => el.removeEventListener("wheel", onWheel);
+  }, []);
+
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!editable) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    dragRef.current = { x: e.clientX, y: e.clientY, w: rect.width, h: rect.height };
+    e.currentTarget.setPointerCapture(e.pointerId);
+  };
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    const d = dragRef.current;
+    if (!editable || !d) return;
+    const dx = e.clientX - d.x;
+    const dy = e.clientY - d.y;
+    dragRef.current = { ...d, x: e.clientX, y: e.clientY };
+    const s = stateRef.current;
+    onChangeRef.current({
+      x: Math.round(Math.min(150, Math.max(-50, s.x - (dx / d.w) * 100))),
+      y: Math.round(Math.min(150, Math.max(-50, s.y - (dy / d.h) * 100))),
+    });
+  };
+
+  const endDrag = (e: React.PointerEvent<HTMLDivElement>) => {
+    dragRef.current = null;
+    if (e.currentTarget.hasPointerCapture(e.pointerId)) {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    }
+  };
+
+  void containerRef;
+
+  return (
+    <div
+      ref={nodeRef}
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={endDrag}
+      onPointerCancel={endDrag}
+      className="relative w-full overflow-hidden"
+      style={{
+        aspectRatio: String(setting.ratio),
+        cursor: editable ? "grab" : undefined,
+        touchAction: editable ? "none" : undefined,
+      }}
+    >
+      <img
+        src={src}
+        alt={alt}
+        className="absolute inset-0 h-full w-full object-cover select-none"
+        style={{
+          objectPosition: `${setting.x}% ${setting.y}%`,
+          transform: `scale(${setting.zoom / 100}) rotate(${setting.rotate}deg)`,
+          transformOrigin: `${setting.x}% ${setting.y}%`,
+        }}
+        draggable={false}
+        loading="lazy"
+      />
+      {editable && (
+        <div className="pointer-events-none absolute inset-0 ring-2 ring-inset ring-[hsl(var(--heritage-orange))]/70" />
+      )}
+    </div>
+  );
+};
+
 /* ── Variation D — Vertical profile cards, magazine contributor style ── */
 const AboutProfileCards = () => {
   const t = useSiteContent();
@@ -462,9 +562,9 @@ const AboutProfileCards = () => {
   const [editing, setEditing] = useState(false);
 
   const updatePhoto = useCallback(
-    (photo: keyof PhotoAdjustments, key: keyof PhotoAdjustments["person"], value: number) => {
+    (photo: keyof PhotoAdjustments, patch: Partial<PhotoSetting>) => {
       setAdjustments((prev) => {
-        const next = { ...prev, [photo]: { ...prev[photo], [key]: value } };
+        const next = { ...prev, [photo]: { ...prev[photo], ...patch } };
         saveAdjustments(next);
         return next;
       });
@@ -485,21 +585,8 @@ const AboutProfileCards = () => {
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2">
-        {/* The Person */}
+        {/* The Person — text first, photo below */}
         <div className="bg-background flex flex-col">
-          <div className="relative h-[20rem] sm:h-[24rem] lg:h-[28rem] overflow-hidden">
-            <img
-              src={dennisPersonBike}
-              alt="Dennis Gerrits sitting on his bicycle on an Amsterdam bridge"
-              className="absolute inset-0 h-full w-full object-cover"
-              style={{
-                objectPosition: `${adjustments.person.x}% ${adjustments.person.y}%`,
-                transform: `scale(${adjustments.person.zoom / 100}) rotate(${adjustments.person.rotate}deg)`,
-                transformOrigin: `${adjustments.person.x}% ${adjustments.person.y}%`,
-              }}
-              loading="lazy"
-            />
-          </div>
           <div className="flex-1 flex items-center px-6 sm:px-10 md:px-12 py-10 sm:py-14 lg:py-18">
             <FadeIn className="w-full">
               <div className="max-w-md mx-auto">
@@ -528,23 +615,17 @@ const AboutProfileCards = () => {
               </div>
             </FadeIn>
           </div>
+          <EditablePhoto
+            src={dennisPersonBike}
+            alt="Dennis Gerrits sitting on his bicycle on an Amsterdam bridge"
+            setting={adjustments.person}
+            editable={showEditor && editing}
+            onChange={(patch) => updatePhoto("person", patch)}
+          />
         </div>
 
-        {/* The Guide */}
+        {/* The Guide — text first, photo below */}
         <div className="bg-primary flex flex-col">
-          <div className="relative h-[20rem] sm:h-[24rem] lg:h-[28rem] overflow-hidden">
-            <img
-              src={dennisGuideHands}
-              alt="Dennis Gerrits sharing a story while guiding in Amsterdam"
-              className="absolute inset-0 h-full w-full object-cover"
-              style={{
-                objectPosition: `${adjustments.guide.x}% ${adjustments.guide.y}%`,
-                transform: `scale(${adjustments.guide.zoom / 100}) rotate(${adjustments.guide.rotate}deg)`,
-                transformOrigin: `${adjustments.guide.x}% ${adjustments.guide.y}%`,
-              }}
-              loading="lazy"
-            />
-          </div>
           <div className="flex-1 flex items-center px-6 sm:px-10 md:px-12 py-10 sm:py-14 lg:py-18">
             <FadeIn delay={0.15} className="w-full">
               <div className="max-w-md mx-auto">
@@ -573,6 +654,13 @@ const AboutProfileCards = () => {
               </div>
             </FadeIn>
           </div>
+          <EditablePhoto
+            src={dennisGuideHands}
+            alt="Dennis Gerrits sharing a story while guiding in Amsterdam"
+            setting={adjustments.guide}
+            editable={showEditor && editing}
+            onChange={(patch) => updatePhoto("guide", patch)}
+          />
         </div>
       </div>
 
@@ -593,14 +681,14 @@ const AboutProfileCards = () => {
 
           {editing && (
             <div
-              className="w-72 sm:w-80 rounded-lg p-4 shadow-xl"
+              className="w-72 sm:w-80 max-h-[75vh] overflow-y-auto rounded-lg p-4 shadow-xl"
               style={{
                 backgroundColor: "hsl(var(--background))",
                 border: "1px solid hsl(var(--heritage-taupe))",
               }}
             >
-              <div className="flex items-center justify-between mb-3">
-                <span className="font-heading text-lg text-primary">Photo position</span>
+              <div className="flex items-center justify-between mb-1">
+                <span className="font-heading text-lg text-primary">Photo editor</span>
                 <button
                   type="button"
                   onClick={resetPhotos}
@@ -611,23 +699,48 @@ const AboutProfileCards = () => {
                   Reset
                 </button>
               </div>
+              <p className="mb-3 text-[10px] font-body text-foreground/50 leading-snug">
+                Drag a photo to move it, scroll or pinch on it to zoom. Sliders update live.
+              </p>
 
               {(["person", "guide"] as const).map((photo) => (
                 <div key={photo} className="mb-4 last:mb-0">
                   <p className="font-body text-xs uppercase tracking-wider text-secondary mb-2">
                     {photo === "person" ? "The Person" : "The Guide"}
                   </p>
+                  <div className="flex flex-wrap gap-1 mb-2">
+                    {ASPECT_PRESETS.map((preset) => {
+                      const active = Math.abs(adjustments[photo].ratio - preset.value) < 0.001;
+                      return (
+                        <button
+                          key={preset.label}
+                          type="button"
+                          onClick={() => updatePhoto(photo, { ratio: preset.value })}
+                          className="rounded px-2 py-1 text-[10px] font-body font-medium border transition-colors"
+                          style={{
+                            borderColor: "hsl(var(--heritage-taupe))",
+                            backgroundColor: active
+                              ? "hsl(var(--heritage-orange))"
+                              : "transparent",
+                            color: active ? "hsl(var(--primary))" : "hsl(var(--foreground))",
+                          }}
+                        >
+                          {preset.label}
+                        </button>
+                      );
+                    })}
+                  </div>
                   <div className="space-y-2">
                     <label className="flex items-center gap-2 text-xs font-body text-foreground/80">
                       <Move className="w-3 h-3 shrink-0" />
                       Horizontal
                       <input
                         type="range"
-                        min={-150}
-                        max={250}
+                        min={-50}
+                        max={150}
                         value={adjustments[photo].x}
-                        onChange={(e) => updatePhoto(photo, "x", Number(e.target.value))}
-                        className="flex-1 accent-orange-500"
+                        onChange={(e) => updatePhoto(photo, { x: Number(e.target.value) })}
+                        className="flex-1"
                         style={{ accentColor: "hsl(var(--heritage-orange))" }}
                       />
                       <span className="w-8 text-right tabular-nums">{adjustments[photo].x}</span>
@@ -637,10 +750,10 @@ const AboutProfileCards = () => {
                       Vertical
                       <input
                         type="range"
-                        min={0}
-                        max={100}
+                        min={-50}
+                        max={150}
                         value={adjustments[photo].y}
-                        onChange={(e) => updatePhoto(photo, "y", Number(e.target.value))}
+                        onChange={(e) => updatePhoto(photo, { y: Number(e.target.value) })}
                         className="flex-1"
                         style={{ accentColor: "hsl(var(--heritage-orange))" }}
                       />
@@ -652,9 +765,9 @@ const AboutProfileCards = () => {
                       <input
                         type="range"
                         min={100}
-                        max={200}
+                        max={300}
                         value={adjustments[photo].zoom}
-                        onChange={(e) => updatePhoto(photo, "zoom", Number(e.target.value))}
+                        onChange={(e) => updatePhoto(photo, { zoom: Number(e.target.value) })}
                         className="flex-1"
                         style={{ accentColor: "hsl(var(--heritage-orange))" }}
                       />
@@ -669,7 +782,7 @@ const AboutProfileCards = () => {
                         max={15}
                         step={0.5}
                         value={adjustments[photo].rotate}
-                        onChange={(e) => updatePhoto(photo, "rotate", Number(e.target.value))}
+                        onChange={(e) => updatePhoto(photo, { rotate: Number(e.target.value) })}
                         className="flex-1"
                         style={{ accentColor: "hsl(var(--heritage-orange))" }}
                       />

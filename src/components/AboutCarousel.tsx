@@ -103,16 +103,13 @@ const AboutEditorial = () => {
           </div>
         </div>
 
-        {/* Desktop: overlapping background image.
-            Width is derived from the panel height (aspect-ratio) so the
-            framing stays identical at any viewport width. */}
+        {/* Desktop: the image fills the complete panel. Zoom is measured
+            from panel height so framing remains stable across screen widths. */}
         <div
-          className="hidden lg:block absolute inset-y-0 right-0 bg-no-repeat"
+          className="hidden lg:block absolute inset-0 bg-no-repeat"
           style={{
-            aspectRatio: "2 / 3",
-            maxWidth: "70%",
             backgroundImage: `url(${dennisPersonBike})`,
-            backgroundSize: `${adjustments.person.zoom}% auto`,
+            backgroundSize: `auto ${adjustments.person.zoom}%`,
             backgroundPosition: `${adjustments.person.x}% ${adjustments.person.y}%`,
             WebkitMaskImage:
               "linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.35) 10%, rgb(0 0 0 / 0.85) 22%, rgb(0 0 0) 32%)",
@@ -176,12 +173,10 @@ const AboutEditorial = () => {
         </div>
 
         <div
-          className="hidden lg:block absolute inset-y-0 right-0 bg-no-repeat"
+          className="hidden lg:block absolute inset-0 bg-no-repeat"
           style={{
-            aspectRatio: "4 / 5",
-            maxWidth: "80%",
             backgroundImage: `url(${dennisGuideHands})`,
-            backgroundSize: `${adjustments.guide.zoom}% auto`,
+            backgroundSize: `auto ${adjustments.guide.zoom}%`,
             backgroundPosition: `${adjustments.guide.x}% ${adjustments.guide.y}%`,
             WebkitMaskImage:
               "linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.12) 18%, rgb(0 0 0 / 0.72) 34%, rgb(0 0 0) 48%)",

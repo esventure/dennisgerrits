@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight, Move, ZoomIn, RotateCcw } from "lucide-react
 import FadeIn from "./FadeIn";
 import RichText from "./RichText";
 import { useSiteContent } from "@/hooks/useSiteContent";
+import { lovableAssetUrl } from "@/lib/utils";
 
 /* ────────────────────────────────────────────────────────────
    Two icon-less variations of the About / "Person & Guide"
@@ -18,8 +19,8 @@ const GUIDE_FALLBACK =
 
 import dennisPersonAsset from "@/assets/dennis-person.jpg.asset.json";
 import dennisGuideAsset from "@/assets/dennis-guide-new.jpg.asset.json";
-const dennisPersonBike = dennisPersonAsset.url;
-const dennisGuideHands = dennisGuideAsset.url;
+const dennisPersonBike = lovableAssetUrl(dennisPersonAsset.url);
+const dennisGuideHands = lovableAssetUrl(dennisGuideAsset.url);
 
 
 /* ── Photo adjustment helpers ── */

@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { lovableAssetUrl } from "@/lib/utils";
 import dennisBoat from "@/assets/dennis-hero.jpg.asset.json";
 
 import iconMessage from "@/assets/icon-message.png";
@@ -239,7 +240,7 @@ const TravelAgents = () => {
                   style={{ transform: "rotate(-1.5deg)" }}
                 >
                   <img
-                    src={dennisBoat.url}
+                    src={lovableAssetUrl(dennisBoat.url)}
                     alt="Dennis in Amsterdam"
                     className="w-full aspect-[4/5] object-cover"
                     loading="lazy"

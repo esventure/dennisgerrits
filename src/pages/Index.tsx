@@ -31,6 +31,7 @@ import iconBike from "@/assets/icon-bike.png";
 import iconBoat from "@/assets/icon-boat.png";
 import iconFoot from "@/assets/icon-foot.png";
 import { useSiteContent } from "@/hooks/useSiteContent";
+import { lovableAssetUrl } from "@/lib/utils";
 import ContactSection from "@/components/ContactSection";
 import ServiceIcon from "@/components/ServiceIcon";
 import RichText from "@/components/RichText";
@@ -570,7 +571,7 @@ const Index = () => {
                 <figure className="space-y-4">
                   <div className="relative overflow-hidden rounded-sm shadow-md">
                     <img
-                      src={dennisRadioTaboe.url}
+                      src={lovableAssetUrl(dennisRadioTaboe.url)}
                       alt="Dennis Gerrits being interviewed live at Taboe Media radio studio on Zeedijk, Amsterdam"
                       loading="lazy"
                       className="w-full aspect-[4/5] object-cover"

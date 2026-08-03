@@ -50,7 +50,7 @@ const DEFAULT_ADJUSTMENTS: PhotoAdjustments = {
 };
 
 
-const STORAGE_KEY = "about-photo-adjustments-v4";
+const STORAGE_KEY = "about-photo-adjustments-v5";
 
 const loadAdjustments = (): PhotoAdjustments => {
   try {

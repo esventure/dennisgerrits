@@ -102,7 +102,7 @@ const AboutEditorial = () => {
             }}
             loading="lazy"
           />
-          <div className="hidden lg:block absolute inset-y-0 right-0 w-28 bg-gradient-to-l from-background to-transparent" aria-hidden />
+          
         </div>
         <div className="flex items-center px-6 sm:px-10 md:px-16 lg:pl-10 lg:pr-[max(5rem,calc((100vw-80rem)/2+3rem))] py-14 sm:py-20 lg:py-24">
           <FadeIn className="relative z-10 w-full">
@@ -176,7 +176,7 @@ const AboutEditorial = () => {
             }}
             loading="lazy"
           />
-          <div className="hidden lg:block absolute inset-y-0 left-0 w-28 bg-gradient-to-r from-primary to-transparent" aria-hidden />
+          
         </div>
       </div>
 

@@ -88,9 +88,9 @@ const AboutEditorial = () => {
 
   return (
     <div>
-      {/* The Person: photo left, text right. Fixed section heights. */}
-      <div className="grid grid-cols-1 lg:grid-cols-[54%_46%] bg-background">
-        <div className="relative order-first h-[22rem] sm:h-[30rem] lg:h-[42rem] overflow-hidden">
+      {/* The Person: photo left, text right. Compact fixed section heights. */}
+      <div className="grid grid-cols-1 lg:grid-cols-[45%_55%] bg-background">
+        <div className="relative order-first h-[18rem] sm:h-[22rem] lg:h-[28rem] overflow-hidden">
           <img
             src={dennisPersonBike}
             alt="Dennis Gerrits sitting on his bicycle on an Amsterdam bridge"
@@ -102,9 +102,8 @@ const AboutEditorial = () => {
             }}
             loading="lazy"
           />
-          
         </div>
-        <div className="flex items-center px-6 sm:px-10 md:px-16 lg:pl-10 lg:pr-[max(5rem,calc((100vw-80rem)/2+3rem))] py-14 sm:py-20 lg:py-24">
+        <div className="flex items-center px-6 sm:px-10 md:px-16 lg:pl-10 lg:pr-[max(5rem,calc((100vw-80rem)/2+3rem))] py-10 sm:py-14 lg:py-18">
           <FadeIn className="relative z-10 w-full">
             <div className="max-w-lg">
             <p className="font-body text-xs tracking-[0.3em] uppercase text-accent font-semibold mb-4">
@@ -135,8 +134,8 @@ const AboutEditorial = () => {
       </div>
 
       {/* The Guide */}
-      <div className="grid grid-cols-1 lg:grid-cols-[46%_54%] bg-primary">
-        <div className="flex items-center px-6 sm:px-10 md:px-16 lg:pl-[max(5rem,calc((100vw-80rem)/2+3rem))] lg:pr-10 py-14 sm:py-20 lg:py-24">
+      <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] bg-primary">
+        <div className="flex items-center px-6 sm:px-10 md:px-16 lg:pl-[max(5rem,calc((100vw-80rem)/2+3rem))] lg:pr-10 py-10 sm:py-14 lg:py-18">
           <FadeIn delay={0.15} className="relative z-10 w-full">
             <div className="max-w-lg">
             <p className="font-body text-xs tracking-[0.3em] uppercase text-accent font-semibold mb-4">
@@ -164,7 +163,7 @@ const AboutEditorial = () => {
             </div>
           </FadeIn>
         </div>
-        <div className="relative order-first lg:order-none h-[22rem] sm:h-[30rem] lg:h-[42rem] overflow-hidden">
+        <div className="relative order-first lg:order-none h-[18rem] sm:h-[22rem] lg:h-[28rem] overflow-hidden">
           <img
             src={dennisGuideHands}
             alt="Dennis Gerrits sharing a story while guiding in Amsterdam"
@@ -176,7 +175,6 @@ const AboutEditorial = () => {
             }}
             loading="lazy"
           />
-          
         </div>
       </div>
 

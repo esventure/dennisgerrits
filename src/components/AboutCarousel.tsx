@@ -158,7 +158,7 @@ const AboutEditorial = () => {
       </div>
 
       {/* Right: The Guide */}
-      <div className="relative overflow-hidden px-6 sm:px-10 md:px-16 lg:px-20 py-14 sm:py-20 lg:py-28 flex flex-col lg:block lg:items-center lg:justify-center min-h-[70vh] bg-primary lg:bg-transparent">
+      <div className="relative overflow-hidden px-6 sm:px-10 md:px-16 lg:px-20 py-14 sm:py-20 lg:py-28 flex flex-col lg:block lg:items-center lg:justify-center min-h-[70vh] bg-primary">
         {/* Mobile/tablet: stacked responsive image */}
         <div className="lg:hidden mb-8 -mx-6 sm:-mx-10 md:-mx-16">
           <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] overflow-hidden">

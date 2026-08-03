@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin
 Disallow: /admin/
 
-Sitemap: https://dennisgerrits.lovable.app/sitemap.xml
+Sitemap: https://dennisgerrits.com/sitemap.xml

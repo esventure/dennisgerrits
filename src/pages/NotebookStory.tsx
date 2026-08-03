@@ -70,7 +70,7 @@ const NotebookStory = () => {
     );
   }
 
-  const url = `https://dennisgerrits.lovable.app/notebook/${story.slug}`;
+  const url = `https://dennisgerrits.com/notebook/${story.slug}`;
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",

@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useSearchParams } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
 import { cn } from "@/lib/utils";
 import ContactSection from "@/components/ContactSection";
@@ -176,6 +177,7 @@ const pins = ["tape-tl", "tape-tr", "tape-gl", "tape-gr"] as const;
 
 const themes = blocks.map((b, i) => ({
   id: `block-${i + 1}`,
+  slug: b.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""),
   title: b.title,
   caption: b.caption,
   note: b.note,
@@ -186,10 +188,26 @@ const themes = blocks.map((b, i) => ({
 
 const GetInspired = () => {
   const [active, setActive] = useState<string | null>(null);
+  const [searchParams] = useSearchParams();
+  const cardRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const requestedSlug = searchParams.get("theme");
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    if (!requestedSlug) {
+      window.scrollTo(0, 0);
+      return;
+    }
+    const match = themes.find((t) => t.slug === requestedSlug);
+    if (!match) {
+      window.scrollTo(0, 0);
+      return;
+    }
+    setActive(match.id);
+    const timer = window.setTimeout(() => {
+      cardRefs.current[match.id]?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 250);
+    return () => window.clearTimeout(timer);
+  }, [requestedSlug]);
 
   return (
     <main>
@@ -322,6 +340,7 @@ const GetInspired = () => {
               const sketchPaths = sketchVariants[i % sketchVariants.length];
               return (
                 <FadeIn key={theme.id} delay={i * 0.08}>
+                  <div ref={(el) => { cardRefs.current[theme.id] = el; }}>
                   <button
                     onClick={() => setActive(isActive ? null : theme.id)}
                     className="group relative block w-full text-left transition-transform duration-500 ease-out hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-4"

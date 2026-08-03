@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
 import AmsterdamSkyline from "@/components/AmsterdamSkyline";
 import StoryBook from "@/components/StoryBook";
@@ -163,6 +163,7 @@ const stories = [
 const Index = () => {
   const t = useSiteContent();
   const [openInterest, setOpenInterest] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const { data: bookStories = [] } = useQuery({
     queryKey: ["stories"],
@@ -703,9 +704,14 @@ const Index = () => {
                 <FadeIn key={theme.id} delay={i * 0.08}>
                   <button
                     type="button"
-                    onClick={() => setOpenInterest((cur) => (cur === theme.id ? null : theme.id))}
-                    aria-expanded={openInterest === theme.id}
-                    aria-label={`${theme.title} — ${openInterest === theme.id ? "close" : "read more"}`}
+                    onClick={() =>
+                      navigate(
+                        `/get-inspired?theme=${encodeURIComponent(
+                          theme.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")
+                        )}`
+                      )
+                    }
+                    aria-label={`${theme.title} — read more on the Experiences page`}
                     className="group relative block w-full text-left transition-transform duration-500 ease-out hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-4"
                     style={{ transform: `rotate(${theme.rotate}deg)` }}
                   >

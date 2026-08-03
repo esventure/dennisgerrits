@@ -256,13 +256,28 @@ const AboutEditorial = () => {
                       <input
                         type="range"
                         min={100}
-                        max={140}
+                        max={200}
                         value={adjustments[photo].zoom}
                         onChange={(e) => updatePhoto(photo, "zoom", Number(e.target.value))}
                         className="flex-1"
                         style={{ accentColor: "hsl(var(--heritage-orange))" }}
                       />
                       <span className="w-8 text-right tabular-nums">{adjustments[photo].zoom}</span>
+                    </label>
+                    <label className="flex items-center gap-2 text-xs font-body text-foreground/80">
+                      <RotateCcw className="w-3 h-3 shrink-0" />
+                      Rotate
+                      <input
+                        type="range"
+                        min={-15}
+                        max={15}
+                        step={0.5}
+                        value={adjustments[photo].rotate}
+                        onChange={(e) => updatePhoto(photo, "rotate", Number(e.target.value))}
+                        className="flex-1"
+                        style={{ accentColor: "hsl(var(--heritage-orange))" }}
+                      />
+                      <span className="w-8 text-right tabular-nums">{adjustments[photo].rotate}</span>
                     </label>
                   </div>
                 </div>

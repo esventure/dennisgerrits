@@ -164,14 +164,14 @@ const AboutEditorial = () => {
             </div>
           </FadeIn>
         </div>
-        <div className="relative order-first lg:order-none aspect-[4/3] sm:aspect-[16/10] lg:aspect-auto lg:min-h-[42rem] overflow-hidden">
+        <div className="relative order-first lg:order-none h-[22rem] sm:h-[30rem] lg:h-[42rem] overflow-hidden">
           <img
             src={dennisGuideHands}
             alt="Dennis Gerrits sharing a story while guiding in Amsterdam"
             className="absolute inset-0 h-full w-full object-cover"
             style={{
               objectPosition: `${adjustments.guide.x}% ${adjustments.guide.y}%`,
-              transform: `scale(${adjustments.guide.zoom / 100})`,
+              transform: `scale(${adjustments.guide.zoom / 100}) rotate(${adjustments.guide.rotate}deg)`,
               transformOrigin: `${adjustments.guide.x}% ${adjustments.guide.y}%`,
             }}
             loading="lazy"

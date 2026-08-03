@@ -174,19 +174,21 @@ const AboutEditorial = () => {
           </div>
         </div>
 
-        <div
-          className="hidden lg:block absolute inset-0 bg-no-repeat"
-          style={{
-            backgroundImage: `url(${dennisGuideHands})`,
-            backgroundSize: `${adjustments.guide.zoom}% auto`,
-            backgroundPosition: `${adjustments.guide.x}% ${adjustments.guide.y}%`,
-            WebkitMaskImage:
-              "linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.12) 18%, rgb(0 0 0 / 0.72) 34%, rgb(0 0 0) 48%)",
-            maskImage:
-              "linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.12) 18%, rgb(0 0 0 / 0.72) 34%, rgb(0 0 0) 48%)",
-          }}
-          aria-hidden
-        />
+        <div className="hidden lg:block absolute inset-0 overflow-hidden" aria-hidden>
+          <div
+            className="absolute left-0 right-0 top-1/2 -translate-y-1/2 aspect-[3/2] bg-no-repeat"
+            style={{
+              backgroundImage: `url(${dennisGuideHands})`,
+              backgroundSize: `${adjustments.guide.zoom}% auto`,
+              backgroundPosition: `${adjustments.guide.x}% ${adjustments.guide.y}%`,
+              WebkitMaskImage:
+                "linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.12) 18%, rgb(0 0 0 / 0.72) 34%, rgb(0 0 0) 48%)",
+              maskImage:
+                "linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.12) 18%, rgb(0 0 0 / 0.72) 34%, rgb(0 0 0) 48%)",
+            }}
+          />
+        </div>
+
 
 
         <div

@@ -898,23 +898,23 @@ const Index = () => {
                 Stories about Amsterdam, identity, culture, city life and personal experiences, told through the people who shape the city.
               </p>
 
-              <div className="flex items-start gap-3 mb-6">
+              <button
+                type="button"
+                onClick={() => podcastRef.current?.play()}
+                className="flex items-start gap-3 mb-6 text-left group"
+              >
                 <span
-                  className="shrink-0 w-9 h-9 rounded-full border flex items-center justify-center"
+                  className="shrink-0 w-9 h-9 rounded-full border flex items-center justify-center transition-colors group-hover:bg-[hsl(var(--heritage-orange))] group-hover:text-[hsl(var(--heritage-green))]"
                   style={{ borderColor: "hsl(var(--heritage-orange))", color: "hsl(var(--heritage-orange))" }}
                   aria-hidden
                 >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="9" y="2" width="6" height="12" rx="3" />
-                    <path d="M5 10a7 7 0 0 0 14 0" />
-                    <line x1="12" y1="19" x2="12" y2="22" />
-                  </svg>
+                  <Play size={16} fill="currentColor" />
                 </span>
                 <p className="font-body text-base leading-snug" style={{ color: "hsl(0 0% 94%)" }}>
                   <span className="font-semibold">Start with Episode 0</span><br />
                   <span style={{ color: "hsl(0 0% 82%)" }}>and step into the world of <em>Two Stories, One City</em>.</span>
                 </p>
-              </div>
+              </button>
 
               <PodcastPlayer tone="dark" />
             </FadeIn>

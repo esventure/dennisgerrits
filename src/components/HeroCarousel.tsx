@@ -28,7 +28,9 @@ const HeroEditorial = () => (
       </FadeIn>
       <FadeIn delay={0.2}>
         <h1 className="font-heading text-[2.75rem] sm:text-5xl md:text-7xl lg:text-8xl text-primary leading-[0.95] mb-6 md:mb-8">
+          <span className="sr-only">Dennis Gerrits, personal travel companion in Amsterdam. </span>
           Hello,<br />
+
           <span className="relative inline-block text-accent">
             I'm Dennis.
             <svg

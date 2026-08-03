@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight, Move, ZoomIn, RotateCcw } from "lucide-react
 import FadeIn from "./FadeIn";
 import RichText from "./RichText";
 import { useSiteContent } from "@/hooks/useSiteContent";
+import { lovableAssetUrl } from "@/lib/utils";
 
 /* ────────────────────────────────────────────────────────────
    Two icon-less variations of the About / "Person & Guide"
@@ -18,8 +19,8 @@ const GUIDE_FALLBACK =
 
 import dennisPersonAsset from "@/assets/dennis-person.jpg.asset.json";
 import dennisGuideAsset from "@/assets/dennis-guide-new.jpg.asset.json";
-const dennisPersonBike = dennisPersonAsset.url;
-const dennisGuideHands = dennisGuideAsset.url;
+const dennisPersonBike = lovableAssetUrl(dennisPersonAsset.url);
+const dennisGuideHands = lovableAssetUrl(dennisGuideAsset.url);
 
 
 /* ── Photo adjustment helpers ── */
@@ -29,8 +30,8 @@ type PhotoAdjustments = {
 };
 
 const DEFAULT_ADJUSTMENTS: PhotoAdjustments = {
-  person: { x: 24, y: 91, zoom: 166 },
-  guide: { x: 56, y: 59, zoom: 124 },
+  person: { x: -120, y: 91, zoom: 108 },
+  guide: { x: 210, y: 59, zoom: 98 },
 };
 
 
@@ -102,9 +103,10 @@ const AboutEditorial = () => {
           </div>
         </div>
 
-        {/* Desktop: overlapping background image */}
+        {/* Desktop: the image fills the complete panel. The editor's zoom
+            values are width-based, matching how the saved framing was made. */}
         <div
-          className="hidden lg:block absolute inset-y-0 right-0 w-[62%] bg-no-repeat"
+          className="hidden lg:block absolute inset-0 bg-no-repeat"
           style={{
             backgroundImage: `url(${dennisPersonBike})`,
             backgroundSize: `${adjustments.person.zoom}% auto`,
@@ -116,6 +118,7 @@ const AboutEditorial = () => {
           }}
           aria-hidden
         />
+
         <div
           className="hidden lg:block absolute inset-0"
           style={{
@@ -155,7 +158,7 @@ const AboutEditorial = () => {
       </div>
 
       {/* Right: The Guide */}
-      <div className="relative overflow-hidden px-6 sm:px-10 md:px-16 lg:px-20 py-14 sm:py-20 lg:py-28 flex flex-col lg:block lg:items-center lg:justify-center min-h-[70vh] bg-primary lg:bg-transparent">
+      <div className="relative overflow-hidden px-6 sm:px-10 md:px-16 lg:px-20 py-14 sm:py-20 lg:py-28 flex flex-col lg:block lg:items-center lg:justify-center min-h-[70vh] bg-primary">
         {/* Mobile/tablet: stacked responsive image */}
         <div className="lg:hidden mb-8 -mx-6 sm:-mx-10 md:-mx-16">
           <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] overflow-hidden">
@@ -170,7 +173,7 @@ const AboutEditorial = () => {
         </div>
 
         <div
-          className="hidden lg:block absolute inset-y-0 right-0 w-[74%] bg-no-repeat"
+          className="hidden lg:block absolute inset-0 bg-no-repeat"
           style={{
             backgroundImage: `url(${dennisGuideHands})`,
             backgroundSize: `${adjustments.guide.zoom}% auto`,
@@ -182,6 +185,7 @@ const AboutEditorial = () => {
           }}
           aria-hidden
         />
+
 
         <div
           className="hidden lg:block absolute inset-0"
@@ -267,8 +271,8 @@ const AboutEditorial = () => {
                       Horizontal
                       <input
                         type="range"
-                        min={-50}
-                        max={150}
+                        min={-150}
+                        max={250}
                         value={adjustments[photo].x}
                         onChange={(e) => updatePhoto(photo, "x", Number(e.target.value))}
                         className="flex-1 accent-orange-500"

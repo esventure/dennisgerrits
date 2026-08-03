@@ -103,13 +103,13 @@ const AboutEditorial = () => {
           </div>
         </div>
 
-        {/* Desktop: the image fills the complete panel. Zoom is measured
-            from panel height so framing remains stable across screen widths. */}
+        {/* Desktop: the image fills the complete panel. The editor's zoom
+            values are width-based, matching how the saved framing was made. */}
         <div
           className="hidden lg:block absolute inset-0 bg-no-repeat"
           style={{
             backgroundImage: `url(${dennisPersonBike})`,
-            backgroundSize: `auto ${adjustments.person.zoom}%`,
+            backgroundSize: `${adjustments.person.zoom}% auto`,
             backgroundPosition: `${adjustments.person.x}% ${adjustments.person.y}%`,
             WebkitMaskImage:
               "linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.35) 10%, rgb(0 0 0 / 0.85) 22%, rgb(0 0 0) 32%)",
@@ -176,7 +176,7 @@ const AboutEditorial = () => {
           className="hidden lg:block absolute inset-0 bg-no-repeat"
           style={{
             backgroundImage: `url(${dennisGuideHands})`,
-            backgroundSize: `auto ${adjustments.guide.zoom}%`,
+            backgroundSize: `${adjustments.guide.zoom}% auto`,
             backgroundPosition: `${adjustments.guide.x}% ${adjustments.guide.y}%`,
             WebkitMaskImage:
               "linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.12) 18%, rgb(0 0 0 / 0.72) 34%, rgb(0 0 0) 48%)",

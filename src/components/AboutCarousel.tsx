@@ -103,14 +103,11 @@ const AboutEditorial = () => {
           </div>
         </div>
 
-        {/* Desktop: overlapping background image.
-            Width is derived from the panel height (aspect-ratio) so the
-            framing stays identical at any viewport width. */}
+        {/* Desktop: the image fills the complete panel. The editor's zoom
+            values are width-based, matching how the saved framing was made. */}
         <div
-          className="hidden lg:block absolute inset-y-0 right-0 bg-no-repeat"
+          className="hidden lg:block absolute inset-0 bg-no-repeat"
           style={{
-            aspectRatio: "2 / 3",
-            maxWidth: "70%",
             backgroundImage: `url(${dennisPersonBike})`,
             backgroundSize: `${adjustments.person.zoom}% auto`,
             backgroundPosition: `${adjustments.person.x}% ${adjustments.person.y}%`,
@@ -161,7 +158,7 @@ const AboutEditorial = () => {
       </div>
 
       {/* Right: The Guide */}
-      <div className="relative overflow-hidden px-6 sm:px-10 md:px-16 lg:px-20 py-14 sm:py-20 lg:py-28 flex flex-col lg:block lg:items-center lg:justify-center min-h-[70vh] bg-primary lg:bg-transparent">
+      <div className="relative overflow-hidden px-6 sm:px-10 md:px-16 lg:px-20 py-14 sm:py-20 lg:py-28 flex flex-col lg:block lg:items-center lg:justify-center min-h-[70vh] bg-primary">
         {/* Mobile/tablet: stacked responsive image */}
         <div className="lg:hidden mb-8 -mx-6 sm:-mx-10 md:-mx-16">
           <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] overflow-hidden">
@@ -176,10 +173,8 @@ const AboutEditorial = () => {
         </div>
 
         <div
-          className="hidden lg:block absolute inset-y-0 right-0 bg-no-repeat"
+          className="hidden lg:block absolute inset-0 bg-no-repeat"
           style={{
-            aspectRatio: "4 / 5",
-            maxWidth: "80%",
             backgroundImage: `url(${dennisGuideHands})`,
             backgroundSize: `${adjustments.guide.zoom}% auto`,
             backgroundPosition: `${adjustments.guide.x}% ${adjustments.guide.y}%`,

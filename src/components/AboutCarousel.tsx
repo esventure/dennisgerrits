@@ -25,13 +25,13 @@ const dennisGuideHands = lovableAssetUrl(dennisGuideAsset.url);
 
 /* ── Photo adjustment helpers ── */
 type PhotoAdjustments = {
-  person: { x: number; y: number; zoom: number };
-  guide: { x: number; y: number; zoom: number };
+  person: { x: number; y: number; zoom: number; rotate: number };
+  guide: { x: number; y: number; zoom: number; rotate: number };
 };
 
 const DEFAULT_ADJUSTMENTS: PhotoAdjustments = {
-  person: { x: 50, y: 55, zoom: 100 },
-  guide: { x: 72, y: 48, zoom: 100 },
+  person: { x: 50, y: 55, zoom: 100, rotate: 0 },
+  guide: { x: 72, y: 48, zoom: 100, rotate: 0 },
 };
 
 
@@ -88,9 +88,23 @@ const AboutEditorial = () => {
 
   return (
     <div>
-      {/* The Person: text and image have independent, stable columns. */}
-      <div className="grid grid-cols-1 lg:grid-cols-[46%_54%] bg-background">
-        <div className="flex items-center px-6 sm:px-10 md:px-16 lg:pl-[max(5rem,calc((100vw-80rem)/2+3rem))] lg:pr-10 py-14 sm:py-20 lg:py-24">
+      {/* The Person: photo left, text right. Fixed section heights. */}
+      <div className="grid grid-cols-1 lg:grid-cols-[54%_46%] bg-background">
+        <div className="relative order-first h-[22rem] sm:h-[30rem] lg:h-[42rem] overflow-hidden">
+          <img
+            src={dennisPersonBike}
+            alt="Dennis Gerrits sitting on his bicycle on an Amsterdam bridge"
+            className="absolute inset-0 h-full w-full object-cover"
+            style={{
+              objectPosition: `${adjustments.person.x}% ${adjustments.person.y}%`,
+              transform: `scale(${adjustments.person.zoom / 100}) rotate(${adjustments.person.rotate}deg)`,
+              transformOrigin: `${adjustments.person.x}% ${adjustments.person.y}%`,
+            }}
+            loading="lazy"
+          />
+          <div className="hidden lg:block absolute inset-y-0 right-0 w-28 bg-gradient-to-l from-background to-transparent" aria-hidden />
+        </div>
+        <div className="flex items-center px-6 sm:px-10 md:px-16 lg:pl-10 lg:pr-[max(5rem,calc((100vw-80rem)/2+3rem))] py-14 sm:py-20 lg:py-24">
           <FadeIn className="relative z-10 w-full">
             <div className="max-w-lg">
             <p className="font-body text-xs tracking-[0.3em] uppercase text-accent font-semibold mb-4">
@@ -117,20 +131,6 @@ const AboutEditorial = () => {
             />
             </div>
           </FadeIn>
-        </div>
-        <div className="relative order-first lg:order-none aspect-[4/3] sm:aspect-[16/10] lg:aspect-auto lg:min-h-[42rem] overflow-hidden">
-          <img
-            src={dennisPersonBike}
-            alt="Dennis Gerrits sitting on his bicycle on an Amsterdam bridge"
-            className="absolute inset-0 h-full w-full object-cover"
-            style={{
-              objectPosition: `${adjustments.person.x}% ${adjustments.person.y}%`,
-              transform: `scale(${adjustments.person.zoom / 100})`,
-              transformOrigin: `${adjustments.person.x}% ${adjustments.person.y}%`,
-            }}
-            loading="lazy"
-          />
-          <div className="hidden lg:block absolute inset-y-0 left-0 w-28 bg-gradient-to-r from-background to-transparent" aria-hidden />
         </div>
       </div>
 
@@ -164,14 +164,14 @@ const AboutEditorial = () => {
             </div>
           </FadeIn>
         </div>
-        <div className="relative order-first lg:order-none aspect-[4/3] sm:aspect-[16/10] lg:aspect-auto lg:min-h-[42rem] overflow-hidden">
+        <div className="relative order-first lg:order-none h-[22rem] sm:h-[30rem] lg:h-[42rem] overflow-hidden">
           <img
             src={dennisGuideHands}
             alt="Dennis Gerrits sharing a story while guiding in Amsterdam"
             className="absolute inset-0 h-full w-full object-cover"
             style={{
               objectPosition: `${adjustments.guide.x}% ${adjustments.guide.y}%`,
-              transform: `scale(${adjustments.guide.zoom / 100})`,
+              transform: `scale(${adjustments.guide.zoom / 100}) rotate(${adjustments.guide.rotate}deg)`,
               transformOrigin: `${adjustments.guide.x}% ${adjustments.guide.y}%`,
             }}
             loading="lazy"
@@ -256,13 +256,28 @@ const AboutEditorial = () => {
                       <input
                         type="range"
                         min={100}
-                        max={140}
+                        max={200}
                         value={adjustments[photo].zoom}
                         onChange={(e) => updatePhoto(photo, "zoom", Number(e.target.value))}
                         className="flex-1"
                         style={{ accentColor: "hsl(var(--heritage-orange))" }}
                       />
                       <span className="w-8 text-right tabular-nums">{adjustments[photo].zoom}</span>
+                    </label>
+                    <label className="flex items-center gap-2 text-xs font-body text-foreground/80">
+                      <RotateCcw className="w-3 h-3 shrink-0" />
+                      Rotate
+                      <input
+                        type="range"
+                        min={-15}
+                        max={15}
+                        step={0.5}
+                        value={adjustments[photo].rotate}
+                        onChange={(e) => updatePhoto(photo, "rotate", Number(e.target.value))}
+                        className="flex-1"
+                        style={{ accentColor: "hsl(var(--heritage-orange))" }}
+                      />
+                      <span className="w-8 text-right tabular-nums">{adjustments[photo].rotate}</span>
                     </label>
                   </div>
                 </div>

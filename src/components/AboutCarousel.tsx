@@ -476,7 +476,7 @@ const AboutProfileCards = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-1 lg:grid-cols-2">
+      <div className="grid grid-cols-1 md:grid-cols-2">
         {/* The Person */}
         <div className="bg-background flex flex-col">
           <div className="relative h-[20rem] sm:h-[24rem] lg:h-[28rem] overflow-hidden">

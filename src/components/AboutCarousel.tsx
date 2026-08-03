@@ -612,16 +612,14 @@ const AboutProfileCards = () => {
               </div>
             </FadeIn>
           </div>
-          <div className="px-6 pb-10 md:px-12 md:pb-14 flex justify-center">
-            <div className="w-full max-w-xs sm:max-w-sm">
-              <EditablePhoto
-                src={dennisPersonBike}
-                alt="Dennis Gerrits sitting on his bicycle on an Amsterdam bridge"
-                setting={adjustments.person}
-                editable={showEditor && editing}
-                onChange={(patch) => updatePhoto("person", patch)}
-              />
-            </div>
+          <div className="px-6 pb-10 md:px-12 md:pb-14">
+            <EditablePhoto
+              src={dennisPersonBike}
+              alt="Dennis Gerrits sitting on his bicycle on an Amsterdam bridge"
+              setting={adjustments.person}
+              editable={showEditor && editing}
+              onChange={(patch) => updatePhoto("person", patch)}
+            />
           </div>
         </div>
 
@@ -655,16 +653,14 @@ const AboutProfileCards = () => {
               </div>
             </FadeIn>
           </div>
-          <div className="px-6 pb-10 md:px-12 md:pb-14 flex justify-center">
-            <div className="w-full max-w-xs sm:max-w-sm">
-              <EditablePhoto
-                src={dennisGuideHands}
-                alt="Dennis Gerrits sharing a story while guiding in Amsterdam"
-                setting={adjustments.guide}
-                editable={showEditor && editing}
-                onChange={(patch) => updatePhoto("guide", patch)}
-              />
-            </div>
+          <div className="px-6 pb-10 md:px-12 md:pb-14">
+            <EditablePhoto
+              src={dennisGuideHands}
+              alt="Dennis Gerrits sharing a story while guiding in Amsterdam"
+              setting={adjustments.guide}
+              editable={showEditor && editing}
+              onChange={(patch) => updatePhoto("guide", patch)}
+            />
           </div>
         </div>
       </div>

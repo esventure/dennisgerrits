@@ -1040,7 +1040,7 @@ const Index = () => {
                         <div className="flex items-center gap-3 mt-1">
                           <TripAdvisorBubbles />
                           <span className="font-body text-sm text-foreground">
-                            <strong>{TA_RATING}</strong> · {TA_REVIEW_COUNT} reviews
+                            <strong>{taRating}</strong> · {taReviewCount} reviews
                           </span>
                         </div>
                       </div>
@@ -1165,7 +1165,7 @@ const Index = () => {
                         borderColor: `${TA_GREEN}66`,
                       }}
                     >
-                      Read all {TA_REVIEW_COUNT} reviews on Tripadvisor →
+                      Read all {taReviewCount} reviews on Tripadvisor →
                     </a>
                   </div>
                 </FadeIn>

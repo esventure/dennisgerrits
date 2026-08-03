@@ -612,13 +612,17 @@ const AboutProfileCards = () => {
               </div>
             </FadeIn>
           </div>
-          <EditablePhoto
-            src={dennisPersonBike}
-            alt="Dennis Gerrits sitting on his bicycle on an Amsterdam bridge"
-            setting={adjustments.person}
-            editable={showEditor && editing}
-            onChange={(patch) => updatePhoto("person", patch)}
-          />
+          <div className="px-6 pb-10 md:px-12 md:pb-14 flex justify-center">
+            <div className="w-full max-w-xs sm:max-w-sm">
+              <EditablePhoto
+                src={dennisPersonBike}
+                alt="Dennis Gerrits sitting on his bicycle on an Amsterdam bridge"
+                setting={adjustments.person}
+                editable={showEditor && editing}
+                onChange={(patch) => updatePhoto("person", patch)}
+              />
+            </div>
+          </div>
         </div>
 
         {/* The Guide — text first, photo below */}

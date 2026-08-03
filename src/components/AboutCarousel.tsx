@@ -17,8 +17,8 @@ const PERSON_FALLBACK =
 const GUIDE_FALLBACK =
   "For me, discovering places should feel personal, relaxed and natural. More like spending time with a local friend.\n\nI always listen first. Every person experiences a place differently, which is why I take the time to understand who you are and what inspires you.\n\nI carefully shape each day around you, creating experiences that feel meaningful. More than anything, I’m simply somebody who walks beside you during your trip.";
 
-import dennisPersonAsset from "@/assets/dennis-person.jpg.asset.json";
-import dennisGuideAsset from "@/assets/dennis-guide-new.jpg.asset.json";
+import dennisPersonAsset from "@/assets/dennis-person-original.jpg.asset.json";
+import dennisGuideAsset from "@/assets/dennis-guide-original.jpg.asset.json";
 const dennisPersonBike = lovableAssetUrl(dennisPersonAsset.url);
 const dennisGuideHands = lovableAssetUrl(dennisGuideAsset.url);
 
@@ -30,12 +30,12 @@ type PhotoAdjustments = {
 };
 
 const DEFAULT_ADJUSTMENTS: PhotoAdjustments = {
-  person: { x: -120, y: 91, zoom: 108 },
-  guide: { x: 210, y: 59, zoom: 98 },
+  person: { x: 50, y: 55, zoom: 100 },
+  guide: { x: 72, y: 48, zoom: 100 },
 };
 
 
-const STORAGE_KEY = "about-photo-adjustments";
+const STORAGE_KEY = "about-photo-adjustments-v2";
 
 const loadAdjustments = (): PhotoAdjustments => {
   try {
@@ -87,51 +87,12 @@ const AboutEditorial = () => {
     localStorage.getItem("about-photo-editor-enabled") === "true";
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[70vh]">
-      {/* Left: The Person */}
-      <div className="relative overflow-hidden px-6 sm:px-10 md:px-16 lg:px-20 py-14 sm:py-20 lg:py-28 flex flex-col lg:block lg:items-center lg:justify-center min-h-[70vh]">
-        {/* Mobile/tablet: stacked responsive image */}
-        <div className="lg:hidden mb-8 -mx-6 sm:-mx-10 md:-mx-16">
-          <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] overflow-hidden">
-            <img
-              src={dennisPersonBike}
-              alt={t("about.person.title", "The Person")}
-              className="w-full h-full object-cover"
-              style={{ objectPosition: `${adjustments.person.x}% ${adjustments.person.y}%` }}
-              loading="lazy"
-            />
-          </div>
-        </div>
-
-        {/* Desktop: fixed-aspect photo canvas so the framing stays identical
-            at every viewport size and browser zoom level. */}
-        <div className="hidden lg:block absolute inset-0 overflow-hidden" aria-hidden>
-          <div
-            className="absolute left-0 right-0 top-1/2 -translate-y-1/2 aspect-[3/2] bg-no-repeat"
-            style={{
-              backgroundImage: `url(${dennisPersonBike})`,
-              backgroundSize: `${adjustments.person.zoom}% auto`,
-              backgroundPosition: `${adjustments.person.x}% ${adjustments.person.y}%`,
-              WebkitMaskImage:
-                "linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.35) 10%, rgb(0 0 0 / 0.85) 22%, rgb(0 0 0) 32%)",
-              maskImage:
-                "linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.35) 10%, rgb(0 0 0 / 0.85) 22%, rgb(0 0 0) 32%)",
-            }}
-          />
-        </div>
-
-
-        <div
-          className="hidden lg:block absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to right, hsl(var(--background)) 0%, hsl(var(--background)) 28%, hsl(var(--background) / 0.35) 42%, hsl(var(--background) / 0.05) 55%, hsl(var(--background) / 0) 68%)",
-          }}
-          aria-hidden
-        />
-
-        <FadeIn className="relative z-10">
-          <div className="max-w-md mx-auto lg:mr-auto lg:ml-0">
+    <div>
+      {/* The Person: text and image have independent, stable columns. */}
+      <div className="grid grid-cols-1 lg:grid-cols-[46%_54%] bg-background">
+        <div className="flex items-center px-6 sm:px-10 md:px-16 lg:pl-[max(5rem,calc((100vw-80rem)/2+3rem))] lg:pr-10 py-14 sm:py-20 lg:py-24">
+          <FadeIn className="relative z-10 w-full">
+            <div className="max-w-lg">
             <p className="font-body text-xs tracking-[0.3em] uppercase text-accent font-semibold mb-4">
               {t("about.person.kicker", "A True Amsterdammer")}
             </p>
@@ -154,53 +115,30 @@ const AboutEditorial = () => {
               html={t("about.person.body", "")}
               fallback={PERSON_FALLBACK}
             />
-          </div>
-        </FadeIn>
-
+            </div>
+          </FadeIn>
+        </div>
+        <div className="relative order-first lg:order-none aspect-[4/3] sm:aspect-[16/10] lg:aspect-auto lg:min-h-[42rem] overflow-hidden">
+          <img
+            src={dennisPersonBike}
+            alt="Dennis Gerrits sitting on his bicycle on an Amsterdam bridge"
+            className="absolute inset-0 h-full w-full object-cover"
+            style={{
+              objectPosition: `${adjustments.person.x}% ${adjustments.person.y}%`,
+              transform: `scale(${adjustments.person.zoom / 100})`,
+              transformOrigin: `${adjustments.person.x}% ${adjustments.person.y}%`,
+            }}
+            loading="lazy"
+          />
+          <div className="hidden lg:block absolute inset-y-0 left-0 w-28 bg-gradient-to-r from-background to-transparent" aria-hidden />
+        </div>
       </div>
 
-      {/* Right: The Guide */}
-      <div className="relative overflow-hidden px-6 sm:px-10 md:px-16 lg:px-20 py-14 sm:py-20 lg:py-28 flex flex-col lg:block lg:items-center lg:justify-center min-h-[70vh] bg-primary">
-        {/* Mobile/tablet: stacked responsive image */}
-        <div className="lg:hidden mb-8 -mx-6 sm:-mx-10 md:-mx-16">
-          <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] overflow-hidden">
-            <img
-              src={dennisGuideHands}
-              alt={t("about.guide.title", "The Guide")}
-              className="w-full h-full object-cover"
-              style={{ objectPosition: `${adjustments.guide.x}% ${adjustments.guide.y}%` }}
-              loading="lazy"
-            />
-          </div>
-        </div>
-
-        <div className="hidden lg:block absolute inset-0 overflow-hidden" aria-hidden>
-          <div
-            className="absolute left-0 right-0 top-1/2 -translate-y-1/2 aspect-[3/2] bg-no-repeat"
-            style={{
-              backgroundImage: `url(${dennisGuideHands})`,
-              backgroundSize: `${adjustments.guide.zoom}% auto`,
-              backgroundPosition: `${adjustments.guide.x}% ${adjustments.guide.y}%`,
-              WebkitMaskImage:
-                "linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.12) 18%, rgb(0 0 0 / 0.72) 34%, rgb(0 0 0) 48%)",
-              maskImage:
-                "linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.12) 18%, rgb(0 0 0 / 0.72) 34%, rgb(0 0 0) 48%)",
-            }}
-          />
-        </div>
-
-
-
-        <div
-          className="hidden lg:block absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to right, hsl(var(--primary)) 0%, hsl(var(--primary)) 42%, hsl(var(--primary) / 0.55) 58%, hsl(var(--primary) / 0.12) 78%, hsl(var(--primary) / 0) 100%)",
-          }}
-          aria-hidden
-        />
-        <FadeIn delay={0.15} className="relative z-10">
-          <div className="max-w-md mx-auto lg:mr-auto lg:ml-0">
+      {/* The Guide */}
+      <div className="grid grid-cols-1 lg:grid-cols-[46%_54%] bg-primary">
+        <div className="flex items-center px-6 sm:px-10 md:px-16 lg:pl-[max(5rem,calc((100vw-80rem)/2+3rem))] lg:pr-10 py-14 sm:py-20 lg:py-24">
+          <FadeIn delay={0.15} className="relative z-10 w-full">
+            <div className="max-w-lg">
             <p className="font-body text-xs tracking-[0.3em] uppercase text-accent font-semibold mb-4">
               {t("about.guide.kicker", "Helping you find your own way")}
             </p>
@@ -223,9 +161,23 @@ const AboutEditorial = () => {
               html={t("about.guide.body", "")}
               fallback={GUIDE_FALLBACK}
             />
-          </div>
-        </FadeIn>
-
+            </div>
+          </FadeIn>
+        </div>
+        <div className="relative order-first lg:order-none aspect-[4/3] sm:aspect-[16/10] lg:aspect-auto lg:min-h-[42rem] overflow-hidden">
+          <img
+            src={dennisGuideHands}
+            alt="Dennis Gerrits sharing a story while guiding in Amsterdam"
+            className="absolute inset-0 h-full w-full object-cover"
+            style={{
+              objectPosition: `${adjustments.guide.x}% ${adjustments.guide.y}%`,
+              transform: `scale(${adjustments.guide.zoom / 100})`,
+              transformOrigin: `${adjustments.guide.x}% ${adjustments.guide.y}%`,
+            }}
+            loading="lazy"
+          />
+          <div className="hidden lg:block absolute inset-y-0 left-0 w-28 bg-gradient-to-r from-primary to-transparent" aria-hidden />
+        </div>
       </div>
 
       {showEditor && (
@@ -275,8 +227,8 @@ const AboutEditorial = () => {
                       Horizontal
                       <input
                         type="range"
-                        min={-150}
-                        max={250}
+                        min={0}
+                        max={100}
                         value={adjustments[photo].x}
                         onChange={(e) => updatePhoto(photo, "x", Number(e.target.value))}
                         className="flex-1 accent-orange-500"
@@ -289,8 +241,8 @@ const AboutEditorial = () => {
                       Vertical
                       <input
                         type="range"
-                        min={-50}
-                        max={150}
+                        min={0}
+                        max={100}
                         value={adjustments[photo].y}
                         onChange={(e) => updatePhoto(photo, "y", Number(e.target.value))}
                         className="flex-1"
@@ -303,8 +255,8 @@ const AboutEditorial = () => {
                       Zoom
                       <input
                         type="range"
-                        min={50}
-                        max={200}
+                        min={100}
+                        max={140}
                         value={adjustments[photo].zoom}
                         onChange={(e) => updatePhoto(photo, "zoom", Number(e.target.value))}
                         className="flex-1"

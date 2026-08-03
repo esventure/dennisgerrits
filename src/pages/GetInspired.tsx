@@ -266,7 +266,9 @@ const GetInspired = () => {
                 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95] mb-8 relative inline-block"
                 style={{ color: "hsl(0 0% 98%)" }}
               >
+                <span className="sr-only">Amsterdam experience inspiration. </span>
                 What draws you in?
+
                 <svg
                   aria-hidden
                   className="absolute -bottom-2 right-0"

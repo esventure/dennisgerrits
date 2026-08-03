@@ -6,8 +6,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { useSiteContent } from "@/hooks/useSiteContent";
+import { lovableAssetUrl } from "@/lib/utils";
 import dennisContactAsset from "@/assets/dennis-contact.jpg.asset.json";
-const dennisCanalSmile = dennisContactAsset.url;
+const dennisCanalSmile = lovableAssetUrl(dennisContactAsset.url);
 
 const ContactSection = () => {
   const { toast } = useToast();

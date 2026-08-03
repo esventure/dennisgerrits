@@ -1,10 +1,11 @@
 import FadeIn from "./FadeIn";
+import { lovableAssetUrl } from "@/lib/utils";
 
 
 import dennisHeroAsset from "@/assets/dennis-hero.jpg.asset.json";
-const dennisArmsWide = dennisHeroAsset.url;
-const dennisCanalSmile = dennisHeroAsset.url;
-const dennisTalking = dennisHeroAsset.url;
+const dennisArmsWide = lovableAssetUrl(dennisHeroAsset.url);
+const dennisCanalSmile = lovableAssetUrl(dennisHeroAsset.url);
+const dennisTalking = lovableAssetUrl(dennisHeroAsset.url);
 
 /* ────────────────────────────────────────────────────────────
    Three hero variations. Each is a self-contained section

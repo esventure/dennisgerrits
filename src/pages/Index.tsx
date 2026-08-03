@@ -43,7 +43,7 @@ import podcastCover from "@/assets/podcast-cover.jpg";
 import podcastHosts from "@/assets/podcast-hosts.jpg";
 
 import dennisRadioTaboe from "@/assets/dennis-radio-taboe.jpg.asset.json";
-import PodcastPlayer from "@/components/PodcastPlayer";
+import PodcastPlayer, { type PodcastPlayerHandle } from "@/components/PodcastPlayer";
 
 /* Hand-drawn ring path for the timeline step circles — matches the
    sketchbook style used in DayMap. Slightly irregular closed loop. */

@@ -498,6 +498,27 @@ const Index = () => {
                     Listen on SoundCloud
                     <span aria-hidden>→</span>
                   </a>
+
+                  <div className="flex flex-wrap gap-2 pt-1">
+                    {[
+                      "Neighbourhood life",
+                      "Canals",
+                      "Local culture",
+                      "Living in Amsterdam",
+                    ].map((topic) => (
+                      <span
+                        key={topic}
+                        className="inline-block font-body text-xs px-3 py-1.5 rounded-sm border"
+                        style={{
+                          color: "hsl(var(--heritage-purple))",
+                          borderColor: "hsl(var(--heritage-taupe-soft))",
+                          background: "hsl(var(--heritage-taupe-tint))",
+                        }}
+                      >
+                        {topic}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </FadeIn>
 

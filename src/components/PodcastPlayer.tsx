@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, forwardRef, useImperativeHandle } from "react";
 import { Play, Pause } from "lucide-react";
 import podcastCover from "@/assets/podcast-cover.jpg";
 

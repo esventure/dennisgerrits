@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, forwardRef, useImperativeHandle } from "react";
 import { Play, Pause } from "lucide-react";
 import podcastCover from "@/assets/podcast-cover.jpg";
 
@@ -14,7 +14,14 @@ const formatTime = (s: number) => {
   return `${m}:${sec.toString().padStart(2, "0")}`;
 };
 
-const PodcastPlayer = ({ tone = "light" }: { tone?: "light" | "dark" }) => {
+export type PodcastPlayerHandle = {
+  play: () => void;
+  pause: () => void;
+  toggle: () => void;
+};
+
+const PodcastPlayer = forwardRef<PodcastPlayerHandle, { tone?: "light" | "dark" }>(
+  ({ tone = "light" }, ref) => {
   const dark = tone === "dark";
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
@@ -47,6 +54,18 @@ const PodcastPlayer = ({ tone = "light" }: { tone?: "light" | "dark" }) => {
       a.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
     }
   };
+
+  useImperativeHandle(ref, () => ({
+    play: () => {
+      const a = audioRef.current;
+      if (a) a.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+    },
+    pause: () => {
+      const a = audioRef.current;
+      if (a) { a.pause(); setPlaying(false); }
+    },
+    toggle,
+  }));
 
   const onSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
     const a = audioRef.current;
@@ -142,6 +161,9 @@ const PodcastPlayer = ({ tone = "light" }: { tone?: "light" | "dark" }) => {
       <audio ref={audioRef} src={EPISODE_AUDIO_URL} preload="metadata" />
     </div>
   );
-};
+});
+
+PodcastPlayer.displayName = "PodcastPlayer";
 
 export default PodcastPlayer;
+

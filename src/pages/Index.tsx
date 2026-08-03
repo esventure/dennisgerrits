@@ -92,10 +92,6 @@ const moments = [
   },
 ];
 
-/* Single source of truth for the Tripadvisor rating + review count.
-   Update these two values whenever the Tripadvisor page changes. */
-const TA_RATING = "5.0";
-const TA_REVIEW_COUNT = 218;
 
 const reviews = [
 
@@ -962,6 +958,8 @@ const Index = () => {
             const TA_URL =
               "https://www.tripadvisor.com/Attraction_Review-g188590-d13431295-Reviews-Love_My_City_Tours-Amsterdam_North_Holland_Province.html";
             const TA_GREEN = "#00AA6C";
+            const taRating = t("tripadvisor.rating", "5.0");
+            const taReviewCount = parseInt(t("tripadvisor.review_count", "218"), 10) || 0;
 
             const TripAdvisorBubbles = ({ size = 14 }: { size?: number }) => (
               <span
@@ -1042,7 +1040,7 @@ const Index = () => {
                         <div className="flex items-center gap-3 mt-1">
                           <TripAdvisorBubbles />
                           <span className="font-body text-sm text-foreground">
-                            <strong>{TA_RATING}</strong> · {TA_REVIEW_COUNT} reviews
+                            <strong>{taRating}</strong> · {taReviewCount} reviews
                           </span>
                         </div>
                       </div>
@@ -1167,7 +1165,7 @@ const Index = () => {
                         borderColor: `${TA_GREEN}66`,
                       }}
                     >
-                      Read all {TA_REVIEW_COUNT} reviews on Tripadvisor →
+                      Read all {taReviewCount} reviews on Tripadvisor →
                     </a>
                   </div>
                 </FadeIn>

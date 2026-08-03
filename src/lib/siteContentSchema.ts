@@ -149,4 +149,25 @@ export const CONTENT_SCHEMA: ContentSection[] = [
       },
     ],
   },
+  {
+    id: "trust",
+    title: "Trust Signals",
+    description: "Tripadvisor rating and review count shown in the reviews section.",
+    fields: [
+      {
+        key: "tripadvisor.rating",
+        label: "Tripadvisor rating",
+        type: "short",
+        fallback: "5.0",
+        hint: "Example: 5.0",
+      },
+      {
+        key: "tripadvisor.review_count",
+        label: "Tripadvisor review count",
+        type: "short",
+        fallback: "218",
+        hint: "A whole number, e.g. 218",
+      },
+    ],
+  },
 ];

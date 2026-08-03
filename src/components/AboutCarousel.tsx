@@ -24,7 +24,14 @@ const dennisGuideHands = lovableAssetUrl(dennisGuideAsset.url);
 
 
 /* ── Photo adjustment helpers ── */
-type PhotoSetting = { x: number; y: number; zoom: number; rotate: number; ratio: number };
+type PhotoSetting = {
+  x: number;
+  y: number;
+  zoom: number;
+  rotate: number;
+  ratio: number;
+  ratioMobile: number;
+};
 type PhotoAdjustments = {
   person: PhotoSetting;
   guide: PhotoSetting;
@@ -38,12 +45,12 @@ const ASPECT_PRESETS = [
 ] as const;
 
 const DEFAULT_ADJUSTMENTS: PhotoAdjustments = {
-  person: { x: 50, y: 55, zoom: 100, rotate: 0, ratio: 16 / 9 },
-  guide: { x: 72, y: 48, zoom: 100, rotate: 0, ratio: 16 / 9 },
+  person: { x: 50, y: 55, zoom: 100, rotate: 0, ratio: 16 / 9, ratioMobile: 4 / 5 },
+  guide: { x: 72, y: 48, zoom: 100, rotate: 0, ratio: 16 / 9, ratioMobile: 4 / 5 },
 };
 
 
-const STORAGE_KEY = "about-photo-adjustments-v4";
+const STORAGE_KEY = "about-photo-adjustments-v5";
 
 const loadAdjustments = (): PhotoAdjustments => {
   try {
@@ -478,6 +485,20 @@ const EditablePhoto = ({
   const nodeRef = useRef<HTMLDivElement | null>(null);
   const dragRef = useRef<{ x: number; y: number; w: number; h: number } | null>(null);
 
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== "undefined" ? window.matchMedia("(max-width: 768px)").matches : false
+  );
+
+  useEffect(() => {
+    const mql = window.matchMedia("(max-width: 768px)");
+    const update = () => setIsMobile(mql.matches);
+    update();
+    mql.addEventListener("change", update);
+    return () => mql.removeEventListener("change", update);
+  }, []);
+
+  const activeRatio = isMobile ? setting.ratioMobile : setting.ratio;
+
   useEffect(() => {
     const el = nodeRef.current;
     if (!el) return;
@@ -528,7 +549,7 @@ const EditablePhoto = ({
       onPointerCancel={endDrag}
       className="relative w-full overflow-hidden"
       style={{
-        aspectRatio: String(setting.ratio),
+        aspectRatio: String(activeRatio),
         cursor: editable ? "grab" : undefined,
         touchAction: editable ? "none" : undefined,
       }}
@@ -709,27 +730,58 @@ const AboutProfileCards = () => {
                   <p className="font-body text-xs uppercase tracking-wider text-secondary mb-2">
                     {photo === "person" ? "The Person" : "The Guide"}
                   </p>
-                  <div className="flex flex-wrap gap-1 mb-2">
-                    {ASPECT_PRESETS.map((preset) => {
-                      const active = Math.abs(adjustments[photo].ratio - preset.value) < 0.001;
-                      return (
-                        <button
-                          key={preset.label}
-                          type="button"
-                          onClick={() => updatePhoto(photo, { ratio: preset.value })}
-                          className="rounded px-2 py-1 text-[10px] font-body font-medium border transition-colors"
-                          style={{
-                            borderColor: "hsl(var(--heritage-taupe))",
-                            backgroundColor: active
-                              ? "hsl(var(--heritage-orange))"
-                              : "transparent",
-                            color: active ? "hsl(var(--primary))" : "hsl(var(--foreground))",
-                          }}
-                        >
-                          {preset.label}
-                        </button>
-                      );
-                    })}
+                  <div className="space-y-1 mb-2">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] font-body text-foreground/60 w-10">Desktop</span>
+                      <div className="flex flex-wrap gap-1">
+                        {ASPECT_PRESETS.map((preset) => {
+                          const active = Math.abs(adjustments[photo].ratio - preset.value) < 0.001;
+                          return (
+                            <button
+                              key={`d-${preset.label}`}
+                              type="button"
+                              onClick={() => updatePhoto(photo, { ratio: preset.value })}
+                              className="rounded px-2 py-1 text-[10px] font-body font-medium border transition-colors"
+                              style={{
+                                borderColor: "hsl(var(--heritage-taupe))",
+                                backgroundColor: active
+                                  ? "hsl(var(--heritage-orange))"
+                                  : "transparent",
+                                color: active ? "hsl(var(--primary))" : "hsl(var(--foreground))",
+                              }}
+                            >
+                              {preset.label}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] font-body text-foreground/60 w-10">Mobile</span>
+                      <div className="flex flex-wrap gap-1">
+                        {ASPECT_PRESETS.map((preset) => {
+                          const active =
+                            Math.abs(adjustments[photo].ratioMobile - preset.value) < 0.001;
+                          return (
+                            <button
+                              key={`m-${preset.label}`}
+                              type="button"
+                              onClick={() => updatePhoto(photo, { ratioMobile: preset.value })}
+                              className="rounded px-2 py-1 text-[10px] font-body font-medium border transition-colors"
+                              style={{
+                                borderColor: "hsl(var(--heritage-taupe))",
+                                backgroundColor: active
+                                  ? "hsl(var(--heritage-orange))"
+                                  : "transparent",
+                                color: active ? "hsl(var(--primary))" : "hsl(var(--foreground))",
+                              }}
+                            >
+                              {preset.label}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
                   </div>
                   <div className="space-y-2">
                     <label className="flex items-center gap-2 text-xs font-body text-foreground/80">

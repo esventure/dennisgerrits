@@ -692,6 +692,7 @@ const slides = [
   { key: "editorial", label: "Editorial Split", render: () => <AboutEditorial /> },
   { key: "letter", label: "Magazine Letter", render: () => <AboutLetter /> },
   { key: "figures", label: "Drawn Figures", render: () => <AboutFigures /> },
+  { key: "profile-cards", label: "Profile Cards", render: () => <AboutProfileCards /> },
 ];
 
 const AboutCarousel = () => {
@@ -721,7 +722,7 @@ const AboutCarousel = () => {
 
   return (
     <section id="about" className="relative scroll-mt-20">
-      <AboutEditorial />
+      <AboutProfileCards />
     </section>
   );
 };

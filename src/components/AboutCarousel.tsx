@@ -485,6 +485,20 @@ const EditablePhoto = ({
   const nodeRef = useRef<HTMLDivElement | null>(null);
   const dragRef = useRef<{ x: number; y: number; w: number; h: number } | null>(null);
 
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== "undefined" ? window.matchMedia("(max-width: 768px)").matches : false
+  );
+
+  useEffect(() => {
+    const mql = window.matchMedia("(max-width: 768px)");
+    const update = () => setIsMobile(mql.matches);
+    update();
+    mql.addEventListener("change", update);
+    return () => mql.removeEventListener("change", update);
+  }, []);
+
+  const activeRatio = isMobile ? setting.ratioMobile : setting.ratio;
+
   useEffect(() => {
     const el = nodeRef.current;
     if (!el) return;
@@ -535,7 +549,7 @@ const EditablePhoto = ({
       onPointerCancel={endDrag}
       className="relative w-full overflow-hidden"
       style={{
-        aspectRatio: String(setting.ratio),
+        aspectRatio: String(activeRatio),
         cursor: editable ? "grab" : undefined,
         touchAction: editable ? "none" : undefined,
       }}

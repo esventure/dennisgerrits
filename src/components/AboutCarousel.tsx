@@ -271,8 +271,8 @@ const AboutEditorial = () => {
                       Horizontal
                       <input
                         type="range"
-                        min={-100}
-                        max={200}
+                        min={-150}
+                        max={250}
                         value={adjustments[photo].x}
                         onChange={(e) => updatePhoto(photo, "x", Number(e.target.value))}
                         className="flex-1 accent-orange-500"

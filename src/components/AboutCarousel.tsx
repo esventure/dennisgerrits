@@ -1190,7 +1190,7 @@ const AboutCarousel = () => {
 
   return (
     <section id="about" className="relative scroll-mt-20">
-      <AboutProfileCards />
+      <AboutFourFrames />
     </section>
   );
 };

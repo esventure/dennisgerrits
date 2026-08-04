@@ -231,10 +231,6 @@ const Index = () => {
       {/* ── 1. Hero (3 swipeable variations for Dennis to choose from) ── */}
       <HeroCarousel />
 
-      {/* Section divider */}
-      <div className="container mx-auto px-6 lg:px-12 py-10 md:py-16">
-        <div className="h-px bg-border/70 max-w-5xl mx-auto" />
-      </div>
 
       {/* ── 2. About Me — 2 swipeable variations for Dennis to choose from ── */}
       <AboutCarousel />

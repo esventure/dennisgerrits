@@ -864,11 +864,303 @@ const AboutProfileCards = () => {
   );
 };
 
+/* ── Variation E — Four frames: text / photo / text / photo ── */
+const AboutFourFrames = () => {
+  const t = useSiteContent();
+  const [adjustments, setAdjustments] = useState<PhotoAdjustments>(loadAdjustments);
+  const [editing, setEditing] = useState(false);
+
+  const updatePhoto = useCallback(
+    (photo: keyof PhotoAdjustments, patch: Partial<PhotoSetting>) => {
+      setAdjustments((prev) => {
+        const next = { ...prev, [photo]: { ...prev[photo], ...patch } };
+        saveAdjustments(next);
+        return next;
+      });
+    },
+    []
+  );
+
+  const resetPhotos = useCallback(() => {
+    setAdjustments(DEFAULT_ADJUSTMENTS);
+    saveAdjustments(DEFAULT_ADJUSTMENTS);
+  }, []);
+
+  const showEditor =
+    import.meta.env.DEV ||
+    new URLSearchParams(window.location.search).has("edit-photos") ||
+    localStorage.getItem("about-photo-editor-enabled") === "true";
+
+  return (
+    <div>
+      <div className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-2">
+        {/* Frame 1: The Person text */}
+        <div className="bg-background flex items-center px-6 sm:px-10 md:px-12 py-10 sm:py-14 lg:py-18">
+          <FadeIn className="w-full">
+            <div className="max-w-md mx-auto">
+              <p className="font-body text-xs tracking-[0.3em] uppercase text-accent font-semibold mb-4">
+                {t("about.person.kicker", "A True Amsterdammer")}
+              </p>
+              <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-foreground leading-[0.95] mb-6">
+                {t("about.person.title", "The Person")}
+              </h2>
+
+              {/* hand-drawn orange underline */}
+              <svg aria-hidden width="96" height="10" viewBox="0 0 96 10" className="mb-6">
+                <path
+                  d="M 2 6 Q 16 1, 32 5 T 64 5 T 94 4"
+                  fill="none"
+                  stroke="hsl(var(--heritage-orange))"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+              </svg>
+              <RichText
+                className="font-body text-base md:text-lg text-foreground/85 leading-relaxed"
+                html={t("about.person.body", "")}
+                fallback={PERSON_FALLBACK}
+              />
+            </div>
+          </FadeIn>
+        </div>
+
+        {/* Frame 2: The Person photo */}
+        <div className="bg-background h-80 md:h-auto min-h-[20rem]">
+          <EditablePhoto
+            src={dennisPersonBike}
+            alt="Dennis Gerrits sitting on his bicycle on an Amsterdam bridge"
+            setting={adjustments.person}
+            editable={showEditor && editing}
+            onChange={(patch) => updatePhoto("person", patch)}
+            fillContainer
+          />
+        </div>
+
+        {/* Frame 3: The Guide text */}
+        <div className="bg-primary flex items-center px-6 sm:px-10 md:px-12 py-10 sm:py-14 lg:py-18">
+          <FadeIn delay={0.15} className="w-full">
+            <div className="max-w-md mx-auto">
+              <p className="font-body text-xs tracking-[0.3em] uppercase text-accent font-semibold mb-4">
+                {t("about.guide.kicker", "Helping you find your own way")}
+              </p>
+              <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary-foreground leading-[0.95] mb-6">
+                {t("about.guide.title", "The Guide")}
+              </h2>
+
+              {/* hand-drawn orange underline */}
+              <svg aria-hidden width="96" height="10" viewBox="0 0 96 10" className="mb-6">
+                <path
+                  d="M 2 6 Q 16 1, 32 5 T 64 5 T 94 4"
+                  fill="none"
+                  stroke="hsl(var(--heritage-orange))"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+              </svg>
+              <RichText
+                className="font-body text-base md:text-lg text-primary-foreground/90 leading-relaxed"
+                html={t("about.guide.body", "")}
+                fallback={GUIDE_FALLBACK}
+              />
+            </div>
+          </FadeIn>
+        </div>
+
+        {/* Frame 4: The Guide photo */}
+        <div className="bg-primary h-80 md:h-auto min-h-[20rem]">
+          <EditablePhoto
+            src={dennisGuideHands}
+            alt="Dennis Gerrits sharing a story while guiding in Amsterdam"
+            setting={adjustments.guide}
+            editable={showEditor && editing}
+            onChange={(patch) => updatePhoto("guide", patch)}
+            fillContainer
+          />
+        </div>
+      </div>
+
+      {showEditor && (
+        <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-2">
+          <button
+            type="button"
+            onClick={() => setEditing((v) => !v)}
+            className="rounded-full px-4 py-2 text-sm font-body font-medium shadow-lg transition-transform hover:scale-105"
+            style={{
+              backgroundColor: "hsl(var(--heritage-orange))",
+              color: "hsl(var(--primary))",
+            }}
+            aria-expanded={editing}
+          >
+            {editing ? "Close photo editor" : "Edit photos"}
+          </button>
+
+          {editing && (
+            <div
+              className="w-72 sm:w-80 max-h-[75vh] overflow-y-auto rounded-lg p-4 shadow-xl"
+              style={{
+                backgroundColor: "hsl(var(--background))",
+                border: "1px solid hsl(var(--heritage-taupe))",
+              }}
+            >
+              <div className="flex items-center justify-between mb-1">
+                <span className="font-heading text-lg text-primary">Photo editor</span>
+                <button
+                  type="button"
+                  onClick={resetPhotos}
+                  className="flex items-center gap-1 text-xs font-body font-medium text-secondary hover:text-primary"
+                  title="Reset to defaults"
+                >
+                  <RotateCcw className="w-3 h-3" />
+                  Reset
+                </button>
+              </div>
+              <p className="mb-3 text-[10px] font-body text-foreground/50 leading-snug">
+                Drag a photo to move it, scroll or pinch on it to zoom. Sliders update live.
+              </p>
+
+              {(["person", "guide"] as const).map((photo) => (
+                <div key={photo} className="mb-4 last:mb-0">
+                  <p className="font-body text-xs uppercase tracking-wider text-secondary mb-2">
+                    {photo === "person" ? "The Person" : "The Guide"}
+                  </p>
+                  <div className="space-y-1 mb-2">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] font-body text-foreground/60 w-10">Desktop</span>
+                      <div className="flex flex-wrap gap-1">
+                        {ASPECT_PRESETS.map((preset) => {
+                          const active = Math.abs(adjustments[photo].ratio - preset.value) < 0.001;
+                          return (
+                            <button
+                              key={`d-${preset.label}`}
+                              type="button"
+                              onClick={() => updatePhoto(photo, { ratio: preset.value })}
+                              className="rounded px-2 py-1 text-[10px] font-body font-medium border transition-colors"
+                              style={{
+                                borderColor: "hsl(var(--heritage-taupe))",
+                                backgroundColor: active
+                                  ? "hsl(var(--heritage-orange))"
+                                  : "transparent",
+                                color: active ? "hsl(var(--primary))" : "hsl(var(--foreground))",
+                              }}
+                            >
+                              {preset.label}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] font-body text-foreground/60 w-10">Mobile</span>
+                      <div className="flex flex-wrap gap-1">
+                        {ASPECT_PRESETS.map((preset) => {
+                          const active =
+                            Math.abs(adjustments[photo].ratioMobile - preset.value) < 0.001;
+                          return (
+                            <button
+                              key={`m-${preset.label}`}
+                              type="button"
+                              onClick={() => updatePhoto(photo, { ratioMobile: preset.value })}
+                              className="rounded px-2 py-1 text-[10px] font-body font-medium border transition-colors"
+                              style={{
+                                borderColor: "hsl(var(--heritage-taupe))",
+                                backgroundColor: active
+                                  ? "hsl(var(--heritage-orange))"
+                                  : "transparent",
+                                color: active ? "hsl(var(--primary))" : "hsl(var(--foreground))",
+                              }}
+                            >
+                              {preset.label}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <label className="flex items-center gap-2 text-xs font-body text-foreground/80">
+                      <Move className="w-3 h-3 shrink-0" />
+                      Horizontal
+                      <input
+                        type="range"
+                        min={-50}
+                        max={150}
+                        value={adjustments[photo].x}
+                        onChange={(e) => updatePhoto(photo, { x: Number(e.target.value) })}
+                        className="flex-1"
+                        style={{ accentColor: "hsl(var(--heritage-orange))" }}
+                      />
+                      <span className="w-8 text-right tabular-nums">{adjustments[photo].x}</span>
+                    </label>
+                    <label className="flex items-center gap-2 text-xs font-body text-foreground/80">
+                      <Move className="w-3 h-3 shrink-0" />
+                      Vertical
+                      <input
+                        type="range"
+                        min={-50}
+                        max={150}
+                        value={adjustments[photo].y}
+                        onChange={(e) => updatePhoto(photo, { y: Number(e.target.value) })}
+                        className="flex-1"
+                        style={{ accentColor: "hsl(var(--heritage-orange))" }}
+                      />
+                      <span className="w-8 text-right tabular-nums">{adjustments[photo].y}</span>
+                    </label>
+                    <label className="flex items-center gap-2 text-xs font-body text-foreground/80">
+                      <ZoomIn className="w-3 h-3 shrink-0" />
+                      Zoom
+                      <input
+                        type="range"
+                        min={100}
+                        max={300}
+                        value={adjustments[photo].zoom}
+                        onChange={(e) => updatePhoto(photo, { zoom: Number(e.target.value) })}
+                        className="flex-1"
+                        style={{ accentColor: "hsl(var(--heritage-orange))" }}
+                      />
+                      <span className="w-8 text-right tabular-nums">{adjustments[photo].zoom}</span>
+                    </label>
+                    <label className="flex items-center gap-2 text-xs font-body text-foreground/80">
+                      <RotateCcw className="w-3 h-3 shrink-0" />
+                      Rotate
+                      <input
+                        type="range"
+                        min={-15}
+                        max={15}
+                        step={0.5}
+                        value={adjustments[photo].rotate}
+                        onChange={(e) => updatePhoto(photo, { rotate: Number(e.target.value) })}
+                        className="flex-1"
+                        style={{ accentColor: "hsl(var(--heritage-orange))" }}
+                      />
+                      <span className="w-8 text-right tabular-nums">{adjustments[photo].rotate}</span>
+                    </label>
+                  </div>
+                </div>
+              ))}
+
+              <p className="mt-3 text-[10px] font-body text-foreground/50 leading-snug">
+                Adjustments are saved in your browser. Share the values below if you want them applied to the site.
+              </p>
+              <pre
+                className="mt-1 text-[10px] font-mono p-2 rounded overflow-x-auto"
+                style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}
+              >
+                {JSON.stringify(adjustments, null, 2)}
+              </pre>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+};
+
 const slides = [
   { key: "editorial", label: "Editorial Split", render: () => <AboutEditorial /> },
   { key: "letter", label: "Magazine Letter", render: () => <AboutLetter /> },
   { key: "figures", label: "Drawn Figures", render: () => <AboutFigures /> },
   { key: "profile-cards", label: "Profile Cards", render: () => <AboutProfileCards /> },
+  { key: "four-frames", label: "Four Frames", render: () => <AboutFourFrames /> },
 ];
 
 const AboutCarousel = () => {

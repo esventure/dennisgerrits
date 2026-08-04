@@ -893,20 +893,20 @@ const AboutFourFrames = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         {/* Frame 1: The Person text */}
-        <div className="bg-background flex items-center px-6 sm:px-10 md:px-12 py-10 sm:py-14 lg:py-18">
+        <div className="bg-background flex items-center px-6 sm:px-10 md:px-10 lg:px-8 py-10 sm:py-14 lg:py-12">
           <FadeIn className="w-full">
-            <div className="max-w-md mx-auto">
-              <p className="font-body text-xs tracking-[0.3em] uppercase text-accent font-semibold mb-4">
+            <div>
+              <p className="font-body text-[10px] lg:text-xs tracking-[0.25em] uppercase text-accent font-semibold mb-3">
                 {t("about.person.kicker", "A True Amsterdammer")}
               </p>
-              <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-foreground leading-[0.95] mb-6">
+              <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-5xl text-foreground leading-[0.95] mb-4">
                 {t("about.person.title", "The Person")}
               </h2>
 
               {/* hand-drawn orange underline */}
-              <svg aria-hidden width="96" height="10" viewBox="0 0 96 10" className="mb-6">
+              <svg aria-hidden width="72" height="8" viewBox="0 0 96 10" className="mb-4 lg:w-16">
                 <path
                   d="M 2 6 Q 16 1, 32 5 T 64 5 T 94 4"
                   fill="none"
@@ -916,7 +916,7 @@ const AboutFourFrames = () => {
                 />
               </svg>
               <RichText
-                className="font-body text-base md:text-lg text-foreground/85 leading-relaxed"
+                className="font-body text-base md:text-lg lg:text-base text-foreground/85 leading-relaxed"
                 html={t("about.person.body", "")}
                 fallback={PERSON_FALLBACK}
               />
@@ -925,7 +925,7 @@ const AboutFourFrames = () => {
         </div>
 
         {/* Frame 2: The Person photo */}
-        <div className="bg-background h-80 md:h-auto min-h-[20rem]">
+        <div className="bg-background h-80 md:h-auto md:min-h-[24rem] lg:min-h-0">
           <EditablePhoto
             src={dennisPersonBike}
             alt="Dennis Gerrits sitting on his bicycle on an Amsterdam bridge"
@@ -937,18 +937,18 @@ const AboutFourFrames = () => {
         </div>
 
         {/* Frame 3: The Guide text */}
-        <div className="bg-primary flex items-center px-6 sm:px-10 md:px-12 py-10 sm:py-14 lg:py-18">
+        <div className="bg-primary flex items-center px-6 sm:px-10 md:px-10 lg:px-8 py-10 sm:py-14 lg:py-12">
           <FadeIn delay={0.15} className="w-full">
-            <div className="max-w-md mx-auto">
-              <p className="font-body text-xs tracking-[0.3em] uppercase text-accent font-semibold mb-4">
+            <div>
+              <p className="font-body text-[10px] lg:text-xs tracking-[0.25em] uppercase text-accent font-semibold mb-3">
                 {t("about.guide.kicker", "Helping you find your own way")}
               </p>
-              <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary-foreground leading-[0.95] mb-6">
+              <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-5xl text-primary-foreground leading-[0.95] mb-4">
                 {t("about.guide.title", "The Guide")}
               </h2>
 
               {/* hand-drawn orange underline */}
-              <svg aria-hidden width="96" height="10" viewBox="0 0 96 10" className="mb-6">
+              <svg aria-hidden width="72" height="8" viewBox="0 0 96 10" className="mb-4 lg:w-16">
                 <path
                   d="M 2 6 Q 16 1, 32 5 T 64 5 T 94 4"
                   fill="none"
@@ -958,7 +958,7 @@ const AboutFourFrames = () => {
                 />
               </svg>
               <RichText
-                className="font-body text-base md:text-lg text-primary-foreground/90 leading-relaxed"
+                className="font-body text-base md:text-lg lg:text-base text-primary-foreground/90 leading-relaxed"
                 html={t("about.guide.body", "")}
                 fallback={GUIDE_FALLBACK}
               />
@@ -967,7 +967,7 @@ const AboutFourFrames = () => {
         </div>
 
         {/* Frame 4: The Guide photo */}
-        <div className="bg-primary h-80 md:h-auto min-h-[20rem]">
+        <div className="bg-primary h-80 md:h-auto md:min-h-[24rem] lg:min-h-0">
           <EditablePhoto
             src={dennisGuideHands}
             alt="Dennis Gerrits sharing a story while guiding in Amsterdam"

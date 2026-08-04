@@ -232,7 +232,7 @@ const Index = () => {
       <HeroCarousel />
 
       {/* Section divider */}
-      <div className="container mx-auto px-6 lg:px-12">
+      <div className="container mx-auto px-6 lg:px-12 py-10 md:py-16">
         <div className="h-px bg-border/70 max-w-5xl mx-auto" />
       </div>
 

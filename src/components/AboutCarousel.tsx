@@ -469,12 +469,14 @@ const EditablePhoto = ({
   setting,
   editable,
   onChange,
+  fillContainer = false,
 }: {
   src: string;
   alt: string;
   setting: PhotoSetting;
   editable: boolean;
   onChange: (patch: Partial<PhotoSetting>) => void;
+  fillContainer?: boolean;
 }) => {
   const stateRef = useRef(setting);
   stateRef.current = setting;
@@ -547,9 +549,9 @@ const EditablePhoto = ({
       onPointerMove={handlePointerMove}
       onPointerUp={endDrag}
       onPointerCancel={endDrag}
-      className="relative w-full overflow-hidden"
+      className={`relative w-full overflow-hidden ${fillContainer ? "h-full" : ""}`}
       style={{
-        aspectRatio: String(activeRatio),
+        aspectRatio: fillContainer ? undefined : String(activeRatio),
         cursor: editable ? "grab" : undefined,
         touchAction: editable ? "none" : undefined,
       }}

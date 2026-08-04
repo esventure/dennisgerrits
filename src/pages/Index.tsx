@@ -232,9 +232,9 @@ const Index = () => {
       <HeroCarousel />
 
       {/* ── 2. About Me — 2 swipeable variations for Dennis to choose from ── */}
-      <div className="pt-16 md:pt-20 lg:pt-32">
+      <div className="pt-10 md:pt-14 lg:pt-20">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-3xl mx-auto text-center mb-12 lg:mb-16">
+          <div className="max-w-3xl mx-auto text-center mb-4 lg:mb-6">
             <FadeIn>
               <p className="font-body text-sm tracking-widest uppercase text-secondary">
                 About me
@@ -243,6 +243,7 @@ const Index = () => {
           </div>
         </div>
       </div>
+
       <AboutCarousel />
 
 

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight, Move, ZoomIn, RotateCcw } from "lucide-react";
 import FadeIn from "./FadeIn";
@@ -17,25 +17,40 @@ const PERSON_FALLBACK =
 const GUIDE_FALLBACK =
   "For me, discovering places should feel personal, relaxed and natural. More like spending time with a local friend.\n\nI always listen first. Every person experiences a place differently, which is why I take the time to understand who you are and what inspires you.\n\nI carefully shape each day around you, creating experiences that feel meaningful. More than anything, I’m simply somebody who walks beside you during your trip.";
 
-import dennisPersonAsset from "@/assets/dennis-person.jpg.asset.json";
-import dennisGuideAsset from "@/assets/dennis-guide-new.jpg.asset.json";
+import dennisPersonAsset from "@/assets/dennis-person-original.jpg.asset.json";
+import dennisGuideAsset from "@/assets/dennis-guide-original.jpg.asset.json";
 const dennisPersonBike = lovableAssetUrl(dennisPersonAsset.url);
 const dennisGuideHands = lovableAssetUrl(dennisGuideAsset.url);
 
 
 /* ── Photo adjustment helpers ── */
-type PhotoAdjustments = {
-  person: { x: number; y: number; zoom: number };
-  guide: { x: number; y: number; zoom: number };
+type PhotoSetting = {
+  x: number;
+  y: number;
+  zoom: number;
+  rotate: number;
+  ratio: number;
+  ratioMobile: number;
 };
+type PhotoAdjustments = {
+  person: PhotoSetting;
+  guide: PhotoSetting;
+};
+
+const ASPECT_PRESETS = [
+  { label: "4:5", value: 4 / 5 },
+  { label: "1:1", value: 1 },
+  { label: "3:2", value: 3 / 2 },
+  { label: "16:9", value: 16 / 9 },
+] as const;
 
 const DEFAULT_ADJUSTMENTS: PhotoAdjustments = {
-  person: { x: -120, y: 91, zoom: 108 },
-  guide: { x: 210, y: 59, zoom: 98 },
+  person: { x: 50, y: 55, zoom: 100, rotate: 0, ratio: 16 / 9, ratioMobile: 4 / 5 },
+  guide: { x: 72, y: 48, zoom: 100, rotate: 0, ratio: 16 / 9, ratioMobile: 4 / 5 },
 };
 
 
-const STORAGE_KEY = "about-photo-adjustments";
+const STORAGE_KEY = "about-photo-adjustments-v5";
 
 const loadAdjustments = (): PhotoAdjustments => {
   try {
@@ -87,49 +102,25 @@ const AboutEditorial = () => {
     localStorage.getItem("about-photo-editor-enabled") === "true";
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[70vh]">
-      {/* Left: The Person */}
-      <div className="relative overflow-hidden px-6 sm:px-10 md:px-16 lg:px-20 py-14 sm:py-20 lg:py-28 flex flex-col lg:block lg:items-center lg:justify-center min-h-[70vh]">
-        {/* Mobile/tablet: stacked responsive image */}
-        <div className="lg:hidden mb-8 -mx-6 sm:-mx-10 md:-mx-16">
-          <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] overflow-hidden">
-            <img
-              src={dennisPersonBike}
-              alt={t("about.person.title", "The Person")}
-              className="w-full h-full object-cover"
-              style={{ objectPosition: `${adjustments.person.x}% ${adjustments.person.y}%` }}
-              loading="lazy"
-            />
-          </div>
+    <div>
+      {/* The Person: photo left, text right. Compact fixed section heights. */}
+      <div className="grid grid-cols-1 lg:grid-cols-[45%_55%] bg-background">
+        <div className="relative order-first h-[18rem] sm:h-[22rem] lg:h-[28rem] overflow-hidden">
+          <img
+            src={dennisPersonBike}
+            alt="Dennis Gerrits sitting on his bicycle on an Amsterdam bridge"
+            className="absolute inset-0 h-full w-full object-cover"
+            style={{
+              objectPosition: `${adjustments.person.x}% ${adjustments.person.y}%`,
+              transform: `scale(${adjustments.person.zoom / 100}) rotate(${adjustments.person.rotate}deg)`,
+              transformOrigin: `${adjustments.person.x}% ${adjustments.person.y}%`,
+            }}
+            loading="lazy"
+          />
         </div>
-
-        {/* Desktop: the image fills the complete panel. The editor's zoom
-            values are width-based, matching how the saved framing was made. */}
-        <div
-          className="hidden lg:block absolute inset-0 bg-no-repeat"
-          style={{
-            backgroundImage: `url(${dennisPersonBike})`,
-            backgroundSize: `${adjustments.person.zoom}% auto`,
-            backgroundPosition: `${adjustments.person.x}% ${adjustments.person.y}%`,
-            WebkitMaskImage:
-              "linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.35) 10%, rgb(0 0 0 / 0.85) 22%, rgb(0 0 0) 32%)",
-            maskImage:
-              "linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.35) 10%, rgb(0 0 0 / 0.85) 22%, rgb(0 0 0) 32%)",
-          }}
-          aria-hidden
-        />
-
-        <div
-          className="hidden lg:block absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to right, hsl(var(--background)) 0%, hsl(var(--background)) 28%, hsl(var(--background) / 0.35) 42%, hsl(var(--background) / 0.05) 55%, hsl(var(--background) / 0) 68%)",
-          }}
-          aria-hidden
-        />
-
-        <FadeIn className="relative z-10">
-          <div className="max-w-md mx-auto lg:mr-auto lg:ml-0">
+        <div className="flex items-center px-6 sm:px-10 md:px-16 lg:pl-10 lg:pr-[max(5rem,calc((100vw-80rem)/2+3rem))] py-10 sm:py-14 lg:py-18">
+          <FadeIn className="relative z-10 w-full">
+            <div className="max-w-lg">
             <p className="font-body text-xs tracking-[0.3em] uppercase text-accent font-semibold mb-4">
               {t("about.person.kicker", "A True Amsterdammer")}
             </p>
@@ -152,51 +143,16 @@ const AboutEditorial = () => {
               html={t("about.person.body", "")}
               fallback={PERSON_FALLBACK}
             />
-          </div>
-        </FadeIn>
-
+            </div>
+          </FadeIn>
+        </div>
       </div>
 
-      {/* Right: The Guide */}
-      <div className="relative overflow-hidden px-6 sm:px-10 md:px-16 lg:px-20 py-14 sm:py-20 lg:py-28 flex flex-col lg:block lg:items-center lg:justify-center min-h-[70vh] bg-primary">
-        {/* Mobile/tablet: stacked responsive image */}
-        <div className="lg:hidden mb-8 -mx-6 sm:-mx-10 md:-mx-16">
-          <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] overflow-hidden">
-            <img
-              src={dennisGuideHands}
-              alt={t("about.guide.title", "The Guide")}
-              className="w-full h-full object-cover"
-              style={{ objectPosition: `${adjustments.guide.x}% ${adjustments.guide.y}%` }}
-              loading="lazy"
-            />
-          </div>
-        </div>
-
-        <div
-          className="hidden lg:block absolute inset-0 bg-no-repeat"
-          style={{
-            backgroundImage: `url(${dennisGuideHands})`,
-            backgroundSize: `${adjustments.guide.zoom}% auto`,
-            backgroundPosition: `${adjustments.guide.x}% ${adjustments.guide.y}%`,
-            WebkitMaskImage:
-              "linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.12) 18%, rgb(0 0 0 / 0.72) 34%, rgb(0 0 0) 48%)",
-            maskImage:
-              "linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.12) 18%, rgb(0 0 0 / 0.72) 34%, rgb(0 0 0) 48%)",
-          }}
-          aria-hidden
-        />
-
-
-        <div
-          className="hidden lg:block absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to right, hsl(var(--primary)) 0%, hsl(var(--primary)) 42%, hsl(var(--primary) / 0.55) 58%, hsl(var(--primary) / 0.12) 78%, hsl(var(--primary) / 0) 100%)",
-          }}
-          aria-hidden
-        />
-        <FadeIn delay={0.15} className="relative z-10">
-          <div className="max-w-md mx-auto lg:mr-auto lg:ml-0">
+      {/* The Guide */}
+      <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] bg-primary">
+        <div className="flex items-center px-6 sm:px-10 md:px-16 lg:pl-[max(5rem,calc((100vw-80rem)/2+3rem))] lg:pr-10 py-10 sm:py-14 lg:py-18">
+          <FadeIn delay={0.15} className="relative z-10 w-full">
+            <div className="max-w-lg">
             <p className="font-body text-xs tracking-[0.3em] uppercase text-accent font-semibold mb-4">
               {t("about.guide.kicker", "Helping you find your own way")}
             </p>
@@ -219,9 +175,22 @@ const AboutEditorial = () => {
               html={t("about.guide.body", "")}
               fallback={GUIDE_FALLBACK}
             />
-          </div>
-        </FadeIn>
-
+            </div>
+          </FadeIn>
+        </div>
+        <div className="relative order-first lg:order-none h-[18rem] sm:h-[22rem] lg:h-[28rem] overflow-hidden">
+          <img
+            src={dennisGuideHands}
+            alt="Dennis Gerrits sharing a story while guiding in Amsterdam"
+            className="absolute inset-0 h-full w-full object-cover"
+            style={{
+              objectPosition: `${adjustments.guide.x}% ${adjustments.guide.y}%`,
+              transform: `scale(${adjustments.guide.zoom / 100}) rotate(${adjustments.guide.rotate}deg)`,
+              transformOrigin: `${adjustments.guide.x}% ${adjustments.guide.y}%`,
+            }}
+            loading="lazy"
+          />
+        </div>
       </div>
 
       {showEditor && (
@@ -271,8 +240,8 @@ const AboutEditorial = () => {
                       Horizontal
                       <input
                         type="range"
-                        min={-150}
-                        max={250}
+                        min={0}
+                        max={100}
                         value={adjustments[photo].x}
                         onChange={(e) => updatePhoto(photo, "x", Number(e.target.value))}
                         className="flex-1 accent-orange-500"
@@ -285,8 +254,8 @@ const AboutEditorial = () => {
                       Vertical
                       <input
                         type="range"
-                        min={-50}
-                        max={150}
+                        min={0}
+                        max={100}
                         value={adjustments[photo].y}
                         onChange={(e) => updatePhoto(photo, "y", Number(e.target.value))}
                         className="flex-1"
@@ -299,7 +268,7 @@ const AboutEditorial = () => {
                       Zoom
                       <input
                         type="range"
-                        min={50}
+                        min={100}
                         max={200}
                         value={adjustments[photo].zoom}
                         onChange={(e) => updatePhoto(photo, "zoom", Number(e.target.value))}
@@ -307,6 +276,21 @@ const AboutEditorial = () => {
                         style={{ accentColor: "hsl(var(--heritage-orange))" }}
                       />
                       <span className="w-8 text-right tabular-nums">{adjustments[photo].zoom}</span>
+                    </label>
+                    <label className="flex items-center gap-2 text-xs font-body text-foreground/80">
+                      <RotateCcw className="w-3 h-3 shrink-0" />
+                      Rotate
+                      <input
+                        type="range"
+                        min={-15}
+                        max={15}
+                        step={0.5}
+                        value={adjustments[photo].rotate}
+                        onChange={(e) => updatePhoto(photo, "rotate", Number(e.target.value))}
+                        className="flex-1"
+                        style={{ accentColor: "hsl(var(--heritage-orange))" }}
+                      />
+                      <span className="w-8 text-right tabular-nums">{adjustments[photo].rotate}</span>
                     </label>
                   </div>
                 </div>
@@ -478,10 +462,705 @@ const AboutFigures = () => {
   );
 };
 
+/* ── Editable photo canvas: drag to pan, wheel/pinch to zoom ── */
+const EditablePhoto = ({
+  src,
+  alt,
+  setting,
+  editable,
+  onChange,
+  fillContainer = false,
+}: {
+  src: string;
+  alt: string;
+  setting: PhotoSetting;
+  editable: boolean;
+  onChange: (patch: Partial<PhotoSetting>) => void;
+  fillContainer?: boolean;
+}) => {
+  const stateRef = useRef(setting);
+  stateRef.current = setting;
+  const onChangeRef = useRef(onChange);
+  onChangeRef.current = onChange;
+  const editableRef = useRef(editable);
+  editableRef.current = editable;
+  const nodeRef = useRef<HTMLDivElement | null>(null);
+  const dragRef = useRef<{ x: number; y: number; w: number; h: number } | null>(null);
+
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== "undefined" ? window.matchMedia("(max-width: 768px)").matches : false
+  );
+
+  useEffect(() => {
+    const mql = window.matchMedia("(max-width: 768px)");
+    const update = () => setIsMobile(mql.matches);
+    update();
+    mql.addEventListener("change", update);
+    return () => mql.removeEventListener("change", update);
+  }, []);
+
+  const activeRatio = isMobile ? setting.ratioMobile : setting.ratio;
+
+  useEffect(() => {
+    const el = nodeRef.current;
+    if (!el) return;
+    const onWheel = (e: WheelEvent) => {
+      if (!editableRef.current) return;
+      e.preventDefault();
+      const dy = e.deltaY * (e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? 100 : 1);
+      const next = Math.min(300, Math.max(100, stateRef.current.zoom * Math.exp(-dy * 0.0015)));
+      onChangeRef.current({ zoom: Math.round(next) });
+    };
+    el.addEventListener("wheel", onWheel, { passive: false });
+    return () => el.removeEventListener("wheel", onWheel);
+  }, []);
+
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!editable) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    dragRef.current = { x: e.clientX, y: e.clientY, w: rect.width, h: rect.height };
+    e.currentTarget.setPointerCapture(e.pointerId);
+  };
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    const d = dragRef.current;
+    if (!editable || !d) return;
+    const dx = e.clientX - d.x;
+    const dy = e.clientY - d.y;
+    dragRef.current = { ...d, x: e.clientX, y: e.clientY };
+    const s = stateRef.current;
+    onChangeRef.current({
+      x: Math.round(Math.min(150, Math.max(-50, s.x - (dx / d.w) * 100))),
+      y: Math.round(Math.min(150, Math.max(-50, s.y - (dy / d.h) * 100))),
+    });
+  };
+
+  const endDrag = (e: React.PointerEvent<HTMLDivElement>) => {
+    dragRef.current = null;
+    if (e.currentTarget.hasPointerCapture(e.pointerId)) {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    }
+  };
+
+  return (
+    <div
+      ref={nodeRef}
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={endDrag}
+      onPointerCancel={endDrag}
+      className={`relative w-full overflow-hidden ${fillContainer ? "h-full" : ""}`}
+      style={{
+        aspectRatio: fillContainer ? undefined : String(activeRatio),
+        cursor: editable ? "grab" : undefined,
+        touchAction: editable ? "none" : undefined,
+      }}
+    >
+      <img
+        src={src}
+        alt={alt}
+        className="absolute inset-0 h-full w-full object-cover select-none"
+        style={{
+          objectPosition: `${setting.x}% ${setting.y}%`,
+          transform: `scale(${setting.zoom / 100}) rotate(${setting.rotate}deg)`,
+          transformOrigin: `${setting.x}% ${setting.y}%`,
+        }}
+        draggable={false}
+        loading="lazy"
+      />
+      {editable && (
+        <div className="pointer-events-none absolute inset-0 ring-2 ring-inset ring-[hsl(var(--heritage-orange))]/70" />
+      )}
+    </div>
+  );
+};
+
+/* ── Variation D — Vertical profile cards, magazine contributor style ── */
+const AboutProfileCards = () => {
+  const t = useSiteContent();
+  const [adjustments, setAdjustments] = useState<PhotoAdjustments>(loadAdjustments);
+  const [editing, setEditing] = useState(false);
+
+  const updatePhoto = useCallback(
+    (photo: keyof PhotoAdjustments, patch: Partial<PhotoSetting>) => {
+      setAdjustments((prev) => {
+        const next = { ...prev, [photo]: { ...prev[photo], ...patch } };
+        saveAdjustments(next);
+        return next;
+      });
+    },
+    []
+  );
+
+  const resetPhotos = useCallback(() => {
+    setAdjustments(DEFAULT_ADJUSTMENTS);
+    saveAdjustments(DEFAULT_ADJUSTMENTS);
+  }, []);
+
+  const showEditor =
+    import.meta.env.DEV ||
+    new URLSearchParams(window.location.search).has("edit-photos") ||
+    localStorage.getItem("about-photo-editor-enabled") === "true";
+
+  return (
+    <div>
+      <div className="grid grid-cols-1 md:grid-cols-2">
+        {/* The Person — text first, photo below */}
+        <div className="bg-background flex flex-col">
+          <div className="flex-1 flex items-center px-6 sm:px-10 md:px-12 py-8 sm:py-10 lg:py-12">
+            <FadeIn className="w-full">
+              <div className="max-w-md mx-auto">
+                <p className="font-body text-xs tracking-[0.3em] uppercase text-accent font-semibold mb-4">
+                  {t("about.person.kicker", "A True Amsterdammer")}
+                </p>
+                <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-foreground leading-[0.95] mb-6">
+                  {t("about.person.title", "The Person")}
+                </h2>
+
+                {/* hand-drawn orange underline */}
+                <svg aria-hidden width="96" height="10" viewBox="0 0 96 10" className="mb-6">
+                  <path
+                    d="M 2 6 Q 16 1, 32 5 T 64 5 T 94 4"
+                    fill="none"
+                    stroke="hsl(var(--heritage-orange))"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                </svg>
+                <RichText
+                  className="font-body text-base md:text-lg text-foreground/85 leading-relaxed"
+                  html={t("about.person.body", "")}
+                  fallback={PERSON_FALLBACK}
+                />
+              </div>
+            </FadeIn>
+          </div>
+          <div className="px-6 pb-10 md:px-12 md:pb-14">
+            <EditablePhoto
+              src={dennisPersonBike}
+              alt="Dennis Gerrits sitting on his bicycle on an Amsterdam bridge"
+              setting={adjustments.person}
+              editable={showEditor && editing}
+              onChange={(patch) => updatePhoto("person", patch)}
+            />
+          </div>
+        </div>
+
+        {/* The Guide — text first, photo below */}
+        <div className="bg-primary flex flex-col">
+          <div className="flex-1 flex items-center px-6 sm:px-10 md:px-12 py-8 sm:py-10 lg:py-12">
+            <FadeIn delay={0.15} className="w-full">
+              <div className="max-w-md mx-auto">
+                <p className="font-body text-xs tracking-[0.3em] uppercase text-accent font-semibold mb-4">
+                  {t("about.guide.kicker", "Helping you find your own way")}
+                </p>
+                <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary-foreground leading-[0.95] mb-6">
+                  {t("about.guide.title", "The Guide")}
+                </h2>
+
+                {/* hand-drawn orange underline */}
+                <svg aria-hidden width="96" height="10" viewBox="0 0 96 10" className="mb-6">
+                  <path
+                    d="M 2 6 Q 16 1, 32 5 T 64 5 T 94 4"
+                    fill="none"
+                    stroke="hsl(var(--heritage-orange))"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                </svg>
+                <RichText
+                  className="font-body text-base md:text-lg text-primary-foreground/90 leading-relaxed"
+                  html={t("about.guide.body", "")}
+                  fallback={GUIDE_FALLBACK}
+                />
+              </div>
+            </FadeIn>
+          </div>
+          <div className="px-6 pb-10 md:px-12 md:pb-14">
+            <EditablePhoto
+              src={dennisGuideHands}
+              alt="Dennis Gerrits sharing a story while guiding in Amsterdam"
+              setting={adjustments.guide}
+              editable={showEditor && editing}
+              onChange={(patch) => updatePhoto("guide", patch)}
+            />
+          </div>
+        </div>
+      </div>
+
+      {showEditor && (
+        <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-2">
+          <button
+            type="button"
+            onClick={() => setEditing((v) => !v)}
+            className="rounded-full px-4 py-2 text-sm font-body font-medium shadow-lg transition-transform hover:scale-105"
+            style={{
+              backgroundColor: "hsl(var(--heritage-orange))",
+              color: "hsl(var(--primary))",
+            }}
+            aria-expanded={editing}
+          >
+            {editing ? "Close photo editor" : "Edit photos"}
+          </button>
+
+          {editing && (
+            <div
+              className="w-72 sm:w-80 max-h-[75vh] overflow-y-auto rounded-lg p-4 shadow-xl"
+              style={{
+                backgroundColor: "hsl(var(--background))",
+                border: "1px solid hsl(var(--heritage-taupe))",
+              }}
+            >
+              <div className="flex items-center justify-between mb-1">
+                <span className="font-heading text-lg text-primary">Photo editor</span>
+                <button
+                  type="button"
+                  onClick={resetPhotos}
+                  className="flex items-center gap-1 text-xs font-body font-medium text-secondary hover:text-primary"
+                  title="Reset to defaults"
+                >
+                  <RotateCcw className="w-3 h-3" />
+                  Reset
+                </button>
+              </div>
+              <p className="mb-3 text-[10px] font-body text-foreground/50 leading-snug">
+                Drag a photo to move it, scroll or pinch on it to zoom. Sliders update live.
+              </p>
+
+              {(["person", "guide"] as const).map((photo) => (
+                <div key={photo} className="mb-4 last:mb-0">
+                  <p className="font-body text-xs uppercase tracking-wider text-secondary mb-2">
+                    {photo === "person" ? "The Person" : "The Guide"}
+                  </p>
+                  <div className="space-y-1 mb-2">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] font-body text-foreground/60 w-10">Desktop</span>
+                      <div className="flex flex-wrap gap-1">
+                        {ASPECT_PRESETS.map((preset) => {
+                          const active = Math.abs(adjustments[photo].ratio - preset.value) < 0.001;
+                          return (
+                            <button
+                              key={`d-${preset.label}`}
+                              type="button"
+                              onClick={() => updatePhoto(photo, { ratio: preset.value })}
+                              className="rounded px-2 py-1 text-[10px] font-body font-medium border transition-colors"
+                              style={{
+                                borderColor: "hsl(var(--heritage-taupe))",
+                                backgroundColor: active
+                                  ? "hsl(var(--heritage-orange))"
+                                  : "transparent",
+                                color: active ? "hsl(var(--primary))" : "hsl(var(--foreground))",
+                              }}
+                            >
+                              {preset.label}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] font-body text-foreground/60 w-10">Mobile</span>
+                      <div className="flex flex-wrap gap-1">
+                        {ASPECT_PRESETS.map((preset) => {
+                          const active =
+                            Math.abs(adjustments[photo].ratioMobile - preset.value) < 0.001;
+                          return (
+                            <button
+                              key={`m-${preset.label}`}
+                              type="button"
+                              onClick={() => updatePhoto(photo, { ratioMobile: preset.value })}
+                              className="rounded px-2 py-1 text-[10px] font-body font-medium border transition-colors"
+                              style={{
+                                borderColor: "hsl(var(--heritage-taupe))",
+                                backgroundColor: active
+                                  ? "hsl(var(--heritage-orange))"
+                                  : "transparent",
+                                color: active ? "hsl(var(--primary))" : "hsl(var(--foreground))",
+                              }}
+                            >
+                              {preset.label}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <label className="flex items-center gap-2 text-xs font-body text-foreground/80">
+                      <Move className="w-3 h-3 shrink-0" />
+                      Horizontal
+                      <input
+                        type="range"
+                        min={-50}
+                        max={150}
+                        value={adjustments[photo].x}
+                        onChange={(e) => updatePhoto(photo, { x: Number(e.target.value) })}
+                        className="flex-1"
+                        style={{ accentColor: "hsl(var(--heritage-orange))" }}
+                      />
+                      <span className="w-8 text-right tabular-nums">{adjustments[photo].x}</span>
+                    </label>
+                    <label className="flex items-center gap-2 text-xs font-body text-foreground/80">
+                      <Move className="w-3 h-3 shrink-0" />
+                      Vertical
+                      <input
+                        type="range"
+                        min={-50}
+                        max={150}
+                        value={adjustments[photo].y}
+                        onChange={(e) => updatePhoto(photo, { y: Number(e.target.value) })}
+                        className="flex-1"
+                        style={{ accentColor: "hsl(var(--heritage-orange))" }}
+                      />
+                      <span className="w-8 text-right tabular-nums">{adjustments[photo].y}</span>
+                    </label>
+                    <label className="flex items-center gap-2 text-xs font-body text-foreground/80">
+                      <ZoomIn className="w-3 h-3 shrink-0" />
+                      Zoom
+                      <input
+                        type="range"
+                        min={100}
+                        max={300}
+                        value={adjustments[photo].zoom}
+                        onChange={(e) => updatePhoto(photo, { zoom: Number(e.target.value) })}
+                        className="flex-1"
+                        style={{ accentColor: "hsl(var(--heritage-orange))" }}
+                      />
+                      <span className="w-8 text-right tabular-nums">{adjustments[photo].zoom}</span>
+                    </label>
+                    <label className="flex items-center gap-2 text-xs font-body text-foreground/80">
+                      <RotateCcw className="w-3 h-3 shrink-0" />
+                      Rotate
+                      <input
+                        type="range"
+                        min={-15}
+                        max={15}
+                        step={0.5}
+                        value={adjustments[photo].rotate}
+                        onChange={(e) => updatePhoto(photo, { rotate: Number(e.target.value) })}
+                        className="flex-1"
+                        style={{ accentColor: "hsl(var(--heritage-orange))" }}
+                      />
+                      <span className="w-8 text-right tabular-nums">{adjustments[photo].rotate}</span>
+                    </label>
+                  </div>
+                </div>
+              ))}
+
+              <p className="mt-3 text-[10px] font-body text-foreground/50 leading-snug">
+                Adjustments are saved in your browser. Share the values below if you want them applied to the site.
+              </p>
+              <pre
+                className="mt-1 text-[10px] font-mono p-2 rounded overflow-x-auto"
+                style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}
+              >
+                {JSON.stringify(adjustments, null, 2)}
+              </pre>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+};
+
+/* ── Variation E — Four frames: text / photo / text / photo ── */
+const AboutFourFrames = () => {
+  const t = useSiteContent();
+  const [adjustments, setAdjustments] = useState<PhotoAdjustments>(loadAdjustments);
+  const [editing, setEditing] = useState(false);
+
+  const updatePhoto = useCallback(
+    (photo: keyof PhotoAdjustments, patch: Partial<PhotoSetting>) => {
+      setAdjustments((prev) => {
+        const next = { ...prev, [photo]: { ...prev[photo], ...patch } };
+        saveAdjustments(next);
+        return next;
+      });
+    },
+    []
+  );
+
+  const resetPhotos = useCallback(() => {
+    setAdjustments(DEFAULT_ADJUSTMENTS);
+    saveAdjustments(DEFAULT_ADJUSTMENTS);
+  }, []);
+
+  const showEditor =
+    import.meta.env.DEV ||
+    new URLSearchParams(window.location.search).has("edit-photos") ||
+    localStorage.getItem("about-photo-editor-enabled") === "true";
+
+  return (
+    <div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:min-h-[75vh]">
+        {/* Frame 1: The Person text */}
+        <div className="bg-background flex items-center px-6 sm:px-10 md:px-10 lg:px-7 py-10 sm:py-14 lg:py-12">
+          <FadeIn className="w-full">
+            <div>
+              <p className="font-body text-[10px] lg:text-xs tracking-[0.25em] uppercase text-accent font-semibold mb-3">
+                {t("about.person.kicker", "A True Amsterdammer")}
+              </p>
+              <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-[2.75rem] xl:text-5xl text-foreground leading-[0.95] mb-4">
+                {t("about.person.title", "The Person")}
+              </h2>
+
+              {/* hand-drawn orange underline */}
+              <svg aria-hidden width="80" height="9" viewBox="0 0 96 10" className="mb-4 lg:w-[4.5rem]">
+                <path
+                  d="M 2 6 Q 16 1, 32 5 T 64 5 T 94 4"
+                  fill="none"
+                  stroke="hsl(var(--heritage-orange))"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+              </svg>
+              <RichText
+                className="font-body text-base md:text-lg lg:text-base xl:text-lg text-foreground/85 leading-relaxed"
+                html={t("about.person.body", "")}
+                fallback={PERSON_FALLBACK}
+              />
+            </div>
+          </FadeIn>
+        </div>
+
+        {/* Frame 2: The Person photo */}
+        <div className="bg-background h-80 md:h-auto md:min-h-[24rem] lg:min-h-0">
+          <EditablePhoto
+            src={dennisPersonBike}
+            alt="Dennis Gerrits sitting on his bicycle on an Amsterdam bridge"
+            setting={adjustments.person}
+            editable={showEditor && editing}
+            onChange={(patch) => updatePhoto("person", patch)}
+            fillContainer
+          />
+        </div>
+
+        {/* Frame 3: The Guide text */}
+        <div className="bg-primary flex items-center px-6 sm:px-10 md:px-10 lg:px-7 py-10 sm:py-14 lg:py-12">
+          <FadeIn delay={0.15} className="w-full">
+            <div>
+              <p className="font-body text-[10px] lg:text-xs tracking-[0.25em] uppercase text-accent font-semibold mb-3">
+                {t("about.guide.kicker", "Helping you find your own way")}
+              </p>
+              <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-[2.75rem] xl:text-5xl text-primary-foreground leading-[0.95] mb-4">
+                {t("about.guide.title", "The Guide")}
+              </h2>
+
+              {/* hand-drawn orange underline */}
+              <svg aria-hidden width="80" height="9" viewBox="0 0 96 10" className="mb-4 lg:w-[4.5rem]">
+                <path
+                  d="M 2 6 Q 16 1, 32 5 T 64 5 T 94 4"
+                  fill="none"
+                  stroke="hsl(var(--heritage-orange))"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+              </svg>
+              <RichText
+                className="font-body text-base md:text-lg lg:text-base xl:text-lg text-primary-foreground/90 leading-relaxed"
+                html={t("about.guide.body", "")}
+                fallback={GUIDE_FALLBACK}
+              />
+            </div>
+          </FadeIn>
+        </div>
+
+        {/* Frame 4: The Guide photo */}
+        <div className="bg-primary h-80 md:h-auto md:min-h-[24rem] lg:min-h-0">
+          <EditablePhoto
+            src={dennisGuideHands}
+            alt="Dennis Gerrits sharing a story while guiding in Amsterdam"
+            setting={adjustments.guide}
+            editable={showEditor && editing}
+            onChange={(patch) => updatePhoto("guide", patch)}
+            fillContainer
+          />
+        </div>
+      </div>
+
+      {showEditor && (
+        <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-2">
+          <button
+            type="button"
+            onClick={() => setEditing((v) => !v)}
+            className="rounded-full px-4 py-2 text-sm font-body font-medium shadow-lg transition-transform hover:scale-105"
+            style={{
+              backgroundColor: "hsl(var(--heritage-orange))",
+              color: "hsl(var(--primary))",
+            }}
+            aria-expanded={editing}
+          >
+            {editing ? "Close photo editor" : "Edit photos"}
+          </button>
+
+          {editing && (
+            <div
+              className="w-72 sm:w-80 max-h-[75vh] overflow-y-auto rounded-lg p-4 shadow-xl"
+              style={{
+                backgroundColor: "hsl(var(--background))",
+                border: "1px solid hsl(var(--heritage-taupe))",
+              }}
+            >
+              <div className="flex items-center justify-between mb-1">
+                <span className="font-heading text-lg text-primary">Photo editor</span>
+                <button
+                  type="button"
+                  onClick={resetPhotos}
+                  className="flex items-center gap-1 text-xs font-body font-medium text-secondary hover:text-primary"
+                  title="Reset to defaults"
+                >
+                  <RotateCcw className="w-3 h-3" />
+                  Reset
+                </button>
+              </div>
+              <p className="mb-3 text-[10px] font-body text-foreground/50 leading-snug">
+                Drag a photo to move it, scroll or pinch on it to zoom. Sliders update live.
+              </p>
+
+              {(["person", "guide"] as const).map((photo) => (
+                <div key={photo} className="mb-4 last:mb-0">
+                  <p className="font-body text-xs uppercase tracking-wider text-secondary mb-2">
+                    {photo === "person" ? "The Person" : "The Guide"}
+                  </p>
+                  <div className="space-y-1 mb-2">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] font-body text-foreground/60 w-10">Desktop</span>
+                      <div className="flex flex-wrap gap-1">
+                        {ASPECT_PRESETS.map((preset) => {
+                          const active = Math.abs(adjustments[photo].ratio - preset.value) < 0.001;
+                          return (
+                            <button
+                              key={`d-${preset.label}`}
+                              type="button"
+                              onClick={() => updatePhoto(photo, { ratio: preset.value })}
+                              className="rounded px-2 py-1 text-[10px] font-body font-medium border transition-colors"
+                              style={{
+                                borderColor: "hsl(var(--heritage-taupe))",
+                                backgroundColor: active
+                                  ? "hsl(var(--heritage-orange))"
+                                  : "transparent",
+                                color: active ? "hsl(var(--primary))" : "hsl(var(--foreground))",
+                              }}
+                            >
+                              {preset.label}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] font-body text-foreground/60 w-10">Mobile</span>
+                      <div className="flex flex-wrap gap-1">
+                        {ASPECT_PRESETS.map((preset) => {
+                          const active =
+                            Math.abs(adjustments[photo].ratioMobile - preset.value) < 0.001;
+                          return (
+                            <button
+                              key={`m-${preset.label}`}
+                              type="button"
+                              onClick={() => updatePhoto(photo, { ratioMobile: preset.value })}
+                              className="rounded px-2 py-1 text-[10px] font-body font-medium border transition-colors"
+                              style={{
+                                borderColor: "hsl(var(--heritage-taupe))",
+                                backgroundColor: active
+                                  ? "hsl(var(--heritage-orange))"
+                                  : "transparent",
+                                color: active ? "hsl(var(--primary))" : "hsl(var(--foreground))",
+                              }}
+                            >
+                              {preset.label}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <label className="flex items-center gap-2 text-xs font-body text-foreground/80">
+                      <Move className="w-3 h-3 shrink-0" />
+                      Horizontal
+                      <input
+                        type="range"
+                        min={-50}
+                        max={150}
+                        value={adjustments[photo].x}
+                        onChange={(e) => updatePhoto(photo, { x: Number(e.target.value) })}
+                        className="flex-1"
+                        style={{ accentColor: "hsl(var(--heritage-orange))" }}
+                      />
+                      <span className="w-8 text-right tabular-nums">{adjustments[photo].x}</span>
+                    </label>
+                    <label className="flex items-center gap-2 text-xs font-body text-foreground/80">
+                      <Move className="w-3 h-3 shrink-0" />
+                      Vertical
+                      <input
+                        type="range"
+                        min={-50}
+                        max={150}
+                        value={adjustments[photo].y}
+                        onChange={(e) => updatePhoto(photo, { y: Number(e.target.value) })}
+                        className="flex-1"
+                        style={{ accentColor: "hsl(var(--heritage-orange))" }}
+                      />
+                      <span className="w-8 text-right tabular-nums">{adjustments[photo].y}</span>
+                    </label>
+                    <label className="flex items-center gap-2 text-xs font-body text-foreground/80">
+                      <ZoomIn className="w-3 h-3 shrink-0" />
+                      Zoom
+                      <input
+                        type="range"
+                        min={100}
+                        max={300}
+                        value={adjustments[photo].zoom}
+                        onChange={(e) => updatePhoto(photo, { zoom: Number(e.target.value) })}
+                        className="flex-1"
+                        style={{ accentColor: "hsl(var(--heritage-orange))" }}
+                      />
+                      <span className="w-8 text-right tabular-nums">{adjustments[photo].zoom}</span>
+                    </label>
+                    <label className="flex items-center gap-2 text-xs font-body text-foreground/80">
+                      <RotateCcw className="w-3 h-3 shrink-0" />
+                      Rotate
+                      <input
+                        type="range"
+                        min={-15}
+                        max={15}
+                        step={0.5}
+                        value={adjustments[photo].rotate}
+                        onChange={(e) => updatePhoto(photo, { rotate: Number(e.target.value) })}
+                        className="flex-1"
+                        style={{ accentColor: "hsl(var(--heritage-orange))" }}
+                      />
+                      <span className="w-8 text-right tabular-nums">{adjustments[photo].rotate}</span>
+                    </label>
+                  </div>
+                </div>
+              ))}
+
+              <p className="mt-3 text-[10px] font-body text-foreground/50 leading-snug">
+                Adjustments are saved in your browser. Share the values below if you want them applied to the site.
+              </p>
+              <pre
+                className="mt-1 text-[10px] font-mono p-2 rounded overflow-x-auto"
+                style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}
+              >
+                {JSON.stringify(adjustments, null, 2)}
+              </pre>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+};
+
 const slides = [
   { key: "editorial", label: "Editorial Split", render: () => <AboutEditorial /> },
   { key: "letter", label: "Magazine Letter", render: () => <AboutLetter /> },
   { key: "figures", label: "Drawn Figures", render: () => <AboutFigures /> },
+  { key: "profile-cards", label: "Profile Cards", render: () => <AboutProfileCards /> },
+  { key: "four-frames", label: "Four Frames", render: () => <AboutFourFrames /> },
 ];
 
 const AboutCarousel = () => {
@@ -511,7 +1190,7 @@ const AboutCarousel = () => {
 
   return (
     <section id="about" className="relative scroll-mt-20">
-      <AboutEditorial />
+      <AboutFourFrames />
     </section>
   );
 };

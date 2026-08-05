@@ -2,8 +2,16 @@
 // Static routes are listed below; notebook chapters are fetched from the database
 // with the same source/filters as the /notebook route loader.
 
-import { writeFileSync } from "fs";
+import { existsSync, readFileSync, writeFileSync } from "fs";
 import { resolve } from "path";
+
+// Load .env manually so the script works regardless of the runner.
+if (existsSync(resolve(".env"))) {
+  for (const line of readFileSync(resolve(".env"), "utf8").split("\n")) {
+    const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*)\s*$/);
+    if (m && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^["']|["']$/g, "");
+  }
+}
 
 const BASE_URL = "https://dennisgerrits.com";
 

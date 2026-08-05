@@ -1,5 +1,6 @@
 import { ReactNode, useEffect, useState } from "react";
 import { Navigate, useLocation } from "react-router-dom";
+import { Head } from "vite-react-ssg";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
@@ -48,6 +49,10 @@ const AdminRoute = ({ children }: { children: ReactNode }) => {
   if (state === "checking") {
     return (
       <main className="min-h-screen flex items-center justify-center">
+        <Head>
+          <title>Admin – Dennis Gerrits</title>
+          <meta name="robots" content="noindex, nofollow" />
+        </Head>
         <p className="font-body text-muted-foreground">Loading...</p>
       </main>
     );
@@ -57,7 +62,15 @@ const AdminRoute = ({ children }: { children: ReactNode }) => {
     return <Navigate to="/admin/login" replace state={{ from: location.pathname }} />;
   }
 
-  return <>{children}</>;
+  return (
+    <>
+      <Head>
+        <title>Admin – Dennis Gerrits</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
+      {children}
+    </>
+  );
 };
 
 export default AdminRoute;

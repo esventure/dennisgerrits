@@ -226,6 +226,8 @@ const GetInspired = () => {
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://dennisgerrits.com/get-inspired" />
+        <meta name="twitter:title" content="Amsterdam Experience Inspiration" />
+        <meta name="twitter:description" content="Themes and threads to shape your days in Amsterdam, from neighbourhood life and water to art, food culture and quiet corners." />
       </Head>
 
       {/* Interests — green header band */}

@@ -98,6 +98,8 @@ const NotebookStory = () => {
         <meta property="og:type" content="article" />
         <meta property="og:url" content={url} />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+        <meta name="twitter:title" content={`${story.title} – Notebook`} />
+        <meta name="twitter:description" content={story.intro.slice(0, 155)} />
       </Head>
 
       <article className="container mx-auto px-6 lg:px-12 py-16 md:py-24 max-w-3xl">

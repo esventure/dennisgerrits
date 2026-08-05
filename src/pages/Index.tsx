@@ -225,6 +225,8 @@ const Index = () => {
             ],
           })}
         </script>
+        <meta name="twitter:title" content="Dennis Gerrits – Personal Travel Companion in Amsterdam" />
+        <meta name="twitter:description" content="A personal, trust-based way of experiencing Amsterdam, guided by someone who feels like a friend." />
       </Head>
       <AmsterdamSkyline />
 

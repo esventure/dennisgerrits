@@ -67,6 +67,8 @@ const NotebookIndex = () => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://dennisgerrits.com/notebook" />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+        <meta name="twitter:title" content="Notebook – Dennis Gerrits" />
+        <meta name="twitter:description" content="Short reflections from Amsterdam by Dennis Gerrits." />
       </Head>
 
       {/* Header band */}

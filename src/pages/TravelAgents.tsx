@@ -194,6 +194,8 @@ const TravelAgents = () => {
             },
           })}
         </script>
+        <meta name="twitter:title" content="Amsterdam Local Partner for Travel Advisors" />
+        <meta name="twitter:description" content="On-the-ground care in Amsterdam for the clients of travel advisors and concierges." />
       </Head>
 
       {/* ────────────────── 1. Hero ────────────────── */}

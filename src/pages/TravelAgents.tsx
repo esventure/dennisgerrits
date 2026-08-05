@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import { Head } from "vite-react-ssg";
 import { useState, useEffect } from "react";
 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -164,7 +164,7 @@ const TravelAgents = () => {
 
   return (
     <main className="bg-background">
-      <Helmet>
+      <Head>
         <title>Amsterdam Local Partner for Travel Advisors</title>
         <meta
           name="description"
@@ -194,7 +194,9 @@ const TravelAgents = () => {
             },
           })}
         </script>
-      </Helmet>
+        <meta name="twitter:title" content="Amsterdam Local Partner for Travel Advisors" />
+        <meta name="twitter:description" content="On-the-ground care in Amsterdam for the clients of travel advisors and concierges." />
+      </Head>
 
       {/* ────────────────── 1. Hero ────────────────── */}
       <section className="relative py-20 lg:py-28 overflow-hidden">

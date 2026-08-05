@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Head } from "vite-react-ssg";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -57,6 +58,11 @@ const AdminLogin = () => {
 
   return (
     <main className="min-h-screen flex items-center justify-center px-6 py-24 bg-background">
+      <Head>
+        <title>Admin login – Dennis Gerrits</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
+
       <form
         onSubmit={onSubmit}
         className="w-full max-w-sm bg-card border rounded-lg p-8 shadow-sm space-y-5"

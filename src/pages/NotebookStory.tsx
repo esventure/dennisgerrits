@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import { Link, useLoaderData, useParams } from "react-router-dom";
+import { Head } from "vite-react-ssg";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import FadeIn from "@/components/FadeIn";
@@ -21,7 +21,12 @@ const NotebookStory = () => {
     window.scrollTo(0, 0);
   }, [slug]);
 
+  const loaderData = useLoaderData() as
+    | { story?: Story | null; stories?: Pick<Story, "slug" | "title" | "sort_order">[] }
+    | undefined;
+
   const { data: story, isLoading } = useQuery({
+    initialData: loaderData?.story,
     queryKey: ["notebook-story", slug],
     enabled: !!slug,
     queryFn: async () => {
@@ -36,6 +41,7 @@ const NotebookStory = () => {
   });
 
   const { data: all = [] } = useQuery({
+    initialData: loaderData?.stories,
     queryKey: ["notebook-stories"],
     queryFn: async () => {
       const { data, error } = await supabase
@@ -83,7 +89,7 @@ const NotebookStory = () => {
 
   return (
     <main className="relative">
-      <Helmet>
+      <Head>
         <title>{story.title} – Notebook | Dennis Gerrits</title>
         <meta name="description" content={story.intro.slice(0, 155)} />
         <link rel="canonical" href={url} />
@@ -92,7 +98,9 @@ const NotebookStory = () => {
         <meta property="og:type" content="article" />
         <meta property="og:url" content={url} />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
-      </Helmet>
+        <meta name="twitter:title" content={`${story.title} – Notebook`} />
+        <meta name="twitter:description" content={story.intro.slice(0, 155)} />
+      </Head>
 
       <article className="container mx-auto px-6 lg:px-12 py-16 md:py-24 max-w-3xl">
         <FadeIn>

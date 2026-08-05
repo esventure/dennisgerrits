@@ -50,6 +50,23 @@ const DEFAULT_ADJUSTMENTS: PhotoAdjustments = {
 };
 
 
+/* Editor flag is resolved after mount so static HTML stays browser-API free. */
+const usePhotoEditorFlag = () => {
+  const [enabled, setEnabled] = useState(false);
+  useEffect(() => {
+    try {
+      setEnabled(
+        import.meta.env.DEV ||
+          new URLSearchParams(window.location.search).has("edit-photos") ||
+          localStorage.getItem("about-photo-editor-enabled") === "true",
+      );
+    } catch {
+      setEnabled(false);
+    }
+  }, []);
+  return enabled;
+};
+
 const STORAGE_KEY = "about-photo-adjustments-v5";
 
 const loadAdjustments = (): PhotoAdjustments => {
@@ -96,10 +113,7 @@ const AboutEditorial = () => {
     saveAdjustments(DEFAULT_ADJUSTMENTS);
   }, []);
 
-  const showEditor =
-    import.meta.env.DEV ||
-    new URLSearchParams(window.location.search).has("edit-photos") ||
-    localStorage.getItem("about-photo-editor-enabled") === "true";
+  const showEditor = usePhotoEditorFlag();
 
   return (
     <div>
@@ -597,10 +611,7 @@ const AboutProfileCards = () => {
     saveAdjustments(DEFAULT_ADJUSTMENTS);
   }, []);
 
-  const showEditor =
-    import.meta.env.DEV ||
-    new URLSearchParams(window.location.search).has("edit-photos") ||
-    localStorage.getItem("about-photo-editor-enabled") === "true";
+  const showEditor = usePhotoEditorFlag();
 
   return (
     <div>
@@ -886,10 +897,7 @@ const AboutFourFrames = () => {
     saveAdjustments(DEFAULT_ADJUSTMENTS);
   }, []);
 
-  const showEditor =
-    import.meta.env.DEV ||
-    new URLSearchParams(window.location.search).has("edit-photos") ||
-    localStorage.getItem("about-photo-editor-enabled") === "true";
+  const showEditor = usePhotoEditorFlag();
 
   return (
     <div>

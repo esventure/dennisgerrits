@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import { Head } from "vite-react-ssg";
 import { useState, useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
@@ -212,7 +212,7 @@ const GetInspired = () => {
 
   return (
     <main>
-      <Helmet>
+      <Head>
         <title>Amsterdam Experience Inspiration | Dennis Gerrits</title>
         <meta
           name="description"
@@ -226,7 +226,7 @@ const GetInspired = () => {
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://dennisgerrits.com/get-inspired" />
-      </Helmet>
+      </Head>
 
       {/* Interests — green header band */}
       <section

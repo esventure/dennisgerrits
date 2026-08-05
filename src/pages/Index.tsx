@@ -1,5 +1,5 @@
 
-import { Helmet } from "react-helmet-async";
+import { Head } from "vite-react-ssg";
 import { useState, useRef } from "react";
 import { Play } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
@@ -184,7 +184,7 @@ const Index = () => {
 
   return (
     <main className="relative z-10">
-      <Helmet>
+      <Head>
         <title>Dennis Gerrits – Personal Travel Companion in Amsterdam</title>
         <meta
           name="description"
@@ -225,7 +225,7 @@ const Index = () => {
             ],
           })}
         </script>
-      </Helmet>
+      </Head>
       <AmsterdamSkyline />
 
       {/* ── 1. Hero (3 swipeable variations for Dennis to choose from) ── */}

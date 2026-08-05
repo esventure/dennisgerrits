@@ -13,6 +13,14 @@ export default defineConfig(({ mode }) => ({
     },
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
+  ssgOptions: {
+    script: "async",
+    formatting: "minify",
+    dirStyle: "nested",
+    // Admin screens are private and must never be prerendered or indexed.
+    includedRoutes: (paths: string[]) =>
+      paths.filter((p) => !p.startsWith("/admin") && !p.includes(":") && p !== "/*"),
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

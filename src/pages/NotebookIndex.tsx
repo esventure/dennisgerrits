@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import { Helmet } from "react-helmet-async";
+import { Head } from "vite-react-ssg";
+import { useLoaderData } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import FadeIn from "@/components/FadeIn";
@@ -18,7 +19,11 @@ const NotebookIndex = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  const loaderData = useLoaderData() as { stories?: Story[] } | undefined;
+  const initialStories = loaderData?.stories;
+
   const { data: stories = [], isLoading } = useQuery({
+    initialData: initialStories,
     queryKey: ["notebook-stories"],
     queryFn: async () => {
       const { data, error } = await supabase
@@ -47,7 +52,7 @@ const NotebookIndex = () => {
 
   return (
     <main className="relative">
-      <Helmet>
+      <Head>
         <title>Notebook – Dennis Gerrits | Stories from Amsterdam</title>
         <meta
           name="description"
@@ -62,7 +67,7 @@ const NotebookIndex = () => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://dennisgerrits.com/notebook" />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
-      </Helmet>
+      </Head>
 
       {/* Header band */}
       <section

@@ -23,8 +23,9 @@ async function fetchStorySlugs(env: Record<string, string>): Promise<string[]> {
 }
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode, isSsrBuild }) => {
+export default defineConfig(async ({ mode, isSsrBuild }) => {
   const env = loadEnv(mode, process.cwd(), "VITE_");
+  const storyPaths = (await fetchStorySlugs(env)).map((s) => `/notebook/${s}`);
   return {
   server: {
     host: "::",
@@ -39,15 +40,18 @@ export default defineConfig(({ mode, isSsrBuild }) => {
     formatting: "minify",
     dirStyle: "nested",
     // Admin screens are private and must never be prerendered or indexed.
-    includedRoutes: async (paths: string[]) => {
-      const slugs = await fetchStorySlugs(env);
-      const storyPaths = slugs.map((s) => `/notebook/${s}`);
-      const base = paths.filter(
-        (p) => !p.startsWith("/admin") && !p.includes(":") && p !== "/*",
-      );
-      return Array.from(new Set([...base, ...storyPaths]));
-    },
+    // Notebook stories come from the database, so new posts are picked up automatically.
+    includedRoutes: (paths: string[]) =>
+      Array.from(
+        new Set([
+          ...paths.filter(
+            (p) => !p.startsWith("/admin") && !p.includes(":") && p !== "/*",
+          ),
+          ...storyPaths,
+        ]),
+      ),
   },
+
 
   resolve: {
     alias: {

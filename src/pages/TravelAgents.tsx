@@ -296,7 +296,6 @@ const TravelAgents = () => {
                       01
                     </p>
                   </div>
-                  <img src={iconItinerary} alt="" aria-hidden className="w-14 h-14 object-contain" loading="lazy" />
                 </div>
                 <span
                   className="inline-block font-body text-xs tracking-widest uppercase px-3 py-1 mb-4 rounded-sm"
@@ -305,7 +304,7 @@ const TravelAgents = () => {
                   Full concierge – I plan and deliver
                 </span>
                 <h3 className="font-heading text-3xl lg:text-4xl text-primary mb-6 leading-tight">
-                  You hand it over. I take care of the rest.
+                  You hand it over, I take care of the rest.
                 </h3>
                 <div className="space-y-5 font-body text-foreground/90 leading-relaxed">
                   <p>

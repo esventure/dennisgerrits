@@ -325,11 +325,12 @@ const Index = () => {
           <div className="max-w-5xl mx-auto">
             {(() => {
               const rows = [
-                { icon: iconTickets, title: t("concierge.tickets.title", "Museum Reservations"), desc: t("concierge.tickets.desc", "Including tickets and timed entry reservations for museums and cultural experiences.") },
-                { icon: iconDining, title: t("concierge.dining.title", "Dining Reservations"), desc: t("concierge.dining.desc", "Thoughtfully selected places to eat, from local favorites to memorable dining experiences.") },
-                { icon: iconTransport, title: t("concierge.transport.title", "Transportation Coordination"), desc: t("concierge.transport.desc", "Help arranging transportation, including airport transfers and train tickets.") },
-                { icon: iconHotel, title: t("concierge.hotel.title", "Hotel & B&B Recommendations"), desc: t("concierge.hotel.desc", "Helping you find the place and neighborhood that fit your travel style best.") },
-                { icon: iconMessage, title: t("concierge.support.title", "Guidance & Support"), desc: t("concierge.support.desc", "Always available for questions, practical help and personal support throughout your stay.") },
+                { icon: iconTickets, title: t("concierge.tickets.title", "Museum Reservations"), desc: t("concierge.tickets.desc", "Helping arrange tickets and timed-entry reservations for museums and cultural experiences.") },
+                { icon: iconDining, title: t("concierge.dining.title", "Dining Reservations"), desc: t("concierge.dining.desc", "Thoughtfully selected restaurants, from local favorites to memorable dining experiences.") },
+                { icon: iconTransport, title: t("concierge.transport.title", "Transportation Coordination"), desc: t("concierge.transport.desc", "Help arranging transportation, including airport transfers, train tickets and local travel.") },
+                { icon: iconBoat, title: t("concierge.private.title", "Private Cars & Boats"), desc: t("concierge.private.desc", "Arranging private cars and boats for comfortable and seamless travel.") },
+                { icon: iconHotel, title: t("concierge.hotel.title", "Hotel & B&B Recommendations"), desc: t("concierge.hotel.desc", "Recommendations for hotels and B&Bs in locations that suit your travel style and plans.") },
+                { icon: iconMessage, title: t("concierge.support.title", "On-the-Ground Support"), desc: t("concierge.support.desc", "Personal support, practical help and local advice whenever you need it during your stay.") },
               ];
               return (
                 <>

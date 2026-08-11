@@ -428,34 +428,8 @@ const TravelAgents = () => {
               </div>
             </FadeIn>
 
-            {/* Two-column compact grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 mb-12 lg:mb-16">
-              {[
-                {
-                  title: "A trusted presence",
-                  body: "Travel plans can change. Questions come up. I'm there before, during, and whenever needed throughout their stay.",
-                },
-                {
-                  title: "Reachable, personally",
-                  body: "Every client gets my phone number, so they can contact me throughout their stay, including in the evenings when needed.",
-                },
-                {
-                  title: "Practical support",
-                  body: "From finding a pharmacy to last-minute adjustments, your clients know they are not navigating Amsterdam alone.",
-                },
-              ].map((item, i) => (
-                <FadeIn key={item.title} delay={i * 0.08}>
-                  <div className="border-t pt-5" style={{ borderColor: "hsl(var(--heritage-bordeaux) / 0.4)" }}>
-                    <h3 className="font-heading text-xl text-primary mb-2 leading-tight">
-                      {item.title}
-                    </h3>
-                    <p className="font-body text-base text-foreground/85 leading-relaxed">
-                      {item.body}
-                    </p>
-                  </div>
-                </FadeIn>
-              ))}
-            </div>
+
+
 
             {/* Where I Come In */}
             <FadeIn delay={0.12}>

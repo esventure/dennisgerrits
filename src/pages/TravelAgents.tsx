@@ -144,11 +144,32 @@ const TravelAgents = () => {
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSending(true);
+    const { error } = await supabase.from("contact_messages").insert({
+      name: form.name,
+      email: form.email,
+      company: form.company || null,
+      inquiry_type: form.inquiryType || null,
+      message: form.message,
+      source: "travel-agents",
+    });
+    setSending(false);
+
+    if (error) {
+      toast({
+        title: "Something went wrong",
+        description: "Your inquiry could not be sent. Please try again or reach me on WhatsApp.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     toast({ title: "Inquiry sent", description: "Thank you. I'll be in touch personally." });
     setForm({ name: "", company: "", email: "", inquiryType: "", message: "" });
   };
+
 
   /* Shared CTA — match homepage primary style */
   const ctaClass =

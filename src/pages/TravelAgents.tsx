@@ -485,7 +485,7 @@ const TravelAgents = () => {
                   </div>
                   <div className="md:col-span-7 space-y-4 font-body text-base lg:text-lg text-foreground/90 leading-relaxed">
                     <p>
-                      When we work together, you're not handing your clients off. You're extending your service with someone you can trust. Someone who understands your clients, takes ownership, and is there when it matters.
+                      When we work together, you have someone who takes ownership, knows the city and is there when you need them.
                     </p>
                     <p className="font-heading text-xl lg:text-2xl text-primary pt-1">
                       So you can say: "I have someone in Amsterdam. He'll take care of you." And truly mean it.

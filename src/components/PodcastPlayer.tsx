@@ -111,7 +111,7 @@ const PodcastPlayer = forwardRef<PodcastPlayerHandle, { tone?: "light" | "dark" 
           className="font-body text-xs tracking-widest uppercase mb-1"
           style={{ color: dark ? "hsl(var(--heritage-orange))" : "hsl(var(--secondary))" }}
         >
-          The Podcast · Episode 0 out now
+          The Podcast · Start with Episode 0
         </p>
         <h2
           className="font-heading text-2xl md:text-3xl leading-tight"
@@ -147,15 +147,6 @@ const PodcastPlayer = forwardRef<PodcastPlayerHandle, { tone?: "light" | "dark" 
           </span>
         </div>
 
-        <a
-          href={EPISODE_LINK}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block mt-2 font-body text-sm transition-colors hover:opacity-80"
-          style={{ color: dark ? "hsl(0 0% 88%)" : "hsl(var(--muted-foreground))" }}
-        >
-          Listen at twostoriesonecity.com →
-        </a>
       </div>
 
       <audio ref={audioRef} src={EPISODE_AUDIO_URL} preload="metadata" />

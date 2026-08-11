@@ -11,7 +11,6 @@ import { lovableAssetUrl } from "@/lib/utils";
 import dennisBoat from "@/assets/dennis-hero.jpg.asset.json";
 
 import iconMessage from "@/assets/icon-message.png";
-import iconBoat from "@/assets/icon-boat.png";
 import iconHistory from "@/assets/icon-history.png";
 
 /* ── Small inline visual helpers (reused across sections) ── */

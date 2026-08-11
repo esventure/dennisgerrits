@@ -663,7 +663,16 @@ const Index = () => {
           <div className="max-w-3xl mb-12 lg:mb-16">
             <FadeIn>
               <p
-                className="mb-3 text-2xl md:text-3xl"
+                className="font-body text-sm tracking-widest uppercase mb-4"
+                style={{ color: "hsl(var(--heritage-orange))" }}
+              >
+                Threads to follow
+              </p>
+              <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary leading-[0.95] mb-4">
+                What draws you in?
+              </h2>
+              <p
+                className="mb-6 text-2xl md:text-3xl"
                 style={{
                   fontFamily: "'Caveat', cursive",
                   color: "hsl(var(--heritage-green))",
@@ -673,19 +682,11 @@ const Index = () => {
               >
                 Some ideas to inspire your journey
               </p>
-              <p
-                className="font-body text-sm tracking-widest uppercase mb-6"
-                style={{ color: "hsl(var(--heritage-orange))" }}
-              >
-                Threads to follow
-              </p>
-              <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary leading-[0.95] mb-6">
-                What draws you in?
-              </h2>
               <p className="font-body text-lg text-muted-foreground leading-relaxed">
                 No two journeys are ever the same. These are a few places where they often begin.
               </p>
             </FadeIn>
+
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-12 md:gap-y-16 gap-x-6 md:gap-x-10 pt-4">

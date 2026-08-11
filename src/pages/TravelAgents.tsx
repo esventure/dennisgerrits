@@ -348,7 +348,6 @@ const TravelAgents = () => {
                       02
                     </p>
                   </div>
-                  <img src={iconFoot} alt="" aria-hidden className="w-14 h-14 object-contain" loading="lazy" />
                 </div>
                 <span
                   className="inline-block font-body text-xs tracking-widest uppercase px-3 py-1 mb-4 rounded-sm"
@@ -357,7 +356,7 @@ const TravelAgents = () => {
                   Local partner – you plan, I host
                 </span>
                 <h3 className="font-heading text-3xl lg:text-4xl text-primary mb-6 leading-tight">
-                  You plan. I deliver on the ground.
+                  You plan, I handle everything locally.
                 </h3>
                 <div className="space-y-5 font-body text-foreground/90 leading-relaxed">
                   <p>

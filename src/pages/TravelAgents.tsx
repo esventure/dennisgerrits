@@ -138,6 +138,7 @@ const FaintCanal = ({ side = "right" }: { side?: "left" | "right" }) => (
 const TravelAgents = () => {
   const { toast } = useToast();
   const [form, setForm] = useState({ name: "", company: "", email: "", inquiryType: "", message: "" });
+  const [sending, setSending] = useState(false);
 
   const scrollToContact = (e: React.MouseEvent) => {
     e.preventDefault();

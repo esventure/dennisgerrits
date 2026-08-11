@@ -1,11 +1,6 @@
 import { useState, useMemo, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import iconFoot from "@/assets/icon-foot.png";
-import iconBoat from "@/assets/icon-boat.png";
-import iconFood from "@/assets/icon-food.png";
-import iconNature from "@/assets/icon-nature.png";
-import iconDining from "@/assets/icon-dining.png";
 import amsterdamMap from "@/assets/amsterdam-map.jpg";
 
 interface Moment {
@@ -22,11 +17,11 @@ interface DayMapProps {
  * Coordinates align with landmarks on the illustrated Amsterdam map:
  * Jordaan/Westerkerk → canal belt → Centrum → Plantage → IJ waterfront. */
 const stops = [
-  { x: 110, y: 205, label: "Neighborhood", icon: iconFoot },
-  { x: 235, y: 235, label: "Local Cafe", icon: iconBoat },
-  { x: 340, y: 215, label: "Hidden Garden", icon: iconFood },
-  { x: 470, y: 235, label: "Streets and Canals", icon: iconNature },
-  { x: 430, y: 75, label: "Private Boat", icon: iconDining },
+  { x: 110, y: 205, label: "Neighborhood" },
+  { x: 235, y: 235, label: "Local Cafe" },
+  { x: 340, y: 215, label: "Hidden Garden" },
+  { x: 470, y: 235, label: "Streets and Canals" },
+  { x: 430, y: 75, label: "Private Boat" },
 ];
 
 
@@ -118,17 +113,8 @@ const DayMap = ({ moments }: DayMapProps) => {
             </filter>
           </defs>
 
-          {/* Handwritten "start here" near stop 01 */}
-          <text
-            x="125"
-            y="188"
-            fontFamily="'Caveat', cursive"
-            fontSize="18"
-            fill="hsl(var(--heritage-bordeaux))"
-            opacity="0.9"
-          >
-            start here ↘
-          </text>
+
+
 
           {/* ── Route: pencil under-drawing + ink wobble on top ── */}
           {pathSegments.map((d, i) => {
@@ -221,17 +207,8 @@ const DayMap = ({ moments }: DayMapProps) => {
                 </text>
                 {isActive && (
                   <>
-                    {/* Hand-drawn icon floating above the stop */}
-                    <image
-                      href={stop.icon}
-                      x={stop.x - 18}
-                      y={stop.y - 56}
-                      width="36"
-                      height="36"
-                      opacity="0.95"
-                      style={{ filter: "drop-shadow(0 1px 0 rgba(0,0,0,0.05))" }}
-                    />
                     {/* Cream pill behind label for legibility on the photo map */}
+
                     {(() => {
                       const labelW = Math.max(72, stop.label.length * 8.2);
                       return (
@@ -268,24 +245,8 @@ const DayMap = ({ moments }: DayMapProps) => {
             );
           })}
 
-          {/* ── X marks the spot at the final destination ── */}
-          {maxVisited >= stops.length - 1 && (
-            <g
-              transform={`translate(${stops[stops.length - 1].x + 30}, ${stops[stops.length - 1].y - 26})`}
-              opacity="0.8"
-              filter="url(#sketch)"
-            >
-              <path
-                d={sketchCircle(0, 0, 11, 0.9)}
-                stroke="hsl(var(--heritage-bordeaux))"
-                strokeWidth="0.9"
-                fill="none"
-                opacity="0.55"
-              />
-              <line x1="-6" y1="-6" x2="6" y2="6" stroke="hsl(var(--heritage-bordeaux))" strokeWidth="2" strokeLinecap="round" />
-              <line x1="-6" y1="6" x2="6" y2="-6" stroke="hsl(var(--heritage-bordeaux))" strokeWidth="2" strokeLinecap="round" />
-            </g>
-          )}
+
+
 
           <style>{`
             @keyframes daymap-spin {

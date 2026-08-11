@@ -80,12 +80,12 @@ const moments = [
   {
     time: "Lunch",
     title: "A Hidden Place",
-    text: "For lunch, we settle into one of my favorite local restaurants, hidden inside a beautiful garden with an amazing menu. Here we take our time, continue our conversation and enjoy the slower rhythm of the day.",
+    text: "Here we take our time, continue our conversation and enjoy the slower pace of the day.",
   },
   {
     time: "Afternoon",
     title: "Following Curiosity",
-    text: "In the afternoon, we continue exploring the streets together. Maybe we step into a small museum, discover a hidden courtyard or stop by my favorite chocolate shop. Some of the best moments are the ones we never planned.",
+    text: "In the afternoon, we continue exploring the streets and canals together.",
   },
   {
     time: "Late Afternoon",
@@ -325,11 +325,12 @@ const Index = () => {
           <div className="max-w-5xl mx-auto">
             {(() => {
               const rows = [
-                { icon: iconTickets, title: t("concierge.tickets.title", "Museum Reservations"), desc: t("concierge.tickets.desc", "Including tickets and timed entry reservations for museums and cultural experiences.") },
-                { icon: iconDining, title: t("concierge.dining.title", "Dining Reservations"), desc: t("concierge.dining.desc", "Thoughtfully selected places to eat, from local favorites to memorable dining experiences.") },
-                { icon: iconTransport, title: t("concierge.transport.title", "Transportation Coordination"), desc: t("concierge.transport.desc", "Help arranging transportation, including airport transfers and train tickets.") },
-                { icon: iconHotel, title: t("concierge.hotel.title", "Hotel & B&B Recommendations"), desc: t("concierge.hotel.desc", "Helping you find the place and neighborhood that fit your travel style best.") },
-                { icon: iconMessage, title: t("concierge.support.title", "Guidance & Support"), desc: t("concierge.support.desc", "Always available for questions, practical help and personal support throughout your stay.") },
+                { icon: iconTickets, title: t("concierge.tickets.title", "Museum Reservations"), desc: t("concierge.tickets.desc", "Helping arrange tickets and timed-entry reservations for museums and cultural experiences.") },
+                { icon: iconDining, title: t("concierge.dining.title", "Dining Reservations"), desc: t("concierge.dining.desc", "Thoughtfully selected restaurants, from local favorites to memorable dining experiences.") },
+                { icon: iconTransport, title: t("concierge.transport.title", "Transportation Coordination"), desc: t("concierge.transport.desc", "Help arranging transportation, including airport transfers, train tickets and local travel.") },
+                { icon: iconBoat, title: t("concierge.private.title", "Private Cars & Boats"), desc: t("concierge.private.desc", "Arranging private cars and boats for comfortable and seamless travel.") },
+                { icon: iconHotel, title: t("concierge.hotel.title", "Hotel & B&B Recommendations"), desc: t("concierge.hotel.desc", "Recommendations for hotels and B&Bs in locations that suit your travel style and plans.") },
+                { icon: iconMessage, title: t("concierge.support.title", "On-the-Ground Support"), desc: t("concierge.support.desc", "Personal support, practical help and local advice whenever you need it during your stay.") },
               ];
               return (
                 <>
@@ -552,27 +553,6 @@ const Index = () => {
                     Listen on SoundCloud
                     <span aria-hidden>→</span>
                   </a>
-
-                  <div className="flex flex-wrap gap-2 pt-1">
-                    {[
-                      "Neighbourhood life",
-                      "Canals",
-                      "Local culture",
-                      "Living in Amsterdam",
-                    ].map((topic) => (
-                      <span
-                        key={topic}
-                        className="inline-block font-body text-xs px-3 py-1.5 rounded-sm border"
-                        style={{
-                          color: "hsl(var(--heritage-purple))",
-                          borderColor: "hsl(var(--heritage-taupe-soft))",
-                          background: "hsl(var(--heritage-taupe-tint))",
-                        }}
-                      >
-                        {topic}
-                      </span>
-                    ))}
-                  </div>
                 </div>
               </FadeIn>
 
@@ -582,9 +562,10 @@ const Index = () => {
                   <div className="relative overflow-hidden rounded-sm shadow-md">
                     <img
                       src={lovableAssetUrl(dennisRadioTaboe.url)}
-                      alt="Dennis Gerrits being interviewed live at Taboe Media radio studio on Zeedijk, Amsterdam"
+                      alt="Dennis Gerrits being interviewed live at Studio Zeedijk, Amsterdam"
                       loading="lazy"
                       className="w-full aspect-[4/5] object-cover"
+                      style={{ filter: "saturate(0.78) hue-rotate(-8deg) contrast(1.02)" }}
                     />
                   </div>
                   <figcaption className="font-body text-xs md:text-sm text-muted-foreground italic flex items-center gap-3">
@@ -593,7 +574,7 @@ const Index = () => {
                       className="w-8 h-px"
                       style={{ background: "hsl(var(--heritage-orange))" }}
                     />
-                    Live at Taboe Media, Zeedijk – Amsterdam.
+                    Live at Studio Zeedijk – Amsterdam.
                   </figcaption>
                 </figure>
               </FadeIn>
@@ -682,7 +663,16 @@ const Index = () => {
           <div className="max-w-3xl mb-12 lg:mb-16">
             <FadeIn>
               <p
-                className="mb-3 text-2xl md:text-3xl"
+                className="font-body text-sm tracking-widest uppercase mb-4"
+                style={{ color: "hsl(var(--heritage-orange))" }}
+              >
+                Threads to follow
+              </p>
+              <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary leading-[0.95] mb-4">
+                What draws you in?
+              </h2>
+              <p
+                className="mb-6 text-2xl md:text-3xl"
                 style={{
                   fontFamily: "'Caveat', cursive",
                   color: "hsl(var(--heritage-green))",
@@ -692,19 +682,11 @@ const Index = () => {
               >
                 Some ideas to inspire your journey
               </p>
-              <p
-                className="font-body text-sm tracking-widest uppercase mb-6"
-                style={{ color: "hsl(var(--heritage-orange))" }}
-              >
-                Threads to follow
-              </p>
-              <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary leading-[0.95] mb-6">
-                What draws you in?
-              </h2>
               <p className="font-body text-lg text-muted-foreground leading-relaxed">
                 No two journeys are ever the same. These are a few places where they often begin.
               </p>
             </FadeIn>
+
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-12 md:gap-y-16 gap-x-6 md:gap-x-10 pt-4">
@@ -962,8 +944,9 @@ const Index = () => {
                   <Play size={16} fill="currentColor" />
                 </span>
                 <p className="font-body text-base leading-snug" style={{ color: "hsl(0 0% 94%)" }}>
-                  <span className="font-semibold">Start with Episode 0</span><br />
+                  <span className="font-semibold">Start with Episode 0</span>{" "}
                   <span style={{ color: "hsl(0 0% 82%)" }}>and step into the world of <em>Two Stories, One City</em>.</span>
+
                 </p>
               </button>
 

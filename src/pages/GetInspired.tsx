@@ -248,22 +248,12 @@ const GetInspired = () => {
           <div className="max-w-3xl">
             <FadeIn>
               <p
-                className="mb-3 text-2xl md:text-3xl"
-                style={{
-                  fontFamily: "'Caveat', cursive",
-                  color: "hsl(var(--heritage-orange))",
-                  transform: "rotate(-2deg)",
-                  display: "inline-block",
-                }}
-              >
-                Some ideas to inspire your journey
-              </p>
-              <p
-                className="font-body text-sm tracking-widest uppercase mb-6"
+                className="font-body text-sm tracking-widest uppercase mb-4"
                 style={{ color: "hsl(var(--heritage-orange))" }}
               >
                 Threads to follow
               </p>
+
               <h1
                 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95] mb-8 relative inline-block"
                 style={{ color: "hsl(0 0% 98%)" }}
@@ -289,6 +279,17 @@ const GetInspired = () => {
                   />
                 </svg>
               </h1>
+              <p
+                className="mb-6 text-2xl md:text-3xl"
+                style={{
+                  fontFamily: "'Caveat', cursive",
+                  color: "hsl(var(--heritage-orange))",
+                  transform: "rotate(-2deg)",
+                  display: "inline-block",
+                }}
+              >
+                Some ideas to inspire your journey
+              </p>
               <p
                 className="font-body text-lg leading-relaxed"
                 style={{ color: "hsl(0 0% 94%)" }}

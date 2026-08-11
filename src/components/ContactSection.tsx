@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { useSiteContent } from "@/hooks/useSiteContent";
+import { supabase } from "@/integrations/supabase/client";
 import { lovableAssetUrl } from "@/lib/utils";
 import dennisContactAsset from "@/assets/dennis-contact.jpg.asset.json";
 const dennisCanalSmile = lovableAssetUrl(dennisContactAsset.url);
@@ -14,12 +15,32 @@ const ContactSection = () => {
   const { toast } = useToast();
   const t = useSiteContent();
   const [contactForm, setContactForm] = useState({ name: "", email: "", message: "" });
+  const [sending, setSending] = useState(false);
 
-  const handleContactSubmit = (e: React.FormEvent) => {
+  const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSending(true);
+    const { error } = await supabase.from("contact_messages").insert({
+      name: contactForm.name,
+      email: contactForm.email,
+      message: contactForm.message,
+      source: "homepage",
+    });
+    setSending(false);
+
+    if (error) {
+      toast({
+        title: "Something went wrong",
+        description: "Your message could not be sent. Please try again or reach me on WhatsApp.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     toast({ title: "Message sent", description: "Thank you. I'll be in touch soon." });
     setContactForm({ name: "", email: "", message: "" });
   };
+
 
   return (
     <section
@@ -124,9 +145,10 @@ const ContactSection = () => {
                     </div>
                     <button
                       type="submit"
-                      className="w-full font-body text-sm tracking-widest uppercase px-8 py-4 border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
+                      disabled={sending}
+                      className="w-full font-body text-sm tracking-widest uppercase px-8 py-4 border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors duration-300 disabled:opacity-60"
                     >
-                      {t("booking.form.cta", "Reach out")}
+                      {sending ? "Sending..." : t("booking.form.cta", "Reach out")}
                     </button>
                   </form>
                 </div>

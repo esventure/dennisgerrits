@@ -8,6 +8,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingCTA from "@/components/FloatingCTA";
 import MovedBanner from "@/components/MovedBanner";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const Layout = () => {
   const [queryClient] = useState(() => new QueryClient());
@@ -15,6 +16,7 @@ const Layout = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
+        <ScrollToTop />
         <Toaster />
         <Sonner />
         <MovedBanner />

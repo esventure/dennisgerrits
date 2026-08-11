@@ -8,12 +8,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { lovableAssetUrl } from "@/lib/utils";
+import { supabase } from "@/integrations/supabase/client";
 import dennisBoat from "@/assets/dennis-hero.jpg.asset.json";
 
 import iconMessage from "@/assets/icon-message.png";
-import iconItinerary from "@/assets/icon-itinerary.png";
-import iconFoot from "@/assets/icon-foot.png";
-import iconBoat from "@/assets/icon-boat.png";
 import iconHistory from "@/assets/icon-history.png";
 
 /* ── Small inline visual helpers (reused across sections) ── */
@@ -141,17 +139,39 @@ const FaintCanal = ({ side = "right" }: { side?: "left" | "right" }) => (
 const TravelAgents = () => {
   const { toast } = useToast();
   const [form, setForm] = useState({ name: "", company: "", email: "", inquiryType: "", message: "" });
+  const [sending, setSending] = useState(false);
 
   const scrollToContact = (e: React.MouseEvent) => {
     e.preventDefault();
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSending(true);
+    const { error } = await supabase.from("contact_messages").insert({
+      name: form.name,
+      email: form.email,
+      company: form.company || null,
+      inquiry_type: form.inquiryType || null,
+      message: form.message,
+      source: "travel-agents",
+    });
+    setSending(false);
+
+    if (error) {
+      toast({
+        title: "Something went wrong",
+        description: "Your inquiry could not be sent. Please try again or reach me on WhatsApp.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     toast({ title: "Inquiry sent", description: "Thank you. I'll be in touch personally." });
     setForm({ name: "", company: "", email: "", inquiryType: "", message: "" });
   };
+
 
   /* Shared CTA — match homepage primary style */
   const ctaClass =
@@ -207,9 +227,12 @@ const TravelAgents = () => {
               <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
                 For Travel Advisors &amp; Concierges
               </p>
-              <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-primary leading-[0.95] mb-8">
-                I take care of your clients<br />in Amsterdam.
+              <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-primary leading-[0.95] mb-6">
+                I take care of your clients<br />in Amsterdam and the Netherlands.
               </h1>
+              <p className="font-body text-sm tracking-widest uppercase text-secondary mb-8">
+                20+ years in tourism &middot; 9 years as a private guide &middot; Local expert
+              </p>
               <div className="font-body text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-2xl mb-10 space-y-5">
                 <p>
                   Travel plans can change. Questions come up. Sometimes clients simply feel more comfortable knowing they have someone local they can reach out to.
@@ -218,10 +241,10 @@ const TravelAgents = () => {
                   I'm there as a trusted presence on the ground, before, during, and whenever needed throughout their stay.
                 </p>
                 <p>
-                  I personally share my phone number with every client, so they can easily contact me throughout their stay, including in the evenings when needed.
-                </p>
-                <p>
                   Whether it's practical support like finding a pharmacy, help with local coordination, last-minute adjustments, or simply a familiar contact in the city, your clients know they are not navigating Amsterdam alone.
+                </p>
+                <p className="font-heading text-2xl lg:text-3xl text-primary">
+                  You take care of the journey. I take care of them.
                 </p>
               </div>
               <a href="#contact" onClick={scrollToContact} className={ctaPrimary} style={ctaPrimaryStyle}>
@@ -293,7 +316,6 @@ const TravelAgents = () => {
                       01
                     </p>
                   </div>
-                  <img src={iconItinerary} alt="" aria-hidden className="w-14 h-14 object-contain" loading="lazy" />
                 </div>
                 <span
                   className="inline-block font-body text-xs tracking-widest uppercase px-3 py-1 mb-4 rounded-sm"
@@ -302,7 +324,7 @@ const TravelAgents = () => {
                   Full concierge – I plan and deliver
                 </span>
                 <h3 className="font-heading text-3xl lg:text-4xl text-primary mb-6 leading-tight">
-                  You hand it over. I take care of the rest.
+                  You hand it over, I take care of the rest.
                 </h3>
                 <div className="space-y-5 font-body text-foreground/90 leading-relaxed">
                   <p>
@@ -346,7 +368,6 @@ const TravelAgents = () => {
                       02
                     </p>
                   </div>
-                  <img src={iconFoot} alt="" aria-hidden className="w-14 h-14 object-contain" loading="lazy" />
                 </div>
                 <span
                   className="inline-block font-body text-xs tracking-widest uppercase px-3 py-1 mb-4 rounded-sm"
@@ -355,7 +376,7 @@ const TravelAgents = () => {
                   Local partner – you plan, I host
                 </span>
                 <h3 className="font-heading text-3xl lg:text-4xl text-primary mb-6 leading-tight">
-                  You plan. I deliver on the ground.
+                  You plan, I handle everything locally.
                 </h3>
                 <div className="space-y-5 font-body text-foreground/90 leading-relaxed">
                   <p>
@@ -435,6 +456,41 @@ const TravelAgents = () => {
                 </FadeIn>
               ))}
             </div>
+
+            {/* Where I Come In */}
+            <FadeIn delay={0.12}>
+              <div className="mb-12 lg:mb-16">
+                <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
+                  Where I Come In
+                </p>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-4">
+                  {[
+                    "Private Guiding",
+                    "Custom Itineraries",
+                    "Museum Reservations: Tickets & Timed Entry",
+                    "Dining Reservations",
+                    "Transportation Coordination",
+                    "Private Boats & Cars",
+                    "Last-Minute Adjustments",
+                    "On-the-Ground Support",
+                  ].map((item) => (
+                    <li
+                      key={item}
+                      className="font-body text-base text-foreground/90 leading-relaxed flex items-start gap-3"
+                    >
+                      <span
+                        aria-hidden
+                        className="mt-[0.65rem] h-px w-4 shrink-0"
+                        style={{ background: "hsl(var(--heritage-orange))" }}
+                      />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </FadeIn>
+
+
 
             {/* Pull-quote callout: A true extension of your service */}
             <FadeIn delay={0.2}>
@@ -572,7 +628,10 @@ const TravelAgents = () => {
                 className="bg-background rounded-sm p-10 shadow-md border-t-4"
                 style={{ borderColor: "hsl(var(--heritage-orange))" }}
               >
-                <h3 className="font-heading text-2xl text-primary mb-6">Get in touch</h3>
+                <h3 className="font-heading text-2xl text-primary mb-3">Get in touch</h3>
+                <p className="font-body text-base text-muted-foreground leading-relaxed mb-6">
+                  Send me a message through the contact form or WhatsApp, and I'll get back to you within 24 hours.
+                </p>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="space-y-2">
                     <Label className="font-body text-sm">Your Name</Label>
@@ -627,8 +686,8 @@ const TravelAgents = () => {
                       className="min-h-[120px] text-base font-body"
                     />
                   </div>
-                  <button type="submit" className={`${ctaPrimary} w-full`} style={ctaPrimaryStyle}>
-                    Reach out
+                  <button type="submit" disabled={sending} className={`${ctaPrimary} w-full disabled:opacity-60`} style={ctaPrimaryStyle}>
+                    {sending ? "Sending..." : "Reach out"}
                   </button>
                 </form>
               </div>

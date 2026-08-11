@@ -437,6 +437,41 @@ const TravelAgents = () => {
               ))}
             </div>
 
+            {/* Where I Come In */}
+            <FadeIn delay={0.12}>
+              <div className="mb-12 lg:mb-16">
+                <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
+                  Where I Come In
+                </p>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-4">
+                  {[
+                    "Private Guiding",
+                    "Custom Itineraries",
+                    "Museum Reservations: Tickets & Timed Entry",
+                    "Dining Reservations",
+                    "Transportation Coordination",
+                    "Private Boats & Cars",
+                    "Last-Minute Adjustments",
+                    "On-the-Ground Support",
+                  ].map((item) => (
+                    <li
+                      key={item}
+                      className="font-body text-base text-foreground/90 leading-relaxed flex items-start gap-3"
+                    >
+                      <span
+                        aria-hidden
+                        className="mt-[0.65rem] h-px w-4 shrink-0"
+                        style={{ background: "hsl(var(--heritage-orange))" }}
+                      />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </FadeIn>
+
+
+
             {/* Pull-quote callout: A true extension of your service */}
             <FadeIn delay={0.2}>
               <div

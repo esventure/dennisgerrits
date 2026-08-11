@@ -207,9 +207,12 @@ const TravelAgents = () => {
               <p className="font-body text-sm tracking-widest uppercase text-secondary mb-6">
                 For Travel Advisors &amp; Concierges
               </p>
-              <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-primary leading-[0.95] mb-8">
-                I take care of your clients<br />in Amsterdam.
+              <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-primary leading-[0.95] mb-6">
+                I take care of your clients<br />in Amsterdam and the Netherlands.
               </h1>
+              <p className="font-body text-sm tracking-widest uppercase text-secondary mb-8">
+                20+ years in tourism &middot; 9 years as a private guide &middot; Local expert
+              </p>
               <div className="font-body text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-2xl mb-10 space-y-5">
                 <p>
                   Travel plans can change. Questions come up. Sometimes clients simply feel more comfortable knowing they have someone local they can reach out to.
@@ -218,10 +221,10 @@ const TravelAgents = () => {
                   I'm there as a trusted presence on the ground, before, during, and whenever needed throughout their stay.
                 </p>
                 <p>
-                  I personally share my phone number with every client, so they can easily contact me throughout their stay, including in the evenings when needed.
-                </p>
-                <p>
                   Whether it's practical support like finding a pharmacy, help with local coordination, last-minute adjustments, or simply a familiar contact in the city, your clients know they are not navigating Amsterdam alone.
+                </p>
+                <p className="font-heading text-2xl lg:text-3xl text-primary">
+                  You take care of the journey. I take care of them.
                 </p>
               </div>
               <a href="#contact" onClick={scrollToContact} className={ctaPrimary} style={ctaPrimaryStyle}>

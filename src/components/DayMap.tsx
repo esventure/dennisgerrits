@@ -250,24 +250,8 @@ const DayMap = ({ moments }: DayMapProps) => {
             );
           })}
 
-          {/* ── X marks the spot at the final destination ── */}
-          {maxVisited >= stops.length - 1 && (
-            <g
-              transform={`translate(${stops[stops.length - 1].x + 30}, ${stops[stops.length - 1].y - 26})`}
-              opacity="0.8"
-              filter="url(#sketch)"
-            >
-              <path
-                d={sketchCircle(0, 0, 11, 0.9)}
-                stroke="hsl(var(--heritage-bordeaux))"
-                strokeWidth="0.9"
-                fill="none"
-                opacity="0.55"
-              />
-              <line x1="-6" y1="-6" x2="6" y2="6" stroke="hsl(var(--heritage-bordeaux))" strokeWidth="2" strokeLinecap="round" />
-              <line x1="-6" y1="6" x2="6" y2="-6" stroke="hsl(var(--heritage-bordeaux))" strokeWidth="2" strokeLinecap="round" />
-            </g>
-          )}
+
+
 
           <style>{`
             @keyframes daymap-spin {

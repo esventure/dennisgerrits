@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { lovableAssetUrl } from "@/lib/utils";
+import { supabase } from "@/integrations/supabase/client";
 import dennisBoat from "@/assets/dennis-hero.jpg.asset.json";
 
 import iconMessage from "@/assets/icon-message.png";

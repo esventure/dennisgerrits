@@ -280,6 +280,17 @@ const GetInspired = () => {
                 </svg>
               </h1>
               <p
+                className="mb-6 text-2xl md:text-3xl"
+                style={{
+                  fontFamily: "'Caveat', cursive",
+                  color: "hsl(var(--heritage-orange))",
+                  transform: "rotate(-2deg)",
+                  display: "inline-block",
+                }}
+              >
+                Some ideas to inspire your journey
+              </p>
+              <p
                 className="font-body text-lg leading-relaxed"
                 style={{ color: "hsl(0 0% 94%)" }}
               >

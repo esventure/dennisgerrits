@@ -354,14 +354,14 @@ const Index = () => {
                         {rows.map((row) => (
                           <li key={row.title} className="flex items-start gap-5 px-6 py-6 md:px-10 md:py-7">
                             <div
-                              className="shrink-0 w-16 h-16 rounded-full flex items-center justify-center"
+                              className="shrink-0 w-20 h-20 rounded-full flex items-center justify-center"
                               style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.2)" }}
                               aria-hidden
                             >
                               <img
                                 src={row.icon}
                                 alt=""
-                                className="w-8 h-8 object-contain"
+                                className={`object-contain ${row.title === "Private Cars & Boats" ? "w-12 h-12" : "w-10 h-10"}`}
                                 loading="lazy"
                                 aria-hidden
                                 style={row.filter ? { filter: row.filter } : undefined}

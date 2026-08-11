@@ -145,9 +145,10 @@ const ContactSection = () => {
                     </div>
                     <button
                       type="submit"
-                      className="w-full font-body text-sm tracking-widest uppercase px-8 py-4 border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
+                      disabled={sending}
+                      className="w-full font-body text-sm tracking-widest uppercase px-8 py-4 border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors duration-300 disabled:opacity-60"
                     >
-                      {t("booking.form.cta", "Reach out")}
+                      {sending ? "Sending..." : t("booking.form.cta", "Reach out")}
                     </button>
                   </form>
                 </div>

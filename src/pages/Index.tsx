@@ -1,7 +1,7 @@
 
 import { Head } from "vite-react-ssg";
 import { useState, useRef } from "react";
-import { Play } from "lucide-react";
+
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";

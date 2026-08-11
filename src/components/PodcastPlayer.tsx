@@ -5,7 +5,6 @@ import podcastCover from "@/assets/podcast-cover.jpg";
 // Replace with the real episode 0 audio URL when available.
 const EPISODE_AUDIO_URL =
   "https://twostoriesonecity.com/episode-0.mp3";
-const EPISODE_LINK = "https://twostoriesonecity.com";
 
 const formatTime = (s: number) => {
   if (!isFinite(s) || s < 0) return "0:00";

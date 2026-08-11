@@ -686,8 +686,8 @@ const TravelAgents = () => {
                       className="min-h-[120px] text-base font-body"
                     />
                   </div>
-                  <button type="submit" className={`${ctaPrimary} w-full`} style={ctaPrimaryStyle}>
-                    Reach out
+                  <button type="submit" disabled={sending} className={`${ctaPrimary} w-full disabled:opacity-60`} style={ctaPrimaryStyle}>
+                    {sending ? "Sending..." : "Reach out"}
                   </button>
                 </form>
               </div>

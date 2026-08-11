@@ -100,7 +100,7 @@ const reviews = [
   {
     quote: "Two wonderful days of walking, eating at favorite restaurants, touring the canals, and visiting the Rijks and Van Gogh museums…",
     author: "James E.",
-    location: "Rick Steves traveller",
+    location: "Rick Steves traveler",
     date: "March 2026",
   },
   {
@@ -146,7 +146,7 @@ const stories = [
   },
   {
     title: "Why the Canal Houses Lean Forward",
-    intro: "It's not bad engineering. It's actually on purpose. And the reason says a lot about how the Dutch think about commerce, neighbours, and showing off.",
+    intro: "It's not bad engineering. It's actually on purpose. And the reason says a lot about how the Dutch think about commerce, neighbors, and showing off.",
     image: storyCanalHouses,
     caption: "Herengracht, looking up",
   },
@@ -528,7 +528,7 @@ const Index = () => {
                       Radio Interview about Amsterdam
                     </h3>
                     <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed max-w-xl">
-                      I was invited to speak on Dutch radio about Amsterdam, its culture, the people who shape its neighbourhoods and what it means to share the city with visitors. The interview is in Dutch. I'm honored to have been featured as a local voice.
+                      I was invited to speak on Dutch radio about Amsterdam, its culture, the people who shape its neighborhoods and what it means to share the city with visitors. The interview is in Dutch. I'm honored to have been featured as a local voice.
                     </p>
                   </div>
 
@@ -688,8 +688,8 @@ const Index = () => {
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-12 md:gap-y-16 gap-x-6 md:gap-x-10 pt-4">
             {[
-              { id: "neighbourhood", title: "The neighbourhood", note: "real Amsterdam lives here", caption: "Quiet side streets where everyday life unfolds. Someone watering plants outside their front door. A neighbour locking up a bicycle.", image: peekNeighbourhood, rotate: -2.4, pin: "tape-tl" },
-              { id: "food", title: "Food Culture", note: "one bite at a time", caption: "Morning markets full of daily life. The smell of fresh bread from bakeries. Local flavours in every bite.", image: peekFood, rotate: 1.8, pin: "tape-tr" },
+              { id: "neighborhood", title: "The neighborhood", note: "real Amsterdam lives here", caption: "Quiet side streets where everyday life unfolds. Someone watering plants outside their front door. A neighbor locking up a bicycle.", image: peekNeighborhood, rotate: -2.4, pin: "tape-tl" },
+              { id: "food", title: "Food Culture", note: "one bite at a time", caption: "Morning markets full of daily life. The smell of fresh bread from bakeries. Local flavors in every bite.", image: peekFood, rotate: 1.8, pin: "tape-tr" },
               { id: "architecture", title: "Living Architecture", note: "unlike anywhere else", caption: "A city built in layers of time. Old and modern architecture side by side. Every building carries its own story.", image: peekArchitecture, rotate: -1.2, pin: "tape-gl" },
               { id: "water", title: "From the Water", note: "a different rhythm", caption: "On a private boat through quiet canals. The city unfolding around you. A picnic, wine, and shared moments.", image: peekWater, rotate: 2.0, pin: "tape-gr" },
             ].map((theme, i) => {

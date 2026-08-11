@@ -32,7 +32,7 @@ import imgShapedByWater from "@/assets/interests/shaped-by-water.jpg";
 
 const blocks: { title: string; note: string; caption: string; image: string }[] = [
   {
-    title: "The Neighbourhood Way",
+    title: "The neighbourhood",
     note: "real Amsterdam lives here",
     caption:
       "Quiet side streets where everyday life unfolds. Someone watering plants outside their front door. A neighbour locking up a bicycle.",

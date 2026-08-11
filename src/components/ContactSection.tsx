@@ -14,12 +14,32 @@ const ContactSection = () => {
   const { toast } = useToast();
   const t = useSiteContent();
   const [contactForm, setContactForm] = useState({ name: "", email: "", message: "" });
+  const [sending, setSending] = useState(false);
 
-  const handleContactSubmit = (e: React.FormEvent) => {
+  const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSending(true);
+    const { error } = await supabase.from("contact_messages").insert({
+      name: contactForm.name,
+      email: contactForm.email,
+      message: contactForm.message,
+      source: "homepage",
+    });
+    setSending(false);
+
+    if (error) {
+      toast({
+        title: "Something went wrong",
+        description: "Your message could not be sent. Please try again or reach me on WhatsApp.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     toast({ title: "Message sent", description: "Thank you. I'll be in touch soon." });
     setContactForm({ name: "", email: "", message: "" });
   };
+
 
   return (
     <section

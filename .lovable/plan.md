@@ -4,9 +4,9 @@
 
 Het formulier verstuurt op dit moment **niets**. Bij "Send" wordt alleen een bevestigingsmelding getoond en worden de velden geleegd; er is geen mailadres, geen e-mailservice en geen opslag in de database. Berichten die bezoekers achterlaten komen dus nergens aan.
 
-Voorstel (aparte stap, na jouw akkoord): berichten opslaan in de database én doorsturen per e-mail via Resend naar een adres van Dennis. Daar heb ik van jou nodig:
-- naar welk e-mailadres de berichten moeten gaan;
-- of we vanaf een eigen domein (bijv. no-reply@dennisgerrits.com) mogen versturen, want dan is er een domeinverificatie nodig.
+Oplossing: elk formulierbericht wordt opgeslagen in de database (zodat niets verloren gaat) en per e-mail doorgestuurd naar dennis@lovemycitytours.com, met het adres van de bezoeker als reply-to. De bezoeker krijgt zelf een korte bevestigingsmail.
+
+Voorwaarde: er is nog geen afzenderdomein ingesteld. Voor het versturen zetten we een verzenddomein op onder dennisgerrits.com (eenmalige DNS-stap), daarna gaan de mails automatisch de deur uit.
 
 ## Footer
 - "For Travel Advisors & Concierges" scrollt bij navigatie niet naar boven: bij een routewissel altijd naar de top scrollen.

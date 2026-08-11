@@ -212,17 +212,8 @@ const DayMap = ({ moments }: DayMapProps) => {
                 </text>
                 {isActive && (
                   <>
-                    {/* Hand-drawn icon floating above the stop */}
-                    <image
-                      href={stop.icon}
-                      x={stop.x - 18}
-                      y={stop.y - 56}
-                      width="36"
-                      height="36"
-                      opacity="0.95"
-                      style={{ filter: "drop-shadow(0 1px 0 rgba(0,0,0,0.05))" }}
-                    />
                     {/* Cream pill behind label for legibility on the photo map */}
+
                     {(() => {
                       const labelW = Math.max(72, stop.label.length * 8.2);
                       return (

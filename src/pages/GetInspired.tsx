@@ -32,11 +32,11 @@ import imgShapedByWater from "@/assets/interests/shaped-by-water.jpg";
 
 const blocks: { title: string; note: string; caption: string; image: string }[] = [
   {
-    title: "The neighbourhood",
+    title: "The neighborhood",
     note: "real Amsterdam lives here",
     caption:
-      "Quiet side streets where everyday life unfolds. Someone watering plants outside their front door. A neighbour locking up a bicycle.",
-    image: imgNeighbourhood,
+      "Quiet side streets where everyday life unfolds. Someone watering plants outside their front door. A neighbor locking up a bicycle.",
+    image: imgNeighborhood,
   },
   {
     title: "Rembrandt and the Golden Age Stories",
@@ -49,7 +49,7 @@ const blocks: { title: string; note: string; caption: string; image: string }[] 
     title: "Food Culture",
     note: "where you taste Amsterdam, one bite at a time",
     caption:
-      "Morning markets full of daily life. The smell of fresh bread from bakeries. Local flavours in every bite.",
+      "Morning markets full of daily life. The smell of fresh bread from bakeries. Local flavors in every bite.",
     image: imgFood,
   },
   {
@@ -84,7 +84,7 @@ const blocks: { title: string; note: string; caption: string; image: string }[] 
     title: "Van Gogh Creates",
     note: "see the world through his eyes",
     caption:
-      "Van Gogh Museum, where his work lives. His art is also found in the Kröller-Müller Museum. A life shaped by colour and emotion.",
+      "Van Gogh Museum, where his work lives. His art is also found in the Kröller-Müller Museum. A life shaped by color and emotion.",
     image: imgVanGogh,
   },
   {
@@ -133,14 +133,14 @@ const blocks: { title: string; note: string; caption: string; image: string }[] 
     title: "The Dutch Countryside",
     note: "step into a living postcard",
     caption:
-      "Endless farmlands stretching to the horizon. Colourful houses, windmills and waterlands. A quiet rhythm of rural life.",
+      "Endless farmlands stretching to the horizon. Colorful houses, windmills and waterlands. A quiet rhythm of rural life.",
     image: imgCountryside,
   },
   {
     title: "Tulip Season",
     note: "in spring, the landscape blooms even brighter",
     caption:
-      "Tulip fields in endless bloom. Keukenhof Gardens, wandering among countless flowers. A vibrant mix of colours and scents that stays with you forever.",
+      "Tulip fields in endless bloom. Keukenhof Gardens, wandering among countless flowers. A vibrant mix of colors and scents that stays with you forever.",
     image: imgTulips,
   },
   {
@@ -216,18 +216,18 @@ const GetInspired = () => {
         <title>Amsterdam Experience Inspiration | Dennis Gerrits</title>
         <meta
           name="description"
-          content="Themes and threads to shape your days in Amsterdam: neighbourhood life, water, food culture, art, architecture, gardens and quiet corners."
+          content="Themes and threads to shape your days in Amsterdam: neighborhood life, water, food culture, art, architecture, gardens and quiet corners."
         />
         <link rel="canonical" href="https://dennisgerrits.com/get-inspired" />
         <meta property="og:title" content="Amsterdam Experience Inspiration" />
         <meta
           property="og:description"
-          content="Themes and threads to shape your days in Amsterdam, from neighbourhood life and water to art, food culture and quiet corners."
+          content="Themes and threads to shape your days in Amsterdam, from neighborhood life and water to art, food culture and quiet corners."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://dennisgerrits.com/get-inspired" />
         <meta name="twitter:title" content="Amsterdam Experience Inspiration" />
-        <meta name="twitter:description" content="Themes and threads to shape your days in Amsterdam, from neighbourhood life and water to art, food culture and quiet corners." />
+        <meta name="twitter:description" content="Themes and threads to shape your days in Amsterdam, from neighborhood life and water to art, food culture and quiet corners." />
       </Head>
 
       {/* Interests — green header band */}

@@ -566,7 +566,6 @@ const Index = () => {
                       alt="Dennis Gerrits being interviewed live at Studio Zeedijk, Amsterdam"
                       loading="lazy"
                       className="w-full aspect-[4/5] object-cover"
-                      style={{ filter: "saturate(0.78) hue-rotate(-8deg) contrast(1.02)" }}
                     />
                   </div>
                   <figcaption className="font-body text-xs md:text-sm text-muted-foreground italic flex items-center gap-3">

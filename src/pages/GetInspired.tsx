@@ -16,7 +16,7 @@ import imgLiterature from "@/assets/interests/literature.jpg";
 import imgMusic from "@/assets/interests/music.jpg";
 import imgWater from "@/assets/interests/water.jpg";
 import imgMarkets from "@/assets/interests/markets.jpg";
-import imgNeighbourhood from "@/assets/interests/neighbourhood.jpg";
+import imgNeighborhood from "@/assets/interests/neighbourhood.jpg";
 import imgTulips from "@/assets/interests/tulips.jpg";
 import imgHeritageMemory from "@/assets/interests/heritage-memory.jpg";
 import imgLeiden from "@/assets/interests/leiden.jpg";

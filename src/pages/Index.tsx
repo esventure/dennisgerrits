@@ -326,9 +326,9 @@ const Index = () => {
             {(() => {
               const rows = [
                 { icon: iconTickets, title: t("concierge.tickets.title", "Museum Reservations"), desc: t("concierge.tickets.desc", "Helping arrange tickets and timed-entry reservations for museums and cultural experiences.") },
-                { icon: iconDining, title: t("concierge.dining.title", "Dining Reservations"), desc: t("concierge.dining.desc", "Thoughtfully selected restaurants, from local favorites to memorable dining experiences.") },
+                { icon: iconDining, title: t("concierge.dining.title", "Dining Reservations"), desc: t("concierge.dining.desc", "Thoughtfully selected restaurants, from local favorites to memorable dining experiences."), filter: "sepia(1) saturate(3.5) hue-rotate(-18deg) contrast(1.15)" },
                 { icon: iconTransport, title: t("concierge.transport.title", "Transportation Coordination"), desc: t("concierge.transport.desc", "Help arranging transportation, including airport transfers, train tickets and local travel.") },
-                { icon: iconBoat, title: t("concierge.private.title", "Private Cars & Boats"), desc: t("concierge.private.desc", "Arranging private cars and boats for comfortable and seamless travel.") },
+                { icon: iconBoat, title: t("concierge.private.title", "Private Cars & Boats"), desc: t("concierge.private.desc", "Arranging private cars and boats for comfortable and seamless travel."), filter: "contrast(2.2) brightness(0.65) saturate(2)" },
                 { icon: iconHotel, title: t("concierge.hotel.title", "Hotel & B&B Recommendations"), desc: t("concierge.hotel.desc", "Recommendations for hotels and B&Bs in locations that suit your travel style and plans.") },
                 { icon: iconMessage, title: t("concierge.support.title", "On-the-Ground Support"), desc: t("concierge.support.desc", "Personal support, practical help and local advice whenever you need it during your stay.") },
               ];
@@ -354,16 +354,17 @@ const Index = () => {
                         {rows.map((row) => (
                           <li key={row.title} className="flex items-start gap-5 px-6 py-6 md:px-10 md:py-7">
                             <div
-                              className="shrink-0 w-12 h-12 rounded-full flex items-center justify-center"
+                              className="shrink-0 w-16 h-16 rounded-full flex items-center justify-center"
                               style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.2)" }}
                               aria-hidden
                             >
                               <img
                                 src={row.icon}
                                 alt=""
-                                className="w-6 h-6 object-contain"
+                                className="w-8 h-8 object-contain"
                                 loading="lazy"
                                 aria-hidden
+                                style={row.filter ? { filter: row.filter } : undefined}
                               />
                             </div>
                             <div className="flex-1 min-w-0">

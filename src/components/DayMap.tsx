@@ -1,11 +1,6 @@
 import { useState, useMemo, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import iconFoot from "@/assets/icon-foot.png";
-import iconBoat from "@/assets/icon-boat.png";
-import iconFood from "@/assets/icon-food.png";
-import iconNature from "@/assets/icon-nature.png";
-import iconDining from "@/assets/icon-dining.png";
 import amsterdamMap from "@/assets/amsterdam-map.jpg";
 
 interface Moment {
@@ -22,11 +17,11 @@ interface DayMapProps {
  * Coordinates align with landmarks on the illustrated Amsterdam map:
  * Jordaan/Westerkerk → canal belt → Centrum → Plantage → IJ waterfront. */
 const stops = [
-  { x: 110, y: 205, label: "Neighborhood", icon: iconFoot },
-  { x: 235, y: 235, label: "Local Cafe", icon: iconBoat },
-  { x: 340, y: 215, label: "Hidden Garden", icon: iconFood },
-  { x: 470, y: 235, label: "Streets and Canals", icon: iconNature },
-  { x: 430, y: 75, label: "Private Boat", icon: iconDining },
+  { x: 110, y: 205, label: "Neighborhood" },
+  { x: 235, y: 235, label: "Local Cafe" },
+  { x: 340, y: 215, label: "Hidden Garden" },
+  { x: 470, y: 235, label: "Streets and Canals" },
+  { x: 430, y: 75, label: "Private Boat" },
 ];
 
 

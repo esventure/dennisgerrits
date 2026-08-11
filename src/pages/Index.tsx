@@ -944,8 +944,9 @@ const Index = () => {
                   <Play size={16} fill="currentColor" />
                 </span>
                 <p className="font-body text-base leading-snug" style={{ color: "hsl(0 0% 94%)" }}>
-                  <span className="font-semibold">Start with Episode 0</span><br />
+                  <span className="font-semibold">Start with Episode 0</span>{" "}
                   <span style={{ color: "hsl(0 0% 82%)" }}>and step into the world of <em>Two Stories, One City</em>.</span>
+
                 </p>
               </button>
 

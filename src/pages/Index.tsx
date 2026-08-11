@@ -553,27 +553,6 @@ const Index = () => {
                     Listen on SoundCloud
                     <span aria-hidden>→</span>
                   </a>
-
-                  <div className="flex flex-wrap gap-2 pt-1">
-                    {[
-                      "Neighbourhood life",
-                      "Canals",
-                      "Local culture",
-                      "Living in Amsterdam",
-                    ].map((topic) => (
-                      <span
-                        key={topic}
-                        className="inline-block font-body text-xs px-3 py-1.5 rounded-sm border"
-                        style={{
-                          color: "hsl(var(--heritage-purple))",
-                          borderColor: "hsl(var(--heritage-taupe-soft))",
-                          background: "hsl(var(--heritage-taupe-tint))",
-                        }}
-                      >
-                        {topic}
-                      </span>
-                    ))}
-                  </div>
                 </div>
               </FadeIn>
 
@@ -583,9 +562,10 @@ const Index = () => {
                   <div className="relative overflow-hidden rounded-sm shadow-md">
                     <img
                       src={lovableAssetUrl(dennisRadioTaboe.url)}
-                      alt="Dennis Gerrits being interviewed live at Taboe Media radio studio on Zeedijk, Amsterdam"
+                      alt="Dennis Gerrits being interviewed live at Studio Zeedijk, Amsterdam"
                       loading="lazy"
                       className="w-full aspect-[4/5] object-cover"
+                      style={{ filter: "saturate(0.78) hue-rotate(-8deg) contrast(1.02)" }}
                     />
                   </div>
                   <figcaption className="font-body text-xs md:text-sm text-muted-foreground italic flex items-center gap-3">
@@ -594,7 +574,7 @@ const Index = () => {
                       className="w-8 h-px"
                       style={{ background: "hsl(var(--heritage-orange))" }}
                     />
-                    Live at Taboe Media, Zeedijk – Amsterdam.
+                    Live at Studio Zeedijk – Amsterdam.
                   </figcaption>
                 </figure>
               </FadeIn>

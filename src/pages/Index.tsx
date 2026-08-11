@@ -80,12 +80,12 @@ const moments = [
   {
     time: "Lunch",
     title: "A Hidden Place",
-    text: "For lunch, we settle into one of my favorite local restaurants, hidden inside a beautiful garden with an amazing menu. Here we take our time, continue our conversation and enjoy the slower rhythm of the day.",
+    text: "Here we take our time, continue our conversation and enjoy the slower pace of the day.",
   },
   {
     time: "Afternoon",
     title: "Following Curiosity",
-    text: "In the afternoon, we continue exploring the streets together. Maybe we step into a small museum, discover a hidden courtyard or stop by my favorite chocolate shop. Some of the best moments are the ones we never planned.",
+    text: "In the afternoon, we continue exploring the streets and canals together.",
   },
   {
     time: "Late Afternoon",

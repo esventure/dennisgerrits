@@ -11,8 +11,6 @@ import { lovableAssetUrl } from "@/lib/utils";
 import dennisBoat from "@/assets/dennis-hero.jpg.asset.json";
 
 import iconMessage from "@/assets/icon-message.png";
-import iconItinerary from "@/assets/icon-itinerary.png";
-import iconFoot from "@/assets/icon-foot.png";
 import iconBoat from "@/assets/icon-boat.png";
 import iconHistory from "@/assets/icon-history.png";
 

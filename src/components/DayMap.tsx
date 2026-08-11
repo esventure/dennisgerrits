@@ -118,17 +118,8 @@ const DayMap = ({ moments }: DayMapProps) => {
             </filter>
           </defs>
 
-          {/* Handwritten "start here" near stop 01 */}
-          <text
-            x="125"
-            y="188"
-            fontFamily="'Caveat', cursive"
-            fontSize="18"
-            fill="hsl(var(--heritage-bordeaux))"
-            opacity="0.9"
-          >
-            start here ↘
-          </text>
+
+
 
           {/* ── Route: pencil under-drawing + ink wobble on top ── */}
           {pathSegments.map((d, i) => {

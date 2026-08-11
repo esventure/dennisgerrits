@@ -682,9 +682,6 @@ const Index = () => {
               >
                 Some ideas to inspire your journey
               </p>
-              <p className="font-body text-lg text-muted-foreground leading-relaxed">
-                No two journeys are ever the same. These are a few places where they often begin.
-              </p>
             </FadeIn>
 
           </div>

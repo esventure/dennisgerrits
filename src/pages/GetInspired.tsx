@@ -290,12 +290,6 @@ const GetInspired = () => {
               >
                 Some ideas to inspire your journey
               </p>
-              <p
-                className="font-body text-lg leading-relaxed"
-                style={{ color: "hsl(0 0% 94%)" }}
-              >
-                No two journeys are ever the same. These are a few places where they often begin.
-              </p>
             </FadeIn>
           </div>
         </div>

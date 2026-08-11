@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { useSiteContent } from "@/hooks/useSiteContent";
+import { supabase } from "@/integrations/supabase/client";
 import { lovableAssetUrl } from "@/lib/utils";
 import dennisContactAsset from "@/assets/dennis-contact.jpg.asset.json";
 const dennisCanalSmile = lovableAssetUrl(dennisContactAsset.url);

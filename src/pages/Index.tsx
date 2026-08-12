@@ -239,7 +239,7 @@ const Index = () => {
                   return {
                     "@type": "Review",
                     author: { "@type": "Person", name: r.author },
-                    ...(isNaN(d) ? {} : { datePublished: d.toISOString().slice(0, 10) }),
+                    ...(Number.isNaN(d.getTime()) ? {} : { datePublished: d.toISOString().slice(0, 10) }),
                     reviewBody: r.quote,
                     reviewRating: {
                       "@type": "Rating",

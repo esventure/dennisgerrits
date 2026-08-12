@@ -281,7 +281,17 @@ const GetInspired = () => {
                       </p>
                     </div>
                   </button>
-                  </div>
+                  <p className="sr-only">{theme.body.join(" ")}</p>
+                  <p className="mt-2 px-1">
+                    <Link
+                      to={`/get-inspired/${theme.slug}`}
+                      className="text-sm underline underline-offset-4 text-primary/70 hover:text-primary transition-colors"
+                    >
+                      Read more about {theme.title}
+                    </Link>
+                  </p>
+                  </article>
+
                 </FadeIn>
               );
 

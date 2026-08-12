@@ -43,7 +43,9 @@ export const routes: RouteRecord[] = [
         element: <ExperienceTheme />,
         getStaticPaths: () => experienceSlugs.map((s) => `/get-inspired/${s}`),
       },
-      { path: "interests", element: <GetInspired /> },
+      // Legacy path: keep the URL alive but send visitors and crawlers
+      // to the single canonical Experiences page.
+      { path: "interests", element: <Navigate to="/get-inspired" replace /> },
 
       { path: "travel-agents", element: <TravelAgents /> },
       {

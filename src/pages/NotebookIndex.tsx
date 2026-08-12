@@ -4,6 +4,7 @@ import { useLoaderData } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import FadeIn from "@/components/FadeIn";
+import { breadcrumbJsonLd } from "@/lib/jsonld";
 
 type Story = {
   id: string;
@@ -67,6 +68,9 @@ const NotebookIndex = () => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://dennisgerrits.com/notebook" />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbJsonLd([{ name: "Notebook", url: "https://dennisgerrits.com/notebook" }]))}
+        </script>
         <meta name="twitter:title" content="Notebook – Dennis Gerrits" />
         <meta name="twitter:description" content="Short reflections from Amsterdam by Dennis Gerrits." />
       </Head>

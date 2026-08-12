@@ -186,7 +186,7 @@ const TravelAgents = () => {
   return (
     <main className="bg-background">
       <Head>
-        <title>Amsterdam Local Partner for Travel Advisors</title>
+        <title>Amsterdam Local Partner for Travel Advisors | Dennis Gerrits</title>
         <meta
           name="description"
           content="Dennis Gerrits supports travel advisors and concierges in Amsterdam: on-the-ground care for your clients, tailored days, bookings and local answers."

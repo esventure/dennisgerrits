@@ -18,6 +18,7 @@ const Layout = () => {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <ScrollToTop />
+        <AnalyticsTracker />
         <Toaster />
         <Sonner />
         <MovedBanner />

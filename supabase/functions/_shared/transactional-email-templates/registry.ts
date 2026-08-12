@@ -1,6 +1,6 @@
 import type { ComponentType } from 'npm:react@18.3.1'
-import { contactNotification } from './contact-notification.tsx'
-import { contactConfirmation } from './contact-confirmation.tsx'
+import { template as contactNotification } from './contact-notification.tsx'
+import { template as contactConfirmation } from './contact-confirmation.tsx'
 
 export interface TemplateEntry {
   component: ComponentType<Record<string, unknown>>

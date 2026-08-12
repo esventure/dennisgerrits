@@ -32,6 +32,7 @@ import iconBoat from "@/assets/icon-boat.png";
 import iconFoot from "@/assets/icon-foot.png";
 import { useSiteContent } from "@/hooks/useSiteContent";
 import { lovableAssetUrl } from "@/lib/utils";
+import { breadcrumbJsonLd } from "@/lib/jsonld";
 import ContactSection from "@/components/ContactSection";
 import ServiceIcon from "@/components/ServiceIcon";
 import RichText from "@/components/RichText";

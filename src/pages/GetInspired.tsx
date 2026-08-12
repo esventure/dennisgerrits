@@ -48,7 +48,21 @@ const GetInspired = () => {
         <meta property="og:url" content="https://dennisgerrits.com/get-inspired" />
         <meta name="twitter:title" content="Amsterdam Experience Inspiration" />
         <meta name="twitter:description" content="Themes and threads to shape your days in Amsterdam, from neighborhood life and water to art, food culture and quiet corners." />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            name: "Amsterdam experience themes",
+            itemListElement: themes.map((t, i) => ({
+              "@type": "ListItem",
+              position: i + 1,
+              url: `https://dennisgerrits.com/get-inspired/${t.slug}`,
+              name: t.title,
+            })),
+          })}
+        </script>
       </Head>
+
 
       {/* Interests — green header band */}
       <section

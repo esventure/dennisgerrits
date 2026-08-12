@@ -71,9 +71,26 @@ function generateSitemap(entries: SitemapEntry[]) {
   ].join("\n");
 }
 
+function experienceSlugsFromSource(): string[] {
+  try {
+    const src = readFileSync(resolve("src/data/experiences.ts"), "utf8");
+    const titles = [...src.matchAll(/^\s{4}title: "([^"]+)",$/gm)].map((m) => m[1]);
+    return titles.map((t) =>
+      t.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""),
+    );
+  } catch {
+    return [];
+  }
+}
+
 const slugs = await fetchStorySlugs();
 const entries: SitemapEntry[] = [
   ...staticEntries,
+  ...experienceSlugsFromSource().map((slug) => ({
+    path: `/get-inspired/${slug}`,
+    changefreq: "monthly" as const,
+    priority: "0.6",
+  })),
   ...slugs.map((slug) => ({
     path: `/notebook/${slug}`,
     changefreq: "monthly" as const,

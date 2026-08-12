@@ -26,9 +26,9 @@ const ContactSection = () => {
       message: contactForm.message,
       source: "homepage",
     });
-    setSending(false);
 
     if (error) {
+      setSending(false);
       toast({
         title: "Something went wrong",
         description: "Your message could not be sent. Please try again or reach me on WhatsApp.",
@@ -37,6 +37,39 @@ const ContactSection = () => {
       return;
     }
 
+    // Best-effort: notify Dennis and confirm with the visitor. The message is
+    // already saved, so email send failures here do not affect the user.
+    const submissionId = crypto.randomUUID();
+    const sends = [
+      supabase.functions.invoke("send-transactional-email", {
+        body: {
+          templateName: "contact-notification",
+          idempotencyKey: `contact-notify-${submissionId}`,
+          templateData: {
+            name: contactForm.name,
+            email: contactForm.email,
+            message: contactForm.message,
+          },
+        },
+      }),
+      supabase.functions.invoke("send-transactional-email", {
+        body: {
+          templateName: "contact-confirmation",
+          recipientEmail: contactForm.email,
+          idempotencyKey: `contact-confirm-${submissionId}`,
+          templateData: { name: contactForm.name },
+        },
+      }),
+    ];
+    Promise.allSettled(sends).then((results) => {
+      results.forEach((r, i) => {
+        if (r.status === "rejected") {
+          console.error("Email send failed", i, r.reason);
+        }
+      });
+    });
+
+    setSending(false);
     toast({ title: "Message sent", description: "Thank you. I'll be in touch soon." });
     setContactForm({ name: "", email: "", message: "" });
   };

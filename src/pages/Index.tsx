@@ -96,30 +96,33 @@ const moments = [
 
 
 const reviews = [
-
   {
     quote: "Of all the guides I've had over all the decades, Dennis is in the very top ranks. His combination of personable, excitable, knowledgeable, flexible, ethical, and practical is really hard to beat. We spent a full day with him in Amsterdam, including a private boat tour on the canals, and cannot imagine a better introduction to the city.",
     author: "dbw001",
     location: "Marathon, Florida",
     date: "August 2026",
+    link: "https://www.tripadvisor.com/ShowUserReviews-g188590-d13431295-r1072370509-Love_My_City_Tours-Amsterdam_North_Holland_Province.html",
   },
   {
     quote: "From the moment we met Dennis, it felt like we were reconnecting with an old friend. Warm, genuine, and completely passionate about his city. This experience wasn't just a tour, it was a heartfelt connection to Amsterdam…",
     author: "William B.",
     location: "Tripadvisor review",
     date: "April 2025",
+    link: "https://www.tripadvisor.com/ShowUserReviews-g188590-d13431295-r1007568679-Love_My_City_Tours-Amsterdam_North_Holland_Province.html",
   },
   {
     quote: "Your experience starts before you board your flight with a getting to know you call. Knowing your predilections and curiosities allows him to make your time in Amsterdam packed with all the things you want to see…",
     author: "Erica K.",
     location: "Bethesda, Maryland",
     date: "August 2025",
+    link: "https://www.tripadvisor.com/ShowUserReviews-g188590-d13431295-r1028105215-Love_My_City_Tours-Amsterdam_North_Holland_Province.html",
   },
   {
     quote: "We were able to truly experience the Netherlands through Dennis' experienced guidance. The countryside, a historical working windmill, the dikes and the tulip fields. Truly a once in a lifetime experience…",
     author: "Ponciano Q.",
     location: "Tripadvisor review",
     date: "April 2025",
+    link: "https://www.tripadvisor.com/ShowUserReviews-g188590-d13431295-r1011724781-Love_My_City_Tours-Amsterdam_North_Holland_Province.html",
   },
 ];
 
@@ -1059,7 +1062,7 @@ const Index = () => {
                     return (
                       <FadeIn className="md:col-span-8 lg:col-span-9">
                         <a
-                          href={TA_URL}
+                          href={hero.link ?? TA_URL}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="group block bg-background rounded-lg shadow-md hover:shadow-lg transition-all border-l-4 px-6 sm:px-10 md:px-10 py-8 sm:py-10 md:py-10 relative"
@@ -1116,7 +1119,7 @@ const Index = () => {
                       return (
                         <FadeIn key={i} delay={i * 0.08}>
                           <a
-                            href={TA_URL}
+                            href={r.link ?? TA_URL}
                             target="_blank"
                             rel="noopener noreferrer"
                             className={`group bg-background rounded-lg p-5 h-full flex flex-col shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 border-t-4 snap-start w-[280px] md:w-auto ${spans[i] ?? ""} ${align}`}

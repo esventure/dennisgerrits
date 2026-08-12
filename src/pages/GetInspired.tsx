@@ -10,7 +10,7 @@ import { experiences as themes } from "@/data/experiences";
 const GetInspired = () => {
   const [active, setActive] = useState<string | null>(null);
   const [searchParams] = useSearchParams();
-  const cardRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const cardRefs = useRef<Record<string, HTMLElement | null>>({});
   const requestedSlug = searchParams.get("theme");
 
   useEffect(() => {

@@ -1,4 +1,5 @@
 import type { RouteRecord } from "vite-react-ssg";
+import { Navigate } from "react-router-dom";
 import Layout from "./Layout";
 import Index from "./pages/Index";
 import GetInspired from "./pages/GetInspired";
@@ -43,7 +44,9 @@ export const routes: RouteRecord[] = [
         element: <ExperienceTheme />,
         getStaticPaths: () => experienceSlugs.map((s) => `/get-inspired/${s}`),
       },
-      { path: "interests", element: <GetInspired /> },
+      // Legacy path: keep the URL alive but send visitors and crawlers
+      // to the single canonical Experiences page.
+      { path: "interests", element: <Navigate to="/get-inspired" replace /> },
 
       { path: "travel-agents", element: <TravelAgents /> },
       {

@@ -176,7 +176,7 @@ const GetInspired = () => {
               const sketchPaths = sketchVariants[i % sketchVariants.length];
               return (
                 <FadeIn key={theme.id} delay={i * 0.08}>
-                  <div ref={(el) => { cardRefs.current[theme.id] = el; }}>
+                  <article id={theme.slug} ref={(el) => { cardRefs.current[theme.id] = el; }}>
                   <button
                     onClick={() => setActive(isActive ? null : theme.id)}
                     className="group relative block w-full text-left transition-transform duration-500 ease-out hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-4"

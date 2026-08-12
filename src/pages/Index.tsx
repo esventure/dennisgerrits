@@ -1119,7 +1119,7 @@ const Index = () => {
                       return (
                         <FadeIn key={i} delay={i * 0.08}>
                           <a
-                            href={TA_URL}
+                            href={r.link ?? TA_URL}
                             target="_blank"
                             rel="noopener noreferrer"
                             className={`group bg-background rounded-lg p-5 h-full flex flex-col shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 border-t-4 snap-start w-[280px] md:w-auto ${spans[i] ?? ""} ${align}`}

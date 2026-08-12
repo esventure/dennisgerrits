@@ -1,196 +1,16 @@
 import { Head } from "vite-react-ssg";
 import { useState, useEffect, useRef } from "react";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
 import { cn } from "@/lib/utils";
 import ContactSection from "@/components/ContactSection";
-import imgHistory from "@/assets/interests/history.jpg";
-import imgFood from "@/assets/interests/food.jpg";
-import imgArchitecture from "@/assets/interests/architecture.jpg";
-import imgArt from "@/assets/interests/art.jpg";
-import imgNature from "@/assets/interests/nature.jpg";
-import imgCraft from "@/assets/interests/craft.jpg";
-import imgCafes from "@/assets/interests/cafes.jpg";
-import imgCycling from "@/assets/interests/cycling.jpg";
-import imgLiterature from "@/assets/interests/literature.jpg";
-import imgMusic from "@/assets/interests/music.jpg";
-import imgWater from "@/assets/interests/water.jpg";
-import imgMarkets from "@/assets/interests/markets.jpg";
-import imgNeighborhood from "@/assets/interests/neighbourhood.jpg";
-import imgTulips from "@/assets/interests/tulips.jpg";
-import imgHeritageMemory from "@/assets/interests/heritage-memory.jpg";
-import imgLeiden from "@/assets/interests/leiden.jpg";
-import imgCountryside from "@/assets/interests/countryside.jpg";
-import imgRotterdam from "@/assets/interests/rotterdam.jpg";
-import imgDelft from "@/assets/interests/delft.jpg";
-import imgBrownCafe from "@/assets/interests/brown-cafe.jpg";
-import imgVanGogh from "@/assets/interests/vangogh.jpg";
-import imgHaarlem from "@/assets/interests/haarlem.jpg";
-import imgRembrandt from "@/assets/interests/rembrandt.jpg";
-import imgQuietCorners from "@/assets/interests/quiet-corners.jpg";
-import imgShapedByWater from "@/assets/interests/shaped-by-water.jpg";
+import { experiences as themes } from "@/data/experiences";
 
-const blocks: { title: string; note: string; caption: string; image: string }[] = [
-  {
-    title: "The neighborhood",
-    note: "real Amsterdam lives here",
-    caption:
-      "Quiet side streets where everyday life unfolds. Someone watering plants outside their front door. A neighbor locking up a bicycle.",
-    image: imgNeighborhood,
-  },
-  {
-    title: "Rembrandt and the Golden Age Stories",
-    note: "the city that painted itself into history",
-    caption:
-      "Rembrandt and his living light. Rijksmuseum walls full of time and memory. Golden Age architecture where history still breathes.",
-    image: imgRembrandt,
-  },
-  {
-    title: "Food Culture",
-    note: "where you taste Amsterdam, one bite at a time",
-    caption:
-      "Morning markets full of daily life. The smell of fresh bread from bakeries. Local flavors in every bite.",
-    image: imgFood,
-  },
-  {
-    title: "Slow Evenings",
-    note: "when Amsterdam turns quiet and cozy",
-    caption:
-      "Brown cafés where time disappears. Locals settling into their night. Small restaurants that feel like home.",
-    image: imgBrownCafe,
-  },
-  {
-    title: "From the Water",
-    note: "seeing the city in a different rhythm",
-    caption:
-      "On a private boat through quiet canals. The city unfolding around you. A picnic, wine, and shared moments.",
-    image: imgWater,
-  },
-  {
-    title: "Living Architecture",
-    note: "unlike anywhere else in the world",
-    caption:
-      "A city built in layers of time. Old and modern architecture side by side. Every building carries its own story.",
-    image: imgArchitecture,
-  },
-  {
-    title: "Stories of History",
-    note: "feel how time has passed through Amsterdam",
-    caption:
-      "So many lives have shaped this city. History still lives in every street. 750 years of change.",
-    image: imgHistory,
-  },
-  {
-    title: "Van Gogh Creates",
-    note: "see the world through his eyes",
-    caption:
-      "Van Gogh Museum, where his work lives. His art is also found in the Kröller-Müller Museum. A life shaped by color and emotion.",
-    image: imgVanGogh,
-  },
-  {
-    title: "On Two Wheels",
-    note: "experience Amsterdam like the locals do",
-    caption:
-      "Feel the freedom of movement. Bikes shape the city's DNA. It's a way of life for locals.",
-    image: imgCycling,
-  },
-  {
-    title: "Heritage of Memory",
-    note: "Jewish history and World War II in Amsterdam",
-    caption:
-      "Jewish life through the centuries. Stories of survival, courage and resistance. The impact of World War II on the city.",
-    image: imgHeritageMemory,
-  },
-  {
-    title: "Art Scene",
-    note: "a vibrant art world in Amsterdam",
-    caption:
-      "Artists shaping the city. Streets full of galleries and antique stores. Graffiti and art in public spaces.",
-    image: imgArt,
-  },
-  {
-    title: "Gardens & Green Spaces",
-    note: "a greener side of Amsterdam",
-    caption:
-      "Hidden gardens and botanical gardens in the city. Beautiful parks where people gather and enjoy life. Quiet spaces to relax and unwind.",
-    image: imgNature,
-  },
-  {
-    title: "Quiet Corners",
-    note: "benches where Amsterdam slows down",
-    caption:
-      "Sit and watch the city pass by. Rest, enjoy and just be. Share stories with locals nearby.",
-    image: imgQuietCorners,
-  },
-  {
-    title: "Shaped by Water",
-    note: "how the Netherlands lives with water every day",
-    caption:
-      "A constant fight with water. Continuous innovation in water management. Cities built around water systems.",
-    image: imgShapedByWater,
-  },
-  {
-    title: "The Dutch Countryside",
-    note: "step into a living postcard",
-    caption:
-      "Endless farmlands stretching to the horizon. Colorful houses, windmills and waterlands. A quiet rhythm of rural life.",
-    image: imgCountryside,
-  },
-  {
-    title: "Tulip Season",
-    note: "in spring, the landscape blooms even brighter",
-    caption:
-      "Tulip fields in endless bloom. Keukenhof Gardens, wandering among countless flowers. A vibrant mix of colors and scents that stays with you forever.",
-    image: imgTulips,
-  },
-  {
-    title: "Haarlem",
-    note: "home of Frans Hals and hidden beauty",
-    caption:
-      "Close to Amsterdam, different in spirit. Frans Hals Museum, see the master at work. A city of courtyards, quiet streets and timeless elegance.",
-    image: imgHaarlem,
-  },
-  {
-    title: "Leiden",
-    note: "birthplace of Rembrandt and rich in history",
-    caption:
-      "Centuries of stories along its beautiful canals. The Netherlands' oldest university city. Home to many Pilgrim Fathers before the Mayflower voyage.",
-    image: imgLeiden,
-  },
-  {
-    title: "Rotterdam",
-    note: "where innovation, architecture and creativity meet",
-    caption:
-      "A city reinvented through vision and design. Bold architecture and a modern skyline. Where the future is already taking shape.",
-    image: imgRotterdam,
-  },
-  {
-    title: "Delft & The Hague",
-    note: "Dutch history, royalty and art together",
-    caption:
-      "The Hague, royal palaces and political power. Delft, home of Vermeer and Delft Blue porcelain. Two iconic cities shaped by centuries of culture.",
-    image: imgDelft,
-  },
-];
-
-const rotations = [-2.4, 1.8, -1.2, 2.2, -1.6, 1.4, -2.0, 1.6];
-const pins = ["tape-tl", "tape-tr", "tape-gl", "tape-gr"] as const;
-
-const themes = blocks.map((b, i) => ({
-  id: `block-${i + 1}`,
-  slug: b.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""),
-  title: b.title,
-  caption: b.caption,
-  note: b.note,
-  image: b.image,
-  rotate: rotations[i % rotations.length],
-  pin: pins[i % pins.length],
-}));
 
 const GetInspired = () => {
   const [active, setActive] = useState<string | null>(null);
   const [searchParams] = useSearchParams();
-  const cardRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const cardRefs = useRef<Record<string, HTMLElement | null>>({});
   const requestedSlug = searchParams.get("theme");
 
   useEffect(() => {
@@ -228,7 +48,21 @@ const GetInspired = () => {
         <meta property="og:url" content="https://dennisgerrits.com/get-inspired" />
         <meta name="twitter:title" content="Amsterdam Experience Inspiration" />
         <meta name="twitter:description" content="Themes and threads to shape your days in Amsterdam, from neighborhood life and water to art, food culture and quiet corners." />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            name: "Amsterdam experience themes",
+            itemListElement: themes.map((t, i) => ({
+              "@type": "ListItem",
+              position: i + 1,
+              url: `https://dennisgerrits.com/get-inspired/${t.slug}`,
+              name: t.title,
+            })),
+          })}
+        </script>
       </Head>
+
 
       {/* Interests — green header band */}
       <section
@@ -356,7 +190,7 @@ const GetInspired = () => {
               const sketchPaths = sketchVariants[i % sketchVariants.length];
               return (
                 <FadeIn key={theme.id} delay={i * 0.08}>
-                  <div ref={(el) => { cardRefs.current[theme.id] = el; }}>
+                  <article id={theme.slug} ref={(el) => { cardRefs.current[theme.id] = el; }}>
                   <button
                     onClick={() => setActive(isActive ? null : theme.id)}
                     className="group relative block w-full text-left transition-transform duration-500 ease-out hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-4"
@@ -461,7 +295,17 @@ const GetInspired = () => {
                       </p>
                     </div>
                   </button>
-                  </div>
+                  <p className="sr-only">{theme.body.join(" ")}</p>
+                  <p className="mt-2 px-1">
+                    <Link
+                      to={`/get-inspired/${theme.slug}`}
+                      className="text-sm underline underline-offset-4 text-primary/70 hover:text-primary transition-colors"
+                    >
+                      Read more about {theme.title}
+                    </Link>
+                  </p>
+                  </article>
+
                 </FadeIn>
               );
 

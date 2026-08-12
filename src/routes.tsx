@@ -2,6 +2,8 @@ import type { RouteRecord } from "vite-react-ssg";
 import Layout from "./Layout";
 import Index from "./pages/Index";
 import GetInspired from "./pages/GetInspired";
+import ExperienceTheme from "./pages/ExperienceTheme";
+import { experienceSlugs } from "@/data/experiences";
 import TravelAgents from "./pages/TravelAgents";
 import NotebookIndex from "./pages/NotebookIndex";
 import NotebookStory from "./pages/NotebookStory";
@@ -36,7 +38,13 @@ export const routes: RouteRecord[] = [
     children: [
       { index: true, element: <Index /> },
       { path: "get-inspired", element: <GetInspired /> },
+      {
+        path: "get-inspired/:slug",
+        element: <ExperienceTheme />,
+        getStaticPaths: () => experienceSlugs.map((s) => `/get-inspired/${s}`),
+      },
       { path: "interests", element: <GetInspired /> },
+
       { path: "travel-agents", element: <TravelAgents /> },
       {
         path: "notebook",

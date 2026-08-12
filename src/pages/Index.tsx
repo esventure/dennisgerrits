@@ -32,6 +32,7 @@ import iconBoat from "@/assets/icon-boat.png";
 import iconFoot from "@/assets/icon-foot.png";
 import { useSiteContent } from "@/hooks/useSiteContent";
 import { lovableAssetUrl } from "@/lib/utils";
+import { breadcrumbJsonLd } from "@/lib/jsonld";
 import ContactSection from "@/components/ContactSection";
 import ServiceIcon from "@/components/ServiceIcon";
 import RichText from "@/components/RichText";
@@ -253,6 +254,9 @@ const Index = () => {
               },
             ],
           })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbJsonLd([]))}
         </script>
         <meta name="twitter:title" content="Dennis Gerrits – Personal Travel Companion in Amsterdam" />
         <meta name="twitter:description" content="A personal, trust-based way of experiencing Amsterdam, guided by someone who feels like a friend." />

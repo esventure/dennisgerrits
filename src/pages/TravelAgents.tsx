@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { lovableAssetUrl } from "@/lib/utils";
+import { breadcrumbJsonLd } from "@/lib/jsonld";
 import { supabase } from "@/integrations/supabase/client";
 import dennisBoat from "@/assets/dennis-hero.jpg.asset.json";
 
@@ -213,6 +214,9 @@ const TravelAgents = () => {
               jobTitle: "Travel Companion & Storyteller",
             },
           })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbJsonLd([{ name: "For Professionals", url: "https://dennisgerrits.com/travel-agents" }]))}
         </script>
         <meta name="twitter:title" content="Amsterdam Local Partner for Travel Advisors" />
         <meta name="twitter:description" content="On-the-ground care in Amsterdam for the clients of travel advisors and concierges." />

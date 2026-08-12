@@ -767,11 +767,13 @@ const Index = () => {
                     type="button"
                     onClick={() =>
                       navigate(
-                        `/get-inspired?theme=${encodeURIComponent(
-                          theme.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")
-                        )}`
+                        `/get-inspired/${theme.title
+                          .toLowerCase()
+                          .replace(/[^a-z0-9]+/g, "-")
+                          .replace(/^-|-$/g, "")}`
                       )
                     }
+
                     aria-label={`${theme.title} — read more on the Experiences page`}
                     className="group relative block w-full text-left transition-transform duration-500 ease-out hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-4"
                     style={{ transform: `rotate(${theme.rotate}deg)` }}

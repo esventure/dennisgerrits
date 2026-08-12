@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 import FloatingCTA from "@/components/FloatingCTA";
 import MovedBanner from "@/components/MovedBanner";
 import ScrollToTop from "@/components/ScrollToTop";
+import AnalyticsTracker from "@/components/AnalyticsTracker";
 
 const Layout = () => {
   const [queryClient] = useState(() => new QueryClient());

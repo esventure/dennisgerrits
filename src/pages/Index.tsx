@@ -214,6 +214,43 @@ const Index = () => {
                   addressCountry: "NL",
                 },
               },
+              {
+                "@type": "Service",
+                name: "Love My City Tours — Personal Amsterdam Travel Companion",
+                serviceType: "Private guided tours",
+                areaServed: {
+                  "@type": "City",
+                  name: "Amsterdam",
+                },
+                provider: {
+                  "@type": "Person",
+                  name: "Dennis Gerrits",
+                  url: "https://dennisgerrits.com/",
+                },
+                aggregateRating: {
+                  "@type": "AggregateRating",
+                  ratingValue: t("tripadvisor.rating", "5.0"),
+                  reviewCount: parseInt(t("tripadvisor.review_count", "218"), 10) || 218,
+                  bestRating: "5",
+                  worstRating: "1",
+                },
+                review: reviews.map((r) => {
+                  const d = new Date(r.date);
+                  return {
+                    "@type": "Review",
+                    author: { "@type": "Person", name: r.author },
+                    ...(Number.isNaN(d.getTime()) ? {} : { datePublished: d.toISOString().slice(0, 10) }),
+                    reviewBody: r.quote,
+                    reviewRating: {
+                      "@type": "Rating",
+                      ratingValue: "5",
+                      bestRating: "5",
+                      worstRating: "1",
+                    },
+                    url: r.link,
+                  };
+                }),
+              },
             ],
           })}
         </script>
@@ -1109,56 +1146,53 @@ const Index = () => {
                   })()}
                 </div>
 
-                {/* Remaining reviews — smaller grid for rhythm */}
-                <div className="overflow-x-auto md:overflow-visible scroll-smooth snap-x snap-mandatory -mx-6 px-6 md:mx-0 md:px-0 pb-2 md:pb-0">
-                  <div className="flex md:grid md:grid-cols-2 lg:grid-cols-5 gap-5 mb-8 max-w-6xl mx-auto min-w-max md:min-w-0">
-                    {reviews.slice(1).map((r, i) => {
-                      // Vary widths to break the wall: spans 2/2/3/3/2 across 5 cols
-                      const spans = ["lg:col-span-2", "lg:col-span-3", "lg:col-span-3", "lg:col-span-2", "lg:col-span-5"];
-                      const align = i % 2 === 0 ? "text-left" : "text-left md:text-right";
-                      return (
-                        <FadeIn key={i} delay={i * 0.08}>
-                          <a
-                            href={r.link ?? TA_URL}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={`group bg-background rounded-lg p-5 h-full flex flex-col shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 border-t-4 snap-start w-[280px] md:w-auto ${spans[i] ?? ""} ${align}`}
-                            style={{ borderTopColor: TA_GREEN }}
-                          >
-                            <div className={`flex items-center justify-between mb-2 ${i % 2 === 1 ? "md:flex-row-reverse" : ""}`}>
-                              <TripAdvisorBubbles size={12} />
-                              <span
-                                className="font-body text-xs tracking-wide uppercase opacity-70 group-hover:opacity-100 transition-opacity"
-                                style={{ color: TA_GREEN }}
-                              >
-                                Tripadvisor
-                              </span>
+                {/* Remaining reviews — equal grid that fits the screen */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-8 max-w-6xl mx-auto">
+                  {reviews.slice(1).map((r, i) => {
+                    return (
+                      <FadeIn key={i} delay={i * 0.08}>
+                        <a
+                          href={r.link ?? TA_URL}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group bg-background rounded-lg p-5 h-full flex flex-col shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 border-t-4"
+                          style={{ borderTopColor: TA_GREEN }}
+                        >
+                          <div className="flex items-center justify-between mb-2">
+                            <TripAdvisorBubbles size={12} />
+                            <span
+                              className="font-body text-xs tracking-wide uppercase opacity-70 group-hover:opacity-100 transition-opacity"
+                              style={{ color: TA_GREEN }}
+                            >
+                              Tripadvisor
+                            </span>
+                          </div>
+                          <p className="font-body text-[11px] text-muted-foreground mb-2">
+                            Reviewed {r.date}
+                          </p>
+                          <p className="font-body text-sm text-foreground leading-snug italic flex-1 line-clamp-4">
+                            "{r.quote}"
+                          </p>
+                          <div className="mt-3 pt-3 border-t border-border flex items-end justify-between gap-3">
+                            <div>
+                              <p className="font-body text-xs font-medium text-primary">
+                                {r.author}
+                              </p>
+                              <p className="font-body text-[11px] text-muted-foreground">
+                                {r.location}
+                              </p>
                             </div>
-                            <p className="font-body text-[11px] text-muted-foreground mb-2">
-                              Reviewed {r.date}
-                            </p>
-                            <p className="font-body text-sm text-foreground leading-snug italic flex-1">
-                              "{r.quote}"
-                            </p>
-                            <div className="mt-3 pt-3 border-t border-border flex items-end justify-between gap-3">
-                              <div>
-                                <p className="font-body text-xs font-medium text-primary">
-                                  {r.author}
-                                </p>
-                                <p className="font-body text-[11px] text-muted-foreground">
-                                  {r.location}
-                                </p>
-                              </div>
-                            </div>
-                          </a>
-                        </FadeIn>
-                      );
-                    })}
-                  </div>
-                  <style>{`
-                    .overflow-x-auto::-webkit-scrollbar { display: none; }
-                    .overflow-x-auto { -ms-overflow-style: none; scrollbar-width: none; }
-                  `}</style>
+                            <span
+                              className="font-body text-[10px] tracking-wide opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity whitespace-nowrap"
+                              style={{ color: TA_GREEN }}
+                            >
+                              Read →
+                            </span>
+                          </div>
+                        </a>
+                      </FadeIn>
+                    );
+                  })}
                 </div>
 
                 {/* All reviews CTA */}

@@ -98,42 +98,31 @@ const moments = [
 const reviews = [
 
   {
-    quote: "Two wonderful days of walking, eating at favorite restaurants, touring the canals, and visiting the Rijks and Van Gogh museums…",
-    author: "James E.",
-    location: "Rick Steves traveler",
-    date: "March 2026",
+    quote: "Of all the guides I've had over all the decades, Dennis is in the very top ranks. His combination of personable, excitable, knowledgeable, flexible, ethical, and practical is really hard to beat. We spent a full day with him in Amsterdam, including a private boat tour on the canals, and cannot imagine a better introduction to the city.",
+    author: "dbw001",
+    location: "Marathon, Florida",
+    date: "August 2026",
   },
   {
-    quote: "Knowledgeable and very personable. If we were to return we would book Dennis again just for the pleasure of his company…",
-    author: "Paul J.",
-    location: "United States",
-    date: "July 2025",
+    quote: "From the moment we met Dennis, it felt like we were reconnecting with an old friend. Warm, genuine, and completely passionate about his city. This experience wasn't just a tour, it was a heartfelt connection to Amsterdam…",
+    author: "William B.",
+    location: "Tripadvisor review",
+    date: "April 2025",
   },
   {
-    quote: "If I could give Dennis 10++ stars I would. One of the best guides we have ever had the pleasure of knowing…",
-    author: "Brynn & Bill",
-    location: "United States",
-    date: "September 2023",
+    quote: "Your experience starts before you board your flight with a getting to know you call. Knowing your predilections and curiosities allows him to make your time in Amsterdam packed with all the things you want to see…",
+    author: "Erica K.",
+    location: "Bethesda, Maryland",
+    date: "August 2025",
   },
   {
-    quote: "Welcoming, kind and enthusiastic. He gave us a walking tour of Amsterdam, drove us to the tulip fields, and took us to the museums…",
-    author: "Melanie D.",
-    location: "Keller, Texas",
-    date: "April 2024",
-  },
-  {
-    quote: "Dennis took us off the beaten path and showed us the Amsterdam locals know. We finished the day feeling like we'd made a friend, not hired a guide…",
-    author: "Sarah & Tom",
-    location: "United Kingdom",
-    date: "May 2025",
-  },
-  {
-    quote: "From the moment we connected by email, Dennis was attentive and thoughtful. The day itself flowed effortlessly. We can't recommend him highly enough…",
-    author: "Linda H.",
-    location: "Australia",
-    date: "October 2024",
+    quote: "We were able to truly experience the Netherlands through Dennis' experienced guidance. The countryside, a historical working windmill, the dikes and the tulip fields. Truly a once in a lifetime experience…",
+    author: "Ponciano Q.",
+    location: "Tripadvisor review",
+    date: "April 2025",
   },
 ];
+
 
 
 

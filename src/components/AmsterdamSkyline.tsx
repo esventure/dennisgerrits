@@ -92,7 +92,9 @@ const AmsterdamSkyline = ({ variant = 'global' }: Props) => {
       >
         <img
           src={skyline}
-          alt="Amsterdam skyline illustration"
+          alt=""
+          loading="lazy"
+          decoding="async"
           className="w-full h-auto block"
           style={{
             opacity: 0.02,

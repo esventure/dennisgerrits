@@ -36,7 +36,13 @@ export const routes: RouteRecord[] = [
     children: [
       { index: true, element: <Index /> },
       { path: "get-inspired", element: <GetInspired /> },
+      {
+        path: "get-inspired/:slug",
+        element: <ExperienceTheme />,
+        getStaticPaths: () => experienceSlugs.map((s) => `/get-inspired/${s}`),
+      },
       { path: "interests", element: <GetInspired /> },
+
       { path: "travel-agents", element: <TravelAgents /> },
       {
         path: "notebook",

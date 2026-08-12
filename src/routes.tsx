@@ -2,6 +2,8 @@ import type { RouteRecord } from "vite-react-ssg";
 import Layout from "./Layout";
 import Index from "./pages/Index";
 import GetInspired from "./pages/GetInspired";
+import ExperienceTheme from "./pages/ExperienceTheme";
+import { experienceSlugs } from "@/data/experiences";
 import TravelAgents from "./pages/TravelAgents";
 import NotebookIndex from "./pages/NotebookIndex";
 import NotebookStory from "./pages/NotebookStory";

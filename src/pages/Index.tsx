@@ -1062,7 +1062,7 @@ const Index = () => {
                     return (
                       <FadeIn className="md:col-span-8 lg:col-span-9">
                         <a
-                          href={TA_URL}
+                          href={hero.link ?? TA_URL}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="group block bg-background rounded-lg shadow-md hover:shadow-lg transition-all border-l-4 px-6 sm:px-10 md:px-10 py-8 sm:py-10 md:py-10 relative"

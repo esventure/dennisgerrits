@@ -4,6 +4,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
 import { cn } from "@/lib/utils";
 import ContactSection from "@/components/ContactSection";
+import { breadcrumbJsonLd } from "@/lib/jsonld";
 import { experiences as themes } from "@/data/experiences";
 
 
@@ -60,6 +61,9 @@ const GetInspired = () => {
               name: t.title,
             })),
           })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbJsonLd([{ name: "Experiences", url: "https://dennisgerrits.com/get-inspired" }]))}
         </script>
       </Head>
 

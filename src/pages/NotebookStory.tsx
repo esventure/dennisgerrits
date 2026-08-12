@@ -4,6 +4,7 @@ import { Head } from "vite-react-ssg";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import FadeIn from "@/components/FadeIn";
+import { breadcrumbJsonLd } from "@/lib/jsonld";
 
 type Story = {
   id: string;
@@ -98,6 +99,12 @@ const NotebookStory = () => {
         <meta property="og:type" content="article" />
         <meta property="og:url" content={url} />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbJsonLd([
+            { name: "Notebook", url: "https://dennisgerrits.com/notebook" },
+            { name: story.title, url },
+          ]))}
+        </script>
         <meta name="twitter:title" content={`${story.title} – Notebook`} />
         <meta name="twitter:description" content={story.intro.slice(0, 155)} />
       </Head>

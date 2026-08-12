@@ -214,6 +214,43 @@ const Index = () => {
                   addressCountry: "NL",
                 },
               },
+              {
+                "@type": "Service",
+                name: "Love My City Tours — Personal Amsterdam Travel Companion",
+                serviceType: "Private guided tours",
+                areaServed: {
+                  "@type": "City",
+                  name: "Amsterdam",
+                },
+                provider: {
+                  "@type": "Person",
+                  name: "Dennis Gerrits",
+                  url: "https://dennisgerrits.com/",
+                },
+                aggregateRating: {
+                  "@type": "AggregateRating",
+                  ratingValue: t("tripadvisor.rating", "5.0"),
+                  reviewCount: parseInt(t("tripadvisor.review_count", "218"), 10) || 218,
+                  bestRating: "5",
+                  worstRating: "1",
+                },
+                review: reviews.map((r) => {
+                  const d = new Date(r.date);
+                  return {
+                    "@type": "Review",
+                    author: { "@type": "Person", name: r.author },
+                    ...(isNaN(d) ? {} : { datePublished: d.toISOString().slice(0, 10) }),
+                    reviewBody: r.quote,
+                    reviewRating: {
+                      "@type": "Rating",
+                      ratingValue: "5",
+                      bestRating: "5",
+                      worstRating: "1",
+                    },
+                    url: r.link,
+                  };
+                }),
+              },
             ],
           })}
         </script>

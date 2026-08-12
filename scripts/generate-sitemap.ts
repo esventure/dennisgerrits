@@ -21,6 +21,7 @@ const SUPABASE_KEY =
 
 interface SitemapEntry {
   path: string;
+  lastmod?: string;
   changefreq?: "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never";
   priority?: string;
 }
@@ -34,16 +35,18 @@ const staticEntries: SitemapEntry[] = [
   { path: "/notebook", changefreq: "weekly", priority: "0.8" },
 ];
 
-async function fetchStorySlugs(): Promise<string[]> {
+// Story rows carry a real per-page update timestamp, so those entries get a
+// <lastmod>. Static pages have no trustworthy timestamp and stay without one.
+async function fetchStorySlugs(): Promise<{ slug: string; updated_at?: string }[]> {
   if (!SUPABASE_URL || !SUPABASE_KEY) return [];
   try {
     const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/stories?select=slug&order=sort_order.asc`,
+      `${SUPABASE_URL}/rest/v1/stories?select=slug,updated_at&order=sort_order.asc`,
       { headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` } },
     );
     if (!res.ok) return [];
-    const rows = (await res.json()) as { slug: string }[];
-    return rows.map((r) => r.slug).filter(Boolean);
+    const rows = (await res.json()) as { slug: string; updated_at?: string }[];
+    return rows.filter((r) => r.slug);
   } catch {
     return [];
   }
@@ -54,6 +57,7 @@ function generateSitemap(entries: SitemapEntry[]) {
     [
       `  <url>`,
       `    <loc>${BASE_URL}${e.path}</loc>`,
+      e.lastmod ? `    <lastmod>${e.lastmod}</lastmod>` : null,
       e.changefreq ? `    <changefreq>${e.changefreq}</changefreq>` : null,
       e.priority ? `    <priority>${e.priority}</priority>` : null,
       `  </url>`,
@@ -91,8 +95,9 @@ const entries: SitemapEntry[] = [
     changefreq: "monthly" as const,
     priority: "0.6",
   })),
-  ...slugs.map((slug) => ({
-    path: `/notebook/${slug}`,
+  ...slugs.map((row) => ({
+    path: `/notebook/${row.slug}`,
+    lastmod: row.updated_at ? row.updated_at.slice(0, 10) : undefined,
     changefreq: "monthly" as const,
     priority: "0.6",
   })),

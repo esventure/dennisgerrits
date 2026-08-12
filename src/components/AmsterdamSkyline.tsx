@@ -36,6 +36,8 @@ const AmsterdamSkyline = ({ variant = 'global' }: Props) => {
         <img
           src={skyline}
           alt=""
+          loading="lazy"
+          decoding="async"
           className="absolute inset-0 w-full h-full block"
           style={{
             opacity: 0.07,
@@ -62,6 +64,8 @@ const AmsterdamSkyline = ({ variant = 'global' }: Props) => {
         <img
           src={skyline}
           alt=""
+          loading="lazy"
+          decoding="async"
           className="absolute inset-x-0 bottom-0 w-full block"
           style={{
             opacity: 0.07,
@@ -115,6 +119,8 @@ const AmsterdamSkyline = ({ variant = 'global' }: Props) => {
         <img
           src={skyline}
           alt=""
+          loading="lazy"
+          decoding="async"
           className="w-full h-auto block"
           style={{
             opacity: 0.05,

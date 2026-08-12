@@ -1,4 +1,5 @@
 import type { RouteRecord } from "vite-react-ssg";
+import { Navigate } from "react-router-dom";
 import Layout from "./Layout";
 import Index from "./pages/Index";
 import GetInspired from "./pages/GetInspired";

@@ -15,15 +15,25 @@ declare global {
 
 let initialized = false;
 
+// TEMPORARY: debug logging while verifying GA4 Realtime. Remove when done.
+const GA_DEBUG = true;
+
 /** Inject the gtag.js library and run the initial config. Browser-only. */
 export function initAnalytics(): void {
   if (initialized || typeof window === "undefined") return;
-  if (!MEASUREMENT_ID) return;
+  if (!MEASUREMENT_ID) {
+    if (GA_DEBUG) console.warn("[GA4] No measurement ID configured");
+    return;
+  }
 
   // Load the gtag.js script.
   const script = document.createElement("script");
   script.async = true;
   script.src = `https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}`;
+  if (GA_DEBUG) {
+    script.addEventListener("load", () => console.log("[GA4] gtag.js loaded"));
+    script.addEventListener("error", () => console.error("[GA4] gtag.js failed to load"));
+  }
   document.head.appendChild(script);
 
   window.dataLayer = window.dataLayer || [];
@@ -35,10 +45,15 @@ export function initAnalytics(): void {
   window.gtag("config", MEASUREMENT_ID);
 
   initialized = true;
+  if (GA_DEBUG) console.log("[GA4] initialized", MEASUREMENT_ID);
 }
 
 /** Send a page_view event for a client-side route change. */
 export function trackPageView(path: string): void {
-  if (typeof window === "undefined" || !MEASUREMENT_ID || !window.gtag) return;
+  if (typeof window === "undefined" || !MEASUREMENT_ID || !window.gtag) {
+    if (GA_DEBUG) console.warn("[GA4] page_view skipped for", path);
+    return;
+  }
   window.gtag("event", "page_view", { page_path: path });
+  if (GA_DEBUG) console.log("[GA4] page_view", path, "dataLayer:", window.dataLayer.length);
 }

@@ -14,7 +14,9 @@ const SENDER_DOMAIN = "info.dennisgerrits.com"
 // FROM_DOMAIN is the domain shown in the From: header (e.g., "example.com").
 // When display_from_root is enabled, this can be the root domain for cleaner branding,
 // even though actual sending uses the subdomain above.
-const FROM_DOMAIN = "info.dennisgerrits.com"
+// Visible From domain is the root domain for clean branding. Actual sending
+// still uses the verified SENDER_DOMAIN subdomain above (relaxed DMARC alignment).
+const FROM_DOMAIN = "dennisgerrits.com"
 
 // Generate a cryptographically random 32-byte hex token
 function generateToken(): string {
@@ -308,7 +310,7 @@ Deno.serve(async (req) => {
     payload: {
       message_id: messageId,
       to: effectiveRecipient,
-      from: `${SITE_NAME} <noreply@${FROM_DOMAIN}>`,
+      from: `Dennis Gerrits <dennis@${FROM_DOMAIN}>`,
       sender_domain: SENDER_DOMAIN,
       subject: resolvedSubject,
       html,

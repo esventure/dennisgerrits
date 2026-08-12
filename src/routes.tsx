@@ -8,6 +8,7 @@ import { experienceSlugs } from "@/data/experiences";
 import TravelAgents from "./pages/TravelAgents";
 import NotebookIndex from "./pages/NotebookIndex";
 import NotebookStory from "./pages/NotebookStory";
+import Unsubscribe from "./pages/Unsubscribe";
 import Admin from "./pages/Admin";
 import AdminLogin from "./pages/AdminLogin";
 import AdminSettings from "./pages/AdminSettings";
@@ -38,6 +39,7 @@ export const routes: RouteRecord[] = [
     element: <Layout />,
     children: [
       { index: true, element: <Index /> },
+      { path: "unsubscribe", element: <Unsubscribe /> },
       { path: "get-inspired", element: <GetInspired /> },
       {
         path: "get-inspired/:slug",

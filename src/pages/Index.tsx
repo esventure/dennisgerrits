@@ -125,6 +125,13 @@ const reviews = [
     date: "April 2025",
     link: "https://www.tripadvisor.com/ShowUserReviews-g188590-d13431295-r1011724781-Love_My_City_Tours-Amsterdam_North_Holland_Province.html",
   },
+  {
+    quote: "We spent two full days with Dennis during our time in Amsterdam, and it was easily one of the highlights of our trip. From the very beginning, it felt less like a tour and more like spending time with a friend who genuinely wanted to share the places he loves. We explored Amsterdam, the Jordaan neighborhood, the countryside, and ended one evening with a private canal cruise with wine and cheese. Along the way, Dennis shared stories about the city's history, its architecture, and even the rich history of our hotel, the Ambassade, and its incredible collection of signed books. Those details brought Amsterdam to life in a way we never could have experienced on our own. He also introduced us to places we probably never would have found ourselves, from a traditional brown café to a wonderful countryside lunch at Wapen van Munster, dinner at Hemelse Modder, and a visit to Beemster and the Schermerhorn Museum Mill. Every recommendation was spot on and felt thoughtfully chosen for us, not pulled from a standard itinerary. What made the experience unforgettable, though, was Dennis himself. He has a gift for sharing history and culture in a way that feels like a conversation, and by the end of our two days together, it genuinely felt like we were saying goodbye to a friend rather than a guide. If you're visiting Amsterdam and considering a private guide, don't hesitate to connect with Dennis. We left with wonderful memories, a much deeper appreciation for the city, and the hope that our paths will cross again someday.",
+    author: "Lisa A.",
+    location: "Tripadvisor review",
+    date: "August 2026",
+    link: "https://www.tripadvisor.com/ShowUserReviews-g188590-d13431295-r1072825580-Love_My_City_Tours-Amsterdam_North_Holland_Province.html",
+  },
 ];
 
 

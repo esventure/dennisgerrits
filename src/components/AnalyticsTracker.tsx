@@ -1,19 +1,20 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
-import { initAnalytics, trackPageView } from "@/lib/analytics";
+import { trackPageView } from "@/lib/analytics";
 
 /**
- * Initializes Google Analytics on first client render and fires a
- * page_view event on every client-side route change.
+ * Fires a page_view on client-side route changes. The initial page view is
+ * handled by the base gtag.js snippet in index.html.
  */
 const AnalyticsTracker = () => {
   const location = useLocation();
+  const first = useRef(true);
 
   useEffect(() => {
-    initAnalytics();
-  }, []);
-
-  useEffect(() => {
+    if (first.current) {
+      first.current = false;
+      return;
+    }
     trackPageView(location.pathname);
   }, [location.pathname]);
 

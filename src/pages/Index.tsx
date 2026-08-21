@@ -1181,8 +1181,8 @@ const Index = () => {
                             backgroundColor: isHighlighted
                               ? "hsl(var(--heritage-orange) / 0.06)"
                               : undefined,
-                            ringColor: isHighlighted
-                              ? "hsl(var(--heritage-orange) / 0.25)"
+                            boxShadow: isHighlighted
+                              ? "inset 0 0 0 1px hsl(var(--heritage-orange) / 0.25), 0 10px 25px -5px rgba(0,0,0,0.08)"
                               : undefined,
                           }}
                         >

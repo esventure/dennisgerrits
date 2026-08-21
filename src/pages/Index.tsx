@@ -98,11 +98,11 @@ const moments = [
 
 const reviews = [
   {
-    quote: "Of all the guides I've had over all the decades, Dennis is in the very top ranks. His combination of personable, excitable, knowledgeable, flexible, ethical, and practical is really hard to beat. We spent a full day with him in Amsterdam, including a private boat tour on the canals, and cannot imagine a better introduction to the city.",
-    author: "dbw001",
-    location: "Marathon, Florida",
+    quote: "We spent two full days with Dennis during our time in Amsterdam, and it was easily one of the highlights of our trip. From the very beginning, it felt less like a tour and more like spending time with a friend who genuinely wanted to share the places he loves. We explored Amsterdam, the Jordaan neighborhood, the countryside, and ended one evening with a private canal cruise with wine and cheese. Along the way, Dennis shared stories about the city's history, its architecture, and even the rich history of our hotel, the Ambassade, and its incredible collection of signed books. Those details brought Amsterdam to life in a way we never could have experienced on our own. He also introduced us to places we probably never would have found ourselves, from a traditional brown café to a wonderful countryside lunch at Wapen van Munster, dinner at Hemelse Modder, and a visit to Beemster and the Schermerhorn Museum Mill. Every recommendation was spot on and felt thoughtfully chosen for us, not pulled from a standard itinerary. What made the experience unforgettable, though, was Dennis himself. He has a gift for sharing history and culture in a way that feels like a conversation, and by the end of our two days together, it genuinely felt like we were saying goodbye to a friend rather than a guide. If you're visiting Amsterdam and considering a private guide, don't hesitate to connect with Dennis. We left with wonderful memories, a much deeper appreciation for the city, and the hope that our paths will cross again someday.",
+    author: "Lisa A.",
+    location: "Tripadvisor review",
     date: "August 2026",
-    link: "https://www.tripadvisor.com/ShowUserReviews-g188590-d13431295-r1072370509-Love_My_City_Tours-Amsterdam_North_Holland_Province.html",
+    link: "https://www.tripadvisor.com/ShowUserReviews-g188590-d13431295-r1072825580-Love_My_City_Tours-Amsterdam_North_Holland_Province.html",
   },
   {
     quote: "From the moment we met Dennis, it felt like we were reconnecting with an old friend. Warm, genuine, and completely passionate about his city. This experience wasn't just a tour, it was a heartfelt connection to Amsterdam…",
@@ -126,11 +126,11 @@ const reviews = [
     link: "https://www.tripadvisor.com/ShowUserReviews-g188590-d13431295-r1011724781-Love_My_City_Tours-Amsterdam_North_Holland_Province.html",
   },
   {
-    quote: "We spent two full days with Dennis during our time in Amsterdam, and it was easily one of the highlights of our trip. From the very beginning, it felt less like a tour and more like spending time with a friend who genuinely wanted to share the places he loves. We explored Amsterdam, the Jordaan neighborhood, the countryside, and ended one evening with a private canal cruise with wine and cheese. Along the way, Dennis shared stories about the city's history, its architecture, and even the rich history of our hotel, the Ambassade, and its incredible collection of signed books. Those details brought Amsterdam to life in a way we never could have experienced on our own. He also introduced us to places we probably never would have found ourselves, from a traditional brown café to a wonderful countryside lunch at Wapen van Munster, dinner at Hemelse Modder, and a visit to Beemster and the Schermerhorn Museum Mill. Every recommendation was spot on and felt thoughtfully chosen for us, not pulled from a standard itinerary. What made the experience unforgettable, though, was Dennis himself. He has a gift for sharing history and culture in a way that feels like a conversation, and by the end of our two days together, it genuinely felt like we were saying goodbye to a friend rather than a guide. If you're visiting Amsterdam and considering a private guide, don't hesitate to connect with Dennis. We left with wonderful memories, a much deeper appreciation for the city, and the hope that our paths will cross again someday.",
-    author: "Lisa A.",
-    location: "Tripadvisor review",
+    quote: "Of all the guides I've had over all the decades, Dennis is in the very top ranks. His combination of personable, excitable, knowledgeable, flexible, ethical, and practical is really hard to beat. We spent a full day with him in Amsterdam, including a private boat tour on the canals, and cannot imagine a better introduction to the city.",
+    author: "dbw001",
+    location: "Marathon, Florida",
     date: "August 2026",
-    link: "https://www.tripadvisor.com/ShowUserReviews-g188590-d13431295-r1072825580-Love_My_City_Tours-Amsterdam_North_Holland_Province.html",
+    link: "https://www.tripadvisor.com/ShowUserReviews-g188590-d13431295-r1072370509-Love_My_City_Tours-Amsterdam_North_Holland_Province.html",
   },
 ];
 
@@ -1159,81 +1159,51 @@ const Index = () => {
                   })()}
                 </div>
 
-                {/* Remaining reviews — four in a row, last one highlighted */}
+                {/* Remaining reviews — four in a row */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8 max-w-6xl mx-auto">
-                  {reviews.slice(1).map((r, i) => {
-                    const isHighlighted = i === reviews.slice(1).length - 1;
-                    return (
-                      <FadeIn key={i} delay={i * 0.08}>
-                        <a
-                          href={r.link ?? TA_URL}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={`group rounded-lg p-5 h-full flex flex-col hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 border-t-4 ${
-                            isHighlighted
-                              ? "shadow-lg ring-1 ring-inset"
-                              : "bg-background shadow-md"
-                          }`}
-                          style={{
-                            borderTopColor: isHighlighted
-                              ? "hsl(var(--heritage-orange))"
-                              : TA_GREEN,
-                            backgroundColor: isHighlighted
-                              ? "hsl(var(--heritage-orange) / 0.06)"
-                              : undefined,
-                            boxShadow: isHighlighted
-                              ? "inset 0 0 0 1px hsl(var(--heritage-orange) / 0.25), 0 10px 25px -5px rgba(0,0,0,0.08)"
-                              : undefined,
-                          }}
-                        >
-                          <div className="flex items-center justify-between mb-2">
-                            <TripAdvisorBubbles size={12} />
-                            {isHighlighted ? (
-                              <span
-                                className="font-body text-[10px] tracking-widest uppercase font-medium"
-                                style={{ color: "hsl(var(--heritage-orange))" }}
-                              >
-                                Featured
-                              </span>
-                            ) : (
-                              <span
-                                className="font-body text-xs tracking-wide uppercase opacity-70 group-hover:opacity-100 transition-opacity"
-                                style={{ color: TA_GREEN }}
-                              >
-                                Tripadvisor
-                              </span>
-                            )}
+                  {reviews.slice(1).map((r, i) => (
+                    <FadeIn key={i} delay={i * 0.08}>
+                      <a
+                        href={r.link ?? TA_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group rounded-lg p-5 h-full flex flex-col hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 border-t-4 bg-background shadow-md"
+                        style={{ borderTopColor: TA_GREEN }}
+                      >
+                        <div className="flex items-center justify-between mb-2">
+                          <TripAdvisorBubbles size={12} />
+                          <span
+                            className="font-body text-xs tracking-wide uppercase opacity-70 group-hover:opacity-100 transition-opacity"
+                            style={{ color: TA_GREEN }}
+                          >
+                            Tripadvisor
+                          </span>
+                        </div>
+                        <p className="font-body text-[11px] text-muted-foreground mb-2">
+                          Reviewed {r.date}
+                        </p>
+                        <p className="font-body text-sm text-foreground leading-snug italic flex-1 line-clamp-4">
+                          "{r.quote}"
+                        </p>
+                        <div className="mt-3 pt-3 border-t border-border flex items-end justify-between gap-3">
+                          <div>
+                            <p className="font-body text-xs font-medium text-primary">
+                              {r.author}
+                            </p>
+                            <p className="font-body text-[11px] text-muted-foreground">
+                              {r.location}
+                            </p>
                           </div>
-                          <p className="font-body text-[11px] text-muted-foreground mb-2">
-                            Reviewed {r.date}
-                          </p>
-                          <p className="font-body text-sm text-foreground leading-snug italic flex-1 line-clamp-4">
-                            "{r.quote}"
-                          </p>
-                          <div className="mt-3 pt-3 border-t border-border flex items-end justify-between gap-3">
-                            <div>
-                              <p className="font-body text-xs font-medium text-primary">
-                                {r.author}
-                              </p>
-                              <p className="font-body text-[11px] text-muted-foreground">
-                                {r.location}
-                              </p>
-                            </div>
-                            <span
-                              className="font-body text-[10px] tracking-wide opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity whitespace-nowrap"
-                              style={{
-                                color: isHighlighted
-                                  ? "hsl(var(--heritage-orange))"
-                                  : TA_GREEN,
-                              }}
-                            >
-                              Read →
-                            </span>
-                          </div>
-                        </a>
-                      </FadeIn>
-                    );
-                  })}
+                          <span
+                            className="font-body text-[10px] tracking-wide opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity whitespace-nowrap"
+                            style={{ color: TA_GREEN }}
+                          >
+                            Read →
+                          </span>
+                        </div>
+                      </a>
+                    </FadeIn>
+                  ))}
                 </div>
 
                 {/* All reviews CTA */}

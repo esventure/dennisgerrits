@@ -1159,26 +1159,50 @@ const Index = () => {
                   })()}
                 </div>
 
-                {/* Remaining reviews — equal grid that fits the screen */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-8 max-w-6xl mx-auto">
+                {/* Remaining reviews — four in a row, last one highlighted */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8 max-w-6xl mx-auto">
                   {reviews.slice(1).map((r, i) => {
+                    const isHighlighted = i === reviews.slice(1).length - 1;
                     return (
                       <FadeIn key={i} delay={i * 0.08}>
                         <a
                           href={r.link ?? TA_URL}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="group bg-background rounded-lg p-5 h-full flex flex-col shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 border-t-4"
-                          style={{ borderTopColor: TA_GREEN }}
+                          className={`group rounded-lg p-5 h-full flex flex-col hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 border-t-4 ${
+                            isHighlighted
+                              ? "shadow-lg ring-1 ring-inset"
+                              : "bg-background shadow-md"
+                          }`}
+                          style={{
+                            borderTopColor: isHighlighted
+                              ? "hsl(var(--heritage-orange))"
+                              : TA_GREEN,
+                            backgroundColor: isHighlighted
+                              ? "hsl(var(--heritage-orange) / 0.06)"
+                              : undefined,
+                            ringColor: isHighlighted
+                              ? "hsl(var(--heritage-orange) / 0.25)"
+                              : undefined,
+                          }}
                         >
                           <div className="flex items-center justify-between mb-2">
                             <TripAdvisorBubbles size={12} />
-                            <span
-                              className="font-body text-xs tracking-wide uppercase opacity-70 group-hover:opacity-100 transition-opacity"
-                              style={{ color: TA_GREEN }}
-                            >
-                              Tripadvisor
-                            </span>
+                            {isHighlighted ? (
+                              <span
+                                className="font-body text-[10px] tracking-widest uppercase font-medium"
+                                style={{ color: "hsl(var(--heritage-orange))" }}
+                              >
+                                Featured
+                              </span>
+                            ) : (
+                              <span
+                                className="font-body text-xs tracking-wide uppercase opacity-70 group-hover:opacity-100 transition-opacity"
+                                style={{ color: TA_GREEN }}
+                              >
+                                Tripadvisor
+                              </span>
+                            )}
                           </div>
                           <p className="font-body text-[11px] text-muted-foreground mb-2">
                             Reviewed {r.date}
@@ -1197,7 +1221,11 @@ const Index = () => {
                             </div>
                             <span
                               className="font-body text-[10px] tracking-wide opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity whitespace-nowrap"
-                              style={{ color: TA_GREEN }}
+                              style={{
+                                color: isHighlighted
+                                  ? "hsl(var(--heritage-orange))"
+                                  : TA_GREEN,
+                              }}
                             >
                               Read →
                             </span>

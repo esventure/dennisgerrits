@@ -1159,81 +1159,51 @@ const Index = () => {
                   })()}
                 </div>
 
-                {/* Remaining reviews — four in a row, last one highlighted */}
+                {/* Remaining reviews — four in a row */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8 max-w-6xl mx-auto">
-                  {reviews.slice(1).map((r, i) => {
-                    const isHighlighted = i === reviews.slice(1).length - 1;
-                    return (
-                      <FadeIn key={i} delay={i * 0.08}>
-                        <a
-                          href={r.link ?? TA_URL}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={`group rounded-lg p-5 h-full flex flex-col hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 border-t-4 ${
-                            isHighlighted
-                              ? "shadow-lg ring-1 ring-inset"
-                              : "bg-background shadow-md"
-                          }`}
-                          style={{
-                            borderTopColor: isHighlighted
-                              ? "hsl(var(--heritage-orange))"
-                              : TA_GREEN,
-                            backgroundColor: isHighlighted
-                              ? "hsl(var(--heritage-orange) / 0.06)"
-                              : undefined,
-                            boxShadow: isHighlighted
-                              ? "inset 0 0 0 1px hsl(var(--heritage-orange) / 0.25), 0 10px 25px -5px rgba(0,0,0,0.08)"
-                              : undefined,
-                          }}
-                        >
-                          <div className="flex items-center justify-between mb-2">
-                            <TripAdvisorBubbles size={12} />
-                            {isHighlighted ? (
-                              <span
-                                className="font-body text-[10px] tracking-widest uppercase font-medium"
-                                style={{ color: "hsl(var(--heritage-orange))" }}
-                              >
-                                Featured
-                              </span>
-                            ) : (
-                              <span
-                                className="font-body text-xs tracking-wide uppercase opacity-70 group-hover:opacity-100 transition-opacity"
-                                style={{ color: TA_GREEN }}
-                              >
-                                Tripadvisor
-                              </span>
-                            )}
+                  {reviews.slice(1).map((r, i) => (
+                    <FadeIn key={i} delay={i * 0.08}>
+                      <a
+                        href={r.link ?? TA_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group rounded-lg p-5 h-full flex flex-col hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 border-t-4 bg-background shadow-md"
+                        style={{ borderTopColor: TA_GREEN }}
+                      >
+                        <div className="flex items-center justify-between mb-2">
+                          <TripAdvisorBubbles size={12} />
+                          <span
+                            className="font-body text-xs tracking-wide uppercase opacity-70 group-hover:opacity-100 transition-opacity"
+                            style={{ color: TA_GREEN }}
+                          >
+                            Tripadvisor
+                          </span>
+                        </div>
+                        <p className="font-body text-[11px] text-muted-foreground mb-2">
+                          Reviewed {r.date}
+                        </p>
+                        <p className="font-body text-sm text-foreground leading-snug italic flex-1 line-clamp-4">
+                          "{r.quote}"
+                        </p>
+                        <div className="mt-3 pt-3 border-t border-border flex items-end justify-between gap-3">
+                          <div>
+                            <p className="font-body text-xs font-medium text-primary">
+                              {r.author}
+                            </p>
+                            <p className="font-body text-[11px] text-muted-foreground">
+                              {r.location}
+                            </p>
                           </div>
-                          <p className="font-body text-[11px] text-muted-foreground mb-2">
-                            Reviewed {r.date}
-                          </p>
-                          <p className="font-body text-sm text-foreground leading-snug italic flex-1 line-clamp-4">
-                            "{r.quote}"
-                          </p>
-                          <div className="mt-3 pt-3 border-t border-border flex items-end justify-between gap-3">
-                            <div>
-                              <p className="font-body text-xs font-medium text-primary">
-                                {r.author}
-                              </p>
-                              <p className="font-body text-[11px] text-muted-foreground">
-                                {r.location}
-                              </p>
-                            </div>
-                            <span
-                              className="font-body text-[10px] tracking-wide opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity whitespace-nowrap"
-                              style={{
-                                color: isHighlighted
-                                  ? "hsl(var(--heritage-orange))"
-                                  : TA_GREEN,
-                              }}
-                            >
-                              Read →
-                            </span>
-                          </div>
-                        </a>
-                      </FadeIn>
-                    );
-                  })}
+                          <span
+                            className="font-body text-[10px] tracking-wide opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity whitespace-nowrap"
+                            style={{ color: TA_GREEN }}
+                          >
+                            Read →
+                          </span>
+                        </div>
+                      </a>
+                    </FadeIn>
+                  ))}
                 </div>
 
                 {/* All reviews CTA */}

@@ -1115,17 +1115,17 @@ const Index = () => {
                           href={hero.link ?? TA_URL}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="group block bg-background rounded-lg shadow-md hover:shadow-lg transition-all border-l-4 px-6 sm:px-10 md:px-10 py-8 sm:py-10 md:py-10 relative"
+                          className="group block bg-background rounded-lg shadow-md hover:shadow-lg transition-all border-l-4 px-5 sm:px-8 md:px-8 py-6 sm:py-8 md:py-8 relative"
                           style={{ borderLeftColor: "hsl(var(--heritage-green))" }}
                         >
                           <span
                             aria-hidden
-                            className="absolute -left-1 -top-5 sm:-top-6 font-heading text-6xl sm:text-7xl md:text-8xl leading-none select-none"
+                            className="absolute -left-1 -top-4 sm:-top-5 font-heading text-5xl sm:text-6xl md:text-7xl leading-none select-none"
                             style={{ color: "hsl(var(--heritage-green))" }}
                           >
                             “
                           </span>
-                          <div className="flex items-center justify-between mb-4 gap-3 flex-wrap">
+                          <div className="flex items-center justify-between mb-3 gap-3 flex-wrap">
                             <TripAdvisorBubbles size={16} />
                             <span
                               className="font-body text-xs tracking-wide uppercase opacity-80"
@@ -1134,7 +1134,7 @@ const Index = () => {
                               Tripadvisor · {hero.date}
                             </span>
                           </div>
-                          <p className="font-heading text-xl sm:text-2xl md:text-2xl lg:text-3xl text-primary leading-snug italic mb-6">
+                          <p className="font-heading text-lg sm:text-xl md:text-2xl lg:text-2xl text-primary leading-snug italic mb-4">
                             {hero.quote}
                           </p>
                           <div className="flex items-end justify-between gap-3">

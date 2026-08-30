@@ -112,9 +112,9 @@ const ContactSection = () => {
                 style={{ color: "hsl(var(--background) / 0.9)" }}
               >
                 <RichText
-                  className="font-body text-base md:text-lg leading-relaxed"
+                  className="font-body text-base md:text-lg leading-relaxed [text-wrap:pretty]"
                   html={t("booking.intro", "")}
-                  fallback="Send me a message through the contact form or WhatsApp, and I’ll get back to you within 24 hours. If it feels right, we can take the next step with a video call. No pressure, no obligations, just a chance to get to know each other."
+                  fallback="Send me a message through the contact form or WhatsApp, and I’ll get back to you within 24 hours. If it feels right, we can take the next step with a video call. No pressure, no obligations, just a chance to get to know each&nbsp;other."
                 />
               </div>
             </FadeIn>

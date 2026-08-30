@@ -1142,39 +1142,53 @@ const Index = () => {
                           href={hero.link ?? TA_URL}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="group block bg-background rounded-lg shadow-md hover:shadow-lg transition-all border-l-4 px-5 sm:px-8 md:px-8 py-6 sm:py-8 md:py-8 relative"
+                          className="group block bg-background rounded-lg shadow-md hover:shadow-lg transition-all border-l-[3px] px-6 sm:px-9 md:px-10 py-7 sm:py-9 md:py-10 relative"
                           style={{ borderLeftColor: "hsl(var(--heritage-green))" }}
                         >
-                          <span
-                            aria-hidden
-                            className="absolute -left-1 -top-4 sm:-top-5 font-heading text-5xl sm:text-6xl md:text-7xl leading-none select-none"
-                            style={{ color: "hsl(var(--heritage-green))" }}
-                          >
-                            “
-                          </span>
-                          <div className="flex items-center justify-between mb-3 gap-3 flex-wrap">
-                            <TripAdvisorBubbles size={16} />
+                          {/* Rined quote icon */}
+                          <div className="mb-6">
+                            <svg
+                              width="28"
+                              height="20"
+                              viewBox="0 0 28 20"
+                              fill="none"
+                              aria-hidden="true"
+                              className="text-[hsl(var(--heritage-green))] opacity-30"
+                            >
+                              <path
+                                d="M0 20V9.28571L4.8 0H10.2L6.6 9.28571H10.8V20H0ZM17.2 20V9.28571L22 0H27.4L23.8 9.28571H28V20H17.2Z"
+                                fill="currentColor"
+                              />
+                            </svg>
+                          </div>
+
+                          <div className="flex items-center justify-between mb-5 gap-3 flex-wrap">
+                            <TripAdvisorBubbles size={14} />
                             <span
-                              className="font-body text-xs tracking-wide uppercase opacity-80"
+                              className="font-body text-[10px] tracking-[0.15em] uppercase opacity-80"
                               style={{ color: TA_GREEN }}
                             >
                               Tripadvisor · {hero.date}
                             </span>
                           </div>
-                          <p className="font-heading text-lg sm:text-xl md:text-2xl lg:text-2xl text-primary leading-snug italic mb-4">
-                            {hero.quote}
-                          </p>
-                          <div className="flex items-end justify-between gap-3">
-                            <div>
-                              <p className="font-body text-sm font-medium text-primary">
+
+                          <blockquote className="mb-8">
+                            <p className="font-body text-lg sm:text-xl md:text-2xl text-foreground leading-relaxed font-light">
+                              {hero.quote}
+                            </p>
+                          </blockquote>
+
+                          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pt-6 border-t border-border">
+                            <div className="space-y-1">
+                              <p className="font-heading text-2xl tracking-wider text-primary leading-none uppercase">
                                 {hero.author}
                               </p>
-                              <p className="font-body text-xs text-muted-foreground">
+                              <p className="font-body text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold">
                                 {hero.location}
                               </p>
                             </div>
                             <span
-                              className="font-body text-xs tracking-wide opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity"
+                              className="font-body text-xs tracking-wide opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity whitespace-nowrap"
                               style={{ color: TA_GREEN }}
                             >
                               Read on Tripadvisor →

@@ -237,7 +237,7 @@ const TravelAgents = () => {
                 For Travel Advisors &amp; Concierges
               </p>
               <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-primary leading-[0.95] mb-6">
-                I take care of your clients<br />in Amsterdam and the Netherlands.
+                I take care of your clients<br />in Amsterdam<br />and the Netherlands.
               </h1>
               <p className="font-body text-sm tracking-widest uppercase text-secondary mb-8">
                 20+ years in tourism &middot; 9 years as a private guide &middot; Local expert
@@ -424,14 +424,7 @@ const TravelAgents = () => {
             {/* Header */}
             <FadeIn>
               <div className="max-w-3xl mb-12 lg:mb-16">
-                <img
-                  src={iconMessage}
-                  alt=""
-                  aria-hidden
-                  className="w-14 h-14 mb-6"
-                  loading="lazy"
-                />
-                <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl text-primary leading-[1]">
+                <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-primary leading-[1] whitespace-nowrap">
                   Your clients have a local they can rely on.
                 </h2>
               </div>
@@ -448,17 +441,17 @@ const TravelAgents = () => {
                 </p>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-4">
                   {[
-                    "Private Guiding",
-                    "Custom Itineraries",
-                    "Museum Reservations: Tickets & Timed Entry",
-                    "Dining Reservations",
-                    "Transportation Coordination",
-                    "Private Boats & Cars",
-                    "Last-Minute Adjustments",
-                    "On-the-Ground Support",
+                    { label: "Private Guiding" },
+                    { label: "Museum Reservations", sub: "Tickets & Timed Entry" },
+                    { label: "Custom Itineraries" },
+                    { label: "Dining Reservations" },
+                    { label: "Transportation Coordination" },
+                    { label: "Private Boats & Cars" },
+                    { label: "Last-Minute Adjustments" },
+                    { label: "On-the-Ground Support" },
                   ].map((item) => (
                     <li
-                      key={item}
+                      key={item.label}
                       className="font-body text-base text-foreground/90 leading-relaxed flex items-start gap-3"
                     >
                       <span
@@ -466,7 +459,14 @@ const TravelAgents = () => {
                         className="mt-[0.65rem] h-px w-4 shrink-0"
                         style={{ background: "hsl(var(--heritage-orange))" }}
                       />
-                      {item}
+                      <span>
+                        <span className="block whitespace-nowrap">{item.label}</span>
+                        {item.sub && (
+                          <span className="block text-sm text-muted-foreground leading-snug">
+                            {item.sub}
+                          </span>
+                        )}
+                      </span>
                     </li>
                   ))}
                 </ul>

@@ -1095,45 +1095,114 @@ const Index = () => {
                   </FadeIn>
                 </div>
 
-                {/* Tripadvisor summary badge */}
-                <FadeIn className="mb-10 max-w-6xl mx-auto">
-                  <a
-                    href={TA_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex md:inline-flex items-center gap-4 bg-background rounded-lg shadow-md hover:shadow-lg transition-all px-6 py-4 border border-border"
-                  >
-                    <div
-                      className="flex items-center justify-center rounded-full text-white font-heading text-xl shrink-0"
-                      style={{
-                        backgroundColor: TA_GREEN,
-                        width: 44,
-                        height: 44,
-                      }}
-                      aria-hidden="true"
+                {/* Tripadvisor badge + Hero pull-quote side by side */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center mb-10 max-w-6xl mx-auto">
+                  {/* Tripadvisor summary badge */}
+                  <FadeIn className="md:col-span-4 lg:col-span-3">
+                    <a
+                      href={TA_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex md:flex-col items-center md:items-start gap-4 md:gap-3 bg-background rounded-lg shadow-md hover:shadow-lg transition-all px-6 py-4 md:py-5 border border-border"
                     >
-                      ◉
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <TripAdvisorWordmark className="text-xl" />
-                        <span className="font-body text-sm text-muted-foreground">
-                          Rating
-                        </span>
+                      <div
+                        className="flex items-center justify-center rounded-full text-white font-heading text-xl shrink-0"
+                        style={{
+                          backgroundColor: TA_GREEN,
+                          width: 44,
+                          height: 44,
+                        }}
+                        aria-hidden="true"
+                      >
+                        ◉
                       </div>
-                      <div className="flex items-center gap-3 mt-1">
-                        <TripAdvisorBubbles />
-                        <span className="font-body text-sm text-foreground">
-                          <strong>{taRating}</strong> · <CountUp value={taReviewCount} /> reviews
-                        </span>
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <TripAdvisorWordmark className="text-xl" />
+                          <span className="font-body text-sm text-muted-foreground">
+                            Rating
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-3 mt-1">
+                          <TripAdvisorBubbles />
+                          <span className="font-body text-sm text-foreground">
+                            <strong>{taRating}</strong> · <CountUp value={taReviewCount} /> reviews
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  </a>
-                </FadeIn>
+                    </a>
+                  </FadeIn>
 
-                {/* Reviews — four in a row, all clipped the same way */}
+                  {/* Hero pull-quote (first review) */}
+                  {(() => {
+                    const hero = reviews[0];
+                    return (
+                      <FadeIn className="md:col-span-8 lg:col-span-9">
+                        <a
+                          href={hero.link ?? TA_URL}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group block bg-background rounded-lg shadow-md hover:shadow-lg transition-all border-l-[3px] px-6 sm:px-9 md:px-10 py-7 sm:py-9 md:py-10 relative"
+                          style={{ borderLeftColor: "hsl(var(--heritage-green))" }}
+                        >
+                          {/* Rined quote icon */}
+                          <div className="mb-6">
+                            <svg
+                              width="28"
+                              height="20"
+                              viewBox="0 0 28 20"
+                              fill="none"
+                              aria-hidden="true"
+                              className="text-[hsl(var(--heritage-green))] opacity-30"
+                            >
+                              <path
+                                d="M0 20V9.28571L4.8 0H10.2L6.6 9.28571H10.8V20H0ZM17.2 20V9.28571L22 0H27.4L23.8 9.28571H28V20H17.2Z"
+                                fill="currentColor"
+                              />
+                            </svg>
+                          </div>
+
+                          <div className="flex items-center justify-between mb-5 gap-3 flex-wrap">
+                            <TripAdvisorBubbles size={14} />
+                            <span
+                              className="font-body text-[10px] tracking-[0.15em] uppercase opacity-80"
+                              style={{ color: TA_GREEN }}
+                            >
+                              Tripadvisor · {hero.date}
+                            </span>
+                          </div>
+
+                          <blockquote className="mb-8">
+                            <p className="font-body text-lg sm:text-xl md:text-2xl text-foreground leading-relaxed font-light">
+                              {hero.quote}
+                            </p>
+                          </blockquote>
+
+                          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pt-6 border-t border-border">
+                            <div className="space-y-1">
+                              <p className="font-heading text-2xl tracking-wider text-primary leading-none uppercase">
+                                {hero.author}
+                              </p>
+                              <p className="font-body text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold">
+                                {hero.location}
+                              </p>
+                            </div>
+                            <span
+                              className="font-body text-xs tracking-wide opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity whitespace-nowrap"
+                              style={{ color: TA_GREEN }}
+                            >
+                              Read on Tripadvisor →
+                            </span>
+                          </div>
+                        </a>
+                      </FadeIn>
+                    );
+                  })()}
+                </div>
+
+                {/* Remaining reviews — four in a row */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8 max-w-6xl mx-auto">
-                  {reviews.slice(0, 4).map((r, i) => (
+                  {reviews.slice(1).map((r, i) => (
                     <FadeIn key={i} delay={i * 0.08}>
                       <a
                         href={r.link ?? TA_URL}

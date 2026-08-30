@@ -1095,15 +1095,15 @@ const Index = () => {
                   </FadeIn>
                 </div>
 
-                {/* Tripadvisor badge + Hero pull-quote side by side */}
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center mb-10 max-w-6xl mx-auto">
+                {/* Tripadvisor badge + featured review side by side */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-5 md:gap-6 items-stretch mb-10 max-w-6xl mx-auto">
                   {/* Tripadvisor summary badge */}
                   <FadeIn className="md:col-span-4 lg:col-span-3">
                     <a
                       href={TA_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex md:flex-col items-center md:items-start gap-4 md:gap-3 bg-background rounded-lg shadow-md hover:shadow-lg transition-all px-6 py-4 md:py-5 border border-border"
+                      className="flex md:flex-col items-center md:items-start gap-4 md:gap-3 bg-background rounded-lg shadow-md hover:shadow-lg transition-all px-5 py-4 md:py-5 border border-border h-full"
                     >
                       <div
                         className="flex items-center justify-center rounded-full text-white font-heading text-xl shrink-0"
@@ -1133,7 +1133,7 @@ const Index = () => {
                     </a>
                   </FadeIn>
 
-                  {/* Hero pull-quote (first review) */}
+                  {/* Featured review (first review) — compact horizontal strip */}
                   {(() => {
                     const hero = reviews[0];
                     return (
@@ -1142,53 +1142,37 @@ const Index = () => {
                           href={hero.link ?? TA_URL}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="group block bg-background rounded-lg shadow-md hover:shadow-lg transition-all border-l-[3px] px-6 sm:px-9 md:px-10 py-7 sm:py-9 md:py-10 relative"
+                          className="group flex flex-col md:flex-row md:items-center gap-5 md:gap-6 bg-background rounded-lg shadow-md hover:shadow-lg transition-all border-l-[3px] px-5 sm:px-6 py-5 h-full"
                           style={{ borderLeftColor: "hsl(var(--heritage-green))" }}
                         >
-                          {/* Rined quote icon */}
-                          <div className="mb-6">
-                            <svg
-                              width="28"
-                              height="20"
-                              viewBox="0 0 28 20"
-                              fill="none"
-                              aria-hidden="true"
-                              className="text-[hsl(var(--heritage-green))] opacity-30"
-                            >
-                              <path
-                                d="M0 20V9.28571L4.8 0H10.2L6.6 9.28571H10.8V20H0ZM17.2 20V9.28571L22 0H27.4L23.8 9.28571H28V20H17.2Z"
-                                fill="currentColor"
-                              />
-                            </svg>
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-3 mb-2">
+                              <TripAdvisorBubbles size={12} />
+                              <span
+                                className="font-body text-[10px] tracking-[0.15em] uppercase opacity-80"
+                                style={{ color: TA_GREEN }}
+                              >
+                                Tripadvisor · {hero.date}
+                              </span>
+                            </div>
+                            <blockquote>
+                              <p className="font-body text-sm sm:text-base text-foreground leading-relaxed line-clamp-3">
+                                "{hero.quote}"
+                              </p>
+                            </blockquote>
                           </div>
 
-                          <div className="flex items-center justify-between mb-5 gap-3 flex-wrap">
-                            <TripAdvisorBubbles size={14} />
-                            <span
-                              className="font-body text-[10px] tracking-[0.15em] uppercase opacity-80"
-                              style={{ color: TA_GREEN }}
-                            >
-                              Tripadvisor · {hero.date}
-                            </span>
-                          </div>
-
-                          <blockquote className="mb-8">
-                            <p className="font-body text-lg sm:text-xl md:text-2xl text-foreground leading-relaxed font-light">
-                              {hero.quote}
-                            </p>
-                          </blockquote>
-
-                          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pt-6 border-t border-border">
-                            <div className="space-y-1">
-                              <p className="font-heading text-2xl tracking-wider text-primary leading-none uppercase">
+                          <div className="flex md:flex-col items-center md:items-end gap-3 md:gap-2 md:pl-4 md:border-l border-border shrink-0">
+                            <div className="text-left md:text-right">
+                              <p className="font-heading text-lg tracking-wide text-primary leading-none uppercase">
                                 {hero.author}
                               </p>
-                              <p className="font-body text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold">
+                              <p className="font-body text-[10px] uppercase tracking-[0.15em] text-muted-foreground font-semibold mt-1">
                                 {hero.location}
                               </p>
                             </div>
                             <span
-                              className="font-body text-xs tracking-wide opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity whitespace-nowrap"
+                              className="font-body text-xs tracking-wide whitespace-nowrap"
                               style={{ color: TA_GREEN }}
                             >
                               Read on Tripadvisor →

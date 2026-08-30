@@ -59,7 +59,7 @@ const AdminLogin = () => {
   return (
     <main className="min-h-screen flex items-center justify-center px-6 py-24 bg-background">
       <Head>
-        <title>Admin login – Dennis Gerrits</title>
+        <title>Admin login | Dennis Gerrits</title>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
 

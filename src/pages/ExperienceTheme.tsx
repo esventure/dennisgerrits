@@ -25,15 +25,18 @@ const ExperienceTheme = () => {
   return (
     <main>
       <Head>
-        <title>{`${theme.title} in Amsterdam | Dennis Gerrits`}</title>
+        <title>{theme.seoTitle}</title>
         <meta name="description" content={description} />
         <link rel="canonical" href={url} />
-        <meta property="og:title" content={`${theme.title} in Amsterdam`} />
+        <meta property="og:title" content={theme.socialTitle} />
         <meta property="og:description" content={description} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={url} />
-        <meta name="twitter:title" content={`${theme.title} in Amsterdam`} />
+        <meta property="og:image" content={theme.ogImage} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={theme.socialTitle} />
         <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={theme.ogImage} />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -42,8 +45,9 @@ const ExperienceTheme = () => {
                 "@type": "WebPage",
                 "@id": url,
                 url,
-                name: `${theme.title} in Amsterdam`,
+                name: theme.socialTitle,
                 description,
+                primaryImageOfPage: theme.ogImage,
                 isPartOf: { "@id": "https://dennisgerrits.com/get-inspired" },
               },
               {
@@ -58,6 +62,7 @@ const ExperienceTheme = () => {
           })}
         </script>
       </Head>
+
 
       <section
         className="relative pt-28 md:pt-32 pb-12 md:pb-16"

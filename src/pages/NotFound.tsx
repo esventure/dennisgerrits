@@ -12,7 +12,7 @@ const NotFound = () => {
   return (
     <div className="flex min-h-screen items-center justify-center bg-muted">
       <Head>
-        <title>Page not found – Dennis Gerrits</title>
+        <title>Page not found | Dennis Gerrits</title>
         <meta
           name="description"
           content="This page does not exist. Return to the homepage of Dennis Gerrits, personal travel companion and storyteller in Amsterdam."

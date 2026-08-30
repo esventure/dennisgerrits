@@ -78,11 +78,11 @@ const ContactSection = () => {
   return (
     <section
       id="contact"
-      className="relative py-16 md:py-20 lg:py-24 scroll-mt-20"
+      className="relative py-10 md:py-14 lg:py-16 scroll-mt-24"
     >
       <div className="container mx-auto px-6 lg:px-12">
         <div
-          className="relative overflow-hidden rounded-3xl px-5 py-12 sm:px-8 sm:py-14 md:px-12 md:py-16 lg:px-16 lg:py-20"
+          className="relative overflow-hidden rounded-3xl px-5 py-9 sm:px-8 sm:py-10 md:px-12 md:py-12 lg:px-16 lg:py-14"
           style={{ backgroundColor: "hsl(var(--heritage-green))" }}
         >
 
@@ -90,7 +90,7 @@ const ContactSection = () => {
 
           <div className="relative mx-auto max-w-5xl" style={{ zIndex: 10 }}>
             <FadeIn>
-              <div className="text-center mb-10 md:mb-12 lg:mb-14">
+              <div className="text-center mb-6 md:mb-8">
                 <p
                   className="font-body text-xs md:text-sm tracking-[0.3em] uppercase mb-4"
                   style={{ color: "hsl(var(--heritage-orange))" }}
@@ -108,7 +108,7 @@ const ContactSection = () => {
 
             <FadeIn>
               <div
-                className="max-w-4xl mx-auto text-center mb-10 md:mb-12"
+                className="max-w-4xl mx-auto text-center mb-8 md:mb-10"
                 style={{ color: "hsl(var(--background) / 0.9)" }}
               >
                 <RichText

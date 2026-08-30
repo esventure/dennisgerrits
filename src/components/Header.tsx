@@ -8,20 +8,25 @@ const navLinks = [
   { to: "/#about", label: "About Me" },
   { to: "/#how-it-works", label: "How I Work" },
   { to: "/#rick-steves", label: "Rick Steves" },
-  { to: "/get-inspired", label: "Experiences" },
+  { to: "/#experiences", label: "Experiences" },
   { to: "/#podcast", label: "Podcast" },
   { to: "/#proof", label: "Reviews" },
   { to: "/#contact", label: "Contact" },
-  { to: "/notebook", label: "Notebook" },
+  { to: "/#storybook", label: "Notebook" },
 ];
 
 const secondaryLinks = [
   { to: "/travel-agents", label: "For Professionals" },
 ];
 
-const scrollToId = (id: string) => {
+/** Height of the fixed header, so sections land just below it. */
+export const HEADER_OFFSET = 88;
+
+export const scrollToId = (id: string) => {
   const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: "smooth" });
+  if (!el) return;
+  const top = el.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
+  window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
 };
 
 const Header = () => {
@@ -38,7 +43,7 @@ const Header = () => {
         scrollToId(id);
       } else {
         navigate("/");
-        setTimeout(() => scrollToId(id), 80);
+        setTimeout(() => scrollToId(id), 150);
       }
     }
   };
@@ -52,7 +57,8 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-background/90 backdrop-blur-sm border-b border-border/40">
+    <>
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-sm border-b border-border/40">
       <div className="container mx-auto flex items-center justify-between py-3 sm:py-4 px-5 sm:px-6 lg:px-12">
         <Link to="/" onClick={handleLogoClick} className="flex items-center gap-2 sm:gap-3 min-w-0">
           <img
@@ -136,6 +142,9 @@ const Header = () => {
         </nav>
       )}
     </header>
+    {/* Spacer so page content never sits underneath the fixed header. */}
+    <div aria-hidden className="h-[68px] sm:h-[88px]" />
+    </>
   );
 };
 

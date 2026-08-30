@@ -39,7 +39,7 @@ const NotebookIndex = () => {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Blog",
-    name: "Dennis Gerrits – Notebook",
+    name: "Dennis Gerrits, Notebook",
     description:
       "Short reflections from Amsterdam by Dennis Gerrits. Stories about the city, its people and everyday traditions.",
     url: "https://dennisgerrits.com/notebook",
@@ -54,13 +54,13 @@ const NotebookIndex = () => {
   return (
     <main className="relative">
       <Head>
-        <title>Notebook – Dennis Gerrits | Stories from Amsterdam</title>
+        <title>Notebook | Stories from Amsterdam | Dennis Gerrits</title>
         <meta
           name="description"
           content="Short reflections from Amsterdam by Dennis Gerrits. Asparagus season, bike exams, Nijntje, Van Gogh in bricks, and more."
         />
         <link rel="canonical" href="https://dennisgerrits.com/notebook" />
-        <meta property="og:title" content="Notebook – Dennis Gerrits" />
+        <meta property="og:title" content="Notebook | Dennis Gerrits" />
         <meta
           property="og:description"
           content="Short reflections from Amsterdam by Dennis Gerrits."
@@ -71,7 +71,7 @@ const NotebookIndex = () => {
         <script type="application/ld+json">
           {JSON.stringify(breadcrumbJsonLd([{ name: "Notebook", url: "https://dennisgerrits.com/notebook" }]))}
         </script>
-        <meta name="twitter:title" content="Notebook – Dennis Gerrits" />
+        <meta name="twitter:title" content="Notebook | Dennis Gerrits" />
         <meta name="twitter:description" content="Short reflections from Amsterdam by Dennis Gerrits." />
       </Head>
 

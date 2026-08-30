@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import FadeIn from "@/components/FadeIn";
+import { HEADER_OFFSET } from "@/components/Header";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -144,7 +145,11 @@ const TravelAgents = () => {
 
   const scrollToContact = (e: React.MouseEvent) => {
     e.preventDefault();
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+    const el = document.getElementById("contact");
+    if (el) {
+      const top = el.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
+      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -203,7 +208,7 @@ const TravelAgents = () => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ProfessionalService",
-            name: "Dennis Gerrits – Amsterdam Travel Companion",
+            name: "Dennis Gerrits, Amsterdam Travel Companion",
             url: "https://dennisgerrits.com/travel-agents",
             description:
               "Collaboration for travel advisors and concierges: a trusted local companion in Amsterdam who looks after your clients, arranges tailored days and answers questions on the ground.",
@@ -325,7 +330,7 @@ const TravelAgents = () => {
                   className="inline-block font-body text-xs tracking-widest uppercase px-3 py-1 mb-4 rounded-sm"
                   style={{ backgroundColor: "hsl(var(--heritage-purple) / 0.12)", color: "hsl(var(--heritage-purple))" }}
                 >
-                  Full concierge – I plan and deliver
+                  Full concierge: I plan and deliver
                 </span>
                 <h3 className="font-heading text-3xl lg:text-4xl text-primary mb-6 leading-tight">
                   You hand it over, I take care of the rest.
@@ -377,7 +382,7 @@ const TravelAgents = () => {
                   className="inline-block font-body text-xs tracking-widest uppercase px-3 py-1 mb-4 rounded-sm"
                   style={{ backgroundColor: "hsl(var(--heritage-green) / 0.14)", color: "hsl(var(--heritage-green))" }}
                 >
-                  Local partner – you plan, I host
+                  Local partner: you plan, I host
                 </span>
                 <h3 className="font-heading text-3xl lg:text-4xl text-primary mb-6 leading-tight">
                   You plan, I handle everything locally.
@@ -648,8 +653,8 @@ const TravelAgents = () => {
                         <SelectValue placeholder="Choose what fits best" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="full-concierge">Full concierge – I plan and deliver</SelectItem>
-                        <SelectItem value="local-partner">Local partner – you plan, I host</SelectItem>
+                        <SelectItem value="full-concierge">Full concierge: I plan and deliver</SelectItem>
+                        <SelectItem value="local-partner">Local partner: you plan, I host</SelectItem>
                         <SelectItem value="exploring">Just exploring a fit</SelectItem>
                         <SelectItem value="other">Something else</SelectItem>
                       </SelectContent>

@@ -599,7 +599,7 @@ const Index = () => {
       {/* ── Podcast: Two Stories, One City (green band) ── */}
       <section
         id="podcast"
-        className="relative py-12 md:py-14 lg:py-16 scroll-mt-24 overflow-hidden"
+        className="relative py-16 md:py-20 lg:py-28 scroll-mt-24 overflow-hidden"
         style={{ backgroundColor: "hsl(var(--heritage-green))" }}
       >
         {/* faint paper-grain overlay */}

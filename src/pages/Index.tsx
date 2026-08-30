@@ -1133,7 +1133,7 @@ const Index = () => {
 
                 {/* Reviews — four in a row, all clipped the same way */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8 max-w-6xl mx-auto">
-                  {reviews.map((r, i) => (
+                  {reviews.slice(0, 4).map((r, i) => (
                     <FadeIn key={i} delay={i * 0.08}>
                       <a
                         href={r.link ?? TA_URL}

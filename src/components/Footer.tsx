@@ -1,14 +1,15 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { HEADER_OFFSET } from "@/components/Header";
 
 const exploreLinks = [
   { to: "/#about", label: "About Me" },
   { to: "/#how-it-works", label: "How I Work" },
   { to: "/#rick-steves", label: "Rick Steves" },
-  { to: "/get-inspired", label: "Experiences" },
+  { to: "/#experiences", label: "Experiences" },
   { to: "/#podcast", label: "Podcast" },
   { to: "/#proof", label: "Reviews" },
   { to: "/#contact", label: "Contact" },
-  { to: "/notebook", label: "Notebook" },
+  { to: "/#storybook", label: "Notebook" },
 ];
 
 const proLinks = [
@@ -27,7 +28,8 @@ const Footer = () => {
       const tryScroll = (attempts = 0) => {
         const el = document.getElementById(id);
         if (el) {
-          el.scrollIntoView({ behavior: "smooth" });
+          const top = el.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
+          window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
           return;
         }
         if (attempts < 20) {
@@ -67,7 +69,7 @@ const Footer = () => {
               Storyteller, Host &amp; Travel Companion
             </p>
             <p className="font-body text-primary-foreground/60 text-xs leading-relaxed max-w-xs">
-              Formerly Love My City Tours – now dennisgerrits.com.
+              Formerly Love My City Tours, now dennisgerrits.com.
             </p>
           </div>
           <div>

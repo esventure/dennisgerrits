@@ -1145,7 +1145,7 @@ const HeroEditorialGreenHelloCaps = ({ divider = true }: { divider?: boolean }) 
 
 
 const HeroCarousel = () => (
-  <section id="hero" className="relative scroll-mt-20">
+  <section id="hero" className="relative scroll-mt-24">
     <div className="min-h-[85vh] flex items-center">
       <HeroGreenHelloCaps divider={true} />
     </div>

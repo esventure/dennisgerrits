@@ -27,9 +27,16 @@ export type ExperienceTheme = {
   caption: string;
   body: string[];
   image: string;
+  /** Absolute URL of this experience's own social sharing image. */
+  ogImage: string;
+  /** Full <title> for this experience (already includes the brand). */
+  seoTitle: string;
+  /** Title used for og:title and twitter:title. */
+  socialTitle: string;
   rotate: number;
   pin: "tape-tl" | "tape-tr" | "tape-gl" | "tape-gr";
 };
+
 
 type Block = {
   title: string;
@@ -265,19 +272,70 @@ const blocks: Block[] = [
 const rotations = [-2.4, 1.8, -1.2, 2.2, -1.6, 1.4, -2.0, 1.6];
 const pins = ["tape-tl", "tape-tr", "tape-gl", "tape-gr"] as const;
 
+export const SITE_ORIGIN = "https://dennisgerrits.com";
+
+/**
+ * Each experience has its own sharing image. The bundled imports carry a
+ * build hash, so the same photos live in /public/images/interests to give
+ * crawlers a stable absolute URL.
+ */
+const shareImageByImport = new Map<string, string>([
+  [imgNeighborhood, "neighbourhood.jpg"],
+  [imgRembrandt, "rembrandt.jpg"],
+  [imgFood, "food.jpg"],
+  [imgBrownCafe, "brown-cafe.jpg"],
+  [imgWater, "water.jpg"],
+  [imgArchitecture, "architecture.jpg"],
+  [imgHistory, "history.jpg"],
+  [imgVanGogh, "vangogh.jpg"],
+  [imgCycling, "cycling.jpg"],
+  [imgHeritageMemory, "heritage-memory.jpg"],
+  [imgArt, "art.jpg"],
+  [imgNature, "nature.jpg"],
+  [imgQuietCorners, "quiet-corners.jpg"],
+  [imgShapedByWater, "shaped-by-water.jpg"],
+  [imgCountryside, "countryside.jpg"],
+  [imgTulips, "tulips.jpg"],
+  [imgHaarlem, "haarlem.jpg"],
+  [imgLeiden, "leiden.jpg"],
+  [imgRotterdam, "rotterdam.jpg"],
+  [imgDelft, "delft.jpg"],
+]);
+
+const FALLBACK_SHARE_IMAGE = `${SITE_ORIGIN}/images/dennis-og-hero.jpg`;
+
+/**
+ * The four places outside Amsterdam are day trips, so "… in Amsterdam"
+ * would be factually wrong in the search result. They get their own title.
+ */
+const socialTitleOverrides: Record<string, string> = {
+  Haarlem: "Haarlem Day Trip from Amsterdam",
+  Leiden: "Leiden Day Trip from Amsterdam",
+  Rotterdam: "Rotterdam Day Trip from Amsterdam",
+  "Delft & The Hague": "Delft & The Hague Day Trip from Amsterdam",
+};
+
 export const slugify = (value: string) =>
   value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
-export const experiences: ExperienceTheme[] = blocks.map((b, i) => ({
-  id: `block-${i + 1}`,
-  slug: slugify(b.title),
-  title: b.title,
-  note: b.note,
-  caption: b.caption,
-  body: b.body,
-  image: b.image,
-  rotate: rotations[i % rotations.length],
-  pin: pins[i % pins.length],
-}));
+export const experiences: ExperienceTheme[] = blocks.map((b, i) => {
+  const file = shareImageByImport.get(b.image);
+  const socialTitle = socialTitleOverrides[b.title] ?? `${b.title} in Amsterdam`;
+  return {
+    id: `block-${i + 1}`,
+    slug: slugify(b.title),
+    title: b.title,
+    note: b.note,
+    caption: b.caption,
+    body: b.body,
+    image: b.image,
+    ogImage: file ? `${SITE_ORIGIN}/images/interests/${file}` : FALLBACK_SHARE_IMAGE,
+    socialTitle,
+    seoTitle: `${socialTitle} | Dennis Gerrits`,
+    rotate: rotations[i % rotations.length],
+    pin: pins[i % pins.length],
+  };
+});
+
 
 export const experienceSlugs = experiences.map((t) => t.slug);

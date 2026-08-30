@@ -86,7 +86,7 @@ const PodcastPlayer = forwardRef<PodcastPlayerHandle, { tone?: "light" | "dark" 
       >
         <img
           src={podcastCover}
-          alt="Two Stories, One City – podcast cover art"
+          alt="Two Stories, One City, podcast cover art"
           loading="lazy"
           width={256}
           height={256}

@@ -1197,7 +1197,7 @@ const AboutCarousel = () => {
   }, [emblaApi]);
 
   return (
-    <section id="about" className="relative scroll-mt-20">
+    <section id="about" className="relative scroll-mt-24">
       <AboutFourFrames />
     </section>
   );

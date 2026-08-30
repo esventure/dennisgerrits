@@ -91,10 +91,10 @@ const NotebookStory = () => {
   return (
     <main className="relative">
       <Head>
-        <title>{story.title} – Notebook | Dennis Gerrits</title>
+        <title>{story.title}, Notebook | Dennis Gerrits</title>
         <meta name="description" content={story.intro.slice(0, 155)} />
         <link rel="canonical" href={url} />
-        <meta property="og:title" content={`${story.title} – Notebook`} />
+        <meta property="og:title" content={`${story.title}, Notebook`} />
         <meta property="og:description" content={story.intro.slice(0, 155)} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={url} />
@@ -105,7 +105,7 @@ const NotebookStory = () => {
             { name: story.title, url },
           ]))}
         </script>
-        <meta name="twitter:title" content={`${story.title} – Notebook`} />
+        <meta name="twitter:title" content={`${story.title}, Notebook`} />
         <meta name="twitter:description" content={story.intro.slice(0, 155)} />
       </Head>
 

@@ -1,6 +1,6 @@
 
 import { Head } from "vite-react-ssg";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate } from "react-router-dom";
@@ -96,6 +96,55 @@ const moments = [
 ];
 
 
+/**
+ * Counts up to a number the first time it scrolls into view. Falls back to
+ * the plain number when someone prefers reduced motion.
+ */
+const CountUp = ({ value, duration = 1400 }: { value: number; duration?: number }) => {
+  const ref = useRef<HTMLSpanElement>(null);
+  const [display, setDisplay] = useState(value);
+  const [started, setStarted] = useState(false);
+
+  useEffect(() => {
+    if (!value) return;
+    if (typeof window === "undefined") return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setDisplay(value);
+      return;
+    }
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setStarted(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.4 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [value]);
+
+  useEffect(() => {
+    if (!started) return;
+    let raf = 0;
+    const start = performance.now();
+    const from = Math.max(0, value - Math.min(value, 40));
+    const tick = (now: number) => {
+      const p = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - p, 3);
+      setDisplay(Math.round(from + (value - from) * eased));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [started, value, duration]);
+
+  return <span ref={ref}>{display}</span>;
+};
+
 const reviews = [
   {
     quote: "We spent two full days with Dennis during our time in Amsterdam, and it was easily one of the highlights of our trip. From the very beginning, it felt less like a tour and more like spending time with a friend who genuinely wanted to share the places he loves. We explored Amsterdam, the Jordaan neighborhood, the countryside, and ended one evening with a private canal cruise with wine and cheese. Along the way, Dennis shared stories about the city's history, its architecture, and even the rich history of our hotel, the Ambassade, and its incredible collection of signed books. Those details brought Amsterdam to life in a way we never could have experienced on our own. He also introduced us to places we probably never would have found ourselves, from a traditional brown café to a wonderful countryside lunch at Wapen van Munster, dinner at Hemelse Modder, and a visit to Beemster and the Schermerhorn Museum Mill. Every recommendation was spot on and felt thoughtfully chosen for us, not pulled from a standard itinerary. What made the experience unforgettable, though, was Dennis himself. He has a gift for sharing history and culture in a way that feels like a conversation, and by the end of our two days together, it genuinely felt like we were saying goodbye to a friend rather than a guide. If you're visiting Amsterdam and considering a private guide, don't hesitate to connect with Dennis. We left with wonderful memories, a much deeper appreciation for the city, and the hope that our paths will cross again someday.",
@@ -161,7 +210,6 @@ const stories = [
 
 const Index = () => {
   const t = useSiteContent();
-  const [openInterest, setOpenInterest] = useState<string | null>(null);
   const navigate = useNavigate();
   const podcastRef = useRef<PodcastPlayerHandle | null>(null);
 
@@ -185,13 +233,13 @@ const Index = () => {
   return (
     <main className="relative z-10">
       <Head>
-        <title>Dennis Gerrits – Personal Travel Companion in Amsterdam</title>
+        <title>Dennis Gerrits, Personal Travel Companion in Amsterdam</title>
         <meta
           name="description"
           content="Discover Amsterdam with Dennis Gerrits, a personal travel companion and storyteller who walks alongside you and shows the city the way a friend would."
         />
         <link rel="canonical" href="https://dennisgerrits.com/" />
-        <meta property="og:title" content="Dennis Gerrits – Personal Travel Companion in Amsterdam" />
+        <meta property="og:title" content="Dennis Gerrits, Personal Travel Companion in Amsterdam" />
         <meta
           property="og:description"
           content="A personal, trust-based way of experiencing Amsterdam, guided by someone who feels like a friend."
@@ -224,7 +272,7 @@ const Index = () => {
               },
               {
                 "@type": "Service",
-                name: "Love My City Tours — Personal Amsterdam Travel Companion",
+                name: "Love My City Tours, Personal Amsterdam Travel Companion",
                 serviceType: "Private guided tours",
                 areaServed: {
                   "@type": "City",
@@ -265,7 +313,7 @@ const Index = () => {
         <script type="application/ld+json">
           {JSON.stringify(breadcrumbJsonLd([]))}
         </script>
-        <meta name="twitter:title" content="Dennis Gerrits – Personal Travel Companion in Amsterdam" />
+        <meta name="twitter:title" content="Dennis Gerrits, Personal Travel Companion in Amsterdam" />
         <meta name="twitter:description" content="A personal, trust-based way of experiencing Amsterdam, guided by someone who feels like a friend." />
       </Head>
       <AmsterdamSkyline />
@@ -290,7 +338,7 @@ const Index = () => {
 
 
       {/* ── How I Work (process + concierge) ── */}
-      <section id="how-it-works" className="py-16 md:py-20 lg:py-32 scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}>
+      <section id="how-it-works" className="py-16 md:py-20 lg:py-28 scroll-mt-24" style={{ backgroundColor: "hsl(var(--heritage-taupe-tint))" }}>
         <div className="container mx-auto px-6 lg:px-12">
 
           {/* Heading */}
@@ -394,19 +442,24 @@ const Index = () => {
                         {rows.map((row) => (
                           <li key={row.title} className="flex items-start gap-5 px-6 py-6 md:px-10 md:py-7">
                             <div
-                              className="shrink-0 w-20 h-20 rounded-full flex items-center justify-center"
-                              style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.2)" }}
+                              className="shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center"
+                              style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.28)" }}
                               aria-hidden
                             >
                               <img
                                 src={row.icon}
                                 alt=""
-                                className={`object-contain ${row.title === "Private Cars & Boats" ? "w-12 h-12" : "w-10 h-10"}`}
+                                className="object-contain w-12 h-12 md:w-14 md:h-14"
                                 loading="lazy"
                                 aria-hidden
-                                style={row.filter ? { filter: row.filter } : undefined}
+                                style={{
+                                  // The hand-drawn icons are pale line art; boost them
+                                  // so they stay legible on the light card.
+                                  filter: `${row.filter ?? ""} saturate(1.5) contrast(1.45) brightness(0.8)`.trim(),
+                                }}
                               />
                             </div>
+
                             <div className="flex-1 min-w-0">
                               <h4 className="font-heading text-lg md:text-xl text-primary tracking-wide uppercase leading-tight mb-1">
                                 {row.title}
@@ -432,7 +485,7 @@ const Index = () => {
       </section>
 
       {/* ── 3. A Day in the Life (click-to-explore, no scroll driver) ── */}
-      <section id="day" className="relative scroll-mt-20 pt-12 lg:pt-20 pb-16 md:pb-20">
+      <section id="day" className="relative scroll-mt-24 pt-12 lg:pt-20 pb-16 md:pb-20">
         <div className="container mx-auto px-6 lg:px-12">
           <FadeIn>
             <div className="max-w-3xl mb-6 lg:mb-8">
@@ -455,7 +508,7 @@ const Index = () => {
 
 
       {/* ── Rick Steves Feature ── */}
-      <div id="rick-steves" className="relative py-14 md:py-20 lg:py-28 scroll-mt-20" style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.15)" }}>
+      <div id="rick-steves" className="relative py-16 md:py-20 lg:py-28 scroll-mt-24" style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.15)" }}>
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <FadeIn>
@@ -540,380 +593,13 @@ const Index = () => {
               </div>
             </FadeIn>
           </div>
-
-          {/* ── In the Media + Invite Dennis ── */}
-          <div className="mt-16 lg:mt-24 max-w-6xl mx-auto">
-            <FadeIn>
-              <div className="flex items-center gap-4 mb-10 md:mb-12">
-                <span
-                  className="font-body text-[10px] md:text-[11px] tracking-[0.35em] uppercase whitespace-nowrap"
-                  style={{ color: "hsl(var(--heritage-orange))" }}
-                >
-                  In the Media
-                </span>
-                <span
-                  aria-hidden
-                  className="flex-1 h-px"
-                  style={{ background: "hsl(var(--border))" }}
-                />
-              </div>
-            </FadeIn>
-
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-              {/* Left: SoundCloud block */}
-              <FadeIn className="lg:col-span-7">
-                <div className="space-y-6 md:space-y-8">
-                  <div className="space-y-4 md:space-y-5">
-                    <h3 className="font-heading text-3xl sm:text-4xl md:text-5xl text-primary leading-[0.95] tracking-wide">
-                      Radio Interview about Amsterdam
-                    </h3>
-                    <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed max-w-xl">
-                      I was invited to speak on Dutch radio about Amsterdam, its culture, the people who shape its neighborhoods and what it means to share the city with visitors. The interview is in Dutch. I'm honored to have been featured as a local voice.
-                    </p>
-                  </div>
-
-                  <div className="rounded-sm overflow-hidden border border-border/60 shadow-sm">
-                    <iframe
-                      title="Dennis Gerrits – Radio interview about Amsterdam (SoundCloud)"
-                      width="100%"
-                      height="140"
-                      scrolling="no"
-                      frameBorder="no"
-                      allow="autoplay"
-                      src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Ftaboe-media%2Fdennis-gerrits-i-love-my-city&color=%23b8651a&inverse=false&auto_play=false&show_user=true"
-                    />
-                  </div>
-
-                  <a
-                    href="https://soundcloud.com/taboe-media/dennis-gerrits-i-love-my-city"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 font-body text-sm font-medium hover:gap-3 transition-all"
-                    style={{ color: "hsl(var(--heritage-orange))" }}
-                  >
-                    Listen on SoundCloud
-                    <span aria-hidden>→</span>
-                  </a>
-                </div>
-              </FadeIn>
-
-              {/* Right: Picture */}
-              <FadeIn delay={0.04} className="lg:col-span-5">
-                <figure className="space-y-4">
-                  <div className="relative overflow-hidden rounded-sm shadow-md">
-                    <img
-                      src={lovableAssetUrl(dennisRadioTaboe.url)}
-                      alt="Dennis Gerrits being interviewed live at Studio Zeedijk, Amsterdam"
-                      loading="lazy"
-                      className="w-full aspect-[4/5] object-cover"
-                    />
-                  </div>
-                  <figcaption className="font-body text-xs md:text-sm text-muted-foreground italic flex items-center gap-3">
-                    <span
-                      aria-hidden
-                      className="w-8 h-px"
-                      style={{ background: "hsl(var(--heritage-orange))" }}
-                    />
-                    Live at Studio Zeedijk – Amsterdam.
-                  </figcaption>
-                </figure>
-              </FadeIn>
-
-              {/* Invite Dennis — full width below the SoundCloud card and picture */}
-              <FadeIn delay={0.08} className="lg:col-span-12">
-                <a
-                  href="#contact"
-                  className="group block relative overflow-hidden rounded-sm p-6 md:p-10 lg:p-12 transition-all hover:shadow-lg"
-                  style={{ background: "hsl(var(--heritage-purple))" }}
-                >
-                  <span
-                    aria-hidden
-                    className="absolute top-4 right-4 md:top-5 md:right-5 font-body text-[9px] tracking-[0.3em] uppercase border px-2 py-0.5 rounded-sm opacity-70 group-hover:opacity-100 transition-opacity"
-                    style={{
-                      color: "hsl(var(--heritage-orange))",
-                      borderColor: "hsl(var(--heritage-orange))",
-                      transform: "rotate(4deg)",
-                    }}
-                  >
-                    GUEST
-                  </span>
-
-                  <div className="relative flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-10">
-                    <div className="space-y-3 md:space-y-4">
-                      <p
-                        className="font-body text-[10px] md:text-[11px] tracking-[0.25em] uppercase"
-                        style={{ color: "hsl(var(--heritage-orange))" }}
-                      >
-                        Invite Dennis
-                      </p>
-                      <h3
-                        className="font-heading text-2xl sm:text-3xl md:text-4xl leading-[0.95] tracking-wide"
-                        style={{ color: "hsl(var(--heritage-cream))" }}
-                      >
-                        Podcasts · Lectures · Radio · Live Events
-                      </h3>
-                      <p
-                        className="font-body text-sm md:text-base leading-relaxed max-w-lg"
-                        style={{ color: "hsl(var(--heritage-taupe-tint))" }}
-                      >
-                        Available for podcast conversations, guest lectures, interviews, and cultural programs.
-                      </p>
-                    </div>
-
-                    <span
-                      className="inline-flex items-center gap-2 font-body text-sm font-bold tracking-widest uppercase group-hover:gap-3 transition-all md:flex-shrink-0"
-                      style={{ color: "hsl(var(--heritage-orange))" }}
-                    >
-                      Get in touch
-                      <span aria-hidden>→</span>
-                    </span>
-                  </div>
-                </a>
-              </FadeIn>
-            </div>
-
-          </div>
-
-
         </div>
       </div>
-
-
-
-
-
-      {/* ── Building Blocks preview (4 cards from Get Inspired) ── */}
-      <section
-        className="relative py-20 md:py-24 lg:py-28 overflow-hidden"
-        style={{
-          background:
-            "radial-gradient(900px 600px at 100% 110%, hsl(var(--heritage-green) / 0.12), transparent 65%), hsl(var(--background))",
-        }}
-      >
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              "radial-gradient(hsl(var(--foreground)) 1px, transparent 1px)",
-            backgroundSize: "22px 22px",
-          }}
-        />
-        <div className="relative container mx-auto px-6 lg:px-12">
-          <div className="max-w-3xl mb-12 lg:mb-16">
-            <FadeIn>
-              <p
-                className="font-body text-sm tracking-widest uppercase mb-4"
-                style={{ color: "hsl(var(--heritage-orange))" }}
-              >
-                Threads to follow
-              </p>
-              <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary leading-[0.95] mb-4">
-                What draws you in?
-              </h2>
-              <p
-                className="mb-6 text-2xl md:text-3xl"
-                style={{
-                  fontFamily: "'Caveat', cursive",
-                  color: "hsl(var(--heritage-green))",
-                  transform: "rotate(-2deg)",
-                  display: "inline-block",
-                }}
-              >
-                Some ideas to inspire your journey
-              </p>
-            </FadeIn>
-
-          </div>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-12 md:gap-y-16 gap-x-6 md:gap-x-10 pt-4">
-            {[
-              { id: "neighborhood", title: "The neighborhood", note: "real Amsterdam lives here", caption: "Quiet side streets where everyday life unfolds. Someone watering plants outside their front door. A neighbor locking up a bicycle.", image: peekNeighborhood, rotate: -2.4, pin: "tape-tl" },
-              { id: "food", title: "Food Culture", note: "one bite at a time", caption: "Morning markets full of daily life. The smell of fresh bread from bakeries. Local flavors in every bite.", image: peekFood, rotate: 1.8, pin: "tape-tr" },
-              { id: "architecture", title: "Living Architecture", note: "unlike anywhere else", caption: "A city built in layers of time. Old and modern architecture side by side. Every building carries its own story.", image: peekArchitecture, rotate: -1.2, pin: "tape-gl" },
-              { id: "water", title: "From the Water", note: "a different rhythm", caption: "On a private boat through quiet canals. The city unfolding around you. A picnic, wine, and shared moments.", image: peekWater, rotate: 2.0, pin: "tape-gr" },
-            ].map((theme, i) => {
-              const paperPalette = [
-                "hsl(40 38% 97%)",
-                "hsl(120 22% 92%)",
-                "hsl(22 70% 92%)",
-                "hsl(350 35% 92%)",
-              ];
-              const paperBg = paperPalette[i % paperPalette.length];
-              const isLeft = theme.pin === "tape-tl" || theme.pin === "tape-gl";
-              const tapeColors = [
-                { bg: "hsl(var(--heritage-orange) / 0.72)", border: "hsl(var(--heritage-bordeaux) / 0.30)" },
-                { bg: "hsl(var(--heritage-green) / 0.55)", border: "hsl(var(--heritage-green) / 0.40)" },
-                { bg: "hsl(var(--heritage-bordeaux) / 0.45)", border: "hsl(var(--heritage-bordeaux) / 0.35)" },
-              ];
-              const tape = tapeColors[i % 3];
-              const outlineColors = [
-                "hsl(var(--heritage-orange))",
-                "hsl(var(--heritage-green))",
-                "hsl(var(--heritage-purple))",
-              ];
-              const outlineColor = outlineColors[i % 3];
-              const sketchVariants = [
-                [
-                  "M 3 4 C 22 2.5, 48 4, 70 2.8 S 96 3.4, 97.5 5 C 98.6 26, 96.8 50, 98 74 C 98.4 92, 97.5 97, 95.5 97.6 C 74 98.8, 50 97.2, 26 98.6 C 9 99, 3 98, 2.5 95.5 C 1.4 75, 3.2 50, 1.8 26 C 1.4 8, 2.2 3, 4 3.4 Z",
-                  "M 4 3 C 24 4, 50 2.6, 72 4.2 S 97 4.6, 96.6 6.2 C 97.8 27, 98.6 51, 96.8 75 C 96.4 93, 97.8 96.4, 95 97.4 C 73 97, 49 98.6, 25 96.8 C 8 96.4, 4 97, 3.6 94 C 2.6 74, 1.6 49, 3 25 C 3.4 7, 3 4, 4.4 3.2 Z",
-                ],
-                [
-                  "M 2.5 5 C 26 3.6, 52 5.2, 74 3.4 S 97 4.2, 97 6.4 C 96 28, 98.4 52, 97.2 76 C 97 91, 96 97.8, 94 97 C 72 98, 48 96.6, 24 98 C 7 98.6, 3 97.4, 3.4 94.4 C 2 74, 4 48, 2.4 24 C 2 6, 2.6 4, 4.6 4 Z",
-                  "M 5 4 C 28 5.4, 54 3, 75 5.4 S 96 5.6, 95.8 7.4 C 96.6 28, 97 53, 96 77 C 95.6 92, 96.4 95.8, 93.6 96.8 C 71 96.4, 47 98, 23 96.4 C 7 96, 4.4 96.6, 4.4 93.4 C 3.4 73, 2 48, 3.6 24 C 4 6.6, 4 4.4, 5.2 4 Z",
-                ],
-                [
-                  "M 3.4 3 C 23 4.4, 49 2.4, 71 4 S 96.4 2.8, 98 4.4 C 99 27, 97.4 51, 98.6 75 C 99 93, 96.6 97.4, 94.4 98 C 73 98.4, 49 96.6, 25 98 C 8 98.4, 2 98, 2.8 95 C 1 75, 3.6 49, 2 25 C 1.6 8, 2.4 2.6, 4.4 3 Z",
-                  "M 4.6 4.4 C 25 3, 51 4.6, 73 3 S 96 6, 96.4 7.2 C 97.4 28, 98.8 52, 97 76 C 96.6 92, 97.4 96, 94.6 97 C 73 97.6, 49 98, 25 96.4 C 9 96, 4 97.6, 3.6 94.6 C 2.4 74, 1.4 49, 3 25 C 3.4 7, 3 4.4, 4.4 4 Z",
-                ],
-                [
-                  "M 3 3.4 C 24 2, 47 4.4, 69 3 S 95 4, 97.6 5.4 C 98 26, 97.6 50, 98.4 75 C 98.6 93, 96.6 96, 95 97 C 75 99, 51 97.6, 27 99 C 9 98.6, 2.6 97.4, 2.6 95 C 1.6 76, 2.6 51, 1.4 26 C 1.6 7, 2 3.4, 4 3 Z",
-                  "M 4.4 4 C 26 5, 52 3.4, 74 4.6 S 96.4 4, 96 6 C 97 27, 98.4 50, 96.4 76 C 96.6 92, 97.6 95.6, 94.6 96.8 C 72 97.4, 48 99, 24 97 C 7 96.6, 4 97, 3.4 94 C 2.4 74, 1.6 48, 3.4 24 C 3.6 7, 2.6 4.4, 4.4 3.4 Z",
-                ],
-              ];
-              const sketchPaths = sketchVariants[i % sketchVariants.length];
-              return (
-                <FadeIn key={theme.id} delay={i * 0.08}>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      navigate(
-                        `/get-inspired/${theme.title
-                          .toLowerCase()
-                          .replace(/[^a-z0-9]+/g, "-")
-                          .replace(/^-|-$/g, "")}`
-                      )
-                    }
-
-                    aria-label={`${theme.title} — read more on the Experiences page`}
-                    className="group relative block w-full text-left transition-transform duration-500 ease-out hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-4"
-                    style={{ transform: `rotate(${theme.rotate}deg)` }}
-                  >
-                    <div
-                      aria-hidden
-                      className="pointer-events-none absolute -inset-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl"
-                      style={{
-                        background:
-                          "radial-gradient(closest-side, hsl(var(--heritage-orange) / 0.35), transparent 70%)",
-                      }}
-                    />
-                    <div className="p-2.5 sm:p-3 pb-4 sm:pb-5 transition-all duration-500 relative">
-                      <svg
-                        aria-hidden
-                        className="absolute inset-0 w-full h-full pointer-events-none transition-[filter] duration-500 group-hover:[filter:drop-shadow(0_22px_24px_rgba(0,0,0,0.28))]"
-                        viewBox="0 0 100 100"
-                        preserveAspectRatio="none"
-                        style={{
-                          color: outlineColor,
-                          overflow: "visible",
-                          filter: "drop-shadow(0 10px 16px rgba(0,0,0,0.22)) drop-shadow(0 2px 4px rgba(0,0,0,0.12))",
-                        }}
-                      >
-                        <path d={sketchPaths[0]} fill={paperBg} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" style={{ strokeWidth: "2.4px" }} />
-                        <path d={sketchPaths[1]} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" style={{ strokeWidth: "1.2px", opacity: 0.55 }} />
-                      </svg>
-                      {i % 2 === 0 ? (
-                        <span
-                          aria-hidden
-                          className={`absolute top-1 sm:top-1.5 w-16 sm:w-20 h-5 sm:h-6 border z-10 shadow-[0_1px_2px_rgba(0,0,0,0.15)] ${
-                            isLeft
-                              ? "left-3 sm:left-5 -rotate-[8deg]"
-                              : "right-3 sm:right-5 rotate-[6deg]"
-                          }`}
-                          style={{
-                            backgroundColor: tape.bg,
-                            borderColor: tape.border,
-                          }}
-                        />
-                      ) : (
-                        <span
-                          aria-hidden
-                          className="absolute top-2 sm:top-3 left-1/2 -translate-x-1/2 w-4 h-4 sm:w-5 sm:h-5 rounded-full z-10 shadow-[inset_-1.5px_-2px_2.5px_rgba(0,0,0,0.4),inset_2px_2px_2.5px_rgba(255,255,255,0.55),0_3px_4px_rgba(0,0,0,0.4)]"
-                          style={{ backgroundColor: outlineColor }}
-                        />
-                      )}
-                      <div className="relative aspect-[4/5] overflow-hidden bg-muted">
-                        <img
-                          src={theme.image}
-                          alt={theme.title}
-                          loading="lazy"
-                          decoding="async"
-                          className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.02] group-hover:saturate-150 ${
-                            openInterest === theme.id ? "scale-105 blur-[2px]" : ""
-                          }`}
-                          style={{ filter: "saturate(1.18) brightness(1.06) contrast(1.04)" }}
-                        />
-                        <div
-                          className={`absolute inset-0 flex flex-col justify-center px-4 sm:px-5 py-4 transition-opacity duration-500 ${
-                            openInterest === theme.id ? "opacity-100" : "opacity-0 pointer-events-none"
-                          }`}
-                          style={{
-                            background: `linear-gradient(180deg, ${paperBg} 0%, ${paperBg} 60%, ${paperBg}f2 100%)`,
-                          }}
-                        >
-                          <p
-                            className="font-body text-sm sm:text-base leading-relaxed text-primary"
-                          >
-                            {theme.caption}
-                          </p>
-                          <Link
-                            to="/get-inspired"
-                            onClick={(e) => e.stopPropagation()}
-                            className="mt-4 font-body text-xs sm:text-sm tracking-widest uppercase inline-flex items-center gap-1.5 self-start border-b border-dashed pb-0.5 transition-opacity hover:opacity-70"
-                            style={{ color: "hsl(var(--heritage-orange))", borderColor: "hsl(var(--heritage-orange))" }}
-                          >
-                            Read more <span aria-hidden>→</span>
-                          </Link>
-                        </div>
-                      </div>
-                      <div className="relative mt-3 sm:mt-4 px-1.5 sm:px-2">
-                        <h3 className="font-heading text-lg sm:text-xl md:text-2xl text-primary leading-tight tracking-wide">
-                          {theme.title}
-                        </h3>
-                        <p
-                          className="text-base sm:text-lg mt-0.5 sm:mt-1 leading-snug"
-                          style={{
-                            fontFamily: "'Caveat', cursive",
-                            color: "hsl(var(--heritage-bordeaux))",
-                          }}
-                        >
-                          <span
-                            aria-hidden
-                            className="inline-block w-1.5 h-1.5 rounded-full mr-1.5 align-middle"
-                            style={{ backgroundColor: "hsl(var(--heritage-orange))" }}
-                          />
-                          {theme.note}
-                        </p>
-                      </div>
-                    </div>
-                  </button>
-                </FadeIn>
-              );
-            })}
-          </div>
-
-          <FadeIn>
-            <p className="text-center mt-16">
-              <Link
-                to="/get-inspired"
-                className="font-body text-base tracking-wide border-b-2 border-dashed pb-1 transition-colors hover:opacity-80 inline-flex items-center gap-2"
-                style={{
-                  color: "hsl(var(--heritage-orange))",
-                  borderColor: "hsl(var(--heritage-orange))",
-                }}
-              >
-                Discover more
-                <span aria-hidden>→</span>
-              </Link>
-            </p>
-          </FadeIn>
-        </div>
-      </section>
 
       {/* ── Podcast: Two Stories, One City (green band) ── */}
       <section
         id="podcast"
-        className="relative py-12 md:py-14 lg:py-16 scroll-mt-20 overflow-hidden"
+        className="relative py-12 md:py-14 lg:py-16 scroll-mt-24 overflow-hidden"
         style={{ backgroundColor: "hsl(var(--heritage-green))" }}
       >
         {/* faint paper-grain overlay */}
@@ -1010,8 +696,349 @@ const Index = () => {
         </div>
       </section>
 
+      {/* ── In the Media + Invite Dennis ── */}
+      <div className="relative py-16 md:py-20 lg:py-28" style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.15)" }}>
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="max-w-6xl mx-auto">
+            <FadeIn>
+              <div className="flex items-center gap-4 mb-10 md:mb-12">
+                <span
+                  className="font-body text-[10px] md:text-[11px] tracking-[0.35em] uppercase whitespace-nowrap"
+                  style={{ color: "hsl(var(--heritage-orange))" }}
+                >
+                  In the Media
+                </span>
+                <span
+                  aria-hidden
+                  className="flex-1 h-px"
+                  style={{ background: "hsl(var(--border))" }}
+                />
+              </div>
+            </FadeIn>
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+              {/* Left: SoundCloud block */}
+              <FadeIn className="lg:col-span-7">
+                <div className="space-y-6 md:space-y-8">
+                  <div className="space-y-4 md:space-y-5">
+                    <h3 className="font-heading text-3xl sm:text-4xl md:text-5xl text-primary leading-[0.95] tracking-wide">
+                      Radio Interview about Amsterdam
+                    </h3>
+                    <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed max-w-xl">
+                      I was invited to speak on Dutch radio about Amsterdam, its culture, the people who shape its neighborhoods and what it means to share the city with visitors. The interview is in Dutch. I'm honored to have been featured as a local voice.
+                    </p>
+                  </div>
+
+                  <div className="rounded-sm overflow-hidden border border-border/60 shadow-sm">
+                    <iframe
+                      title="Dennis Gerrits, Radio interview about Amsterdam (SoundCloud)"
+                      width="100%"
+                      height="140"
+                      scrolling="no"
+                      frameBorder="no"
+                      allow="autoplay"
+                      src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Ftaboe-media%2Fdennis-gerrits-i-love-my-city&color=%23b8651a&inverse=false&auto_play=false&show_user=true"
+                    />
+                  </div>
+
+                  <a
+                    href="https://soundcloud.com/taboe-media/dennis-gerrits-i-love-my-city"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 font-body text-sm font-medium hover:gap-3 transition-all"
+                    style={{ color: "hsl(var(--heritage-orange))" }}
+                  >
+                    Listen on SoundCloud
+                    <span aria-hidden>→</span>
+                  </a>
+                </div>
+              </FadeIn>
+
+              {/* Right: Picture */}
+              <FadeIn delay={0.04} className="lg:col-span-5">
+                <figure className="space-y-4">
+                  <div className="relative overflow-hidden rounded-sm shadow-md">
+                    <img
+                      src={lovableAssetUrl(dennisRadioTaboe.url)}
+                      alt="Dennis Gerrits being interviewed live at Studio Zeedijk, Amsterdam"
+                      loading="lazy"
+                      className="w-full aspect-[4/5] object-cover"
+                    />
+                  </div>
+                  <figcaption className="font-body text-xs md:text-sm text-muted-foreground italic flex items-center gap-3">
+                    <span
+                      aria-hidden
+                      className="w-8 h-px"
+                      style={{ background: "hsl(var(--heritage-orange))" }}
+                    />
+                    Live at Studio Zeedijk, Amsterdam.
+                  </figcaption>
+                </figure>
+              </FadeIn>
+
+              {/* Invite Dennis — full width below the SoundCloud card and picture */}
+              <FadeIn delay={0.08} className="lg:col-span-12">
+                <a
+                  href="#contact"
+                  className="group block relative overflow-hidden rounded-sm p-6 md:p-10 lg:p-12 transition-all hover:shadow-lg"
+                  style={{ background: "hsl(var(--heritage-purple))" }}
+                >
+
+
+
+                  <div className="relative flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-10">
+                    <div className="space-y-3 md:space-y-4">
+                      <p
+                        className="font-body text-[10px] md:text-[11px] tracking-[0.25em] uppercase"
+                        style={{ color: "hsl(var(--heritage-orange))" }}
+                      >
+                        Invite Dennis
+                      </p>
+                      <h3
+                        className="font-heading text-2xl sm:text-3xl md:text-4xl leading-[0.95] tracking-wide"
+                        style={{ color: "hsl(var(--heritage-cream))" }}
+                      >
+                        Podcasts · Lectures · Radio · Live Events
+                      </h3>
+                      <p
+                        className="font-body text-sm md:text-base leading-relaxed max-w-lg"
+                        style={{ color: "hsl(var(--heritage-taupe-tint))" }}
+                      >
+                        Available for podcast conversations, guest lectures, interviews, and cultural programs.
+                      </p>
+                    </div>
+
+                    <span
+                      className="inline-flex items-center gap-2 font-body text-sm font-bold tracking-widest uppercase group-hover:gap-3 transition-all md:flex-shrink-0"
+                      style={{ color: "hsl(var(--heritage-orange))" }}
+                    >
+                      Get in touch
+                      <span aria-hidden>→</span>
+                    </span>
+                  </div>
+                </a>
+              </FadeIn>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      {/* ── Building Blocks preview (4 cards from Get Inspired) ── */}
+      <section
+        id="experiences"
+        className="relative py-16 md:py-20 lg:py-28 scroll-mt-24 overflow-hidden"
+        style={{
+          background:
+            "radial-gradient(900px 600px at 100% 110%, hsl(var(--heritage-green) / 0.12), transparent 65%), hsl(var(--background))",
+        }}
+      >
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage:
+              "radial-gradient(hsl(var(--foreground)) 1px, transparent 1px)",
+            backgroundSize: "22px 22px",
+          }}
+        />
+        <div className="relative container mx-auto px-6 lg:px-12">
+          <div className="max-w-3xl mb-12 lg:mb-16">
+            <FadeIn>
+              <p
+                className="font-body text-sm tracking-widest uppercase mb-4"
+                style={{ color: "hsl(var(--heritage-orange))" }}
+              >
+                Threads to follow
+              </p>
+              <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary leading-[0.95] mb-4">
+                What draws you in?
+              </h2>
+              <p
+                className="mb-6 text-2xl md:text-3xl"
+                style={{
+                  fontFamily: "'Caveat', cursive",
+                  color: "hsl(var(--heritage-green))",
+                  transform: "rotate(-2deg)",
+                  display: "inline-block",
+                }}
+              >
+                Some ideas to inspire your journey
+              </p>
+            </FadeIn>
+
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-12 md:gap-y-16 gap-x-6 md:gap-x-10 pt-4">
+            {[
+              { id: "neighborhood", title: "The neighborhood", note: "real Amsterdam lives here", caption: "Quiet side streets where everyday life unfolds. Someone watering plants outside their front door. A neighbor locking up a bicycle.", image: peekNeighborhood, rotate: -2.4, pin: "tape-tl" },
+              { id: "food", title: "Food Culture", note: "one bite at a time", caption: "Morning markets full of daily life. The smell of fresh bread from bakeries. Local flavors in every bite.", image: peekFood, rotate: 1.8, pin: "tape-tr" },
+              { id: "architecture", title: "Living Architecture", note: "unlike anywhere else", caption: "A city built in layers of time. Old and modern architecture side by side. Every building carries its own story.", image: peekArchitecture, rotate: -1.2, pin: "tape-gl" },
+              { id: "water", title: "From the Water", note: "a different rhythm", caption: "On a private boat through quiet canals. The city unfolding around you. A picnic, wine, and shared moments.", image: peekWater, rotate: 2.0, pin: "tape-gr" },
+            ].map((theme, i) => {
+              const paperPalette = [
+                "hsl(40 38% 97%)",
+                "hsl(120 22% 92%)",
+                "hsl(22 70% 92%)",
+                "hsl(350 35% 92%)",
+              ];
+              const paperBg = paperPalette[i % paperPalette.length];
+              const isLeft = theme.pin === "tape-tl" || theme.pin === "tape-gl";
+              const tapeColors = [
+                { bg: "hsl(var(--heritage-orange) / 0.72)", border: "hsl(var(--heritage-bordeaux) / 0.30)" },
+                { bg: "hsl(var(--heritage-green) / 0.55)", border: "hsl(var(--heritage-green) / 0.40)" },
+                { bg: "hsl(var(--heritage-bordeaux) / 0.45)", border: "hsl(var(--heritage-bordeaux) / 0.35)" },
+              ];
+              const tape = tapeColors[i % 3];
+              const outlineColors = [
+                "hsl(var(--heritage-orange))",
+                "hsl(var(--heritage-green))",
+                "hsl(var(--heritage-purple))",
+              ];
+              const outlineColor = outlineColors[i % 3];
+              const sketchVariants = [
+                [
+                  "M 3 4 C 22 2.5, 48 4, 70 2.8 S 96 3.4, 97.5 5 C 98.6 26, 96.8 50, 98 74 C 98.4 92, 97.5 97, 95.5 97.6 C 74 98.8, 50 97.2, 26 98.6 C 9 99, 3 98, 2.5 95.5 C 1.4 75, 3.2 50, 1.8 26 C 1.4 8, 2.2 3, 4 3.4 Z",
+                  "M 4 3 C 24 4, 50 2.6, 72 4.2 S 97 4.6, 96.6 6.2 C 97.8 27, 98.6 51, 96.8 75 C 96.4 93, 97.8 96.4, 95 97.4 C 73 97, 49 98.6, 25 96.8 C 8 96.4, 4 97, 3.6 94 C 2.6 74, 1.6 49, 3 25 C 3.4 7, 3 4, 4.4 3.2 Z",
+                ],
+                [
+                  "M 2.5 5 C 26 3.6, 52 5.2, 74 3.4 S 97 4.2, 97 6.4 C 96 28, 98.4 52, 97.2 76 C 97 91, 96 97.8, 94 97 C 72 98, 48 96.6, 24 98 C 7 98.6, 3 97.4, 3.4 94.4 C 2 74, 4 48, 2.4 24 C 2 6, 2.6 4, 4.6 4 Z",
+                  "M 5 4 C 28 5.4, 54 3, 75 5.4 S 96 5.6, 95.8 7.4 C 96.6 28, 97 53, 96 77 C 95.6 92, 96.4 95.8, 93.6 96.8 C 71 96.4, 47 98, 23 96.4 C 7 96, 4.4 96.6, 4.4 93.4 C 3.4 73, 2 48, 3.6 24 C 4 6.6, 4 4.4, 5.2 4 Z",
+                ],
+                [
+                  "M 3.4 3 C 23 4.4, 49 2.4, 71 4 S 96.4 2.8, 98 4.4 C 99 27, 97.4 51, 98.6 75 C 99 93, 96.6 97.4, 94.4 98 C 73 98.4, 49 96.6, 25 98 C 8 98.4, 2 98, 2.8 95 C 1 75, 3.6 49, 2 25 C 1.6 8, 2.4 2.6, 4.4 3 Z",
+                  "M 4.6 4.4 C 25 3, 51 4.6, 73 3 S 96 6, 96.4 7.2 C 97.4 28, 98.8 52, 97 76 C 96.6 92, 97.4 96, 94.6 97 C 73 97.6, 49 98, 25 96.4 C 9 96, 4 97.6, 3.6 94.6 C 2.4 74, 1.4 49, 3 25 C 3.4 7, 3 4.4, 4.4 4 Z",
+                ],
+                [
+                  "M 3 3.4 C 24 2, 47 4.4, 69 3 S 95 4, 97.6 5.4 C 98 26, 97.6 50, 98.4 75 C 98.6 93, 96.6 96, 95 97 C 75 99, 51 97.6, 27 99 C 9 98.6, 2.6 97.4, 2.6 95 C 1.6 76, 2.6 51, 1.4 26 C 1.6 7, 2 3.4, 4 3 Z",
+                  "M 4.4 4 C 26 5, 52 3.4, 74 4.6 S 96.4 4, 96 6 C 97 27, 98.4 50, 96.4 76 C 96.6 92, 97.6 95.6, 94.6 96.8 C 72 97.4, 48 99, 24 97 C 7 96.6, 4 97, 3.4 94 C 2.4 74, 1.6 48, 3.4 24 C 3.6 7, 2.6 4.4, 4.4 3.4 Z",
+                ],
+              ];
+              const sketchPaths = sketchVariants[i % sketchVariants.length];
+              return (
+                <FadeIn key={theme.id} delay={i * 0.08}>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      navigate(
+                        `/get-inspired?theme=${theme.title
+                          .toLowerCase()
+                          .replace(/[^a-z0-9]+/g, "-")
+                          .replace(/^-|-$/g, "")}`
+                      )
+                    }
+
+                    aria-label={`${theme.title}, read more on the Experiences page`}
+                    className="group relative block w-full text-left transition-transform duration-500 ease-out hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-4"
+                    style={{ transform: `rotate(${theme.rotate}deg)` }}
+                  >
+
+                    <div
+                      aria-hidden
+                      className="pointer-events-none absolute -inset-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl"
+                      style={{
+                        background:
+                          "radial-gradient(closest-side, hsl(var(--heritage-orange) / 0.35), transparent 70%)",
+                      }}
+                    />
+                    <div className="p-2.5 sm:p-3 pb-4 sm:pb-5 transition-all duration-500 relative">
+                      <svg
+                        aria-hidden
+                        className="absolute inset-0 w-full h-full pointer-events-none transition-[filter] duration-500 group-hover:[filter:drop-shadow(0_22px_24px_rgba(0,0,0,0.28))]"
+                        viewBox="0 0 100 100"
+                        preserveAspectRatio="none"
+                        style={{
+                          color: outlineColor,
+                          overflow: "visible",
+                          filter: "drop-shadow(0 10px 16px rgba(0,0,0,0.22)) drop-shadow(0 2px 4px rgba(0,0,0,0.12))",
+                        }}
+                      >
+                        <path d={sketchPaths[0]} fill={paperBg} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" style={{ strokeWidth: "2.4px" }} />
+                        <path d={sketchPaths[1]} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" style={{ strokeWidth: "1.2px", opacity: 0.55 }} />
+                      </svg>
+                      {i % 2 === 0 ? (
+                        <span
+                          aria-hidden
+                          className={`absolute top-1 sm:top-1.5 w-16 sm:w-20 h-5 sm:h-6 border z-10 shadow-[0_1px_2px_rgba(0,0,0,0.15)] ${
+                            isLeft
+                              ? "left-3 sm:left-5 -rotate-[8deg]"
+                              : "right-3 sm:right-5 rotate-[6deg]"
+                          }`}
+                          style={{
+                            backgroundColor: tape.bg,
+                            borderColor: tape.border,
+                          }}
+                        />
+                      ) : (
+                        <span
+                          aria-hidden
+                          className="absolute top-2 sm:top-3 left-1/2 -translate-x-1/2 w-4 h-4 sm:w-5 sm:h-5 rounded-full z-10 shadow-[inset_-1.5px_-2px_2.5px_rgba(0,0,0,0.4),inset_2px_2px_2.5px_rgba(255,255,255,0.55),0_3px_4px_rgba(0,0,0,0.4)]"
+                          style={{ backgroundColor: outlineColor }}
+                        />
+                      )}
+                      <div className="relative aspect-[4/5] overflow-hidden bg-muted">
+                        <img
+                          src={theme.image}
+                          alt={theme.title}
+                          loading="lazy"
+                          decoding="async"
+                          className="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.02] group-hover:saturate-150"
+                          style={{ filter: "saturate(1.18) brightness(1.06) contrast(1.04)" }}
+                        />
+                      </div>
+                      <div className="relative mt-3 sm:mt-4 px-1.5 sm:px-2">
+                        <h3 className="font-heading text-lg sm:text-xl md:text-2xl text-primary leading-tight tracking-wide">
+                          {theme.title}
+                        </h3>
+                        <p
+                          className="text-xl sm:text-2xl md:text-[1.7rem] mt-1 leading-snug"
+                          style={{
+                            fontFamily: "'Caveat', cursive",
+                            color: "hsl(var(--heritage-bordeaux))",
+                          }}
+                        >
+                          <span
+                            aria-hidden
+                            className="inline-block w-1.5 h-1.5 rounded-full mr-1.5 align-middle"
+                            style={{ backgroundColor: "hsl(var(--heritage-orange))" }}
+                          />
+                          {theme.note}
+                        </p>
+                        <span
+                          className="mt-3 font-body text-xs sm:text-sm tracking-widest uppercase inline-flex items-center gap-1.5 border-b border-dashed pb-0.5 transition-opacity group-hover:opacity-70"
+                          style={{ color: "hsl(var(--heritage-orange))", borderColor: "hsl(var(--heritage-orange))" }}
+                        >
+                          Read more <span aria-hidden>→</span>
+                        </span>
+                      </div>
+
+                    </div>
+                  </button>
+                </FadeIn>
+              );
+            })}
+          </div>
+
+          <FadeIn>
+            <p className="text-center mt-16">
+              <Link
+                to="/get-inspired"
+                className="font-body text-base tracking-wide border-b-2 border-dashed pb-1 transition-colors hover:opacity-80 inline-flex items-center gap-2"
+                style={{
+                  color: "hsl(var(--heritage-orange))",
+                  borderColor: "hsl(var(--heritage-orange))",
+                }}
+              >
+                Discover more
+                <span aria-hidden>→</span>
+              </Link>
+            </p>
+          </FadeIn>
+        </div>
+      </section>
+
       {/* ── 4. Proof: Reviews & Guests ── */}
-      <section id="proof" className="py-16 md:py-20 lg:py-32 scroll-mt-20">
+      <section id="proof" className="py-16 md:py-20 lg:py-28 scroll-mt-24">
         <div className="container mx-auto px-6 lg:px-12">
           {(() => {
             const TA_URL =
@@ -1099,7 +1126,7 @@ const Index = () => {
                         <div className="flex items-center gap-3 mt-1">
                           <TripAdvisorBubbles />
                           <span className="font-body text-sm text-foreground">
-                            <strong>{taRating}</strong> · {taReviewCount} reviews
+                            <strong>{taRating}</strong> · <CountUp value={taReviewCount} /> reviews
                           </span>
                         </div>
                       </div>
@@ -1219,7 +1246,7 @@ const Index = () => {
                         borderColor: `${TA_GREEN}66`,
                       }}
                     >
-                      Read all {taReviewCount} reviews on Tripadvisor →
+                      Read all <CountUp value={taReviewCount} /> reviews on Tripadvisor →
                     </a>
                   </div>
                 </FadeIn>
@@ -1254,7 +1281,7 @@ const Index = () => {
       {/* ── Co-Founder Projects: AroundFriends ── */}
       <section
         id="around-friends"
-        className="relative py-16 md:py-20 lg:py-24 scroll-mt-20 overflow-hidden"
+        className="relative py-16 md:py-20 lg:py-28 scroll-mt-24 overflow-hidden"
         style={{ backgroundColor: "hsl(40 38% 96%)" }}
       >
         <div className="container mx-auto px-6 lg:px-12">
@@ -1315,7 +1342,7 @@ const Index = () => {
       {/* ── Notebook teaser (short list + link to full notebook for SEO) ── */}
       <section
         id="storybook"
-        className="relative py-16 md:py-20 lg:py-28 scroll-mt-20 overflow-hidden"
+        className="relative py-16 md:py-20 lg:py-28 scroll-mt-24 overflow-hidden"
       >
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mb-10 md:mb-14">

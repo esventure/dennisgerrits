@@ -50,7 +50,7 @@ const AdminRoute = ({ children }: { children: ReactNode }) => {
     return (
       <main className="min-h-screen flex items-center justify-center">
         <Head>
-          <title>Admin – Dennis Gerrits</title>
+          <title>Admin | Dennis Gerrits</title>
           <meta name="robots" content="noindex, nofollow" />
         </Head>
         <p className="font-body text-muted-foreground">Loading...</p>
@@ -65,7 +65,7 @@ const AdminRoute = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <Head>
-        <title>Admin – Dennis Gerrits</title>
+        <title>Admin | Dennis Gerrits</title>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
       {children}

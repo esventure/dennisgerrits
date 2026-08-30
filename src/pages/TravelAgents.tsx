@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import FadeIn from "@/components/FadeIn";
+import { HEADER_OFFSET } from "@/components/Header";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -12,7 +13,6 @@ import { breadcrumbJsonLd } from "@/lib/jsonld";
 import { supabase } from "@/integrations/supabase/client";
 import dennisBoat from "@/assets/dennis-hero.jpg.asset.json";
 
-import iconMessage from "@/assets/icon-message.png";
 import iconHistory from "@/assets/icon-history.png";
 
 /* ── Small inline visual helpers (reused across sections) ── */
@@ -144,7 +144,11 @@ const TravelAgents = () => {
 
   const scrollToContact = (e: React.MouseEvent) => {
     e.preventDefault();
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+    const el = document.getElementById("contact");
+    if (el) {
+      const top = el.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
+      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -203,7 +207,7 @@ const TravelAgents = () => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ProfessionalService",
-            name: "Dennis Gerrits – Amsterdam Travel Companion",
+            name: "Dennis Gerrits, Amsterdam Travel Companion",
             url: "https://dennisgerrits.com/travel-agents",
             description:
               "Collaboration for travel advisors and concierges: a trusted local companion in Amsterdam who looks after your clients, arranges tailored days and answers questions on the ground.",
@@ -232,7 +236,7 @@ const TravelAgents = () => {
                 For Travel Advisors &amp; Concierges
               </p>
               <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-primary leading-[0.95] mb-6">
-                I take care of your clients<br />in Amsterdam and the Netherlands.
+                I take care of your clients<br />in Amsterdam<br />and the Netherlands.
               </h1>
               <p className="font-body text-sm tracking-widest uppercase text-secondary mb-8">
                 20+ years in tourism &middot; 9 years as a private guide &middot; Local expert
@@ -325,7 +329,7 @@ const TravelAgents = () => {
                   className="inline-block font-body text-xs tracking-widest uppercase px-3 py-1 mb-4 rounded-sm"
                   style={{ backgroundColor: "hsl(var(--heritage-purple) / 0.12)", color: "hsl(var(--heritage-purple))" }}
                 >
-                  Full concierge – I plan and deliver
+                  Full concierge: I plan and deliver
                 </span>
                 <h3 className="font-heading text-3xl lg:text-4xl text-primary mb-6 leading-tight">
                   You hand it over, I take care of the rest.
@@ -377,7 +381,7 @@ const TravelAgents = () => {
                   className="inline-block font-body text-xs tracking-widest uppercase px-3 py-1 mb-4 rounded-sm"
                   style={{ backgroundColor: "hsl(var(--heritage-green) / 0.14)", color: "hsl(var(--heritage-green))" }}
                 >
-                  Local partner – you plan, I host
+                  Local partner: you plan, I host
                 </span>
                 <h3 className="font-heading text-3xl lg:text-4xl text-primary mb-6 leading-tight">
                   You plan, I handle everything locally.
@@ -419,14 +423,7 @@ const TravelAgents = () => {
             {/* Header */}
             <FadeIn>
               <div className="max-w-3xl mb-12 lg:mb-16">
-                <img
-                  src={iconMessage}
-                  alt=""
-                  aria-hidden
-                  className="w-14 h-14 mb-6"
-                  loading="lazy"
-                />
-                <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl text-primary leading-[1]">
+                <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-primary leading-[1] whitespace-nowrap">
                   Your clients have a local they can rely on.
                 </h2>
               </div>
@@ -443,17 +440,17 @@ const TravelAgents = () => {
                 </p>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-4">
                   {[
-                    "Private Guiding",
-                    "Custom Itineraries",
-                    "Museum Reservations: Tickets & Timed Entry",
-                    "Dining Reservations",
-                    "Transportation Coordination",
-                    "Private Boats & Cars",
-                    "Last-Minute Adjustments",
-                    "On-the-Ground Support",
+                    { label: "Private Guiding" },
+                    { label: "Museum Reservations", sub: "Tickets & Timed Entry" },
+                    { label: "Custom Itineraries" },
+                    { label: "Dining Reservations" },
+                    { label: "Transportation Coordination" },
+                    { label: "Private Boats & Cars" },
+                    { label: "Last-Minute Adjustments" },
+                    { label: "On-the-Ground Support" },
                   ].map((item) => (
                     <li
-                      key={item}
+                      key={item.label}
                       className="font-body text-base text-foreground/90 leading-relaxed flex items-start gap-3"
                     >
                       <span
@@ -461,7 +458,14 @@ const TravelAgents = () => {
                         className="mt-[0.65rem] h-px w-4 shrink-0"
                         style={{ background: "hsl(var(--heritage-orange))" }}
                       />
-                      {item}
+                      <span>
+                        <span className="block whitespace-nowrap">{item.label}</span>
+                        {item.sub && (
+                          <span className="block text-sm text-muted-foreground leading-snug">
+                            {item.sub}
+                          </span>
+                        )}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -648,8 +652,8 @@ const TravelAgents = () => {
                         <SelectValue placeholder="Choose what fits best" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="full-concierge">Full concierge – I plan and deliver</SelectItem>
-                        <SelectItem value="local-partner">Local partner – you plan, I host</SelectItem>
+                        <SelectItem value="full-concierge">Full concierge: I plan and deliver</SelectItem>
+                        <SelectItem value="local-partner">Local partner: you plan, I host</SelectItem>
                         <SelectItem value="exploring">Just exploring a fit</SelectItem>
                         <SelectItem value="other">Something else</SelectItem>
                       </SelectContent>

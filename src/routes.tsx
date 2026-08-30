@@ -14,6 +14,7 @@ import AdminLogin from "./pages/AdminLogin";
 import AdminSettings from "./pages/AdminSettings";
 import AdminRoute from "./components/AdminRoute";
 import NotFound from "./pages/NotFound";
+import RouteError from "./components/RouteError";
 import { supabase } from "@/integrations/supabase/client";
 
 export type StoryRecord = {
@@ -37,7 +38,9 @@ export const routes: RouteRecord[] = [
   {
     path: "/",
     element: <Layout />,
+    errorElement: <RouteError />,
     children: [
+
       { index: true, element: <Index /> },
       { path: "unsubscribe", element: <Unsubscribe /> },
       { path: "get-inspired", element: <GetInspired /> },

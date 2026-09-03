@@ -13,7 +13,7 @@ import { breadcrumbJsonLd } from "@/lib/jsonld";
 import { supabase } from "@/integrations/supabase/client";
 import dennisBoat from "@/assets/dennis-hero.jpg.asset.json";
 
-import iconHistory from "@/assets/icon-history.png";
+
 
 /* ── Small inline visual helpers (reused across sections) ── */
 

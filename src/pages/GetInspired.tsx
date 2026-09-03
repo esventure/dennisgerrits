@@ -195,9 +195,18 @@ const GetInspired = () => {
               return (
                 <FadeIn key={theme.id} delay={i * 0.08}>
                   <article id={theme.slug} ref={(el) => { cardRefs.current[theme.id] = el; }}>
-                  <button
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    aria-expanded={isActive}
                     onClick={() => setActive(isActive ? null : theme.id)}
-                    className="group relative block w-full text-left transition-transform duration-500 ease-out hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-4"
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        setActive(isActive ? null : theme.id);
+                      }
+                    }}
+                    className="group relative block w-full text-left cursor-pointer transition-transform duration-500 ease-out hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-4"
                     style={{ transform: `rotate(${isActive ? 0 : theme.rotate}deg)` }}
                   >
                     <div
@@ -209,7 +218,10 @@ const GetInspired = () => {
                       }}
                     />
                     <div
-                      className="p-2.5 sm:p-3 pb-16 sm:pb-20 transition-all duration-500 relative"
+                      className={cn(
+                        "p-2.5 sm:p-3 transition-all duration-500 relative",
+                        isActive ? "pb-4 sm:pb-5" : "pb-16 sm:pb-20"
+                      )}
                     >
                       <svg
                         aria-hidden
@@ -280,32 +292,33 @@ const GetInspired = () => {
                           />
                           {theme.note}
                         </p>
+                        <div
+                          className={cn(
+                            "overflow-hidden transition-all duration-500 ease-out",
+                            isActive ? "max-h-96 opacity-100 mt-2" : "max-h-0 opacity-0 mt-0"
+                          )}
+                        >
+                          <p
+                            className="text-lg sm:text-xl md:text-2xl leading-snug"
+                            style={{
+                              fontFamily: "'Caveat', cursive",
+                              color: "hsl(var(--heritage-bordeaux))",
+                            }}
+                          >
+                            {theme.caption}
+                          </p>
+                          <p className="mt-3">
+                            <Link
+                              to={`/get-inspired/${theme.slug}`}
+                              onClick={(e) => e.stopPropagation()}
+                              className="text-sm underline underline-offset-4 text-primary/70 hover:text-primary transition-colors"
+                            >
+                              Read more about {theme.title}
+                            </Link>
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </button>
-                  <div
-                    className={cn(
-                      "overflow-hidden transition-all duration-500 ease-out",
-                      isActive ? "max-h-80 opacity-100 mt-3 sm:mt-4" : "max-h-0 opacity-0 mt-0"
-                    )}
-                  >
-                    <p
-                      className="text-lg sm:text-xl md:text-2xl leading-snug px-1"
-                      style={{
-                        fontFamily: "'Caveat', cursive",
-                        color: "hsl(var(--heritage-bordeaux))",
-                      }}
-                    >
-                      {theme.caption}
-                    </p>
-                    <p className="mt-3 px-1">
-                      <Link
-                        to={`/get-inspired/${theme.slug}`}
-                        className="text-sm underline underline-offset-4 text-primary/70 hover:text-primary transition-colors"
-                      >
-                        Read more about {theme.title}
-                      </Link>
-                    </p>
                   </div>
                   <p className="sr-only">{theme.body.join(" ")}</p>
                   </article>

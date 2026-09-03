@@ -322,7 +322,7 @@ const Index = () => {
       <HeroCarousel />
 
       {/* ── 2. About Me — 2 swipeable variations for Dennis to choose from ── */}
-      <div className="pt-16 md:pt-20 lg:pt-28">
+      <div className="pt-10 md:pt-14 lg:pt-20">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mx-auto text-center mb-4 lg:mb-6">
             <FadeIn>
@@ -485,7 +485,7 @@ const Index = () => {
       </section>
 
       {/* ── 3. A Day in the Life (click-to-explore, no scroll driver) ── */}
-      <section id="day" className="relative scroll-mt-24 py-16 md:py-20 lg:py-28">
+      <section id="day" className="relative scroll-mt-24 pt-12 lg:pt-20 pb-16 md:pb-20">
         <div className="container mx-auto px-6 lg:px-12">
           <FadeIn>
             <div className="max-w-3xl mb-6 lg:mb-8">

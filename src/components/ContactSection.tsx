@@ -78,7 +78,7 @@ const ContactSection = () => {
   return (
     <section
       id="contact"
-      className="relative py-10 md:py-14 lg:py-16 scroll-mt-24"
+      className="relative py-16 md:py-20 lg:py-28 scroll-mt-24"
     >
       <div className="container mx-auto px-6 lg:px-12">
         <div

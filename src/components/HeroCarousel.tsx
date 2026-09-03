@@ -902,7 +902,7 @@ const HeroGreenAllCaps = () => (
 );
 
 const HeroGreenHelloCaps = ({ divider = true }: { divider?: boolean }) => (
-  <div className="w-full container mx-auto px-6 lg:px-12 py-10 md:py-14">
+  <div className="w-full container mx-auto px-6 lg:px-12 pt-10 md:pt-14 pb-16 md:pb-20 lg:pb-28">
     <div
       className="relative overflow-hidden rounded-3xl px-6 py-14 sm:px-10 sm:py-20 md:px-16 md:py-24 lg:px-20 lg:py-28"
       style={{ backgroundColor: "hsl(var(--heritage-green))" }}

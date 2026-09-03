@@ -71,7 +71,8 @@ const MosaicWall = ({
     return () => mq.removeEventListener("change", update);
   }, []);
   const rows = isMobile ? 5 : rowsProp;
-  const columns = isMobile ? 4 : colsProp;
+  // Same number of photos side by side on mobile as on desktop.
+  const columns = colsProp;
   const speed = isMobile ? duration * 0.7 : duration;
 
 
@@ -92,7 +93,7 @@ const MosaicWall = ({
     if (!el) return;
     const update = () => {
       const w = el.clientWidth;
-      const size = Math.max(40, (w - gap * (columns - 1)) / columns);
+      const size = Math.max(24, (w - gap * (columns - 1)) / columns);
       setTileSize(size);
     };
     update();

@@ -1019,21 +1019,6 @@ const Index = () => {
             })}
           </div>
 
-          <FadeIn>
-            <p className="text-center mt-16">
-              <Link
-                to="/get-inspired"
-                className="font-body text-base tracking-wide border-b-2 border-dashed pb-1 transition-colors hover:opacity-80 inline-flex items-center gap-2"
-                style={{
-                  color: "hsl(var(--heritage-orange))",
-                  borderColor: "hsl(var(--heritage-orange))",
-                }}
-              >
-                Discover more
-                <span aria-hidden>→</span>
-              </Link>
-            </p>
-          </FadeIn>
         </div>
       </section>
 

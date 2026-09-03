@@ -331,7 +331,10 @@ const TravelAgents = () => {
                 >
                   Full concierge: I plan and deliver
                 </span>
-                <h3 className="font-heading text-3xl lg:text-4xl text-primary mb-6 leading-tight">
+                <h3
+                  className="font-heading text-primary mb-6 whitespace-nowrap"
+                  style={{ fontSize: "clamp(1.05rem, 4.6vw, 1.6rem)", lineHeight: 1.1 }}
+                >
                   You hand it over, I take care of the rest.
                 </h3>
                 <div className="space-y-5 font-body text-foreground/90 leading-relaxed">

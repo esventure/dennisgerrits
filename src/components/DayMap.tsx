@@ -269,7 +269,7 @@ const DayMap = ({ moments }: DayMapProps) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="relative rounded-sm p-6 sm:p-8 lg:p-10 pl-7 sm:pl-10 lg:pl-12"
+            className="relative rounded-sm p-6 sm:p-8 lg:p-10 pl-7 sm:pl-10 lg:pl-12 min-h-[340px] sm:min-h-[300px] lg:min-h-[320px]"
           >
             {/* Hand-drawn vertical squiggle replacing the solid border */}
             <svg

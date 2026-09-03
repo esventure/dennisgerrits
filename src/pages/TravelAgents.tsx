@@ -13,7 +13,7 @@ import { breadcrumbJsonLd } from "@/lib/jsonld";
 import { supabase } from "@/integrations/supabase/client";
 import dennisBoat from "@/assets/dennis-hero.jpg.asset.json";
 
-import iconHistory from "@/assets/icon-history.png";
+
 
 /* ── Small inline visual helpers (reused across sections) ── */
 
@@ -331,7 +331,10 @@ const TravelAgents = () => {
                 >
                   Full concierge: I plan and deliver
                 </span>
-                <h3 className="font-heading text-3xl lg:text-4xl text-primary mb-6 leading-tight">
+                <h3
+                  className="font-heading text-primary mb-6 whitespace-nowrap"
+                  style={{ fontSize: "clamp(1.05rem, 4.6vw, 1.6rem)", lineHeight: 1.1 }}
+                >
                   You hand it over, I take care of the rest.
                 </h3>
                 <div className="space-y-5 font-body text-foreground/90 leading-relaxed">
@@ -486,7 +489,6 @@ const TravelAgents = () => {
                 <PaperGrain />
                 <div className="relative grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-start">
                   <div className="md:col-span-5">
-                    <img src={iconHistory} alt="" aria-hidden className="w-12 h-12 object-contain mb-4" loading="lazy" />
                     <h3 className="font-heading text-2xl lg:text-3xl text-primary leading-tight">
                       A true extension of your service.
                     </h3>

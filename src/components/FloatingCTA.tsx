@@ -47,7 +47,7 @@ const FloatingCTA = () => {
             className="flex items-center gap-3 px-5 py-3 hover:bg-primary/90 transition-colors"
           >
             <WhatsAppIcon />
-            Get in Touch
+            Get in Touch via WhatsApp
           </a>
         ) : (
           <a
@@ -62,7 +62,7 @@ const FloatingCTA = () => {
             }}
           >
             <WhatsAppIcon />
-            Get in Touch
+            Get in Touch via WhatsApp
           </a>
         )}
         <button

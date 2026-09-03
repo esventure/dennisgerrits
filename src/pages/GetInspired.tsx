@@ -292,32 +292,33 @@ const GetInspired = () => {
                           />
                           {theme.note}
                         </p>
+                        <div
+                          className={cn(
+                            "overflow-hidden transition-all duration-500 ease-out",
+                            isActive ? "max-h-96 opacity-100 mt-2" : "max-h-0 opacity-0 mt-0"
+                          )}
+                        >
+                          <p
+                            className="text-lg sm:text-xl md:text-2xl leading-snug"
+                            style={{
+                              fontFamily: "'Caveat', cursive",
+                              color: "hsl(var(--heritage-bordeaux))",
+                            }}
+                          >
+                            {theme.caption}
+                          </p>
+                          <p className="mt-3">
+                            <Link
+                              to={`/get-inspired/${theme.slug}`}
+                              onClick={(e) => e.stopPropagation()}
+                              className="text-sm underline underline-offset-4 text-primary/70 hover:text-primary transition-colors"
+                            >
+                              Read more about {theme.title}
+                            </Link>
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </button>
-                  <div
-                    className={cn(
-                      "overflow-hidden transition-all duration-500 ease-out",
-                      isActive ? "max-h-80 opacity-100 mt-3 sm:mt-4" : "max-h-0 opacity-0 mt-0"
-                    )}
-                  >
-                    <p
-                      className="text-lg sm:text-xl md:text-2xl leading-snug px-1"
-                      style={{
-                        fontFamily: "'Caveat', cursive",
-                        color: "hsl(var(--heritage-bordeaux))",
-                      }}
-                    >
-                      {theme.caption}
-                    </p>
-                    <p className="mt-3 px-1">
-                      <Link
-                        to={`/get-inspired/${theme.slug}`}
-                        className="text-sm underline underline-offset-4 text-primary/70 hover:text-primary transition-colors"
-                      >
-                        Read more about {theme.title}
-                      </Link>
-                    </p>
                   </div>
                   <p className="sr-only">{theme.body.join(" ")}</p>
                   </article>

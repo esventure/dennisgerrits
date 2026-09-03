@@ -489,7 +489,6 @@ const TravelAgents = () => {
                 <PaperGrain />
                 <div className="relative grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-start">
                   <div className="md:col-span-5">
-                    <img src={iconHistory} alt="" aria-hidden className="w-12 h-12 object-contain mb-4" loading="lazy" />
                     <h3 className="font-heading text-2xl lg:text-3xl text-primary leading-tight">
                       A true extension of your service.
                     </h3>

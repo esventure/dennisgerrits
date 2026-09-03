@@ -508,7 +508,7 @@ const Index = () => {
 
 
       {/* ── Rick Steves Feature ── */}
-      <div id="rick-steves" className="relative pt-10 md:pt-12 lg:pt-16 pb-16 md:pb-20 lg:pb-28 scroll-mt-24" style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.15)" }}>
+      <div id="rick-steves" className="relative pt-14 sm:pt-20 md:pt-24 lg:pt-28 pb-16 md:pb-20 lg:pb-28 scroll-mt-24" style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.15)" }}>
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <FadeIn>

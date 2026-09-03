@@ -13,7 +13,7 @@ const dennisTalking = lovableAssetUrl(dennisHeroAsset.url);
    ──────────────────────────────────────────────────────────── */
 
 const HeroEditorial = () => (
-  <div className="container mx-auto px-5 sm:px-6 lg:px-12 pt-2 pb-16 md:pb-24">
+  <div className="container mx-auto px-5 sm:px-6 lg:px-12 pt-2 pb-16 md:pb-20 lg:pb-28">
     <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-10 md:gap-16 items-center">
       <FadeIn>
         <div className="flex flex-col items-center lg:items-start h-full">
@@ -902,7 +902,7 @@ const HeroGreenAllCaps = () => (
 );
 
 const HeroGreenHelloCaps = ({ divider = true }: { divider?: boolean }) => (
-  <div className="w-full container mx-auto px-6 lg:px-12 py-10 md:py-14">
+  <div className="w-full container mx-auto px-6 lg:px-12 pt-10 md:pt-14 pb-16 md:pb-20 lg:pb-28">
     <div
       className="relative overflow-hidden rounded-3xl px-6 py-14 sm:px-10 sm:py-20 md:px-16 md:py-24 lg:px-20 lg:py-28"
       style={{ backgroundColor: "hsl(var(--heritage-green))" }}

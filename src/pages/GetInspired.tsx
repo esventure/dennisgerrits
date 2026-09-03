@@ -267,7 +267,7 @@ const GetInspired = () => {
                           {theme.title}
                         </h3>
                         <p
-                          className="text-xl sm:text-2xl md:text-[1.7rem] mt-1 leading-snug"
+                          className="text-2xl sm:text-3xl md:text-[2.2rem] mt-1 leading-snug"
                           style={{
                             fontFamily: "'Caveat', cursive",
                             color: "hsl(var(--heritage-bordeaux))",
@@ -290,7 +290,7 @@ const GetInspired = () => {
                     )}
                   >
                     <p
-                      className="text-lg sm:text-xl md:text-2xl leading-snug px-1"
+                      className="text-xl sm:text-2xl md:text-3xl leading-snug px-1"
                       style={{
                         fontFamily: "'Caveat', cursive",
                         color: "hsl(var(--heritage-bordeaux))",

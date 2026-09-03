@@ -218,7 +218,10 @@ const GetInspired = () => {
                       }}
                     />
                     <div
-                      className="p-2.5 sm:p-3 pb-16 sm:pb-20 transition-all duration-500 relative"
+                      className={cn(
+                        "p-2.5 sm:p-3 transition-all duration-500 relative",
+                        isActive ? "pb-4 sm:pb-5" : "pb-16 sm:pb-20"
+                      )}
                     >
                       <svg
                         aria-hidden

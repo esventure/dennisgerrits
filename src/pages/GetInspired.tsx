@@ -195,9 +195,18 @@ const GetInspired = () => {
               return (
                 <FadeIn key={theme.id} delay={i * 0.08}>
                   <article id={theme.slug} ref={(el) => { cardRefs.current[theme.id] = el; }}>
-                  <button
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    aria-expanded={isActive}
                     onClick={() => setActive(isActive ? null : theme.id)}
-                    className="group relative block w-full text-left transition-transform duration-500 ease-out hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-4"
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        setActive(isActive ? null : theme.id);
+                      }
+                    }}
+                    className="group relative block w-full text-left cursor-pointer transition-transform duration-500 ease-out hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-4"
                     style={{ transform: `rotate(${isActive ? 0 : theme.rotate}deg)` }}
                   >
                     <div

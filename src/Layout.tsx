@@ -21,8 +21,8 @@ const Layout = () => {
         <AnalyticsTracker />
         <Toaster />
         <Sonner />
-        <MovedBanner />
         <Header />
+        <MovedBanner />
         <Outlet />
         <Footer />
         <FloatingCTA />

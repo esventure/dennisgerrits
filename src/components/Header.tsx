@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -19,20 +19,39 @@ const secondaryLinks = [
   { to: "/travel-agents", label: "For Professionals" },
 ];
 
-/** Height of the fixed header, so sections land just below it. */
+/** Fallback height of the fixed header, so sections land just below it. */
 export const HEADER_OFFSET = 88;
+
+export const getHeaderHeight = () =>
+  (typeof window !== "undefined" && document.querySelector("header")?.offsetHeight) || HEADER_OFFSET;
 
 export const scrollToId = (id: string) => {
   const el = document.getElementById(id);
   if (!el) return;
-  const top = el.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
+  const top = el.getBoundingClientRect().top + window.scrollY - getHeaderHeight();
   window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
 };
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const [headerHeight, setHeaderHeight] = useState(HEADER_OFFSET);
+  const headerRef = useRef<HTMLElement>(null);
   const location = useLocation();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+    const update = () => setHeaderHeight(el.offsetHeight);
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    window.addEventListener("resize", update);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", update);
+    };
+  }, []);
 
   const handleNavClick = (e: React.MouseEvent, to: string) => {
     setOpen(false);
@@ -58,7 +77,7 @@ const Header = () => {
 
   return (
     <>
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-sm border-b border-border/40">
+    <header ref={headerRef} className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-sm border-b border-border/40">
       <div className="container mx-auto flex items-center justify-between py-3 sm:py-4 px-5 sm:px-6 lg:px-12">
         <Link to="/" onClick={handleLogoClick} className="flex items-center gap-2 sm:gap-3 min-w-0">
           <img
@@ -143,7 +162,7 @@ const Header = () => {
       )}
     </header>
     {/* Spacer so page content never sits underneath the fixed header. */}
-    <div aria-hidden className="h-[68px] sm:h-[88px]" />
+    <div aria-hidden style={{ height: headerHeight }} />
     </>
   );
 };

@@ -1,6 +1,6 @@
 import { Head } from "vite-react-ssg";
-import { useState, useEffect, useRef } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { useEffect, useRef } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
 import { cn } from "@/lib/utils";
 import ContactSection from "@/components/ContactSection";
@@ -9,7 +9,7 @@ import { experiences as themes } from "@/data/experiences";
 
 
 const GetInspired = () => {
-  const [active, setActive] = useState<string | null>(null);
+  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const cardRefs = useRef<Record<string, HTMLElement | null>>({});
   const requestedSlug = searchParams.get("theme");

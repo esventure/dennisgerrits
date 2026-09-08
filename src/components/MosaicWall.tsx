@@ -148,80 +148,9 @@ const MosaicWall = ({
     </div>
   );
 
-  // On mobile the wall scrolls horizontally by hand and drifts along on its
-  // own when untouched.
-  const scrollRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    if (!isMobile) return;
-    const el = scrollRef.current;
-    if (!el) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    let raf = 0;
-    let last = performance.now();
-    let paused = false;
-    let resumeTimer = 0;
-
-    const pause = () => {
-      paused = true;
-      window.clearTimeout(resumeTimer);
-      resumeTimer = window.setTimeout(() => {
-        paused = false;
-      }, 2500);
-    };
-
-    const step = (now: number) => {
-      const dt = now - last;
-      last = now;
-      if (!paused) {
-        const half = el.scrollWidth / 2;
-        // Pixels per second, derived from the marquee cycle length.
-        const pxPerSecond = half / speed;
-        el.scrollLeft += (pxPerSecond * dt) / 1000;
-        if (el.scrollLeft >= half) el.scrollLeft -= half;
-      }
-      raf = requestAnimationFrame(step);
-    };
-    raf = requestAnimationFrame(step);
-
-    el.addEventListener("touchstart", pause, { passive: true });
-    el.addEventListener("touchmove", pause, { passive: true });
-    el.addEventListener("wheel", pause, { passive: true });
-
-    return () => {
-      cancelAnimationFrame(raf);
-      window.clearTimeout(resumeTimer);
-      el.removeEventListener("touchstart", pause);
-      el.removeEventListener("touchmove", pause);
-      el.removeEventListener("wheel", pause);
-    };
-  }, [isMobile, speed, tileSize, rows, columns]);
-
-  if (isMobile) {
-    return (
-      <div
-        ref={containerRef}
-        className="relative w-full rounded-sm"
-        style={{ height: `${frameHeight}px` }}
-      >
-        <div
-          ref={scrollRef}
-          className="h-full w-full overflow-x-auto overflow-y-hidden mosaic-scroll"
-          style={{ WebkitOverflowScrolling: "touch" }}
-        >
-          <div className="flex items-center h-full w-max">
-            {renderStrip("a", true)}
-            {renderStrip("b", false)}
-          </div>
-        </div>
-        <style>{`
-          .mosaic-scroll { scrollbar-width: none; }
-          .mosaic-scroll::-webkit-scrollbar { display: none; }
-        `}</style>
-      </div>
-    );
-  }
-
+  // Mobile used a JavaScript scrollLeft loop, which proved unreliable on
+  // real phones (touch momentum fights the animation). All sizes now share
+  // the same CSS marquee, which is dependable everywhere.
   return (
     <div
       ref={containerRef}

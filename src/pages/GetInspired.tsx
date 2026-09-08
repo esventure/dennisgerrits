@@ -151,7 +151,6 @@ const GetInspired = () => {
           {/* Polaroid wall */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-12 md:gap-y-16 gap-x-6 md:gap-x-10 pt-8">
             {themes.filter((t) => t && t.title && t.image).map((theme, i) => {
-              const isActive = active === theme.id;
               const paperPalette = [
                 "hsl(40 38% 97%)",            // cream
                 "hsl(120 22% 92%)",           // soft green

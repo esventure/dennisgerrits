@@ -194,132 +194,101 @@ const GetInspired = () => {
               return (
                 <FadeIn key={theme.id} delay={i * 0.08}>
                   <article id={theme.slug} ref={(el) => { cardRefs.current[theme.id] = el; }}>
-                  <div
-                    role="button"
-                    tabIndex={0}
-                    aria-expanded={isActive}
-                    onClick={() => setActive(isActive ? null : theme.id)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" || e.key === " ") {
-                        e.preventDefault();
-                        setActive(isActive ? null : theme.id);
-                      }
-                    }}
-                    className="group relative block w-full text-left cursor-pointer transition-transform duration-500 ease-out hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-4"
-                    style={{ transform: `rotate(${isActive ? 0 : theme.rotate}deg)` }}
-                  >
-                    <div
-                      aria-hidden
-                      className="pointer-events-none absolute -inset-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl"
-                      style={{
-                        background:
-                          "radial-gradient(closest-side, hsl(var(--heritage-orange) / 0.35), transparent 70%)",
-                      }}
-                    />
-                    <div
-                      className={cn(
-                        "p-2.5 sm:p-3 transition-all duration-500 relative",
-                        isActive ? "pb-4 sm:pb-5" : "pb-16 sm:pb-20"
-                      )}
+                    <button
+                      type="button"
+                      onClick={() => navigate(`/get-inspired/${theme.slug}`)}
+                      aria-label={`${theme.title}, read more on the Experiences page`}
+                      className="group relative block w-full text-left transition-transform duration-500 ease-out hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-4"
+                      style={{ transform: `rotate(${theme.rotate}deg)` }}
                     >
-                      <svg
+                      <div
                         aria-hidden
-                        className="absolute inset-0 w-full h-full pointer-events-none transition-[filter] duration-500 group-hover:[filter:drop-shadow(0_22px_24px_rgba(0,0,0,0.28))]"
-                        viewBox="0 0 100 100"
-                        preserveAspectRatio="none"
+                        className="pointer-events-none absolute -inset-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl"
                         style={{
-                          color: outlineColor,
-                          overflow: "visible",
-                          filter: "drop-shadow(0 10px 16px rgba(0,0,0,0.22)) drop-shadow(0 2px 4px rgba(0,0,0,0.12))",
+                          background:
+                            "radial-gradient(closest-side, hsl(var(--heritage-orange) / 0.35), transparent 70%)",
                         }}
-                      >
-                        <path d={sketchPaths[0]} fill={paperBg} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" style={{ strokeWidth: "2.4px" }} />
-                        <path d={sketchPaths[1]} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" style={{ strokeWidth: "1.2px", opacity: 0.55 }} />
-                      </svg>
-                      {/* Fastener: alternate between tape and pushpin so it
-                          really feels like the polaroid is stuck to the wall */}
-                      {i % 2 === 0 ? (
-                        <span
+                      />
+                      <div className="p-2.5 sm:p-3 pb-4 sm:pb-5 transition-all duration-500 relative">
+                        <svg
                           aria-hidden
-                          className={cn(
-                            "absolute top-1 sm:top-1.5 w-16 sm:w-20 h-5 sm:h-6 border z-10 shadow-[0_1px_2px_rgba(0,0,0,0.15)]",
-                            isLeft
-                              ? "left-3 sm:left-5 -rotate-[8deg]"
-                              : "right-3 sm:right-5 rotate-[6deg]",
-                          )}
+                          className="absolute inset-0 w-full h-full pointer-events-none transition-[filter] duration-500 group-hover:[filter:drop-shadow(0_22px_24px_rgba(0,0,0,0.28))]"
+                          viewBox="0 0 100 100"
+                          preserveAspectRatio="none"
                           style={{
-                            backgroundColor: tape.bg,
-                            borderColor: tape.border,
-                          }}
-                        />
-                      ) : (
-                        <span
-                          aria-hidden
-                          className="absolute top-2 sm:top-3 left-1/2 -translate-x-1/2 w-4 h-4 sm:w-5 sm:h-5 rounded-full z-10 shadow-[inset_-1.5px_-2px_2.5px_rgba(0,0,0,0.4),inset_2px_2px_2.5px_rgba(255,255,255,0.55),0_3px_4px_rgba(0,0,0,0.4)]"
-                          style={{ backgroundColor: outlineColor }}
-                        />
-                      )}
-                      <div className="relative aspect-[4/5] overflow-hidden bg-muted">
-                        <img
-                          src={theme.image}
-                          alt={theme.title}
-                          width={768}
-                          height={960}
-                          loading="lazy"
-                          decoding="async"
-                          // @ts-expect-error fetchpriority is a valid HTML attribute
-                          fetchpriority="low"
-                          className="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.02] group-hover:saturate-150"
-                          style={{ filter: "saturate(1.18) brightness(1.06) contrast(1.04)" }}
-                        />
-                      </div>
-                      <div className="relative mt-3 sm:mt-4 px-1.5 sm:px-2">
-                        <h3 className="font-heading text-lg sm:text-xl md:text-2xl text-primary leading-tight tracking-wide">
-                          {theme.title}
-                        </h3>
-                        <p
-                          className="text-xl sm:text-2xl md:text-[1.7rem] mt-1 leading-snug"
-                          style={{
-                            fontFamily: "'Caveat', cursive",
-                            color: "hsl(var(--heritage-bordeaux))",
+                            color: outlineColor,
+                            overflow: "visible",
+                            filter: "drop-shadow(0 10px 16px rgba(0,0,0,0.22)) drop-shadow(0 2px 4px rgba(0,0,0,0.12))",
                           }}
                         >
+                          <path d={sketchPaths[0]} fill={paperBg} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" style={{ strokeWidth: "2.4px" }} />
+                          <path d={sketchPaths[1]} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" style={{ strokeWidth: "1.2px", opacity: 0.55 }} />
+                        </svg>
+                        {/* Fastener: alternate between tape and pushpin so it
+                            really feels like the polaroid is stuck to the wall */}
+                        {i % 2 === 0 ? (
                           <span
                             aria-hidden
-                            className="inline-block w-1.5 h-1.5 rounded-full mr-1.5 align-middle"
-                            style={{ backgroundColor: "hsl(var(--heritage-orange))" }}
+                            className={cn(
+                              "absolute top-1 sm:top-1.5 w-16 sm:w-20 h-5 sm:h-6 border z-10 shadow-[0_1px_2px_rgba(0,0,0,0.15)]",
+                              isLeft
+                                ? "left-3 sm:left-5 -rotate-[8deg]"
+                                : "right-3 sm:right-5 rotate-[6deg]",
+                            )}
+                            style={{
+                              backgroundColor: tape.bg,
+                              borderColor: tape.border,
+                            }}
                           />
-                          {theme.note}
-                        </p>
-                        <div
-                          className={cn(
-                            "overflow-hidden transition-all duration-500 ease-out",
-                            isActive ? "max-h-96 opacity-100 mt-2" : "max-h-0 opacity-0 mt-0"
-                          )}
-                        >
+                        ) : (
+                          <span
+                            aria-hidden
+                            className="absolute top-2 sm:top-3 left-1/2 -translate-x-1/2 w-4 h-4 sm:w-5 sm:h-5 rounded-full z-10 shadow-[inset_-1.5px_-2px_2.5px_rgba(0,0,0,0.4),inset_2px_2px_2.5px_rgba(255,255,255,0.55),0_3px_4px_rgba(0,0,0,0.4)]"
+                            style={{ backgroundColor: outlineColor }}
+                          />
+                        )}
+                        <div className="relative aspect-[4/5] overflow-hidden bg-muted">
+                          <img
+                            src={theme.image}
+                            alt={theme.title}
+                            width={768}
+                            height={960}
+                            loading="lazy"
+                            decoding="async"
+                            // @ts-expect-error fetchpriority is a valid HTML attribute
+                            fetchpriority="low"
+                            className="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.02] group-hover:saturate-150"
+                            style={{ filter: "saturate(1.18) brightness(1.06) contrast(1.04)" }}
+                          />
+                        </div>
+                        <div className="relative mt-3 sm:mt-4 px-1.5 sm:px-2">
+                          <h3 className="font-heading text-lg sm:text-xl md:text-2xl text-primary leading-tight tracking-wide">
+                            {theme.title}
+                          </h3>
                           <p
-                            className="text-lg sm:text-xl md:text-2xl leading-snug"
+                            className="text-xl sm:text-2xl md:text-[1.7rem] mt-1 leading-snug"
                             style={{
                               fontFamily: "'Caveat', cursive",
                               color: "hsl(var(--heritage-bordeaux))",
                             }}
                           >
-                            {theme.caption}
+                            <span
+                              aria-hidden
+                              className="inline-block w-1.5 h-1.5 rounded-full mr-1.5 align-middle"
+                              style={{ backgroundColor: "hsl(var(--heritage-orange))" }}
+                            />
+                            {theme.note}
                           </p>
-                          <p className="mt-3">
-                            <Link
-                              to={`/get-inspired/${theme.slug}`}
-                              onClick={(e) => e.stopPropagation()}
-                              className="text-sm underline underline-offset-4 text-primary/70 hover:text-primary transition-colors"
-                            >
-                              Read more about {theme.title}
-                            </Link>
-                          </p>
+                          <span
+                            className="mt-3 font-body text-xs sm:text-sm tracking-widest uppercase inline-flex items-center gap-1.5 border-b border-dashed pb-0.5 transition-opacity group-hover:opacity-70"
+                            style={{ color: "hsl(var(--heritage-orange))", borderColor: "hsl(var(--heritage-orange))" }}
+                          >
+                            Read more <span aria-hidden>→</span>
+                          </span>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                  <p className="sr-only">{theme.body.join(" ")}</p>
+                    </button>
+                    <p className="sr-only">{theme.body.join(" ")}</p>
                   </article>
 
                 </FadeIn>

@@ -34,8 +34,24 @@ export const scrollToId = (id: string) => {
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const [headerHeight, setHeaderHeight] = useState(HEADER_OFFSET);
+  const headerRef = useRef<HTMLElement>(null);
   const location = useLocation();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+    const update = () => setHeaderHeight(el.offsetHeight);
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    window.addEventListener("resize", update);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", update);
+    };
+  }, []);
 
   const handleNavClick = (e: React.MouseEvent, to: string) => {
     setOpen(false);

@@ -60,8 +60,9 @@ const MosaicWall = ({
   const [broken, setBroken] = useState<Set<string>>(new Set());
   const pool = shuffled.filter((src) => !broken.has(src));
 
-  // Responsive: on mobile the wall is five photos high, moves a little
-  // faster and can be scrolled sideways by hand.
+  // Responsive: on mobile the wall is six photos high and six photos wide,
+  // making each tile bigger. The strip slides sideways on its own so guests
+  // see that more photos are available by swiping.
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 640px)");
@@ -70,10 +71,9 @@ const MosaicWall = ({
     mq.addEventListener("change", update);
     return () => mq.removeEventListener("change", update);
   }, []);
-  const rows = isMobile ? 5 : rowsProp;
-  // Same number of photos side by side on mobile as on desktop.
-  const columns = colsProp;
-  const speed = isMobile ? duration * 0.7 : duration;
+  const rows = isMobile ? 6 : rowsProp;
+  const columns = isMobile ? 6 : colsProp;
+  const speed = isMobile ? duration * 0.55 : duration;
 
 
   // Build exactly rows × columns tiles, repeating from the pool if needed.

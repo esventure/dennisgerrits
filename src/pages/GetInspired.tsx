@@ -24,7 +24,6 @@ const GetInspired = () => {
       window.scrollTo(0, 0);
       return;
     }
-    setActive(match.id);
     const timer = window.setTimeout(() => {
       cardRefs.current[match.id]?.scrollIntoView({ behavior: "smooth", block: "center" });
     }, 250);

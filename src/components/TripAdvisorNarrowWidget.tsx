@@ -46,7 +46,7 @@ export default function TripAdvisorNarrowWidget() {
                 className="h-6 w-auto"
               />
               <span className="font-body text-sm text-foreground/80">
-                231 reviews
+                236 reviews
               </span>
             </a>
           </li>

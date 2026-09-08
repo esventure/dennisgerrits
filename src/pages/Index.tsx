@@ -15,6 +15,7 @@ import MosaicWall from "@/components/MosaicWall";
 import { guestPhotos } from "@/assets/guests";
 import HeroCarousel from "@/components/HeroCarousel";
 import AboutCarousel from "@/components/AboutCarousel";
+import TripAdvisorNarrowWidget from "@/components/TripAdvisorNarrowWidget";
 import dennisIllustration from "@/assets/dennis_illustration.png";
 import dennisPhoto from "@/assets/dennis_photo.png";
 import dennisPerson from "@/assets/dennis-person-line.png";
@@ -1082,40 +1083,11 @@ const Index = () => {
 
                 {/* Tripadvisor badge + featured review side by side */}
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-5 md:gap-6 items-stretch mb-10 max-w-6xl mx-auto">
-                  {/* Tripadvisor summary badge */}
+                {/* Tripadvisor summary badge */}
                   <FadeIn className="md:col-span-4 lg:col-span-3">
-                    <a
-                      href={TA_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex md:flex-col items-center md:items-start gap-4 md:gap-3 bg-background rounded-lg shadow-md hover:shadow-lg transition-all px-5 py-4 md:py-5 border border-border h-full"
-                    >
-                      <div
-                        className="flex items-center justify-center rounded-full text-white font-heading text-xl shrink-0"
-                        style={{
-                          backgroundColor: TA_GREEN,
-                          width: 44,
-                          height: 44,
-                        }}
-                        aria-hidden="true"
-                      >
-                        ◉
-                      </div>
-                      <div>
-                        <div className="flex items-center gap-2">
-                          <TripAdvisorWordmark className="text-xl" />
-                          <span className="font-body text-sm text-muted-foreground">
-                            Rating
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-3 mt-1">
-                          <TripAdvisorBubbles />
-                          <span className="font-body text-sm text-foreground">
-                            <strong>{taRating}</strong> · <CountUp value={taReviewCount} /> reviews
-                          </span>
-                        </div>
-                      </div>
-                    </a>
+                    <div className="flex flex-col items-center justify-center bg-background rounded-lg shadow-md px-5 py-4 md:py-5 border border-border h-full min-h-[160px]">
+                      <TripAdvisorNarrowWidget />
+                    </div>
                   </FadeIn>
 
                   {/* Featured review (first review) — compact horizontal strip */}

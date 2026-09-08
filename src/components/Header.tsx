@@ -162,7 +162,7 @@ const Header = () => {
       )}
     </header>
     {/* Spacer so page content never sits underneath the fixed header. */}
-    <div aria-hidden className="h-[68px] sm:h-[88px]" />
+    <div aria-hidden style={{ height: headerHeight }} />
     </>
   );
 };

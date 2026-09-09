@@ -148,9 +148,50 @@ const MosaicWall = ({
     </div>
   );
 
-  // Mobile used a JavaScript scrollLeft loop, which proved unreliable on
-  // real phones (touch momentum fights the animation). All sizes now share
-  // the same CSS marquee, which is dependable everywhere.
+  // Mobile is a manually scrollable strip with arrow buttons so guests can
+  // swipe or tap to browse. Desktop keeps the automatic CSS marquee.
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const scrollBy = (dir: 1 | -1) => {
+    const el = scrollRef.current;
+    if (el) el.scrollBy({ left: dir * el.clientWidth * 0.8, behavior: "smooth" });
+  };
+
+  if (isMobile) {
+    return (
+      <div className="relative w-full">
+        <div
+          ref={(node) => {
+            scrollRef.current = node;
+            containerRef.current = node;
+          }}
+          className="w-full overflow-x-auto rounded-sm"
+          style={{ height: `${frameHeight}px`, WebkitOverflowScrolling: "touch" }}
+        >
+          <div className="flex h-full items-center" style={{ width: "max-content" }}>
+            {renderStrip("a", true)}
+            {renderStrip("b", false)}
+          </div>
+        </div>
+        <button
+          type="button"
+          aria-label="Scroll photos left"
+          onClick={() => scrollBy(-1)}
+          className="absolute left-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background/85 text-foreground shadow-md backdrop-blur-sm active:scale-95"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg>
+        </button>
+        <button
+          type="button"
+          aria-label="Scroll photos right"
+          onClick={() => scrollBy(1)}
+          className="absolute right-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background/85 text-foreground shadow-md backdrop-blur-sm active:scale-95"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div
       ref={containerRef}

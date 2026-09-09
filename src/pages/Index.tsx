@@ -1201,7 +1201,7 @@ const Index = () => {
                         borderColor: `${TA_GREEN}66`,
                       }}
                     >
-                      Read all <CountUp value={taReviewCount} /> reviews on Tripadvisor →
+                      Read all reviews on Tripadvisor →
                     </a>
                   </div>
                 </FadeIn>

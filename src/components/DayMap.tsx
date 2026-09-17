@@ -293,7 +293,7 @@ const DayMap = ({ moments }: DayMapProps) => {
             <h3 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-primary leading-[1] mb-5">
               {moments[active].title}
             </h3>
-            <p className="font-body text-muted-foreground leading-relaxed text-base">
+            <p className="font-body text-muted-foreground leading-relaxed text-base whitespace-pre-line">
               {moments[active].text}
             </p>
           </motion.div>

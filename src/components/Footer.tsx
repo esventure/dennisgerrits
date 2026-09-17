@@ -80,13 +80,15 @@ const Footer = () => {
                 <Phone size={15} aria-hidden className="shrink-0" />
                 +31 6 38 40 29 19
               </a>
-              <a
-                href="mailto:dennis@dennisgerrits.com"
+              <Link
+                to="/#contact"
+                onClick={(e) => handleClick(e, "/#contact")}
+                aria-label="Send Dennis a message via the contact form"
                 className="flex items-center gap-2.5 font-body text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors"
               >
                 <Mail size={15} aria-hidden className="shrink-0" />
                 dennis@dennisgerrits.com
-              </a>
+              </Link>
               <a
                 href="https://www.linkedin.com/in/dennis-gerrits-7899432b/"
                 target="_blank"

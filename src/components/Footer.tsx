@@ -1,4 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Phone, Mail, Linkedin } from "lucide-react";
 import { HEADER_OFFSET } from "@/components/Header";
 
 const exploreLinks = [
@@ -71,6 +72,32 @@ const Footer = () => {
             <p className="font-body text-primary-foreground/60 text-xs leading-relaxed max-w-xs">
               Formerly Love My City Tours, now dennisgerrits.com.
             </p>
+            <div className="mt-5 space-y-2">
+              <a
+                href="tel:+31638402919"
+                className="flex items-center gap-2.5 font-body text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+              >
+                <Phone size={15} aria-hidden className="shrink-0" />
+                +31 6 38 40 29 19
+              </a>
+              <a
+                href="mailto:dennis@dennisgerrits.com"
+                className="flex items-center gap-2.5 font-body text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+              >
+                <Mail size={15} aria-hidden className="shrink-0" />
+                dennis@dennisgerrits.com
+              </a>
+              <a
+                href="https://www.linkedin.com/in/dennis-gerrits-7899432b/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Dennis Gerrits on LinkedIn"
+                className="inline-flex items-center gap-2.5 font-body text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors pt-1"
+              >
+                <Linkedin size={16} aria-hidden />
+                LinkedIn
+              </a>
+            </div>
           </div>
           <div>
             <h4 className="font-heading text-xl mb-4">Explore</h4>

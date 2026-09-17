@@ -654,15 +654,24 @@ const Index = () => {
                 Stories about Amsterdam, identity, culture, city life and personal experiences, told through the people who shape the city.
               </p>
 
-
-              <p
-                className="inline-block font-body text-sm tracking-[0.3em] uppercase px-6 py-3 rounded-sm border"
-                style={{
-                  color: "hsl(var(--heritage-orange))",
-                  borderColor: "hsl(var(--heritage-orange) / 0.5)",
-                }}
+              <div
+                className="inline-flex items-center gap-3 rounded-sm border px-6 py-3"
+                style={{ borderColor: "hsl(var(--heritage-orange) / 0.5)" }}
               >
-                Coming soon
+                <span
+                  className="w-2 h-2 rounded-full animate-pulse"
+                  style={{ backgroundColor: "hsl(var(--heritage-orange))" }}
+                  aria-hidden
+                />
+                <span
+                  className="font-body text-sm tracking-[0.3em] uppercase font-semibold"
+                  style={{ color: "hsl(var(--heritage-orange))" }}
+                >
+                  Coming soon
+                </span>
+              </div>
+              <p className="font-body text-sm md:text-base mt-4" style={{ color: "hsl(0 0% 88%)" }}>
+                The first episodes are in the making. They will be available right here.
               </p>
             </FadeIn>
 
@@ -674,29 +683,6 @@ const Index = () => {
                 loading="lazy"
                 className="w-full max-w-[280px] h-auto rounded-sm shadow-lg object-cover aspect-[4/3]"
               />
-              <a
-                href="https://twostoriesonecity.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-start gap-3 transition-opacity hover:opacity-80"
-              >
-                <span
-                  className="shrink-0 w-9 h-9 rounded-full border flex items-center justify-center mt-1"
-                  style={{ borderColor: "hsl(var(--heritage-orange))", color: "hsl(var(--heritage-orange))" }}
-                  aria-hidden
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <polyline points="12 5 19 12 12 19" />
-                  </svg>
-                </span>
-                <span className="font-body text-sm md:text-base leading-snug" style={{ color: "hsl(0 0% 92%)" }}>
-                  Listen to all episodes and<br />join the journey at<br />
-                  <span className="underline underline-offset-4" style={{ color: "hsl(var(--heritage-orange))" }}>
-                    twostoriesonecity.com →
-                  </span>
-                </span>
-              </a>
             </FadeIn>
           </div>
         </div>

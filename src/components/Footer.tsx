@@ -131,11 +131,6 @@ const Footer = () => {
             <p className="font-body text-primary-foreground/40 text-xs mt-8">
               © {new Date().getFullYear()} Dennis Gerrits. All rights reserved.
             </p>
-            <p className="font-body text-primary-foreground/40 text-xs mt-1">
-              Day trip photos: Rotterdam by Martin Falbisoner (CC BY-SA 4.0),
-              Leiden by Rogerd (CC BY 4.0), Haarlem by Fryslan0109 (public domain),
-              via Wikimedia Commons.
-            </p>
 
 
 

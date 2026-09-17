@@ -689,7 +689,7 @@ const Index = () => {
             </FadeIn>
 
             {/* Right: hosts photo + listen link */}
-            <FadeIn className="lg:col-span-4 flex flex-col items-center lg:items-start gap-6">
+            <FadeIn className="lg:col-span-4 flex flex-col items-center lg:items-start gap-6 relative z-10">
               <img
                 src={podcastHosts}
                 alt="Louke and Dennis, hosts of Two Stories, One City"

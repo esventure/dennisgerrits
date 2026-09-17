@@ -5,7 +5,6 @@ import { useState, useRef, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
-import AmsterdamSkyline from "@/components/AmsterdamSkyline";
 import StoryBook from "@/components/StoryBook";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -48,7 +47,8 @@ import podcastCover from "@/assets/podcast-cover.jpg";
 import podcastHosts from "@/assets/podcast-hosts.jpg";
 
 import dennisRadioTaboe from "@/assets/dennis-radio-taboe.jpg.asset.json";
-import PodcastPlayer, { type PodcastPlayerHandle } from "@/components/PodcastPlayer";
+
+
 
 /* Hand-drawn ring path for the timeline step circles — matches the
    sketchbook style used in DayMap. Slightly irregular closed loop. */
@@ -212,7 +212,6 @@ const stories = [
 const Index = () => {
   const t = useSiteContent();
   const navigate = useNavigate();
-  const podcastRef = useRef<PodcastPlayerHandle | null>(null);
 
   const { data: bookStories = [] } = useQuery({
     queryKey: ["stories"],
@@ -317,8 +316,6 @@ const Index = () => {
         <meta name="twitter:title" content="Dennis Gerrits, Personal Travel Companion in Amsterdam" />
         <meta name="twitter:description" content="A personal, trust-based way of experiencing Amsterdam, guided by someone who feels like a friend." />
       </Head>
-      <AmsterdamSkyline />
-
       {/* ── 1. Hero (3 swipeable variations for Dennis to choose from) ── */}
       <HeroCarousel />
 
@@ -658,7 +655,15 @@ const Index = () => {
               </p>
 
 
-              <PodcastPlayer ref={podcastRef} tone="dark" />
+              <p
+                className="inline-block font-body text-sm tracking-[0.3em] uppercase px-6 py-3 rounded-sm border"
+                style={{
+                  color: "hsl(var(--heritage-orange))",
+                  borderColor: "hsl(var(--heritage-orange) / 0.5)",
+                }}
+              >
+                Coming soon
+              </p>
             </FadeIn>
 
             {/* Right: hosts photo + listen link */}

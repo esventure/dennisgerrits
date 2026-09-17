@@ -133,6 +133,18 @@ const Footer = () => {
             <p className="font-body text-primary-foreground/40 text-xs mt-8">
               © {new Date().getFullYear()} Dennis Gerrits. All rights reserved.
             </p>
+            <p className="font-body text-primary-foreground/40 text-xs mt-1">
+              Design & development by{" "}
+              <a
+                href="https://www.esventure.nl"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 hover:text-primary-foreground transition-colors"
+              >
+                Es Venture
+              </a>
+            </p>
+
 
 
 

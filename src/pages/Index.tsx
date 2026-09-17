@@ -654,21 +654,34 @@ const Index = () => {
                 Stories about Amsterdam, identity, culture, city life and personal experiences, told through the people who shape the city.
               </p>
 
-              <div
-                className="inline-flex items-center gap-3 rounded-sm border px-6 py-3"
-                style={{ borderColor: "hsl(var(--heritage-orange) / 0.5)" }}
-              >
-                <span
-                  className="w-2 h-2 rounded-full animate-pulse"
+              <div className="relative left-1/2 -translate-x-1/2 w-screen -rotate-1 mb-6">
+                <div
+                  className="flex items-center justify-center gap-3 px-6 py-3.5"
                   style={{ backgroundColor: "hsl(var(--heritage-orange))" }}
+                >
+                  <span
+                    className="w-2.5 h-2.5 rounded-full animate-pulse"
+                    style={{ backgroundColor: "hsl(var(--heritage-green))" }}
+                    aria-hidden
+                  />
+                  <span
+                    className="font-heading text-xl md:text-2xl tracking-[0.25em] uppercase"
+                    style={{ color: "hsl(var(--heritage-green))" }}
+                  >
+                    Coming soon
+                  </span>
+                </div>
+                {/* tape ends */}
+                <span
                   aria-hidden
+                  className="absolute -left-3 top-1/2 -translate-y-1/2 h-[calc(100%+12px)] w-9 rotate-3"
+                  style={{ backgroundColor: "hsl(var(--heritage-orange) / 0.55)" }}
                 />
                 <span
-                  className="font-body text-sm tracking-[0.3em] uppercase font-semibold"
-                  style={{ color: "hsl(var(--heritage-orange))" }}
-                >
-                  Coming soon
-                </span>
+                  aria-hidden
+                  className="absolute -right-3 top-1/2 -translate-y-1/2 h-[calc(100%+12px)] w-9 -rotate-3"
+                  style={{ backgroundColor: "hsl(var(--heritage-orange) / 0.55)" }}
+                />
               </div>
               <p className="font-body text-sm md:text-base mt-4" style={{ color: "hsl(0 0% 88%)" }}>
                 The first episodes are in the making. They will be available right here.

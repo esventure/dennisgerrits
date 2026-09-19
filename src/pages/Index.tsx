@@ -72,27 +72,27 @@ const moments = [
   {
     time: "Beginning of the day",
     title: "Meeting",
-    text: "I’ll meet you at your hotel and together we slowly step into the rhythm of the city. Just an easy walk through one of Amsterdam’s beautiful neighborhoods as the day begins.",
+    text: "I’ll meet you at your hotel and together we slowly step into the rhythm of the day. We start with a walk through one of Amsterdam’s most beautiful neighborhoods, talking and getting a sense of the city as the day begins.",
   },
   {
     time: "Morning",
     title: "Coffee & Conversation",
-    text: "Somewhere along the way, we can stop at a small local café for a good cup of coffee. A moment to slow down, observe the city around us and simply enjoy the atmosphere.",
+    text: "Somewhere along the way, we can stop at a small local café for a good cup of coffee. A moment to relax amongst the locals, observe the city around us and simply enjoy the atmosphere.",
   },
   {
     time: "Lunch",
     title: "A Hidden Place",
-    text: "For lunch, we settle into one of my favorite local restaurants, hidden inside a beautiful garden with an amazing menu.\nHere we take our time, continue our conversation and enjoy the slower rhythm of the day.",
+    text: "For lunch, we settle into one of my favorite local restaurants, hidden inside a beautiful garden with an amazing menu. Here we take our time, enjoy the food and let the day unfold.",
   },
   {
     time: "Afternoon",
     title: "Following Curiosity",
-    text: "In the afternoon, we continue exploring the streets together.\nMaybe we step into a small museum, discover a hidden courtyard or stop by my favorite chocolate shop.\nSome of the best moments are the ones we never planned.",
+    text: "In the afternoon, we continue exploring the streets together. Maybe we step into a small museum, discover a hidden courtyard or stop by my favorite chocolate shop. Some of the best moments are the ones we never planned.",
   },
   {
     time: "Late Afternoon",
     title: "The City from the Water",
-    text: "At the end of the day, we step aboard a private boat and we can enjoy a glass of wine. As the light begins to reflect on the canals and the city slowly softens, Amsterdam somehow feels different again. Usually, that's the moment people truly start to feel the city.",
+    text: "At the end of the day, we step aboard a private boat and enjoy a glass of wine. As the light begins to reflect on the canals and the city slowly softens, Amsterdam somehow feels different again. Usually, that’s the moment people truly start to feel the city.",
   },
 ];
 
@@ -239,10 +239,10 @@ const Index = () => {
           content="Discover Amsterdam with Dennis Gerrits, a personal travel companion and storyteller who walks alongside you and shows the city the way a friend would."
         />
         <link rel="canonical" href="https://dennisgerrits.com/" />
-        <meta property="og:title" content="Dennis Gerrits, Personal Travel Companion in Amsterdam" />
+        <meta property="og:title" content="Dennis Gerrits — Storyteller, Host & Travel Companion" />
         <meta
           property="og:description"
-          content="A personal, trust-based way of experiencing Amsterdam, guided by someone who feels like a friend."
+          content="A personal, authentic way of travelling, with somebody who feels like a friend."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://dennisgerrits.com/" />
@@ -313,8 +313,8 @@ const Index = () => {
         <script type="application/ld+json">
           {JSON.stringify(breadcrumbJsonLd([]))}
         </script>
-        <meta name="twitter:title" content="Dennis Gerrits, Personal Travel Companion in Amsterdam" />
-        <meta name="twitter:description" content="A personal, trust-based way of experiencing Amsterdam, guided by someone who feels like a friend." />
+        <meta name="twitter:title" content="Dennis Gerrits — Storyteller, Host & Travel Companion" />
+        <meta name="twitter:description" content="A personal, authentic way of travelling, with somebody who feels like a friend." />
       </Head>
       {/* ── 1. Hero (3 swipeable variations for Dennis to choose from) ── */}
       <HeroCarousel />
@@ -684,7 +684,7 @@ const Index = () => {
                 />
               </div>
               <p className="font-body text-sm md:text-base mt-4" style={{ color: "hsl(0 0% 88%)" }}>
-                The first episodes are in the making. They will be available right here.
+                When they are ready, you will be able to listen to them wherever you listen to your podcasts.
               </p>
             </FadeIn>
 

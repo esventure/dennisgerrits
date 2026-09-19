@@ -45,6 +45,7 @@ const ContactSection = () => {
         body: {
           templateName: "contact-notification",
           idempotencyKey: `contact-notify-${submissionId}`,
+          replyTo: contactForm.email,
           templateData: {
             name: contactForm.name,
             email: contactForm.email,

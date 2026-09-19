@@ -25,7 +25,7 @@ const Email = ({ name, email, message }: Props) => (
         <Text style={message}>{message || '—'}</Text>
         <Hr style={hr} />
         <Text style={footer}>
-          This message was submitted through the contact form on dennisgerrits.com.
+          This message was sent via the contact form on dennisgerrits.com.
         </Text>
       </Container>
     </Body>
@@ -34,8 +34,7 @@ const Email = ({ name, email, message }: Props) => (
 
 export const template = {
   component: Email,
-  subject: (data: Record<string, unknown>) =>
-    `New message from ${data.name || 'a visitor'}`,
+  subject: 'Contact via DennisGerrits.com',
   displayName: 'Contact notification',
   previewData: {
     name: 'Jane Smith',

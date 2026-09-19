@@ -56,6 +56,7 @@ Deno.serve(async (req) => {
   let recipientEmail: string
   let idempotencyKey: string
   let messageId: string
+  let replyTo: string | undefined
   let templateData: Record<string, any> = {}
   try {
     const body = await req.json()
@@ -65,6 +66,14 @@ Deno.serve(async (req) => {
     idempotencyKey = body.idempotencyKey || body.idempotency_key || messageId
     if (body.templateData && typeof body.templateData === 'object') {
       templateData = body.templateData
+    }
+    // Optional Reply-To override. Only accepted when it is a plain email
+    // address (never trust client input for header values).
+    if (typeof body.replyTo === 'string' || typeof body.reply_to === 'string') {
+      const candidate = (body.replyTo ?? body.reply_to).trim()
+      if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(candidate)) {
+        replyTo = candidate
+      }
     }
   } catch {
     return new Response(
@@ -318,6 +327,7 @@ Deno.serve(async (req) => {
       purpose: 'transactional',
       label: templateName,
       idempotency_key: idempotencyKey,
+      reply_to: replyTo,
       unsubscribe_token: unsubscribeToken,
       queued_at: new Date().toISOString(),
     },

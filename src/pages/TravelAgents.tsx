@@ -187,24 +187,19 @@ const TravelAgents = () => {
     ].filter(Boolean).join("\n\n");
 
     const sends = [
-      supabase.functions.invoke("send-transactional-email", {
+      supabase.functions.invoke("send-contact-email", {
         body: {
-          templateName: "contact-notification",
-          idempotencyKey: `professional-notify-${submissionId}`,
-          replyTo: form.email,
-          templateData: {
-            name: form.name,
-            email: form.email,
-            message: professionalMessage,
-          },
+          type: "notification",
+          name: form.name,
+          email: form.email,
+          message: professionalMessage,
         },
       }),
-      supabase.functions.invoke("send-transactional-email", {
+      supabase.functions.invoke("send-contact-email", {
         body: {
-          templateName: "contact-confirmation",
-          recipientEmail: form.email,
-          idempotencyKey: `professional-confirm-${submissionId}`,
-          templateData: { name: form.name },
+          type: "confirmation",
+          name: form.name,
+          email: form.email,
         },
       }),
     ];

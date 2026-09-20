@@ -41,24 +41,19 @@ const ContactSection = () => {
     // already saved, so email send failures here do not affect the user.
     const submissionId = crypto.randomUUID();
     const sends = [
-      supabase.functions.invoke("send-transactional-email", {
+      supabase.functions.invoke("send-contact-email", {
         body: {
-          templateName: "contact-notification",
-          idempotencyKey: `contact-notify-${submissionId}`,
-          replyTo: contactForm.email,
-          templateData: {
-            name: contactForm.name,
-            email: contactForm.email,
-            message: contactForm.message,
-          },
+          type: "notification",
+          name: contactForm.name,
+          email: contactForm.email,
+          message: contactForm.message,
         },
       }),
-      supabase.functions.invoke("send-transactional-email", {
+      supabase.functions.invoke("send-contact-email", {
         body: {
-          templateName: "contact-confirmation",
-          recipientEmail: contactForm.email,
-          idempotencyKey: `contact-confirm-${submissionId}`,
-          templateData: { name: contactForm.name },
+          type: "confirmation",
+          name: contactForm.name,
+          email: contactForm.email,
         },
       }),
     ];

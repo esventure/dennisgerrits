@@ -99,7 +99,7 @@ Deno.serve(async (req) => {
         : {
             from: FROM,
             to: [email],
-            subject: 'Thank you for reaching out',
+            subject: 'New message from Dennis Gerrits',
             html: confirmationHtml(name),
             text: confirmationText(name),
           }

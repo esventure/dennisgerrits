@@ -39,7 +39,6 @@ const ContactSection = () => {
 
     // Best-effort: notify Dennis and confirm with the visitor. The message is
     // already saved, so email send failures here do not affect the user.
-    const submissionId = crypto.randomUUID();
     const sends = [
       supabase.functions.invoke("send-contact-email", {
         body: {

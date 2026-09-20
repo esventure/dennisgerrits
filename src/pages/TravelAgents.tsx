@@ -173,7 +173,6 @@ const TravelAgents = () => {
       return;
     }
 
-    const submissionId = crypto.randomUUID();
     const inquiryLabels: Record<string, string> = {
       "full-concierge": "Full concierge: I plan and deliver",
       "local-partner": "Local partner: you plan, I host",

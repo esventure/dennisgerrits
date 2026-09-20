@@ -92,7 +92,7 @@ Deno.serve(async (req) => {
             from: FROM,
             to: [OWNER_EMAIL],
             reply_to: email,
-            subject: 'Contact via DennisGerrits.com',
+            subject: 'New message from Dennis Gerrits',
             html: notificationHtml(name, email, message),
             text: notificationText(name, email, message),
           }

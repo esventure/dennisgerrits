@@ -279,7 +279,7 @@ const GetInspired = () => {
                             {theme.note}
                           </p>
                           <span
-                            className="mt-3 font-body text-xs sm:text-sm tracking-widest uppercase inline-flex items-center gap-1.5 border-b border-dashed pb-0.5 transition-opacity group-hover:opacity-70"
+                            className="mt-3 font-body text-[0.6875rem] sm:text-xs tracking-widest uppercase inline-flex items-center gap-1.5 border-b border-dashed pb-0.5 transition-opacity group-hover:opacity-70"
                             style={{ color: "hsl(var(--heritage-orange))", borderColor: "hsl(var(--heritage-orange))" }}
                           >
                             Read more <span aria-hidden>→</span>

@@ -162,7 +162,6 @@ const TravelAgents = () => {
       message: form.message,
       source: "travel-agents",
     });
-    setSending(false);
 
     if (error) {
       toast({
@@ -170,9 +169,54 @@ const TravelAgents = () => {
         description: "Your inquiry could not be sent. Please try again or reach me on WhatsApp.",
         variant: "destructive",
       });
+      setSending(false);
       return;
     }
 
+    const submissionId = crypto.randomUUID();
+    const inquiryLabels: Record<string, string> = {
+      "full-concierge": "Full concierge: I plan and deliver",
+      "local-partner": "Local partner: you plan, I host",
+      exploring: "Just exploring a fit",
+      other: "Something else",
+    };
+    const professionalMessage = [
+      form.company ? `Agency / Company: ${form.company}` : null,
+      form.inquiryType ? `How can I help?: ${inquiryLabels[form.inquiryType] ?? form.inquiryType}` : null,
+      form.message ? `Message: ${form.message}` : "Message: No additional message provided.",
+    ].filter(Boolean).join("\n\n");
+
+    const sends = [
+      supabase.functions.invoke("send-transactional-email", {
+        body: {
+          templateName: "contact-notification",
+          idempotencyKey: `professional-notify-${submissionId}`,
+          replyTo: form.email,
+          templateData: {
+            name: form.name,
+            email: form.email,
+            message: professionalMessage,
+          },
+        },
+      }),
+      supabase.functions.invoke("send-transactional-email", {
+        body: {
+          templateName: "contact-confirmation",
+          recipientEmail: form.email,
+          idempotencyKey: `professional-confirm-${submissionId}`,
+          templateData: { name: form.name },
+        },
+      }),
+    ];
+    Promise.allSettled(sends).then((results) => {
+      results.forEach((result, index) => {
+        if (result.status === "rejected") {
+          console.error("Professional inquiry email failed", index, result.reason);
+        }
+      });
+    });
+
+    setSending(false);
     toast({ title: "Inquiry sent", description: "Thank you. I'll be in touch personally." });
     setForm({ name: "", company: "", email: "", inquiryType: "", message: "" });
   };

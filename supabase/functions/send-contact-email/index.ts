@@ -91,6 +91,13 @@ Deno.serve(async (req) => {
       })
     }
 
+    if (phone && !PHONE_RE.test(phone)) {
+      return new Response(JSON.stringify({ error: 'Invalid phone number' }), {
+        status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      })
+    }
+
     const payload =
       type === 'notification'
         ? {
@@ -98,8 +105,8 @@ Deno.serve(async (req) => {
             to: [OWNER_EMAIL],
             reply_to: email,
             subject: 'New message from Dennis Gerrits',
-            html: notificationHtml(name, email, message),
-            text: notificationText(name, email, message),
+            html: notificationHtml(name, email, phone, message),
+            text: notificationText(name, email, phone, message),
           }
         : {
             from: FROM,

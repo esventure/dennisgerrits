@@ -132,7 +132,7 @@ const AboutEditorial = () => {
             loading="lazy"
           />
         </div>
-        <div className="flex items-center px-6 sm:px-10 md:px-16 lg:pl-10 lg:pr-[max(5rem,calc((100vw-80rem)/2+3rem))] py-10 sm:py-14 lg:py-18">
+        <div className="flex items-center px-6 sm:px-10 md:px-16 lg:pl-10 lg:pr-[max(5rem,calc((100vw-80rem)/2+3rem))] py-16 sm:py-20 lg:py-28">
           <FadeIn className="relative z-10 w-full">
             <div className="max-w-lg">
             <p className="font-body text-xs tracking-[0.3em] uppercase text-accent font-semibold mb-4">
@@ -164,7 +164,7 @@ const AboutEditorial = () => {
 
       {/* The Guide */}
       <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] bg-primary">
-        <div className="flex items-center px-6 sm:px-10 md:px-16 lg:pl-[max(5rem,calc((100vw-80rem)/2+3rem))] lg:pr-10 py-10 sm:py-14 lg:py-18">
+        <div className="flex items-center px-6 sm:px-10 md:px-16 lg:pl-[max(5rem,calc((100vw-80rem)/2+3rem))] lg:pr-10 py-16 sm:py-20 lg:py-28">
           <FadeIn delay={0.15} className="relative z-10 w-full">
             <div className="max-w-lg">
             <p className="font-body text-xs tracking-[0.3em] uppercase text-accent font-semibold mb-4">
@@ -618,7 +618,7 @@ const AboutProfileCards = () => {
       <div className="grid grid-cols-1 md:grid-cols-2">
         {/* The Person — text first, photo below */}
         <div className="bg-background flex flex-col">
-          <div className="flex-1 flex items-center px-6 sm:px-10 md:px-12 py-8 sm:py-10 lg:py-12">
+          <div className="flex-1 flex items-center px-6 sm:px-10 md:px-12 py-16 sm:py-20 lg:py-24">
             <FadeIn className="w-full">
               <div className="max-w-md mx-auto">
                 <p className="font-body text-xs tracking-[0.3em] uppercase text-accent font-semibold mb-4">
@@ -659,7 +659,7 @@ const AboutProfileCards = () => {
 
         {/* The Guide — text first, photo below */}
         <div className="bg-primary flex flex-col">
-          <div className="flex-1 flex items-center px-6 sm:px-10 md:px-12 py-8 sm:py-10 lg:py-12">
+          <div className="flex-1 flex items-center px-6 sm:px-10 md:px-12 py-16 sm:py-20 lg:py-24">
             <FadeIn delay={0.15} className="w-full">
               <div className="max-w-md mx-auto">
                 <p className="font-body text-xs tracking-[0.3em] uppercase text-accent font-semibold mb-4">

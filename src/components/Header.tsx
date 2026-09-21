@@ -92,14 +92,14 @@ const Header = () => {
           <span className="font-heading text-xl sm:text-2xl tracking-wider text-primary truncate">Dennis Gerrits</span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-6 lg:gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.to}
               to={link.to}
               onClick={(e) => handleNavClick(e, link.to)}
               className={cn(
-                "font-body text-sm tracking-wide transition-colors hover:text-secondary",
+                "font-body text-sm whitespace-nowrap tracking-wide transition-colors hover:text-secondary",
                 location.pathname === link.to ? "text-secondary font-medium" : "text-foreground/70"
               )}
             >

@@ -79,7 +79,7 @@ const Header = () => {
     <>
     <header ref={headerRef} className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-sm border-b border-border/40">
       <div className="container mx-auto flex items-center justify-between py-3 sm:py-4 px-5 sm:px-6 lg:px-12">
-        <Link to="/" onClick={handleLogoClick} className="flex items-center gap-2 sm:gap-3 min-w-0 md:shrink-0 md:pr-6">
+        <Link to="/" onClick={handleLogoClick} className="flex items-center gap-2 sm:gap-3 min-w-0">
           <img
             src={dennisIllustration}
             alt="Dennis Gerrits logo"
@@ -92,14 +92,14 @@ const Header = () => {
           <span className="font-heading text-xl sm:text-2xl tracking-wider text-primary truncate">Dennis Gerrits</span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6 lg:gap-8">
+        <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.to}
               to={link.to}
               onClick={(e) => handleNavClick(e, link.to)}
               className={cn(
-                "font-body text-sm whitespace-nowrap tracking-wide transition-colors hover:text-secondary",
+                "font-body text-sm tracking-wide transition-colors hover:text-secondary",
                 location.pathname === link.to ? "text-secondary font-medium" : "text-foreground/70"
               )}
             >
@@ -113,7 +113,7 @@ const Header = () => {
               to={link.to}
               onClick={(e) => handleNavClick(e, link.to)}
               className={cn(
-                "font-body text-xs whitespace-nowrap tracking-[0.15em] uppercase transition-colors hover:text-secondary",
+                "font-body text-xs tracking-[0.15em] uppercase transition-colors hover:text-secondary",
                 location.pathname === link.to ? "text-secondary" : "text-foreground/40"
               )}
             >

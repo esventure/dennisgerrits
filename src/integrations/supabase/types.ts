@@ -23,7 +23,6 @@ export type Database = {
           inquiry_type: string | null
           message: string
           name: string
-          phone: string | null
           source: string
         }
         Insert: {
@@ -34,7 +33,6 @@ export type Database = {
           inquiry_type?: string | null
           message: string
           name: string
-          phone?: string | null
           source?: string
         }
         Update: {
@@ -45,7 +43,6 @@ export type Database = {
           inquiry_type?: string | null
           message?: string
           name?: string
-          phone?: string | null
           source?: string
         }
         Relationships: []

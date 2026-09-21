@@ -902,22 +902,20 @@ const HeroGreenAllCaps = () => (
 );
 
 const HeroGreenHelloCaps = ({ divider = true }: { divider?: boolean }) => (
-  <div className="w-full container mx-auto px-6 lg:px-12 py-6 md:py-8">
+  <div className="w-full container mx-auto px-6 lg:px-12 py-10 md:py-14">
     <div
-      className="relative overflow-hidden rounded-3xl px-6 py-8 sm:px-10 sm:py-10 md:px-16 md:py-12 lg:px-20 lg:py-14"
+      className="relative overflow-hidden rounded-3xl px-6 py-14 sm:px-10 sm:py-20 md:px-16 md:py-24 lg:px-20 lg:py-28"
       style={{ backgroundColor: "hsl(var(--heritage-green))" }}
     >
       <div className="relative mx-auto max-w-6xl" style={{ zIndex: 10 }}>
-        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-4 md:gap-10 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-center">
           {/* Left: portrait, editorial framing */}
-          <FadeIn className="order-2 lg:order-1">
-
+          <FadeIn>
             <div className="flex flex-col items-center lg:items-start">
               <img
                 src={dennisCanalSmile}
                 alt="Dennis Gerrits on an Amsterdam canal bridge"
-                className="mx-auto lg:mx-0 w-full max-w-sm lg:w-auto lg:max-w-none aspect-[3/4] max-h-[52vh] lg:max-h-none lg:aspect-auto lg:h-[62vh] rounded-sm object-cover shadow-2xl"
-
+                className="w-full max-w-lg rounded-sm object-cover shadow-2xl aspect-[3/4]"
               />
               <p
                 className="font-body text-sm tracking-widest uppercase mt-6"
@@ -929,8 +927,7 @@ const HeroGreenHelloCaps = ({ divider = true }: { divider?: boolean }) => (
           </FadeIn>
 
           {/* Right: editorial headline + copy */}
-          <FadeIn delay={0.2} className="order-1 lg:order-2">
-
+          <FadeIn delay={0.2}>
             <div className="mb-6 md:mb-8">
               <h1
                 className="font-heading text-[2rem] xs:text-[2.4rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[0.95]"
@@ -972,20 +969,8 @@ const HeroGreenHelloCaps = ({ divider = true }: { divider?: boolean }) => (
                 A friend who knows the city.
               </p>
             </div>
-            {/* Desktop keeps this copy in the right column; mobile shows it below the photo. */}
             <p
-              className="hidden lg:block font-body italic text-lg leading-relaxed max-w-lg mb-3"
-              style={{ color: "hsl(var(--background) / 0.9)" }}
-            >
-              We slow down, follow curiosity, and discover places together,
-              one story at a time. The best moments are rarely planned.
-            </p>
-          </FadeIn>
-
-          {/* Mobile only: subtext comes after the photo, as requested. */}
-          <FadeIn delay={0.25} className="order-3 lg:hidden">
-            <p
-              className="font-body italic text-lg leading-relaxed max-w-lg"
+              className="font-body italic text-lg leading-relaxed max-w-lg mb-3"
               style={{ color: "hsl(var(--background) / 0.9)" }}
             >
               We slow down, follow curiosity, and discover places together,

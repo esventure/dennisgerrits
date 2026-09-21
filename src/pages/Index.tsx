@@ -684,7 +684,7 @@ const Index = () => {
                 />
               </div>
               <p className="font-body text-sm md:text-base mt-4" style={{ color: "hsl(0 0% 88%)" }}>
-                When they are ready, you will be able to listen to them wherever you listen to your podcasts.
+                We are recording the first episodes of the podcast right now. Once they are ready, you will be able to listen to them wherever you listen to your podcasts.
               </p>
             </FadeIn>
 

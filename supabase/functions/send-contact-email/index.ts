@@ -49,13 +49,13 @@ const confirmationHtml = (name: string) => `
       <p style="font-size:16px;color:#1a1a1a;line-height:1.6;margin:0 0 16px;">I’ll get back to you within 24 hours. If it feels right, we can take the next step with a video call. No pressure, no obligations, just a chance to get to know each other.</p>
       <p style="font-size:16px;color:#1a1a1a;line-height:1.6;margin:0 0 16px;">Dennis</p>
       <hr style="border-color:#e8e2dc;margin:24px 0;" />
-      <p style="font-size:12px;color:#888888;">Dennis Gerrits, Personal Travel Companion, Amsterdam · dennisgerrits.com</p>
+      <p style="font-size:12px;color:#888888;">Dennis Gerrits — Storyteller, Host & Travel Companion, Amsterdam · dennisgerrits.com</p>
     </div>
   </body>
 </html>`
 
 const confirmationText = (name: string) =>
-  `Hi ${name || 'there'},\n\nYour message just landed safely. Thank you for taking the time to write.\n\nI’ll get back to you within 24 hours. If it feels right, we can take the next step with a video call. No pressure, no obligations, just a chance to get to know each other.\n\nDennis\n\nDennis Gerrits, Personal Travel Companion, Amsterdam · dennisgerrits.com`
+  `Hi ${name || 'there'},\n\nYour message just landed safely. Thank you for taking the time to write.\n\nI’ll get back to you within 24 hours. If it feels right, we can take the next step with a video call. No pressure, no obligations, just a chance to get to know each other.\n\nDennis\n\nDennis Gerrits — Storyteller, Host & Travel Companion, Amsterdam · dennisgerrits.com`
 
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') {

@@ -172,14 +172,17 @@ const ContactSection = () => {
                     </div>
                     <div className="space-y-2">
                       <Label className="font-body text-sm">Phone Number</Label>
-                      <Input
-                        required
-                        type="tel"
-                        value={contactForm.phone}
-                        onChange={(e) => setContactForm({ ...contactForm, phone: e.target.value })}
-                        className="h-12 text-base font-body"
-                        placeholder="+31 6 12345678"
-                      />
+                      <div className="flex gap-3">
+                        <CountryCodeSelect value={countryCode} onChange={setCountryCode} />
+                        <Input
+                          required
+                          type="tel"
+                          value={contactForm.phone}
+                          onChange={(e) => setContactForm({ ...contactForm, phone: e.target.value })}
+                          className="h-12 flex-1 text-base font-body"
+                          placeholder="6 12345678"
+                        />
+                      </div>
                     </div>
                     <div className="space-y-2">
                       <Label className="font-body text-sm">Tell Me a Little About Your Trip</Label>

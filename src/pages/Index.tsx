@@ -438,16 +438,16 @@ const Index = () => {
                     >
                       <ul className="divide-y divide-border/40">
                         {rows.map((row) => (
-                          <li key={row.title} className="flex items-start gap-5 px-6 py-6 md:px-10 md:py-7">
+                          <li key={row.title} className="flex items-center gap-5 px-6 py-6 md:px-10 md:py-7">
                             <div
-                              className="shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center"
+                              className="shrink-0 w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center overflow-hidden"
                               style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.28)" }}
                               aria-hidden
                             >
                               <img
                                 src={row.icon}
                                 alt=""
-                                className="object-contain w-12 h-12 md:w-14 md:h-14"
+                                className="block object-contain w-14 h-14 md:w-16 md:h-16"
                                 loading="lazy"
                                 aria-hidden
                                 style={{
@@ -457,6 +457,7 @@ const Index = () => {
                                 }}
                               />
                             </div>
+
 
                             <div className="flex-1 min-w-0">
                               <h4 className="font-heading text-lg md:text-xl text-primary tracking-wide uppercase leading-tight mb-1">
@@ -483,7 +484,7 @@ const Index = () => {
       </section>
 
       {/* ── 3. A Day in the Life (click-to-explore, no scroll driver) ── */}
-      <section id="day" className="relative scroll-mt-24 pt-12 lg:pt-20 pb-16 md:pb-20">
+      <section id="day" className="relative scroll-mt-24 py-16 md:py-20 lg:py-28">
         <div className="container mx-auto px-6 lg:px-12">
           <FadeIn>
             <div className="max-w-3xl mb-6 lg:mb-8">
@@ -506,7 +507,7 @@ const Index = () => {
 
 
       {/* ── Rick Steves Feature ── */}
-      <div id="rick-steves" className="relative pt-14 sm:pt-20 md:pt-24 lg:pt-28 pb-16 md:pb-20 lg:pb-28 scroll-mt-24" style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.15)" }}>
+      <div id="rick-steves" className="relative py-16 md:py-20 lg:py-28 scroll-mt-24" style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.15)" }}>
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <FadeIn>

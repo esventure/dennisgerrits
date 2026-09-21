@@ -928,7 +928,8 @@ const HeroGreenHelloCaps = ({ divider = true }: { divider?: boolean }) => (
           </FadeIn>
 
           {/* Right: editorial headline + copy */}
-          <FadeIn delay={0.2}>
+          <FadeIn delay={0.2} className="order-1 lg:order-2">
+
             <div className="mb-6 md:mb-8">
               <h1
                 className="font-heading text-[2rem] xs:text-[2.4rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[0.95]"

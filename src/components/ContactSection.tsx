@@ -1,6 +1,7 @@
 import { useState } from "react";
 import FadeIn from "@/components/FadeIn";
 import RichText from "@/components/RichText";
+import CountryCodeSelect from "@/components/CountryCodeSelect";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -15,7 +16,12 @@ const ContactSection = () => {
   const { toast } = useToast();
   const t = useSiteContent();
   const [contactForm, setContactForm] = useState({ name: "", email: "", phone: "", message: "" });
+  const [countryCode, setCountryCode] = useState("+1");
   const [sending, setSending] = useState(false);
+
+  const fullPhone = contactForm.phone.trim().startsWith("+")
+    ? contactForm.phone.trim()
+    : `${countryCode} ${contactForm.phone.trim()}`.trim();
 
   const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,7 +29,7 @@ const ContactSection = () => {
     const { error } = await supabase.from("contact_messages").insert({
       name: contactForm.name,
       email: contactForm.email,
-      phone: contactForm.phone,
+      phone: fullPhone,
       message: contactForm.message,
       source: "homepage",
     });
@@ -46,7 +52,7 @@ const ContactSection = () => {
           type: "notification",
           name: contactForm.name,
           email: contactForm.email,
-          phone: contactForm.phone,
+          phone: fullPhone,
           message: contactForm.message,
         },
       }),
@@ -166,14 +172,17 @@ const ContactSection = () => {
                     </div>
                     <div className="space-y-2">
                       <Label className="font-body text-sm">Phone Number</Label>
-                      <Input
-                        required
-                        type="tel"
-                        value={contactForm.phone}
-                        onChange={(e) => setContactForm({ ...contactForm, phone: e.target.value })}
-                        className="h-12 text-base font-body"
-                        placeholder="+31 6 12345678"
-                      />
+                      <div className="flex gap-3">
+                        <CountryCodeSelect value={countryCode} onChange={setCountryCode} />
+                        <Input
+                          required
+                          type="tel"
+                          value={contactForm.phone}
+                          onChange={(e) => setContactForm({ ...contactForm, phone: e.target.value })}
+                          className="h-12 flex-1 text-base font-body"
+                          placeholder="6 12345678"
+                        />
+                      </div>
                     </div>
                     <div className="space-y-2">
                       <Label className="font-body text-sm">Tell Me a Little About Your Trip</Label>

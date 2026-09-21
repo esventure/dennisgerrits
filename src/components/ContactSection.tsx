@@ -60,10 +60,21 @@ const ContactSection = () => {
 
   const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const phoneDigits = contactForm.phone.replace(/\D/g, "");
+    if (contactForm.phone.trim().length === 0 || phoneDigits.length < 6 || phoneDigits.length > 15) {
+      toast({
+        title: "Phone number required",
+        description: "Please enter a valid phone number so I can reach you.",
+        variant: "destructive",
+      });
+      return;
+    }
+    const fullPhone = `${countryCode} ${contactForm.phone.trim()}`;
     setSending(true);
     const { error } = await supabase.from("contact_messages").insert({
       name: contactForm.name,
       email: contactForm.email,
+      phone: fullPhone,
       message: contactForm.message,
       source: "homepage",
     });
@@ -86,6 +97,7 @@ const ContactSection = () => {
           type: "notification",
           name: contactForm.name,
           email: contactForm.email,
+          phone: fullPhone,
           message: contactForm.message,
         },
       }),
@@ -107,7 +119,7 @@ const ContactSection = () => {
 
     setSending(false);
     toast({ title: "Message sent", description: "Thank you. I'll be in touch soon." });
-    setContactForm({ name: "", email: "", message: "" });
+    setContactForm({ name: "", email: "", phone: "", message: "" });
   };
 
 
@@ -204,12 +216,38 @@ const ContactSection = () => {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label className="font-body text-sm">Tell Me a Little About Your Trip</Label>
+                      <Label className="font-body text-sm">Phone Number</Label>
+                      <div className="flex gap-2">
+                        <select
+                          value={countryCode}
+                          onChange={(e) => setCountryCode(e.target.value)}
+                          aria-label="Country code"
+                          className="h-12 shrink-0 w-[10.5rem] rounded-md border border-input bg-background px-2 text-base font-body"
+                        >
+                          {COUNTRY_CODES.map((c) => (
+                            <option key={c.label} value={c.value}>
+                              {c.label}
+                            </option>
+                          ))}
+                        </select>
+                        <Input
+                          required
+                          type="tel"
+                          inputMode="tel"
+                          value={contactForm.phone}
+                          onChange={(e) => setContactForm({ ...contactForm, phone: e.target.value })}
+                          className="h-12 text-base font-body flex-1"
+                          placeholder="612 345 678"
+                        />
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <Label className="font-body text-sm">Tell Me a Little About Yourself and Your Trip</Label>
                       <Textarea
                         value={contactForm.message}
                         onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
                         className="min-h-[140px] text-base font-body"
-                        placeholder="When are you visiting? What are you curious about?"
+                        placeholder="Who are you? When are you visiting? What are you curious about?"
                       />
                     </div>
                     <button

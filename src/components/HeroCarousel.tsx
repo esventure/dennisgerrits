@@ -908,7 +908,7 @@ const HeroGreenHelloCaps = ({ divider = true }: { divider?: boolean }) => (
       style={{ backgroundColor: "hsl(var(--heritage-green))" }}
     >
       <div className="relative mx-auto max-w-6xl" style={{ zIndex: 10 }}>
-        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-8 md:gap-10 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-4 md:gap-10 lg:gap-16 items-center">
           {/* Left: portrait, editorial framing */}
           <FadeIn className="order-2 lg:order-1">
 

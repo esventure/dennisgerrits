@@ -2,6 +2,7 @@ import { Head } from "vite-react-ssg";
 import { useState, useEffect } from "react";
 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import CountryCodeSelect from "@/components/CountryCodeSelect";
 import FadeIn from "@/components/FadeIn";
 import { HEADER_OFFSET } from "@/components/Header";
 import { Input } from "@/components/ui/input";
@@ -139,8 +140,13 @@ const FaintCanal = ({ side = "right" }: { side?: "left" | "right" }) => (
 
 const TravelAgents = () => {
   const { toast } = useToast();
-  const [form, setForm] = useState({ name: "", company: "", email: "", inquiryType: "", message: "" });
+  const [form, setForm] = useState({ name: "", company: "", email: "", phone: "", inquiryType: "", message: "" });
+  const [countryCode, setCountryCode] = useState("+1");
   const [sending, setSending] = useState(false);
+
+  const fullPhone = form.phone.trim().startsWith("+")
+    ? form.phone.trim()
+    : `${countryCode} ${form.phone.trim()}`.trim();
 
   const scrollToContact = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -157,6 +163,7 @@ const TravelAgents = () => {
     const { error } = await supabase.from("contact_messages").insert({
       name: form.name,
       email: form.email,
+      phone: fullPhone,
       company: form.company || null,
       inquiry_type: form.inquiryType || null,
       message: form.message,
@@ -181,6 +188,7 @@ const TravelAgents = () => {
     };
     const professionalMessage = [
       form.company ? `Agency / Company: ${form.company}` : null,
+      fullPhone ? `Phone: ${fullPhone}` : null,
       form.inquiryType ? `How can I help?: ${inquiryLabels[form.inquiryType] ?? form.inquiryType}` : null,
       form.message ? `Message: ${form.message}` : "Message: No additional message provided.",
     ].filter(Boolean).join("\n\n");
@@ -212,7 +220,7 @@ const TravelAgents = () => {
 
     setSending(false);
     toast({ title: "Inquiry sent", description: "Thank you. I'll be in touch personally." });
-    setForm({ name: "", company: "", email: "", inquiryType: "", message: "" });
+    setForm({ name: "", company: "", email: "", phone: "", inquiryType: "", message: "" });
   };
 
 
@@ -681,6 +689,20 @@ const TravelAgents = () => {
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
                       className="h-12 text-base font-body"
                     />
+                  </div>
+                  <div className="space-y-2">
+                    <Label className="font-body text-sm">Phone Number</Label>
+                    <div className="flex gap-3">
+                      <CountryCodeSelect value={countryCode} onChange={setCountryCode} />
+                      <Input
+                        required
+                        type="tel"
+                        value={form.phone}
+                        onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                        className="h-12 flex-1 text-base font-body"
+                        placeholder="6 12345678"
+                      />
+                    </div>
                   </div>
                   <div className="space-y-2">
                     <Label className="font-body text-sm">How can I help? <span className="text-muted-foreground/70">(optional)</span></Label>

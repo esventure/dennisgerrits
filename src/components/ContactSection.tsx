@@ -11,10 +11,51 @@ import { lovableAssetUrl } from "@/lib/utils";
 import dennisContactAsset from "@/assets/dennis-contact.jpg.asset.json";
 const dennisCanalSmile = lovableAssetUrl(dennisContactAsset.url);
 
+// Country calling codes for the phone field. The US entry is pinned first
+// and is the default selection.
+const COUNTRY_CODES = [
+  { value: "+1", label: "United States (+1)" },
+  { value: "+1", label: "Canada (+1)" },
+  { value: "+31", label: "Netherlands (+31)" },
+  { value: "+44", label: "United Kingdom (+44)" },
+  { value: "+353", label: "Ireland (+353)" },
+  { value: "+32", label: "Belgium (+32)" },
+  { value: "+49", label: "Germany (+49)" },
+  { value: "+33", label: "France (+33)" },
+  { value: "+34", label: "Spain (+34)" },
+  { value: "+39", label: "Italy (+39)" },
+  { value: "+351", label: "Portugal (+351)" },
+  { value: "+41", label: "Switzerland (+41)" },
+  { value: "+43", label: "Austria (+43)" },
+  { value: "+45", label: "Denmark (+45)" },
+  { value: "+47", label: "Norway (+47)" },
+  { value: "+46", label: "Sweden (+46)" },
+  { value: "+358", label: "Finland (+358)" },
+  { value: "+48", label: "Poland (+48)" },
+  { value: "+420", label: "Czechia (+420)" },
+  { value: "+30", label: "Greece (+30)" },
+  { value: "+90", label: "Turkey (+90)" },
+  { value: "+61", label: "Australia (+61)" },
+  { value: "+64", label: "New Zealand (+64)" },
+  { value: "+81", label: "Japan (+81)" },
+  { value: "+82", label: "South Korea (+82)" },
+  { value: "+86", label: "China (+86)" },
+  { value: "+852", label: "Hong Kong (+852)" },
+  { value: "+65", label: "Singapore (+65)" },
+  { value: "+91", label: "India (+91)" },
+  { value: "+971", label: "United Arab Emirates (+971)" },
+  { value: "+972", label: "Israel (+972)" },
+  { value: "+27", label: "South Africa (+27)" },
+  { value: "+55", label: "Brazil (+55)" },
+  { value: "+54", label: "Argentina (+54)" },
+  { value: "+52", label: "Mexico (+52)" },
+];
+
 const ContactSection = () => {
   const { toast } = useToast();
   const t = useSiteContent();
-  const [contactForm, setContactForm] = useState({ name: "", email: "", message: "" });
+  const [contactForm, setContactForm] = useState({ name: "", email: "", phone: "", message: "" });
+  const [countryCode, setCountryCode] = useState("+1");
   const [sending, setSending] = useState(false);
 
   const handleContactSubmit = async (e: React.FormEvent) => {

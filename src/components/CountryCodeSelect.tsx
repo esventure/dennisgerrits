@@ -50,22 +50,25 @@ interface CountryCodeSelectProps {
   onChange: (value: string) => void;
 }
 
-const CountryCodeSelect = ({ value, onChange }: CountryCodeSelectProps) => (
-  <Select value={value} onValueChange={onChange}>
-    <SelectTrigger
-      aria-label="Country code"
-      className="h-12 w-[140px] shrink-0 rounded-none border border-input bg-background font-body text-base"
-    >
-      <SelectValue />
-    </SelectTrigger>
-    <SelectContent className="max-h-72">
-      {COUNTRY_CODES.map((c) => (
-        <SelectItem key={c.code} value={c.code} className="font-body text-base">
-          {c.code} {c.label}
-        </SelectItem>
-      ))}
-    </SelectContent>
-  </Select>
-);
+const CountryCodeSelect = ({ value, onChange }: CountryCodeSelectProps) => {
+  const selected = COUNTRY_CODES.find((c) => c.code === value);
+  return (
+    <Select value={value} onValueChange={onChange}>
+      <SelectTrigger
+        aria-label="Country code"
+        className="h-12 w-[110px] shrink-0 rounded-none border border-input bg-background font-body text-base"
+      >
+        <span>{selected?.code ?? value}</span>
+      </SelectTrigger>
+      <SelectContent className="max-h-72">
+        {COUNTRY_CODES.map((c) => (
+          <SelectItem key={c.code} value={c.code} className="font-body text-base">
+            {c.code} {c.label}
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
+  );
+};
 
 export default CountryCodeSelect;

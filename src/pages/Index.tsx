@@ -494,7 +494,7 @@ const Index = () => {
                 A Day in the Amsterdam I Live In
               </h2>
               <p className="font-body text-base text-muted-foreground leading-relaxed">
-                Every day unfolds differently. Shaped by curiosity, conversation and the rhythm of the city. Tap a number on the map to peek into a moment of the day.
+                This is the day I recommend starting with: we’ll walk and talk, have coffee and lunch, and discover the Amsterdam that feels like home to me. Every day unfolds differently. Shaped by curiosity, conversation and the rhythm of the city. Tap a number on the map to peek into a moment of the day.
               </p>
             </div>
           </FadeIn>

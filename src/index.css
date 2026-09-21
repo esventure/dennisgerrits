@@ -49,7 +49,16 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* Larger base size for comfortable reading (audience 55+). */
+    font-size: 17px;
   }
+
+  @media (min-width: 768px) {
+    html {
+      font-size: 18px;
+    }
+  }
+
 
   * {
     @apply border-border;

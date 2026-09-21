@@ -902,15 +902,16 @@ const HeroGreenAllCaps = () => (
 );
 
 const HeroGreenHelloCaps = ({ divider = true }: { divider?: boolean }) => (
-  <div className="w-full container mx-auto px-6 lg:px-12 py-10 md:py-14">
+  <div className="w-full container mx-auto px-6 lg:px-12 py-6 md:py-8">
     <div
-      className="relative overflow-hidden rounded-3xl px-6 py-14 sm:px-10 sm:py-20 md:px-16 md:py-24 lg:px-20 lg:py-28"
+      className="relative overflow-hidden rounded-3xl px-6 py-8 sm:px-10 sm:py-10 md:px-16 md:py-12 lg:px-20 lg:py-14"
       style={{ backgroundColor: "hsl(var(--heritage-green))" }}
     >
       <div className="relative mx-auto max-w-6xl" style={{ zIndex: 10 }}>
-        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-8 md:gap-10 lg:gap-16 items-center">
           {/* Left: portrait, editorial framing */}
-          <FadeIn>
+          <FadeIn className="order-2 lg:order-1">
+
             <div className="flex flex-col items-center lg:items-start">
               <img
                 src={dennisCanalSmile}

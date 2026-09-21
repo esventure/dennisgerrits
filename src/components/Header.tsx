@@ -113,7 +113,7 @@ const Header = () => {
               to={link.to}
               onClick={(e) => handleNavClick(e, link.to)}
               className={cn(
-                "font-body text-xs tracking-[0.15em] uppercase transition-colors hover:text-secondary",
+                "font-body text-xs whitespace-nowrap tracking-[0.15em] uppercase transition-colors hover:text-secondary",
                 location.pathname === link.to ? "text-secondary" : "text-foreground/40"
               )}
             >

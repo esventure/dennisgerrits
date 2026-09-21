@@ -20,13 +20,14 @@ const escapeHtml = (value: string) =>
     .replace(/"/g, '"')
     .replace(/'/g, '&#39;')
 
-const notificationHtml = (name: string, email: string, message: string) => `
+const notificationHtml = (name: string, email: string, phone: string, message: string) => `
 <html lang="en" dir="ltr">
   <body style="background-color:#ffffff;font-family:Outfit,Arial,sans-serif;">
     <div style="padding:32px 24px;max-width:560px;">
       <h1 style="font-family:'Bebas Neue','Arial Narrow',sans-serif;font-size:34px;color:#1c0024;letter-spacing:1px;margin:0 0 24px;">New message</h1>
       <p style="font-size:12px;color:#e66300;text-transform:uppercase;letter-spacing:1.5px;margin:0 0 4px;">From</p>
       <p style="font-size:16px;color:#1a1a1a;margin:0 0 4px;">${escapeHtml(name || '—')}${email ? ` <${escapeHtml(email)}>` : ''}</p>
+      ${phone ? `<p style="font-size:16px;color:#1a1a1a;margin:0 0 4px;">${escapeHtml(phone)}</p>` : ''}
       <hr style="border-color:#e8e2dc;margin:20px 0;" />
       <p style="font-size:12px;color:#e66300;text-transform:uppercase;letter-spacing:1.5px;margin:0 0 4px;">Message</p>
       <p style="font-size:15px;color:#1a1a1a;line-height:1.6;white-space:pre-wrap;margin:0;">${escapeHtml(message || '—')}</p>
@@ -36,8 +37,8 @@ const notificationHtml = (name: string, email: string, message: string) => `
   </body>
 </html>`
 
-const notificationText = (name: string, email: string, message: string) =>
-  `New message\n\nFrom: ${name || '—'}${email ? ` <${email}>` : ''}\n\nMessage:\n${message || '—'}\n\nThis message was sent via the contact form on dennisgerrits.com.`
+const notificationText = (name: string, email: string, phone: string, message: string) =>
+  `New message\n\nFrom: ${name || '—'}${email ? ` <${email}>` : ''}${phone ? `\nPhone: ${phone}` : ''}\n\nMessage:\n${message || '—'}\n\nThis message was sent via the contact form on dennisgerrits.com.`
 
 const confirmationHtml = (name: string) => `
 <html lang="en" dir="ltr">
@@ -71,6 +72,7 @@ Deno.serve(async (req) => {
     const type = body?.type
     const name = typeof body?.name === 'string' ? body.name.slice(0, 200) : ''
     const email = typeof body?.email === 'string' ? body.email.trim() : ''
+    const phone = typeof body?.phone === 'string' ? body.phone.trim().slice(0, 40) : ''
     const message = typeof body?.message === 'string' ? body.message.slice(0, 5000) : ''
 
     if (type !== 'notification' && type !== 'confirmation') {
@@ -93,8 +95,8 @@ Deno.serve(async (req) => {
             to: [OWNER_EMAIL],
             reply_to: email,
             subject: 'New message from Dennis Gerrits',
-            html: notificationHtml(name, email, message),
-            text: notificationText(name, email, message),
+            html: notificationHtml(name, email, phone, message),
+            text: notificationText(name, email, phone, message),
           }
         : {
             from: FROM,

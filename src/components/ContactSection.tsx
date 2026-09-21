@@ -14,7 +14,7 @@ const dennisCanalSmile = lovableAssetUrl(dennisContactAsset.url);
 const ContactSection = () => {
   const { toast } = useToast();
   const t = useSiteContent();
-  const [contactForm, setContactForm] = useState({ name: "", email: "", message: "" });
+  const [contactForm, setContactForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [sending, setSending] = useState(false);
 
   const handleContactSubmit = async (e: React.FormEvent) => {
@@ -23,6 +23,7 @@ const ContactSection = () => {
     const { error } = await supabase.from("contact_messages").insert({
       name: contactForm.name,
       email: contactForm.email,
+      phone: contactForm.phone,
       message: contactForm.message,
       source: "homepage",
     });
@@ -45,6 +46,7 @@ const ContactSection = () => {
           type: "notification",
           name: contactForm.name,
           email: contactForm.email,
+          phone: contactForm.phone,
           message: contactForm.message,
         },
       }),
@@ -66,7 +68,7 @@ const ContactSection = () => {
 
     setSending(false);
     toast({ title: "Message sent", description: "Thank you. I'll be in touch soon." });
-    setContactForm({ name: "", email: "", message: "" });
+    setContactForm({ name: "", email: "", phone: "", message: "" });
   };
 
 
@@ -163,8 +165,20 @@ const ContactSection = () => {
                       />
                     </div>
                     <div className="space-y-2">
+                      <Label className="font-body text-sm">Phone Number</Label>
+                      <Input
+                        required
+                        type="tel"
+                        value={contactForm.phone}
+                        onChange={(e) => setContactForm({ ...contactForm, phone: e.target.value })}
+                        className="h-12 text-base font-body"
+                        placeholder="+31 6 12345678"
+                      />
+                    </div>
+                    <div className="space-y-2">
                       <Label className="font-body text-sm">Tell Me a Little About Your Trip</Label>
                       <Textarea
+                        required
                         value={contactForm.message}
                         onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
                         className="min-h-[140px] text-base font-body"

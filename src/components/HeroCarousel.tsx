@@ -972,8 +972,20 @@ const HeroGreenHelloCaps = ({ divider = true }: { divider?: boolean }) => (
                 A friend who knows the city.
               </p>
             </div>
+            {/* Desktop keeps this copy in the right column; mobile shows it below the photo. */}
             <p
-              className="font-body italic text-lg leading-relaxed max-w-lg mb-3"
+              className="hidden lg:block font-body italic text-lg leading-relaxed max-w-lg mb-3"
+              style={{ color: "hsl(var(--background) / 0.9)" }}
+            >
+              We slow down, follow curiosity, and discover places together,
+              one story at a time. The best moments are rarely planned.
+            </p>
+          </FadeIn>
+
+          {/* Mobile only: subtext comes after the photo, as requested. */}
+          <FadeIn delay={0.25} className="order-3 lg:hidden">
+            <p
+              className="font-body italic text-lg leading-relaxed max-w-lg"
               style={{ color: "hsl(var(--background) / 0.9)" }}
             >
               We slow down, follow curiosity, and discover places together,

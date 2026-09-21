@@ -491,7 +491,7 @@ const Index = () => {
                 Let's Explore Together
               </p>
               <h2 className="font-heading text-4xl md:text-5xl text-primary leading-[0.95] mb-3">
-                A Day in My Amsterdam
+                A Day in the Amsterdam I Live In
               </h2>
               <p className="font-body text-base text-muted-foreground leading-relaxed">
                 Every day unfolds differently. Shaped by curiosity, conversation and the rhythm of the city. Tap a number on the map to peek into a moment of the day.

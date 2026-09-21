@@ -52,7 +52,7 @@ const ContactSection = () => {
           type: "notification",
           name: contactForm.name,
           email: contactForm.email,
-          phone: contactForm.phone,
+          phone: fullPhone,
           message: contactForm.message,
         },
       }),

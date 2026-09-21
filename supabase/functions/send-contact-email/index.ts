@@ -72,6 +72,7 @@ Deno.serve(async (req) => {
     const type = body?.type
     const name = typeof body?.name === 'string' ? body.name.slice(0, 200) : ''
     const email = typeof body?.email === 'string' ? body.email.trim() : ''
+    const phone = typeof body?.phone === 'string' ? body.phone.trim().slice(0, 40) : ''
     const message = typeof body?.message === 'string' ? body.message.slice(0, 5000) : ''
 
     if (type !== 'notification' && type !== 'confirmation') {
@@ -94,8 +95,8 @@ Deno.serve(async (req) => {
             to: [OWNER_EMAIL],
             reply_to: email,
             subject: 'New message from Dennis Gerrits',
-            html: notificationHtml(name, email, message),
-            text: notificationText(name, email, message),
+            html: notificationHtml(name, email, phone, message),
+            text: notificationText(name, email, phone, message),
           }
         : {
             from: FROM,

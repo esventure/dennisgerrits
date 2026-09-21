@@ -916,7 +916,7 @@ const HeroGreenHelloCaps = ({ divider = true }: { divider?: boolean }) => (
               <img
                 src={dennisCanalSmile}
                 alt="Dennis Gerrits on an Amsterdam canal bridge"
-                className="w-full max-w-sm lg:max-w-lg max-h-[52vh] lg:max-h-[62vh] rounded-sm object-cover shadow-2xl aspect-[3/4]"
+                className="mx-auto lg:mx-0 w-full max-w-sm lg:w-auto lg:max-w-none aspect-[3/4] max-h-[52vh] lg:max-h-none lg:aspect-auto lg:h-[62vh] rounded-sm object-cover shadow-2xl"
 
               />
               <p

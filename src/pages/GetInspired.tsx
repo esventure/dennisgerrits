@@ -249,7 +249,7 @@ const GetInspired = () => {
                         <div className="relative aspect-[4/5] overflow-hidden bg-muted">
                           <img
                             src={theme.image}
-                            alt={theme.title}
+                            alt={`Photo from the ${theme.title} experience with Dennis`}
                             width={768}
                             height={960}
                             loading="lazy"

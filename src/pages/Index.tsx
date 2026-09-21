@@ -985,7 +985,7 @@ const Index = () => {
                       <div className="relative aspect-[4/5] overflow-hidden bg-muted">
                         <img
                           src={theme.image}
-                          alt={theme.title}
+                          alt={`Photo from the ${theme.title} experience with Dennis`}
                           loading="lazy"
                           decoding="async"
                           className="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.02] group-hover:saturate-150"

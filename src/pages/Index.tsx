@@ -271,8 +271,12 @@ const Index = () => {
                 },
               },
               {
-                "@type": "Service",
+                // LocalBusiness is a valid parent type for review snippets;
+                // "Service" is not, which triggered the Search Console report.
+                "@type": "LocalBusiness",
                 name: "Love My City Tours, Personal Amsterdam Travel Companion",
+                image: "https://dennisgerrits.com/images/dennis-og-hero.jpg",
+                url: "https://dennisgerrits.com/",
                 serviceType: "Private guided tours",
                 areaServed: {
                   "@type": "City",

@@ -549,7 +549,7 @@ const HeroEditorialGreenCaps = () => (
                 className="font-body text-sm tracking-widest uppercase mt-6"
                 style={{ color: "hsl(var(--heritage-orange))" }}
               >
-                PRIVATE TOUR GUIDE · STORYTELLER · HOST
+                PRIVATE GUIDE, STORYTELLER AND HOST
               </p>
             </div>
           </FadeIn>

@@ -26,7 +26,6 @@ import p35 from "./p35.jpg";
 import p36 from "./p36.jpg";
 import p37 from "./p37.jpg";
 import p38 from "./p38.jpg";
-import p39 from "./p39.jpg";
 import p40 from "./p40.jpg";
 import p41 from "./p41.jpg";
 import p42 from "./p42.jpg";
@@ -59,7 +58,7 @@ const sourcePhotos = [
   p17, p18, p19, p20,
   p21, p22, p25,
   p26, p27, p28, p29, p30, p31, p32, p33, p34, p35,
-  p36, p37, p38, p39, p40, p41, p42, p43, p44, p45,
+  p36, p37, p38, p40, p41, p42, p43, p44, p45,
   p46, p47, p48, p49, p50, p51, p52, p53, p54, p55,
   p56, p57, p58, p59, p60, p61, p62, p63, p64, p65, p66,
 ];

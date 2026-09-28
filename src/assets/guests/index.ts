@@ -23,7 +23,6 @@ import p32 from "./p32.jpg";
 import p33 from "./p33.jpg";
 import p34 from "./p34.jpg";
 import p35 from "./p35.jpg";
-import p36 from "./p36.jpg";
 import p37 from "./p37.jpg";
 import p38 from "./p38.jpg";
 import p40 from "./p40.jpg";

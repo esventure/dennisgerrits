@@ -233,16 +233,16 @@ const Index = () => {
   return (
     <main className="relative z-10">
       <Head>
-        <title>Dennis Gerrits, Private Tour Guide in Amsterdam</title>
+        <title>Dennis Gerrits, Private Guide, Storyteller and Host</title>
         <meta
           name="description"
-          content="Discover Amsterdam with Dennis Gerrits, a private tour guide and storyteller who walks alongside you and shows the city the way a friend would."
+          content="Discover Amsterdam and the Netherlands with Dennis Gerrits, a private guide, storyteller and host who creates personal experiences, shares local insights and brings places and stories to life."
         />
         <link rel="canonical" href="https://dennisgerrits.com/" />
-        <meta property="og:title" content="Dennis Gerrits — Private Tour Guide · Storyteller · Host" />
+        <meta property="og:title" content="Dennis Gerrits, Private Guide, Storyteller and Host" />
         <meta
           property="og:description"
-          content="A personal, authentic way of travelling, with somebody who feels like a friend."
+          content="Discover Amsterdam and the Netherlands with Dennis Gerrits, a private guide, storyteller and host who creates personal experiences, shares local insights and brings places and stories to life."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://dennisgerrits.com/" />
@@ -260,10 +260,10 @@ const Index = () => {
               {
                 "@type": "Person",
                 name: "Dennis Gerrits",
-                jobTitle: "Private Tour Guide & Storyteller",
+                jobTitle: "Private Guide, Storyteller and Host",
                 url: "https://dennisgerrits.com/",
                 description:
-                  "Dennis Gerrits is a private tour guide and storyteller in Amsterdam.",
+                  "Dennis Gerrits is a private guide, storyteller and host in Amsterdam.",
                 address: {
                   "@type": "PostalAddress",
                   addressLocality: "Amsterdam",
@@ -317,8 +317,8 @@ const Index = () => {
         <script type="application/ld+json">
           {JSON.stringify(breadcrumbJsonLd([]))}
         </script>
-        <meta name="twitter:title" content="Dennis Gerrits — Private Tour Guide · Storyteller · Host" />
-        <meta name="twitter:description" content="A personal, authentic way of travelling, with somebody who feels like a friend." />
+        <meta name="twitter:title" content="Dennis Gerrits, Private Guide, Storyteller and Host" />
+        <meta name="twitter:description" content="Discover Amsterdam and the Netherlands with Dennis Gerrits, a private guide, storyteller and host who creates personal experiences, shares local insights and brings places and stories to life." />
       </Head>
       {/* ── 1. Hero (3 swipeable variations for Dennis to choose from) ── */}
       <HeroCarousel />

@@ -67,7 +67,7 @@ const Footer = () => {
           <div>
             <h3 className="font-heading text-3xl mb-3">Dennis Gerrits</h3>
             <p className="font-body text-primary-foreground/80 text-sm tracking-wide mb-4">
-              Private Tour Guide · Storyteller · Host
+              Private Guide, Storyteller and Host
             </p>
             <p className="font-body text-primary-foreground/60 text-xs leading-relaxed max-w-xs">
               Formerly Love My City Tours, now dennisgerrits.com.

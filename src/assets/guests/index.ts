@@ -12,7 +12,6 @@ import p19 from "./p19.jpg";
 import p20 from "./p20.jpg";
 import p21 from "./p21.jpg";
 import p22 from "./p22.jpg";
-import p23 from "./p23.jpg";
 import p24 from "./p24.jpg";
 import p25 from "./p25.jpg";
 import p26 from "./p26.jpg";

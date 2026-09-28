@@ -23,13 +23,13 @@ const HeroEditorial = () => (
             className="w-full max-w-lg rounded-sm object-cover shadow-lg aspect-[3/4]"
           />
           <p className="font-body text-xs sm:text-sm tracking-widest uppercase text-secondary mt-5 md:mt-6">
-            Personal Travel Companion
+            Private Tour Guide
           </p>
         </div>
       </FadeIn>
       <FadeIn delay={0.2}>
         <h1 className="font-heading text-[2.75rem] sm:text-5xl md:text-7xl lg:text-8xl text-primary leading-[0.95] mb-6 md:mb-8">
-          <span className="sr-only">Dennis Gerrits, personal travel companion in Amsterdam. </span>
+          <span className="sr-only">Dennis Gerrits, private tour guide in Amsterdam. </span>
           Hello,<br />
 
           <span className="relative inline-block text-accent">
@@ -213,7 +213,7 @@ const HeroGreen = () => (
                 className="font-body text-sm tracking-widest uppercase mt-6"
                 style={{ color: "hsl(var(--heritage-orange))" }}
               >
-                PERSONAL TRAVEL COMPANION
+                PRIVATE TOUR GUIDE
               </p>
             </div>
           </FadeIn>
@@ -354,7 +354,7 @@ const HeroEditorialGreen = () => (
                 className="font-body text-sm tracking-widest uppercase mt-6"
                 style={{ color: "hsl(var(--heritage-orange))" }}
               >
-                Storyteller & Travel Companion
+                Private Tour Guide & Storyteller
               </p>
             </div>
           </FadeIn>
@@ -389,7 +389,7 @@ const HeroGreenCaps = () => (
               className="font-body text-xs md:text-sm tracking-[0.3em] uppercase mb-6"
               style={{ color: "hsl(var(--heritage-orange))" }}
             >
-              PERSONAL TRAVEL COMPANION
+              PRIVATE TOUR GUIDE
             </p>
             <h1
               className="font-heading leading-[0.9] mb-8 text-[clamp(2.5rem,6.5vw,5.75rem)] uppercase tracking-tight"
@@ -452,7 +452,7 @@ const HeroGreenCaps = () => (
                   DENNIS GERRITS
                 </p>
                 <p className="font-body text-sm text-muted-foreground mt-1">
-                  Amsterdammer · Personal Travel Companion
+                  Amsterdammer · Private Tour Guide
                 </p>
               </div>
             </div>
@@ -477,7 +477,7 @@ const HeroGreenStoryteller = () => (
               className="font-body text-xs md:text-sm tracking-[0.3em] uppercase mb-6"
               style={{ color: "hsl(var(--heritage-orange))" }}
             >
-              Storyteller &amp; Travel Companion
+              Private Tour Guide &amp; Storyteller
             </p>
             <h1
               className="font-heading leading-[0.9] mb-8 text-[clamp(2.6rem,6.8vw,6rem)]"
@@ -518,7 +518,7 @@ const HeroGreenStoryteller = () => (
                   Dennis Gerrits
                 </p>
                 <p className="font-body text-sm text-muted-foreground mt-1">
-                  Amsterdammer · Storyteller &amp; Travel Companion
+                  Amsterdammer · Private Tour Guide &amp; Storyteller
                 </p>
               </div>
             </div>
@@ -549,7 +549,7 @@ const HeroEditorialGreenCaps = () => (
                 className="font-body text-sm tracking-widest uppercase mt-6"
                 style={{ color: "hsl(var(--heritage-orange))" }}
               >
-                STORYTELLER, HOST &amp; TRAVEL COMPANION
+                PRIVATE TOUR GUIDE · STORYTELLER · HOST
               </p>
             </div>
           </FadeIn>
@@ -699,7 +699,7 @@ const HeroEditorialGreenV4Caps = () => (
                 className="font-body text-sm tracking-widest uppercase mt-6"
                 style={{ color: "hsl(var(--heritage-orange))" }}
               >
-                PERSONAL TRAVEL COMPANION
+                PRIVATE TOUR GUIDE
               </p>
             </div>
           </FadeIn>
@@ -793,7 +793,7 @@ const HeroEditorialGreenV4Mixed = () => (
                 className="font-body text-sm tracking-widest uppercase mt-6"
                 style={{ color: "hsl(var(--heritage-orange))" }}
               >
-                Storyteller &amp; Travel Companion
+                Private Tour Guide &amp; Storyteller
               </p>
             </div>
           </FadeIn>
@@ -921,7 +921,7 @@ const HeroGreenHelloCaps = ({ divider = true }: { divider?: boolean }) => (
                 className="font-body text-sm tracking-widest uppercase mt-6"
                 style={{ color: "hsl(var(--heritage-orange))" }}
               >
-                Storyteller, Host &amp; Travel Companion
+                Private Tour Guide · Storyteller · Host
               </p>
             </div>
           </FadeIn>
@@ -1054,7 +1054,7 @@ const HeroEditorialGreenAllCaps = () => (
                 className="font-body text-sm tracking-widest uppercase mt-6"
                 style={{ color: "hsl(var(--heritage-orange))" }}
               >
-                STORYTELLER, HOST & TRAVEL COMPANION
+                PRIVATE TOUR GUIDE · STORYTELLER · HOST
               </p>
             </div>
           </FadeIn>
@@ -1133,7 +1133,7 @@ const HeroEditorialGreenHelloCaps = ({ divider = true }: { divider?: boolean }) 
                 className="font-body text-sm tracking-widest uppercase mt-6"
                 style={{ color: "hsl(var(--heritage-orange))" }}
               >
-                Storyteller, Host &amp; Travel Companion
+                Private Tour Guide · Storyteller · Host
               </p>
             </div>
           </FadeIn>

@@ -233,13 +233,13 @@ const Index = () => {
   return (
     <main className="relative z-10">
       <Head>
-        <title>Dennis Gerrits, Personal Travel Companion in Amsterdam</title>
+        <title>Dennis Gerrits, Private Tour Guide in Amsterdam</title>
         <meta
           name="description"
-          content="Discover Amsterdam with Dennis Gerrits, a personal travel companion and storyteller who walks alongside you and shows the city the way a friend would."
+          content="Discover Amsterdam with Dennis Gerrits, a private tour guide and storyteller who walks alongside you and shows the city the way a friend would."
         />
         <link rel="canonical" href="https://dennisgerrits.com/" />
-        <meta property="og:title" content="Dennis Gerrits — Storyteller, Host & Travel Companion" />
+        <meta property="og:title" content="Dennis Gerrits — Private Tour Guide · Storyteller · Host" />
         <meta
           property="og:description"
           content="A personal, authentic way of travelling, with somebody who feels like a friend."
@@ -260,10 +260,10 @@ const Index = () => {
               {
                 "@type": "Person",
                 name: "Dennis Gerrits",
-                jobTitle: "Travel Companion & Storyteller",
+                jobTitle: "Private Tour Guide & Storyteller",
                 url: "https://dennisgerrits.com/",
                 description:
-                  "Dennis Gerrits is a personal travel companion and storyteller in Amsterdam.",
+                  "Dennis Gerrits is a private tour guide and storyteller in Amsterdam.",
                 address: {
                   "@type": "PostalAddress",
                   addressLocality: "Amsterdam",
@@ -274,7 +274,7 @@ const Index = () => {
                 // LocalBusiness is a valid parent type for review snippets;
                 // "Service" is not, which triggered the Search Console report.
                 "@type": "LocalBusiness",
-                name: "Love My City Tours, Personal Amsterdam Travel Companion",
+                name: "Love My City Tours, Private Amsterdam Tour Guide",
                 image: "https://dennisgerrits.com/images/dennis-og-hero.jpg",
                 url: "https://dennisgerrits.com/",
                 serviceType: "Private guided tours",
@@ -317,7 +317,7 @@ const Index = () => {
         <script type="application/ld+json">
           {JSON.stringify(breadcrumbJsonLd([]))}
         </script>
-        <meta name="twitter:title" content="Dennis Gerrits — Storyteller, Host & Travel Companion" />
+        <meta name="twitter:title" content="Dennis Gerrits — Private Tour Guide · Storyteller · Host" />
         <meta name="twitter:description" content="A personal, authentic way of travelling, with somebody who feels like a friend." />
       </Head>
       {/* ── 1. Hero (3 swipeable variations for Dennis to choose from) ── */}
@@ -485,29 +485,6 @@ const Index = () => {
 
         </div>
       </section>
-
-      {/* ── 3. A Day in the Life (click-to-explore, no scroll driver) ── */}
-      <section id="day" className="relative scroll-mt-24 py-16 md:py-20 lg:py-28">
-        <div className="container mx-auto px-6 lg:px-12">
-          <FadeIn>
-            <div className="max-w-3xl mb-6 lg:mb-8">
-              <p className="font-body text-xs lg:text-sm tracking-widest uppercase text-secondary mb-2">
-                Let's Explore Together
-              </p>
-              <h2 className="font-heading text-4xl md:text-5xl text-primary leading-[0.95] mb-3">
-                A Day in the Amsterdam I Live In
-              </h2>
-              <p className="font-body text-base text-muted-foreground leading-relaxed">
-                This is the day I recommend starting with: we’ll walk and talk, have coffee and lunch, and discover the Amsterdam that feels like home to me. Every day unfolds differently. Shaped by curiosity, conversation and the rhythm of the city. Tap a number on the map to peek into a moment of the day.
-              </p>
-            </div>
-          </FadeIn>
-          <FadeIn>
-            <DayMap moments={moments} />
-          </FadeIn>
-        </div>
-      </section>
-
 
       {/* ── Rick Steves Feature ── */}
       <div id="rick-steves" className="relative py-16 md:py-20 lg:py-28 scroll-mt-24" style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.15)" }}>
@@ -688,7 +665,7 @@ const Index = () => {
                 />
               </div>
               <p className="font-body text-sm md:text-base mt-4" style={{ color: "hsl(0 0% 88%)" }}>
-                We are recording the first episodes of the podcast right now. Once they are ready, you will be able to listen to them wherever you listen to your podcasts.
+                We are recording episodes of the podcast right now. Once they are ready, you will be able to listen to them wherever you listen to your podcasts.
               </p>
             </FadeIn>
 
@@ -833,6 +810,29 @@ const Index = () => {
       </div>
 
 
+      {/* ── 3. A Day in the Life (click-to-explore, no scroll driver) ── */}
+      <section id="day" className="relative scroll-mt-24 py-16 md:py-20 lg:py-28">
+        <div className="container mx-auto px-6 lg:px-12">
+          <FadeIn>
+            <div className="max-w-3xl mb-6 lg:mb-8">
+              <p className="font-body text-xs lg:text-sm tracking-widest uppercase text-secondary mb-2">
+                Let's Explore Together
+              </p>
+              <h2 className="font-heading text-4xl md:text-5xl text-primary leading-[0.95] mb-3">
+                A Day in the Amsterdam I Live In
+              </h2>
+              <p className="font-body text-base text-muted-foreground leading-relaxed">
+                This is the day I recommend starting with: we’ll walk and talk, have coffee and lunch, and discover the Amsterdam that is home to me. Every day unfolds differently, shaped by curiosity, conversation and the rhythm of the city. Tap a number on the map to peek into a moment of the day.
+              </p>
+            </div>
+          </FadeIn>
+          <FadeIn>
+            <DayMap moments={moments} />
+          </FadeIn>
+        </div>
+      </section>
+
+
       {/* ── Building Blocks preview (4 cards from Get Inspired) ── */}
       <section
         id="experiences"
@@ -872,7 +872,7 @@ const Index = () => {
                   display: "inline-block",
                 }}
               >
-                Some ideas to inspire your journey
+                Some ideas to inspire your journey in Amsterdam and The Netherlands.
               </p>
             </FadeIn>
 
@@ -880,7 +880,7 @@ const Index = () => {
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-12 md:gap-y-16 gap-x-6 md:gap-x-10 pt-4">
             {[
-              { id: "neighborhood", title: "The neighborhood", note: "real Amsterdam lives here", caption: "Quiet side streets where everyday life unfolds. Someone watering plants outside their front door. A neighbor locking up a bicycle.", image: peekNeighborhood, rotate: -2.4, pin: "tape-tl" },
+              { id: "neighborhood", title: "Neighborhoods", note: "real Amsterdam lives here", caption: "Quiet side streets where everyday life unfolds. Someone watering plants outside their front door. A neighbor locking up a bicycle.", image: peekNeighborhood, rotate: -2.4, pin: "tape-tl" },
               { id: "food", title: "Food Culture", note: "one bite at a time", caption: "Morning markets full of daily life. The smell of fresh bread from bakeries. Local flavors in every bite.", image: peekFood, rotate: 1.8, pin: "tape-tr" },
               { id: "architecture", title: "Living Architecture", note: "unlike anywhere else", caption: "A city built in layers of time. Old and modern architecture side by side. Every building carries its own story.", image: peekArchitecture, rotate: -1.2, pin: "tape-gl" },
               { id: "water", title: "From the Water", note: "a different rhythm", caption: "On a private boat through quiet canals. The city unfolding around you. A picnic, wine, and shared moments.", image: peekWater, rotate: 2.0, pin: "tape-gr" },

@@ -125,7 +125,7 @@ const GetInspired = () => {
                   display: "inline-block",
                 }}
               >
-                Some ideas to inspire your journey
+                Some ideas to inspire your journey in Amsterdam and The Netherlands.
               </p>
             </FadeIn>
           </div>

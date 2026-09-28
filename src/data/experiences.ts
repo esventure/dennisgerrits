@@ -40,6 +40,7 @@ export type ExperienceTheme = {
 
 type Block = {
   title: string;
+  slug?: string;
   note: string;
   caption: string;
   body: string[];
@@ -48,7 +49,8 @@ type Block = {
 
 const blocks: Block[] = [
   {
-    title: "The neighborhood",
+    title: "Neighborhoods",
+    slug: "the-neighborhood",
     note: "real Amsterdam lives here",
     caption:
       "Quiet side streets where everyday life unfolds. Someone watering plants outside their front door. A neighbor locking up a bicycle.",
@@ -81,15 +83,15 @@ const blocks: Block[] = [
     image: imgFood,
   },
   {
-    title: "Slow Evenings",
-    note: "when Amsterdam turns quiet and cozy",
+    title: "Leiden",
+    note: "birthplace of Rembrandt and rich in history",
     caption:
-      "Brown cafés where time disappears. Locals settling into their night. Small restaurants that feel like home.",
+      "Centuries of stories along its beautiful canals. The Netherlands' oldest university city. Home to many Pilgrim Fathers before the Mayflower voyage.",
     body: [
-      "When the day trippers leave, the city softens. The brown cafés fill up, the light on the canals turns gold, and conversations get longer. This is the Amsterdam I love most.",
-      "An evening like this is not a schedule. It is a drink at a bar that has been serving for two hundred years, a walk over a bridge with nobody on it, and a small restaurant where the owner cooks what the market had that morning.",
+      "Leiden is a student city with canals, a windmill in the middle of town and the oldest university in the country. Rembrandt was born here, and the Pilgrims lived here for years before sailing to America.",
+      "For American visitors especially, this is often the most surprising day of the trip. The Pilgrim story is told here in a detail you rarely find at home.",
     ],
-    image: imgBrownCafe,
+    image: imgLeiden,
   },
   {
     title: "From the Water",
@@ -114,15 +116,15 @@ const blocks: Block[] = [
     image: imgArchitecture,
   },
   {
-    title: "Stories of History",
-    note: "feel how time has passed through Amsterdam",
+    title: "Delft & The Hague",
+    note: "Dutch history, royalty and art together",
     caption:
-      "So many lives have shaped this city. History still lives in every street. 750 years of change.",
+      "The Hague, royal palaces and political power. Delft, home of Vermeer and Delft Blue porcelain. Two iconic cities shaped by centuries of culture.",
     body: [
-      "Amsterdam turned 750 years old, and almost every one of those centuries left something behind. A dam in a river, a trading empire, a refuge for people with the wrong religion, a war, a rebuilding, a city that keeps reinventing itself.",
-      "I tell that history the way I would tell it to a friend, with the people in front and the dates behind. No lectures, just stories you can still stand inside.",
+      "The Hague is where the country is governed and where the Mauritshuis keeps Vermeer's Girl with a Pearl Earring. Delft, a few minutes away, is where Vermeer lived and where the blue porcelain is still painted by hand.",
+      "Together they make one very full, very rewarding day: royal palaces, world famous paintings, and a small canal city that has barely changed since the seventeenth century.",
     ],
-    image: imgHistory,
+    image: imgDelft,
   },
   {
     title: "Van Gogh Creates",
@@ -136,15 +138,15 @@ const blocks: Block[] = [
     image: imgVanGogh,
   },
   {
-    title: "On Two Wheels",
-    note: "experience Amsterdam like the locals do",
+    title: "Haarlem",
+    note: "home of Frans Hals and hidden beauty",
     caption:
-      "Feel the freedom of movement. Bikes shape the city's DNA. It's a way of life for locals.",
+      "Close to Amsterdam, different in spirit. Frans Hals Museum, see the master at work. A city of courtyards, quiet streets and timeless elegance.",
     body: [
-      "In Amsterdam the bicycle is not a sport, it is how you get to work, to school and to dinner. Riding along means you cover more ground and you stop being a spectator.",
-      "We ride at a calm pace, on quiet routes, with stops whenever something is worth stopping for. If you are unsure about traffic, we practice first in a park until it feels natural.",
+      "Haarlem is fifteen minutes by train and feels a century calmer. A great market square, a cathedral with the organ Mozart played, and the Frans Hals Museum with its extraordinary portraits.",
+      "The real pleasure is the hofjes, small almshouse courtyards hidden behind unmarked doors. I know which ones you can enter and when.",
     ],
-    image: imgCycling,
+    image: imgHaarlem,
   },
   {
     title: "Heritage of Memory",
@@ -224,26 +226,26 @@ const blocks: Block[] = [
     image: imgTulips,
   },
   {
-    title: "Haarlem",
-    note: "home of Frans Hals and hidden beauty",
+    title: "On Two Wheels",
+    note: "experience Amsterdam like the locals do",
     caption:
-      "Close to Amsterdam, different in spirit. Frans Hals Museum, see the master at work. A city of courtyards, quiet streets and timeless elegance.",
+      "Feel the freedom of movement. Bikes shape the city's DNA. It's a way of life for locals.",
     body: [
-      "Haarlem is fifteen minutes by train and feels a century calmer. A great market square, a cathedral with the organ Mozart played, and the Frans Hals Museum with its extraordinary portraits.",
-      "The real pleasure is the hofjes, small almshouse courtyards hidden behind unmarked doors. I know which ones you can enter and when.",
+      "In Amsterdam the bicycle is not a sport, it is how you get to work, to school and to dinner. Riding along means you cover more ground and you stop being a spectator.",
+      "We ride at a calm pace, on quiet routes, with stops whenever something is worth stopping for. If you are unsure about traffic, we practice first in a park until it feels natural.",
     ],
-    image: imgHaarlem,
+    image: imgCycling,
   },
   {
-    title: "Leiden",
-    note: "birthplace of Rembrandt and rich in history",
+    title: "Slow Evenings",
+    note: "when Amsterdam turns quiet and cozy",
     caption:
-      "Centuries of stories along its beautiful canals. The Netherlands' oldest university city. Home to many Pilgrim Fathers before the Mayflower voyage.",
+      "Brown cafés where time disappears. Locals settling into their night. Small restaurants that feel like home.",
     body: [
-      "Leiden is a student city with canals, a windmill in the middle of town and the oldest university in the country. Rembrandt was born here, and the Pilgrims lived here for years before sailing to America.",
-      "For American visitors especially, this is often the most surprising day of the trip. The Pilgrim story is told here in a detail you rarely find at home.",
+      "When the day trippers leave, the city softens. The brown cafés fill up, the light on the canals turns gold, and conversations get longer. This is the Amsterdam I love most.",
+      "An evening like this is not a schedule. It is a drink at a bar that has been serving for two hundred years, a walk over a bridge with nobody on it, and a small restaurant where the owner cooks what the market had that morning.",
     ],
-    image: imgLeiden,
+    image: imgBrownCafe,
   },
   {
     title: "Rotterdam",
@@ -257,15 +259,15 @@ const blocks: Block[] = [
     image: imgRotterdam,
   },
   {
-    title: "Delft & The Hague",
-    note: "Dutch history, royalty and art together",
+    title: "Stories of History",
+    note: "feel how time has passed through Amsterdam",
     caption:
-      "The Hague, royal palaces and political power. Delft, home of Vermeer and Delft Blue porcelain. Two iconic cities shaped by centuries of culture.",
+      "So many lives have shaped this city. History still lives in every street. 750 years of change.",
     body: [
-      "The Hague is where the country is governed and where the Mauritshuis keeps Vermeer's Girl with a Pearl Earring. Delft, a few minutes away, is where Vermeer lived and where the blue porcelain is still painted by hand.",
-      "Together they make one very full, very rewarding day: royal palaces, world famous paintings, and a small canal city that has barely changed since the seventeenth century.",
+      "Amsterdam turned 750 years old, and almost every one of those centuries left something behind. A dam in a river, a trading empire, a refuge for people with the wrong religion, a war, a rebuilding, a city that keeps reinventing itself.",
+      "I tell that history the way I would tell it to a friend, with the people in front and the dates behind. No lectures, just stories you can still stand inside.",
     ],
-    image: imgDelft,
+    image: imgHistory,
   },
 ];
 
@@ -323,7 +325,7 @@ export const experiences: ExperienceTheme[] = blocks.map((b, i) => {
   const socialTitle = socialTitleOverrides[b.title] ?? `${b.title} in Amsterdam`;
   return {
     id: `block-${i + 1}`,
-    slug: slugify(b.title),
+    slug: b.slug ?? slugify(b.title),
     title: b.title,
     note: b.note,
     caption: b.caption,

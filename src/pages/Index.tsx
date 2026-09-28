@@ -486,29 +486,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ── 3. A Day in the Life (click-to-explore, no scroll driver) ── */}
-      <section id="day" className="relative scroll-mt-24 py-16 md:py-20 lg:py-28">
-        <div className="container mx-auto px-6 lg:px-12">
-          <FadeIn>
-            <div className="max-w-3xl mb-6 lg:mb-8">
-              <p className="font-body text-xs lg:text-sm tracking-widest uppercase text-secondary mb-2">
-                Let's Explore Together
-              </p>
-              <h2 className="font-heading text-4xl md:text-5xl text-primary leading-[0.95] mb-3">
-                A Day in the Amsterdam I Live In
-              </h2>
-              <p className="font-body text-base text-muted-foreground leading-relaxed">
-                This is the day I recommend starting with: we’ll walk and talk, have coffee and lunch, and discover the Amsterdam that is home to me. Every day unfolds differently, shaped by curiosity, conversation and the rhythm of the city. Tap a number on the map to peek into a moment of the day.
-              </p>
-            </div>
-          </FadeIn>
-          <FadeIn>
-            <DayMap moments={moments} />
-          </FadeIn>
-        </div>
-      </section>
-
-
       {/* ── Rick Steves Feature ── */}
       <div id="rick-steves" className="relative py-16 md:py-20 lg:py-28 scroll-mt-24" style={{ backgroundColor: "hsl(var(--heritage-taupe) / 0.15)" }}>
         <div className="container mx-auto px-6 lg:px-12">
@@ -831,6 +808,29 @@ const Index = () => {
           </div>
         </div>
       </div>
+
+
+      {/* ── 3. A Day in the Life (click-to-explore, no scroll driver) ── */}
+      <section id="day" className="relative scroll-mt-24 py-16 md:py-20 lg:py-28">
+        <div className="container mx-auto px-6 lg:px-12">
+          <FadeIn>
+            <div className="max-w-3xl mb-6 lg:mb-8">
+              <p className="font-body text-xs lg:text-sm tracking-widest uppercase text-secondary mb-2">
+                Let's Explore Together
+              </p>
+              <h2 className="font-heading text-4xl md:text-5xl text-primary leading-[0.95] mb-3">
+                A Day in the Amsterdam I Live In
+              </h2>
+              <p className="font-body text-base text-muted-foreground leading-relaxed">
+                This is the day I recommend starting with: we’ll walk and talk, have coffee and lunch, and discover the Amsterdam that is home to me. Every day unfolds differently, shaped by curiosity, conversation and the rhythm of the city. Tap a number on the map to peek into a moment of the day.
+              </p>
+            </div>
+          </FadeIn>
+          <FadeIn>
+            <DayMap moments={moments} />
+          </FadeIn>
+        </div>
+      </section>
 
 
       {/* ── Building Blocks preview (4 cards from Get Inspired) ── */}

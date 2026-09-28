@@ -233,13 +233,13 @@ const Index = () => {
   return (
     <main className="relative z-10">
       <Head>
-        <title>Dennis Gerrits, Personal Travel Companion in Amsterdam</title>
+        <title>Dennis Gerrits, Private Tour Guide in Amsterdam</title>
         <meta
           name="description"
-          content="Discover Amsterdam with Dennis Gerrits, a personal travel companion and storyteller who walks alongside you and shows the city the way a friend would."
+          content="Discover Amsterdam with Dennis Gerrits, a private tour guide and storyteller who walks alongside you and shows the city the way a friend would."
         />
         <link rel="canonical" href="https://dennisgerrits.com/" />
-        <meta property="og:title" content="Dennis Gerrits — Storyteller, Host & Travel Companion" />
+        <meta property="og:title" content="Dennis Gerrits — Private Tour Guide · Storyteller · Host" />
         <meta
           property="og:description"
           content="A personal, authentic way of travelling, with somebody who feels like a friend."
@@ -260,10 +260,10 @@ const Index = () => {
               {
                 "@type": "Person",
                 name: "Dennis Gerrits",
-                jobTitle: "Travel Companion & Storyteller",
+                jobTitle: "Private Tour Guide & Storyteller",
                 url: "https://dennisgerrits.com/",
                 description:
-                  "Dennis Gerrits is a personal travel companion and storyteller in Amsterdam.",
+                  "Dennis Gerrits is a private tour guide and storyteller in Amsterdam.",
                 address: {
                   "@type": "PostalAddress",
                   addressLocality: "Amsterdam",
@@ -274,7 +274,7 @@ const Index = () => {
                 // LocalBusiness is a valid parent type for review snippets;
                 // "Service" is not, which triggered the Search Console report.
                 "@type": "LocalBusiness",
-                name: "Love My City Tours, Personal Amsterdam Travel Companion",
+                name: "Love My City Tours, Private Amsterdam Tour Guide",
                 image: "https://dennisgerrits.com/images/dennis-og-hero.jpg",
                 url: "https://dennisgerrits.com/",
                 serviceType: "Private guided tours",
@@ -317,7 +317,7 @@ const Index = () => {
         <script type="application/ld+json">
           {JSON.stringify(breadcrumbJsonLd([]))}
         </script>
-        <meta name="twitter:title" content="Dennis Gerrits — Storyteller, Host & Travel Companion" />
+        <meta name="twitter:title" content="Dennis Gerrits — Private Tour Guide · Storyteller · Host" />
         <meta name="twitter:description" content="A personal, authentic way of travelling, with somebody who feels like a friend." />
       </Head>
       {/* ── 1. Hero (3 swipeable variations for Dennis to choose from) ── */}

@@ -29,7 +29,7 @@ const Email = ({ name }: Props) => (
         </Text>
         <Hr style={hr} />
         <Text style={footer}>
-          Dennis Gerrits, Personal Travel Companion, Amsterdam · dennisgerrits.com
+          Dennis Gerrits, Private Tour Guide, Amsterdam · dennisgerrits.com
         </Text>
       </Container>
     </Body>

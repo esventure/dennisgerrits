@@ -15,7 +15,7 @@ const NotFound = () => {
         <title>Page not found | Dennis Gerrits</title>
         <meta
           name="description"
-          content="This page does not exist. Return to the homepage of Dennis Gerrits, personal travel companion and storyteller in Amsterdam."
+          content="This page does not exist. Return to the homepage of Dennis Gerrits, private tour guide and storyteller in Amsterdam."
         />
         <meta name="robots" content="noindex, follow" />
       </Head>

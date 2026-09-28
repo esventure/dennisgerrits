@@ -253,7 +253,7 @@ const TravelAgents = () => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ProfessionalService",
-            name: "Dennis Gerrits, Amsterdam Travel Companion",
+            name: "Dennis Gerrits, Amsterdam Private Tour Guide",
             url: "https://dennisgerrits.com/travel-agents",
             description:
               "Collaboration for travel advisors and concierges: a trusted local companion in Amsterdam who looks after your clients, arranges tailored days and answers questions on the ground.",
@@ -261,7 +261,7 @@ const TravelAgents = () => {
             provider: {
               "@type": "Person",
               name: "Dennis Gerrits",
-              jobTitle: "Travel Companion & Storyteller",
+              jobTitle: "Private Tour Guide & Storyteller",
             },
           })}
         </script>

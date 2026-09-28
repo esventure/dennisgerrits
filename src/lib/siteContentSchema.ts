@@ -29,7 +29,7 @@ export const CONTENT_SCHEMA: ContentSection[] = [
         label: "Person – paragraph",
         type: "rich",
         fallback:
-          "I have always been drawn to stories, people and places that move you in some way.\n\nAmsterdam became that place for me. I’ve called this city home for more than twenty years now, and over time it became an integral part of who I am.\n\nThis city gave me freedom. It connected me to the world and shaped me into the person I am today. Curious, creative and fascinated by culture, art, architecture, nature, and the rhythm of life.",
+          "I have always been drawn to stories, people and places that move me in some way.\n\nAmsterdam became that place for me. I’ve called this city home for more than twenty years now, and over time it became an integral part of who I am. I have a deep love for Amsterdam and I know it like the back of my hand.\n\nThis city gave me freedom. It connected me to the world and shaped me into the person I am today: curious, creative and fascinated by culture, art, architecture, nature, and the rhythm of life.",
       },
       { key: "about.guide.title", label: "Guide – title", type: "short", fallback: "The Guide" },
       { key: "about.guide.kicker", label: "Guide – kicker", type: "short", fallback: "Helping you find your own way" },
@@ -38,7 +38,7 @@ export const CONTENT_SCHEMA: ContentSection[] = [
         label: "Guide – paragraph",
         type: "rich",
         fallback:
-          "For me, discovering places should feel personal, relaxed and natural. More like spending time with a local friend.\n\nI always listen first. Every person experiences a place differently, which is why I take the time to understand who you are and what inspires you.\n\nI carefully shape each day around you, creating experiences that feel meaningful. More than anything, I’m simply somebody who walks beside you during your trip.",
+          "For me, discovering places should feel personal, relaxed and natural. More like spending time with a local friend.\n\nI always listen first. Every person experiences a place differently, which is why I take the time to understand who you are and what inspires you.\n\nI carefully shape each day around you, creating experiences that feel meaningful. More than anything, I want you to leave with memories that feel entirely your own.",
       },
     ],
   },

@@ -498,7 +498,7 @@ const Index = () => {
                 A Day in the Amsterdam I Live In
               </h2>
               <p className="font-body text-base text-muted-foreground leading-relaxed">
-                This is the day I recommend starting with: we’ll walk and talk, have coffee and lunch, and discover the Amsterdam that feels like home to me. Every day unfolds differently. Shaped by curiosity, conversation and the rhythm of the city. Tap a number on the map to peek into a moment of the day.
+                This is the day I recommend starting with: we’ll walk and talk, have coffee and lunch, and discover the Amsterdam that is home to me. Every day unfolds differently. Shaped by curiosity, conversation and the rhythm of the city. Tap a number on the map to peek into a moment of the day.
               </p>
             </div>
           </FadeIn>
@@ -688,7 +688,7 @@ const Index = () => {
                 />
               </div>
               <p className="font-body text-sm md:text-base mt-4" style={{ color: "hsl(0 0% 88%)" }}>
-                We are recording the first episodes of the podcast right now. Once they are ready, you will be able to listen to them wherever you listen to your podcasts.
+                We are recording episodes of the podcast right now. Once they are ready, you will be able to listen to them wherever you listen to your podcasts.
               </p>
             </FadeIn>
 
@@ -872,7 +872,7 @@ const Index = () => {
                   display: "inline-block",
                 }}
               >
-                Some ideas to inspire your journey
+                Some ideas to inspire your journey in Amsterdam and The Netherlands.
               </p>
             </FadeIn>
 

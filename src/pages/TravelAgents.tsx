@@ -1,5 +1,5 @@
 import { Head } from "vite-react-ssg";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import CountryCodeSelect from "@/components/CountryCodeSelect";
@@ -143,6 +143,9 @@ const TravelAgents = () => {
   const [form, setForm] = useState({ name: "", company: "", email: "", phone: "", inquiryType: "", message: "" });
   const [countryCode, setCountryCode] = useState("+1");
   const [sending, setSending] = useState(false);
+  // Anti-spam: honeypot field + time trap. Bots fill hidden fields and submit instantly.
+  const [honeypot, setHoneypot] = useState("");
+  const formStartedAt = useRef(Date.now());
 
   const fullPhone = form.phone.trim().startsWith("+")
     ? form.phone.trim()
@@ -193,6 +196,10 @@ const TravelAgents = () => {
       form.message ? `Message: ${form.message}` : "Message: No additional message provided.",
     ].filter(Boolean).join("\n\n");
 
+    const antiSpam = {
+      website: honeypot,
+      elapsedMs: Date.now() - formStartedAt.current,
+    };
     const sends = [
       supabase.functions.invoke("send-contact-email", {
         body: {
@@ -200,6 +207,7 @@ const TravelAgents = () => {
           name: form.name,
           email: form.email,
           message: professionalMessage,
+          ...antiSpam,
         },
       }),
       supabase.functions.invoke("send-contact-email", {
@@ -207,6 +215,7 @@ const TravelAgents = () => {
           type: "confirmation",
           name: form.name,
           email: form.email,
+          ...antiSpam,
         },
       }),
     ];
@@ -663,6 +672,17 @@ const TravelAgents = () => {
                   Send me a message through the contact form or WhatsApp, and I'll get back to you within 24 hours.
                 </p>
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Honeypot: invisible to humans, bots fill it in. */}
+                  <input
+                    type="text"
+                    name="website"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+                  />
                   <div className="space-y-2">
                     <Label className="font-body text-sm">Your Name</Label>
                     <Input

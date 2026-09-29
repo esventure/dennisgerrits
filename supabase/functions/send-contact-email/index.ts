@@ -12,6 +12,28 @@ const OWNER_EMAIL = 'dennis@dennisgerrits.com'
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
 
+// --- Anti-spam heuristics ---------------------------------------------------
+// A single "word" of 10+ letters with hardly any vowels is almost always
+// bot-generated gibberish (e.g. "JwVnlnKoylbNHWoSTel", "bxBXvgaoGggJrxAAM").
+const looksLikeGibberish = (value: string) => {
+  const tokens = value.split(/\s+/).filter((t) => /^[A-Za-z]{10,}$/.test(t))
+  return tokens.some((t) => {
+    const vowels = (t.match(/[aeiouAEIOU]/g) || []).length
+    return vowels / t.length < 0.25
+  })
+}
+
+const isSpam = (opts: { website: string; elapsedMs: number; name: string; message: string }) => {
+  // Honeypot filled in: only bots see this hidden field.
+  if (opts.website.trim() !== '') return true
+  // Submitted faster than a human could realistically fill the form.
+  if (opts.elapsedMs > 0 && opts.elapsedMs < 3000) return true
+  // Gibberish name or message.
+  if (looksLikeGibberish(opts.name) || looksLikeGibberish(opts.message)) return true
+  return false
+}
+// ----------------------------------------------------------------------------
+
 const escapeHtml = (value: string) =>
   value
     .replace(/&/g, '&')
@@ -84,6 +106,17 @@ Deno.serve(async (req) => {
     if (!EMAIL_RE.test(email)) {
       return new Response(JSON.stringify({ error: 'Invalid email address' }), {
         status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      })
+    }
+
+    // Spam check: pretend success so bots do not adapt, but send nothing.
+    const website = typeof body?.website === 'string' ? body.website : ''
+    const elapsedMs = typeof body?.elapsedMs === 'number' ? body.elapsedMs : 0
+    if (isSpam({ website, elapsedMs, name, message })) {
+      console.log('Spam submission silently dropped', { name, email, elapsedMs, honeypot: website !== '' })
+      return new Response(JSON.stringify({ sent: true }), {
+        status: 200,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       })
     }

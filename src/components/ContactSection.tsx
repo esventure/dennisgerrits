@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import FadeIn from "@/components/FadeIn";
 import RichText from "@/components/RichText";
 import CountryCodeSelect from "@/components/CountryCodeSelect";
@@ -18,6 +18,9 @@ const ContactSection = () => {
   const [contactForm, setContactForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [countryCode, setCountryCode] = useState("+1");
   const [sending, setSending] = useState(false);
+  // Anti-spam: honeypot field + time trap. Bots fill hidden fields and submit instantly.
+  const [honeypot, setHoneypot] = useState("");
+  const formStartedAt = useRef(Date.now());
 
   const fullPhone = contactForm.phone.trim().startsWith("+")
     ? contactForm.phone.trim()
@@ -46,6 +49,10 @@ const ContactSection = () => {
 
     // Best-effort: notify Dennis and confirm with the visitor. The message is
     // already saved, so email send failures here do not affect the user.
+    const antiSpam = {
+      website: honeypot,
+      elapsedMs: Date.now() - formStartedAt.current,
+    };
     const sends = [
       supabase.functions.invoke("send-contact-email", {
         body: {
@@ -54,6 +61,7 @@ const ContactSection = () => {
           email: contactForm.email,
           phone: fullPhone,
           message: contactForm.message,
+          ...antiSpam,
         },
       }),
       supabase.functions.invoke("send-contact-email", {
@@ -61,6 +69,7 @@ const ContactSection = () => {
           type: "confirmation",
           name: contactForm.name,
           email: contactForm.email,
+          ...antiSpam,
         },
       }),
     ];
@@ -149,6 +158,17 @@ const ContactSection = () => {
                     fallback="Leave your contact details and tell me a little about yourself and the experience you're hoping for."
                   />
                   <form onSubmit={handleContactSubmit} className="space-y-6">
+                    {/* Honeypot: invisible to humans, bots fill it in. */}
+                    <input
+                      type="text"
+                      name="website"
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                      tabIndex={-1}
+                      autoComplete="off"
+                      aria-hidden="true"
+                      style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+                    />
                     <div className="space-y-2">
                       <Label className="font-body text-sm">Your Name</Label>
                       <Input

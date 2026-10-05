@@ -1,10 +1,5 @@
-// Real guest photos provided by Dennis. Displayed across the Mosaic Wall
-// as 50 tiles. The wall is in constant motion and tiles are small, so
-// light repetition reads as texture, not duplication.
-//
-// To add more photos: drop pNN.jpg files in this folder, add the import
-// below, and push them into `sourcePhotos`. The build50 helper handles
-// distribution and prevents adjacent duplicates.
+// Real guest photos provided by Dennis. Keep every approved photo available.
+// To add photos, add an import and include it in sourcePhotos below.
 
 import p17 from "./p17.jpg";
 import p18 from "./p18.jpg";
@@ -68,38 +63,4 @@ const sourcePhotos = [
   p67, p68, p69, p70, p71, p72,
 ];
 
-const TARGET = 50;
-
-/**
- * Build a 50-tile array by interleaving full shuffled passes of the
- * source photos. Uses a deterministic seeded shuffle so the layout is
- * stable across rerenders, and skips back-to-back duplicates at pass
- * boundaries.
- */
-function build50(): string[] {
-  const seededShuffle = (arr: string[], seed: number) => {
-    const a = [...arr];
-    let s = seed;
-    for (let i = a.length - 1; i > 0; i--) {
-      s = (s * 9301 + 49297) % 233280;
-      const j = Math.floor((s / 233280) * (i + 1));
-      [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
-  };
-
-  const out: string[] = [];
-  let pass = 0;
-  while (out.length < TARGET) {
-    const shuffled = seededShuffle(sourcePhotos, pass + 1);
-    for (const photo of shuffled) {
-      if (out.length >= TARGET) break;
-      if (out.length > 0 && out[out.length - 1] === photo) continue;
-      out.push(photo);
-    }
-    pass++;
-  }
-  return out;
-}
-
-export const guestPhotos = build50();
+export const guestPhotos = sourcePhotos;

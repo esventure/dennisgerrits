@@ -1,4 +1,5 @@
 import { useMemo, useRef, useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
 
 /**
  * Honest, general descriptions of what the collage shows. They rotate over
@@ -60,9 +61,8 @@ const MosaicWall = ({
   const [broken, setBroken] = useState<Set<string>>(new Set());
   const pool = shuffled.filter((src) => !broken.has(src));
 
-  // Responsive: on mobile the wall is six photos high and six photos wide,
-  // making each tile bigger. The strip slides sideways on its own so guests
-  // see that more photos are available by swiping.
+  // Mobile shows six rows and six visible columns, with all remaining
+  // photos available by swiping sideways, without repeating any photo.
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 640px)");
@@ -76,12 +76,13 @@ const MosaicWall = ({
   const speed = isMobile ? duration * 0.55 : duration;
 
 
-  // Build exactly rows × columns tiles, repeating from the pool if needed.
+  // Mobile uses the complete unique pool; desktop retains its fixed frame.
   const slots = rows * columns;
-  const tiles: string[] = [];
-  if (pool.length > 0) {
+  const tiles: string[] = isMobile ? [...new Set(pool)] : [];
+  if (!isMobile && pool.length > 0) {
     for (let i = 0; i < slots; i++) tiles.push(pool[i % pool.length]);
   }
+  const trackColumns = isMobile ? Math.ceil(tiles.length / rows) : columns;
 
   // Measure container width to compute square tile size.
   const containerRef = useRef<HTMLDivElement>(null);
@@ -111,7 +112,7 @@ const MosaicWall = ({
       style={{
         gap: `${gap}px`,
         marginRight: `${gap}px`,
-        gridTemplateColumns: `repeat(${columns}, ${tileSize}px)`,
+        gridTemplateColumns: `repeat(${Math.max(1, trackColumns)}, ${tileSize}px)`,
         gridTemplateRows: `repeat(${rows}, ${tileSize}px)`,
         gridAutoFlow: "column",
       }}
@@ -171,22 +172,26 @@ const MosaicWall = ({
             {renderStrip("a", true)}
           </div>
         </div>
-        <button
+        <Button
           type="button"
+          variant="ghost"
+          size="icon"
           aria-label="Scroll photos left"
           onClick={() => scrollBy(-1)}
           className="absolute left-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background/85 text-foreground shadow-md backdrop-blur-sm active:scale-95"
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg>
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
+          variant="ghost"
+          size="icon"
           aria-label="Scroll photos right"
           onClick={() => scrollBy(1)}
           className="absolute right-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background/85 text-foreground shadow-md backdrop-blur-sm active:scale-95"
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>
-        </button>
+        </Button>
       </div>
     );
   }

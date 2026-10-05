@@ -169,7 +169,6 @@ const MosaicWall = ({
         >
           <div className="flex h-full items-center" style={{ width: "max-content" }}>
             {renderStrip("a", true)}
-            {renderStrip("b", false)}
           </div>
         </div>
         <button

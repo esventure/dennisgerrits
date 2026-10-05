@@ -24,7 +24,7 @@ describe("mobile guest photos", () => {
       disconnect() {}
     });
     const { container } = render(<MosaicWall photos={guestPhotos} />);
-    const sources = [...container.querySelectorAll("img")].map((image) => image.getAttribute("src"));
+    const sources = [...container.querySelectorAll('img:not([aria-hidden="true"])')].map((image) => image.getAttribute("src"));
     expect(sources).toHaveLength(50);
     expect(new Set(sources).size).toBe(50);
     expect(sources.every((src) => guestPhotos.includes(src ?? ""))).toBe(true);

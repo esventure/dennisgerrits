@@ -66,7 +66,7 @@ const MosaicWall = ({
   const pool = shuffled.filter((src) => !broken.has(src));
 
   // Mobile shows five rows and six visible columns, with 50 unique
-  // photos available by swiping sideways.
+  // photos in an automatic loop, also available by swiping sideways.
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 640px)");
@@ -154,12 +154,50 @@ const MosaicWall = ({
     </div>
   );
 
-  // Mobile is a manually scrollable strip with arrow buttons so guests can
-  // swipe or tap to browse. Desktop keeps the automatic CSS marquee.
+  // Three copies keep the mobile scroll position in the middle cycle, so
+  // automatic movement, swiping and arrows can wrap in either direction.
   const scrollRef = useRef<HTMLDivElement>(null);
+  const pauseUntil = useRef(0);
+  const touching = useRef(false);
+  const cycleWidth = Math.max(1, trackColumns) * (tileSize + gap);
+  const wrapScroll = () => {
+    const el = scrollRef.current;
+    if (!el || !isMobile || tiles.length === 0) return;
+    if (el.scrollLeft < cycleWidth) el.scrollLeft += cycleWidth;
+    else if (el.scrollLeft >= cycleWidth * 2) el.scrollLeft -= cycleWidth;
+  };
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!isMobile || !el || tiles.length === 0) return;
+    el.scrollLeft = cycleWidth;
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let frame = 0;
+    let previous = 0;
+    let position = el.scrollLeft;
+    const tick = (now: number) => {
+      const delta = previous ? Math.min(now - previous, 50) : 0;
+      previous = now;
+      if (Math.abs(el.scrollLeft - position) > 1) position = el.scrollLeft;
+      if (!mq.matches && !touching.current && now >= pauseUntil.current) {
+        position += delta * cycleWidth / (Math.max(1, speed) * 1000);
+        if (position >= cycleWidth * 2) position -= cycleWidth;
+        el.scrollLeft = position;
+      } else {
+        position = el.scrollLeft;
+      }
+      frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [isMobile, cycleWidth, speed, tiles.length]);
+
   const scrollBy = (dir: 1 | -1) => {
     const el = scrollRef.current;
-    if (el) el.scrollBy({ left: dir * el.clientWidth * 0.8, behavior: "smooth" });
+    if (!el) return;
+    pauseUntil.current = performance.now() + 1500;
+    el.scrollBy({ left: dir * el.clientWidth * 0.8, behavior: "auto" });
+    wrapScroll();
   };
 
   if (isMobile) {
@@ -171,10 +209,19 @@ const MosaicWall = ({
             containerRef.current = node;
           }}
           className="w-full overflow-x-auto rounded-sm"
+          onScroll={wrapScroll}
+          onTouchStart={() => { touching.current = true; }}
+          onTouchEnd={() => {
+            touching.current = false;
+            pauseUntil.current = performance.now() + 1500;
+          }}
+          onTouchCancel={() => { touching.current = false; }}
           style={{ height: `${frameHeight}px`, WebkitOverflowScrolling: "touch" }}
         >
           <div className="flex h-full items-center" style={{ width: "max-content" }}>
+            {renderStrip("before", false)}
             {renderStrip("a", true)}
+            {renderStrip("after", false)}
           </div>
         </div>
         <Button

@@ -41,6 +41,10 @@ interface MosaicWallProps {
  *
  * Honors prefers-reduced-motion (renders a static grid).
  */
+export function getMobilePhotoLayout(photos: string[]) {
+  return { rows: 5, tiles: [...new Set(photos)].slice(0, 50) };
+}
+
 const MosaicWall = ({
   photos,
   duration = 60,
@@ -61,8 +65,8 @@ const MosaicWall = ({
   const [broken, setBroken] = useState<Set<string>>(new Set());
   const pool = shuffled.filter((src) => !broken.has(src));
 
-  // Mobile shows six rows and six visible columns, with all remaining
-  // photos available by swiping sideways, without repeating any photo.
+  // Mobile shows five rows and six visible columns, with 50 unique
+  // photos available by swiping sideways.
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 640px)");
@@ -71,14 +75,15 @@ const MosaicWall = ({
     mq.addEventListener("change", update);
     return () => mq.removeEventListener("change", update);
   }, []);
-  const rows = isMobile ? 6 : rowsProp;
+  const mobileLayout = getMobilePhotoLayout(pool);
+  const rows = isMobile ? mobileLayout.rows : rowsProp;
   const columns = isMobile ? 6 : colsProp;
   const speed = isMobile ? duration * 0.55 : duration;
 
 
-  // Mobile uses the complete unique pool; desktop retains its fixed frame.
+  // Mobile uses up to 50 unique photos; desktop retains its fixed frame.
   const slots = rows * columns;
-  const tiles: string[] = isMobile ? [...new Set(pool)] : [];
+  const tiles: string[] = isMobile ? mobileLayout.tiles : [];
   if (!isMobile && pool.length > 0) {
     for (let i = 0; i < slots; i++) tiles.push(pool[i % pool.length]);
   }
